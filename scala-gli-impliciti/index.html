@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from codingjam.it/scala-gli-impliciti/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:20:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="pingback" href="../xmlrpc.php">
+
+  
+	<!-- This site is optimized with the Yoast SEO plugin v14.2 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>CodingJam » Scala: gli impliciti</title>
+	<meta name="description" content="Una guida introduttiva sull&#039;utilizzo degli impliciti in Scala." />
+	<meta name="robots" content="index, follow" />
+	<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<link rel="canonical" href="index.html" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="CodingJam » Scala: gli impliciti" />
+	<meta property="og:description" content="Una guida introduttiva sull&#039;utilizzo degli impliciti in Scala." />
+	<meta property="og:url" content="index.html" />
+	<meta property="og:site_name" content="CodingJam" />
+	<meta property="article:publisher" content="https://www.facebook.com/cosenonjaviste" />
+	<meta property="article:published_time" content="2018-12-10T07:00:03+00:00" />
+	<meta property="article:modified_time" content="2018-12-08T16:08:59+00:00" />
+	<meta property="og:image" content="../wp-content/uploads/2018/12/scala.jpg" />
+	<meta property="og:image:width" content="1920" />
+	<meta property="og:image:height" content="1080" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:creator" content="@cosenonjaviste" />
+	<meta name="twitter:site" content="@cosenonjaviste" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://codingjam.it/#website","url":"https://codingjam.it/","name":"CodingJam","description":"Code With Us!","potentialAction":[{"@type":"SearchAction","target":"https://codingjam.it/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://codingjam.it/scala-gli-impliciti/#primaryimage","inLanguage":"en-US","url":"https://codingjam.it/wp-content/uploads/2018/12/scala.jpg","width":1920,"height":1080,"caption":"scala"},{"@type":"WebPage","@id":"https://codingjam.it/scala-gli-impliciti/#webpage","url":"https://codingjam.it/scala-gli-impliciti/","name":"CodingJam \u00bb Scala: gli impliciti","isPartOf":{"@id":"https://codingjam.it/#website"},"primaryImageOfPage":{"@id":"https://codingjam.it/scala-gli-impliciti/#primaryimage"},"datePublished":"2018-12-10T07:00:03+00:00","dateModified":"2018-12-08T16:08:59+00:00","author":{"@id":"https://codingjam.it/#/schema/person/9661e2d45ac0dbd2d93a73b604b9a443"},"description":"Una guida introduttiva sull'utilizzo degli impliciti in Scala.","inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://codingjam.it/scala-gli-impliciti/"]}]},{"@type":["Person"],"@id":"https://codingjam.it/#/schema/person/9661e2d45ac0dbd2d93a73b604b9a443","name":"Ubaldo Pescatore","image":{"@type":"ImageObject","@id":"https://codingjam.it/#personlogo","inLanguage":"en-US","url":"https://secure.gravatar.com/avatar/f8e1cb94a01e2fe013a0d8d6336d9864?s=96&d=mm&r=g","caption":"Ubaldo Pescatore"},"description":"Ingegnere del software e bug fixer dal 2008. Spendo le mie giornate lavorative chiuso dentro una JVM. Ho visto pi\u00f9 variabili globali che film di fantascienza. \"An investment in knowledge pays the best interest.\" B. Franklin"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Feed" href="../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Comments Feed" href="../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Scala: gli impliciti Comments Feed" href="feed/index.html" />
+<!-- This site uses the Google Analytics by ExactMetrics plugin v6.0.2 - Using Analytics tracking - https://www.exactmetrics.com/ -->
+<script type="text/javascript" data-cfasync="false">
+	var em_version         = '6.0.2';
+	var em_track_user      = true;
+	var em_no_track_reason = '';
+	
+	var disableStr = 'ga-disable-UA-21246883-1';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+
+	if ( 'undefined' === typeof gaOptout ) {
+		function gaOptout() {
+			__gaTrackerOptout();
+		}
+	}
+	
+	if ( em_track_user ) {
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','http://www.google-analytics.com/analytics.js','__gaTracker');
+
+window.ga = __gaTracker;		__gaTracker('create', 'UA-21246883-1', 'auto');
+		__gaTracker('set', 'forceSSL', true);
+		__gaTracker('send','pageview');
+		__gaTracker( function() { window.ga = __gaTracker; } );
+	} else {
+		console.log( "" );
+		(function() {
+			/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+			var noopfn = function() {
+				return null;
+			};
+			var noopnullfn = function() {
+				return null;
+			};
+			var Tracker = function() {
+				return null;
+			};
+			var p = Tracker.prototype;
+			p.get = noopfn;
+			p.set = noopfn;
+			p.send = noopfn;
+			var __gaTracker = function() {
+				var len = arguments.length;
+				if ( len === 0 ) {
+					return;
+				}
+				var f = arguments[len-1];
+				if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+					console.log( 'Not running function __gaTracker(' + arguments[0] + " ....) because you are not being tracked. " + em_no_track_reason );
+					return;
+				}
+				try {
+					f.hitCallback();
+				} catch (ex) {
+
+				}
+			};
+			__gaTracker.create = function() {
+				return new Tracker();
+			};
+			__gaTracker.getByName = noopnullfn;
+			__gaTracker.getAll = function() {
+				return [];
+			};
+			__gaTracker.remove = noopfn;
+			window['__gaTracker'] = __gaTracker;
+			window.ga = __gaTracker;		})();
+		}
+</script>
+<!-- / Google Analytics by ExactMetrics -->
+<link rel='stylesheet' id='wp-block-library-css'  href='../wp-content/plugins/gutenberg/build/block-library/stylea4fb.css?ver=1591004795' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-gdpr-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='melissa-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lato%3A400%2C400i%2C700%2C700i%7CNoto+Serif%3A400%2C400i%2C700%2C700i&amp;subset=latin&amp;ver=1.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../wp-content/themes/melissa/css/bootstrap.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-theme-css'  href='../wp-content/themes/melissa/css/bootstrap-theme.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-ie10-viewport-bug-workaround-css'  href='../wp-content/themes/melissa/css/ie10-viewport-bug-workaround8a54.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='../wp-content/themes/melissa/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-carousel-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-theme-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.theme3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='magnific-popup-css'  href='../wp-content/themes/melissa/assets/magnific-popup/magnific-popupf488.css?ver=1.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-style-css'  href='../wp-content/themes/melissa/style3ec8.css?ver=1.1.6' type='text/css' media='all' />
+<style id='melissa-style-inline-css' type='text/css'>
+
+    .bwp-post-media img,
+    .bwp-post-carousel-item img,
+    .widget_bwp_posts_slider_item img {
+      width: 100%;
+      margin: 0;
+    }
+    .bwp-post-wrap:hover {
+      margin-top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+    #bwp-masonry-container.no-masonry .bwp-post-wrap:hover {
+      top: 0;
+    }
+    .bwp-no-results-container:hover,
+    .bwp-single-article:hover,
+    .bwp-featured-media-container:hover,
+    .post-navigation .nav-links a:hover,
+    .bwp-about-author-container:hover,
+    .comment-respond:hover,
+    .comment-body:hover,
+    #comments .no-comments:hover,
+    .comment-navigation .nav-links a:hover,
+    .bwp-related-post-wrap:hover,
+    .bwp-page-404-container:hover,
+    .bwp-sidebar-wrap:hover {
+      top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+  #bwp-header-wrap {
+    background-color: #2e3340;
+  }
+  .bwp-header-bg-overlay,
+  .bwp-header-rs-bg-overlay {
+    background-color: rgba(46, 51, 64, 0.9);
+  }
+    .bwp-content a,
+    .comment-content a,
+    .bwp-post-quote a {
+      color: #2052bf;
+    }
+</style>
+<link rel='stylesheet' id='enlighter-local-css'  href='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.css?ver=3.9.0' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var exactmetrics_frontend = {"js_events_tracking":"true","download_extensions":"zip,mp3,mpeg,pdf,docx,pptx,xlsx,rar","inbound_paths":"[{\"path\":\"\\\/go\\\/\",\"label\":\"affiliate\"},{\"path\":\"\\\/recommend\\\/\",\"label\":\"affiliate\"}]","home_url":"https:\/\/codingjam.it","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/google-analytics-dashboard-for-wp/assets/js/frontend.min5b21.js?ver=6.0.2'></script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery4a5f.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[]};
+var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/cookie-law-info/public/js/cookie-law-info-public3cf4.js?ver=1.8.8'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/respond.min.js?ver=1.4.2'></script>
+<![endif]-->
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/mootools-core-yc9086.js?ver=3.9.0'></script>
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.js?ver=3.9.0'></script>
+<link rel='https://api.w.org/' href='../wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+<meta name="generator" content="WordPress 5.4.1" />
+<link rel='shortlink' href='../index176a.html?p=17801' />
+<link rel="alternate" type="application/json+oembed" href="../wp-json/oembed/1.0/embed3f7d.json?url=https%3A%2F%2Fcodingjam.it%2Fscala-gli-impliciti%2F" />
+<link rel="alternate" type="text/xml+oembed" href="../wp-json/oembed/1.0/embed68ac?url=https%3A%2F%2Fcodingjam.it%2Fscala-gli-impliciti%2F&amp;format=xml" />
+		<script type="text/javascript">
+			var cli_flush_cache = true;
+		</script>
+		<link rel="amphtml" href="amp/index.html"><script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"droide","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":false,"windowButton":false,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" sizes="32x32" />
+<link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://codingjam.it/wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-270x270.png" />
+</head>
+
+<body class="post-template-default single single-post postid-17801 single-format-standard wp-custom-logo">
+
+
+<!-- header -->
+<header id="bwp-header-wrap" class="bwp-header-simple">
+
+  <!-- header bg -->
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P7101915_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg-overlay"></div>
+
+    <!-- header content -->
+    <div class="container">
+      <div class="bwp-header-content-container">
+
+        <!-- row 1 - logo + navigation -->
+        <div class="bwp-main-navigation-container clearfix">
+
+          
+        <!-- image logo -->
+        <div class="bwp-logo-container">
+          <a href="../index.html" class="custom-logo-link" rel="home"><img width="207" height="70" src="../wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png" class="custom-logo" alt="CodingJam" srcset="https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png 207w, https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco-150x51.png 150w" sizes="(max-width: 207px) 100vw, 207px" /></a>        </div>
+        <!-- end image logo -->
+
+        
+      <!-- search -->
+      <div class="bwp-header-search-container hidden-sm hidden-xs">
+        <a href="#" id="bwp-header-search-icon">
+          <i class="fa fa-search"></i>
+        </a>
+        <div class="bwp-dropdown-search-container bwp-search-hidden">
+          
+<!-- search form -->
+<form id="searchform" role="search" method="get" action="https://codingjam.it/">
+  <div class="input-group">
+    <input type="text" name="s" id="s" class="bwp-search-field form-control" placeholder="Enter your search query...">
+    <span class="input-group-btn">
+      <button type="submit" class="btn bwp-search-submit">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+</form>
+<!-- end search form -->
+        </div>
+      </div>
+      <!-- end search -->
+
+      
+      <!-- menu -->
+      <div class="bwp-menu-container hidden-sm hidden-xs">
+        <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-2" class="sf-menu"><li id="menu-item-12007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li id="menu-item-12022" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../java/index.html">Java</a></li>
+	<li id="menu-item-12009" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../java/java-8/index.html">Java 8</a></li>
+	<li id="menu-item-12020" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../rxjava/index.html">RxJava</a></li>
+	<li id="menu-item-12017" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12017"><a href="../scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li id="menu-item-12006" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../agile/index.html">Agile</a></li>
+<li id="menu-item-12005" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../android/index.html">Android</a></li>
+<li id="menu-item-12008" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li id="menu-item-12014" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../angularjs/index.html">AngularJS</a></li>
+	<li id="menu-item-12012" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../ejb/index.html">EJB</a></li>
+	<li id="menu-item-12010" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../javascript/index.html">Javascript</a></li>
+	<li id="menu-item-12021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../application-server/jboss/index.html">JBoss</a></li>
+	<li id="menu-item-12016" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../jsf/index.html">JSF</a></li>
+	<li id="menu-item-12015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../jquery-2/index.html">jQuery</a></li>
+	<li id="menu-item-12019" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../spring-2/index.html">Spring</a></li>
+	<li id="menu-item-12018" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>      </div>
+      <!-- end menu -->
+
+      
+      <!-- mobile menu -->
+      <div class="bwp-mobile-menu-container hidden-md hidden-lg">
+        <!-- mobile menu icon -->
+        <a href="#" id="bwp-mobile-menu-icon">
+          <i class="fa fa-bars"></i>
+        </a>
+        <!-- end mobile menu icon -->
+        <!-- dropdown mobile menu -->
+        <div class="bwp-dropdown-mobile-menu bwp-mobile-menu-hidden">
+          <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-3" class="bwp-mobile-menu list-unstyled"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12017"><a href="../scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>        </div>
+        <!-- end dropdown mobile menu -->
+      </div>
+      <!-- end mobile menu -->
+
+      
+        </div>
+        <!-- end row 1 - logo + navigation -->
+
+        
+          <!-- row 2 - header custom text -->
+          <div class="bwp-header-custom-text-container">
+            
+        <!-- custom text - single page -->
+        <h1 class="bwp-header-custom-title entry-title">
+          Scala: gli impliciti        </h1>
+                <div class="bwp-header-transparent-line clearfix">
+          <span class="bwp-header-t-line-1"></span>
+          <span class="bwp-header-t-line-2"></span>
+        </div>
+        <!-- end custom text -->
+
+                  </div>
+          <!-- end row 2 - header custom text -->
+
+          
+      </div>
+    </div>
+    <!-- end header content -->
+  </div>
+  <!-- end header bg -->
+
+  
+        <!-- sticky navigation -->
+        <div class="bwp-sticky-navigation-wrap bwp-transition-4 clearfix">
+          <!-- sticky navigation icon -->
+          <a href="#" id="bwp-sticky-navigation-icon">
+            <i class="fa fa-bars"></i>
+          </a>
+          <!-- end sticky navigation icon -->
+          <!-- sticky navigation container -->
+          <div class="bwp-sticky-navigation-container bwp-sticky-navigation-hidden">
+            <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-4" class="sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12017"><a href="../scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>          </div>
+          <!-- end sticky navigation container -->
+        </div>
+        <!-- end sticky navigation -->
+
+        
+</header>
+<!-- end header -->
+
+  <!-- blog post - single page -->
+  <section id="bwp-single-page-wrap">
+    <div class="container">
+      <div class="bwp-single-page-container" >
+
+        
+                  <div class="row"><div class="col-md-8 bwp-single-content-col bwp-sidebar-right"><div class="bwp-single-content-col-wrap" role="main">
+        
+        <!-- article -->
+        <article id="post-17801" class="bwp-single-article bwp-transition-3">
+
+          
+  <!-- media - featured image -->
+  <figure class="bwp-post-media">
+          <a href="../wp-content/uploads/2018/12/scala.jpg" class="bwp-popup-image" title="scala">
+          <img width="1200" height="675" src="../wp-content/uploads/2018/12/scala-1200x675.jpg" class="attachment-melissa-img-1200-auto size-melissa-img-1200-auto wp-post-image" alt="linguaggio scala" srcset="https://codingjam.it/wp-content/uploads/2018/12/scala-1200x675.jpg 1200w, https://codingjam.it/wp-content/uploads/2018/12/scala-300x169.jpg 300w, https://codingjam.it/wp-content/uploads/2018/12/scala-768x432.jpg 768w, https://codingjam.it/wp-content/uploads/2018/12/scala-1024x576.jpg 1024w, https://codingjam.it/wp-content/uploads/2018/12/scala-150x84.jpg 150w, https://codingjam.it/wp-content/uploads/2018/12/scala-706x397.jpg 706w, https://codingjam.it/wp-content/uploads/2018/12/scala.jpg 1920w" sizes="(max-width: 1200px) 100vw, 1200px" />      <span class="bwp-expand-icon bwp-transition-4"><i class="fa fa-expand"></i></span>
+    </a>
+          <figcaption class="bwp-single-media-caption">scala</figcaption>
+      </figure>
+  <!-- end media -->
+
+  
+          <!-- content container -->
+          <div class="bwp-single-content">
+
+            <!-- content -->
+            <div class="bwp-content entry-content clearfix">
+              <h1><b>Scala: gli impliciti</b></h1>
+<p style="font-weight: 400">Tempo fa su questo blog sono stati pubblicati<a href="../scala/index.html">alcuni post su Scala</a>, con l’obiettivo di offrire una prima panoramica sul linguaggio. In questo articolo illustreremo un’altra importante caratteristica del linguaggio, per certi versi un po’ fuori dal comune rispetto ai classici costrutti cui siamo abituati: gli <i>impliciti</i>.</p>
+<p style="font-weight: 400">Da un punto di vista sintattico non c’è molto da imparare: l’utilizzo degli <i>impliciti</i> in Scala si riduce ad una sola keyword: <code>implicit</code>, da anteporre alla definizione di altri costrutti. Ad esempio:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">    
+implicit val nazione = "Italia"
+implicit val campionatiDelMondoVinti = 4
+</pre>
+<p style="font-weight: 400">oppure</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+def hello(who: String)(implicit greeting: String) = s"$greeting, $who!"
+</pre>
+<p style="font-weight: 400">Allora perché questo post? Nonostante la facilità nell’introdurre un <code>implicit</code>, gli effetti del loro utilizzo all’interno di una codebase Scala possono essere molteplici. Proveremo ad analizzarli per comprendere meglio il loro valore aggiunto.</p>
+<p style="font-weight: 400">Cominciamo a chiarire da dove nasce l’esigenza di introdurre gli <i>impliciti</i> nel linguaggio. Sono stati introdotti per favorire l’estensibilità del codice di terze parti: di solito gli sviluppatori possono modificare a piacimento il proprio codice all’interno di una codebase, ma ovviamente non hanno le stesse possibilità quando si tratta di librerie di terze parti. In Scala riusciremo a farlo grazie agli <code>implicit</code>!</p>
+<h4><b>Le conversioni implicite</b></h4>
+<p style="font-weight: 400">Spesso, durante lo sviluppo del software, ci si trova a dover integrare parti di codice sorgente che sono state originariamente sviluppate senza tenere conto dell’eventuale esigenza futura di farle interagire insieme; librerie diverse utilizzano approcci differenti per fornire lo stesso comportamento o le stesse strutture. Le <i>implicit conversions</i> sono utili proprio in queste occasioni: servono a ridurre il numero di conversioni esplicite che sono di solito necessarie per poter trasformare un tipo in un altro.</p>
+<p style="font-weight: 400">Applicando la keyword <code>implicit</code> in modo opportuno aiuteremo il compilatore ad inserire delle definizioni che consentono di sistemare quelli che altrimenti sarebbero errori di compilazione. Chiariamo il concetto con un esempio: un convertitore di Bitcoin.</p>
+<h5><i>Il convertitore di Bitcoin</i></h5>
+<p style="font-weight: 400">Supponiamo di star lavorando ad un progetto per la gestione delle finanze e che nella nostra codebase tutte le operazioni finanziarie siano implementate utilizzando gli <code>Euro</code>, che modelliamo con la seguente <a href="../scala-le-case-class/index.html">case class</a>:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+case class Euro(euro: BigDecimal)
+</pre>
+<p style="font-weight: 400">Per rendere il nostro prodotto più al passo con i tempi, il management ci chiede di introdurre anche la gestione delle criptovalute, nello specifico i Bitcoin. Anziché scrivere una nostra classe, decidiamo di importare una libreria esterna per gestire la criptovaluta dei Bitcoin. La libreria è implementata come segue:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+package cryptocurrency;
+
+//bitcoin currency
+case class Bitcoin(value: BigDecimal)
+//payment gateway
+object BitcoinEngine {
+   def paymentOperation(amount: Bitcoin): Bitcoin = /* very long method here */
+}
+</pre>
+<p style="font-weight: 400">Una delle funzioni più comode della nuova libreria è l’introduzione di <code>BitcoinEngine</code>, un gateway per i pagamenti in Bitcoin. Decidiamo di usarlo, sebbene la nostra attuale codebase preveda la sola currency <code>Euro</code>. Accidenti, dobbiamo convertire tutti i nostri oggetti <code>Euro</code> in <code>Bitcoin</code>? Non potrebbe aiutarci il compilatore Scala? Sì, per uno scenario del genere possiamo far ricorso ad una semplice <i>implicit conversion</i>. Per trasformare tutti i nostri <code>Euro</code> in <code>Bitcoin</code>, anziché intervenire manualmente possiamo introdurre una conversione implicita:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+object EuroConverter { 
+  import cryptocurrency._
+  implicit def euroToBitcoin(eur: Euro): Bitcoin = Bitcoin(eur.euro + 10000)
+}
+</pre>
+<p style="font-weight: 400">ed importare l’oggetto <code>EuroConverter</code> in tutti i punti in cui dobbiamo convertire <code>Euro</code> in <code>Bitcoin</code>. Ad esempio, senza l’import dell’oggetto <code>EuroConverter</code>, il seguente codice non compilerà:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+import cryptocurrency._
+
+object Main extends App {
+  val euro = Euro(120)
+  println(BitcoinEngine.paymentOperation(euro))    //il tipo della variabile euro 
+                                                   //non è ammissibile qui
+}
+</pre>
+<p style="font-weight: 400">Invece, aggiungendo allo scope il solo import della conversione implicita:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+import cryptocurrency._
+import EuroConverter.euroToBitcoin  //importazione della conversione implicita
+
+object Main extends App {
+  val euro = Euro(120)
+  println(BitcoinEngine.paymentOperation(euro))    //adesso non ci sarà 
+                                                  //più l'errore poiché 
+                                                  //la conversione viene 
+                                                  //fatta implicitamente
+}
+</pre>
+<p style="font-weight: 400">il compilatore individuerà la conversione implicita applicandola dove necessario. La conversione introdotta consente di sistemare eventuali errori sui tipi. Come lavora il compilatore dietro le quinte? Prima prova a compilare il codice come se non ci fosse nessuna conversione, riscontrando però un errore dovuto ad un’inconsistenza dei tipi coinvolti. Al posto di fermarsi segnalando l’errore, il compilatore Scala cerca eventuali conversioni implicite che possano risolvere il problema. Nell’esempio precedente individua <code>euroToBitcoin</code>, prova ad applicarla, verifica che essa risolve il problema e prosegue oltre. Comodo, no?</p>
+<h4><b>Quando usare le conversioni implicite</b></h4>
+<p style="font-weight: 400">I contesti del linguaggio in cui conviene utilizzare le conversioni implicite sono tre:</p>
+<ul>
+<li style="font-weight: 400"><span style="font-weight: 400">conversioni ad un tipo atteso, come nel precedente esempio;</span></li>
+<li style="font-weight: 400"><span style="font-weight: 400">conversioni del destinatario di una selezione;</span></li>
+<li style="font-weight: 400"><span style="font-weight: 400">parametri impliciti.</span></li>
+</ul>
+<h5><i>Conversioni implicite ad un tipo atteso</i></h5>
+<p style="font-weight: 400">Le conversioni di questo tipo consentono di poter utilizzare un tipo specifico in un contesto dove originariamente ne era atteso un altro, come nell’esempio precedente.</p>
+<h5><i>Conversioni sui destinatari di una selezione</i></h5>
+<p style="font-weight: 400">Questo tipo è simile al precedente e consente di adattare le istanze su cui invochiamo un metodo, se il metodo che stiamo invocando non è applicabile sul tipo originale. Supponiamo di avere una classe per modellare i numeri razionali:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+class Rational(val numer: Int, val denom: Int) {
+  def + (that: Int): Rational = new Rational(numer + that * denom, denom)
+  def + (that: Rational): Rational = new Rational(
+                       numer * that.denom + that.numer * denom, 
+                       denom * that.denom)
+}
+</pre>
+<p style="font-weight: 400">in cui abbiamo definito il metodo <code>+</code> per poter aggiungere ad un numero <code>Rational</code> sia un <code>Int</code> sia un’altra istanza di <code>Rational</code>. Ora non ci resta che testarla in un semplice <code>Main</code>:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+object Main extends App {
+  val r = new Rational(1, 2)
+  val s = new Rational(3, 4)
+  r + s
+  s + r
+  r + 1
+  1 + r  //errore di compilazione poiché Int non ha il metodo +(r: Rational)
+}
+</pre>
+<p style="font-weight: 400">Ma come? Per le addizioni non dovrebbe esistere la proprietà commutativa? Perché questo <code>Main</code> non compila? L’errore di compilazione è dovuto alla mancanza del metodo <code>+(r: Rational)</code> per il tipo <code>Int</code>. Come possiamo fare ad aggiungerlo? Siccome la classe <code>Int</code> è una classe della libreria standard di Scala, non possiamo intervenire direttamente su di essa, ma attraverso una conversione implicita riusciamo a risolvere l’errore. Definiamo un oggetto:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+package math
+object IntRational {
+  implicit def intToRational(x: Int): Rational = new Rational(x, 1)
+}
+</pre>
+<p style="font-weight: 400">ed importiamolo nello scope del nostro Main:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+import math.IntRational._
+object Main extends App {
+  val r = new Rational(1, 2)
+  …
+  1 + r  //stavolta compila!
+}
+</pre>
+<p style="font-weight: 400">Questa volta il compilatore prima prova a compilare l’espressione <code>1 + r</code>, ma senza riuscirci (<code>Int</code> ha tanti metodi <code>+</code>, ma nessuno che accetta un <code>Rational</code> come parametro). Piuttosto che arrendersi, però, prova a cercare una conversione implicita da <code>Int</code> ad un altro tipo che abbia un metodo <code>+</code> da poter applicare al parametro di tipo <code>Rational</code>. Siccome abbiamo importato una conversione adatta allo scopo (i.e.:  <code>import math.IntRational._</code>) il compilatore riesce a risolvere il codice e a terminare senza errori.</p>
+<p style="font-weight: 400">Questa tipologia di conversione fornisce un’integrazione migliore di nuove classi all’interno di una gerarchia di classi già esistente: potremo usare istanze di tipi già esistenti come se fossero istanze di un altro tipo!</p>
+<h5><i>Parametri impliciti</i></h5>
+<p style="font-weight: 400">Le conversioni implicite di parametri, anche dette <i>implicit parameters</i>, sono generalmente utilizzate per fornire maggiori informazioni alla funzione chiamata su cosa si aspetta il chiamante. In questo caso quindi, il compilatore inserirà le conversioni implicite all’interno della lista degli argomenti di un metodo. Questo approccio risulta molto utile con le funzioni o i metodi generici, laddove la funzione chiamata potrebbe non conoscere niente sui tipi di uno o più dei propri argomenti (e.g.: <i>dependency injection</i>). Un classico esempio di utilizzo degli <i>implicit parameters</i> è quello per l’implementazione delle type classes in Scala, che vedremo in un prossimo post.</p>
+<p style="font-weight: 400">Come funzionano, in dettaglio, le conversioni di parametri impliciti? Supponiamo di voler eseguire delle query su un database relazionale. Modelliamo innanzitutto una configurazione per la connessione al DB:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+case class DBConfiguration(driver: String, 
+                           url: String, 
+                           username: String, 
+                           password: String)
+</pre>
+<p style="font-weight: 400">scriviamo poi la nostra logica applicativa <b>utilizzando un parametro implicito per gestire la configurazione</b>:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+import java.sql.{Connection, DriverManager}
+object JDBCEngine {
+  def selectData(query: String)(implicit config: DBConfiguration) = {
+   // è solo un esempio: ci sono modi migliori per interagire con un DB!
+    var connection: Connection = null
+    try {
+      // istanzia la connessione usando il parametro implicito
+      Class.forName(config.driver)
+      connection = DriverManager.getConnection(
+                                 config.url, 
+                                 config.username, 
+                                 config.password)
+       // esegui query SQL...
+       //  ...
+     } catch {
+      case e =&gt; e.printStackTrace
+     }
+    connection.close()
+   }
+}
+</pre>
+<p style="font-weight: 400">come avrete notato, il secondo parametro del metodo <code>selectData</code> è stato marcato come <code>implicit</code>, quindi esso può essere passato al metodo in maniera implicita mediante un semplice import. Per cui, definite diverse configurazioni JDBC in un oggetto, ad esempio:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+object DatabaseConfigurations {
+   implicit val mySQL =    DBConfiguration("com.mysql.jdbc.Driver", 
+                                 "mysql://localhost:3306/test", 
+                                 "test", 
+                                 "test")
+   implicit val postgres = DBConfiguration("org.postgresql.Driver", 
+                                 "postgresql://localhost:5432/mydb", 
+                                 "user", 
+                                 "password")
+}
+</pre>
+<p style="font-weight: 400">possiamo importare solo quella che desideriamo usare nello scope dell’oggetto <code>JDBCEngine</code> ed invocare il metodo <code>selectData</code> come segue:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+import DatabaseConfigurations.mySQL
+import JDBCEngine._ //il secondo parametro verrà importato implicitamente
+
+selectData("Mario")
+</pre>
+<p style="font-weight: 400">In questo modo potremo usare le conversioni implicite anche per disaccoppiare le dipendenze iniettandole in modo più conciso con un solo import.</p>
+<h4><b>Le regole di conversione</b></h4>
+<p style="font-weight: 400">Con gli esempi delle sezioni precedenti abbiamo visto a cosa servono le conversioni implicite e dove è possibile utilizzarle. Oltre a questo, però, è importante evidenziare una serie di aspetti e regole che rendono l’utilizzo di queste conversioni abbastanza delicato. Le regole sono:</p>
+<ul>
+<li style="font-weight: 400">
+<p style="font-weight: 400"><b>Regola di marcatura</b>: solo le definizioni marcate come <code>implicit</code> possono essere riconosciute ed utilizzate per provare a risolvere errori di conversione di tipi. In questo modo si evitano eventuali problematiche che potrebbero insorgere laddove il compilatore, invece, prendesse una qualsiasi funzione in scope e inserendola come “conversione”. Secondo questa regola <b> una funzione di conversione implicita è selezionata solo tra le definizioni del codice sorgente che sono state esplicitamente marcate come <code>implicit</code></b>;</p>
+</li>
+<li style="font-weight: 400">
+<p style="font-weight: 400"><b>Regola dello scope</b>: una conversione <code>implicit</code> deve essere in scope come un singolo identificativo oppure dev’essere associata con la sorgente o la destinazione della conversione. Il compilatore considera solo le conversioni implicite che sono in scope. Affinché una conversione implicita sia presente nello scope, essa dovrà essere introdotta mediante un <code>import</code>.</br>Un’alternativa all’import della conversione, è quella di introdurre la conversione implicita all’interno del companion object della classe sorgente o destinazione della conversione. Nell’esempio precedente sui Bitcoin quindi, potremmo introdurre la conversione <code>euroToBitcoin</code> direttamente nell’object <code>Euro</code>. In questo caso, in ogni scope in cui l’oggetto <code>Euro</code> viene importato, abbiamo anche la conversione implicita da <code>Euro</code> a <code>Bitcoin</code>. Quest’alternativa all’<code>import</code> può risultare più comoda perché non richiede di importare la conversione separatamente dal companion object.</br>Il beneficio principale di questa regola è quello di aiutare gli sviluppatori nel ragionare in maniera più organizzata: se tutte le conversioni implicite avessero uno scope globale, infatti, sarebbe complesso individuare all’interno della intera codebase se e quale conversione sia in atto.</p>
+</li>
+<li style="font-weight: 400">
+<p style="font-weight: 400"><b>Una conversione alla volta</b>: il compilatore non permette di inserire più di una conversione alla volta per gli stessi tipi. Questa scelta nasce dall’esigenza di ridurre le differenze tra ciò che ha scritto il programmatore e ciò che il programma effettivamente eseguirà. Nello specifico, il compilatore non inserirà ulteriori conversioni implicite quando esso è già nel mezzo dell’applicazione di un altro implicit.</p>
+</li>
+<li style="font-weight: 400">
+<p style="font-weight: 400"><b>Priorità al codice esplicito</b>: fin tanto che non ci sono errori di type checking, il compilatore non tenta di risolverli mediante la risoluzioni di conversioni implicite.</p>
+</li>
+</ul>
+<h4><b>Conclusioni</b></h4>
+<p style="font-weight: 400">Questo articolo fornisce una panoramica introduttiva sulle conversioni implicite di Scala. Si tratta di un costrutto molto potente, che consente sia di scrivere codice più conciso sia di favorire una migliore integrazione tra istanze e metodi originariamente pensati per tipi di dati diversi. Abbiamo rapidamente illustrato i contesti in cui è ammissibile introdurre conversioni implicite cercando di evidenziare i benefici del loro utilizzo.</br>Resta comunque importante sottolineare che, come buona parte dei costrutti avanzati di qualsiasi linguaggio di programmazione, non vale la pena di abusarne; solo così si potrà evitare un effetto controproducente dal loro utilizzo. Quindi, prima di introdurre qualsiasi conversione implicita, vale la pena di verificare se è possibile ottenere lo stesso effetto attraverso altri costrutti, ad esempio l’ereditarietà o l’overloading dei metodi.</br>Infine, oltre a tutte le regole e casistiche citate in questo breve post, esistono alcune eccezioni che possono renderne più complesso l’utilizzo. Per un approfondimento, il consiglio è quello di consultare il capitolo 21 del libro “<a href="https://www.artima.com/shop/programming_in_scala">Programming in Scala</a>”.</p>
+            </div>
+            <!-- end content -->
+
+            
+                <!-- social sharing buttons / counters -->
+                <div class="row">
+                  <div class="col-md-7">
+                    
+    <!-- social sharing buttons -->
+    <div class="bwp-single-share-wrap">
+      <span>Share:</span>
+      <ul class="bwp-single-share list-unstyled">
+        <!-- facebook -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/scala-gli-impliciti/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/scala-gli-impliciti/" target="_blank" class="bwp-share-link bwp-facebook-share">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <!-- end facebook -->
+        <!-- twitter -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/scala-gli-impliciti/&amp;text=scala-gli-impliciti', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/scala-gli-impliciti/&amp;text=scala-gli-impliciti" target="_blank" class="bwp-share-link bwp-twitter-share">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <!-- end twitter -->
+        <!-- google+ -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/scala-gli-impliciti/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/scala-gli-impliciti/" target="_blank" class="bwp-share-link bwp-google-plus-share">
+            <i class="fa fa-google-plus"></i>
+          </a>
+        </li>
+        <!-- end google+ -->
+        <!-- vk -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/scala-gli-impliciti/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/scala-gli-impliciti/" target="_blank" class="bwp-share-link bwp-vk-share">
+            <i class="fa fa-vk"></i>
+          </a>
+        </li>
+        <!-- end vk -->
+        <!-- pinterest -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/scala-gli-impliciti/&amp;media=https://codingjam.it/wp-content/uploads/2018/12/scala.jpg&amp;description=scala-gli-impliciti', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/scala-gli-impliciti/&amp;media=https://codingjam.it/wp-content/uploads/2018/12/scala.jpg&amp;description=scala-gli-impliciti" target="_blank" class="bwp-share-link bwp-pinterest-share">
+            <i class="fa fa-pinterest-p"></i>
+          </a>
+        </li>
+        <!-- end pinterest -->
+      </ul>
+    </div>
+    <!-- end social sharing buttons -->
+
+                      </div>
+                  <div class="col-md-5">
+                    
+    <!-- counters -->
+    <ul class="bwp-single-counters list-unstyled clearfix ">
+                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i><span class="dsq-postid" data-dsqidentifier="17801 https://codingjam.it/?p=17801">0</span></a></li>
+                </ul>
+    <!-- end counters -->
+
+                      </div>
+                </div>
+                <!-- end social sharing buttons / counters -->
+
+                
+      <!-- metadata -->
+      <div class="bwp-single-metadata-wrap ">
+        <ul class="bwp-single-metadata list-unstyled clearfix">
+                      <!-- author -->
+            <li>
+              <span class="vcard author">
+                <span class="fn">
+                  <i class="fa fa-pencil-square-o"></i><a href="../author/ubaldo/index.html" title="Posts by Ubaldo Pescatore" rel="author">Ubaldo Pescatore</a>                </span>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end author -->
+                                <!-- date -->
+            <li>
+                            <span class="date updated">
+                <i class="fa fa-clock-o"></i><a href="../2018/12/10/index.html">10/12/2018</a>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end date -->
+                                <!-- categories -->
+            <li>
+              <i class="fa fa-bookmark-o"></i><a href="../scala/index.html" rel="category tag">Scala</a>, <a href="../tutorial-2/index.html" rel="category tag">Tutorial</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end categories -->
+                                <!-- tags -->
+            <li>
+              <i class="fa fa-tags"></i><a href="../tag/case-class/index.html" rel="tag">case class</a>, <a href="../tag/compilatore/index.html" rel="tag">compilatore</a>, <a href="../tag/impliciti-scala/index.html" rel="tag">impliciti scala</a>, <a href="../tag/linguaggio-scala/index.html" rel="tag">linguaggio scala</a>, <a href="../tag/scala/index.html" rel="tag">Scala</a>, <a href="../tag/tutorial/index.html" rel="tag">tutorial</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end tags -->
+                  </ul>
+      </div>
+      <!-- end metadata -->
+
+      
+          </div>
+          <!-- end content container -->
+
+        </article>
+        <!-- end article -->
+
+        
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="../eclipse-jnosql/index.html" rel="prev"><span class="meta-nav"><i class="fa fa-angle-left"></i>Previous post</span><span class="post-title-nav">Eclipse JNoSQL: un&#8217;API per i database NoSQL</span></a></div><div class="nav-next"><a href="../docker-e-microservizi-java-con-jib/index.html" rel="next"><span class="meta-nav">Next post<i class="fa fa-angle-right"></i></span><span class="post-title-nav">Docker e microservizi Java con Jib</span></a></div></div>
+	</nav>
+    <!-- about the author -->
+    <div class="bwp-about-author-container bwp-transition-3 clearfix">
+      <!-- avatar -->
+      <div class="bwp-about-author-avatar">
+        <a href="../author/ubaldo/index.html">
+          <img alt='' src='https://secure.gravatar.com/avatar/f8e1cb94a01e2fe013a0d8d6336d9864?s=150&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/f8e1cb94a01e2fe013a0d8d6336d9864?s=300&#038;d=mm&#038;r=g 2x' class='avatar avatar-150 photo' height='150' width='150' />        </a>
+      </div>
+      <!-- end avatar -->
+      <!-- biographical info -->
+      <div class="bwp-about-author-bio-wrap">
+        <h3 class="bwp-about-author-name">
+          <a href="../author/ubaldo/index.html" title="Posts by Ubaldo Pescatore" rel="author">Ubaldo Pescatore</a>          <span><i class="fa fa-angle-double-right"></i>1 Posts</span>
+        </h3>
+        <div class="bwp-about-author-bio">
+          Ingegnere del software e bug fixer dal 2008.
+Spendo le mie giornate lavorative chiuso dentro una JVM.
+Ho visto più variabili globali che film di fantascienza.
+
+"An investment in knowledge pays the best interest." B. Franklin        </div>
+                  <ul class="bwp-about-author-social list-unstyled clearfix">
+                              <li><a href="https://github.com/P3trur0" target="_blank" class="bwp-a-github-link"><i class="fa fa-github"></i></a></li>
+                          </ul>
+              </div>
+      <!-- end biographical info -->
+    </div>
+    <!-- end about the author -->
+
+    
+<div id="disqus_thread"></div>
+
+    <!-- related posts (by tags) -->
+    <div class="bwp-related-posts-container bwp-show-2-posts">
+      <div class="bwp-o-hidden">
+
+        <!-- title -->
+        <h2 class="bwp-related-posts-title">
+          You might also like:        </h2>
+        <!-- end title -->
+
+        <!-- posts list -->
+        <div class="bwp-related-posts clearfix">
+
+          
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="../varargs-i-chiaroscuri-della-magia/index.html">Varargs: i chiaroscuri della magia</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p align="justify">Dalla versione 1.5 in Java sono disponibili i varargs, un elegante strumento per avere metodi con zero o più parametri di uno specifico tipo. Ma i varargs presentano vantaggi così come qualche svantaggio: vediamo come usarli senza abusarne.</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="../2011/05/25/index.html" class="bwp-post-date">
+        <span class="date updated">25/05/2011</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="../varargs-i-chiaroscuri-della-magia/index.html" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="../alla-faccia-dellinterfaccia-scala-a-tratti/index.html">Alla faccia dell&#8217;interfaccia: Scala a Tratti</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p align="justify">Platone definiva l’essere umano come “Bipede implume dotato di anima“: aveva sicuramente in mente i Tratti Scala, nella sua lungimiranza. I tratti, analoghi alle interfacce Java, offrono in più la possibilità di centralizzare codice, maggiore flessibilità associata a un migliore controllo. Non ci credete? Leggiamo insieme questo post!</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="../2011/08/02/index.html" class="bwp-post-date">
+        <span class="date updated">02/08/2011</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="../alla-faccia-dellinterfaccia-scala-a-tratti/index.html" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+        </div>
+        <!-- end posts list -->
+
+      </div>
+    </div>
+    <!-- end related posts -->
+
+    
+                  </div><!-- /bwp-single-content-col-wrap --></div><!-- /col-md-8 --><div class="col-md-4 bwp-sidebar-col bwp-sidebar-right">
+        
+                  </div><!-- /col --></div><!-- /row -->
+        
+      </div>
+    </div>
+  </section>
+  <!-- end blog post - single page -->
+
+  
+<!-- footer -->
+<footer id="bwp-footer-wrap">
+  <div class="container">
+    <div class="bwp-footer-container clearfix">
+
+              <!-- footer text -->
+        <div class="bwp-footer-text">
+          CodingJam - 2018        </div>
+        <!-- end footer text -->
+      
+              <!-- social links -->
+        <ul class="bwp-footer-social-links list-unstyled clearfix">
+          <li><a href="https://twitter.com/codingjam" target="_blank" class="bwp-f-twitter-link"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.facebook.com/codingjamit/" target="_blank" class="bwp-f-facebook-link"><i class="fa fa-facebook"></i></a></li><li><a href="https://github.com/coding-jam" target="_blank" class="bwp-f-github-link"><i class="fa fa-github"></i></a></li>        </ul>
+        <!-- end social links -->
+      
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+
+<!--googleoff: all--><div id="cookie-law-info-bar"><span>Questo sito Web utilizza i cookie per migliorare la tua esperienza. Daremo per scontato che per te sia ok, ma puoi disattivarlo se lo desideri..<a role='button' tabindex='0' data-cli_action="accept" id="cookie_action_close_header"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button" style="display:inline-block; ">Accetto</a>  <a role='button' tabindex='0' id="cookie_action_close_header_reject"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header_reject cli_action_button"  data-cli_action="reject">Annulla</a> <a href='../cookie.html' id="CONSTANT_OPEN_URL" target="_blank"  class="cli-plugin-main-link"  style="display:inline-block;" >Read More</a></span></div><div id="cookie-law-info-again" style="display:none;"><span id="cookie_hdr_showagain">Privacy & Cookies</span></div><div class="cli-modal" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+    <div class="cli-modal-content cli-bar-popup">
+      <button type="button" class="cli-modal-close" id="cliModalClose">
+        <svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+        <span class="wt-cli-sr-only">Close</span>
+      </button>
+      <div class="cli-modal-body">
+        <div class="cli-container-fluid cli-tab-container">
+    <div class="cli-row">
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0">
+            <div class="cli-privacy-overview">
+                                                   
+                <div class="cli-privacy-content">
+                    <div class="cli-privacy-content-text"></div>
+                </div>
+                <a class="cli-privacy-readmore" data-readmore-text="Show more" data-readless-text="Show less"></a>            </div>
+        </div>  
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+              
+                            <div class="cli-tab-section">
+                    <div class="cli-tab-header">
+                        <a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab" >
+                            Necessary 
+                        </a>
+                    
+                    <span class="cli-necessary-caption">Always Enabled</span>                     </div>
+                    <div class="cli-tab-content">
+                        <div class="cli-tab-pane cli-fade" data-id="necessary">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+              
+                       
+        </div>
+    </div> 
+</div> 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<script type="text/javascript">
+  /* <![CDATA[ */
+  cli_cookiebar_settings='{"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":false,"button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":true,"button_1_new_win":false,"button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":false,"button_2_hidebar":false,"button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":true,"button_3_new_win":false,"button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#fff","button_4_as_button":true,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":false,"scroll_close_reload":false,"accept_close_reload":false,"reject_close_reload":false,"showagain_tab":true,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":false,"show_once":"10000","logging_on":false,"as_popup":false,"popup_overlay":true,"bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"}';
+  /* ]]> */
+</script>
+<!--googleon: all--><script type='text/javascript'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"cosenonjaviste"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/disqus-comment-system/public/js/comment_countd4e0.js?ver=3.0.17'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.17"},"disqusIdentifier":"17801 https:\/\/codingjam.it\/?p=17801","disqusShortname":"cosenonjaviste","disqusTitle":"Scala: gli impliciti","disqusUrl":"https:\/\/codingjam.it\/scala-gli-impliciti\/","postId":"17801"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/disqus-comment-system/public/js/comment_embedd4e0.js?ver=3.0.17'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/bootstrap.min7433.js?ver=3.3.7'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.parallaxc358.js?ver=1.1.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/superfish.min97e9.js?ver=1.7.9'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.infinitescroll.min3c94.js?ver=2.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel.min3ba1.js?ver=1.3.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/magnific-popup/jquery.magnific-popup.minf488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"true","masonryColumnWidth":".bwp-blog-col-2-default","infiniteScroll":"true","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
+</body>
+
+<!-- Mirrored from codingjam.it/scala-gli-impliciti/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:20:13 GMT -->
+</html>
+<!--
+Performance optimized by W3 Total Cache. Learn more: https://www.boldgrid.com/w3-total-cache/
+
+
+Served from: codingjam.it @ 2020-12-05 00:10:13 by W3 Total Cache
+-->

@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from codingjam.it/da-docker-compose-a-docker-swarm-viaggio-di-sola-andata/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:17:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="pingback" href="../xmlrpc.php">
+
+  
+	<!-- This site is optimized with the Yoast SEO plugin v14.2 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>CodingJam » Da Docker Compose a Docker Swarm: viaggio di sola andata?</title>
+	<meta name="description" content="Docker Compose a Docker Swarm: scopriamone insieme le uguaglianze e le differenze in modo da scegliere lo strumento giusto più adatto alle nostre esigenze." />
+	<meta name="robots" content="index, follow" />
+	<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<link rel="canonical" href="index.html" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="CodingJam » Da Docker Compose a Docker Swarm: viaggio di sola andata?" />
+	<meta property="og:description" content="Docker Compose a Docker Swarm: scopriamone insieme le uguaglianze e le differenze in modo da scegliere lo strumento giusto più adatto alle nostre esigenze." />
+	<meta property="og:url" content="index.html" />
+	<meta property="og:site_name" content="CodingJam" />
+	<meta property="article:publisher" content="https://www.facebook.com/cosenonjaviste" />
+	<meta property="article:published_time" content="2019-05-06T08:02:05+00:00" />
+	<meta property="article:modified_time" content="2019-04-22T15:13:00+00:00" />
+	<meta property="og:image" content="../wp-content/uploads/2019/04/services-diagram.png" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:creator" content="@andrea_como" />
+	<meta name="twitter:site" content="@cosenonjaviste" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://codingjam.it/#website","url":"https://codingjam.it/","name":"CodingJam","description":"Code With Us!","potentialAction":[{"@type":"SearchAction","target":"https://codingjam.it/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://codingjam.it/da-docker-compose-a-docker-swarm-viaggio-di-sola-andata/#primaryimage","inLanguage":"en-US","url":"https://codingjam.it/wp-content/uploads/2019/04/services-diagram.png","width":800,"height":552,"caption":"services-diagram"},{"@type":"WebPage","@id":"https://codingjam.it/da-docker-compose-a-docker-swarm-viaggio-di-sola-andata/#webpage","url":"https://codingjam.it/da-docker-compose-a-docker-swarm-viaggio-di-sola-andata/","name":"CodingJam \u00bb Da Docker Compose a Docker Swarm: viaggio di sola andata?","isPartOf":{"@id":"https://codingjam.it/#website"},"primaryImageOfPage":{"@id":"https://codingjam.it/da-docker-compose-a-docker-swarm-viaggio-di-sola-andata/#primaryimage"},"datePublished":"2019-05-06T08:02:05+00:00","dateModified":"2019-04-22T15:13:00+00:00","author":{"@id":"https://codingjam.it/#/schema/person/b373598a51f3ee9ab8f3e92cb702e9b1"},"description":"Docker Compose a Docker Swarm: scopriamone insieme le uguaglianze e le differenze in modo da scegliere lo strumento giusto pi\u00f9 adatto alle nostre esigenze.","inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://codingjam.it/da-docker-compose-a-docker-swarm-viaggio-di-sola-andata/"]}]},{"@type":["Person"],"@id":"https://codingjam.it/#/schema/person/b373598a51f3ee9ab8f3e92cb702e9b1","name":"Andrea Como","image":{"@type":"ImageObject","@id":"https://codingjam.it/#personlogo","inLanguage":"en-US","url":"https://secure.gravatar.com/avatar/684ede46c9386ff5430335a42fd5b011?s=96&d=mm&r=g","caption":"Andrea Como"},"description":"Sono un software engineer focalizzato nella progettazione e sviluppo di applicazioni web in Java. Presso OmniaGroup ricopro il ruolo di Tech Leader sulle tecnologie legate alla piattaforma Java EE 5 (come WebSphere 7.0, EJB3, JPA 1 (EclipseLink), JSF 1.2 (Mojarra) e RichFaces 3) e Java EE 6 con JBoss AS 7, in particolare di CDI, JAX-RS, nonch\u00e9 di EJB 3.1, JPA2, JSF2 e RichFaces 4. Al momento mi occupo di ECM, in particolar modo sulla customizzazione di Alfresco 4 e sulla sua installazione con tecnologie da devops come Vagrant e Chef. In passato ho lavorato con la piattaforma alternativa alla enterprise per lo sviluppo web: Java SE 6, Tomcat 6, Hibernate 3 e Spring 2.5. Nei ritagli di tempo sviluppo siti web in PHP e ASP. Per maggiori informazioni consulta il mio curriculum pubblico. Follow me on Twitter - LinkedIn profile - Google+","sameAs":["https://twitter.com/andrea_como"]}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Feed" href="../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Comments Feed" href="../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Da Docker Compose a Docker Swarm: viaggio di sola andata? Comments Feed" href="feed/index.html" />
+<!-- This site uses the Google Analytics by ExactMetrics plugin v6.0.2 - Using Analytics tracking - https://www.exactmetrics.com/ -->
+<script type="text/javascript" data-cfasync="false">
+	var em_version         = '6.0.2';
+	var em_track_user      = true;
+	var em_no_track_reason = '';
+	
+	var disableStr = 'ga-disable-UA-21246883-1';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+
+	if ( 'undefined' === typeof gaOptout ) {
+		function gaOptout() {
+			__gaTrackerOptout();
+		}
+	}
+	
+	if ( em_track_user ) {
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','http://www.google-analytics.com/analytics.js','__gaTracker');
+
+window.ga = __gaTracker;		__gaTracker('create', 'UA-21246883-1', 'auto');
+		__gaTracker('set', 'forceSSL', true);
+		__gaTracker('send','pageview');
+		__gaTracker( function() { window.ga = __gaTracker; } );
+	} else {
+		console.log( "" );
+		(function() {
+			/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+			var noopfn = function() {
+				return null;
+			};
+			var noopnullfn = function() {
+				return null;
+			};
+			var Tracker = function() {
+				return null;
+			};
+			var p = Tracker.prototype;
+			p.get = noopfn;
+			p.set = noopfn;
+			p.send = noopfn;
+			var __gaTracker = function() {
+				var len = arguments.length;
+				if ( len === 0 ) {
+					return;
+				}
+				var f = arguments[len-1];
+				if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+					console.log( 'Not running function __gaTracker(' + arguments[0] + " ....) because you are not being tracked. " + em_no_track_reason );
+					return;
+				}
+				try {
+					f.hitCallback();
+				} catch (ex) {
+
+				}
+			};
+			__gaTracker.create = function() {
+				return new Tracker();
+			};
+			__gaTracker.getByName = noopnullfn;
+			__gaTracker.getAll = function() {
+				return [];
+			};
+			__gaTracker.remove = noopfn;
+			window['__gaTracker'] = __gaTracker;
+			window.ga = __gaTracker;		})();
+		}
+</script>
+<!-- / Google Analytics by ExactMetrics -->
+<link rel='stylesheet' id='wp-block-library-css'  href='../wp-content/plugins/gutenberg/build/block-library/stylea4fb.css?ver=1591004795' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-gdpr-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='melissa-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lato%3A400%2C400i%2C700%2C700i%7CNoto+Serif%3A400%2C400i%2C700%2C700i&amp;subset=latin&amp;ver=1.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../wp-content/themes/melissa/css/bootstrap.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-theme-css'  href='../wp-content/themes/melissa/css/bootstrap-theme.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-ie10-viewport-bug-workaround-css'  href='../wp-content/themes/melissa/css/ie10-viewport-bug-workaround8a54.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='../wp-content/themes/melissa/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-carousel-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-theme-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.theme3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='magnific-popup-css'  href='../wp-content/themes/melissa/assets/magnific-popup/magnific-popupf488.css?ver=1.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-style-css'  href='../wp-content/themes/melissa/style3ec8.css?ver=1.1.6' type='text/css' media='all' />
+<style id='melissa-style-inline-css' type='text/css'>
+
+    .bwp-post-media img,
+    .bwp-post-carousel-item img,
+    .widget_bwp_posts_slider_item img {
+      width: 100%;
+      margin: 0;
+    }
+    .bwp-post-wrap:hover {
+      margin-top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+    #bwp-masonry-container.no-masonry .bwp-post-wrap:hover {
+      top: 0;
+    }
+    .bwp-no-results-container:hover,
+    .bwp-single-article:hover,
+    .bwp-featured-media-container:hover,
+    .post-navigation .nav-links a:hover,
+    .bwp-about-author-container:hover,
+    .comment-respond:hover,
+    .comment-body:hover,
+    #comments .no-comments:hover,
+    .comment-navigation .nav-links a:hover,
+    .bwp-related-post-wrap:hover,
+    .bwp-page-404-container:hover,
+    .bwp-sidebar-wrap:hover {
+      top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+  #bwp-header-wrap {
+    background-color: #2e3340;
+  }
+  .bwp-header-bg-overlay,
+  .bwp-header-rs-bg-overlay {
+    background-color: rgba(46, 51, 64, 0.9);
+  }
+    .bwp-content a,
+    .comment-content a,
+    .bwp-post-quote a {
+      color: #2052bf;
+    }
+</style>
+<link rel='stylesheet' id='enlighter-local-css'  href='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.css?ver=3.9.0' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var exactmetrics_frontend = {"js_events_tracking":"true","download_extensions":"zip,mp3,mpeg,pdf,docx,pptx,xlsx,rar","inbound_paths":"[{\"path\":\"\\\/go\\\/\",\"label\":\"affiliate\"},{\"path\":\"\\\/recommend\\\/\",\"label\":\"affiliate\"}]","home_url":"https:\/\/codingjam.it","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/google-analytics-dashboard-for-wp/assets/js/frontend.min5b21.js?ver=6.0.2'></script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery4a5f.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[]};
+var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/cookie-law-info/public/js/cookie-law-info-public3cf4.js?ver=1.8.8'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/respond.min.js?ver=1.4.2'></script>
+<![endif]-->
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/mootools-core-yc9086.js?ver=3.9.0'></script>
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.js?ver=3.9.0'></script>
+<link rel='https://api.w.org/' href='../wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+<meta name="generator" content="WordPress 5.4.1" />
+<link rel='shortlink' href='../index0720.html?p=17949' />
+<link rel="alternate" type="application/json+oembed" href="../wp-json/oembed/1.0/embed48c6.json?url=https%3A%2F%2Fcodingjam.it%2Fda-docker-compose-a-docker-swarm-viaggio-di-sola-andata%2F" />
+<link rel="alternate" type="text/xml+oembed" href="../wp-json/oembed/1.0/embed8d21?url=https%3A%2F%2Fcodingjam.it%2Fda-docker-compose-a-docker-swarm-viaggio-di-sola-andata%2F&amp;format=xml" />
+		<script type="text/javascript">
+			var cli_flush_cache = true;
+		</script>
+		<link rel="amphtml" href="amp/index.html"><script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"droide","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":false,"windowButton":false,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" sizes="32x32" />
+<link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://codingjam.it/wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-270x270.png" />
+</head>
+
+<body class="post-template-default single single-post postid-17949 single-format-standard wp-custom-logo">
+
+
+<!-- header -->
+<header id="bwp-header-wrap" class="bwp-header-simple">
+
+  <!-- header bg -->
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P6261835_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg-overlay"></div>
+
+    <!-- header content -->
+    <div class="container">
+      <div class="bwp-header-content-container">
+
+        <!-- row 1 - logo + navigation -->
+        <div class="bwp-main-navigation-container clearfix">
+
+          
+        <!-- image logo -->
+        <div class="bwp-logo-container">
+          <a href="../index.html" class="custom-logo-link" rel="home"><img width="207" height="70" src="../wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png" class="custom-logo" alt="CodingJam" srcset="https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png 207w, https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco-150x51.png 150w" sizes="(max-width: 207px) 100vw, 207px" /></a>        </div>
+        <!-- end image logo -->
+
+        
+      <!-- search -->
+      <div class="bwp-header-search-container hidden-sm hidden-xs">
+        <a href="#" id="bwp-header-search-icon">
+          <i class="fa fa-search"></i>
+        </a>
+        <div class="bwp-dropdown-search-container bwp-search-hidden">
+          
+<!-- search form -->
+<form id="searchform" role="search" method="get" action="https://codingjam.it/">
+  <div class="input-group">
+    <input type="text" name="s" id="s" class="bwp-search-field form-control" placeholder="Enter your search query...">
+    <span class="input-group-btn">
+      <button type="submit" class="btn bwp-search-submit">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+</form>
+<!-- end search form -->
+        </div>
+      </div>
+      <!-- end search -->
+
+      
+      <!-- menu -->
+      <div class="bwp-menu-container hidden-sm hidden-xs">
+        <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-2" class="sf-menu"><li id="menu-item-12007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li id="menu-item-12022" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../java/index.html">Java</a></li>
+	<li id="menu-item-12009" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../java/java-8/index.html">Java 8</a></li>
+	<li id="menu-item-12020" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../rxjava/index.html">RxJava</a></li>
+	<li id="menu-item-12017" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li id="menu-item-12006" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../agile/index.html">Agile</a></li>
+<li id="menu-item-12005" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../android/index.html">Android</a></li>
+<li id="menu-item-12008" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li id="menu-item-12014" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../angularjs/index.html">AngularJS</a></li>
+	<li id="menu-item-12012" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../ejb/index.html">EJB</a></li>
+	<li id="menu-item-12010" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../javascript/index.html">Javascript</a></li>
+	<li id="menu-item-12021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../application-server/jboss/index.html">JBoss</a></li>
+	<li id="menu-item-12016" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../jsf/index.html">JSF</a></li>
+	<li id="menu-item-12015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../jquery-2/index.html">jQuery</a></li>
+	<li id="menu-item-12019" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../spring-2/index.html">Spring</a></li>
+	<li id="menu-item-12018" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>      </div>
+      <!-- end menu -->
+
+      
+      <!-- mobile menu -->
+      <div class="bwp-mobile-menu-container hidden-md hidden-lg">
+        <!-- mobile menu icon -->
+        <a href="#" id="bwp-mobile-menu-icon">
+          <i class="fa fa-bars"></i>
+        </a>
+        <!-- end mobile menu icon -->
+        <!-- dropdown mobile menu -->
+        <div class="bwp-dropdown-mobile-menu bwp-mobile-menu-hidden">
+          <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-3" class="bwp-mobile-menu list-unstyled"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>        </div>
+        <!-- end dropdown mobile menu -->
+      </div>
+      <!-- end mobile menu -->
+
+      
+        </div>
+        <!-- end row 1 - logo + navigation -->
+
+        
+          <!-- row 2 - header custom text -->
+          <div class="bwp-header-custom-text-container">
+            
+        <!-- custom text - single page -->
+        <h1 class="bwp-header-custom-title entry-title">
+          Da Docker Compose a Docker Swarm: viaggio di sola andata?        </h1>
+                <div class="bwp-header-transparent-line clearfix">
+          <span class="bwp-header-t-line-1"></span>
+          <span class="bwp-header-t-line-2"></span>
+        </div>
+        <!-- end custom text -->
+
+                  </div>
+          <!-- end row 2 - header custom text -->
+
+          
+      </div>
+    </div>
+    <!-- end header content -->
+  </div>
+  <!-- end header bg -->
+
+  
+        <!-- sticky navigation -->
+        <div class="bwp-sticky-navigation-wrap bwp-transition-4 clearfix">
+          <!-- sticky navigation icon -->
+          <a href="#" id="bwp-sticky-navigation-icon">
+            <i class="fa fa-bars"></i>
+          </a>
+          <!-- end sticky navigation icon -->
+          <!-- sticky navigation container -->
+          <div class="bwp-sticky-navigation-container bwp-sticky-navigation-hidden">
+            <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-4" class="sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>          </div>
+          <!-- end sticky navigation container -->
+        </div>
+        <!-- end sticky navigation -->
+
+        
+</header>
+<!-- end header -->
+
+  <!-- blog post - single page -->
+  <section id="bwp-single-page-wrap">
+    <div class="container">
+      <div class="bwp-single-page-container" role="main">
+
+        
+        
+        <!-- article -->
+        <article id="post-17949" class="bwp-single-article bwp-transition-3">
+
+          
+          <!-- content container -->
+          <div class="bwp-single-content">
+
+            <!-- content -->
+            <div class="bwp-content entry-content clearfix">
+              
+<p>Sin dalle prime ore di uso di Docker, si sente subito la necessità di <em>salvare in qualche formato</em>, che non sia uno script bash, i mille parametri che si possono passare al comando <tt>docker run</tt>. Ben presto si fa la conoscenza di <strong><a href="https://docs.docker.com/compose/" target="_blank">Docker Compose</a></strong>: avere un file YAML che descrive i parametri di lancio, ma non solo, di uno o più container ci fa sentire al sicuro perché possiamo metterlo sotto controllo di versione. Appena però abbiamo bisogno di far girare i container su più macchine, ci rendiamo conto che nemmeno questo è lo strumento che stavamo cercando. Abbiamo bisogno di <strong><a href="https://docs.docker.com/engine/swarm/" target="_blank">Docker Swarm</a></strong> per fare questo e, da tre anni ormai dalla sua nascita, possiamo considerarlo ormai <em>production-ready</em>.</p>
+
+
+
+<p>Se siete qua, probabilmente sapete già cosa sono Compose e Swarm e magari vi state chiedendo se conviene fare un &#8220;upgrade&#8221;. Cerchiamo insieme di capire se si tratta davvero di un upgrade e cosa comporta.</p>
+
+
+
+<h2>Docker Compose</h2>
+
+
+
+<blockquote class="wp-block-quote" style="font-size: 18px"><p>Compose è uno strumento per definire ed eseguire applicazioni Docker multi-container. Con Compose, è possibile definire un file YAML per configurare i servizi applicativi.</p></blockquote>
+
+
+
+<p>Nel file YAML infatti, è possibile definire più container Docker sotto il cappello &#8220;<em>services</em>&#8220;, sia <strong>a partire da </strong><tt><strong>Dockerfile</strong></tt> che da <strong>immagini già pronte</strong>.</p>
+
+
+
+<h3>Docker Compose all&#8217;opera</h3>
+
+
+
+<p>Immaginiamo di voler tirare su WordPress, che ha bisogno di MySQL. All&#8217;interno di una cartella chiamata <tt>wordpress-docker</tt>, creiamo un file di nome <tt>docker-compose.yml</tt> con questo contenuto (presente su <a href="https://github.com/coding-jam/wordpress-docker-poc" target="_blank" rel="noreferrer noopener" aria-label="GitHub (opens in a new tab)">GitHub</a>):</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">version: '3.7'
+
+services:
+   db:
+     build: ./mysql
+     image: poc/mysql-for-wordpress
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: somewordpress
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: wordpress
+       MYSQL_PASSWORD: wordpress
+
+   wordpress:
+     depends_on:
+       - db
+     image: wordpress:latest
+     ports:
+       - "8000:80"
+     restart: always
+     environment:
+       WORDPRESS_DB_HOST: db:3306
+       WORDPRESS_DB_USER: wordpress
+       WORDPRESS_DB_PASSWORD: wordpress
+       WORDPRESS_DB_NAME: wordpress
+volumes:
+    db_data: {}</pre>
+
+
+
+<p>In questo caso abbiamo fatto una personalizzazione (non che ce ne fosse bisogno, è solo a scopo didattico), tramite <tt>Dockerfile</tt>, del container di MySQL, mentre abbiamo preso quello di default per WordPress. Da notare il valore di <tt>WORDPRESS_DB_HOST</tt> &#8220;<tt>db:3306</tt>&#8220;: il riferimento al container del database viene risolto con il <strong>nome del servizio associato</strong>.</p>
+
+
+
+<p>Docker Compose però <em>non è nativamente disponibile</em> quando si installa Docker, ma è un tool separato, scritto in Python, che <a rel="noreferrer noopener" aria-label="va installato autonomamente (opens in a new tab)" href="https://docs.docker.com/compose/install/" target="_blank">va installato autonomamente</a> e <strong>automatizza certe operazioni</strong> del demone Docker. Ha una propria CLI, accessibile tramite il comando <tt>docker-compose</tt>, che semplifica notevolmente la &#8220;gestione di gruppo&#8221; dei servizi elencati nel file YAML.</p>
+
+
+
+<p>Per avviare tutti i servizi, basta eseguire:</p>
+
+
+
+<pre>$&gt; docker-compose up -d
+</pre>
+
+
+
+<p>Dove con <tt>-d</tt> si evita di rimanere attaccati al <em>system out</em> dei container avviati. Cosa accade adesso? Il controllo della console ci viene restituito <strong>solo dopo</strong> queste operazioni:</p>
+
+
+
+<pre>Creating network "wordpress-docker_default" with the default driver
+Creating volume "wordpress-docker_db_data" with default driver
+Building db
+Step 1/2 : FROM mysql:5.7
+ ---&gt; 98455b9624a9
+Step 2/2 : COPY *.cnf /etc/mysql/conf.d/
+ ---&gt; 52440b13db7c
+
+Successfully built 52440b13db7c
+Successfully tagged poc/mysql-for-wordpress:latest
+WARNING: Image for service db was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Creating wordpress-docker_db_1 ... done
+Creating wordpress-docker_wordpress_1 ... done
+</pre>
+
+
+
+<ul><li>viene creato un network che <strong>lega i due container</strong> e <strong>li isola da tutto il resto</strong>. Il nome è curioso: si tratta del nome della cartella dove risiede il <tt>docker-compose.yml</tt> (chiamata <tt>wordpress-docker</tt> ricordate?) a cui viene apposto &#8220;default&#8221;.</li><li>viene creato il volume &#8220;db_data&#8221;, sempre con prefisso <tt>wordpress-docker</tt>.</li><li>viene creata l&#8217;<strong>immagine modificata del database</strong>, chiamata <tt>poc/mysql-for-wordpress</tt>, tramite il <tt>Dockerfile</tt> presente nella cartella <tt>mysql</tt>.</li><li>vengono <strong>avviati i container</strong> dei servizi &#8220;db&#8221; e &#8220;wordpress&#8221;, esattamente in quest&#8217;ordine, per via delle dipendenze. In questo caso, oltre al consueto prefisso <tt>wordpress-docker</tt>, notiamo un numero dopo che segue il nome del servizio: si tratta della prima istanza del servizio.</li></ul>
+
+
+
+<p>La prima cosa che salta all&#8217;occhio è che il <strong>nome della cartella</strong> che contiene il file YAML viene usata come &#8220;<em><strong>namespace</strong></em>&#8221; per la nomenclatura delle risorse create: questo approccio è interessante perché permette di rilanciare lo stesso stack di servizi da cartelle diverse senza creare conflitti.</p>
+
+
+
+<p>Tutte queste operazioni sono <strong>sincrone</strong> con la CLI: finché i container non saranno avviati, non potremo riprendere il controllo della console. La CLI di compose è interessante perché permette di controllare in gruppo i container:</p>
+
+
+
+<pre>$&gt; docker-compose ps
+
+            Name                          Command               State          Ports
+--------------------------------------------------------------------------------------------
+wordpress-docker_db_1          docker-entrypoint.sh mysqld      Up      3306/tcp, 33060/tcp
+wordpress-docker_wordpress_1   docker-entrypoint.sh apach ...   Up      0.0.0.0:8000-&gt;80/tcp
+</pre>
+
+
+
+<p>visualizza lo <strong>stato dei container</strong> e le <strong>relative porte mappate</strong> (se ci sono). E&#8217; possibile anche controllarne uno solo, chiamato con il nome del servizio:</p>
+
+
+
+<pre>$&gt; docker-compose stop wordpress
+Stopping wordpress-docker_wordpress_1 ... done
+
+$&gt; docker-compose start wordpress
+Starting wordpress ... done
+</pre>
+
+
+
+<p>Se si riesegue il comando di avvio di tutti i servizi (<tt>up</tt>), Compose controllerà per noi <strong>se esistono versioni nuove delle immagini</strong> ed eventualmente le <strong>avvierà</strong>&nbsp;(con le dipendenze in cascata). Modificando l&#8217;immagine del database quindi, verrà riavviato anche WordPress:</p>
+
+
+
+<pre>$&gt; docker-compose up -d
+Recreating wordpress-docker_db_1 ... done
+Recreating wordpress-docker_wordpress_1 ... done
+</pre>
+
+
+
+<h3>Tirando le somme</h3>
+
+
+
+<p>Fin qua abbiamo visto che Compose è perfetto per gestire il ciclo di <strong>build</strong> e di <strong>runtime</strong> di più servizi insieme, perché dovremmo avere bisogno di altro? </p>
+
+
+
+<p>Per il supporto allo sviluppo software è perfetto: possiamo praticamente creare e tirare su l&#8217;infrastruttura di cui abbiamo bisogno sulla nostra macchina di sviluppo! A mio avviso, Compose comincia a stare stretto in due casi:</p>
+
+
+
+<ul><li>quando si ha bisogno che i servizi <strong>girino su più macchine</strong>, Compose <strong>non</strong> è in grado di controllare questa situazione. La rete che viene creata tra i servizi istanziati è una sottorete dello <strong>stesso host,</strong> puro isolamento basato su <tt>iptables</tt>: non esiste un concetto di &#8220;cluster di nodi&#8221;. Non possiamo quindi far girare WordPress su una macchina e il MySQL in un&#8217;altra gestiti da Compose, perché non si &#8220;vedrebbero&#8221; a livello di rete: i Compose delle due macchine non avrebbero niente in comune. L&#8217;unico modo per farli comunicare sarebbe esporre le porte sui rispettivi host e far dialogare i servizi tramite gli hostname, ma si perde tutta la dinamicità offerta da Docker.</li><li>se si prova a <strong>scalare un servizio</strong> (ovviamente sullo stesso host perché non si può fare altrimenti) che ha il <em>binding</em> di una porta sull&#8217;host, lo <strong>scaling verrà impedito</strong> perché la porta è già occupata dalla prima istanza! Proviamo infatti a scalare WordPress: 
+
+<pre>$&gt; docker-compose up -d --scale wordpress=2  
+WARNING: The "wordpress" service specifies a port on the host. If multiple containers for this service are created on a single host, the port will clash.  
+Starting wordpress-docker_wordpress_1 ... done  
+Creating wordpress-docker_wordpress_2 ... error  
+ERROR: for wordpress-docker_wordpress_2  Cannot start service wordpress: driver failed programming external connectivity on endpoint wordpress-docker_wordpress_2 (f19636f06cfcf461c0d175a182fa3b7f53bf0f9c430260e76320f7bfa31f9220): Bind for 0.0.0.0:8000 failed: port is already allocated </pre>
+
+Volendo scalare il database, invece, questo funzionerebbe perché non ha binding: 
+
+<pre>$&gt; docker-compose up -d --scale db=2 
+Starting wordpress-docker_db_1 ... done 
+Creating wordpress-docker_db_2 ... done 
+wordpress-docker_wordpress_1 is up-to-date 
+</pre> 
+
+Anche se poi il risultato è che 2 istanze di MySQL sullo stesso volume possono solo fare danni :), quindi meglio evitare! </li></ul>
+
+
+
+<p>Quando si ha la necessità di controllare più servizi su più macchine, e magari scalarli su di esse, è necessario qualcosa di più, è necessario almeno <strong>Docker Swarm</strong>. Prima di continuare, distruggiamo tutti i container, compresi i volumi:</p>
+
+
+
+<pre>$&gt; docker-compose down -v
+Stopping wordpress-docker_wordpress_1 ... done
+Stopping wordpress-docker_db_1        ... done
+Removing wordpress-docker_wordpress_1 ... done
+Removing wordpress-docker_db_1        ... done
+Removing network wordpress-docker_default
+Removing volume wordpress-docker_db_data
+</pre>
+
+
+
+<h2>Docker Swarm</h2>
+
+
+
+<blockquote class="wp-block-quote" style="font-size: 18px"><p>Uno swarm (&#8220;sciame&#8221; in italiano) consiste in un <strong>insieme di <strong>nodi</strong> Docker</strong> che si comportano da <em>manager,&nbsp;</em>per la gestione del cluster stesso, e <em>worker</em>, che eseguono <strong>servizi</strong>.</p></blockquote>
+
+
+
+<p>Swarm si propone quindi come lo strumento di default per la <em>gestione di container in un cluster di nodi Docker</em>.  </p>
+
+
+
+<h3>Un po&#8217; di teoria</h3>
+
+
+
+<p>Già dalla definizione, emergono una serie di <a rel="noreferrer noopener" aria-label="concetti e terminologie (opens in a new tab)" href="https://docs.docker.com/engine/swarm/key-concepts" target="_blank">concetti e terminologie</a> che è bene avere chiari prima di andare avanti:</p>
+
+
+
+<ul><li><strong><em>nodi</em></strong>: si tratta di <strong>istanze di Docker</strong> che partecipano al cluster. Solitamente, ogni istanza del motore di Docker risiede su <em>una</em> macchina fisica o virtuale che sia: di conseguenza si può pensare (ma non è obbligatorio) ad un nodo dello swarm come ad una macchina. I nodi possono essere di tipo <strong><em>manager</em></strong> o <strong><em>worker</em>&nbsp;</strong>(o&nbsp;<strong>entrambi</strong>): più nodi possono avere il ruolo di master, ma solo uno è eletto in un certo momento a coordinare i servizi e a mantenere lo stato del cluster. Il <strong>deploy</strong> di una applicazione <strong>passa sempre da un nodo master</strong> che <strong>delega un </strong><em><strong>task</strong></em><strong> ad un nodo worker</strong> (o un altro master, o a se stesso) in modo che <em>esegua il servizio richiesto</em>. I nodi del cluster informano sempre il nodo master sullo stato dei task assegnati, in modo da mantenere sempre lo stato dei servizi come richiesto.</li><li><strong><em>task</em></strong> e <strong><em>servizi</em></strong>: abbiamo visto che un nodo master assegna il compito (<em>task</em> appunto) di eseguire un certo <em>servizio</em> su un nodo del cluster (possibilmente worker), ovvero avviare una o più istanze di un container a partire da una immagine. Questo concetto già ci suona più familiare: servizi e container li avevamo visti anche con Compose. Ma questo task invece? Come vedremo a breve, è un concetto abbastanza trasparente, ma fondamentale, nell&#8217;uso di Swarm, se non per il fatto che tutta l&#8217;interazione tra il nodo master e la CLI è <strong>asincrona</strong>: da qua si evince che c&#8217;è qualcuno che sta facendo qualcosa (task) dopo che abbiamo eseguito un comando.</li></ul>
+
+
+
+<h3>Docker Swarm all&#8217;opera</h3>
+
+
+
+<p>Swarm <em>non è attivo di default</em>, anche se <strong>è già disponibile</strong> nell&#8217;installazione di Docker (a differenza del Compose). Dobbiamo quindi solo decidere come attivarlo: per lo <em>sviluppo</em>, cioè sulla <em>nostra macchina</em>, possiamo fare un <strong>cluster di un nodo</strong> semplicemente digitando:</p>
+
+
+
+<pre>$&gt; docker swarm init
+Swarm initialized: current node (keiak51s53xowk57oq24bd5yi) is now a manager.
+</pre>
+
+
+
+<p>Docker entra in <strong>modalità Swarm</strong> e considera se stesso un <strong>nodo master</strong>. L&#8217;output completo del comando (qua omesso) dà anche istruzioni su come <a rel="noreferrer noopener" aria-label="aggiungere altri nodi (opens in a new tab)" href="https://docs.docker.com/engine/reference/commandline/swarm_join/" target="_blank">aggiungere altri nodi</a> al cluster (sia master che worker). Tramite i comandi della CLI <tt>docker swarm</tt> e <tt>docker node</tt> è possibile gestire il cluster.</p>
+
+
+
+<p>Ma torniamo a ciò che ci interessa: può Swarm aiutarci a superare i limiti che abbiamo visto con Compose? Essendo al momento su un singolo nodo, non noteremo grandi differenze, se non per il fatto che <strong>adesso lo scaling funzionerà</strong>!! Ma andiamo per gradi.</p>
+
+
+
+<h4>Docker stacks</h4>
+
+
+
+<p>Nel gergo Swarm, l&#8217;insieme dei servizi che possiamo deployare si chiama &#8220;<strong>stack</strong>&#8220;, cioè pila di servizi. La cosa scaltra di Swarm è che <strong>usa i file YAML di Compose</strong>, quindi il <em>passaggio a Swarm è molto semplice</em> (anzi, si è quasi invogliati): basta riusare lo <strong>stesso identico file di prima</strong> e deployare lo stack così:</p>
+
+
+
+<pre>$&gt; docker stack deploy -c docker-compose.yml wp
+Ignoring unsupported options: build, restart
+
+Creating network wp_default
+Creating service wp_db
+Creating service wp_wordpress
+</pre>
+
+
+
+<p>Senza sapere né leggere né scrivere notiamo che:</p>
+
+
+
+<ul><li>Il comando <tt>stack deploy</tt> vuole per forza il riferimento al file YAML e il <strong>nome dello stack</strong> da creare. Il nome è usato come <em>prefisso</em> per le risorse create: il servizio WordPress, il database e la network che li isola. Fossimo un un cluster con più nodi, questa network <strong>sarebbe accessibile anche cross-nodo</strong> se i due container fossero su nodi diversi.</li><li>Le direttive <tt>build</tt> e <tt>restart</tt> sono state ignorate! Questo significa che <strong>non posso eseguire le build</strong> delle immagini con Swarm?! Ebbene è proprio così! Come direbbe Doc: &#8220;<em>Marty, non stai pensando quadrimensionalmente!</em>&#8221; Che senso avrebbe creare immagini su un nodo se poi non è detto che vengano eseguite li? Come portarle sugli altri nodi? Il problema non si pone: <strong>Swarm è un ambiente di runtime</strong>: qualcun altro deve essere responsabile di fornirgli le immagini già pronte. E <tt>restart</tt> invece perché viene ignorato? A dirla tutta, Swarm e Compose usano dialetti leggermente diversi del descrittore YAML (in base alla versione): questo discorso lo accenniamo più avanti.</li></ul>
+
+
+
+<p>La CLI ha restituito subito il controllo, significa che <em>qualcuno sta facendo qualcosa</em> (ricordate i task?) in <em>background</em> (magari su un altra macchina nel caso multi-nodo). L&#8217;interazione è quindi <strong>asincrona</strong>: come si fa a vedere cosa sta succedendo? Il comando </p>
+
+
+
+<pre class="wp-block-preformatted">$&gt; docker stack ps wp <br>ID                  NAME                IMAGE                            NODE                    DESIRED STATE       CURRENT STATE            ERROR               PORTS <br>tlobb6t4vnxo        wp_wordpress.1      wordpress:latest                 linuxkit-025000000001   Running             Running 2 minutes ago <br>uvxb7yhbdu1v        wp_db.1             poc/mysql-for-wordpress:latest   linuxkit-025000000001   Running             Running 2 minutes ago</pre>
+
+
+
+<p>ci dà una panoramica dello <strong>stato dei task</strong> di <tt>wp</tt>: abbiamo quindi un task per ogni istanza (per questo il numerino in fondo al nome) di container che implementa il servizio richiesto. Chi li ha istruiti a comportarsi così? Per capire, dobbiamo approfondire il concetto di <strong>servizio</strong>.</p>
+
+
+
+<h4>Docker services</h4>
+
+
+
+<p>In Compose si parla di servizi: ci appaiono come dei <em>proxy sul container</em> (o le sue repliche) gestite dal Compose. In Swarm questo concetto è reso più forte ed assume un ruolo centrale, diventando di fatto l&#8217;<strong><em>unità di deployment</em></strong>.</p>
+
+
+
+<div class="wp-block-image"><figure class="alignleft is-resized"><img src="../wp-content/uploads/2019/04/services-diagram.png" alt="services-diagram" class="wp-image-17978" width="396" height="272" srcset="https://codingjam.it/wp-content/uploads/2019/04/services-diagram.png 800w, https://codingjam.it/wp-content/uploads/2019/04/services-diagram-300x207.png 300w, https://codingjam.it/wp-content/uploads/2019/04/services-diagram-768x530.png 768w, https://codingjam.it/wp-content/uploads/2019/04/services-diagram-150x104.png 150w, https://codingjam.it/wp-content/uploads/2019/04/services-diagram-683x471.png 683w, https://codingjam.it/wp-content/uploads/2019/04/services-diagram-706x487.png 706w" sizes="(max-width: 396px) 100vw, 396px" /></figure></div>
+
+
+
+<p>Quando infatti si <strong>deploya una applicazione, in realtà si chiede (al master) di creare un servizio</strong>, il cui <strong>stato desiderato</strong> (immagine da usare, porte esposte, overlay di rete&#8230;) è definito nel file YAML. Dalla richiesta di servizio si <strong>generano</strong> (in gergo si &#8220;schedulano&#8221;) quindi i task che istanziano i container nel cluster, in modo da &#8220;implementare&#8221; lo stato desiderato. Vediamo allora i servizi generati dal nostro stack <tt>wp</tt>:</p>
+
+
+
+<pre>$ docker stack services wp
+ID                  NAME                MODE                REPLICAS            IMAGE                            PORTS
+bo6cdv2jwnqz        wp_db               replicated          1/1                 poc/mysql-for-wordpress:latest
+klsaic86xu39        wp_wordpress        replicated          1/1                 wordpress:latest                 *:8000-&gt;80/tcp
+</pre>
+
+
+
+<p>Notiamo che abbiamo <em>una replica</em> rispettivamente del database e di WordPress (corrispondenti ai task), nonché il <em>binding</em> della porta 80 di quest&#8217;ultimo sulla 8000 dell&#8217;host. Adesso siamo in condizioni di<strong> poter scalare il container di WordPress</strong> a due repliche (anche perché è l&#8217;unico che ha senso) senza avere problemi:</p>
+
+
+
+<pre>$&gt; docker service scale wp_wordpress=2
+wp_wordpress scaled to 2
+overall progress: 2 out of 2 tasks
+1/2: running   [==================================================&gt;]
+2/2: running   [==================================================&gt;]
+verify: Service converged
+</pre>
+
+
+
+<p>Adesso quindi abbiamo due istanze di WordPress! Come ha fatto questa volta a funzionare? La svolta sta nel fatto che il <strong>binding</strong> della porta è fatto <strong>a livello di servizio</strong> e <strong>non</strong> a livello di <strong>container</strong>! Il servizio quindi rappresenta l&#8217;unità non solo &#8220;logica&#8221;, ma anche fisica, perché è lui responsabile di fare da <strong>punto di accesso&nbsp;e&nbsp;da&nbsp;bilanciatore</strong> alle funzionalità dei container che &#8220;proxa&#8221;. Vediamo quindi chi &#8220;implementa&#8221; questi servizi:</p>
+
+
+
+<pre>$&gt; docker ps
+CONTAINER ID        IMAGE                            COMMAND                  CREATED             STATUS              PORTS                 NAMES
+35b70e25a1f3        wordpress:latest                 "docker-entrypoint.s…"   2 minutes ago       Up 2 minutes        80/tcp                wp_wordpress.2.xhpc5jebprigkrhlf742f5272
+5aaa08bd0ff9        poc/mysql-for-wordpress:latest   "docker-entrypoint.s…"   22 minutes ago      Up 22 minutes       3306/tcp, 33060/tcp   wp_db.1.uvxb7yhbdu1v36lri90lp2zr8
+f0f07649a62e        wordpress:latest                 "docker-entrypoint.s…"   22 minutes ago      Up 22 minutes       80/tcp                wp_wordpress.1.tlobb6t4vnxogbpehwwrr6cyd
+</pre>
+
+
+
+<p>Con il classico <tt>docker ps</tt> possiamo vedere quali container stanno girando <strong>sul nodo in cui siamo connessi</strong> (occhio a questa cosa!): vediamo infatti che la porta <strong>non viene esposta a livello di container</strong>; possiamo scalarlo tutte le volte che vogliamo: sarà responsabilità del servizio rendere raggiungibili tutti i container <strong>indipendentemente dal nodo in cui sono</strong>.</p>
+
+
+
+<p>Quest&#8217;ultima considerazione fa sorgere una domanda: in un contesto reale, è necessario riuscire a far arrivare il traffico <em>da fuori fin dentro il cluster Swarm</em>, per cui è molto probabile che ci sarà un bilanciatore davanti. Come si fa quindi a sapere su quale nodo è stato fatto il binding della porta 8000 in modo da poter raggiungere WordPress? La soluzione che adotta Swarm (ma non solo, anche Kubernetes si comporta così) è chiama <strong><a rel="noreferrer noopener" aria-label="Routing Mesh (opens in a new tab)" href="https://docs.docker.com/engine/swarm/ingress/" target="_blank">Routing Mesh</a></strong>: il binding della porta viene fatto su <strong><em>tutti i nodi</em>&nbsp;del&nbsp;cluster</strong>, anche se fisicamente non sta girando un task in quel nodo.</p>
+
+
+
+<div class="wp-block-image"><figure class="alignleft is-resized"><img src="../wp-content/uploads/2019/04/ingress-routing-mesh-1024x456.png" alt="" class="wp-image-17991" width="512" height="227" srcset="https://codingjam.it/wp-content/uploads/2019/04/ingress-routing-mesh-1024x456.png 1024w, https://codingjam.it/wp-content/uploads/2019/04/ingress-routing-mesh-300x134.png 300w, https://codingjam.it/wp-content/uploads/2019/04/ingress-routing-mesh-768x342.png 768w, https://codingjam.it/wp-content/uploads/2019/04/ingress-routing-mesh-150x67.png 150w, https://codingjam.it/wp-content/uploads/2019/04/ingress-routing-mesh-706x315.png 706w, https://codingjam.it/wp-content/uploads/2019/04/ingress-routing-mesh.png 1129w" sizes="(max-width: 512px) 100vw, 512px" /></figure></div>
+
+
+
+<p>Avere chiaro questo semplice concetto credo sia la chiave di volta per pensare quadrimensionalmente e comprendere che ogni operazione che facciamo in Swarm deve tener presente che siamo su un ambiente distribuito.</p>
+
+
+
+<h4>Rolling update</h4>
+
+
+
+<p>Immaginiamo di dover aggiornare l&#8217;immagine del MySQL cambiando il numero di connessioni: abbiamo bisogno di <strong>eseguire nuovamente la build</strong> dell&#8217;immagine. </p>
+
+
+
+<p>Su questo Swarm non ci può aiutare: abbiamo infatti detto che è un ambiente di runtime, possibilmente multi-nodo: per lavorare bene dovremmo avere un Docker Registry su cui deployare le nostre immagini (magari generate da Jenkins&#8230;) così che ogni task potrà scaricarsi l&#8217;ultima versione.</p>
+
+
+
+<p>Fatta la legge, trovato l&#8217;inganno: nel caso di studio che stiamo affrontando, siamo <em>su un solo nodo</em>, quindi possiamo rieseguire la build con Docker Compose e aggiornare il servizio Swarm &#8220;db&#8221; con la nuova immagine. Ovviamente questo <em>anti pattern</em> è accettabile solo in ambienti di sviluppo, in altre situazioni è meglio evitare!</p>
+
+
+
+<p>Dopo aver aggiornato l&#8217;immagine (non voglio sapere come 🙂 ), aggiorniamo anche il servizio: questa volta andrà forzato (non si accorge dell&#8217;immagine nuova come Compose):</p>
+
+
+
+<pre>$&gt; docker service update --force wp_db
+wp_db
+overall progress: 1 out of 1 tasks
+1/1: running   [==================================================&gt;]
+verify: Service converged
+</pre>
+
+
+
+<p>Controllando i task, ci accorgiamo che <strong>è terminato quello precedente e ne è stato avviato uno nuovo</strong> subito dopo (questo perché l'&#8221;<strong>update-order</strong>&#8221; è di default a &#8220;<strong>stop-first</strong>&#8221; &#8211; si può verificare con <tt>docker service inspect --pretty wp_db</tt>). A differenza del Compose però, Swarm <strong>non sostituisce</strong> il vecchio container con quello nuovo all&#8217;aggiornamento del servizio, ma ne <strong>crea uno nuovo a fianco</strong>, seguendo la policy dell&#8217;update-order. Per fare un vero e proprio <em>rolling update senza downtime</em>, è possibile specificare l&#8217;order-update a &#8220;<strong>start-first</strong>&#8220;: in un dato momento ci saranno così contemporaneamente sia il nuovo task che quello vecchio, prima di essere interrotto.</p>
+
+
+
+<h3>Tirando le somme</h3>
+
+
+
+<p>Ricapitolando quindi, in Swarm c&#8217;è un cambio di paradigma da tenere sempre presente per capire quello succede: in fase di deploy <strong>chiediamo</strong> (al nodo master) di <strong>creare un servizio</strong> che provoca la <strong>schedulazione di un task</strong> (per replica), su un nodo disponibile, che <strong>gestisce il ciclo di vita di un container</strong>. Eventuali porte pubblicate dal servizio vengono <strong>registrate su tutti </strong>i nodi in modo da poter essere raggiunte dall&#8217;esterno: sarà cura del servizio di bilanciare il traffico sulle istanze dei nodi che eseguono realmente il task richiesto.</p>
+
+
+
+<p>Gli attori principali quindi sono i servizi e i task, non i container, che effettivamente diventano <em>effimeri</em>: possono sparire da un nodo e ricomparire in un altro, per cui non possiamo fare affidamento su eventuali modifiche che vengono fatte internamente al di fuori dei volumi montati (che infatti non andrebbero fatte, ma in sviluppo fa comodo). Inoltre, è vero che non riavviare mai lo stesso container, ma crearne uno nuovo a fianco, permette un&nbsp;<strong>rollout senza disservizi</strong>&nbsp;(con Compose non era possibile), ma fa proliferare i vecchi container “parcheggiati” (cioè stoppati) che non verranno più riavviati. Non possiamo quindi fermare un servizio e riavviarlo sperando di ritrovare quelle modifiche fatte nel container precedente, perché, anche se ancora lì, <strong>non verrà riavviato</strong>, ma ne verrà creato uno nuovo.</p>
+
+
+
+<p>Inizialmente pensavo fosse “sporcizia” inutile, in realtà, come&nbsp;<a rel="noreferrer noopener" href="https://github.com/docker/swarmkit/issues/1372" target="_blank">dicono anche gli sviluppatori stessi</a>, le vecchie istanze possono essere usate per diagnostica (mi sono ritrovato davvero in produzione ad aver bisogno di riavviarle per vedere i log!) e comunque non superano mai le 5 istanze (configurabili). In ambiente di sviluppo però questo non è di nessuno aiuto, anzi crea solo confusione.</p>
+
+
+
+<p>Se alla fine Swarm non vi ha soddisfatto, si può sempre disabilitare con:</p>
+
+
+
+<pre>
+$> docker swarm leave --force
+Node left the swarm.
+</pre>
+
+
+
+<h2>Conclusioni</h2>
+
+
+
+<p>Abbiamo quindi visto una panoramica ad ampio spettro (che non vuole essere esaustiva) delle caratteristiche principali di Compose e di Swarm, nonché di pregi e difetti.</p>
+
+
+
+<p>Il passaggio quindi da Compose a Swarm è di sola andata? Lo possiamo considerare un upgrade? A mio avviso no: sono due strumenti in parte diversi che rispondono ad esigenze di tipo diverso. Anche se sembra che facciano la stessa cosa, quello che hanno in comune lo fanno in modo diverso, basti pensare alla gestione dei servizi.</p>
+
+
+
+<p>Per quanto mi riguarda, continuerò ad usare <strong>Compose in sviluppo</strong> (e su Jenkins): la gestione dei container è molto semplice e non si ha bisogno di sovrastrutture. Per gli ambienti di <strong>quality</strong> o <strong>produzione</strong> invece è un&#8217;altra storia: si può trarre vantaggio dal Compose file scritto in sviluppo, tenendo conto delle <em>differenze degli interpreti di Compose e Swarm</em>: sostanzialmente il Compose è compatibile interamente con la versione 2, mentre Swarm con la 3, anche se qua credo ci sia ancora un gran casino e non è così chiaro. La <a rel="noreferrer noopener" aria-label="matrice di compatibilità (opens in a new tab)" href="https://docs.docker.com/compose/compose-file/" target="_blank">matrice di compatibilità</a> può aiutare a capire.<br><strong>Swarm</strong> credo si comporti bene per <strong>piccoli cluster <em>on premise</em></strong>, dove il numero di nodi non cambia dinamicamente e non ci si attende picchi di traffico anomali. In un contesto B2C, dove il target è il pubblico di internet e la variabilità di traffico è alta, probabilmente conviene spostarsi su soluzioni cloud autoscalabili: a quel punto Swarm non è sufficiente e conviene spostarsi su <a rel="noreferrer noopener" aria-label="Kubernetes (opens in a new tab)" href="https://kubernetes.io/" target="_blank">Kubernetes</a>, di gran lunga più complesso ma più potente.</p>
+
+
+
+<p></p>
+            </div>
+            <!-- end content -->
+
+            
+                <!-- social sharing buttons / counters -->
+                <div class="row">
+                  <div class="col-md-7">
+                    
+    <!-- social sharing buttons -->
+    <div class="bwp-single-share-wrap">
+      <span>Share:</span>
+      <ul class="bwp-single-share list-unstyled">
+        <!-- facebook -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/da-docker-compose-a-docker-swarm-viaggio-di-sola-andata/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/da-docker-compose-a-docker-swarm-viaggio-di-sola-andata/" target="_blank" class="bwp-share-link bwp-facebook-share">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <!-- end facebook -->
+        <!-- twitter -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/da-docker-compose-a-docker-swarm-viaggio-di-sola-andata/&amp;text=da-docker-compose-a-docker-swarm-viaggio-di-sola-andata', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/da-docker-compose-a-docker-swarm-viaggio-di-sola-andata/&amp;text=da-docker-compose-a-docker-swarm-viaggio-di-sola-andata" target="_blank" class="bwp-share-link bwp-twitter-share">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <!-- end twitter -->
+        <!-- google+ -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/da-docker-compose-a-docker-swarm-viaggio-di-sola-andata/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/da-docker-compose-a-docker-swarm-viaggio-di-sola-andata/" target="_blank" class="bwp-share-link bwp-google-plus-share">
+            <i class="fa fa-google-plus"></i>
+          </a>
+        </li>
+        <!-- end google+ -->
+        <!-- vk -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/da-docker-compose-a-docker-swarm-viaggio-di-sola-andata/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/da-docker-compose-a-docker-swarm-viaggio-di-sola-andata/" target="_blank" class="bwp-share-link bwp-vk-share">
+            <i class="fa fa-vk"></i>
+          </a>
+        </li>
+        <!-- end vk -->
+        <!-- pinterest -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/da-docker-compose-a-docker-swarm-viaggio-di-sola-andata/&amp;media=&amp;description=da-docker-compose-a-docker-swarm-viaggio-di-sola-andata', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/da-docker-compose-a-docker-swarm-viaggio-di-sola-andata/&amp;media=&amp;description=da-docker-compose-a-docker-swarm-viaggio-di-sola-andata" target="_blank" class="bwp-share-link bwp-pinterest-share">
+            <i class="fa fa-pinterest-p"></i>
+          </a>
+        </li>
+        <!-- end pinterest -->
+      </ul>
+    </div>
+    <!-- end social sharing buttons -->
+
+                      </div>
+                  <div class="col-md-5">
+                    
+    <!-- counters -->
+    <ul class="bwp-single-counters list-unstyled clearfix ">
+                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i><span class="dsq-postid" data-dsqidentifier="17949 https://codingjam.it/?p=17949">0</span></a></li>
+                </ul>
+    <!-- end counters -->
+
+                      </div>
+                </div>
+                <!-- end social sharing buttons / counters -->
+
+                
+      <!-- metadata -->
+      <div class="bwp-single-metadata-wrap ">
+        <ul class="bwp-single-metadata list-unstyled clearfix">
+                      <!-- author -->
+            <li>
+              <span class="vcard author">
+                <span class="fn">
+                  <i class="fa fa-pencil-square-o"></i><a href="../author/andrea-como/index.html" title="Posts by Andrea Como" rel="author">Andrea Como</a>                </span>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end author -->
+                                <!-- date -->
+            <li>
+                            <span class="date updated">
+                <i class="fa fa-clock-o"></i><a href="../2019/05/06/index.html">06/05/2019</a>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end date -->
+                                <!-- categories -->
+            <li>
+              <i class="fa fa-bookmark-o"></i><a href="../devops/index.html" rel="category tag">Devops</a>, <a href="../docker/index.html" rel="category tag">Docker</a>, <a href="../tutorial-2/index.html" rel="category tag">Tutorial</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end categories -->
+                                <!-- tags -->
+            <li>
+              <i class="fa fa-tags"></i><a href="../tag/docker/index.html" rel="tag">Docker</a>, <a href="../tag/docker-compose/index.html" rel="tag">docker compose</a>, <a href="../tag/docker-swarm/index.html" rel="tag">docker swarm</a>, <a href="../tag/kubernetes/index.html" rel="tag">kubernetes</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end tags -->
+                  </ul>
+      </div>
+      <!-- end metadata -->
+
+      
+          </div>
+          <!-- end content container -->
+
+        </article>
+        <!-- end article -->
+
+        
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="../sviluppo-di-skill-per-amazon-alexa/index.html" rel="prev"><span class="meta-nav"><i class="fa fa-angle-left"></i>Previous post</span><span class="post-title-nav">Sviluppo di Skill per Amazon Alexa</span></a></div><div class="nav-next"><a href="../come-creare-un-motore-di-rendering-custom-in-javascript/index.html" rel="next"><span class="meta-nav">Next post<i class="fa fa-angle-right"></i></span><span class="post-title-nav">Come creare un motore di rendering in JavaScript</span></a></div></div>
+	</nav>
+    <!-- about the author -->
+    <div class="bwp-about-author-container bwp-transition-3 clearfix">
+      <!-- avatar -->
+      <div class="bwp-about-author-avatar">
+        <a href="../author/andrea-como/index.html">
+          <img alt='' src='https://secure.gravatar.com/avatar/684ede46c9386ff5430335a42fd5b011?s=150&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/684ede46c9386ff5430335a42fd5b011?s=300&#038;d=mm&#038;r=g 2x' class='avatar avatar-150 photo' height='150' width='150' />        </a>
+      </div>
+      <!-- end avatar -->
+      <!-- biographical info -->
+      <div class="bwp-about-author-bio-wrap">
+        <h3 class="bwp-about-author-name">
+          <a href="../author/andrea-como/index.html" title="Posts by Andrea Como" rel="author">Andrea Como</a>          <span><i class="fa fa-angle-double-right"></i>84 Posts</span>
+        </h3>
+        <div class="bwp-about-author-bio">
+          Sono un <strong>software engineer</strong> focalizzato nella progettazione e sviluppo di applicazioni web in Java. Presso <a href="http://www.omniagroup.it/">OmniaGroup</a> ricopro il ruolo di <strong>Tech Leader</strong> sulle tecnologie legate alla piattaforma Java EE 5 (come WebSphere 7.0, EJB3, JPA 1 (EclipseLink), JSF 1.2 (Mojarra) e RichFaces 3) e Java EE 6 con JBoss AS 7, in particolare di CDI, JAX-RS, nonché di EJB 3.1, JPA2, JSF2 e RichFaces 4. Al momento mi occupo di ECM, in particolar modo sulla customizzazione di Alfresco 4 e sulla sua installazione con tecnologie da devops come Vagrant e Chef. 
+In passato ho lavorato con la piattaforma alternativa alla enterprise per lo sviluppo web: Java SE 6, Tomcat 6, Hibernate 3 e Spring 2.5. Nei ritagli di tempo sviluppo siti web in PHP e ASP. Per maggiori informazioni consulta il mio <a href="http://resume.linkedinlabs.com/qoqlpivm">curriculum pubblico</a>.
+
+<a href="https://twitter.com/andrea_como">Follow me on Twitter</a>  -  <a href="http://www.linkedin.com/pub/andrea-como/19/291/99">LinkedIn profile</a> - <a href="https://plus.google.com/u/0/111647274412905676850/posts?rel=author">Google+</a>        </div>
+                  <ul class="bwp-about-author-social list-unstyled clearfix">
+                              <li><a href="http://andrea_como/" target="_blank" class="bwp-a-twitter-link"><i class="fa fa-twitter"></i></a></li>
+                                  <li><a href="http://www.cosenonjaviste.it/?team=andrea-como" target="_blank" class="bwp-a-website-link"><i class="fa fa-link"></i></a></li>
+                          </ul>
+              </div>
+      <!-- end biographical info -->
+    </div>
+    <!-- end about the author -->
+
+    
+<div id="disqus_thread"></div>
+
+    <!-- related posts (by tags) -->
+    <div class="bwp-related-posts-container bwp-show-3-posts">
+      <div class="bwp-o-hidden">
+
+        <!-- title -->
+        <h2 class="bwp-related-posts-title">
+          You might also like:        </h2>
+        <!-- end title -->
+
+        <!-- posts list -->
+        <div class="bwp-related-posts clearfix">
+
+          
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                    <!-- media - featured image -->
+                    <figure class="bwp-post-media">
+                                              <a href="../docker-e-microservizi-java-con-jib/index.html" class="bwp-post-media-link">
+                                              <img width="689" height="312" src="../wp-content/uploads/2018/12/jib.png" class="attachment-melissa-img-706-auto size-melissa-img-706-auto wp-post-image" alt="" srcset="https://codingjam.it/wp-content/uploads/2018/12/jib.png 689w, https://codingjam.it/wp-content/uploads/2018/12/jib-300x136.png 300w, https://codingjam.it/wp-content/uploads/2018/12/jib-150x68.png 150w" sizes="(max-width: 689px) 100vw, 689px" />                        <div class="bwp-post-bg-overlay bwp-transition-4"></div>
+                        <div class="bwp-post-hover-icon-wrap">
+                          <div class="bwp-post-hover-icon-alignment">
+                            <div class="bwp-post-hover-icon-center">
+                              <span class="bwp-transition-4"><i class="fa fa-share"></i></span>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </figure>
+                    <!-- end media -->
+
+                    
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="../docker-e-microservizi-java-con-jib/index.html">Docker e microservizi Java con Jib</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>Jib è un tool proposto da Google per semplificare e rendere efficiente la creazioni di immagini Docker per microservizi scritti in Java. In questo post vediamo come usarlo e quali sono le caratteristiche principali.</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="../2018/12/17/index.html" class="bwp-post-date">
+        <span class="date updated">17/12/2018</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="../docker-e-microservizi-java-con-jib/index.html" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                    <!-- media - featured image -->
+                    <figure class="bwp-post-media">
+                                              <a href="../java-8-e-docker-conosciamone-i-limiti/index.html" class="bwp-post-media-link">
+                                              <img width="706" height="415" src="../wp-content/uploads/2018/11/javadocker-706x415.png" class="attachment-melissa-img-706-auto size-melissa-img-706-auto wp-post-image" alt="" srcset="https://codingjam.it/wp-content/uploads/2018/11/javadocker-706x415.png 706w, https://codingjam.it/wp-content/uploads/2018/11/javadocker-300x176.png 300w, https://codingjam.it/wp-content/uploads/2018/11/javadocker-768x451.png 768w, https://codingjam.it/wp-content/uploads/2018/11/javadocker-150x88.png 150w, https://codingjam.it/wp-content/uploads/2018/11/javadocker.png 800w" sizes="(max-width: 706px) 100vw, 706px" />                        <div class="bwp-post-bg-overlay bwp-transition-4"></div>
+                        <div class="bwp-post-hover-icon-wrap">
+                          <div class="bwp-post-hover-icon-alignment">
+                            <div class="bwp-post-hover-icon-center">
+                              <span class="bwp-transition-4"><i class="fa fa-share"></i></span>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </figure>
+                    <!-- end media -->
+
+                    
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="../java-8-e-docker-conosciamone-i-limiti/index.html">Java 8 e Docker: conosciamone i limiti</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>Lo sviluppo lato backend negli ultimi anni è cambiato radicalmente per chi si è lasciato affascinare e coinvolgere da Docker e tutto quello che gli ruota intorno. Per molti, me in primis, ha semplificato notevolmente non solo la modalità di accesso e interazione con i sistemi attorno all&#8217;applicazione che stiamo sviluppando, come il database o il broker di code, ma soprattutto ha permesso di rendere più semplici e finalmente alla portata la scrittura e il mantenimento di test di integrazione (come avevamo <a href="../integration-test-con-maven-e-docker/index.html" target="_blank">già avuto modo di vedere</a>).</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="../2018/11/05/index.html" class="bwp-post-date">
+        <span class="date updated">05/11/2018</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="../java-8-e-docker-conosciamone-i-limiti/index.html" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                    <!-- media - featured image -->
+                    <figure class="bwp-post-media">
+                                              <a href="../integration-test-con-maven-e-docker/index.html" class="bwp-post-media-link">
+                                              <img width="706" height="422" src="../wp-content/uploads/2016/09/docker.png" class="attachment-melissa-img-706-auto size-melissa-img-706-auto wp-post-image" alt="" srcset="https://codingjam.it/wp-content/uploads/2016/09/docker.png 1050w, https://codingjam.it/wp-content/uploads/2016/09/docker-300x179.png 300w, https://codingjam.it/wp-content/uploads/2016/09/docker-768x459.png 768w, https://codingjam.it/wp-content/uploads/2016/09/docker-1024x611.png 1024w, https://codingjam.it/wp-content/uploads/2016/09/docker-300x179@2x.png 600w" sizes="(max-width: 706px) 100vw, 706px" />                        <div class="bwp-post-bg-overlay bwp-transition-4"></div>
+                        <div class="bwp-post-hover-icon-wrap">
+                          <div class="bwp-post-hover-icon-alignment">
+                            <div class="bwp-post-hover-icon-center">
+                              <span class="bwp-transition-4"><i class="fa fa-share"></i></span>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </figure>
+                    <!-- end media -->
+
+                    
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="../integration-test-con-maven-e-docker/index.html">Integration Test con Maven e Docker</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>Non è la prima volta che parliamo di integration test, croce e delizia dello sviluppo. Sono complessi da fare perché [&hellip;]</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="../2016/10/10/index.html" class="bwp-post-date">
+        <span class="date updated">10/10/2016</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="../integration-test-con-maven-e-docker/index.html" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+        </div>
+        <!-- end posts list -->
+
+      </div>
+    </div>
+    <!-- end related posts -->
+
+    
+        
+        
+      </div>
+    </div>
+  </section>
+  <!-- end blog post - single page -->
+
+  
+<!-- footer -->
+<footer id="bwp-footer-wrap">
+  <div class="container">
+    <div class="bwp-footer-container clearfix">
+
+              <!-- footer text -->
+        <div class="bwp-footer-text">
+          CodingJam - 2018        </div>
+        <!-- end footer text -->
+      
+              <!-- social links -->
+        <ul class="bwp-footer-social-links list-unstyled clearfix">
+          <li><a href="https://twitter.com/codingjam" target="_blank" class="bwp-f-twitter-link"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.facebook.com/codingjamit/" target="_blank" class="bwp-f-facebook-link"><i class="fa fa-facebook"></i></a></li><li><a href="https://github.com/coding-jam" target="_blank" class="bwp-f-github-link"><i class="fa fa-github"></i></a></li>        </ul>
+        <!-- end social links -->
+      
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+
+<!--googleoff: all--><div id="cookie-law-info-bar"><span>Questo sito Web utilizza i cookie per migliorare la tua esperienza. Daremo per scontato che per te sia ok, ma puoi disattivarlo se lo desideri..<a role='button' tabindex='0' data-cli_action="accept" id="cookie_action_close_header"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button" style="display:inline-block; ">Accetto</a>  <a role='button' tabindex='0' id="cookie_action_close_header_reject"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header_reject cli_action_button"  data-cli_action="reject">Annulla</a> <a href='../cookie.html' id="CONSTANT_OPEN_URL" target="_blank"  class="cli-plugin-main-link"  style="display:inline-block;" >Read More</a></span></div><div id="cookie-law-info-again" style="display:none;"><span id="cookie_hdr_showagain">Privacy & Cookies</span></div><div class="cli-modal" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+    <div class="cli-modal-content cli-bar-popup">
+      <button type="button" class="cli-modal-close" id="cliModalClose">
+        <svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+        <span class="wt-cli-sr-only">Close</span>
+      </button>
+      <div class="cli-modal-body">
+        <div class="cli-container-fluid cli-tab-container">
+    <div class="cli-row">
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0">
+            <div class="cli-privacy-overview">
+                                                   
+                <div class="cli-privacy-content">
+                    <div class="cli-privacy-content-text"></div>
+                </div>
+                <a class="cli-privacy-readmore" data-readmore-text="Show more" data-readless-text="Show less"></a>            </div>
+        </div>  
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+              
+                            <div class="cli-tab-section">
+                    <div class="cli-tab-header">
+                        <a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab" >
+                            Necessary 
+                        </a>
+                    
+                    <span class="cli-necessary-caption">Always Enabled</span>                     </div>
+                    <div class="cli-tab-content">
+                        <div class="cli-tab-pane cli-fade" data-id="necessary">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+              
+                       
+        </div>
+    </div> 
+</div> 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<script type="text/javascript">
+  /* <![CDATA[ */
+  cli_cookiebar_settings='{"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":false,"button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":true,"button_1_new_win":false,"button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":false,"button_2_hidebar":false,"button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":true,"button_3_new_win":false,"button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#fff","button_4_as_button":true,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":false,"scroll_close_reload":false,"accept_close_reload":false,"reject_close_reload":false,"showagain_tab":true,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":false,"show_once":"10000","logging_on":false,"as_popup":false,"popup_overlay":true,"bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"}';
+  /* ]]> */
+</script>
+<!--googleon: all--><script type='text/javascript'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"cosenonjaviste"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/disqus-comment-system/public/js/comment_countd4e0.js?ver=3.0.17'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.17"},"disqusIdentifier":"17949 https:\/\/codingjam.it\/?p=17949","disqusShortname":"cosenonjaviste","disqusTitle":"Da Docker Compose a Docker Swarm: viaggio di sola andata?","disqusUrl":"https:\/\/codingjam.it\/da-docker-compose-a-docker-swarm-viaggio-di-sola-andata\/","postId":"17949"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/disqus-comment-system/public/js/comment_embedd4e0.js?ver=3.0.17'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/bootstrap.min7433.js?ver=3.3.7'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.parallaxc358.js?ver=1.1.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/superfish.min97e9.js?ver=1.7.9'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.infinitescroll.min3c94.js?ver=2.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel.min3ba1.js?ver=1.3.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/magnific-popup/jquery.magnific-popup.minf488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"true","masonryColumnWidth":".bwp-blog-col-2-default","infiniteScroll":"true","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
+</body>
+
+<!-- Mirrored from codingjam.it/da-docker-compose-a-docker-swarm-viaggio-di-sola-andata/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:17:26 GMT -->
+</html>
+<!--
+Performance optimized by W3 Total Cache. Learn more: https://www.boldgrid.com/w3-total-cache/
+
+
+Served from: codingjam.it @ 2020-12-05 00:10:09 by W3 Total Cache
+-->
