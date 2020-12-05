@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html amp lang="en-US" i-amphtml-layout="" i-amphtml-no-boilerplate="" transformed="self;v=1">
+<!-- Mirrored from codingjam.it/come-creare-un-blog-jamstack-multilingua-con-nuxt-js-e-strapi-cms/amp/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="utf-8"><style amp-runtime="" i-amphtml-version="012011200012001">html{overflow-x:hidden!important}html.i-amphtml-fie{height:100%!important;width:100%!important}html:not([amp4ads]),html:not([amp4ads]) body{height:auto!important}html:not([amp4ads]) body{margin:0!important}body{-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%}html.i-amphtml-singledoc.i-amphtml-embedded{-ms-touch-action:pan-y;touch-action:pan-y}html.i-amphtml-fie>body,html.i-amphtml-singledoc>body{overflow:visible!important}html.i-amphtml-fie:not(.i-amphtml-inabox)>body,html.i-amphtml-singledoc:not(.i-amphtml-inabox)>body{position:relative!important}html.i-amphtml-webview>body{overflow-x:hidden!important;overflow-y:visible!important;min-height:100vh!important}html.i-amphtml-ios-embed-legacy>body{overflow-x:hidden!important;overflow-y:auto!important;position:absolute!important}html.i-amphtml-ios-embed{overflow-y:auto!important;position:static}#i-amphtml-wrapper{overflow-x:hidden!important;overflow-y:auto!important;position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;margin:0!important;display:block!important}html.i-amphtml-ios-embed.i-amphtml-ios-overscroll,html.i-amphtml-ios-embed.i-amphtml-ios-overscroll>#i-amphtml-wrapper{-webkit-overflow-scrolling:touch!important}#i-amphtml-wrapper>body{position:relative!important;border-top:1px solid transparent!important}#i-amphtml-wrapper+body{visibility:visible}#i-amphtml-wrapper+body .i-amphtml-lightbox-element,#i-amphtml-wrapper+body[i-amphtml-lightbox]{visibility:hidden}#i-amphtml-wrapper+body[i-amphtml-lightbox] .i-amphtml-lightbox-element{visibility:visible}#i-amphtml-wrapper.i-amphtml-scroll-disabled,.i-amphtml-scroll-disabled{overflow-x:hidden!important;overflow-y:hidden!important}amp-instagram{padding:54px 0px 0px!important;background-color:#fff}amp-iframe iframe{box-sizing:border-box!important}[amp-access][amp-access-hide]{display:none}[subscriptions-dialog],body:not(.i-amphtml-subs-ready) [subscriptions-action],body:not(.i-amphtml-subs-ready) [subscriptions-section]{display:none!important}amp-experiment,amp-live-list>[update]{display:none}.i-amphtml-jank-meter{position:fixed;background-color:rgba(232,72,95,0.5);bottom:0;right:0;color:#fff;font-size:16px;z-index:1000;padding:5px}amp-list[resizable-children]>.i-amphtml-loading-container.amp-hidden{display:none!important}amp-list [fetch-error],amp-list[load-more] [load-more-button],amp-list[load-more] [load-more-end],amp-list[load-more] [load-more-failed],amp-list[load-more] [load-more-loading]{display:none}amp-list[diffable] div[role=list]{display:block}amp-story-page,amp-story[standalone]{min-height:1px!important;display:block!important;height:100%!important;margin:0!important;padding:0!important;overflow:hidden!important;width:100%!important}amp-story[standalone]{background-color:#202125!important;position:relative!important}amp-story-page{background-color:#757575}amp-story .amp-active>div,amp-story .i-amphtml-loader-background{display:none!important}amp-story-page:not(:first-of-type):not([distance]):not([active]){transform:translateY(1000vh)!important}amp-autocomplete{position:relative!important;display:inline-block!important}amp-autocomplete>input,amp-autocomplete>textarea{padding:0.5rem;border:1px solid rgba(0,0,0,0.33)}.i-amphtml-autocomplete-results,amp-autocomplete>input,amp-autocomplete>textarea{font-size:1rem;line-height:1.5rem}[amp-fx^=fly-in]{visibility:hidden}amp-script[nodom]{position:fixed!important;top:0!important;width:1px!important;height:1px!important;overflow:hidden!important;visibility:hidden}
+/*# sourceURL=/css/ampdoc.css*/[hidden]{display:none!important}.i-amphtml-element{display:inline-block}.i-amphtml-blurry-placeholder{transition:opacity 0.3s cubic-bezier(0.0,0.0,0.2,1)!important;pointer-events:none}[layout=nodisplay]:not(.i-amphtml-element){display:none!important}.i-amphtml-layout-fixed,[layout=fixed][width][height]:not(.i-amphtml-layout-fixed){display:inline-block;position:relative}.i-amphtml-layout-responsive,[layout=responsive][width][height]:not(.i-amphtml-layout-responsive),[width][height][heights]:not([layout]):not(.i-amphtml-layout-responsive),[width][height][sizes]:not([layout]):not(.i-amphtml-layout-responsive){display:block;position:relative}.i-amphtml-layout-intrinsic,[layout=intrinsic][width][height]:not(.i-amphtml-layout-intrinsic){display:inline-block;position:relative;max-width:100%}.i-amphtml-layout-intrinsic .i-amphtml-sizer{max-width:100%}.i-amphtml-intrinsic-sizer{max-width:100%;display:block!important}.i-amphtml-layout-container,.i-amphtml-layout-fixed-height,[layout=container],[layout=fixed-height][height]:not(.i-amphtml-layout-fixed-height){display:block;position:relative}.i-amphtml-layout-fill,.i-amphtml-layout-fill.i-amphtml-notbuilt,[layout=fill]:not(.i-amphtml-layout-fill){display:block;overflow:hidden!important;position:absolute;top:0;left:0;bottom:0;right:0}.i-amphtml-layout-flex-item,[layout=flex-item]:not(.i-amphtml-layout-flex-item){display:block;position:relative;-ms-flex:1 1 auto;flex:1 1 auto}.i-amphtml-layout-fluid{position:relative}.i-amphtml-layout-size-defined{overflow:hidden!important}.i-amphtml-layout-awaiting-size{position:absolute!important;top:auto!important;bottom:auto!important}i-amphtml-sizer{display:block!important}@supports (aspect-ratio:1/1){i-amphtml-sizer.i-amphtml-disable-for-ar{display:none!important}}.i-amphtml-blurry-placeholder,.i-amphtml-fill-content{display:block;height:0;max-height:100%;max-width:100%;min-height:100%;min-width:100%;width:0;margin:auto}.i-amphtml-layout-size-defined .i-amphtml-fill-content{position:absolute;top:0;left:0;bottom:0;right:0}.i-amphtml-replaced-content,.i-amphtml-screen-reader{padding:0!important;border:none!important}.i-amphtml-screen-reader{position:fixed!important;top:0px!important;left:0px!important;width:4px!important;height:4px!important;opacity:0!important;overflow:hidden!important;margin:0!important;display:block!important;visibility:visible!important}.i-amphtml-screen-reader~.i-amphtml-screen-reader{left:8px!important}.i-amphtml-screen-reader~.i-amphtml-screen-reader~.i-amphtml-screen-reader{left:12px!important}.i-amphtml-screen-reader~.i-amphtml-screen-reader~.i-amphtml-screen-reader~.i-amphtml-screen-reader{left:16px!important}.i-amphtml-unresolved{position:relative;overflow:hidden!important}.i-amphtml-select-disabled{-webkit-user-select:none!important;-ms-user-select:none!important;user-select:none!important}.i-amphtml-notbuilt,[layout]:not(.i-amphtml-element),[width][height][heights]:not([layout]):not(.i-amphtml-element),[width][height][sizes]:not([layout]):not(.i-amphtml-element){position:relative;overflow:hidden!important;color:transparent!important}.i-amphtml-notbuilt:not(.i-amphtml-layout-container)>*,[layout]:not([layout=container]):not(.i-amphtml-element)>*,[width][height][heights]:not([layout]):not(.i-amphtml-element)>*,[width][height][sizes]:not([layout]):not(.i-amphtml-element)>*{display:none}amp-img:not(.i-amphtml-element)[i-amphtml-ssr]>img.i-amphtml-fill-content{display:block}.i-amphtml-notbuilt:not(.i-amphtml-layout-container),[layout]:not([layout=container]):not(.i-amphtml-element),[width][height][heights]:not([layout]):not(.i-amphtml-element),[width][height][sizes]:not([layout]):not(.i-amphtml-element){color:transparent!important;line-height:0!important}.i-amphtml-ghost{visibility:hidden!important}.i-amphtml-element>[placeholder],[layout]:not(.i-amphtml-element)>[placeholder],[width][height][heights]:not([layout]):not(.i-amphtml-element)>[placeholder],[width][height][sizes]:not([layout]):not(.i-amphtml-element)>[placeholder]{display:block}.i-amphtml-element>[placeholder].amp-hidden,.i-amphtml-element>[placeholder].hidden{visibility:hidden}.i-amphtml-element:not(.amp-notsupported)>[fallback],.i-amphtml-layout-container>[placeholder].amp-hidden,.i-amphtml-layout-container>[placeholder].hidden{display:none}.i-amphtml-layout-size-defined>[fallback],.i-amphtml-layout-size-defined>[placeholder]{position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;z-index:1}.i-amphtml-notbuilt>[placeholder]{display:block!important}.i-amphtml-hidden-by-media-query{display:none!important}.i-amphtml-element-error{background:red!important;color:#fff!important;position:relative!important}.i-amphtml-element-error:before{content:attr(error-message)}i-amp-scroll-container,i-amphtml-scroll-container{position:absolute;top:0;left:0;right:0;bottom:0;display:block}i-amp-scroll-container.amp-active,i-amphtml-scroll-container.amp-active{overflow:auto;-webkit-overflow-scrolling:touch}.i-amphtml-loading-container{display:block!important;pointer-events:none;z-index:1}.i-amphtml-notbuilt>.i-amphtml-loading-container{display:block!important}.i-amphtml-loading-container.amp-hidden{visibility:hidden}.i-amphtml-element>[overflow]{cursor:pointer;position:relative;z-index:2;visibility:hidden;display:initial;line-height:normal}.i-amphtml-element>[overflow].amp-visible{visibility:visible}template{display:none!important}.amp-border-box,.amp-border-box *,.amp-border-box :after,.amp-border-box :before{box-sizing:border-box}amp-pixel{display:none!important}amp-analytics,amp-auto-ads,amp-story-auto-ads{position:fixed!important;top:0!important;width:1px!important;height:1px!important;overflow:hidden!important;visibility:hidden}html.i-amphtml-fie>amp-analytics{position:initial!important}[visible-when-invalid]:not(.visible),form [submit-error],form [submit-success],form [submitting]{display:none}amp-accordion{display:block!important}amp-accordion>section{float:none!important}amp-accordion>section>*{float:none!important;display:block!important;overflow:hidden!important;position:relative!important}amp-accordion,amp-accordion>section{margin:0}amp-accordion:not(.i-amphtml-built)>section>:last-child{display:none!important}amp-accordion:not(.i-amphtml-built)>section[expanded]>:last-child{display:block!important}
+/*# sourceURL=/css/ampshared.css*/</style><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1"><meta name="generator" content="AMP Plugin v1.5.3; mode=reader"><meta name="generator" content="WordPress 5.4.1"><title>Come creare un blog Jamstack multilingua con Nuxt.js e Strapi CMS – CodingJam</title><link rel="preconnect" href="https://cdn.ampproject.org/"><link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js"><script async="" src="https://cdn.ampproject.org/v0.js"></script><style amp-custom="">html{background:#0a89c0}body{background:#fff;color:#353535;font-family:Georgia,"Times New Roman",Times,Serif;font-weight:300;line-height:1.75em}p,ul{margin:0 0 1em;padding:0}a,a:visited{color:#0a89c0}a:hover,a:active,a:focus{color:#353535}.amp-wp-meta,.amp-wp-header div,.amp-wp-title,.amp-wp-tax-category,.amp-wp-comments-link,.amp-wp-footer p,.back-to-top{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen-Sans","Ubuntu","Cantarell","Helvetica Neue",sans-serif}.amp-wp-header{background-color:#0a89c0}.amp-wp-header div{color:#fff;font-size:1em;font-weight:400;margin:0 auto;max-width:calc(840px - 32px);padding:.875em 16px;position:relative}.amp-wp-header a{color:#fff;text-decoration:none}.amp-wp-header .amp-wp-site-icon{background-color:#fff;border:1px solid #fff;border-radius:50%;position:absolute;right:18px;top:10px}.amp-wp-article{color:#353535;font-weight:400;margin:1.5em auto;max-width:840px;overflow-wrap:break-word;word-wrap:break-word}.amp-wp-article-header{align-items:center;align-content:stretch;display:flex;flex-wrap:wrap;justify-content:space-between;margin:1.5em 16px 0}.amp-wp-title{color:#353535;display:block;flex:1 0 100%;font-weight:900;margin:0 0 .625em;width:100%}.amp-wp-meta{color:#696969;display:inline-block;flex:2 1 50%;font-size:.875em;line-height:1.5em;margin:0 0 1.5em;padding:0}.amp-wp-article-header .amp-wp-meta:last-of-type{text-align:right}.amp-wp-article-header .amp-wp-meta:first-of-type{text-align:left}.amp-wp-byline amp-img,.amp-wp-byline .amp-wp-author{display:inline-block;vertical-align:middle}.amp-wp-byline amp-img{border:1px solid #0a89c0;border-radius:50%;position:relative;margin-right:6px}.amp-wp-posted-on{text-align:right}.amp-wp-article-content{margin:0 16px}.amp-wp-article-content ul{margin-left:1em}.amp-wp-article-content amp-img{margin:0 auto}.amp-wp-article-footer .amp-wp-meta{display:block}.amp-wp-tax-category{color:#696969;font-size:.875em;line-height:1.5em;margin:1.5em 16px}.amp-wp-comments-link{color:#696969;font-size:.875em;line-height:1.5em;text-align:center;margin:2.25em 0 1.5em}.amp-wp-comments-link a{border-style:solid;border-color:#c2c2c2;border-width:1px 1px 2px;border-radius:4px;background-color:transparent;color:#0a89c0;cursor:pointer;display:block;font-size:14px;font-weight:600;line-height:18px;margin:0 auto;max-width:200px;padding:11px 16px;text-decoration:none;width:50%;-webkit-transition:background-color .2s ease;transition:background-color .2s ease}.amp-wp-footer{border-top:1px solid #c2c2c2;margin:calc(1.5em - 1px) 0 0}.amp-wp-footer div{margin:0 auto;max-width:calc(840px - 32px);padding:1.25em 16px 1.25em;position:relative}.amp-wp-footer h2{font-size:1em;line-height:1.375em;margin:0 0 .5em}.amp-wp-footer p{color:#696969;font-size:.8em;line-height:1.5em;margin:0 85px 0 0}.amp-wp-footer a{text-decoration:none}.back-to-top{bottom:1.275em;font-size:.8em;font-weight:600;line-height:2em;position:absolute;right:16px}
+
+/*# sourceURL=amp-custom.css */</style><link rel="canonical" href="../index.html"><script type="application/ld+json">{"@context":"http:\/\/schema.org","publisher":{"@type":"Organization","name":"CodingJam","logo":"https:\/\/codingjam.it\/wp-content\/uploads\/2018\/09\/cropped-logo-cnj-bianco.png"},"@type":"BlogPosting","mainEntityOfPage":"https:\/\/codingjam.it\/come-creare-un-blog-jamstack-multilingua-con-nuxt-js-e-strapi-cms\/","headline":"Come creare un blog Jamstack multilingua con Nuxt.js e Strapi CMS","datePublished":"2020-06-03T16:02:56+02:00","dateModified":"2020-06-03T16:02:58+02:00","author":{"@type":"Person","name":"Andrea Stagi"}}</script></head><body class="">
+
+<header id="top" class="amp-wp-header"><div>
+		<a href="../../index.html">
+										<amp-img src="../../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" width="32" height="32" class="amp-wp-site-icon i-amphtml-layout-fixed i-amphtml-layout-size-defined" style="width:32px;height:32px;" i-amphtml-layout="fixed"></amp-img><span class="amp-site-title">
+				CodingJam			</span>
+		</a>
+
+					</div>
+</header><article class="amp-wp-article"><header class="amp-wp-article-header"><h1 class="amp-wp-title">Come creare un blog Jamstack multilingua con Nuxt.js e Strapi CMS</h1>
+			<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="https://secure.gravatar.com/avatar/2c01fbda58ccbae404f853c9e587407c?s=24&amp;d=mm&amp;r=g" alt="Andrea Stagi" width="24" height="24" layout="fixed" class="i-amphtml-layout-fixed i-amphtml-layout-size-defined" style="width:24px;height:24px;" i-amphtml-layout="fixed"></amp-img><span class="amp-wp-author author vcard">Andrea Stagi</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2020-06-03T18:02:56+00:00">
+		6 months ago	</time></div>
+	</header><div class="amp-wp-article-content">
+		
+<p><a href="https://jamstack.org/">Jamstack</a> (Javascript, API e Markup Stack) è una terminologia che ruota attorno a un nuovo modo di fare progetti web dove non c’è bisogno di un backend che builda la pagina ad ogni richiesta ma renderizza tutte le pagine in maniera statica al momento della build e fa il deploy su una Content Delivery Network (CDN). Questo approccio porta ad una maggior sicurezza, ad una grande scalabilità, una riduzione dei costi di hosting e un grande boost delle performance.</p>
+
+
+
+<p>In questo tutorial imparerai a costruire un blog multilingua con l’approccio Jamstack utilizzando <a href="https://nuxtjs.org/">Nuxt.js</a>, un potente framework basato su Vue.js che supporta le modalità di rendering SPA, SSR e la generazione statica e un CMS Headless, <a href="https://strapi.io/">Strapi</a>, per memorizzare gli articoli e servirli tramite GraphQL. Per il setup di locale di Strapi puoi seguire <a href="https://strapi.io/documentation/3.0.0-beta.x/installation/cli.html">questa guida</a> altrimenti puoi tranquillamente utilizzare la nostra istanza in sola lettura <a href="https://strapi.lotrek.net/">https://strapi.lotrek.net/</a>.</p>
+
+
+
+<p>Il codice di questo tutorial è disponibile in <a href="https://github.com/astagi/nuxt-strapi-i18n">questo repository</a>.</p>
+
+
+
+<h2>La struttura del backend Strapi</h2>
+
+
+
+<p>Con Strapi abbiamo predisposto una struttura piuttosto banale per memorizzare i nostri <code>Post</code> che contengono una referenza 1 a molti con gli elementi <code>TransPost</code> dove avviene l’effettiva traduzione<br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="md" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">       ____________                        ____________
+      |    POST    |                      | TRANS_POST |
+       ============                        ============
+      | published  |                      | language   |
+      | created_at | &lt;--(1)-------(N)--&gt;&gt; | title      |
+      |            |                      | content    |
+      |            |                      | slug       |
+       ============                        ============
+</pre>
+
+
+
+<p>Se vuoi già giocare un po’ con questo schema ed esplorare la composizione dei dati puoi andare sul <a href="https://strapi.lotrek.net/graphql">GraphQL playground</a>. Ricorda però che il focus principale di questo tutorial è <code>Nuxt.js</code>, quindi ometteremo eventuali approfondimenti del backend. Inoltre grazie alla versatilità di questo framework puoi utilizza qualsiasi backend, anche WordPress.</p>
+
+
+
+<h2>Setup del progetto con Nuxt.js</h2>
+
+
+
+<p>Per cominciare assicurati di avere un ambiente con <code>Node.js</code> installato almeno alla <code>versione 12</code>.<br>Installa <code>Nuxt.js</code> globalmente e crea una nuova app chiamata <code>multilangblog</code><br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">npx create-nuxt-app multilangblog</pre>
+
+
+
+<p>Ricorda di selezionare l’opzione <code>axios</code> (sarà necessario in seguito) e aggiungi un framework UI come <a href="https://buefy.org/">Buefy</a>.</p>
+
+
+
+<h2>Crea un client per leggere gli articoli</h2>
+
+
+
+<p>Installa <code>apollo-fetch</code> per interrogare il nostro server Strapi con GraphQL<br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">yarn add apollo-fetch</pre>
+
+
+
+<p>dopodiché crea un file <code>index.js</code> nella cartella <code>services</code> per wrappare tutte le richieste. Questo client implementerà 3 metodi:</p>
+
+
+
+<ul><li><code>getAllPostsHead</code>: prende tutti i post in uno specifico linguaggio, mostrando gli attributi <code>slug</code> e <code>title</code>.</li><li><code>getAllPosts</code>: prende tutti i post in uno specifico linguaggio, mostrando gli attributi <code>slug</code>, <code>title</code>, <code>content</code> e gli articoli nelle altre lingue per riprendere lo slug tradotto.</li><li><code>getSinglePost</code>: prende un singolo post specificando lingua e slug con tutti gli attributi, e gli articoli nelle altre lingue per riprendere lo slug tradotto..</li></ul><pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">import { createApolloFetch } from 'apollo-fetch'
+
+export default class BlogClient {
+  constructor () {
+    this.apolloFetch = createApolloFetch({ uri: `${process.env.NUXT_ENV_BACKEND_URL}/graphql` })
+  }
+
+  getAllPostsHead (lang) {
+    const allPostsQuery = `
+      query AllPosts($lang: String!) {
+        transPosts(where: {lang: $lang}) {
+          slug
+          title
+        }
+      }
+    `
+    return this.apolloFetch({
+      query: allPostsQuery,
+      variables: {
+        lang
+      }
+    })
+  }
+
+  getAllPosts (lang) {
+    const allPostsQuery = `
+      query AllPosts($lang: String!) {
+        transPosts(where: {lang: $lang}) {
+          slug
+          title
+          content
+          post {
+            published
+            transPosts(where: {lang_ne: $lang}) {
+              slug
+              lang
+            }
+          }
+        }
+      }
+    `
+    return this.apolloFetch({
+      query: allPostsQuery,
+      variables: {
+        lang
+      }
+    })
+  }
+
+  getSinglePost (slug, lang) {
+    const simplePostQuery = `
+      query Post($slug: String!, $lang: String!) {
+        transPosts(where: {slug : $slug, lang: $lang}) {
+          slug
+          title
+          content
+          post {
+            published
+            transPosts(where: {lang_ne: $lang}) {
+              slug
+              lang
+            }
+          }
+        }
+      }
+    `
+    return this.apolloFetch({
+      query: simplePostQuery,
+      variables: {
+        slug,
+        lang
+      }
+    })
+  }
+}</pre>
+
+
+
+<p>Per far sì che <code>BlogClient</code> sia accessibile ovunque noi utilizziamo il <code>context</code> (ad esempio nella funzione <code>asyncData</code>) crea il file <code>plugins/ctx-inject.js</code><br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">import BlogClient from '~/services'
+
+export default ({ app }, inject) =&gt; {
+  app.$blogClient = new BlogClient()
+}</pre>
+
+
+
+<p>e aggiungilo alla sezione <code>plugins</code> nel file <code>nuxt.config.js</code><br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">export default {
+  // ...
+  plugins: ['~/plugins/ctx-inject.js']
+}</pre>
+
+
+
+<h2>La view principale</h2>
+
+
+
+<p>La struttura finale di questo blog sarà piuttosto semplice, nella homepage (<code>/</code>) ci sarà una lista di articoli con il relativo link (<code>/blog/&lt;postslug&gt;</code>). Adesso che il <code>BlogClient</code> è accessibile dal context, riscrivi il componente <code>HomePage</code> (<code>pages/index.vue</code>) per prendere tutti gli articoli nel metodo <a href="https://nuxtjs.org/guide/async-data">asyncData</a> e renderizza titolo e link per ogni articolo. Il metodo <code>asyncData</code> riceve il <a href="https://nuxtjs.org/api/context">context</a> come primo argomento e grazie al nostro plugin scritto nel paragrafo precedente, <code>BlogClient</code> sarà accessibile attraverso <code>context.app.$blogClient</code><br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="html" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">&lt;template&gt;
+  &lt;section class="section"&gt;
+    &lt;div class="is-mobile"&gt;
+      &lt;div v-for="post in posts" :key="post.slug"&gt;
+        &lt;h2&gt;{{ post.title }}&lt;/h2&gt;
+        &lt;nuxt-link :to="{name: 'blog-slug', params:{slug: post.slug}}"&gt;Read more...&lt;/nuxt-link&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: 'HomePage',
+  async asyncData ({ app }) {
+    const postsData = await app.$blogClient.getAllPostsHead('en')
+    return { posts: postsData.data.transPosts }
+  },
+  data () {
+    return {
+      posts: []
+    }
+  }
+}
+&lt;/script&gt;</pre>
+
+
+
+<p>Aggiungi la route <code>/blog/&lt;postslug&gt;</code> creando il componente <code>BlogPost</code> (<code>pages/blog/_slug.vue</code>). Installa il componente <a href="https://github.com/miaolz123/vue-markdown">Vue Markdown</a> per renderizzare gli articoli correttamente, visto che il contenuto dei post da Strapi arriva in formato Markdown (<code>yarn add vue-markdown</code>)<br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="html" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">&lt;template&gt;
+  &lt;section class="section"&gt;
+    &lt;div class="is-mobile"&gt;
+      &lt;h2&gt;{{ post.title }}&lt;/h2&gt;
+      &lt;vue-markdown&gt;{{ post.content }}&lt;/vue-markdown&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: 'BlogPost',
+  components: {
+    'vue-markdown': VueMarkdown
+  },
+  async asyncData ({ app, route }) {
+    const postsData = await app.$blogClient.getSinglePost(route.params.slug, 'en')
+    return { post: postsData.data.transPosts[0] }
+  },
+  data () {
+    return {
+      post: null
+    }
+  }
+}
+&lt;/script&gt;</pre>
+
+
+
+<h2>Aggiungiamo le lingue</h2>
+
+
+
+<p>Per aggiungere il supporto all’internazionalizzazione (<code>i18n</code>) installa il modulo <a href="https://nuxt-community.github.io/nuxt-i18n/basic-usage.html">Nuxt i18n</a><br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">yarn add nuxt-i18n</pre>
+
+
+
+<p>Abilitalo nella sezione <code>module</code> del file <code>nuxt.config.js</code><br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">{
+  modules: ['nuxt-i18n']
+}</pre>
+
+
+
+<p>e configura la sezione <code>i18n</code><br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">const LOCALES = [
+  {
+    code: 'en',
+    iso: 'en-US'
+  },
+  {
+    code: 'es',
+    iso: 'es-ES'
+  },
+  {
+    code: 'it',
+    iso: 'it-IT'
+  }
+]
+const DEFAULT_LOCALE = 'en'
+
+export default {
+  // ...
+  i18n: {
+    locales: LOCALES,
+    defaultLocale: DEFAULT_LOCALE,
+    encodePaths: false,
+    vueI18n: {
+      fallbackLocale: DEFAULT_LOCALE,
+      messages: {
+        en: {
+          readmore: 'Read more'
+        },
+        es: {
+          readmore: 'Lee mas'
+        },
+        it: {
+          readmore: 'Leggi di più'
+        }
+      }
+    }
+  }
+  // ...
+}</pre>
+
+
+
+<p>Adesso puoi modificare il componente <code>HomePage</code>: negli elementi <code>nuxt-link</code> devi usare il metodo <code>localePath</code> e renderizzare la label <code>readmore</code> usando la funzione <code>$t</code><br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="html" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">&lt;nuxt-link :to="localePath({name: 'blog-slug', params:{slug: post.slug}})"&gt;{{ $t('readmore') }}&lt;/nuxt-link&gt;</pre>
+
+
+
+<p>Nella funzione <code>asyncData</code> puoi richiamare il metodo <code>getAllPostsHead</code> del nostro client, prendendo il linguaggio corrente dalla variabile <code>store.$i18n</code> del <code>context</code><br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">// ....
+async asyncData ({ app, store }) {
+  const postsData = await app.$blogClient.getAllPostsHead(
+    store.$i18n.locale
+  )
+  return { posts: postsData.data.transPosts }
+},
+// ....</pre>
+
+
+
+<p>Fai la stessa cosa nel componente <code>BlogPost</code> usando <code>route.params.slug</code> per riprendere lo slug<br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">// ....
+async asyncData ({ app, route, store }) {
+  const postsData = await app.$blogClient.getSinglePost(
+    route.params.slug, store.$i18n.locale
+  )
+  return { post: postsData.data.transPosts[0] }
+},
+// ....</pre>
+
+
+
+<p>Adesso possiamo cominciare a creare un elemento fondamentale per un blog multilingua come si deve, il <code>LanguageSwitcher</code> (<code>components/LanguageSwitcher.vue</code>) che come si evince dal nome servirà per cambiare la lingua in ogni parte del sito.<br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="html" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">&lt;template&gt;
+  &lt;b-navbar-dropdown :label="$i18n.locale"&gt;
+    &lt;nuxt-link v-for="locale in availableLocales" :key="locale.code" class="navbar-item" :to="switchLocalePath(locale.code)"&gt;
+      {{ locale.code }}
+    &lt;/nuxt-link&gt;
+  &lt;/b-navbar-dropdown&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  computed: {
+    availableLocales () {
+      return this.$i18n.locales.filter(locale =&gt; locale.code !== this.$i18n.locale)
+    }
+  }
+}
+&lt;/script&gt;</pre>
+
+
+
+<p>Questo componente deve essere incluso in <code>layouts/default.vue</code> per renderlo disponibile sulla barra di navigazione. Il codice è molto semplice, grazie al modulo i18n di Nuxt basterà chiamare la funzione <code>switchLocalePath</code> per prendere il link della pagina nelle altre lingue. Per far sì che anche i parametri dinamici della url come ad esempio lo <code>slug</code> vengano passati al nostro <code>LanguageSwitcher</code> è sufficente utilizzare la funzione <a href="https://nuxt-community.github.io/nuxt-i18n/lang-switcher.html#dynamic-route-parameters">store.dispatch</a> nel nostro componente <code>BlogPost</code><br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">//...
+async asyncData ({ app, route, store }) {
+  const postsData = await app.$blogClient.getSinglePost(
+    route.params.slug, store.$i18n.locale
+  )
+  await store.dispatch(
+    'i18n/setRouteParams',
+    Object.fromEntries(postsData.data.transPosts[0].post.transPosts.map(
+      el =&gt; [el.lang, { slug: el.slug }])
+    )
+  )
+  return { post: postsData.data.transPosts[0] }
+},
+//...</pre>
+
+
+
+<p><a href="https://nuxt-community.github.io/nuxt-i18n/lang-switcher.html">Un po’ di info in più sul language switcher</a></p>
+
+
+
+<p>Ricorda di settare la variabile di ambiente <code>NUXT_ENV_BACKEND_URL</code> usata dal <code>BlogClient</code> con .env o direttamente (<code>export NUXT_ENV_BACKEND_URL=https://strapi.lotrek.net</code>) e lancia il tutto in modalità sviluppo con<br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">yarn dev</pre>
+
+
+
+<h2>La generazione statica</h2>
+
+
+
+<p>Per generare staticamente il nostro blog multilingua lancia<br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">yarn generate
+</pre>
+
+
+
+<p>Il risultato finale sarà una lista di tutte le route generate all’interno della cartella <code>dist</code> nella root del progetto<br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">ℹ Generating pages
+✔ Generated /it/
+✔ Generated /es/
+✔ Generated /
+✨  Done in 43.49s.</pre>
+
+
+
+<p>come si può vedere tutte le route dinamiche non vengono generate, questo perchè Nuxt.js semplicemente non le conosce. Per aggiungere il supporto alla generazione delle route dinamiche è necessario implementare il metodo <code>routes</code> all’interno della sezione <code>generate</code> nel file <code>nuxt.config.js</code> e ritornare una lista di oggetti contenenti la <code>route</code> che si vuol generare e il <code>payload</code> contenente il post.<br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">import BlogClient from './services'
+
+// ...
+
+export default {
+  // ...
+  generate: {
+    routes: async () =&gt; {
+      const client = new BlogClient()
+      let routes = []
+      let postsData = []
+      for (const locale of LOCALES) {
+        postsData = await client.getAllPosts(locale.code)
+        routes = routes.concat(postsData.data.transPosts.map((post) =&gt; {
+          return {
+            route: `${locale.code === DEFAULT_LOCALE ? '' : '/' + locale.code}/blog/${post.slug}`,
+            payload: post
+          }
+        }))
+      }
+      return routes
+    }
+  }
+  //...
+}</pre>
+
+
+
+<p>Dato che il <code>payload</code> è disponibile nel <code>context</code>, si può fare refactor di asyncData nel componente <code>BlogPost</code> per prendere l’articolo direttamente <code>context.payload</code><br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">const getSinglePostFromContext = async ({ app, route, store, payload }) =&gt; {
+  if (payload) {
+    return payload
+  }
+  const postsData = await app.$blogClient.getSinglePost(
+    route.params.slug, store.$i18n.locale
+  )
+  return postsData.data.transPosts[0]
+}
+
+export default {
+  name: 'BlogPost',
+  async asyncData (context) {
+    const singlePost = await getSinglePostFromContext(context)
+    await context.store.dispatch(
+      'i18n/setRouteParams',
+      Object.fromEntries(singlePost.post.transPosts.map(
+        el =&gt; [el.lang, { slug: el.slug }])
+      )
+    )
+    return { post: singlePost }
+  },
+  // ...
+}</pre>
+
+
+
+<p>Lancia <code>yarn generate</code> di nuovo<br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">ℹ Generating pages
+✔ Generated /it/
+✔ Generated /es/
+✔ Generated /
+✔ Generated /blog/hello-world
+✔ Generated /it/blog/ciao-mondo
+✨  Done in 33.82s.</pre>
+
+
+
+<p>Adesso Nuxt.js riesce a generere anche le route dinamiche</p>
+
+
+
+<p>Puoi testare il sito generato staticamente utilizzando <a href="https://www.npmjs.com/package/http-server">http-server</a>, lanciandolo con<br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">http-server ./dist</pre>
+
+
+
+<p>Dopo aver effettuato la generazione statica, un problema che si nota è che <code>asyncData</code> viene chiamata ogni volta durante la navigazione, il che comporta che un server che espone i contenuti attraverso la sua API come se il nostro Strapi debba sempre essere online altrimenti apparirà l’errore “Failed to fetch”. Questo problema è noto al team di Nuxt.js che sta lavorando per supportare <a href="https://github.com/nuxt/rfcs/issues/22">l’opzione di full static generation</a> nella prossima versione. Per ovviare a questo problema per adesso si può usare il plugin <a href="https://github.com/DreaMinder/nuxt-payload-extractor">nuxt-payload-extractor</a> come suggerito dallo stesso team di Nuxt.js. Una volta installato con<br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">yarn add nuxt-payload-extractor</pre>
+
+
+
+<p>aggiungi il modulo in <code>nuxt.config.js</code><br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">{
+  modules: [
+    // ...
+    'nuxt-payload-extractor'
+  ]
+}</pre>
+
+
+
+<p>il codice finale di <code>getSinglePostFromContext</code> sarà<br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">const getSinglePostFromContext = async ({ $axios, $payloadURL, app, route, store, payload }) =&gt; {
+  if (payload) {
+    return payload
+  }
+  let postsData = null
+  if (process.static &amp;&amp; process.client &amp;&amp; $payloadURL) {
+    postsData = await $axios.$get($payloadURL(route))
+    return postsData.post
+  }
+  postsData = await app.$blogClient.getSinglePost(
+    route.params.slug, store.$i18n.locale
+  )
+  return postsData.data.transPosts[0]
+}</pre>
+
+
+
+<p>Ovviamente è necessario aggiungere il <code>nuxt-payload-extractor</code> laddove si recuperano i dati, quindi anche in <code>HomePage</code><br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">async asyncData ({ $axios, $payloadURL, app, route, store }) {
+  if (process.static &amp;&amp; process.client &amp;&amp; $payloadURL) {
+    return await $axios.$get($payloadURL(route))
+  }
+  const postsData = await app.$blogClient.getAllPostsHead(
+    store.$i18n.locale
+  )
+  return { posts: postsData.data.transPosts }
+}</pre>
+
+
+
+<p>Rigenerando il sito, la funzione asyncData non va più a chiedere i dati al server ma attraverso il payload estratto dal plugin.</p>
+
+
+
+<h2>Aggiungere un supporto alle custom path</h2>
+
+
+
+<p>A volte capita che occorra fornire delle custom path per le route dinamiche in un multilingua. Ad esempio, per la lingua inglese la url <code>/blog/:slug</code>, ma per lo spagnolo <code>/artículos/:slug</code> e magari per l’italiano <code>/articoli/:slug</code>. Seguendo la documentazione di nuxt-i18n bisogna specificare queste route nella sezione <code>i18n</code> in <code>nuxt.config.js</code><br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">i18n {
+  // ...
+  parsePages: false,
+  pages: {
+    'blog/_slug': {
+      it: '/articoli/:slug',
+      es: '/artículos/:slug',
+      en: '/blog/:slug'
+    }
+  },
+  // ...
+}</pre>
+
+
+
+<p>Consiglio di spostare tutte le custom path in un file separato <code>i18n.config.js</code> per renderle disponibili poi nella funzione <code>generate</code> e nella sezione <code>i18n</code><br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">export default {
+  pages: {
+    'blog/_slug': {
+      it: '/articoli/:slug',
+      es: '/artículos/:slug',
+      en: '/blog/:slug'
+    }
+  }
+}</pre>
+
+
+
+<p>e importare questo file quindi in <code>nuxt.config.js</code><br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">import i18nConfig from './i18n.config'
+
+// ...
+
+export default {
+  // ...
+  i18n: {
+    locales: LOCALES,
+    defaultLocale: DEFAULT_LOCALE,
+    parsePages: false,
+    pages: i18nConfig.pages,
+    encodePaths: false,
+    vueI18n: {
+      fallbackLocale: DEFAULT_LOCALE,
+      // ...
+    }
+  },
+  // ...</pre>
+
+
+
+<p>Ovviamente a questo punto occorre riscrivere la funzione <code>generate</code> e prendere la giusta custom path a seconda della lingua (per semplicità ho fatto una semplice replace)<br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">routes: async () =&gt; {
+  const client = new BlogClient()
+  let routes = []
+  let postsData = []
+  for (const locale of LOCALES) {
+    postsData = await client.getAllPosts(locale.code)
+    routes = routes.concat(postsData.data.transPosts.map((post) =&gt; {
+      return {
+        route: `${locale.code === DEFAULT_LOCALE ? '' : '/' + locale.code}${i18nConfig.pages['blog/_slug'][locale.code].replace(':slug', post.slug)}`,
+        payload: post
+      }
+    }))
+  }
+  return routes
+}</pre>
+
+
+
+<p>Prova a lanciare <code>yarn generate</code> di nuovo<br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="generic" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">ℹ Generating pages
+✔ Generated /blog/hello-world
+✔ Generated /it/articoli/ciao-mondo
+✔ Generated /es/artículos/hola-mundo
+✔ Generated /es/
+✔ Generated /it/
+✔ Generated /
+✨  Done in 33.82s.</pre>
+
+
+
+<p>come vedi le path vengono generate nella maniera corretta per tutte e 3 le lingue</p>
+
+
+
+<h2>Il codice finale</h2>
+
+
+
+<p>In <a href="https://github.com/astagi/nuxt-strapi-i18n">questo repository</a> trovi il codice completo di questo tutorial, il risultato è pubblicato su <a href="https://www.netlify.com/">Netlify CDN</a> all’indirizzo <a href="https://eager-shockley-a415b7.netlify.app/">https://eager-shockley-a415b7.netlify.app/</a>. Netlify è uno dei miei servizi preferiti che fornisce cloud hosting per i siti statici, offrendo la funzione di continuous deployment, certificati SSL free, funzioni serverless e tanto altro… Il codice finale aggiunge un po’ di cose rispetto al tutorial, per esempio mostra gli autori dei post, fa uso di qualche componente esterno che per semplicità qua è stato omesso e abilita la SEO per aggiungere i metadata necessari alle pagine (vedi la sezione <a href="https://nuxt-community.github.io/nuxt-i18n/seo.html">SEO nella documentazione di nuxt-18n</a>).</p>
+
+
+
+<p>Un’altra cosa molto utile aggiunta nel codice finale è la sitemap, fornita dal modulo <a href="https://github.com/nuxt-community/sitemap-module">Nuxt.js Sitemap</a>. Il setup della sitemap è facile perché di default già usa la funzione di <code>generate.routes</code>, perciò tutte le url comprese quelle dinamiche sono automaticamente incluse nella sitemap. La configurazione è altrettanto semplice, basta aggiungere <code>@nuxtjs/sitemap</code> alla fine dell’array della sezione <code>modules</code> in<code>nuxt.config.js</code><br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">  {
+    modules: [
+      // ...
+      '@nuxtjs/sitemap'
+    ],
+  }</pre>
+
+
+
+<p>e configurare la sezione <code>sitemap</code><br></p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">export default {
+  // ...
+  sitemap: {
+    hostname: BASE_URL,
+    gzip: true,
+    i18n: DEFAULT_LOCALE
+  }
+  // ...
+}</pre>
+
+
+
+<p>Ci sono veramente tanti moduli e progetti nell’organizzazione <a href="https://github.com/nuxt-community">Nuxt Community su Github</a> consiglio di farci un giro!</p>
+
+
+
+<p>Happy coding!</p>
+	</div>
+
+	<footer class="amp-wp-article-footer"><div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="../../category/tutorial-2/index.html" rel="category tag">Tutorial</a>	</div>
+
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="../index.html#respond">
+			Leave a Comment		</a>
+	</div>
+	</footer></article><footer class="amp-wp-footer"><div>
+		<h2>CodingJam</h2>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer></body>
+<!-- Mirrored from codingjam.it/come-creare-un-blog-jamstack-multilingua-con-nuxt-js-e-strapi-cms/amp/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+</html>

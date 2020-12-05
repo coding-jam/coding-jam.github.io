@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="pingback" href="../xmlrpc.php">
+
+  <title>Microservizi in Java con Spring Boot e Spring Cloud &#8211; CodingJam</title>
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Feed" href="../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Comments Feed" href="../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Microservizi in Java con Spring Boot e Spring Cloud Comments Feed" href="https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='../wp-content/plugins/gutenberg/build/block-library/stylea4fb.css?ver=1591004795' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-gdpr-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='melissa-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lato%3A400%2C400i%2C700%2C700i%7CNoto+Serif%3A400%2C400i%2C700%2C700i&amp;subset=latin&amp;ver=1.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../wp-content/themes/melissa/css/bootstrap.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-theme-css'  href='../wp-content/themes/melissa/css/bootstrap-theme.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-ie10-viewport-bug-workaround-css'  href='../wp-content/themes/melissa/css/ie10-viewport-bug-workaround8a54.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='../wp-content/themes/melissa/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-carousel-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-theme-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.theme3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='magnific-popup-css'  href='../wp-content/themes/melissa/assets/magnific-popup/magnific-popupf488.css?ver=1.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-style-css'  href='../wp-content/themes/melissa/style3ec8.css?ver=1.1.6' type='text/css' media='all' />
+<style id='melissa-style-inline-css' type='text/css'>
+
+    .bwp-post-media img,
+    .bwp-post-carousel-item img,
+    .widget_bwp_posts_slider_item img {
+      width: 100%;
+      margin: 0;
+    }
+    .bwp-post-wrap:hover {
+      margin-top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+    #bwp-masonry-container.no-masonry .bwp-post-wrap:hover {
+      top: 0;
+    }
+    .bwp-no-results-container:hover,
+    .bwp-single-article:hover,
+    .bwp-featured-media-container:hover,
+    .post-navigation .nav-links a:hover,
+    .bwp-about-author-container:hover,
+    .comment-respond:hover,
+    .comment-body:hover,
+    #comments .no-comments:hover,
+    .comment-navigation .nav-links a:hover,
+    .bwp-related-post-wrap:hover,
+    .bwp-page-404-container:hover,
+    .bwp-sidebar-wrap:hover {
+      top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+  #bwp-header-wrap {
+    background-color: #2e3340;
+  }
+  .bwp-header-bg-overlay,
+  .bwp-header-rs-bg-overlay {
+    background-color: rgba(46, 51, 64, 0.9);
+  }
+    .bwp-content a,
+    .comment-content a,
+    .bwp-post-quote a {
+      color: #2052bf;
+    }
+</style>
+<link rel='stylesheet' id='enlighter-local-css'  href='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.css?ver=3.9.0' type='text/css' media='all' />
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery4a5f.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[]};
+var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/cookie-law-info/public/js/cookie-law-info-public3cf4.js?ver=1.8.8'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/respond.min.js?ver=1.4.2'></script>
+<![endif]-->
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/mootools-core-yc9086.js?ver=3.9.0'></script>
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.js?ver=3.9.0'></script>
+<link rel='https://api.w.org/' href='../wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+<link rel='prev' title='Vue.js' href='https://codingjam.it/vue-js/' />
+<link rel='next' title='Migliora i tuoi log con il Mapped Diagnostic Context (MDC)' href='../migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc/index.html' />
+<meta name="generator" content="WordPress 5.4.1" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://codingjam.it/?p=15003' />
+<link rel="alternate" type="application/json+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Fmicroservizi-in-java-con-spring-boot-e-spring-cloud%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Fmicroservizi-in-java-con-spring-boot-e-spring-cloud%2F&amp;format=xml" />
+<link rel="amphtml" href="https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/amp/"><script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"droide","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":false,"windowButton":false,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" sizes="32x32" />
+<link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://codingjam.it/wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-270x270.png" />
+</head>
+
+<body class="post-template-default single single-post postid-15003 single-format-standard wp-custom-logo">
+
+
+<!-- header -->
+<header id="bwp-header-wrap" class="bwp-header-simple">
+
+  <!-- header bg -->
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P6261835_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg-overlay"></div>
+
+    <!-- header content -->
+    <div class="container">
+      <div class="bwp-header-content-container">
+
+        <!-- row 1 - logo + navigation -->
+        <div class="bwp-main-navigation-container clearfix">
+
+          
+        <!-- image logo -->
+        <div class="bwp-logo-container">
+          <a href="../index.html" class="custom-logo-link" rel="home"><img width="207" height="70" src="../wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png" class="custom-logo" alt="CodingJam" srcset="https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png 207w, https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco-150x51.png 150w" sizes="(max-width: 207px) 100vw, 207px" /></a>        </div>
+        <!-- end image logo -->
+
+        
+      <!-- search -->
+      <div class="bwp-header-search-container hidden-sm hidden-xs">
+        <a href="#" id="bwp-header-search-icon">
+          <i class="fa fa-search"></i>
+        </a>
+        <div class="bwp-dropdown-search-container bwp-search-hidden">
+          
+<!-- search form -->
+<form id="searchform" role="search" method="get" action="https://codingjam.it/">
+  <div class="input-group">
+    <input type="text" name="s" id="s" class="bwp-search-field form-control" placeholder="Enter your search query...">
+    <span class="input-group-btn">
+      <button type="submit" class="btn bwp-search-submit">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+</form>
+<!-- end search form -->
+        </div>
+      </div>
+      <!-- end search -->
+
+      
+      <!-- menu -->
+      <div class="bwp-menu-container hidden-sm hidden-xs">
+        <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-2" class="sf-menu"><li id="menu-item-12007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li id="menu-item-12022" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li id="menu-item-12009" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li id="menu-item-12020" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li id="menu-item-12017" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li id="menu-item-12006" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li id="menu-item-12005" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li id="menu-item-12008" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li id="menu-item-12014" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li id="menu-item-12012" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li id="menu-item-12010" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li id="menu-item-12021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li id="menu-item-12016" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li id="menu-item-12015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li id="menu-item-12019" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li id="menu-item-12018" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>      </div>
+      <!-- end menu -->
+
+      
+      <!-- mobile menu -->
+      <div class="bwp-mobile-menu-container hidden-md hidden-lg">
+        <!-- mobile menu icon -->
+        <a href="#" id="bwp-mobile-menu-icon">
+          <i class="fa fa-bars"></i>
+        </a>
+        <!-- end mobile menu icon -->
+        <!-- dropdown mobile menu -->
+        <div class="bwp-dropdown-mobile-menu bwp-mobile-menu-hidden">
+          <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-3" class="bwp-mobile-menu list-unstyled"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>        </div>
+        <!-- end dropdown mobile menu -->
+      </div>
+      <!-- end mobile menu -->
+
+      
+        </div>
+        <!-- end row 1 - logo + navigation -->
+
+        
+          <!-- row 2 - header custom text -->
+          <div class="bwp-header-custom-text-container">
+            
+        <!-- custom text - single page -->
+        <h1 class="bwp-header-custom-title entry-title">
+          Microservizi in Java con Spring Boot e Spring Cloud        </h1>
+                <div class="bwp-header-transparent-line clearfix">
+          <span class="bwp-header-t-line-1"></span>
+          <span class="bwp-header-t-line-2"></span>
+        </div>
+        <!-- end custom text -->
+
+                  </div>
+          <!-- end row 2 - header custom text -->
+
+          
+      </div>
+    </div>
+    <!-- end header content -->
+  </div>
+  <!-- end header bg -->
+
+  
+        <!-- sticky navigation -->
+        <div class="bwp-sticky-navigation-wrap bwp-transition-4 clearfix">
+          <!-- sticky navigation icon -->
+          <a href="#" id="bwp-sticky-navigation-icon">
+            <i class="fa fa-bars"></i>
+          </a>
+          <!-- end sticky navigation icon -->
+          <!-- sticky navigation container -->
+          <div class="bwp-sticky-navigation-container bwp-sticky-navigation-hidden">
+            <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-4" class="sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>          </div>
+          <!-- end sticky navigation container -->
+        </div>
+        <!-- end sticky navigation -->
+
+        
+</header>
+<!-- end header -->
+
+  <!-- blog post - single page -->
+  <section id="bwp-single-page-wrap">
+    <div class="container">
+      <div class="bwp-single-page-container" >
+
+        
+                  <div class="row"><div class="col-md-8 bwp-single-content-col bwp-sidebar-right"><div class="bwp-single-content-col-wrap" role="main">
+        
+        <!-- article -->
+        <article id="post-15003" class="bwp-single-article bwp-transition-3">
+
+          
+          <!-- content container -->
+          <div class="bwp-single-content">
+
+            <!-- content -->
+            <div class="bwp-content entry-content clearfix">
+              <p>Negli ultimi anni non si sente altro che parlare di microservizi: se fai microservizi sei <em>cool</em>, altrimenti sei vecchio. Il salto da una applicazione monolitica ad una costellazione di piccole applicazioni però può essere più doloroso di quanto si pensi se non si hanno strumenti in grado di supportare le problematiche introdotte dai sistemi distribuiti.<br />
+Spring è sempre stato una garanzia e non sorprende se oggi come oggi <strong><a href="http://projects.spring.io/spring-cloud/" rel="noopener" target="_blank">Spring Cloud</a></strong> si sia ritagliato nel giro di poco tempo il ruolo di framework leader quando si pensa ai <em>microservizi nel mondo Java</em>.</p>
+<h2>Un po&#8217; di teoria</h2>
+<p>In rete si trovano ormai tantissime informazioni che ci spiegano gli elementi fondanti di una architettura a microservizi. Il principio base è <strong>ridurre la complessità di una applicazione</strong> in modo che abbia un <strong>dominio estremamente ridotto</strong> e che sappia svolgere <strong>un solo compito</strong>, o una serie di piccoli compiti inerenti ad esso.<br />
+La collaborazione tra questi microservizi genera il servizio finale che diamo all&#8217;utente.</p>
+<p>Questo semplice principio scatena una serie di corollari, alcuni vantaggiosi, altri un po&#8217; meno. Per esempio:</p>
+<ul>
+<li>ogni servizio ha la propria base dati e deve accedere solo ad essa. Se ha bisogno di altre informazioni le chiede via HTTP o via scambio di messaggi ad altri servizi.</li>
+<li>è possibile replicare (su <em>più processi</em>) un certo servizio ritenuto critico o che è maggiormente stressato: la scalabilità è la grande promessa dell&#8217;architettura a microservizi.</li>
+<li>ogni servizio può essere realizzato con una tecnologia diversa dall&#8217;altra visto che possono comunicare solo via HTTP o messaggi. Questo permette di scegliere lo strumento giusto per risolvere un certo problema (avete mai visto &#8220;<a href="https://www.youtube.com/watch?v=3wyd6J3yjcs" rel="noopener" target="_blank">The Silver Bullet Syndrome</a>&#8221; di Hadi Hariri?). Inoltre, è molto più facile rimanere al passo con i tempi dal punto di vista tecnologico: ogni nuovo servizio può essere realizzato con i framework più nuovi e i progetti vecchi, essendo &#8220;piccoli&#8221;, sono più facilmente aggiornabili.</li>
+<li>visto che il sistema è distribuito, il suo aggiornamento può essere parziale: ogni modulo (servizio) infatti ha un proprio ciclo di vita e può essere sostituito senza impattare (quasi) nessuno degli altri servizi correlati.</li>
+</ul>
+<p>Fin qui sembra che sia tutto perfetto, ma ovviamente non è tutto così semplice! Se questo approccio risolve e migliora i problemi che abbiamo appena descritto ne apre di nuovi. Dobbiamo sempre tenere in mente che si passa da una architettura di questo tipo:</p>
+<div style="text-align: center;">
+<a href="https://codingjam.it/wp-content/uploads/2017/12/mono.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2017/12/mono-260x300.png" width="260" height="300" class="aligncenter size-medium wp-image-15006" alt="Monolith architecture" srcset="https://codingjam.it/wp-content/uploads/2017/12/mono-260x300.png 260w, https://codingjam.it/wp-content/uploads/2017/12/mono-768x888.png 768w, https://codingjam.it/wp-content/uploads/2017/12/mono.png 865w" sizes="(max-width: 260px) 100vw, 260px" /></a>
+</div>
+<p>ad una in cui ogni modulo ha una propria vita:</p>
+<div style="text-align: center;">
+<a href="https://codingjam.it/wp-content/uploads/2017/12/micro.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2017/12/micro-300x288.png" width="300" height="288" class="aligncenter size-medium wp-image-15005" alt="Microservices architecture" srcset="https://codingjam.it/wp-content/uploads/2017/12/micro-300x288.png 300w, https://codingjam.it/wp-content/uploads/2017/12/micro-768x738.png 768w, https://codingjam.it/wp-content/uploads/2017/12/micro-1024x985.png 1024w, https://codingjam.it/wp-content/uploads/2017/12/micro.png 1040w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+</div>
+<p>In una situazione di questo tipo, sono evidenti le seguenti criticità:</p>
+<ul>
+<li><strong>ogni servizio deve sapere dove sono gli altri</strong>. C&#8217;è bisogno quindi di un &#8220;<strong>Service Registry</strong>&#8221; che permetta la &#8220;<strong>Service Discovery</strong>&#8220;, ovvero un registro dei servizi disponibili in modo che i moduli possano registrarvisi e trovarsi a vicenda.</li>
+<li>le configurazioni del sistema sono anch&#8217;esse distribuite in tutti i moduli. Fortunatamente esistono sistemi di &#8220;<strong>Configuration Management</strong>&#8221; che permettono di centralizzarle e <em>ridistribuirle &#8220;a caldo&#8221;</em>.</li>
+<li>un sistema distribuito deve essere <strong>tollerante al fallimento</strong> di una delle sue parti. Se uno o più moduli risultano non disponibili, il sistema deve essere in grado di isolare quella parte e dare una risposta di fallback: questa tecnica viene definita come &#8220;<strong>Circuit Breaker</strong>&#8220;.</li>
+<li>l&#8217;<strong>entrypoint del sistema</strong> è bene che rimanga <strong>sempre uno</strong>, in modo da non percepire l&#8217;atomicità dei sistemi sottostanti, che possono essere liberamente sostituiti o replicati. Questo pattern viene definito &#8220;<strong>API Gateway</strong>&#8220;.</li>
+<li>ogni sistema ha i propri log: dobbiamo quindi preoccuparci di <strong>recuperare e aggregare tutti i log</strong> in un unico sistema per riuscire a capire cosa sta avvenendo.</li>
+<li>in un sistema distribuito con queste caratteristiche, è difficile riuscire a mantenere una transazionalità di tipo ACID a cui siamo abituati. Dobbiamo quindi accettare l'&#8221;<a href="https://martinfowler.com/articles/microservice-trade-offs.html#consistency" rel="noopener" target="_blank">eventually consistent</a>&#8220;.</li>
+<li>la gestione di un rilascio di una nuova feature può diventare più complessa perché può coinvolgere diverse applicazioni che vanno aggiornate insieme. E&#8217; necessario quindi <strong>automatizzare il più possibile il processo</strong>.</li>
+<li>le dipendenze tra i moduli (ovvero tra i microservizi) non sono più a compile-time, bensì risiedono in un&#8217;interfaccia comune (tipicamente JSON) con la quale si scambiano i dati. Se non si è fatta una separazione chiara tra le responsabilità di ogni servizio, si può rischiare di creare referenze cicliche (il modulo A chiama B che chiama A) che ovviamente sono un male da evitare. Per <em>mantenere la relazione tra i servizi gerarchica</em> (che poi è quello che facciamo tutti i giorni nel nostro codice anche tra le classi e i package vero? 🙂 ), possiamo immaginare di suddividere i servizi in 3 macrogruppi (o <em>layer</em> se preferiamo):
+<ul>
+<li><strong>experience</strong>: sono i servizi indirizzati esplicitamente ad una certa UI (web o mobile che sia)</li>
+<li><strong>aggregation</strong>: livello intermedio che aggrega e riorganizza i dati da passare al livello <em>experience</em></li>
+<li><strong>system</strong>: sono i servizi core (anche legacy) che espongono le API delle informazioni basilari del nostro dominio</li>
+</ul>
+<p>Riuscire ad organizzare le relazioni tra i servizi almeno su due di questi 3 gruppi tende a tenere separate le responsabilità ed evita spiacevoli referenze cicliche.
+</li>
+</ul>
+<p>Questi a mio avviso sono le nuove sfide che bisogna affrontare quando ci affacciamo a questo nuovo paradigma architetturale: <em>ne vale veramente la pena</em>? Dipende dal problema che dobbiamo affrontare: se una dei primi requisiti è la scalabilità, allora siete sulla strada giusta, altrimenti è una scelta da ponderare molto seriamente.<br />
+Bene, avete scelto i microservizi? Allora non reinventatevi la ruota! Dal momento che quelle esposte sono problematiche comuni, esistono anche soluzioni che permettono di semplificarci la vita. Vediamo come possiamo fare nel mondo Java.</p>
+<h2>Microservizi e Java</h2>
+<p>Come può essere fatto un microservizio in Java? Diciamo che in generale, quando si pensa ad un microservizio, l&#8217;idea è quella di produrre una <strong>applicazione stand-alone</strong> che espone una API via HTTP, cioè ha un <strong>server HTTP embedded</strong> per farlo&#8230; tutto l&#8217;opposto di quanto fatto fino oggi in pratica! Nel mondo Java infatti siamo cresciuti a pane e Application Server (come JBoss, WAS, ecc&#8230;) o Servlet Container (come Tomcat). Lo sviluppo era quindi finalizzato ad un artefatto deployabile in unico ambiente dove giravano altre applicazioni.<br />
+Nel mondo dei microservizi invece è necessario un ribaltamento del punto di vista: è l&#8217;<strong>artefatto stesso ad eseguire un server</strong> (Application Server o Servlet Container che sia) che ha il ciclo di vita pari a quello dell&#8217;applicazione. Con l&#8217;imporsi dell&#8217;architettura REST e della necessità di creare servizi <em>stateless</em> che permettano la scalabilità in modo efficace (senza sessioni distribuite e replicate per esempio), l&#8217;architettura a microservizi (che non è certo stata <a href="http://blog.cleancoder.com/uncle-bob/2015/05/28/TheFirstMicroserviceArchitecture.html" rel="noopener" target="_blank">inventata ieri come concetto</a>) ha trovato terreno fertile ed è esplosa come vera e propria <em>buzzword</em>!! Per concretizzare e domare questa <em>buzzword</em>, abbiamo bisogno di strumenti moderni che supportino le problematiche dei sistemi distribuiti.</p>
+<p>Niente ci vieta di fare microservizi continuando a lavorare come facevamo ora, ovvero generando piccoli WAR o EAR da deployare (<strong>magari da soli</strong>) in un server: anche in quel caso stiamo facendo microservizi, ma non nel senso classico del termine. Se magari chiudiamo tutto dentro un container Docker già il discorso può cambiare: l&#8217;<em>artefatto finale infatti è il container</em> ed è <em>stand-alone</em>. Qua però si apre un altro filone, perché spostiamo il focus sull&#8217;infrastruttura&#8230;<br />
+Rimanendo invece a livello applicativo, come faccio in java la <em>service discovery</em>? E il <em>balancing</em>? La <em>fault tolerance</em>?<br />
+Un modo (ma non l&#8217;unico) ad oggi per risolvere questi problemi in modo coerente è l&#8217;accoppiata <strong>Spring Boot</strong> + <strong>Spring Cloud</strong>!</p>
+<h2>Spring Boot e Spring Cloud</h2>
+<p>Ormai alla sua terza candelina, <a href="https://projects.spring.io/spring-boot/" rel="noopener" target="_blank">Spring Boot</a> ha letteralmente fatto riesplodere l&#8217;uso di Spring: se infatti il mondo Java EE aveva bene o male <em>quasi</em> (per essere ottimisti) colmato il gap almeno con <a href="https://projects.spring.io/spring-framework/" rel="noopener" target="_blank">Spring Framework</a>, con l&#8217;uscita di Spring Boot c&#8217;è stato un nuovo salto in avanti perché è proprio lo strumento ideale per creare microservizi in Java!! Lo stesso payoff recita (tradotto liberamente 🙂 ):</p>
+<blockquote><p>
+Spring Boot rende facile creare applicazioni stand-alone, pronte per la produzione, basate su Spring che &#8220;semplicemente funzionano&#8221;.
+</p></blockquote>
+<p>Spring Boot infatti toglie tutto il peso della noiosa configurazione di Spring perché predilige le convenzioni alle configurazioni. </p>
+<p>Se però questo è il tassello base che permette di creare applicazioni stand-alone, senza <a href="https://projects.spring.io/spring-cloud/" rel="noopener" target="_blank">Spring Cloud</a> saremmo sostanzialmente a piedi! Ma cos&#8217;è Spring Cloud? E&#8217; un <strong>insieme di soluzioni ai problemi comuni dei sistemi distribuiti</strong> sopra citati (come configuration management, service discovery, circuit breakers&#8230;) organizzati in tanti sotto-progetti.</p>
+<p>Conosciamoli più da vicino, grazie all&#8217;aiuto di un nostro progetto di esempio disponibile su <a href="https://github.com/coding-jam/spring-cloud-poc" rel="noopener" target="_blank">GitHub</a> a cui faremo spesso riferimento. Ogni argomento richiederebbe un post a sé stante di approfondimento, vediamo di seguito gli elementi fondamentali.</p>
+<h3><a href="https://cloud.spring.io/spring-cloud-config" rel="noopener" target="_blank">Spring Cloud Config</a></h3>
+<p>Come si può capire dal nome, grazie a questo componente abbiamo a disposizione un server centralizzato per gestire le configurazioni (e ovviamente il supporto ai client). Di default, esse vengono scaricate da un <strong>repository git</strong> contenente una serie di file che identificano il nome dell&#8217;applicazione (definita da <tt>${spring.application.name}</tt>), il profilo attivo (<tt>${spring.profiles.active}</tt> se specificato, oppure <tt>default</tt>) e una label (che può essere il branch di riferimento). Un esempio è il repository <a href="https://github.com/coding-jam/spring-cloud-poc-config" rel="noopener" target="_blank">creato per questo progetto</a>.<br />
+Gestire le configurazioni da git può essere interessante per il versionamento, ma non è detto che piaccia a tutti. La <a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-config/1.4.0.RELEASE/multi/multi_spring-cloud-config.html" rel="noopener" target="_blank">documentazione ufficiale</a> mostra che è possibile usare un <strong>database</strong>, il <strong>file system</strong> o addirittura <a href="https://www.vaultproject.io/" rel="noopener" target="_blank">HashiCorp Vault</a>.</p>
+<p>A prescindere dal &#8220;backend&#8221; usato per gestire le configurazioni, abbiamo a disposizione una serie di caratteristiche interessanti:</p>
+<ul>
+<li>è possibile <strong>richiedere via REST la configurazione di un servizio</strong>. Nel nostro esempio, la configurazione del servizio <tt>customer-services</tt> relativa al profilo di <tt>default</tt> sarà accessibile dalla risorsa
+<pre>
+http://localhost:8888/customer-services/default
+</pre>
+<p>(<tt>localhost:8888</tt> è il binding di default del server Spring Cloud Config)</li>
+<li>le property di un servizio possono essere <strong>aggiornate dinamicamente</strong> senza che questo sia riavviato! Le proprietà vengono aggiornate chiamando esplicitamente l&#8217;endpoint <tt>/refresh</tt> (magari tramite un <em>webhook</em>?) o <code>RefreshEndpoint.refresh()</code> (anche via JMX). Se vogliamo aggiornare il valore delle property iniettate (per esempio con <code>@Value</code>), è necessario che il bean sia di tipo <code>@RefreshScope</code> (come per esempio la classe <code><a href="https://github.com/coding-jam/spring-cloud-poc/blob/master/order-services/src/main/java/it/codingjam/orderservices/clients/CustomerResource.java" rel="noopener" target="_blank">CustomerResourceFallback</a></code>). E&#8217; possibile propagare automaticamente le modifiche alle configurazioni per esempio con RabbitMQ, come specificato nel <a href="https://github.com/spring-cloud-samples/configserver" rel="noopener" target="_blank">progetto di esempio di Spring Cloud Samples</a>.
+</ul>
+<h3>Spring Cloud Netflix</h3>
+<p>E&#8217; il cuore della piattaforma Spring Cloud che in pratica integra Spring Boot con Netflix OSS, la piattaforma realizzata da Netflix per indirizzare le sfide dei sistemi distribuiti. I nomi noti che rientrano sotto il cappello di Netflix OSS sono:</p>
+<ul>
+<li><strong>Eureka</strong> fa da <strong><a href="https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-eureka-server.html" rel="noopener" target="_blank">service registry</a></strong>, abilitando la <strong>service discovery</strong> <a href="https://cloud.spring.io/spring-cloud-netflix/multi/multi__service_discovery_eureka_clients.html" rel="noopener" target="_blank">tra i servizi del nostro sistema</a>. Di default, il server dovrebbe essere avviato sulla porta <tt>8761</tt> e i client, se non differentemente configurati, si aspettano di trovarlo su <tt>localhost:8761</tt>. Nel progetto si esempio, la configurazione centralizzata rende esplicito il default nel file <tt><a href="https://github.com/coding-jam/spring-cloud-poc-config/blob/master/application.properties" rel="noopener" target="_blank">application.properties</a></tt>. Un dettaglio approfondito del significato di gran parte dei parametri configurabili di Eureka è disponibile nel post &#8220;<a href="https://blog.asarkar.org/technical/netflix-eureka/" rel="noopener" target="_blank">Eureka &#8211; The Hidden Manual</a>&#8220;</li>
+<li><strong><a href="https://cloud.spring.io/spring-cloud-netflix/single/spring-cloud-netflix.html#_circuit_breaker_hystrix_clients" rel="noopener" target="_blank">Hystrix</a></strong> è un <strong>circuit breaker</strong>. Che significa? Dobbiamo sempre tenere in mente che in un sistema distribuito una delle sue parti può non essere disponibile in un certo momento: come dobbiamo comportarci in questi casi? Hystrix ha la responsabilità di &#8220;<em>aprire il circuito</em>&#8221; delle chiamate fallimentari e fornire un default alternativo. Sarà sua cura ogni tanto controllare se il sistema escluso è nuovamente disponibile, richiudendo il &#8220;circuito delle chiamate&#8221;.</li>
+<li><strong>Ribbon</strong>: <strong>client side load balancer</strong>. Il termine è autoesplicativo, ma cerchiamo di capire meglio cosa significa. Generalmente in un sistema a microservizi la comunicazione può essere <strong>diretta</strong> oppure tramite <strong>proxy</strong>: nel primo caso, <strong>ogni servizio conosce dove sono gli altri</strong> (perché presi dal service registry), è quindi <strong>lato client</strong> che si decide chi chiamare; nel secondo invece, <strong>ogni servizio conosce solo il proxy</strong> ed è poi lui a bilanciare (bilanciamento <strong>lato server</strong>) le chiamate alle repliche di un servizio.<br />
+Ribbon quindi è integrato con Eureka, dal quale recupera tutti i riferimenti ai servizi e decide quale replica chiamare, di default in modalità round-robin.
+</li>
+<li><strong><a href="https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-feign.html" rel="noopener" target="_blank">Feign</a></strong> è un <strong>client REST dichiarativo</strong>. Permette di effettuare chiamate tra servizi<br />
+semplicemente <strong>annotando una interfaccia Java</strong> con annotazioni Spring MVC o JAX-RS. Un esempio ne è la classe <code><a href="https://github.com/coding-jam/spring-cloud-poc/blob/master/order-services/src/main/java/it/codingjam/orderservices/clients/CustomerResource.java" rel="noopener" target="_blank">CustomerResource</a></code>. Oltre alla semplicità nel dichiarare un client REST, Feign si appoggia a Ribbon per scegliere lato client quale servizio chiamare e sfrutta Hystrix, se è nel classpath ed è abilitato (<tt>feign.hystrix.enabled=true</tt>). Avendo a disposizione Feign infatti sarà molto difficile dover &#8220;scendere di livello&#8221; ed usare direttamente Ribbon e Hystrix, a meno che non si abbiano esigenze particolari (che onestamente non mi sono ancora capitate&#8230;).
+</li>
+<li><strong><a href="https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html" rel="noopener" target="_blank">Zuul</a></strong> è un <strong>API gateway</strong>. Fa da unico punto di ingresso al sistema e dirotta le chiamate ai servizi &#8220;sottostanti&#8221;. E&#8217; basato su Hystrix e Ribbon così da garantire load balancing e circuit breaker.<br />
+Se abilitato come proxy (<code>@EnableZuulProxy</code>), è capace quindi di mappare dinamicamente gli endpoint dei servizi &#8220;sottostanti&#8221;.<br />
+Facciamo un esempio pratico facendo riferimento al progetto demo: la risorsa <tt><a href="https://github.com/coding-jam/spring-cloud-poc/blob/master/customer-services/src/main/java/it/codingjam/customerservices/resources/CustomerResource.java" rel="noopener" target="_blank">/api/v1/customers</a></tt> del servizio <tt><a href="https://github.com/coding-jam/spring-cloud-poc/tree/master/customer-services" rel="noopener" target="_blank">customer-services</a></tt> è raggiungibile su <tt>localhost:9090</tt> direttamente </p>
+<pre>
+http://localhost:9090/api/v1/customers
+</pre>
+<p>o tramite Zuul (che risiede sulla <tt>8080</tt>)</p>
+<pre>
+http://localhost:8080/customer-services/api/v1/customers
+</pre>
+<p>Zuul quindi &#8220;proxa&#8221; sotto &#8220;<tt>/${spring.application.name}/**</tt>&#8221; tutte le risorse di quel servizio. E&#8217; possibile disabilitare del tutto questo comportamento (<tt>zuul.ignoredServices='*'</tt>) e/o impostare manualmente le rotte che vogliamo esporre tramite Zuul: questo approccio lo trovo molto interessante se si vuole rendere &#8220;pubbliche&#8221; alcune API e altre lasciarle interne. Sarà infatti <strong>solo Zuul ad essere mappato sul bilanciatore</strong> della nostra infrastruttura, quindi tutto quello che esporrà Zuul diventerà accessibile pubblicamente.<br />
+Aggiungendo esplicitamente una rotta come nel file <tt><a href="https://github.com/coding-jam/spring-cloud-poc-config/blob/master/zuul-gateway.yml" rel="noopener" target="_blank">zuul-gateway.yml</a></tt>, raggiungeremo la risorsa tramite il proxy come se stessimo chiamando il servizio vero e proprio:</p>
+<pre>
+http://localhost:8080/api/v1/customers
+</pre>
+<p>Inoltre, rimappare alcune API permette di renderle omogenee all&#8217;esterno senza far vedere come sono internamente organizzate. </p>
+<p>Prendiamo per esempio l&#8217;<a href="https://github.com/coding-jam/spring-cloud-poc/blob/master/order-services/src/main/java/it/codingjam/orderservices/resources/OrderResource.java" rel="noopener" target="_blank">API degli ordini</a> del servizio <tt><a href="https://github.com/coding-jam/spring-cloud-poc/tree/master/order-services" rel="noopener" target="_blank">order-services</a></tt></p>
+<pre>
+// Chiamata diretta:
+http://localhost:9191/api/v1/customers/1/orders
+
+// Tramite proxy:
+http://localhost:8080/order-services/api/v1/customers/1/orders
+</pre>
+<p>Sembra una sottorisorsa di <tt>/customers</tt> che potrebbe stare nel progetto <tt>customer-services</tt>, ma in realtà <strong>sta in un altro progetto</strong> (quello degli ordini appunto): possiamo quindi mapparla esplicitamente su Zuul in modo che dal proxy appaia effettivamente come una sua sottorisorsa, accessibile così:</p>
+<pre>
+http://localhost:8080/api/v1/customers/1/orders
+</pre>
+<p>Pubblicamente quindi l&#8217;API apparirà omogenea, come un consumatore se l&#8217;aspetterebbe: internamente però è organizzata secondo le logiche di dominio.
+</li>
+</ul>
+<h3><a href="https://cloud.spring.io/spring-cloud-sleuth/" rel="noopener" target="_blank">Spring Cloud Sleuth</a></h3>
+<p>Dal punto di vista dello sviluppatore o di chi fa assistenza, il primo grande problema che introduce l&#8217;architettura a microservizi è la <strong>frammentazione dei log</strong>. Se c&#8217;è un problema, non è pensabile mettersi ad aprire tutti i file di log: anche se possiamo immaginare quale servizio andare a controllare, indovinare in quale replica è successo non dà la stessa soddisfazione di vincere al superenalotto!</p>
+<p>E&#8217; necessario quindi <strong>aggregare i log in una piattaforma centralizzata</strong>, in modo da poter essere consultati avendo ben chiara la sequenza temporale e l&#8217;origine di ogni log, per poi risalire al sistema interessato: per far questo è necessario un &#8220;<em>correlation id</em>&#8221; che viene passato tra tutti i sistemi coinvolti, diverso per ogni chiamata. Spring Cloud Sleuth fa proprio questo per noi! Basta aggiungere la <em>dipendenza nel classpath</em> e specificare la proprietà <tt>spring.application.name</tt> (occhio a <a href="https://github.com/spring-cloud/spring-cloud-sleuth/commit/e58c67bcf77b3c88178e29b25cc7373e36abd8df" rel="noopener" target="_blank">questo commit</a>) e vi ritroverete i log con una tupla formata da </p>
+<pre>
+[<tt>${spring.application.name}</tt>, <tt>Trace ID</tt>, <tt>Span ID</tt>, <tt>exportable?</tt>]
+</pre>
+<p>Il <strong>Trace ID</strong> è un <em>hash</em> <strong>unico per tutta la durata della richiesta</strong>, mentre lo <strong>Span ID</strong>, hash anche lui, varia in ogni sottosistema chiamato: Sleuth infatti si preoccupa di propagare questi valori via HTTP (e <a href="https://spring.io/blog/2016/02/15/distributed-tracing-with-spring-cloud-sleuth-and-spring-cloud-zipkin" rel="noopener" target="_blank">non solo</a>) durante le chiamate senza che ce ne accorgiamo, in modo da avere una tracciatura completa del giro che effettua la chiamata proveniente dall&#8217;utente.<br />
+Questi valori possono quindi essere usati da un lato per <em>aggregare i log</em> tramite strumenti &#8220;grezzi&#8221; (ma alla portata di tutti) come <a href="https://it.wikipedia.org/wiki/SysLog" rel="noopener" target="_blank">SysLog</a>, oppure più evoluti come ELK (<a href="https://www.elastic.co/" rel="noopener" target="_blank">ElasticSearch</a> &#8211; <a href="https://www.elastic.co/products/logstash" rel="noopener" target="_blank">LogStash</a> &#8211; <a href="https://www.elastic.co/products/kibana" rel="noopener" target="_blank">Kibana</a>); dall&#8217;altro, sono utili per analizzare i tempi di risposta medi di una chiamata e delle sue componenti intermedie, in modo da identificare eventuali colli di bottiglia. <a href="https://zipkin.io/" rel="noopener" target="_blank">Zipkin</a> è lo strumento adatto a questo e il quarto parametro <tt>exportable?</tt> è proprio riferito al lui. <a href="https://dzone.com/articles/monitoring-microservices-with-spring-cloud-sleuth" rel="noopener" target="_blank">ELK e Zipkin usati insieme ci permettono di monitorare</a> in tempo reale l&#8217;andamento della nostra applicazione, identificare punti deboli dell&#8217;architettura ed intervenire tempestivamente in caso di problemi.</p>
+<p>Prendiamo per esempio la chiamata passando da Zuul:</p>
+<pre>
+http://localhost:8080/api/v1/customers/1/orders
+</pre>
+<p>essa investe 3 servizi: </p>
+<ol>
+<li>il proxy (<tt><a href="https://github.com/coding-jam/spring-cloud-poc/tree/master/zuul-gateway" rel="noopener" target="_blank">zuul-gateway</a></tt>): crea il Trace ID e il primo Span ID (uguale al Trace ID)</li>
+<li>il servizio degli ordini (<tt><a href="https://github.com/coding-jam/spring-cloud-poc/tree/master/order-services" rel="noopener" target="_blank">order-services</a></tt>): riceve il Trace ID e un nuovo Span ID (generato dal proxy) da usare per tracciare questa parte della chiamata.</li>
+<li>il servizio dei clienti per validarne l&#8217;id (<tt><a href="https://github.com/coding-jam/spring-cloud-poc/tree/master/customer-services" rel="noopener" target="_blank">customer-services</a></tt>): riceve sempre lo stesso Trace ID e un altro Span ID (questa volta generato dal servizio degli ordini).
+</ol>
+<p>Verranno prodotti 3 log di questo tipo:</p>
+<pre>
+2017-12-10 15:07:27.933  INFO [zuul-gateway,f9f588c743de146b,f9f588c743de146b,false] - Requested URI: /api/v1/customers/1/orders
+2017-12-10 15:07:28.473  INFO [order-services,f9f588c743de146b,0e6984995310da01,false] - Searching orders for customer id 1
+2017-12-10 15:07:28.505  INFO [customer-services,f9f588c743de146b,40b8f5fc5632bb3e,false] - Searching customer by id 1
+</pre>
+<h2>Conclusioni</h2>
+<p>In questo post abbiamo cercato di affrontare i punti salienti dal punto di vista implementativo di una architettura a microservizi affrontata con Spring Cloud. Ovviamente possiamo fare microservizi in Java in svariati modi: ultimamente anche i vendor Java EE stanno proponendo soluzioni &#8220;embedded&#8221; dei propri application server come <a href="http://wildfly-swarm.io/" rel="noopener" target="_blank">Wildfly Swarm</a> (con un interessante <a href="http://wildfly-swarm.io/generator/" rel="noopener" target="_blank">generatore di progetti</a>), <a href="https://www.payara.fish/" rel="noopener" target="_blank">Payara</a> (derivato da GlassFish) e addirittura IBM che <a href="https://liberty-app-accelerator.wasdev.developer.ibm.com/start/" rel="noopener" target="_blank">sta spingendo WebSphere Liberty</a> in questa direzione. Tutte queste soluzioni supportano il nuovo <a href="https://microprofile.io/" rel="noopener" target="_blank">MicroProfile</a>, che fornisce, tra le altre cose, strumenti per l&#8217;<em>health check</em> e <em>fault tolerance</em>.<br />
+A prescindere dall&#8217;implementazione che decidiamo di adottare, a livello architetturale vi troverete davanti alle stesse sfide, quindi meglio avere gli strumenti più adatti a risolvere i vostri problemi.</p>
+            </div>
+            <!-- end content -->
+
+            
+                <!-- social sharing buttons / counters -->
+                <div class="row">
+                  <div class="col-md-7">
+                    
+    <!-- social sharing buttons -->
+    <div class="bwp-single-share-wrap">
+      <span>Share:</span>
+      <ul class="bwp-single-share list-unstyled">
+        <!-- facebook -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/" target="_blank" class="bwp-share-link bwp-facebook-share">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <!-- end facebook -->
+        <!-- twitter -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/&amp;text=microservizi-in-java-con-spring-boot-e-spring-cloud', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/&amp;text=microservizi-in-java-con-spring-boot-e-spring-cloud" target="_blank" class="bwp-share-link bwp-twitter-share">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <!-- end twitter -->
+        <!-- google+ -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/" target="_blank" class="bwp-share-link bwp-google-plus-share">
+            <i class="fa fa-google-plus"></i>
+          </a>
+        </li>
+        <!-- end google+ -->
+        <!-- vk -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/" target="_blank" class="bwp-share-link bwp-vk-share">
+            <i class="fa fa-vk"></i>
+          </a>
+        </li>
+        <!-- end vk -->
+        <!-- pinterest -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/&amp;media=&amp;description=microservizi-in-java-con-spring-boot-e-spring-cloud', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/&amp;media=&amp;description=microservizi-in-java-con-spring-boot-e-spring-cloud" target="_blank" class="bwp-share-link bwp-pinterest-share">
+            <i class="fa fa-pinterest-p"></i>
+          </a>
+        </li>
+        <!-- end pinterest -->
+      </ul>
+    </div>
+    <!-- end social sharing buttons -->
+
+                      </div>
+                  <div class="col-md-5">
+                    
+    <!-- counters -->
+    <ul class="bwp-single-counters list-unstyled clearfix ">
+                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>3</a></li>
+                </ul>
+    <!-- end counters -->
+
+                      </div>
+                </div>
+                <!-- end social sharing buttons / counters -->
+
+                
+      <!-- metadata -->
+      <div class="bwp-single-metadata-wrap ">
+        <ul class="bwp-single-metadata list-unstyled clearfix">
+                      <!-- author -->
+            <li>
+              <span class="vcard author">
+                <span class="fn">
+                  <i class="fa fa-pencil-square-o"></i><a href="../author/andrea-como/index.html" title="Posts by Andrea Como" rel="author">Andrea Como</a>                </span>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end author -->
+                                <!-- date -->
+            <li>
+                            <span class="date updated">
+                <i class="fa fa-clock-o"></i><a href="https://codingjam.it/2017/12/13/">13/12/2017</a>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end date -->
+                                <!-- categories -->
+            <li>
+              <i class="fa fa-bookmark-o"></i><a href="../category/spring-2/index.html" rel="category tag">Spring</a>, <a href="../category/tutorial-2/index.html" rel="category tag">Tutorial</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end categories -->
+                                <!-- tags -->
+            <li>
+              <i class="fa fa-tags"></i><a href="https://codingjam.it/tag/microservizi/" rel="tag">microservizi</a>, <a href="https://codingjam.it/tag/spring/" rel="tag">spring</a>, <a href="https://codingjam.it/tag/spring-cloud/" rel="tag">spring cloud</a>, <a href="https://codingjam.it/tag/spring-boot/" rel="tag">Spring-Boot</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end tags -->
+                  </ul>
+      </div>
+      <!-- end metadata -->
+
+      
+          </div>
+          <!-- end content container -->
+
+        </article>
+        <!-- end article -->
+
+        
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://codingjam.it/vue-js/" rel="prev"><span class="meta-nav"><i class="fa fa-angle-left"></i>Previous post</span><span class="post-title-nav">Vue.js</span></a></div><div class="nav-next"><a href="../migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc/index.html" rel="next"><span class="meta-nav">Next post<i class="fa fa-angle-right"></i></span><span class="post-title-nav">Migliora i tuoi log con il Mapped Diagnostic Context (MDC)</span></a></div></div>
+	</nav>
+    <!-- about the author -->
+    <div class="bwp-about-author-container bwp-transition-3 clearfix">
+      <!-- avatar -->
+      <div class="bwp-about-author-avatar">
+        <a href="../author/andrea-como/index.html">
+          <img alt='' src='https://secure.gravatar.com/avatar/684ede46c9386ff5430335a42fd5b011?s=150&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/684ede46c9386ff5430335a42fd5b011?s=300&#038;d=mm&#038;r=g 2x' class='avatar avatar-150 photo' height='150' width='150' />        </a>
+      </div>
+      <!-- end avatar -->
+      <!-- biographical info -->
+      <div class="bwp-about-author-bio-wrap">
+        <h3 class="bwp-about-author-name">
+          <a href="../author/andrea-como/index.html" title="Posts by Andrea Como" rel="author">Andrea Como</a>          <span><i class="fa fa-angle-double-right"></i>84 Posts</span>
+        </h3>
+        <div class="bwp-about-author-bio">
+          Sono un <strong>software engineer</strong> focalizzato nella progettazione e sviluppo di applicazioni web in Java. Presso <a href="http://www.omniagroup.it/">OmniaGroup</a> ricopro il ruolo di <strong>Tech Leader</strong> sulle tecnologie legate alla piattaforma Java EE 5 (come WebSphere 7.0, EJB3, JPA 1 (EclipseLink), JSF 1.2 (Mojarra) e RichFaces 3) e Java EE 6 con JBoss AS 7, in particolare di CDI, JAX-RS, nonché di EJB 3.1, JPA2, JSF2 e RichFaces 4. Al momento mi occupo di ECM, in particolar modo sulla customizzazione di Alfresco 4 e sulla sua installazione con tecnologie da devops come Vagrant e Chef. 
+In passato ho lavorato con la piattaforma alternativa alla enterprise per lo sviluppo web: Java SE 6, Tomcat 6, Hibernate 3 e Spring 2.5. Nei ritagli di tempo sviluppo siti web in PHP e ASP. Per maggiori informazioni consulta il mio <a href="http://resume.linkedinlabs.com/qoqlpivm">curriculum pubblico</a>.
+
+<a href="https://twitter.com/andrea_como">Follow me on Twitter</a>  -  <a href="http://www.linkedin.com/pub/andrea-como/19/291/99">LinkedIn profile</a> - <a href="https://plus.google.com/u/0/111647274412905676850/posts?rel=author">Google+</a>        </div>
+                  <ul class="bwp-about-author-social list-unstyled clearfix">
+                              <li><a href="http://andrea_como/" target="_blank" class="bwp-a-twitter-link"><i class="fa fa-twitter"></i></a></li>
+                                  <li><a href="http://www.cosenonjaviste.it/?team=andrea-como" target="_blank" class="bwp-a-website-link"><i class="fa fa-link"></i></a></li>
+                          </ul>
+              </div>
+      <!-- end biographical info -->
+    </div>
+    <!-- end about the author -->
+
+    
+<!-- comments -->
+<div id="comments" class="comments-area">
+
+	
+		<h2 class="comments-title">
+			3 thoughts on &ldquo;Microservizi in Java con Spring Boot e Spring Cloud&rdquo;		</h2>
+
+		<ol class="comment-list">
+					<li id="comment-797" class="comment even thread-even depth-1">
+			<article id="div-comment-797" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/55efa7619cda485e31108a6804794ac9?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/55efa7619cda485e31108a6804794ac9?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">griso</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-797">
+							<time datetime="2017-12-20T14:23:00+01:00">
+								20/12/2017 at 14:23							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Molto utile.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/?replytocom=797#respond' data-commentid="797" data-postid="15003" data-belowelement="div-comment-797" data-respondelement="respond" aria-label='Reply to griso'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-799" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-799" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/6aae6795979c9d317c4ff5d3a1fd82b4?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/6aae6795979c9d317c4ff5d3a1fd82b4?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Alessandro Bx</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-799">
+							<time datetime="2018-02-13T22:37:00+01:00">
+								13/02/2018 at 22:37							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Ottimo articolo mi ha chiarito molte cose che non mi erano chiare.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/?replytocom=799#respond' data-commentid="799" data-postid="15003" data-belowelement="div-comment-799" data-respondelement="respond" aria-label='Reply to Alessandro Bx'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-815" class="comment even thread-even depth-1">
+			<article id="div-comment-815" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/853265638deaf3b59055afd074ae3f3e?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/853265638deaf3b59055afd074ae3f3e?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Antonio Musarra</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-815">
+							<time datetime="2018-05-04T15:50:00+02:00">
+								04/05/2018 at 15:50							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Andrea, davvero un grande articolo che mette ordine in una gran confusione.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/?replytocom=815#respond' data-commentid="815" data-postid="15003" data-belowelement="div-comment-815" data-respondelement="respond" aria-label='Reply to Antonio Musarra'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+		<div id="respond" class="comment-respond">
+		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='15003' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+	
+</div>
+<!-- end comments -->
+
+    <!-- related posts (by tags) -->
+    <div class="bwp-related-posts-container bwp-show-2-posts">
+      <div class="bwp-o-hidden">
+
+        <!-- title -->
+        <h2 class="bwp-related-posts-title">
+          You might also like:        </h2>
+        <!-- end title -->
+
+        <!-- posts list -->
+        <div class="bwp-related-posts clearfix">
+
+          
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="https://codingjam.it/primi-passi-con-spring-batch/">Primi passi con Spring Batch</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>Realizzando applicazioni business-to-business non è raro incontrare la necessità di fare movimentazione massiva di dati in modo automatico, schedulato e fail-safe. Un bel batch quindi è quello che ci vuole! 🙂 Ovviamente si può fare in mille modi, usare mille framework differenti se necessario, schedularli tramite Cron per esempio o Quartz e così via. Ultimamente mi è capitato di dover realizzare un batch di migrazione dati da una versione X di un applicativo ad una Y. Viste le combinazioni che [&hellip;]</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2014/03/27/" class="bwp-post-date">
+        <span class="date updated">27/03/2014</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="https://codingjam.it/primi-passi-con-spring-batch/" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="https://codingjam.it/lalternativa-a-java-ee-come-implementare-lo-stack-jsfspringhibernate-con-java-se-e-tomcat-parte-i/">L&#8217;alternativa a Java EE: come implementare lo stack JSF+Spring+Hibernate con Java SE e Tomcat &#8211; Parte I</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p style="text-align: justify;">La specifica Java EE 5 ha fatto grandi passi avanti rispetto alla versione precedente: adesso anche per noi comuni mortali è possibile usare gli <em>Enterprise Java Beans</em> (EJB) senza perdersi nella giungla di interfacce da implementare. Per poter usare questi strumenti potenti abbiamo però bisogno di una infrastruttura altrettanto potente, ovvero un Application Server (come JBoss, Glassfish o WebSphere) che implementa la specifica Java Enterprise. A seconda dei progetti, capita a volte di percepire questi strumenti come dei veri e propri &#8220;carrozzoni&#8221;, come se si volesse per forza usare un bazooka per schiacciare una formica. Abbiamo davvero bisogno sempre e comunque di un bazooka? Se il nostro target è la formica forse il gioco non vale la candela. In questo post vedremo come prendere in prestito quel che veramente ci serve del mondo Enterprise e riportarlo in un contesto più agile grazie al buon vecchio Tomcat.</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2011/05/12/" class="bwp-post-date">
+        <span class="date updated">12/05/2011</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="https://codingjam.it/lalternativa-a-java-ee-come-implementare-lo-stack-jsfspringhibernate-con-java-se-e-tomcat-parte-i/" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+        </div>
+        <!-- end posts list -->
+
+      </div>
+    </div>
+    <!-- end related posts -->
+
+    
+                  </div><!-- /bwp-single-content-col-wrap --></div><!-- /col-md-8 --><div class="col-md-4 bwp-sidebar-col bwp-sidebar-right">
+        
+                  </div><!-- /col --></div><!-- /row -->
+        
+      </div>
+    </div>
+  </section>
+  <!-- end blog post - single page -->
+
+  
+<!-- footer -->
+<footer id="bwp-footer-wrap">
+  <div class="container">
+    <div class="bwp-footer-container clearfix">
+
+              <!-- footer text -->
+        <div class="bwp-footer-text">
+          CodingJam        </div>
+        <!-- end footer text -->
+      
+              <!-- social links -->
+        <ul class="bwp-footer-social-links list-unstyled clearfix">
+          <li><a href="https://twitter.com/codingjam" target="_blank" class="bwp-f-twitter-link"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.facebook.com/codingjamit/" target="_blank" class="bwp-f-facebook-link"><i class="fa fa-facebook"></i></a></li><li><a href="https://github.com/coding-jam" target="_blank" class="bwp-f-github-link"><i class="fa fa-github"></i></a></li>        </ul>
+        <!-- end social links -->
+      
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+
+<!--googleoff: all--><div id="cookie-law-info-bar"><span>Questo sito Web utilizza i cookie per migliorare la tua esperienza. Daremo per scontato che per te sia ok, ma puoi disattivarlo se lo desideri..<a role='button' tabindex='0' data-cli_action="accept" id="cookie_action_close_header"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button" style="display:inline-block; ">Accetto</a>  <a role='button' tabindex='0' id="cookie_action_close_header_reject"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header_reject cli_action_button"  data-cli_action="reject">Annulla</a> <a href='../cookie.html' id="CONSTANT_OPEN_URL" target="_blank"  class="cli-plugin-main-link"  style="display:inline-block;" >Read More</a></span></div><div id="cookie-law-info-again" style="display:none;"><span id="cookie_hdr_showagain">Privacy & Cookies</span></div><div class="cli-modal" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+    <div class="cli-modal-content cli-bar-popup">
+      <button type="button" class="cli-modal-close" id="cliModalClose">
+        <svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+        <span class="wt-cli-sr-only">Close</span>
+      </button>
+      <div class="cli-modal-body">
+        <div class="cli-container-fluid cli-tab-container">
+    <div class="cli-row">
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0">
+            <div class="cli-privacy-overview">
+                                                   
+                <div class="cli-privacy-content">
+                    <div class="cli-privacy-content-text"></div>
+                </div>
+                <a class="cli-privacy-readmore" data-readmore-text="Show more" data-readless-text="Show less"></a>            </div>
+        </div>  
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+              
+                            <div class="cli-tab-section">
+                    <div class="cli-tab-header">
+                        <a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab" >
+                            Necessary 
+                        </a>
+                    
+                    <span class="cli-necessary-caption">Always Enabled</span>                     </div>
+                    <div class="cli-tab-content">
+                        <div class="cli-tab-pane cli-fade" data-id="necessary">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+              
+                       
+        </div>
+    </div> 
+</div> 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<script type="text/javascript">
+  /* <![CDATA[ */
+  cli_cookiebar_settings='{"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":false,"button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":true,"button_1_new_win":false,"button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":false,"button_2_hidebar":false,"button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":true,"button_3_new_win":false,"button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#fff","button_4_as_button":true,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":false,"scroll_close_reload":false,"accept_close_reload":false,"reject_close_reload":false,"showagain_tab":true,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":false,"show_once":"10000","logging_on":false,"as_popup":false,"popup_overlay":true,"bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"}';
+  /* ]]> */
+</script>
+<!--googleon: all--><script type='text/javascript' src='../wp-content/themes/melissa/js/bootstrap.min7433.js?ver=3.3.7'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.parallaxc358.js?ver=1.1.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/superfish.min97e9.js?ver=1.7.9'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel.min3ba1.js?ver=1.3.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/magnific-popup/jquery.magnific-popup.minf488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
+</body>
+
+<!-- Mirrored from codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+</html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<!-- Mirrored from codingjam.it/sviluppo-di-skill-per-amazon-alexa/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:18:21 GMT -->
+<!-- Mirrored from codingjam.it/sviluppo-di-skill-per-amazon-alexa/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:49:09 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="UTF-8">
@@ -11,124 +11,12 @@
   <link rel="profile" href="http://gmpg.org/xfn/11">
   <link rel="pingback" href="../xmlrpc.php">
 
-  
-	<!-- This site is optimized with the Yoast SEO plugin v14.2 - https://yoast.com/wordpress/plugins/seo/ -->
-	<title>CodingJam » Sviluppo di Skill per Amazon Alexa</title>
-	<meta name="description" content="Scopo di questo post è quello di capire quali sono i prerequisiti e gli elementi fondamentali per svilluppare Skill custom per Amazon Alexa." />
-	<meta name="robots" content="index, follow" />
-	<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-	<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-	<link rel="canonical" href="index.html" />
-	<meta property="og:locale" content="en_US" />
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content="CodingJam » Sviluppo di Skill per Amazon Alexa" />
-	<meta property="og:description" content="Scopo di questo post è quello di capire quali sono i prerequisiti e gli elementi fondamentali per svilluppare Skill custom per Amazon Alexa." />
-	<meta property="og:url" content="index.html" />
-	<meta property="og:site_name" content="CodingJam" />
-	<meta property="article:publisher" content="https://www.facebook.com/cosenonjaviste" />
-	<meta property="article:published_time" content="2019-01-22T07:30:25+00:00" />
-	<meta property="article:modified_time" content="2019-02-22T09:41:54+00:00" />
-	<meta property="og:image" content="../wp-content/uploads/2019/01/Amazon_Alexa_Stacked_RGB_Dark-Color.png" />
-	<meta property="og:image:width" content="1400" />
-	<meta property="og:image:height" content="598" />
-	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:creator" content="@TheStrazz86" />
-	<meta name="twitter:site" content="@cosenonjaviste" />
-	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://codingjam.it/#website","url":"https://codingjam.it/","name":"CodingJam","description":"Code With Us!","potentialAction":[{"@type":"SearchAction","target":"https://codingjam.it/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://codingjam.it/sviluppo-di-skill-per-amazon-alexa/#primaryimage","inLanguage":"en-US","url":"https://codingjam.it/wp-content/uploads/2019/01/Amazon_Alexa_Stacked_RGB_Dark-Color.png","width":1400,"height":598},{"@type":"WebPage","@id":"https://codingjam.it/sviluppo-di-skill-per-amazon-alexa/#webpage","url":"https://codingjam.it/sviluppo-di-skill-per-amazon-alexa/","name":"CodingJam \u00bb Sviluppo di Skill per Amazon Alexa","isPartOf":{"@id":"https://codingjam.it/#website"},"primaryImageOfPage":{"@id":"https://codingjam.it/sviluppo-di-skill-per-amazon-alexa/#primaryimage"},"datePublished":"2019-01-22T07:30:25+00:00","dateModified":"2019-02-22T09:41:54+00:00","author":{"@id":"https://codingjam.it/#/schema/person/21aeddcbaf865ce5b776ea93b6167d81"},"description":"Scopo di questo post \u00e8 quello di capire quali sono i prerequisiti e gli elementi fondamentali per svilluppare Skill custom per Amazon Alexa.","inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://codingjam.it/sviluppo-di-skill-per-amazon-alexa/"]}]},{"@type":["Person"],"@id":"https://codingjam.it/#/schema/person/21aeddcbaf865ce5b776ea93b6167d81","name":"Francesco Strazzullo","image":{"@type":"ImageObject","@id":"https://codingjam.it/#personlogo","inLanguage":"en-US","url":"https://secure.gravatar.com/avatar/f0012066f4fad79deb33bf5e9799b557?s=96&d=mm&r=g","caption":"Francesco Strazzullo"},"description":"Sono uno sviluppatore front-end, speaker e trainer per Flowing. Oltre a scrivere su vari blog (tra cui codingjam!) sono l'autore de libro \"Frameworkless Front-end Development\". Nel tempo libero mi piace cucinare cibo etnico e giocare ai videogame.","sameAs":["https://twitter.com/@TheStrazz86"]}]}</script>
-	<!-- / Yoast SEO plugin. -->
-
-
+  <title>Sviluppo di Skill per Amazon Alexa &#8211; CodingJam</title>
 <link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
 <link rel='dns-prefetch' href='http://s.w.org/' />
 <link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Feed" href="../feed/index.html" />
 <link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Comments Feed" href="../comments/feed/index.html" />
 <link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Sviluppo di Skill per Amazon Alexa Comments Feed" href="feed/index.html" />
-<!-- This site uses the Google Analytics by ExactMetrics plugin v6.0.2 - Using Analytics tracking - https://www.exactmetrics.com/ -->
-<script type="text/javascript" data-cfasync="false">
-	var em_version         = '6.0.2';
-	var em_track_user      = true;
-	var em_no_track_reason = '';
-	
-	var disableStr = 'ga-disable-UA-21246883-1';
-
-	/* Function to detect opted out users */
-	function __gaTrackerIsOptedOut() {
-		return document.cookie.indexOf(disableStr + '=true') > -1;
-	}
-
-	/* Disable tracking if the opt-out cookie exists. */
-	if ( __gaTrackerIsOptedOut() ) {
-		window[disableStr] = true;
-	}
-
-	/* Opt-out function */
-	function __gaTrackerOptout() {
-	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
-	  window[disableStr] = true;
-	}
-
-	if ( 'undefined' === typeof gaOptout ) {
-		function gaOptout() {
-			__gaTrackerOptout();
-		}
-	}
-	
-	if ( em_track_user ) {
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','http://www.google-analytics.com/analytics.js','__gaTracker');
-
-window.ga = __gaTracker;		__gaTracker('create', 'UA-21246883-1', 'auto');
-		__gaTracker('set', 'forceSSL', true);
-		__gaTracker('send','pageview');
-		__gaTracker( function() { window.ga = __gaTracker; } );
-	} else {
-		console.log( "" );
-		(function() {
-			/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
-			var noopfn = function() {
-				return null;
-			};
-			var noopnullfn = function() {
-				return null;
-			};
-			var Tracker = function() {
-				return null;
-			};
-			var p = Tracker.prototype;
-			p.get = noopfn;
-			p.set = noopfn;
-			p.send = noopfn;
-			var __gaTracker = function() {
-				var len = arguments.length;
-				if ( len === 0 ) {
-					return;
-				}
-				var f = arguments[len-1];
-				if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
-					console.log( 'Not running function __gaTracker(' + arguments[0] + " ....) because you are not being tracked. " + em_no_track_reason );
-					return;
-				}
-				try {
-					f.hitCallback();
-				} catch (ex) {
-
-				}
-			};
-			__gaTracker.create = function() {
-				return new Tracker();
-			};
-			__gaTracker.getByName = noopnullfn;
-			__gaTracker.getAll = function() {
-				return [];
-			};
-			__gaTracker.remove = noopfn;
-			window['__gaTracker'] = __gaTracker;
-			window.ga = __gaTracker;		})();
-		}
-</script>
-<!-- / Google Analytics by ExactMetrics -->
 <link rel='stylesheet' id='wp-block-library-css'  href='../wp-content/plugins/gutenberg/build/block-library/stylea4fb.css?ver=1591004795' type='text/css' media='all' />
 <link rel='stylesheet' id='cookie-law-info-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public3cf4.css?ver=1.8.8' type='text/css' media='all' />
 <link rel='stylesheet' id='cookie-law-info-gdpr-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr3cf4.css?ver=1.8.8' type='text/css' media='all' />
@@ -189,12 +77,6 @@ window.ga = __gaTracker;		__gaTracker('create', 'UA-21246883-1', 'auto');
     }
 </style>
 <link rel='stylesheet' id='enlighter-local-css'  href='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.css?ver=3.9.0' type='text/css' media='all' />
-<script type='text/javascript'>
-/* <![CDATA[ */
-var exactmetrics_frontend = {"js_events_tracking":"true","download_extensions":"zip,mp3,mpeg,pdf,docx,pptx,xlsx,rar","inbound_paths":"[{\"path\":\"\\\/go\\\/\",\"label\":\"affiliate\"},{\"path\":\"\\\/recommend\\\/\",\"label\":\"affiliate\"}]","home_url":"https:\/\/codingjam.it","hash_tracking":"false"};
-/* ]]> */
-</script>
-<script type='text/javascript' src='../wp-content/plugins/google-analytics-dashboard-for-wp/assets/js/frontend.min5b21.js?ver=6.0.2'></script>
 <script type='text/javascript' src='../wp-includes/js/jquery/jquery4a5f.js?ver=1.12.4-wp'></script>
 <script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
 <script type='text/javascript'>
@@ -214,14 +96,14 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
 <script type='text/javascript' src='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.js?ver=3.9.0'></script>
 <link rel='https://api.w.org/' href='../wp-json/index.html' />
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+<link rel='prev' title='Docker e microservizi Java con Jib' href='../docker-e-microservizi-java-con-jib/index.html' />
+<link rel='next' title='Da Docker Compose a Docker Swarm: viaggio di sola andata?' href='../da-docker-compose-a-docker-swarm-viaggio-di-sola-andata/index.html' />
 <meta name="generator" content="WordPress 5.4.1" />
+<link rel="canonical" href="index.html" />
 <link rel='shortlink' href='../indexf13c.html?p=17844' />
 <link rel="alternate" type="application/json+oembed" href="../wp-json/oembed/1.0/embed6105.json?url=https%3A%2F%2Fcodingjam.it%2Fsviluppo-di-skill-per-amazon-alexa%2F" />
 <link rel="alternate" type="text/xml+oembed" href="../wp-json/oembed/1.0/embed4d4f?url=https%3A%2F%2Fcodingjam.it%2Fsviluppo-di-skill-per-amazon-alexa%2F&amp;format=xml" />
-		<script type="text/javascript">
-			var cli_flush_cache = true;
-		</script>
-		<link rel="amphtml" href="amp/index.html"><script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"droide","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":false,"windowButton":false,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" sizes="32x32" />
+<link rel="amphtml" href="amp/index.html"><script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"droide","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":false,"windowButton":false,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" sizes="32x32" />
 <link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-192x192.png" sizes="192x192" />
 <link rel="apple-touch-icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-180x180.png" />
 <meta name="msapplication-TileImage" content="https://codingjam.it/wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-270x270.png" />
@@ -279,24 +161,24 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
       <div class="bwp-menu-container hidden-sm hidden-xs">
         <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-2" class="sf-menu"><li id="menu-item-12007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
 <ul class="sub-menu">
-	<li id="menu-item-12022" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../java/index.html">Java</a></li>
-	<li id="menu-item-12009" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../java/java-8/index.html">Java 8</a></li>
-	<li id="menu-item-12020" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../rxjava/index.html">RxJava</a></li>
-	<li id="menu-item-12017" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../scala/index.html">Scala</a></li>
+	<li id="menu-item-12022" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li id="menu-item-12009" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li id="menu-item-12020" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li id="menu-item-12017" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
 </ul>
 </li>
-<li id="menu-item-12006" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../agile/index.html">Agile</a></li>
-<li id="menu-item-12005" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../android/index.html">Android</a></li>
+<li id="menu-item-12006" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li id="menu-item-12005" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
 <li id="menu-item-12008" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
 <ul class="sub-menu">
-	<li id="menu-item-12014" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../angularjs/index.html">AngularJS</a></li>
-	<li id="menu-item-12012" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../ejb/index.html">EJB</a></li>
-	<li id="menu-item-12010" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../javascript/index.html">Javascript</a></li>
-	<li id="menu-item-12021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../application-server/jboss/index.html">JBoss</a></li>
-	<li id="menu-item-12016" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../jsf/index.html">JSF</a></li>
-	<li id="menu-item-12015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../jquery-2/index.html">jQuery</a></li>
-	<li id="menu-item-12019" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../spring-2/index.html">Spring</a></li>
-	<li id="menu-item-12018" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../application-server/websphere/index.html">Websphere</a></li>
+	<li id="menu-item-12014" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li id="menu-item-12012" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li id="menu-item-12010" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li id="menu-item-12021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li id="menu-item-12016" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li id="menu-item-12015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li id="menu-item-12019" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li id="menu-item-12018" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
 </ul>
 </li>
 </ul></nav>      </div>
@@ -314,24 +196,24 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
         <div class="bwp-dropdown-mobile-menu bwp-mobile-menu-hidden">
           <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-3" class="bwp-mobile-menu list-unstyled"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
 <ul class="sub-menu">
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../java/index.html">Java</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../java/java-8/index.html">Java 8</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../rxjava/index.html">RxJava</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../scala/index.html">Scala</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
 </ul>
 </li>
-<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../agile/index.html">Agile</a></li>
-<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
 <ul class="sub-menu">
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../angularjs/index.html">AngularJS</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../ejb/index.html">EJB</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../javascript/index.html">Javascript</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../application-server/jboss/index.html">JBoss</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../jsf/index.html">JSF</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../jquery-2/index.html">jQuery</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../spring-2/index.html">Spring</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../application-server/websphere/index.html">Websphere</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
 </ul>
 </li>
 </ul></nav>        </div>
@@ -378,24 +260,24 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
           <div class="bwp-sticky-navigation-container bwp-sticky-navigation-hidden">
             <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-4" class="sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
 <ul class="sub-menu">
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../java/index.html">Java</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../java/java-8/index.html">Java 8</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../rxjava/index.html">RxJava</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../scala/index.html">Scala</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
 </ul>
 </li>
-<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../agile/index.html">Agile</a></li>
-<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
 <ul class="sub-menu">
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../angularjs/index.html">AngularJS</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../ejb/index.html">EJB</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../javascript/index.html">Javascript</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../application-server/jboss/index.html">JBoss</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../jsf/index.html">JSF</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../jquery-2/index.html">jQuery</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../spring-2/index.html">Spring</a></li>
-	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../application-server/websphere/index.html">Websphere</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
 </ul>
 </li>
 </ul></nav>          </div>
@@ -822,7 +704,7 @@ module.exports = {
                     
     <!-- counters -->
     <ul class="bwp-single-counters list-unstyled clearfix ">
-                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i><span class="dsq-postid" data-dsqidentifier="17844 https://codingjam.it/?p=17844">0</span></a></li>
+                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>0</a></li>
                 </ul>
     <!-- end counters -->
 
@@ -853,7 +735,7 @@ module.exports = {
             <!-- end date -->
                                 <!-- categories -->
             <li>
-              <i class="fa fa-bookmark-o"></i><a href="../tutorial-2/index.html" rel="category tag">Tutorial</a>              <span class="bwp-metadata-slash">/</span>
+              <i class="fa fa-bookmark-o"></i><a href="../category/tutorial-2/index.html" rel="category tag">Tutorial</a>              <span class="bwp-metadata-slash">/</span>
             </li>
             <!-- end categories -->
                                 <!-- tags -->
@@ -903,7 +785,22 @@ module.exports = {
     <!-- end about the author -->
 
     
-<div id="disqus_thread"></div>
+<!-- comments -->
+<div id="comments" class="comments-area">
+
+	
+	
+		<div id="respond" class="comment-respond">
+		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='17844' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+	
+</div>
+<!-- end comments -->
 
     <!-- related posts (by tags) -->
     <div class="bwp-related-posts-container bwp-show-2-posts">
@@ -929,14 +826,14 @@ module.exports = {
                   
                                       <!-- title -->
                     <h3 class="bwp-post-title entry-title">
-                      <a href="../tdd-in-javascript-con-requirejs/index.html">TDD in javascript con RequireJS</a>
+                      <a href="../angularjs-mini-how-to-prima-parte/index.html">AngularJS mini How-To (prima parte)</a>
                     </h3>
                     <!-- end title -->
                     
                   
       <!-- excerpt -->
       <div class="bwp-post-excerpt entry-content">
-        <p>TDD in Javascript con RequireJS Qualche tempo fa, scorrendo gli annunci di lavoro su LinkedIn, mi sono imbattuto in una [&hellip;]</p>
+        <p>In questo tutorial diviso in due parti, vedremo come realizzare una semplice applicazione con AngularJS, il framework Javascript di Google.</p>
       </div>
       <!-- end excerpt -->
 
@@ -944,12 +841,12 @@ module.exports = {
     <!-- date + read more link -->
     <div class="bwp-post-details-wrap clearfix">
       <!-- date -->
-            <a href="../2015/12/09/index.html" class="bwp-post-date">
-        <span class="date updated">09/12/2015</span>
+            <a href="../2014/07/02/index.html" class="bwp-post-date">
+        <span class="date updated">02/07/2014</span>
       </a>
       <!-- end date -->
       <!-- read more link -->
-      <a href="../tdd-in-javascript-con-requirejs/index.html" class="bwp-read-more">Read more</a>
+      <a href="../angularjs-mini-how-to-prima-parte/index.html" class="bwp-read-more">Read more</a>
       <!-- end read more link -->
     </div>
     <!-- end date + read more link -->
@@ -974,14 +871,14 @@ module.exports = {
                   
                                       <!-- title -->
                     <h3 class="bwp-post-title entry-title">
-                      <a href="../react-tutorial/index.html">React</a>
+                      <a href="../intervista-a-cosenonjaviste/index.html">Intervista a CoseNonJaviste</a>
                     </h3>
                     <!-- end title -->
                     
                   
       <!-- excerpt -->
       <div class="bwp-post-excerpt entry-content">
-        <p>React In questo post parleremo di React: nuova libreria, creata da Facebook, da utilizzare nel front-end di applicazioni web. Si [&hellip;]</p>
+        <p>Quella di oggi è una intervista molto speciale, faremo quattro chiacchiere proprio con il team del blog per fare un po&#8217; di bilanci e scoprire i piani futuri.</p>
       </div>
       <!-- end excerpt -->
 
@@ -989,12 +886,12 @@ module.exports = {
     <!-- date + read more link -->
     <div class="bwp-post-details-wrap clearfix">
       <!-- date -->
-            <a href="../2015/06/03/index.html" class="bwp-post-date">
-        <span class="date updated">03/06/2015</span>
+            <a href="../2016/03/21/index.html" class="bwp-post-date">
+        <span class="date updated">21/03/2016</span>
       </a>
       <!-- end date -->
       <!-- read more link -->
-      <a href="../react-tutorial/index.html" class="bwp-read-more">Read more</a>
+      <a href="../intervista-a-cosenonjaviste/index.html" class="bwp-read-more">Read more</a>
       <!-- end read more link -->
     </div>
     <!-- end date + read more link -->
@@ -1033,7 +930,7 @@ module.exports = {
 
               <!-- footer text -->
         <div class="bwp-footer-text">
-          CodingJam - 2018        </div>
+          CodingJam        </div>
         <!-- end footer text -->
       
               <!-- social links -->
@@ -1141,39 +1038,20 @@ module.exports = {
 		} );
 	}
 </script>
-<script type='text/javascript'>
-/* <![CDATA[ */
-var countVars = {"disqusShortname":"cosenonjaviste"};
-/* ]]> */
-</script>
-<script type='text/javascript' src='../wp-content/plugins/disqus-comment-system/public/js/comment_countd4e0.js?ver=3.0.17'></script>
-<script type='text/javascript'>
-/* <![CDATA[ */
-var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.17"},"disqusIdentifier":"17844 https:\/\/codingjam.it\/?p=17844","disqusShortname":"cosenonjaviste","disqusTitle":"Sviluppo di Skill per Amazon Alexa","disqusUrl":"https:\/\/codingjam.it\/sviluppo-di-skill-per-amazon-alexa\/","postId":"17844"};
-/* ]]> */
-</script>
-<script type='text/javascript' src='../wp-content/plugins/disqus-comment-system/public/js/comment_embedd4e0.js?ver=3.0.17'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/bootstrap.min7433.js?ver=3.3.7'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.parallaxc358.js?ver=1.1.3'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/superfish.min97e9.js?ver=1.7.9'></script>
-<script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.infinitescroll.min3c94.js?ver=2.1.0'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel.min3ba1.js?ver=1.3.3'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/assets/magnific-popup/jquery.magnific-popup.minf488.js?ver=1.1.0'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
-var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"true","masonryColumnWidth":".bwp-blog-col-2-default","infiniteScroll":"true","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
 </body>
 
-<!-- Mirrored from codingjam.it/sviluppo-di-skill-per-amazon-alexa/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:18:43 GMT -->
+<!-- Mirrored from codingjam.it/sviluppo-di-skill-per-amazon-alexa/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:49:24 GMT -->
 </html>
-<!--
-Performance optimized by W3 Total Cache. Learn more: https://www.boldgrid.com/w3-total-cache/
-
-
-Served from: codingjam.it @ 2020-12-05 00:10:11 by W3 Total Cache
--->

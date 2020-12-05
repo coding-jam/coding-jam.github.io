@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from codingjam.it/jcache-con-spring-boot-e-hazelcast/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="pingback" href="../xmlrpc.php">
+
+  <title>JCache con Spring Boot e Hazelcast &#8211; CodingJam</title>
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Feed" href="../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Comments Feed" href="../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; JCache con Spring Boot e Hazelcast Comments Feed" href="https://codingjam.it/jcache-con-spring-boot-e-hazelcast/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='../wp-content/plugins/gutenberg/build/block-library/stylea4fb.css?ver=1591004795' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-gdpr-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='melissa-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lato%3A400%2C400i%2C700%2C700i%7CNoto+Serif%3A400%2C400i%2C700%2C700i&amp;subset=latin&amp;ver=1.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../wp-content/themes/melissa/css/bootstrap.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-theme-css'  href='../wp-content/themes/melissa/css/bootstrap-theme.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-ie10-viewport-bug-workaround-css'  href='../wp-content/themes/melissa/css/ie10-viewport-bug-workaround8a54.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='../wp-content/themes/melissa/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-carousel-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-theme-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.theme3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='magnific-popup-css'  href='../wp-content/themes/melissa/assets/magnific-popup/magnific-popupf488.css?ver=1.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-style-css'  href='../wp-content/themes/melissa/style3ec8.css?ver=1.1.6' type='text/css' media='all' />
+<style id='melissa-style-inline-css' type='text/css'>
+
+    .bwp-post-media img,
+    .bwp-post-carousel-item img,
+    .widget_bwp_posts_slider_item img {
+      width: 100%;
+      margin: 0;
+    }
+    .bwp-post-wrap:hover {
+      margin-top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+    #bwp-masonry-container.no-masonry .bwp-post-wrap:hover {
+      top: 0;
+    }
+    .bwp-no-results-container:hover,
+    .bwp-single-article:hover,
+    .bwp-featured-media-container:hover,
+    .post-navigation .nav-links a:hover,
+    .bwp-about-author-container:hover,
+    .comment-respond:hover,
+    .comment-body:hover,
+    #comments .no-comments:hover,
+    .comment-navigation .nav-links a:hover,
+    .bwp-related-post-wrap:hover,
+    .bwp-page-404-container:hover,
+    .bwp-sidebar-wrap:hover {
+      top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+  #bwp-header-wrap {
+    background-color: #2e3340;
+  }
+  .bwp-header-bg-overlay,
+  .bwp-header-rs-bg-overlay {
+    background-color: rgba(46, 51, 64, 0.9);
+  }
+    .bwp-content a,
+    .comment-content a,
+    .bwp-post-quote a {
+      color: #2052bf;
+    }
+</style>
+<link rel='stylesheet' id='enlighter-local-css'  href='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.css?ver=3.9.0' type='text/css' media='all' />
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery4a5f.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[]};
+var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/cookie-law-info/public/js/cookie-law-info-public3cf4.js?ver=1.8.8'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/respond.min.js?ver=1.4.2'></script>
+<![endif]-->
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/mootools-core-yc9086.js?ver=3.9.0'></script>
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.js?ver=3.9.0'></script>
+<link rel='https://api.w.org/' href='../wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+<link rel='prev' title='Webpack ECMAScript 6 &#8211; Parte II' href='https://codingjam.it/webpack-ecmascript-6-parte-ii/' />
+<link rel='next' title='Test end-to-end con Nightwatch.js' href='../test-end-end-con-nightwatch-js/index.html' />
+<meta name="generator" content="WordPress 5.4.1" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://codingjam.it/?p=14524' />
+<link rel="alternate" type="application/json+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Fjcache-con-spring-boot-e-hazelcast%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Fjcache-con-spring-boot-e-hazelcast%2F&amp;format=xml" />
+<link rel="amphtml" href="https://codingjam.it/jcache-con-spring-boot-e-hazelcast/amp/"><script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"droide","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":false,"windowButton":false,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" sizes="32x32" />
+<link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://codingjam.it/wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-270x270.png" />
+</head>
+
+<body class="post-template-default single single-post postid-14524 single-format-standard wp-custom-logo">
+
+
+<!-- header -->
+<header id="bwp-header-wrap" class="bwp-header-simple">
+
+  <!-- header bg -->
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P7101915_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg-overlay"></div>
+
+    <!-- header content -->
+    <div class="container">
+      <div class="bwp-header-content-container">
+
+        <!-- row 1 - logo + navigation -->
+        <div class="bwp-main-navigation-container clearfix">
+
+          
+        <!-- image logo -->
+        <div class="bwp-logo-container">
+          <a href="../index.html" class="custom-logo-link" rel="home"><img width="207" height="70" src="../wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png" class="custom-logo" alt="CodingJam" srcset="https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png 207w, https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco-150x51.png 150w" sizes="(max-width: 207px) 100vw, 207px" /></a>        </div>
+        <!-- end image logo -->
+
+        
+      <!-- search -->
+      <div class="bwp-header-search-container hidden-sm hidden-xs">
+        <a href="#" id="bwp-header-search-icon">
+          <i class="fa fa-search"></i>
+        </a>
+        <div class="bwp-dropdown-search-container bwp-search-hidden">
+          
+<!-- search form -->
+<form id="searchform" role="search" method="get" action="https://codingjam.it/">
+  <div class="input-group">
+    <input type="text" name="s" id="s" class="bwp-search-field form-control" placeholder="Enter your search query...">
+    <span class="input-group-btn">
+      <button type="submit" class="btn bwp-search-submit">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+</form>
+<!-- end search form -->
+        </div>
+      </div>
+      <!-- end search -->
+
+      
+      <!-- menu -->
+      <div class="bwp-menu-container hidden-sm hidden-xs">
+        <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-2" class="sf-menu"><li id="menu-item-12007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li id="menu-item-12022" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li id="menu-item-12009" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li id="menu-item-12020" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li id="menu-item-12017" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li id="menu-item-12006" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li id="menu-item-12005" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li id="menu-item-12008" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li id="menu-item-12014" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li id="menu-item-12012" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li id="menu-item-12010" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li id="menu-item-12021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li id="menu-item-12016" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li id="menu-item-12015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li id="menu-item-12019" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li id="menu-item-12018" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>      </div>
+      <!-- end menu -->
+
+      
+      <!-- mobile menu -->
+      <div class="bwp-mobile-menu-container hidden-md hidden-lg">
+        <!-- mobile menu icon -->
+        <a href="#" id="bwp-mobile-menu-icon">
+          <i class="fa fa-bars"></i>
+        </a>
+        <!-- end mobile menu icon -->
+        <!-- dropdown mobile menu -->
+        <div class="bwp-dropdown-mobile-menu bwp-mobile-menu-hidden">
+          <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-3" class="bwp-mobile-menu list-unstyled"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>        </div>
+        <!-- end dropdown mobile menu -->
+      </div>
+      <!-- end mobile menu -->
+
+      
+        </div>
+        <!-- end row 1 - logo + navigation -->
+
+        
+          <!-- row 2 - header custom text -->
+          <div class="bwp-header-custom-text-container">
+            
+        <!-- custom text - single page -->
+        <h1 class="bwp-header-custom-title entry-title">
+          JCache con Spring Boot e Hazelcast        </h1>
+                <div class="bwp-header-transparent-line clearfix">
+          <span class="bwp-header-t-line-1"></span>
+          <span class="bwp-header-t-line-2"></span>
+        </div>
+        <!-- end custom text -->
+
+                  </div>
+          <!-- end row 2 - header custom text -->
+
+          
+      </div>
+    </div>
+    <!-- end header content -->
+  </div>
+  <!-- end header bg -->
+
+  
+        <!-- sticky navigation -->
+        <div class="bwp-sticky-navigation-wrap bwp-transition-4 clearfix">
+          <!-- sticky navigation icon -->
+          <a href="#" id="bwp-sticky-navigation-icon">
+            <i class="fa fa-bars"></i>
+          </a>
+          <!-- end sticky navigation icon -->
+          <!-- sticky navigation container -->
+          <div class="bwp-sticky-navigation-container bwp-sticky-navigation-hidden">
+            <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-4" class="sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>          </div>
+          <!-- end sticky navigation container -->
+        </div>
+        <!-- end sticky navigation -->
+
+        
+</header>
+<!-- end header -->
+
+  <!-- blog post - single page -->
+  <section id="bwp-single-page-wrap">
+    <div class="container">
+      <div class="bwp-single-page-container" >
+
+        
+                  <div class="row"><div class="col-md-8 bwp-single-content-col bwp-sidebar-right"><div class="bwp-single-content-col-wrap" role="main">
+        
+        <!-- article -->
+        <article id="post-14524" class="bwp-single-article bwp-transition-3">
+
+          
+          <!-- content container -->
+          <div class="bwp-single-content">
+
+            <!-- content -->
+            <div class="bwp-content entry-content clearfix">
+              <p>La specifica <strong>JCache</strong> (<strong>JSR-107</strong>) non è riuscita ad entrare nell&#8217;ultima versione di Java EE (7) ma è già viva e supportata nel mondo circostante, per esempio da Spring. In realtà Spring aveva già una sua implementazione del sistema di caching che poi ha esteso per supportare la specifica (o quest&#8217;ultima ha preso ispirazione da Spring? Non sarebbe la prima volta&#8230;)</p>
+<h2>Una cache applicativa</h2>
+<p>Immaginiamo di avere un metodo della nostra logica di business che esegue operazioni onerose e che sono idempotenti (cioè rendono sempre lo stesso risultato e non hanno <em>side-effect</em>) a parità di input: sarebbe uno spreco di risorse rieseguire sempre le stesse operazioni per vedere sempre gli stessi risultati! Perché quindi non <strong>salvare temporaneamente</strong> in memoria questi risultati per velocizzare gli accessi successivi? Ecco che a<strong>bbiamo bisogno di un sistema di <em>caching</em></strong>, magari tramite AOP per non impattare il codice che già abbiamo: la specifica <strong>JCache</strong> serve proprio a questo!</p>
+<h2>Spring Cache vs JCache</h2>
+<p>La <a href="http://docs.spring.io/spring/docs/4.1.0.BUILD-SNAPSHOT/spring-framework-reference/html/cache.html" target="_blank">documentazione</a> relativa alla gestione della cache è piuttosto esaustiva e mette a confronto l&#8217;implementazione di Spring con la specifica JCache: di fatto si somigliano molto, ma come spesso accade la specifica è leggermente indietro rispetto ai &#8220;vendor&#8221;, probabilmente per essere più generica e applicabile possibile. I due sistemi sono sostanzialmente uguali, tranne per il fatto che l&#8217;implementazione di Spring permette di usare <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html" target="_blank">Spring Expression Language (SpEL)</a> per definire, per esempio, delle <a href="http://docs.spring.io/spring/docs/4.1.0.BUILD-SNAPSHOT/spring-framework-reference/html/cache.html#cache-annotations-cacheable-condition" target="_blank">condizioni di attivabilità della cache</a>.</p>
+<p>Se non se ne ha necessità, si può tranquillamente rimanere sulla specifica, in modo da avere codice facilmente riusabile (non che sia difficile eventualmente &#8220;tradurlo&#8221;).</p>
+<h2>Conosciamo JCache</h2>
+<p>La specifica JCache definisce una serie di <strong>annotazioni da applicare ai metodi</strong> delle classi della nostra logica di business che determinano in che modo l&#8217;output del metodo debba essere &#8220;cachato&#8221; (o tolto dalla cache), vediamole nel dettaglio:</p>
+<ul>
+<li><code>@CacheResult</code> Applicata ad un metodo, <strong>inserisce in cache il suo risultato</strong>, usando come <strong>chiave i parametri di input</strong> del metodo stesso.
+<p><pre data-enlighter-language="java" class="EnlighterJSRAW">
+@CacheResult(cacheName = &quot;people&quot;)
+public Person getPersonBy(String username) { ... }
+</pre></p>
+<p>Se non si vogliono usare tutti i parametri, è possibile marcare quelli interessati con <code>@CacheKey</code>.</p>
+<p><pre data-enlighter-language="java" class="EnlighterJSRAW">
+@CacheResult(cacheName = &quot;people&quot;)
+public Person getPersonBy(@CacheKey String username, String email) { ... }
+</pre></p>
+<p>A parità di <tt>username</tt>, il metodo <strong>verrà eseguito solo una volta</strong>. La <strong>durata</strong> degli elementi in cache e la <strong>logica di scadenza</strong> dipende tutta dall&#8217;implementazione JCache che si usa e non è coperta dalla specifica.</p>
+<p>Con questa annotazione è possibile anche &#8220;cachare&#8221; le eccezioni (valorizzando l&#8217;attributo <tt>exceptionCacheName</tt>) o forzare l&#8217;esecuzione del metodo (saltando la lettura dalla cache &#8211; con <tt>skipGet</tt>) e aggiornare la cache con il risultato.
+</li>
+<li><code>@CachePut</code>Il metodo annotato <strong>viene sempre eseguito</strong> (a differenza del caso precedente), e serve per <strong>aggiornare</strong> la cache in base ai parametri di ingresso: quello annotato con <code>@CacheValue</code> rappresenterà il nuovo valore, gli altri la chiave (a meno che anche qua non si usi <code>@CacheKey</code>).
+<p><pre data-enlighter-language="java" class="EnlighterJSRAW">
+@CachePut(cacheName = &quot;people&quot;)
+public void updatePersonBy(String username, &lt;code&gt;@CacheValue&lt;/code&gt; Person updatedPerson) { ... }
+</pre></p>
+<p>Oltre che mettere in cache anche le eccezioni (come nel caso precedente), si può anche decidere se applicare l&#8217;aggiornamento prima o dopo l&#8217;esecuzione del metodo (default).
+</li>
+<li><code>@CacheRemove</code> e <code>@CacheRemoveAll</code> Rimuovono rispettivamente dalla cache un valore (in base alla chiave) o tutti (ignorando la chiave se passata).
+<p><pre data-enlighter-language="java" class="EnlighterJSRAW">
+@CacheRemove(cacheName = &quot;people&quot;)
+public void removePersonBy(String username) { ... }
+
+@CacheRemoveAll(cacheName = &quot;people&quot;)
+public void removePeople() { ... }
+</pre></p>
+</li>
+</ul>
+<p>Infine, ci sono una serie di configurazioni a livello di singola annotazione (applicate come abbiamo detto a <strong>livello di metodo</strong>) che spesso vanno ripetute, come il nome della cache per esempio: possiamo ridurre il boilerplate grazie all&#8217;<strong>annotazione a livello di classe</strong> <code>@CacheDefaults</code> che applica i valori a tutti i metodi della classe interessati dalla cache.</p>
+<p><pre data-enlighter-language="java" class="EnlighterJSRAW">
+@CacheDefaults(cacheName = &quot;people&quot;)
+public class PersonService {
+   @CacheResult
+   public Person getPersonBy(String username) { ... }
+   ...
+}
+</pre></p>
+<p>Ulteriori approfondimenti e confronti con Spring Cache possono essere trovati sul <a href="https://spring.io/blog/2014/04/14/cache-abstraction-jcache-jsr-107-annotations-support" target="_blank">blog di Spring</a>.</p>
+<h2>JCache e il supporto di Spring</h2>
+<p>Usare JCache con Spring, e in particolare con Spring Boot, è molto facile, soprattutto per la varietà di <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-caching.html#_supported_cache_providers" target="_blank">provider di cache che supporta</a>. Tutti sono documentati piuttosto bene, a parte <a href="https://hazelcast.com/" target="_blank">Hazelcast</a>, che è proprio quella di cui parleremo! Perché Hazelcast? Se avete bisogno di una cache in <em>memoria distribuita</em>, per esempio in una architettura a microservizi, è una delle migliori scelte. La stessa scelta l&#8217;hanno fatta nomi come <a href="https://www.paypal.com/it/home" target="_blank">PayPal</a>, <a href="https://www.mulesoft.com/" target="_blank">MuleSoft</a> e <a href="https://www.alfresco.com/" target="_blank">Alfresco</a>.</p>
+<h3>Un po&#8217; di codice</h3>
+<p>Se non avete un progetto Spring Boot, il miglior modo per cominciare è <a href="https://start.spring.io/" target="_blank">Spring Initializr</a>. A questo punto, per usare JCache, sono necessarie tre dipendenze:</p>
+<ol>
+<li>l&#8217;API di specifica
+<p><pre data-enlighter-language="xml" class="EnlighterJSRAW">
+&lt;dependency&gt;
+   &lt;groupId&gt;javax.cache&lt;/groupId&gt;
+   &lt;artifactId&gt;cache-api&lt;/artifactId&gt;
+   &lt;version&gt;1.0.0&lt;/version&gt;
+&lt;/dependency&gt;
+</pre></p>
+</li>
+<li>l&#8217;autoconfigurazione delle funzionalità di caching per Spring Boot
+<p><pre data-enlighter-language="xml" class="EnlighterJSRAW">
+&lt;dependency&gt;
+   &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+   &lt;artifactId&gt;spring-boot-starter-cache&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</pre></p>
+</li>
+<li>e infine il provider, Hazelcast
+<p><pre data-enlighter-language="xml" class="EnlighterJSRAW">
+&lt;dependency&gt;
+   &lt;groupId&gt;com.hazelcast&lt;/groupId&gt;
+   &lt;artifactId&gt;hazelcast&lt;/artifactId&gt;
+   &lt;version&gt;3.8&lt;/version&gt;
+&lt;/dependency&gt;
+</pre></p>
+</li>
+</ol>
+<p>A questo punto, in pieno stile Spring Boot, basta <strong>abilitare esplicitamente</strong> la cache tra i bean di configurazione con l&#8217;annotazione <code>@EnableCaching</code>, per esempio:</p>
+<p><pre data-enlighter-language="java" class="EnlighterJSRAW" data-enlighter-highlight="1">
+@EnableCaching
+@SpringBootApplication
+public class MyApplication {
+   public static void main(String[] args) {
+      SpringApplication.run(MyApplication.class, args);
+   }
+}
+</pre></p>
+<p>che attiva anche le annotazioni JCache se presenti nel classpath. </p>
+<h3>Spring JCache e Hazelcast</h3>
+<p>In linea generale basta questa configurazione, ma ogni provider ha bisogno di <em>ulteriori parametri</em> affinché tutto funzioni correttamente. La prima configurazione di Hazelcast con JCache però non è stata proprio banale perché il provider di cache <em>veniva istanziato due volte</em>! Perché?</p>
+<p>Dal momento che Hazelcast è nel classpath, l&#8217;autoconfigurazione di Spring Boot (<code>HazelcastAutoConfiguration</code>) si attiva e inizializza un&#8217;istanza di Hazelcast, indipendentemente dal fatto che esista o meno JCache.<br />
+L&#8217;annotazione <code>@EnableCaching</code> a sua volta attiva JCache e se non stiamo attenti <strong>genera una nuova istanza</strong> del provider che ha a disposizione, ovvero Hazelcast. Ci ritroviamo quindi con una applicazione che ha due istanze di Hazelcast (che comunicano tramite tcp)! Come fare ad evitarlo? Sono necessarie <strong>due cose</strong>:</p>
+<ol>
+<li>creare una configurazione per Hazelcast, per esempio tramite il file di configurazione standard <tt>hazelcast.xml</tt>, dove è necessario specificare <strong>almeno due tag</strong>:
+<p><pre data-enlighter-language="xml" class="EnlighterJSRAW" data-enlighter-highlight="5,7">
+&lt;hazelcast xsi:schemaLocation=&quot;http://www.hazelcast.com/schema/config hazelcast-config-3.8.xsd&quot;
+   xmlns=&quot;http://www.hazelcast.com/schema/config&quot;
+   xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+
+   &lt;instance-name&gt;my-app-cache&lt;/instance-name&gt; &lt;!-- Nome univoco --&gt;
+   
+   &lt;cache name=&quot;people&quot;&gt; &lt;!-- Stesso nome usato nelle annotation JCache! --&gt;
+   ...
+
+</pre><br />
+E&#8217; necessario definire un <tt>instance-name</tt> alla configurazione definita da questo file. Inoltre, con il tag <tt>cache</tt> possiamo definire il nome della cache da usare (necessario al <tt>cacheName</tt> delle annotazioni) e tutta la logica di scadenza. E&#8217; possibile anche definire la modalità di salvataggio dei dati in cache: di default è &#8220;BINARY&#8221;, questo comporta che chiavi e valori devono essere <strong>serializzabili</strong>.
+</li>
+<li>dire a Spring dove si trova il file di configurazione tramite la property apposita nel file <tt>application.yml</tt> (o sue varianti):<br />
+<pre data-enlighter-language="html" class="EnlighterJSRAW">
+spring.hazelcast.config=classpath:hazelcast.xml
+</pre></p>
+<p>in modo che non si attivi l&#8217;inizializzazione con la configurazione di default
+</li>
+</ol>
+<p>Con queste due accortezze la vostra cache funzionerà alla perfezione! Sul <a href="https://github.com/coding-jam/spring-hazelcast-jcache-poc" target="_blank">nostro GitHub</a> è disponibile un progetto di prova (con diversi tag che evidenziano in che situazione accade la doppia istanza).</p>
+<h2>Ultime considerazioni</h2>
+<p>Di fatto cos&#8217;è una cache? Semplificando, non è altro che una &#8220;mappa&#8221; <strong>chiave-valore</strong>: è importante quindi capire come viene generata questa chiave, per non ritrovarsi dei valori inattesi.</p>
+<p>Il <a href="http://docs.spring.io/spring/docs/4.1.0.BUILD-SNAPSHOT/spring-framework-reference/html/cache.html#cache-annotations-cacheable-default-key" target="_blank">comportamento di default</a> della generazione delle chiavi in Spring è definito dalla classe <code>SimpleKeyGenerator</code> che si basa sui parametri di input del metodo annotato:</p>
+<ul>
+<li>se non ha parametri, la chiave è <code>SimpleKey.EMPTY</code></li>
+<li>se ne ha uno, la chiave è l&#8217;istanza del parametro</li>
+<li>se più di uno, viene istanziato l&#8217;oggetto <code>SimpleKey</code> contenente tutte le istanze di input</li>
+</ul>
+<p>Va da se che diventa <strong>fondamentale implementare i metodi <code>equals()</code> e <code>hashCode()</code></strong> degli input, altrimenti si rischia di non recuperare gli oggetti dalla cache, proprio come succede nelle <em>Collections</em>.</p>
+<p>Personalmente trovo questo approccio troppo semplice, perché basta avere per esempio <em>due metodi diversi <strong>senza argomenti</strong> di input associati alla <strong>stessa cache</strong></em> per avere collisione di chiave! Le accortezze sono due: o <em>usare cache</em> diverse o <em>reimplementare il generatore delle chiavi</em>. Sia Spring Cache che JCache prevedono questo scenario: basta implementare rispettivamente l&#8217;interfaccia <code>org.springframework.cache.interceptor.KeyGenerator</code> oppure <code>javax.cache.annotation.CacheKeyGenerator</code>. Se decidiamo di implementare <code>CacheKeyGenerator</code>, è necessario specificare l&#8217;istanza <strong>in ogni</strong> <code>@CacheDefaults</code>:</p>
+<p><pre data-enlighter-language="java" class="EnlighterJSRAW">
+@CacheDefaults(cacheName = &quot;my-cache&quot;, cacheKeyGenerator = MyKeyGenerator.class)
+public class CachedService {...}
+</pre></p>
+<p>Visto che la questione è tutta legata a Spring, possiamo invece implementare <code>KeyGenerator</code> e <strong>centralizzare</strong> tutto in un bean di configurazione che estende <code>CachingConfigurerSupport</code>:</p>
+<p><pre data-enlighter-language="java" class="EnlighterJSRAW">
+import org.springframework.cache.annotation.CachingConfigurerSupport;
+
+@Configuration
+@EnableCaching
+public class CacheConfig extends CachingConfigurerSupport {
+
+    @Override
+    public KeyGenerator keyGenerator() {
+        // new key generator
+    }
+}
+</pre></p>
+<p>Una nuova implementazione della chiave potrebbe per esempio prendere in considerazione <strong>almeno il nome del metodo</strong> (o anche della classe) oltre che degli input, in modo da avere una chiave univoca riferita a quel metodo di quella classe con particolari input. La firma dell&#8217;unico metodo da implementare di <code>KeyGenerator</code> ci permette infatti di risalire a tutto ciò.</p>
+<h2>Conclusioni</h2>
+<p>Abbiamo quindi visto come JCache permette di gestire la cache dei dati di ritorno da un metodo in modo <em>non intrusivo</em>, con poca configurazione. JCache, grazie all&#8217;AOP, <em>separa la logica di business da quella di caching</em> e a livello di specifica maschera tutta la gestione di inserimento, aggiornamento e cancellazione della cache a livello programmatico tramite annotations. La logica di &#8220;eviction&#8221;, ovvero delle modalità di rimozione automatica o scadenza è demandata del tutto al &#8220;vendor&#8221; che abbiamo scelto, perché propria delle capacità stesse del framework: è importante quindi scegliere l&#8217;implementazione in base alle proprie esigenze. In questo esempio, Hazelcast è un ottimo candidato se si ha bisogno di una cache in memoria distribuita, senza necessità di persistenza.</p>
+            </div>
+            <!-- end content -->
+
+            
+                <!-- social sharing buttons / counters -->
+                <div class="row">
+                  <div class="col-md-7">
+                    
+    <!-- social sharing buttons -->
+    <div class="bwp-single-share-wrap">
+      <span>Share:</span>
+      <ul class="bwp-single-share list-unstyled">
+        <!-- facebook -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/" target="_blank" class="bwp-share-link bwp-facebook-share">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <!-- end facebook -->
+        <!-- twitter -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/&amp;text=jcache-con-spring-boot-e-hazelcast', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/&amp;text=jcache-con-spring-boot-e-hazelcast" target="_blank" class="bwp-share-link bwp-twitter-share">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <!-- end twitter -->
+        <!-- google+ -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/" target="_blank" class="bwp-share-link bwp-google-plus-share">
+            <i class="fa fa-google-plus"></i>
+          </a>
+        </li>
+        <!-- end google+ -->
+        <!-- vk -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/" target="_blank" class="bwp-share-link bwp-vk-share">
+            <i class="fa fa-vk"></i>
+          </a>
+        </li>
+        <!-- end vk -->
+        <!-- pinterest -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/&amp;media=&amp;description=jcache-con-spring-boot-e-hazelcast', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/&amp;media=&amp;description=jcache-con-spring-boot-e-hazelcast" target="_blank" class="bwp-share-link bwp-pinterest-share">
+            <i class="fa fa-pinterest-p"></i>
+          </a>
+        </li>
+        <!-- end pinterest -->
+      </ul>
+    </div>
+    <!-- end social sharing buttons -->
+
+                      </div>
+                  <div class="col-md-5">
+                    
+    <!-- counters -->
+    <ul class="bwp-single-counters list-unstyled clearfix ">
+                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>0</a></li>
+                </ul>
+    <!-- end counters -->
+
+                      </div>
+                </div>
+                <!-- end social sharing buttons / counters -->
+
+                
+      <!-- metadata -->
+      <div class="bwp-single-metadata-wrap ">
+        <ul class="bwp-single-metadata list-unstyled clearfix">
+                      <!-- author -->
+            <li>
+              <span class="vcard author">
+                <span class="fn">
+                  <i class="fa fa-pencil-square-o"></i><a href="../author/andrea-como/index.html" title="Posts by Andrea Como" rel="author">Andrea Como</a>                </span>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end author -->
+                                <!-- date -->
+            <li>
+                            <span class="date updated">
+                <i class="fa fa-clock-o"></i><a href="https://codingjam.it/2017/04/26/">26/04/2017</a>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end date -->
+                                <!-- categories -->
+            <li>
+              <i class="fa fa-bookmark-o"></i><a href="../category/java/index.html" rel="category tag">Java</a>, <a href="../category/spring-2/index.html" rel="category tag">Spring</a>, <a href="../category/tutorial-2/index.html" rel="category tag">Tutorial</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end categories -->
+                                <!-- tags -->
+            <li>
+              <i class="fa fa-tags"></i><a href="https://codingjam.it/tag/aop/" rel="tag">aop</a>, <a href="https://codingjam.it/tag/hazelcast/" rel="tag">hazelcast</a>, <a href="https://codingjam.it/tag/jcache/" rel="tag">JCache</a>, <a href="https://codingjam.it/tag/spring/" rel="tag">spring</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end tags -->
+                  </ul>
+      </div>
+      <!-- end metadata -->
+
+      
+          </div>
+          <!-- end content container -->
+
+        </article>
+        <!-- end article -->
+
+        
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://codingjam.it/webpack-ecmascript-6-parte-ii/" rel="prev"><span class="meta-nav"><i class="fa fa-angle-left"></i>Previous post</span><span class="post-title-nav">Webpack ECMAScript 6 &#8211; Parte II</span></a></div><div class="nav-next"><a href="../test-end-end-con-nightwatch-js/index.html" rel="next"><span class="meta-nav">Next post<i class="fa fa-angle-right"></i></span><span class="post-title-nav">Test end-to-end con Nightwatch.js</span></a></div></div>
+	</nav>
+    <!-- about the author -->
+    <div class="bwp-about-author-container bwp-transition-3 clearfix">
+      <!-- avatar -->
+      <div class="bwp-about-author-avatar">
+        <a href="../author/andrea-como/index.html">
+          <img alt='' src='https://secure.gravatar.com/avatar/684ede46c9386ff5430335a42fd5b011?s=150&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/684ede46c9386ff5430335a42fd5b011?s=300&#038;d=mm&#038;r=g 2x' class='avatar avatar-150 photo' height='150' width='150' />        </a>
+      </div>
+      <!-- end avatar -->
+      <!-- biographical info -->
+      <div class="bwp-about-author-bio-wrap">
+        <h3 class="bwp-about-author-name">
+          <a href="../author/andrea-como/index.html" title="Posts by Andrea Como" rel="author">Andrea Como</a>          <span><i class="fa fa-angle-double-right"></i>84 Posts</span>
+        </h3>
+        <div class="bwp-about-author-bio">
+          Sono un <strong>software engineer</strong> focalizzato nella progettazione e sviluppo di applicazioni web in Java. Presso <a href="http://www.omniagroup.it/">OmniaGroup</a> ricopro il ruolo di <strong>Tech Leader</strong> sulle tecnologie legate alla piattaforma Java EE 5 (come WebSphere 7.0, EJB3, JPA 1 (EclipseLink), JSF 1.2 (Mojarra) e RichFaces 3) e Java EE 6 con JBoss AS 7, in particolare di CDI, JAX-RS, nonché di EJB 3.1, JPA2, JSF2 e RichFaces 4. Al momento mi occupo di ECM, in particolar modo sulla customizzazione di Alfresco 4 e sulla sua installazione con tecnologie da devops come Vagrant e Chef. 
+In passato ho lavorato con la piattaforma alternativa alla enterprise per lo sviluppo web: Java SE 6, Tomcat 6, Hibernate 3 e Spring 2.5. Nei ritagli di tempo sviluppo siti web in PHP e ASP. Per maggiori informazioni consulta il mio <a href="http://resume.linkedinlabs.com/qoqlpivm">curriculum pubblico</a>.
+
+<a href="https://twitter.com/andrea_como">Follow me on Twitter</a>  -  <a href="http://www.linkedin.com/pub/andrea-como/19/291/99">LinkedIn profile</a> - <a href="https://plus.google.com/u/0/111647274412905676850/posts?rel=author">Google+</a>        </div>
+                  <ul class="bwp-about-author-social list-unstyled clearfix">
+                              <li><a href="http://andrea_como/" target="_blank" class="bwp-a-twitter-link"><i class="fa fa-twitter"></i></a></li>
+                                  <li><a href="http://www.cosenonjaviste.it/?team=andrea-como" target="_blank" class="bwp-a-website-link"><i class="fa fa-link"></i></a></li>
+                          </ul>
+              </div>
+      <!-- end biographical info -->
+    </div>
+    <!-- end about the author -->
+
+    
+<!-- comments -->
+<div id="comments" class="comments-area">
+
+	
+	
+		<div id="respond" class="comment-respond">
+		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='14524' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+	
+</div>
+<!-- end comments -->
+
+    <!-- related posts (by tags) -->
+    <div class="bwp-related-posts-container bwp-show-2-posts">
+      <div class="bwp-o-hidden">
+
+        <!-- title -->
+        <h2 class="bwp-related-posts-title">
+          You might also like:        </h2>
+        <!-- end title -->
+
+        <!-- posts list -->
+        <div class="bwp-related-posts clearfix">
+
+          
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="https://codingjam.it/il-pattern-decorator-e-java-ee-6-quando-il-vecchio-si-fa-nuovo-con-cdi/">Il Pattern Decorator e Java EE 6: quando il vecchio si fa nuovo con CDI</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p class="text-justify">Per chi è cresciuto a pane e <a href="http://it.wikipedia.org/wiki/Gang_of_four" target="_blank">GoF</a> non sarà certo la prima volta che sente parlare del <a href="http://en.wikipedia.org/wiki/Decorator_pattern" target="_blank">Pattern Decorator</a>. In due parole, questo pattern permette di aggiungere in modo modulare funzionalità, a <em>compile-time</em>, ai metodi di una classe esistente, mantenendone l&#8217;interfaccia intatta. L&#8217;aggiunta o la rimozione di queste funzionalità risulta quindi totalmente trasparente all&#8217;utilizzatore. Nel contesto attuale dello sviluppo Java, sempre più governato da &#8220;container&#8221; che risolvono automaticamente le dipendenze, implementare questo pattern poteva non essere banale fino a ieri. La nuova specifica <strong>Context and Dependancy Injection (CDI)</strong> introdotta in Java EE 6 invece supporta nativamente i decoratori: vediamo come.</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2012/06/27/" class="bwp-post-date">
+        <span class="date updated">27/06/2012</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="https://codingjam.it/il-pattern-decorator-e-java-ee-6-quando-il-vecchio-si-fa-nuovo-con-cdi/" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="../microservizi-in-java-con-spring-boot-e-spring-cloud/index.html">Microservizi in Java con Spring Boot e Spring Cloud</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>Negli ultimi anni non si sente altro che parlare di microservizi: se fai microservizi sei <em>cool</em>, altrimenti sei vecchio. Il salto da una applicazione monolitica ad una costellazione di piccole applicazioni però può essere più doloroso di quanto si pensi se non si hanno strumenti in grado di supportare le problematiche introdotte dai sistemi distribuiti.<br />
+Spring è sempre stato una garanzia e non sorprende se oggi come oggi <strong><a href="http://projects.spring.io/spring-cloud/" rel="noopener" target="_blank">Spring Cloud</a></strong> si sia ritagliato nel giro di poco tempo il ruolo di framework leader quando si pensa ai <em>microservizi nel mondo Java</em>.</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2017/12/13/" class="bwp-post-date">
+        <span class="date updated">13/12/2017</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="../microservizi-in-java-con-spring-boot-e-spring-cloud/index.html" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+        </div>
+        <!-- end posts list -->
+
+      </div>
+    </div>
+    <!-- end related posts -->
+
+    
+                  </div><!-- /bwp-single-content-col-wrap --></div><!-- /col-md-8 --><div class="col-md-4 bwp-sidebar-col bwp-sidebar-right">
+        
+                  </div><!-- /col --></div><!-- /row -->
+        
+      </div>
+    </div>
+  </section>
+  <!-- end blog post - single page -->
+
+  
+<!-- footer -->
+<footer id="bwp-footer-wrap">
+  <div class="container">
+    <div class="bwp-footer-container clearfix">
+
+              <!-- footer text -->
+        <div class="bwp-footer-text">
+          CodingJam        </div>
+        <!-- end footer text -->
+      
+              <!-- social links -->
+        <ul class="bwp-footer-social-links list-unstyled clearfix">
+          <li><a href="https://twitter.com/codingjam" target="_blank" class="bwp-f-twitter-link"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.facebook.com/codingjamit/" target="_blank" class="bwp-f-facebook-link"><i class="fa fa-facebook"></i></a></li><li><a href="https://github.com/coding-jam" target="_blank" class="bwp-f-github-link"><i class="fa fa-github"></i></a></li>        </ul>
+        <!-- end social links -->
+      
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+
+<!--googleoff: all--><div id="cookie-law-info-bar"><span>Questo sito Web utilizza i cookie per migliorare la tua esperienza. Daremo per scontato che per te sia ok, ma puoi disattivarlo se lo desideri..<a role='button' tabindex='0' data-cli_action="accept" id="cookie_action_close_header"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button" style="display:inline-block; ">Accetto</a>  <a role='button' tabindex='0' id="cookie_action_close_header_reject"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header_reject cli_action_button"  data-cli_action="reject">Annulla</a> <a href='../cookie.html' id="CONSTANT_OPEN_URL" target="_blank"  class="cli-plugin-main-link"  style="display:inline-block;" >Read More</a></span></div><div id="cookie-law-info-again" style="display:none;"><span id="cookie_hdr_showagain">Privacy & Cookies</span></div><div class="cli-modal" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+    <div class="cli-modal-content cli-bar-popup">
+      <button type="button" class="cli-modal-close" id="cliModalClose">
+        <svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+        <span class="wt-cli-sr-only">Close</span>
+      </button>
+      <div class="cli-modal-body">
+        <div class="cli-container-fluid cli-tab-container">
+    <div class="cli-row">
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0">
+            <div class="cli-privacy-overview">
+                                                   
+                <div class="cli-privacy-content">
+                    <div class="cli-privacy-content-text"></div>
+                </div>
+                <a class="cli-privacy-readmore" data-readmore-text="Show more" data-readless-text="Show less"></a>            </div>
+        </div>  
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+              
+                            <div class="cli-tab-section">
+                    <div class="cli-tab-header">
+                        <a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab" >
+                            Necessary 
+                        </a>
+                    
+                    <span class="cli-necessary-caption">Always Enabled</span>                     </div>
+                    <div class="cli-tab-content">
+                        <div class="cli-tab-pane cli-fade" data-id="necessary">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+              
+                       
+        </div>
+    </div> 
+</div> 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<script type="text/javascript">
+  /* <![CDATA[ */
+  cli_cookiebar_settings='{"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":false,"button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":true,"button_1_new_win":false,"button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":false,"button_2_hidebar":false,"button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":true,"button_3_new_win":false,"button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#fff","button_4_as_button":true,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":false,"scroll_close_reload":false,"accept_close_reload":false,"reject_close_reload":false,"showagain_tab":true,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":false,"show_once":"10000","logging_on":false,"as_popup":false,"popup_overlay":true,"bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"}';
+  /* ]]> */
+</script>
+<!--googleon: all--><script type='text/javascript' src='../wp-content/themes/melissa/js/bootstrap.min7433.js?ver=3.3.7'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.parallaxc358.js?ver=1.1.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/superfish.min97e9.js?ver=1.7.9'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel.min3ba1.js?ver=1.3.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/magnific-popup/jquery.magnific-popup.minf488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
+</body>
+
+<!-- Mirrored from codingjam.it/jcache-con-spring-boot-e-hazelcast/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+</html>

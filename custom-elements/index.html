@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from codingjam.it/custom-elements/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="pingback" href="../xmlrpc.php">
+
+  <title>Custom elements &#8211; CodingJam</title>
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Feed" href="../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Comments Feed" href="../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Custom elements Comments Feed" href="https://codingjam.it/custom-elements/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='../wp-content/plugins/gutenberg/build/block-library/stylea4fb.css?ver=1591004795' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-gdpr-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='melissa-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lato%3A400%2C400i%2C700%2C700i%7CNoto+Serif%3A400%2C400i%2C700%2C700i&amp;subset=latin&amp;ver=1.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../wp-content/themes/melissa/css/bootstrap.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-theme-css'  href='../wp-content/themes/melissa/css/bootstrap-theme.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-ie10-viewport-bug-workaround-css'  href='../wp-content/themes/melissa/css/ie10-viewport-bug-workaround8a54.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='../wp-content/themes/melissa/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-carousel-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-theme-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.theme3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='magnific-popup-css'  href='../wp-content/themes/melissa/assets/magnific-popup/magnific-popupf488.css?ver=1.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-style-css'  href='../wp-content/themes/melissa/style3ec8.css?ver=1.1.6' type='text/css' media='all' />
+<style id='melissa-style-inline-css' type='text/css'>
+
+    .bwp-post-media img,
+    .bwp-post-carousel-item img,
+    .widget_bwp_posts_slider_item img {
+      width: 100%;
+      margin: 0;
+    }
+    .bwp-post-wrap:hover {
+      margin-top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+    #bwp-masonry-container.no-masonry .bwp-post-wrap:hover {
+      top: 0;
+    }
+    .bwp-no-results-container:hover,
+    .bwp-single-article:hover,
+    .bwp-featured-media-container:hover,
+    .post-navigation .nav-links a:hover,
+    .bwp-about-author-container:hover,
+    .comment-respond:hover,
+    .comment-body:hover,
+    #comments .no-comments:hover,
+    .comment-navigation .nav-links a:hover,
+    .bwp-related-post-wrap:hover,
+    .bwp-page-404-container:hover,
+    .bwp-sidebar-wrap:hover {
+      top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+  #bwp-header-wrap {
+    background-color: #2e3340;
+  }
+  .bwp-header-bg-overlay,
+  .bwp-header-rs-bg-overlay {
+    background-color: rgba(46, 51, 64, 0.9);
+  }
+    .bwp-content a,
+    .comment-content a,
+    .bwp-post-quote a {
+      color: #2052bf;
+    }
+</style>
+<link rel='stylesheet' id='enlighter-local-css'  href='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.css?ver=3.9.0' type='text/css' media='all' />
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery4a5f.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[]};
+var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/cookie-law-info/public/js/cookie-law-info-public3cf4.js?ver=1.8.8'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/respond.min.js?ver=1.4.2'></script>
+<![endif]-->
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/mootools-core-yc9086.js?ver=3.9.0'></script>
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.js?ver=3.9.0'></script>
+<link rel='https://api.w.org/' href='../wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+<link rel='prev' title='Blogzinga!' href='../blogzinga/index.html' />
+<link rel='next' title='Next Post' href='../17658-2/index.html' />
+<meta name="generator" content="WordPress 5.4.1" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://codingjam.it/?p=15208' />
+<link rel="alternate" type="application/json+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Fcustom-elements%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Fcustom-elements%2F&amp;format=xml" />
+<link rel="amphtml" href="https://codingjam.it/custom-elements/amp/"><script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"droide","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":false,"windowButton":false,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" sizes="32x32" />
+<link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://codingjam.it/wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-270x270.png" />
+</head>
+
+<body class="post-template-default single single-post postid-15208 single-format-standard wp-custom-logo">
+
+
+<!-- header -->
+<header id="bwp-header-wrap" class="bwp-header-simple">
+
+  <!-- header bg -->
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P6261835_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg-overlay"></div>
+
+    <!-- header content -->
+    <div class="container">
+      <div class="bwp-header-content-container">
+
+        <!-- row 1 - logo + navigation -->
+        <div class="bwp-main-navigation-container clearfix">
+
+          
+        <!-- image logo -->
+        <div class="bwp-logo-container">
+          <a href="../index.html" class="custom-logo-link" rel="home"><img width="207" height="70" src="../wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png" class="custom-logo" alt="CodingJam" srcset="https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png 207w, https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco-150x51.png 150w" sizes="(max-width: 207px) 100vw, 207px" /></a>        </div>
+        <!-- end image logo -->
+
+        
+      <!-- search -->
+      <div class="bwp-header-search-container hidden-sm hidden-xs">
+        <a href="#" id="bwp-header-search-icon">
+          <i class="fa fa-search"></i>
+        </a>
+        <div class="bwp-dropdown-search-container bwp-search-hidden">
+          
+<!-- search form -->
+<form id="searchform" role="search" method="get" action="https://codingjam.it/">
+  <div class="input-group">
+    <input type="text" name="s" id="s" class="bwp-search-field form-control" placeholder="Enter your search query...">
+    <span class="input-group-btn">
+      <button type="submit" class="btn bwp-search-submit">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+</form>
+<!-- end search form -->
+        </div>
+      </div>
+      <!-- end search -->
+
+      
+      <!-- menu -->
+      <div class="bwp-menu-container hidden-sm hidden-xs">
+        <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-2" class="sf-menu"><li id="menu-item-12007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li id="menu-item-12022" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li id="menu-item-12009" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li id="menu-item-12020" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li id="menu-item-12017" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li id="menu-item-12006" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li id="menu-item-12005" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li id="menu-item-12008" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li id="menu-item-12014" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li id="menu-item-12012" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li id="menu-item-12010" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li id="menu-item-12021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li id="menu-item-12016" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li id="menu-item-12015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li id="menu-item-12019" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li id="menu-item-12018" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>      </div>
+      <!-- end menu -->
+
+      
+      <!-- mobile menu -->
+      <div class="bwp-mobile-menu-container hidden-md hidden-lg">
+        <!-- mobile menu icon -->
+        <a href="#" id="bwp-mobile-menu-icon">
+          <i class="fa fa-bars"></i>
+        </a>
+        <!-- end mobile menu icon -->
+        <!-- dropdown mobile menu -->
+        <div class="bwp-dropdown-mobile-menu bwp-mobile-menu-hidden">
+          <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-3" class="bwp-mobile-menu list-unstyled"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>        </div>
+        <!-- end dropdown mobile menu -->
+      </div>
+      <!-- end mobile menu -->
+
+      
+        </div>
+        <!-- end row 1 - logo + navigation -->
+
+        
+          <!-- row 2 - header custom text -->
+          <div class="bwp-header-custom-text-container">
+            
+        <!-- custom text - single page -->
+        <h1 class="bwp-header-custom-title entry-title">
+          Custom elements        </h1>
+                <div class="bwp-header-transparent-line clearfix">
+          <span class="bwp-header-t-line-1"></span>
+          <span class="bwp-header-t-line-2"></span>
+        </div>
+        <!-- end custom text -->
+
+                  </div>
+          <!-- end row 2 - header custom text -->
+
+          
+      </div>
+    </div>
+    <!-- end header content -->
+  </div>
+  <!-- end header bg -->
+
+  
+        <!-- sticky navigation -->
+        <div class="bwp-sticky-navigation-wrap bwp-transition-4 clearfix">
+          <!-- sticky navigation icon -->
+          <a href="#" id="bwp-sticky-navigation-icon">
+            <i class="fa fa-bars"></i>
+          </a>
+          <!-- end sticky navigation icon -->
+          <!-- sticky navigation container -->
+          <div class="bwp-sticky-navigation-container bwp-sticky-navigation-hidden">
+            <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-4" class="sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>          </div>
+          <!-- end sticky navigation container -->
+        </div>
+        <!-- end sticky navigation -->
+
+        
+</header>
+<!-- end header -->
+
+  <!-- blog post - single page -->
+  <section id="bwp-single-page-wrap">
+    <div class="container">
+      <div class="bwp-single-page-container" >
+
+        
+                  <div class="row"><div class="col-md-8 bwp-single-content-col bwp-sidebar-right"><div class="bwp-single-content-col-wrap" role="main">
+        
+        <!-- article -->
+        <article id="post-15208" class="bwp-single-article bwp-transition-3">
+
+          
+          <!-- content container -->
+          <div class="bwp-single-content">
+
+            <!-- content -->
+            <div class="bwp-content entry-content clearfix">
+              <p>La più grande evoluzione che i framework frontend <i>post AngularJS</i> hanno portato ai developer JavaScript è stato <strong>l&#8217;introduzione del concetto di <i>componente</i></strong>. Concetto già presente in AngularJS stesso, anche nelle versioni con qualche annetto sulle spalle. Sicuramente però <strong>l&#8217;avvento di Angular, Vue e soprattutto React hanno fatto diventare questo concetto <em>mainstream</em>.</strong></p>
+<p>L&#8217;idea di componente basa molta della sua forza sul <strong>concetto di <i>riutilizzo</i></strong>. Se ad esempio create un componente <code>&lt;Calendar/&gt;</code> ci aspettiamo di utilizzarlo in tutti i punti del nostro progetto in cui serve un calendario. Non è il solo vantaggio dell&#8217;approccio ai componenti, e forse <em>neanche il più importante</em>, ma di certo è il più immediato da cogliere. </p>
+<p>Il concetto si può estendere non solo ad un singolo progetto, ma anche ad una suite di progetti, magari legati allo stesso brand. Ognuno dei progetti potrebbe utilizzare lo stesso <code>&lt;Calendar/&gt;</code>, portando ad un enorme riusabilità del codice.</p>
+<h2>I custom elements</h2>
+<p>Una nuova Web API <strong>permette di creare componenti in applicazioni frontend senza bisogno di nessun framework</strong>: i <code>custom elements</code>. Questa API fa parte del gruppo di API che formano i <a href="https://www.webcomponents.org/" rel="noopener" target="_blank">web components</a>. Il supporto per ora è ancora limitato come potete vedere da questa immagine presa da <a href="https://caniuse.com/#feat=custom-elementsv1" rel="noopener" target="_blank">caniuse.com</a>.</p>
+<p><a href="https://codingjam.it/wp-content/uploads/2018/05/Screen-Shot-2018-05-16-at-20.19.19.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2018/05/Screen-Shot-2018-05-16-at-20.19.19-1024x246.png" alt="" width="740" height="178" class="aligncenter size-large wp-image-15212" srcset="https://codingjam.it/wp-content/uploads/2018/05/Screen-Shot-2018-05-16-at-20.19.19-1024x246.png 1024w, https://codingjam.it/wp-content/uploads/2018/05/Screen-Shot-2018-05-16-at-20.19.19-300x72.png 300w, https://codingjam.it/wp-content/uploads/2018/05/Screen-Shot-2018-05-16-at-20.19.19-768x185.png 768w" sizes="(max-width: 740px) 100vw, 740px" /></a></p>
+<p>Il supporto è garantito ad oggi da Chrome e Safari. In Firefox è attivabile tramite un flag e sarà disponibile dalla prossima versione. <strong>Per fortuna è possibile utlizzare questa tecnica già da subito grazie ad un <a href="https://github.com/webcomponents/custom-elements" rel="noopener" target="_blank">polyfill</a> che la rende compatibile anche con IE11.</strong></p>
+<p>Un custom element è composto da una classe che estende <code>HTMLElement</code>. Qui di seguito trovate un semplice esempio di <code>custom element</code>:</p>
+<pre class="brush: jscript; highlight: [2]; title: ; notranslate" title="">
+export default class MyComponent extends HTMLElement {
+  connectedCallback () {
+    this.innerHTML = '&lt;div&gt;Hello World!&lt;/div&gt;'
+  }
+}
+</pre>
+<p>Il metodo <code>connectedCallback</code> viene invocato appena il nostro elemento viene <strong>connesso al DOM</strong>. Quello che facciamo è semplicemente aggiungere un <code>div</code> con al suo interno il famoso saluto per sviluppatori.<br />
+Una volta definito il nostro componente, questo va <i>registrato</i> nel registro dei <code>custom elements</code></p>
+<pre class="brush: jscript; title: ; notranslate" title="">
+window.customElements.define('my-component', MyComponent)
+</pre>
+<p>Unica cosa da considerare quando si registra un nuovo <code>custom element</code> è che il nome deve essere composto da almeno due parole separate da un trattino. Questo perché i nomi a singola parola sono <b>riservati</b>. In questo modo non si rischia che i componenti custom vadano in conflitto con eventuali nuovi tag standard. </p>
+<p>A questo punto potete inserirlo nella vostra applicazione semplicemente utilizzando il tag appena registrato:</p>
+<p><pre data-enlighter-language="html" class="EnlighterJSRAW">
+&lt;my-component&gt;&lt;/my-component&gt;
+</pre></p>
+<h2>Attributi</h2>
+<p>Come tutti i componenti HTML <b>anche i <code>custom element</code> posso essere configurati tramite attributi</b>. Nel prossimo esempio, il componente accetta un parametro <code>name</code> per personalizzare il messaggio.</p>
+<pre class="brush: jscript; title: ; notranslate" title="">
+export default class MyComponent extends HTMLElement {
+  
+  get name () {
+    return this.getAttribute('name') 
+  }
+
+  set name (value) {
+    this.setAttribute('name', value)
+  }
+
+  connectedCallback () {
+    const name = this.name || 'World'
+    this.innerHTML = `&lt;div&gt;Hello ${name}!&lt;/div&gt;`
+  }
+}
+</pre>
+<p>Ed ecco l&#8217;utilizzo del nostro nuovo componente.</p>
+<p><pre data-enlighter-language="html" class="EnlighterJSRAW">
+&lt;div&gt;
+   &lt;my-component name=&quot;Francesco&quot;&gt;&lt;/my-component&gt;
+   &lt;my-component&gt;&lt;/my-component&gt;
+&lt;/div&gt;
+</pre></p>
+<h2>Una Todo list</h2>
+<p>Lo scopo di questa parte del post è quella di creare una piccola <i>todo list</i> usando i <code>custom elements</code>. Il risultato è visibile in questa <a href="https://francesco-strazzullo.github.io/custom-components-example/" rel="noopener" target="_blank">live demo</a>, mentre il codice completo dell&#8217;applicazione è disponibile su <a href="https://github.com/francesco-strazzullo/custom-components-example" rel="noopener" target="_blank">GitHub</a>.</p>
+<figure id="attachment_15222" aria-describedby="caption-attachment-15222" style="width: 320px" class="wp-caption aligncenter"><a href="https://codingjam.it/wp-content/uploads/2018/05/todolist001.gif" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2018/05/todolist001.gif" alt="" width="320" height="194" class="size-full wp-image-15222" /></a><figcaption id="caption-attachment-15222" class="wp-caption-text">Questa è la nostra applicazione d&#8217;esempio</figcaption></figure>
+<p>I componenti che formano questa applicazione sono quattro: <code>app-form</code> che contiene l&#8217;input; <code>app-list</code> e <code>app-list-row</code> che formano la lista dei todo, ed infine <code>my-app</code> che fa da <i>container</i> e gestisce le comunicazione tra le parti. Il codice di <code>app-form</code> è il seguente:</p>
+<pre class="brush: jscript; highlight: [1,23]; title: ; notranslate" title="">
+import template from './Form.template.html'
+
+export const EVENTS = {
+  ADD: 'app/todo/add'
+}
+
+export default class Form extends HTMLElement {
+  connectedCallback () {
+    this.innerHTML = template
+
+    this
+        .querySelector('button')
+        .addEventListener('click', () =&gt; this.add())
+
+    this.input = this.querySelector('input')
+  }
+
+  focus () {
+    this.input.focus()
+  }
+
+  add () {
+    this.dispatchEvent(new window.CustomEvent(EVENTS.ADD, {
+      detail: {
+        value: this.value
+      }
+    }))
+  }
+
+  get value () {
+    return this.input.value
+  }
+
+  set value (val) {
+    this.input.value = val
+  }
+}
+</pre>
+<p>Per mantenere il markup in un file esterno, ho utilizzato un loader di <a href="https://codingjam.it/webpack-ecmascript-6-parte/" rel="noopener" target="_blank">Webpack</a> che permette di importare un file <i>html</i> come stringa chiamato <i><a href="https://github.com/webpack-contrib/html-loader" rel="noopener" target="_blank">html-loader</a></i>. La form genera un <a href="https://developer.mozilla.org/it/docs/Web/API/CustomEvent" rel="noopener" target="_blank">CustomEvent</a> ogni volta che l&#8217;utente clicca sul pulsante &#8220;aggiungi&#8221;. Questo evento viene catturato dal componente <code>my-app</code>, come si può notare dal prossimo snippet:</p>
+<pre class="brush: jscript; highlight: [4,13,23,24]; title: ; notranslate" title="">
+import template from './App.template.html'
+import { EVENTS as FORM_EVENTS } from '../Form/Form'
+import { EVENTS as LIST_EVENTS } from '../List/List'
+import todos from '../../model/todos'
+
+export default class App extends HTMLElement {
+  connectedCallback () {
+    this.innerHTML = template
+
+    this.form = this.querySelector('app-form')
+    this.list = this.querySelector('app-list')
+
+    this.form.addEventListener(FORM_EVENTS.ADD, event =&gt; {
+      todos.add(event.detail.value)
+      this.form.value = ''
+      this.form.focus()
+    })
+
+    this.list.addEventListener(LIST_EVENTS.DELETE, event =&gt; {
+      todos.delete(event.detail.index)
+    })
+
+    window.customElements.whenDefined('app-list').then(() =&gt; {
+      todos.connect((todos) =&gt; {
+        this.list.todos = todos
+      })
+    })
+  }
+}
+</pre>
+<p>Come detto in precedenza, <b><code>my-app</code> si occupa della comunicazione tra le parti</b>. All&#8217;evento <code>FORM_EVENTS.ADD</code> infatti viene invocato il metodo <code>add</code> del nostro modello <i>todos</i>. Infine quando il componente <code>app-list</code> è pronto l&#8217;app si occupa di <b>sincronizzare lo stato della lista con quello del nostro modello</b>. Il modello <i>todos</i> è un&#8217;<i>Observable</i> di cui potete leggere il codice nel <a href="https://github.com/francesco-strazzullo/custom-components-example/blob/master/app/model/todos.js" rel="noopener" target="_blank">repository</a>. Infine questo è il codice di <code>app-list</code>:</p>
+<pre class="brush: jscript; highlight: [50,63]; title: ; notranslate" title="">
+import htmlToDomElement from '../../utils/htmlToDomElement'
+
+const TEMPLATE = `
+  &lt;div&gt;
+      &lt;ul&gt;
+      &lt;/ul&gt;
+  &lt;/div&gt;
+`
+
+const NO_ROW_TEMPLATE = '&lt;div class=&quot;text-gray&quot;&gt;Nothing to do&lt;/div&gt;'
+
+export const EVENTS = {
+  DELETE: 'app/todo/delete'
+}
+
+export default class List extends HTMLElement {
+  constructor () {
+    super()
+    this.todoList = []
+  }
+
+  connectedCallback () {
+    this.render()
+  }
+
+  renderList () {
+    this.innerHTML = TEMPLATE
+
+    const ul = this.querySelector('ul')
+
+    this.todoList.forEach((todo, index) =&gt; {
+      const row = htmlToDomElement(`&lt;app-list-row value=&quot;${todo.text}&quot;&gt;&lt;/app-list-row&gt;`)
+      ul.appendChild(row)
+      row
+        .querySelector('button')
+        .addEventListener('click', () =&gt; this.onDeleteClick(index))
+    })
+  }
+
+  render () {
+    if (!this.todoList || !this.todoList.length) {
+      this.innerHTML = NO_ROW_TEMPLATE
+      return
+    }
+
+    this.renderList()
+  }
+
+  onDeleteClick (index) {
+    this.dispatchEvent(new window.CustomEvent(EVENTS.DELETE, {
+      detail: {
+        index
+      }
+    }))
+  }
+
+  get todos () {
+    return Object.freeze(this.todoList)
+  }
+
+  set todos (val) {
+    this.todoList = [...val]
+    this.render()
+  }
+}
+</pre>
+<p>Per completare il flusso dell&#8217;applicazione, notiamo come <b>ogni volta che viene invocato il setter <code>todos</code> rifacciamo il render della nostra lista</b>. Per quanto rigurada la cancellazione abbiamo un flusso esattamente identico a quello dell&#8217;inserimento: <code>CustomEvent</code> su <code>app-list</code> che viene intercettato su <code>my-app</code>, dopodiché si sincronizza di nuovo il nostro modello con il componente <code>app-list</code>.</p>
+<h2>Conclusioni</h2>
+<p>Personalmente credo che i custom elements, e più in generale i web components, saranno <b>la prossima <i>big thing</i> dello sviluppo frontend</b>. Possono portare il concetto di portabilità a livelli molto più alti che in passato. Ragionate sul fatto che se vi siete fatti la vostra bellissima suite di componenti in <i>Angular</i>, <strong>avete legato tutti i vostri progetti futuri ad un framework</strong>. Con questa tecnica invece potete costruirla basandovi su uno <strong><i>standard</i></strong>. Facendo quindi il possibile per <b>garantire la longevità della vostra <i>codebase</i></b>, che non è legata ad un framework che potrebbe semplicemente &#8220;sparire&#8221; ed essere quindi un peso negli anni a venire.</p>
+<p>Per concludere vorrei condividere con voi la nascita del <a href="http://www.frameworklessmovement.org/" rel="noopener" target="_blank">Frameworkless Movement</a>: <strong>un gruppo di persone interessate a studiare come sviluppare senza framework e su come migliorare nel prendere decisioni tecniche in maniera consapevole</strong>. Questo post è il risultato di ragionamenti ed esperimenti che io ed il mio team abbiamo fatto negli ultimi tempi. Alla prossima!</p>
+            </div>
+            <!-- end content -->
+
+            
+                <!-- social sharing buttons / counters -->
+                <div class="row">
+                  <div class="col-md-7">
+                    
+    <!-- social sharing buttons -->
+    <div class="bwp-single-share-wrap">
+      <span>Share:</span>
+      <ul class="bwp-single-share list-unstyled">
+        <!-- facebook -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/custom-elements/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/custom-elements/" target="_blank" class="bwp-share-link bwp-facebook-share">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <!-- end facebook -->
+        <!-- twitter -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/custom-elements/&amp;text=custom-elements', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/custom-elements/&amp;text=custom-elements" target="_blank" class="bwp-share-link bwp-twitter-share">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <!-- end twitter -->
+        <!-- google+ -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/custom-elements/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/custom-elements/" target="_blank" class="bwp-share-link bwp-google-plus-share">
+            <i class="fa fa-google-plus"></i>
+          </a>
+        </li>
+        <!-- end google+ -->
+        <!-- vk -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/custom-elements/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/custom-elements/" target="_blank" class="bwp-share-link bwp-vk-share">
+            <i class="fa fa-vk"></i>
+          </a>
+        </li>
+        <!-- end vk -->
+        <!-- pinterest -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/custom-elements/&amp;media=&amp;description=custom-elements', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/custom-elements/&amp;media=&amp;description=custom-elements" target="_blank" class="bwp-share-link bwp-pinterest-share">
+            <i class="fa fa-pinterest-p"></i>
+          </a>
+        </li>
+        <!-- end pinterest -->
+      </ul>
+    </div>
+    <!-- end social sharing buttons -->
+
+                      </div>
+                  <div class="col-md-5">
+                    
+    <!-- counters -->
+    <ul class="bwp-single-counters list-unstyled clearfix ">
+                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>0</a></li>
+                </ul>
+    <!-- end counters -->
+
+                      </div>
+                </div>
+                <!-- end social sharing buttons / counters -->
+
+                
+      <!-- metadata -->
+      <div class="bwp-single-metadata-wrap ">
+        <ul class="bwp-single-metadata list-unstyled clearfix">
+                      <!-- author -->
+            <li>
+              <span class="vcard author">
+                <span class="fn">
+                  <i class="fa fa-pencil-square-o"></i><a href="../author/francesco-strazzullo/index.html" title="Posts by Francesco Strazzullo" rel="author">Francesco Strazzullo</a>                </span>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end author -->
+                                <!-- date -->
+            <li>
+                            <span class="date updated">
+                <i class="fa fa-clock-o"></i><a href="https://codingjam.it/2018/05/23/">23/05/2018</a>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end date -->
+                                <!-- categories -->
+            <li>
+              <i class="fa fa-bookmark-o"></i><a href="../category/javascript/index.html" rel="category tag">Javascript</a>, <a href="../category/tutorial-2/index.html" rel="category tag">Tutorial</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end categories -->
+                                <!-- tags -->
+            <li>
+              <i class="fa fa-tags"></i><a href="../tag/javascript-2/index.html" rel="tag">javascript</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end tags -->
+                  </ul>
+      </div>
+      <!-- end metadata -->
+
+      
+          </div>
+          <!-- end content container -->
+
+        </article>
+        <!-- end article -->
+
+        
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="../blogzinga/index.html" rel="prev"><span class="meta-nav"><i class="fa fa-angle-left"></i>Previous post</span><span class="post-title-nav">Blogzinga!</span></a></div><div class="nav-next"><a href="../17658-2/index.html" rel="next"><span class="meta-nav">Next post<i class="fa fa-angle-right"></i></span><span class="post-title-nav">Next Post</span></a></div></div>
+	</nav>
+    <!-- about the author -->
+    <div class="bwp-about-author-container bwp-transition-3 clearfix">
+      <!-- avatar -->
+      <div class="bwp-about-author-avatar">
+        <a href="../author/francesco-strazzullo/index.html">
+          <img alt='' src='https://secure.gravatar.com/avatar/f0012066f4fad79deb33bf5e9799b557?s=150&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/f0012066f4fad79deb33bf5e9799b557?s=300&#038;d=mm&#038;r=g 2x' class='avatar avatar-150 photo' height='150' width='150' />        </a>
+      </div>
+      <!-- end avatar -->
+      <!-- biographical info -->
+      <div class="bwp-about-author-bio-wrap">
+        <h3 class="bwp-about-author-name">
+          <a href="../author/francesco-strazzullo/index.html" title="Posts by Francesco Strazzullo" rel="author">Francesco Strazzullo</a>          <span><i class="fa fa-angle-double-right"></i>30 Posts</span>
+        </h3>
+        <div class="bwp-about-author-bio">
+          Sono uno sviluppatore front-end, speaker e trainer per <a href="https://www.flowing.it/">Flowing</a>. Oltre a scrivere su vari blog (tra cui codingjam!) sono l'autore de libro <a href="https://www.amazon.it/gp/product/1484249666">"Frameworkless Front-end Development"</a>. Nel tempo libero mi piace cucinare cibo etnico e giocare ai videogame.        </div>
+                  <ul class="bwp-about-author-social list-unstyled clearfix">
+                              <li><a href="http://@thestrazz86/" target="_blank" class="bwp-a-twitter-link"><i class="fa fa-twitter"></i></a></li>
+                                  <li><a href="https://github.com/francesco-strazzullo" target="_blank" class="bwp-a-github-link"><i class="fa fa-github"></i></a></li>
+                                  <li><a href="http://www.cosenonjaviste.it/?team=francesco-strazzullo" target="_blank" class="bwp-a-website-link"><i class="fa fa-link"></i></a></li>
+                          </ul>
+              </div>
+      <!-- end biographical info -->
+    </div>
+    <!-- end about the author -->
+
+    
+<!-- comments -->
+<div id="comments" class="comments-area">
+
+	
+	
+		<div id="respond" class="comment-respond">
+		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='15208' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+	
+</div>
+<!-- end comments -->
+
+    <!-- related posts (by tags) -->
+    <div class="bwp-related-posts-container bwp-show-2-posts">
+      <div class="bwp-o-hidden">
+
+        <!-- title -->
+        <h2 class="bwp-related-posts-title">
+          You might also like:        </h2>
+        <!-- end title -->
+
+        <!-- posts list -->
+        <div class="bwp-related-posts clearfix">
+
+          
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                    <!-- media - featured image -->
+                    <figure class="bwp-post-media">
+                                              <a href="https://codingjam.it/webpack-ecmascript-6-parte/" class="bwp-post-media-link">
+                                              <img width="706" height="397" src="https://codingjam.it/wp-content/uploads/2017/01/maxresdefault.jpg" class="attachment-melissa-img-706-auto size-melissa-img-706-auto wp-post-image" alt="" srcset="https://codingjam.it/wp-content/uploads/2017/01/maxresdefault.jpg 1920w, https://codingjam.it/wp-content/uploads/2017/01/maxresdefault-300x169.jpg 300w, https://codingjam.it/wp-content/uploads/2017/01/maxresdefault-768x432.jpg 768w, https://codingjam.it/wp-content/uploads/2017/01/maxresdefault-1024x576.jpg 1024w, https://codingjam.it/wp-content/uploads/2017/01/maxresdefault-300x169@2x.jpg 600w, https://codingjam.it/wp-content/uploads/2017/01/maxresdefault-768x432@2x.jpg 1536w" sizes="(max-width: 706px) 100vw, 706px" />                        <div class="bwp-post-bg-overlay bwp-transition-4"></div>
+                        <div class="bwp-post-hover-icon-wrap">
+                          <div class="bwp-post-hover-icon-alignment">
+                            <div class="bwp-post-hover-icon-center">
+                              <span class="bwp-transition-4"><i class="fa fa-share"></i></span>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </figure>
+                    <!-- end media -->
+
+                    
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="https://codingjam.it/webpack-ecmascript-6-parte/">Webpack ECMAScript 6 &#8211; Parte I</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>Le odierne Applicazioni Web (2.0) ed in particolare l enorme successo riscosso da NodeJS, con tutto l ecosistema che gli gravita attorno, hanno catapultato agli onori delle cronache un linguaggio a cui era stato predetta una fine a breve termine, il Javascript! Si, proprio lui, quel linguaggio che il GWT (Google Web Toolkit), ne aveva quasi decretato la fine, oggi appare (e lo è :-)) uno degli attori principali&#8230;</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2017/01/24/" class="bwp-post-date">
+        <span class="date updated">24/01/2017</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="https://codingjam.it/webpack-ecmascript-6-parte/" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="https://codingjam.it/tdd-in-javascript-con-requirejs/">TDD in javascript con RequireJS</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>TDD in Javascript con RequireJS Qualche tempo fa, scorrendo gli annunci di lavoro su LinkedIn, mi sono imbattuto in una descrizione molto simpatica (e significativa per l&#8217;argomento di questo post) di cosa era richiesto al candidato dalla società proponente. Tra le richieste più comuni (conoscenza delle tecnologie X e Y, approccio TDD, programmazione secondo i principi SOLID,&#8230;.) spuntava in bella vista un punto che recitava testualmente: &#8220;you test your javascript&#8220;! (traduzione estratta dal contesto: era richiesto un uso abituale del [&hellip;]</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2015/12/09/" class="bwp-post-date">
+        <span class="date updated">09/12/2015</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="https://codingjam.it/tdd-in-javascript-con-requirejs/" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+        </div>
+        <!-- end posts list -->
+
+      </div>
+    </div>
+    <!-- end related posts -->
+
+    
+                  </div><!-- /bwp-single-content-col-wrap --></div><!-- /col-md-8 --><div class="col-md-4 bwp-sidebar-col bwp-sidebar-right">
+        
+                  </div><!-- /col --></div><!-- /row -->
+        
+      </div>
+    </div>
+  </section>
+  <!-- end blog post - single page -->
+
+  
+<!-- footer -->
+<footer id="bwp-footer-wrap">
+  <div class="container">
+    <div class="bwp-footer-container clearfix">
+
+              <!-- footer text -->
+        <div class="bwp-footer-text">
+          CodingJam        </div>
+        <!-- end footer text -->
+      
+              <!-- social links -->
+        <ul class="bwp-footer-social-links list-unstyled clearfix">
+          <li><a href="https://twitter.com/codingjam" target="_blank" class="bwp-f-twitter-link"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.facebook.com/codingjamit/" target="_blank" class="bwp-f-facebook-link"><i class="fa fa-facebook"></i></a></li><li><a href="https://github.com/coding-jam" target="_blank" class="bwp-f-github-link"><i class="fa fa-github"></i></a></li>        </ul>
+        <!-- end social links -->
+      
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+
+<!--googleoff: all--><div id="cookie-law-info-bar"><span>Questo sito Web utilizza i cookie per migliorare la tua esperienza. Daremo per scontato che per te sia ok, ma puoi disattivarlo se lo desideri..<a role='button' tabindex='0' data-cli_action="accept" id="cookie_action_close_header"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button" style="display:inline-block; ">Accetto</a>  <a role='button' tabindex='0' id="cookie_action_close_header_reject"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header_reject cli_action_button"  data-cli_action="reject">Annulla</a> <a href='../cookie.html' id="CONSTANT_OPEN_URL" target="_blank"  class="cli-plugin-main-link"  style="display:inline-block;" >Read More</a></span></div><div id="cookie-law-info-again" style="display:none;"><span id="cookie_hdr_showagain">Privacy & Cookies</span></div><div class="cli-modal" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+    <div class="cli-modal-content cli-bar-popup">
+      <button type="button" class="cli-modal-close" id="cliModalClose">
+        <svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+        <span class="wt-cli-sr-only">Close</span>
+      </button>
+      <div class="cli-modal-body">
+        <div class="cli-container-fluid cli-tab-container">
+    <div class="cli-row">
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0">
+            <div class="cli-privacy-overview">
+                                                   
+                <div class="cli-privacy-content">
+                    <div class="cli-privacy-content-text"></div>
+                </div>
+                <a class="cli-privacy-readmore" data-readmore-text="Show more" data-readless-text="Show less"></a>            </div>
+        </div>  
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+              
+                            <div class="cli-tab-section">
+                    <div class="cli-tab-header">
+                        <a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab" >
+                            Necessary 
+                        </a>
+                    
+                    <span class="cli-necessary-caption">Always Enabled</span>                     </div>
+                    <div class="cli-tab-content">
+                        <div class="cli-tab-pane cli-fade" data-id="necessary">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+              
+                       
+        </div>
+    </div> 
+</div> 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<script type="text/javascript">
+  /* <![CDATA[ */
+  cli_cookiebar_settings='{"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":false,"button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":true,"button_1_new_win":false,"button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":false,"button_2_hidebar":false,"button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":true,"button_3_new_win":false,"button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#fff","button_4_as_button":true,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":false,"scroll_close_reload":false,"accept_close_reload":false,"reject_close_reload":false,"showagain_tab":true,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":false,"show_once":"10000","logging_on":false,"as_popup":false,"popup_overlay":true,"bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"}';
+  /* ]]> */
+</script>
+<!--googleon: all--><script type='text/javascript' src='../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore09b1.js?ver=3.0.9b'></script>
+<script type='text/javascript' src='../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJScript09b1.js?ver=3.0.9b'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore09b1.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeEclipse09b1.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = true;
+	SyntaxHighlighter.defaults['tab-size'] = 2;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/bootstrap.min7433.js?ver=3.3.7'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.parallaxc358.js?ver=1.1.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/superfish.min97e9.js?ver=1.7.9'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel.min3ba1.js?ver=1.3.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/magnific-popup/jquery.magnific-popup.minf488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
+</body>
+
+<!-- Mirrored from codingjam.it/custom-elements/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+</html>

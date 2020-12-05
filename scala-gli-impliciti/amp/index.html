@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html amp lang="en-US" i-amphtml-layout="" i-amphtml-no-boilerplate="" transformed="self;v=1">
+<!-- Mirrored from codingjam.it/scala-gli-impliciti/amp/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="utf-8"><style amp-runtime="" i-amphtml-version="012011200012001">html{overflow-x:hidden!important}html.i-amphtml-fie{height:100%!important;width:100%!important}html:not([amp4ads]),html:not([amp4ads]) body{height:auto!important}html:not([amp4ads]) body{margin:0!important}body{-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%}html.i-amphtml-singledoc.i-amphtml-embedded{-ms-touch-action:pan-y;touch-action:pan-y}html.i-amphtml-fie>body,html.i-amphtml-singledoc>body{overflow:visible!important}html.i-amphtml-fie:not(.i-amphtml-inabox)>body,html.i-amphtml-singledoc:not(.i-amphtml-inabox)>body{position:relative!important}html.i-amphtml-webview>body{overflow-x:hidden!important;overflow-y:visible!important;min-height:100vh!important}html.i-amphtml-ios-embed-legacy>body{overflow-x:hidden!important;overflow-y:auto!important;position:absolute!important}html.i-amphtml-ios-embed{overflow-y:auto!important;position:static}#i-amphtml-wrapper{overflow-x:hidden!important;overflow-y:auto!important;position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;margin:0!important;display:block!important}html.i-amphtml-ios-embed.i-amphtml-ios-overscroll,html.i-amphtml-ios-embed.i-amphtml-ios-overscroll>#i-amphtml-wrapper{-webkit-overflow-scrolling:touch!important}#i-amphtml-wrapper>body{position:relative!important;border-top:1px solid transparent!important}#i-amphtml-wrapper+body{visibility:visible}#i-amphtml-wrapper+body .i-amphtml-lightbox-element,#i-amphtml-wrapper+body[i-amphtml-lightbox]{visibility:hidden}#i-amphtml-wrapper+body[i-amphtml-lightbox] .i-amphtml-lightbox-element{visibility:visible}#i-amphtml-wrapper.i-amphtml-scroll-disabled,.i-amphtml-scroll-disabled{overflow-x:hidden!important;overflow-y:hidden!important}amp-instagram{padding:54px 0px 0px!important;background-color:#fff}amp-iframe iframe{box-sizing:border-box!important}[amp-access][amp-access-hide]{display:none}[subscriptions-dialog],body:not(.i-amphtml-subs-ready) [subscriptions-action],body:not(.i-amphtml-subs-ready) [subscriptions-section]{display:none!important}amp-experiment,amp-live-list>[update]{display:none}.i-amphtml-jank-meter{position:fixed;background-color:rgba(232,72,95,0.5);bottom:0;right:0;color:#fff;font-size:16px;z-index:1000;padding:5px}amp-list[resizable-children]>.i-amphtml-loading-container.amp-hidden{display:none!important}amp-list [fetch-error],amp-list[load-more] [load-more-button],amp-list[load-more] [load-more-end],amp-list[load-more] [load-more-failed],amp-list[load-more] [load-more-loading]{display:none}amp-list[diffable] div[role=list]{display:block}amp-story-page,amp-story[standalone]{min-height:1px!important;display:block!important;height:100%!important;margin:0!important;padding:0!important;overflow:hidden!important;width:100%!important}amp-story[standalone]{background-color:#202125!important;position:relative!important}amp-story-page{background-color:#757575}amp-story .amp-active>div,amp-story .i-amphtml-loader-background{display:none!important}amp-story-page:not(:first-of-type):not([distance]):not([active]){transform:translateY(1000vh)!important}amp-autocomplete{position:relative!important;display:inline-block!important}amp-autocomplete>input,amp-autocomplete>textarea{padding:0.5rem;border:1px solid rgba(0,0,0,0.33)}.i-amphtml-autocomplete-results,amp-autocomplete>input,amp-autocomplete>textarea{font-size:1rem;line-height:1.5rem}[amp-fx^=fly-in]{visibility:hidden}amp-script[nodom]{position:fixed!important;top:0!important;width:1px!important;height:1px!important;overflow:hidden!important;visibility:hidden}
+/*# sourceURL=/css/ampdoc.css*/[hidden]{display:none!important}.i-amphtml-element{display:inline-block}.i-amphtml-blurry-placeholder{transition:opacity 0.3s cubic-bezier(0.0,0.0,0.2,1)!important;pointer-events:none}[layout=nodisplay]:not(.i-amphtml-element){display:none!important}.i-amphtml-layout-fixed,[layout=fixed][width][height]:not(.i-amphtml-layout-fixed){display:inline-block;position:relative}.i-amphtml-layout-responsive,[layout=responsive][width][height]:not(.i-amphtml-layout-responsive),[width][height][heights]:not([layout]):not(.i-amphtml-layout-responsive),[width][height][sizes]:not([layout]):not(.i-amphtml-layout-responsive){display:block;position:relative}.i-amphtml-layout-intrinsic,[layout=intrinsic][width][height]:not(.i-amphtml-layout-intrinsic){display:inline-block;position:relative;max-width:100%}.i-amphtml-layout-intrinsic .i-amphtml-sizer{max-width:100%}.i-amphtml-intrinsic-sizer{max-width:100%;display:block!important}.i-amphtml-layout-container,.i-amphtml-layout-fixed-height,[layout=container],[layout=fixed-height][height]:not(.i-amphtml-layout-fixed-height){display:block;position:relative}.i-amphtml-layout-fill,.i-amphtml-layout-fill.i-amphtml-notbuilt,[layout=fill]:not(.i-amphtml-layout-fill){display:block;overflow:hidden!important;position:absolute;top:0;left:0;bottom:0;right:0}.i-amphtml-layout-flex-item,[layout=flex-item]:not(.i-amphtml-layout-flex-item){display:block;position:relative;-ms-flex:1 1 auto;flex:1 1 auto}.i-amphtml-layout-fluid{position:relative}.i-amphtml-layout-size-defined{overflow:hidden!important}.i-amphtml-layout-awaiting-size{position:absolute!important;top:auto!important;bottom:auto!important}i-amphtml-sizer{display:block!important}@supports (aspect-ratio:1/1){i-amphtml-sizer.i-amphtml-disable-for-ar{display:none!important}}.i-amphtml-blurry-placeholder,.i-amphtml-fill-content{display:block;height:0;max-height:100%;max-width:100%;min-height:100%;min-width:100%;width:0;margin:auto}.i-amphtml-layout-size-defined .i-amphtml-fill-content{position:absolute;top:0;left:0;bottom:0;right:0}.i-amphtml-replaced-content,.i-amphtml-screen-reader{padding:0!important;border:none!important}.i-amphtml-screen-reader{position:fixed!important;top:0px!important;left:0px!important;width:4px!important;height:4px!important;opacity:0!important;overflow:hidden!important;margin:0!important;display:block!important;visibility:visible!important}.i-amphtml-screen-reader~.i-amphtml-screen-reader{left:8px!important}.i-amphtml-screen-reader~.i-amphtml-screen-reader~.i-amphtml-screen-reader{left:12px!important}.i-amphtml-screen-reader~.i-amphtml-screen-reader~.i-amphtml-screen-reader~.i-amphtml-screen-reader{left:16px!important}.i-amphtml-unresolved{position:relative;overflow:hidden!important}.i-amphtml-select-disabled{-webkit-user-select:none!important;-ms-user-select:none!important;user-select:none!important}.i-amphtml-notbuilt,[layout]:not(.i-amphtml-element),[width][height][heights]:not([layout]):not(.i-amphtml-element),[width][height][sizes]:not([layout]):not(.i-amphtml-element){position:relative;overflow:hidden!important;color:transparent!important}.i-amphtml-notbuilt:not(.i-amphtml-layout-container)>*,[layout]:not([layout=container]):not(.i-amphtml-element)>*,[width][height][heights]:not([layout]):not(.i-amphtml-element)>*,[width][height][sizes]:not([layout]):not(.i-amphtml-element)>*{display:none}amp-img:not(.i-amphtml-element)[i-amphtml-ssr]>img.i-amphtml-fill-content{display:block}.i-amphtml-notbuilt:not(.i-amphtml-layout-container),[layout]:not([layout=container]):not(.i-amphtml-element),[width][height][heights]:not([layout]):not(.i-amphtml-element),[width][height][sizes]:not([layout]):not(.i-amphtml-element){color:transparent!important;line-height:0!important}.i-amphtml-ghost{visibility:hidden!important}.i-amphtml-element>[placeholder],[layout]:not(.i-amphtml-element)>[placeholder],[width][height][heights]:not([layout]):not(.i-amphtml-element)>[placeholder],[width][height][sizes]:not([layout]):not(.i-amphtml-element)>[placeholder]{display:block}.i-amphtml-element>[placeholder].amp-hidden,.i-amphtml-element>[placeholder].hidden{visibility:hidden}.i-amphtml-element:not(.amp-notsupported)>[fallback],.i-amphtml-layout-container>[placeholder].amp-hidden,.i-amphtml-layout-container>[placeholder].hidden{display:none}.i-amphtml-layout-size-defined>[fallback],.i-amphtml-layout-size-defined>[placeholder]{position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;z-index:1}.i-amphtml-notbuilt>[placeholder]{display:block!important}.i-amphtml-hidden-by-media-query{display:none!important}.i-amphtml-element-error{background:red!important;color:#fff!important;position:relative!important}.i-amphtml-element-error:before{content:attr(error-message)}i-amp-scroll-container,i-amphtml-scroll-container{position:absolute;top:0;left:0;right:0;bottom:0;display:block}i-amp-scroll-container.amp-active,i-amphtml-scroll-container.amp-active{overflow:auto;-webkit-overflow-scrolling:touch}.i-amphtml-loading-container{display:block!important;pointer-events:none;z-index:1}.i-amphtml-notbuilt>.i-amphtml-loading-container{display:block!important}.i-amphtml-loading-container.amp-hidden{visibility:hidden}.i-amphtml-element>[overflow]{cursor:pointer;position:relative;z-index:2;visibility:hidden;display:initial;line-height:normal}.i-amphtml-element>[overflow].amp-visible{visibility:visible}template{display:none!important}.amp-border-box,.amp-border-box *,.amp-border-box :after,.amp-border-box :before{box-sizing:border-box}amp-pixel{display:none!important}amp-analytics,amp-auto-ads,amp-story-auto-ads{position:fixed!important;top:0!important;width:1px!important;height:1px!important;overflow:hidden!important;visibility:hidden}html.i-amphtml-fie>amp-analytics{position:initial!important}[visible-when-invalid]:not(.visible),form [submit-error],form [submit-success],form [submitting]{display:none}amp-accordion{display:block!important}amp-accordion>section{float:none!important}amp-accordion>section>*{float:none!important;display:block!important;overflow:hidden!important;position:relative!important}amp-accordion,amp-accordion>section{margin:0}amp-accordion:not(.i-amphtml-built)>section>:last-child{display:none!important}amp-accordion:not(.i-amphtml-built)>section[expanded]>:last-child{display:block!important}
+/*# sourceURL=/css/ampshared.css*/</style><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1"><meta name="generator" content="AMP Plugin v1.5.3; mode=reader"><meta name="generator" content="WordPress 5.4.1"><title>Scala: gli impliciti – CodingJam</title><link rel="preconnect" href="https://cdn.ampproject.org/"><link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js"><script async="" src="https://cdn.ampproject.org/v0.js"></script><style amp-custom="">.amp-wp-enforced-sizes{max-width:100%;margin:0 auto}amp-img.amp-wp-enforced-sizes[layout="intrinsic"] > img{object-fit:contain}html{background:#0a89c0}body{background:#fff;color:#353535;font-family:Georgia,"Times New Roman",Times,Serif;font-weight:300;line-height:1.75em}p,ul,figure{margin:0 0 1em;padding:0}a,a:visited{color:#0a89c0}a:hover,a:active,a:focus{color:#353535}.amp-wp-meta,.amp-wp-header div,.amp-wp-title,.wp-caption-text,.amp-wp-tax-category,.amp-wp-tax-tag,.amp-wp-comments-link,.amp-wp-footer p,.back-to-top{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen-Sans","Ubuntu","Cantarell","Helvetica Neue",sans-serif}.amp-wp-header{background-color:#0a89c0}.amp-wp-header div{color:#fff;font-size:1em;font-weight:400;margin:0 auto;max-width:calc(840px - 32px);padding:.875em 16px;position:relative}.amp-wp-header a{color:#fff;text-decoration:none}.amp-wp-header .amp-wp-site-icon{background-color:#fff;border:1px solid #fff;border-radius:50%;position:absolute;right:18px;top:10px}.amp-wp-article{color:#353535;font-weight:400;margin:1.5em auto;max-width:840px;overflow-wrap:break-word;word-wrap:break-word}.amp-wp-article-header{align-items:center;align-content:stretch;display:flex;flex-wrap:wrap;justify-content:space-between;margin:1.5em 16px 0}.amp-wp-title{color:#353535;display:block;flex:1 0 100%;font-weight:900;margin:0 0 .625em;width:100%}.amp-wp-meta{color:#696969;display:inline-block;flex:2 1 50%;font-size:.875em;line-height:1.5em;margin:0 0 1.5em;padding:0}.amp-wp-article-header .amp-wp-meta:last-of-type{text-align:right}.amp-wp-article-header .amp-wp-meta:first-of-type{text-align:left}.amp-wp-byline amp-img,.amp-wp-byline .amp-wp-author{display:inline-block;vertical-align:middle}.amp-wp-byline amp-img{border:1px solid #0a89c0;border-radius:50%;position:relative;margin-right:6px}.amp-wp-posted-on{text-align:right}.amp-wp-article-featured-image{margin:0 0 1em}.amp-wp-article-featured-image amp-img{margin:0 auto}.amp-wp-article-featured-image.wp-caption .wp-caption-text{margin:0 18px}.amp-wp-article-content{margin:0 16px}.amp-wp-article-content ul{margin-left:1em}.amp-wp-article-content .wp-caption{max-width:100%}.amp-wp-article-content amp-img{margin:0 auto}.wp-caption{padding:0}.wp-caption .wp-caption-text{border-bottom:1px solid #c2c2c2;color:#696969;font-size:.875em;line-height:1.5em;margin:0;padding:.66em 10px .75em}.amp-wp-article-footer .amp-wp-meta{display:block}.amp-wp-tax-category,.amp-wp-tax-tag{color:#696969;font-size:.875em;line-height:1.5em;margin:1.5em 16px}.amp-wp-comments-link{color:#696969;font-size:.875em;line-height:1.5em;text-align:center;margin:2.25em 0 1.5em}.amp-wp-comments-link a{border-style:solid;border-color:#c2c2c2;border-width:1px 1px 2px;border-radius:4px;background-color:transparent;color:#0a89c0;cursor:pointer;display:block;font-size:14px;font-weight:600;line-height:18px;margin:0 auto;max-width:200px;padding:11px 16px;text-decoration:none;width:50%;-webkit-transition:background-color .2s ease;transition:background-color .2s ease}.amp-wp-footer{border-top:1px solid #c2c2c2;margin:calc(1.5em - 1px) 0 0}.amp-wp-footer div{margin:0 auto;max-width:calc(840px - 32px);padding:1.25em 16px 1.25em;position:relative}.amp-wp-footer h2{font-size:1em;line-height:1.375em;margin:0 0 .5em}.amp-wp-footer p{color:#696969;font-size:.8em;line-height:1.5em;margin:0 85px 0 0}.amp-wp-footer a{text-decoration:none}.back-to-top{bottom:1.275em;font-size:.8em;font-weight:600;line-height:2em;position:absolute;right:16px}:root:not(#_):not(#_):not(#_):not(#_):not(#_) .amp-wp-668e0a1{font-weight:400}
+
+/*# sourceURL=amp-custom.css */</style><link rel="canonical" href="../index.html"><script type="application/ld+json">{"@context":"http:\/\/schema.org","publisher":{"@type":"Organization","name":"CodingJam","logo":"https:\/\/codingjam.it\/wp-content\/uploads\/2018\/09\/cropped-logo-cnj-bianco.png"},"@type":"BlogPosting","mainEntityOfPage":"https:\/\/codingjam.it\/scala-gli-impliciti\/","headline":"Scala: gli impliciti","datePublished":"2018-12-10T07:00:03+01:00","dateModified":"2018-12-08T16:08:59+01:00","author":{"@type":"Person","name":"Ubaldo Pescatore"},"image":"https:\/\/codingjam.it\/wp-content\/uploads\/2018\/12\/scala.jpg"}</script></head><body class="">
+
+<header id="top" class="amp-wp-header"><div>
+		<a href="../../index.html">
+										<amp-img src="../../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" width="32" height="32" class="amp-wp-site-icon i-amphtml-layout-fixed i-amphtml-layout-size-defined" style="width:32px;height:32px;" i-amphtml-layout="fixed"></amp-img><span class="amp-site-title">
+				CodingJam			</span>
+		</a>
+
+					</div>
+</header><article class="amp-wp-article"><header class="amp-wp-article-header"><h1 class="amp-wp-title">Scala: gli impliciti</h1>
+			<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="https://secure.gravatar.com/avatar/f8e1cb94a01e2fe013a0d8d6336d9864?s=24&amp;d=mm&amp;r=g" alt="Ubaldo Pescatore" width="24" height="24" layout="fixed" class="i-amphtml-layout-fixed i-amphtml-layout-size-defined" style="width:24px;height:24px;" i-amphtml-layout="fixed"></amp-img><span class="amp-wp-author author vcard">Ubaldo Pescatore</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2018-12-10T08:00:03+00:00">
+		2 years ago	</time></div>
+	</header><figure class="amp-wp-article-featured-image wp-caption"><amp-img width="1024" height="576" src="https://codingjam.it/wp-content/uploads/2018/12/scala-1024x576.jpg" class="attachment-large size-large wp-post-image amp-wp-enforced-sizes i-amphtml-layout-intrinsic i-amphtml-layout-size-defined" alt="linguaggio scala" srcset="https://codingjam.it/wp-content/uploads/2018/12/scala-1024x576.jpg 1024w, https://codingjam.it/wp-content/uploads/2018/12/scala-300x169.jpg 300w, https://codingjam.it/wp-content/uploads/2018/12/scala-768x432.jpg 768w, https://codingjam.it/wp-content/uploads/2018/12/scala-150x84.jpg 150w, https://codingjam.it/wp-content/uploads/2018/12/scala-706x397.jpg 706w, https://codingjam.it/wp-content/uploads/2018/12/scala-1200x675.jpg 1200w, https://codingjam.it/wp-content/uploads/2018/12/scala.jpg 1920w" layout="intrinsic" i-amphtml-layout="intrinsic"><i-amphtml-sizer class="i-amphtml-sizer"><img alt="" aria-hidden="true" class="i-amphtml-intrinsic-sizer" role="presentation" src="data:image/svg+xml;charset=utf-8,<svg height=&quot;576&quot; width=&quot;1024&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot;/>"></i-amphtml-sizer><noscript><img width="1024" height="576" src="https://codingjam.it/wp-content/uploads/2018/12/scala-1024x576.jpg" class="attachment-large size-large wp-post-image" alt="linguaggio scala" srcset="https://codingjam.it/wp-content/uploads/2018/12/scala-1024x576.jpg 1024w, https://codingjam.it/wp-content/uploads/2018/12/scala-300x169.jpg 300w, https://codingjam.it/wp-content/uploads/2018/12/scala-768x432.jpg 768w, https://codingjam.it/wp-content/uploads/2018/12/scala-150x84.jpg 150w, https://codingjam.it/wp-content/uploads/2018/12/scala-706x397.jpg 706w, https://codingjam.it/wp-content/uploads/2018/12/scala-1200x675.jpg 1200w, https://codingjam.it/wp-content/uploads/2018/12/scala.jpg 1920w" sizes="(max-width: 1024px) 100vw, 1024px"></noscript></amp-img><p class="wp-caption-text">
+			scala		</p>
+	</figure><div class="amp-wp-article-content">
+		<h1><b>Scala: gli impliciti</b></h1>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">Tempo fa su questo blog sono stati pubblicati<a href="../../scala/index.html">alcuni post su Scala</a>, con l’obiettivo di offrire una prima panoramica sul linguaggio. In questo articolo illustreremo un’altra importante caratteristica del linguaggio, per certi versi un po’ fuori dal comune rispetto ai classici costrutti cui siamo abituati: gli <i>impliciti</i>.</p>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">Da un punto di vista sintattico non c’è molto da imparare: l’utilizzo degli <i>impliciti</i> in Scala si riduce ad una sola keyword: <code>implicit</code>, da anteporre alla definizione di altri costrutti. Ad esempio:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">    
+implicit val nazione = "Italia"
+implicit val campionatiDelMondoVinti = 4
+</pre>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">oppure</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+def hello(who: String)(implicit greeting: String) = s"$greeting, $who!"
+</pre>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">Allora perché questo post? Nonostante la facilità nell’introdurre un <code>implicit</code>, gli effetti del loro utilizzo all’interno di una codebase Scala possono essere molteplici. Proveremo ad analizzarli per comprendere meglio il loro valore aggiunto.</p>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">Cominciamo a chiarire da dove nasce l’esigenza di introdurre gli <i>impliciti</i> nel linguaggio. Sono stati introdotti per favorire l’estensibilità del codice di terze parti: di solito gli sviluppatori possono modificare a piacimento il proprio codice all’interno di una codebase, ma ovviamente non hanno le stesse possibilità quando si tratta di librerie di terze parti. In Scala riusciremo a farlo grazie agli <code>implicit</code>!</p>
+<h4><b>Le conversioni implicite</b></h4>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">Spesso, durante lo sviluppo del software, ci si trova a dover integrare parti di codice sorgente che sono state originariamente sviluppate senza tenere conto dell’eventuale esigenza futura di farle interagire insieme; librerie diverse utilizzano approcci differenti per fornire lo stesso comportamento o le stesse strutture. Le <i>implicit conversions</i> sono utili proprio in queste occasioni: servono a ridurre il numero di conversioni esplicite che sono di solito necessarie per poter trasformare un tipo in un altro.</p>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">Applicando la keyword <code>implicit</code> in modo opportuno aiuteremo il compilatore ad inserire delle definizioni che consentono di sistemare quelli che altrimenti sarebbero errori di compilazione. Chiariamo il concetto con un esempio: un convertitore di Bitcoin.</p>
+<h5><i>Il convertitore di Bitcoin</i></h5>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">Supponiamo di star lavorando ad un progetto per la gestione delle finanze e che nella nostra codebase tutte le operazioni finanziarie siano implementate utilizzando gli <code>Euro</code>, che modelliamo con la seguente <a href="../../scala-le-case-class/index.html">case class</a>:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+case class Euro(euro: BigDecimal)
+</pre>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">Per rendere il nostro prodotto più al passo con i tempi, il management ci chiede di introdurre anche la gestione delle criptovalute, nello specifico i Bitcoin. Anziché scrivere una nostra classe, decidiamo di importare una libreria esterna per gestire la criptovaluta dei Bitcoin. La libreria è implementata come segue:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+package cryptocurrency;
+
+//bitcoin currency
+case class Bitcoin(value: BigDecimal)
+//payment gateway
+object BitcoinEngine {
+   def paymentOperation(amount: Bitcoin): Bitcoin = /* very long method here */
+}
+</pre>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">Una delle funzioni più comode della nuova libreria è l’introduzione di <code>BitcoinEngine</code>, un gateway per i pagamenti in Bitcoin. Decidiamo di usarlo, sebbene la nostra attuale codebase preveda la sola currency <code>Euro</code>. Accidenti, dobbiamo convertire tutti i nostri oggetti <code>Euro</code> in <code>Bitcoin</code>? Non potrebbe aiutarci il compilatore Scala? Sì, per uno scenario del genere possiamo far ricorso ad una semplice <i>implicit conversion</i>. Per trasformare tutti i nostri <code>Euro</code> in <code>Bitcoin</code>, anziché intervenire manualmente possiamo introdurre una conversione implicita:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+object EuroConverter { 
+  import cryptocurrency._
+  implicit def euroToBitcoin(eur: Euro): Bitcoin = Bitcoin(eur.euro + 10000)
+}
+</pre>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">ed importare l’oggetto <code>EuroConverter</code> in tutti i punti in cui dobbiamo convertire <code>Euro</code> in <code>Bitcoin</code>. Ad esempio, senza l’import dell’oggetto <code>EuroConverter</code>, il seguente codice non compilerà:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+import cryptocurrency._
+
+object Main extends App {
+  val euro = Euro(120)
+  println(BitcoinEngine.paymentOperation(euro))    //il tipo della variabile euro 
+                                                   //non è ammissibile qui
+}
+</pre>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">Invece, aggiungendo allo scope il solo import della conversione implicita:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+import cryptocurrency._
+import EuroConverter.euroToBitcoin  //importazione della conversione implicita
+
+object Main extends App {
+  val euro = Euro(120)
+  println(BitcoinEngine.paymentOperation(euro))    //adesso non ci sarà 
+                                                  //più l'errore poiché 
+                                                  //la conversione viene 
+                                                  //fatta implicitamente
+}
+</pre>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">il compilatore individuerà la conversione implicita applicandola dove necessario. La conversione introdotta consente di sistemare eventuali errori sui tipi. Come lavora il compilatore dietro le quinte? Prima prova a compilare il codice come se non ci fosse nessuna conversione, riscontrando però un errore dovuto ad un’inconsistenza dei tipi coinvolti. Al posto di fermarsi segnalando l’errore, il compilatore Scala cerca eventuali conversioni implicite che possano risolvere il problema. Nell’esempio precedente individua <code>euroToBitcoin</code>, prova ad applicarla, verifica che essa risolve il problema e prosegue oltre. Comodo, no?</p>
+<h4><b>Quando usare le conversioni implicite</b></h4>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">I contesti del linguaggio in cui conviene utilizzare le conversioni implicite sono tre:</p>
+<ul><li data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1"><span data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">conversioni ad un tipo atteso, come nel precedente esempio;</span></li>
+<li data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1"><span data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">conversioni del destinatario di una selezione;</span></li>
+<li data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1"><span data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">parametri impliciti.</span></li>
+</ul><h5><i>Conversioni implicite ad un tipo atteso</i></h5>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">Le conversioni di questo tipo consentono di poter utilizzare un tipo specifico in un contesto dove originariamente ne era atteso un altro, come nell’esempio precedente.</p>
+<h5><i>Conversioni sui destinatari di una selezione</i></h5>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">Questo tipo è simile al precedente e consente di adattare le istanze su cui invochiamo un metodo, se il metodo che stiamo invocando non è applicabile sul tipo originale. Supponiamo di avere una classe per modellare i numeri razionali:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+class Rational(val numer: Int, val denom: Int) {
+  def + (that: Int): Rational = new Rational(numer + that * denom, denom)
+  def + (that: Rational): Rational = new Rational(
+                       numer * that.denom + that.numer * denom, 
+                       denom * that.denom)
+}
+</pre>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">in cui abbiamo definito il metodo <code>+</code> per poter aggiungere ad un numero <code>Rational</code> sia un <code>Int</code> sia un’altra istanza di <code>Rational</code>. Ora non ci resta che testarla in un semplice <code>Main</code>:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+object Main extends App {
+  val r = new Rational(1, 2)
+  val s = new Rational(3, 4)
+  r + s
+  s + r
+  r + 1
+  1 + r  //errore di compilazione poiché Int non ha il metodo +(r: Rational)
+}
+</pre>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">Ma come? Per le addizioni non dovrebbe esistere la proprietà commutativa? Perché questo <code>Main</code> non compila? L’errore di compilazione è dovuto alla mancanza del metodo <code>+(r: Rational)</code> per il tipo <code>Int</code>. Come possiamo fare ad aggiungerlo? Siccome la classe <code>Int</code> è una classe della libreria standard di Scala, non possiamo intervenire direttamente su di essa, ma attraverso una conversione implicita riusciamo a risolvere l’errore. Definiamo un oggetto:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+package math
+object IntRational {
+  implicit def intToRational(x: Int): Rational = new Rational(x, 1)
+}
+</pre>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">ed importiamolo nello scope del nostro Main:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+import math.IntRational._
+object Main extends App {
+  val r = new Rational(1, 2)
+  …
+  1 + r  //stavolta compila!
+}
+</pre>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">Questa volta il compilatore prima prova a compilare l’espressione <code>1 + r</code>, ma senza riuscirci (<code>Int</code> ha tanti metodi <code>+</code>, ma nessuno che accetta un <code>Rational</code> come parametro). Piuttosto che arrendersi, però, prova a cercare una conversione implicita da <code>Int</code> ad un altro tipo che abbia un metodo <code>+</code> da poter applicare al parametro di tipo <code>Rational</code>. Siccome abbiamo importato una conversione adatta allo scopo (i.e.:  <code>import math.IntRational._</code>) il compilatore riesce a risolvere il codice e a terminare senza errori.</p>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">Questa tipologia di conversione fornisce un’integrazione migliore di nuove classi all’interno di una gerarchia di classi già esistente: potremo usare istanze di tipi già esistenti come se fossero istanze di un altro tipo!</p>
+<h5><i>Parametri impliciti</i></h5>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">Le conversioni implicite di parametri, anche dette <i>implicit parameters</i>, sono generalmente utilizzate per fornire maggiori informazioni alla funzione chiamata su cosa si aspetta il chiamante. In questo caso quindi, il compilatore inserirà le conversioni implicite all’interno della lista degli argomenti di un metodo. Questo approccio risulta molto utile con le funzioni o i metodi generici, laddove la funzione chiamata potrebbe non conoscere niente sui tipi di uno o più dei propri argomenti (e.g.: <i>dependency injection</i>). Un classico esempio di utilizzo degli <i>implicit parameters</i> è quello per l’implementazione delle type classes in Scala, che vedremo in un prossimo post.</p>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">Come funzionano, in dettaglio, le conversioni di parametri impliciti? Supponiamo di voler eseguire delle query su un database relazionale. Modelliamo innanzitutto una configurazione per la connessione al DB:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+case class DBConfiguration(driver: String, 
+                           url: String, 
+                           username: String, 
+                           password: String)
+</pre>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">scriviamo poi la nostra logica applicativa <b>utilizzando un parametro implicito per gestire la configurazione</b>:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+import java.sql.{Connection, DriverManager}
+object JDBCEngine {
+  def selectData(query: String)(implicit config: DBConfiguration) = {
+   // è solo un esempio: ci sono modi migliori per interagire con un DB!
+    var connection: Connection = null
+    try {
+      // istanzia la connessione usando il parametro implicito
+      Class.forName(config.driver)
+      connection = DriverManager.getConnection(
+                                 config.url, 
+                                 config.username, 
+                                 config.password)
+       // esegui query SQL...
+       //  ...
+     } catch {
+      case e =&gt; e.printStackTrace
+     }
+    connection.close()
+   }
+}
+</pre>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">come avrete notato, il secondo parametro del metodo <code>selectData</code> è stato marcato come <code>implicit</code>, quindi esso può essere passato al metodo in maniera implicita mediante un semplice import. Per cui, definite diverse configurazioni JDBC in un oggetto, ad esempio:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+object DatabaseConfigurations {
+   implicit val mySQL =    DBConfiguration("com.mysql.jdbc.Driver", 
+                                 "mysql://localhost:3306/test", 
+                                 "test", 
+                                 "test")
+   implicit val postgres = DBConfiguration("org.postgresql.Driver", 
+                                 "postgresql://localhost:5432/mydb", 
+                                 "user", 
+                                 "password")
+}
+</pre>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">possiamo importare solo quella che desideriamo usare nello scope dell’oggetto <code>JDBCEngine</code> ed invocare il metodo <code>selectData</code> come segue:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="scala" data-enlighter-highlight="15">
+import DatabaseConfigurations.mySQL
+import JDBCEngine._ //il secondo parametro verrà importato implicitamente
+
+selectData("Mario")
+</pre>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">In questo modo potremo usare le conversioni implicite anche per disaccoppiare le dipendenze iniettandole in modo più conciso con un solo import.</p>
+<h4><b>Le regole di conversione</b></h4>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">Con gli esempi delle sezioni precedenti abbiamo visto a cosa servono le conversioni implicite e dove è possibile utilizzarle. Oltre a questo, però, è importante evidenziare una serie di aspetti e regole che rendono l’utilizzo di queste conversioni abbastanza delicato. Le regole sono:</p>
+<ul><li data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1"><b>Regola di marcatura</b>: solo le definizioni marcate come <code>implicit</code> possono essere riconosciute ed utilizzate per provare a risolvere errori di conversione di tipi. In questo modo si evitano eventuali problematiche che potrebbero insorgere laddove il compilatore, invece, prendesse una qualsiasi funzione in scope e inserendola come “conversione”. Secondo questa regola <b> una funzione di conversione implicita è selezionata solo tra le definizioni del codice sorgente che sono state esplicitamente marcate come <code>implicit</code></b>;</p>
+</li>
+<li data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1"><b>Regola dello scope</b>: una conversione <code>implicit</code> deve essere in scope come un singolo identificativo oppure dev’essere associata con la sorgente o la destinazione della conversione. Il compilatore considera solo le conversioni implicite che sono in scope. Affinché una conversione implicita sia presente nello scope, essa dovrà essere introdotta mediante un <code>import</code>.Un’alternativa all’import della conversione, è quella di introdurre la conversione implicita all’interno del companion object della classe sorgente o destinazione della conversione. Nell’esempio precedente sui Bitcoin quindi, potremmo introdurre la conversione <code>euroToBitcoin</code> direttamente nell’object <code>Euro</code>. In questo caso, in ogni scope in cui l’oggetto <code>Euro</code> viene importato, abbiamo anche la conversione implicita da <code>Euro</code> a <code>Bitcoin</code>. Quest’alternativa all’<code>import</code> può risultare più comoda perché non richiede di importare la conversione separatamente dal companion object.Il beneficio principale di questa regola è quello di aiutare gli sviluppatori nel ragionare in maniera più organizzata: se tutte le conversioni implicite avessero uno scope globale, infatti, sarebbe complesso individuare all’interno della intera codebase se e quale conversione sia in atto.</p>
+</li>
+<li data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1"><b>Una conversione alla volta</b>: il compilatore non permette di inserire più di una conversione alla volta per gli stessi tipi. Questa scelta nasce dall’esigenza di ridurre le differenze tra ciò che ha scritto il programmatore e ciò che il programma effettivamente eseguirà. Nello specifico, il compilatore non inserirà ulteriori conversioni implicite quando esso è già nel mezzo dell’applicazione di un altro implicit.</p>
+</li>
+<li data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1"><b>Priorità al codice esplicito</b>: fin tanto che non ci sono errori di type checking, il compilatore non tenta di risolverli mediante la risoluzioni di conversioni implicite.</p>
+</li>
+</ul><h4><b>Conclusioni</b></h4>
+<p data-amp-original-style="font-weight: 400" class="amp-wp-668e0a1">Questo articolo fornisce una panoramica introduttiva sulle conversioni implicite di Scala. Si tratta di un costrutto molto potente, che consente sia di scrivere codice più conciso sia di favorire una migliore integrazione tra istanze e metodi originariamente pensati per tipi di dati diversi. Abbiamo rapidamente illustrato i contesti in cui è ammissibile introdurre conversioni implicite cercando di evidenziare i benefici del loro utilizzo.Resta comunque importante sottolineare che, come buona parte dei costrutti avanzati di qualsiasi linguaggio di programmazione, non vale la pena di abusarne; solo così si potrà evitare un effetto controproducente dal loro utilizzo. Quindi, prima di introdurre qualsiasi conversione implicita, vale la pena di verificare se è possibile ottenere lo stesso effetto attraverso altri costrutti, ad esempio l’ereditarietà o l’overloading dei metodi.Infine, oltre a tutte le regole e casistiche citate in questo breve post, esistono alcune eccezioni che possono renderne più complesso l’utilizzo. Per un approfondimento, il consiglio è quello di consultare il capitolo 21 del libro “<a href="https://www.artima.com/shop/programming_in_scala">Programming in Scala</a>”.</p>
+	</div>
+
+	<footer class="amp-wp-article-footer"><div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="../../category/scala/index.html" rel="category tag">Scala</a>, <a href="../../category/tutorial-2/index.html" rel="category tag">Tutorial</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="../../tag/case-class/index.html" rel="tag">case class</a>, <a href="../../tag/compilatore/index.html" rel="tag">compilatore</a>, <a href="../../tag/impliciti-scala/index.html" rel="tag">impliciti scala</a>, <a href="../../tag/linguaggio-scala/index.html" rel="tag">linguaggio scala</a>, <a href="../../tag/scala/index.html" rel="tag">Scala</a>, <a href="../../tag/tutorial/index.html" rel="tag">tutorial</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="../index.html#respond">
+			Leave a Comment		</a>
+	</div>
+	</footer></article><footer class="amp-wp-footer"><div>
+		<h2>CodingJam</h2>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer></body>
+<!-- Mirrored from codingjam.it/scala-gli-impliciti/amp/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+</html>

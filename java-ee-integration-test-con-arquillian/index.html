@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from codingjam.it/java-ee-integration-test-con-arquillian/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="pingback" href="../xmlrpc.php">
+
+  <title>Java EE integration test con Arquillian &#8211; CodingJam</title>
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Feed" href="../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Comments Feed" href="../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Java EE integration test con Arquillian Comments Feed" href="https://codingjam.it/java-ee-integration-test-con-arquillian/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='../wp-content/plugins/gutenberg/build/block-library/stylea4fb.css?ver=1591004795' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-gdpr-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='melissa-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lato%3A400%2C400i%2C700%2C700i%7CNoto+Serif%3A400%2C400i%2C700%2C700i&amp;subset=latin&amp;ver=1.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../wp-content/themes/melissa/css/bootstrap.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-theme-css'  href='../wp-content/themes/melissa/css/bootstrap-theme.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-ie10-viewport-bug-workaround-css'  href='../wp-content/themes/melissa/css/ie10-viewport-bug-workaround8a54.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='../wp-content/themes/melissa/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-carousel-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-theme-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.theme3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='magnific-popup-css'  href='../wp-content/themes/melissa/assets/magnific-popup/magnific-popupf488.css?ver=1.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-style-css'  href='../wp-content/themes/melissa/style3ec8.css?ver=1.1.6' type='text/css' media='all' />
+<style id='melissa-style-inline-css' type='text/css'>
+
+    .bwp-post-media img,
+    .bwp-post-carousel-item img,
+    .widget_bwp_posts_slider_item img {
+      width: 100%;
+      margin: 0;
+    }
+    .bwp-post-wrap:hover {
+      margin-top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+    #bwp-masonry-container.no-masonry .bwp-post-wrap:hover {
+      top: 0;
+    }
+    .bwp-no-results-container:hover,
+    .bwp-single-article:hover,
+    .bwp-featured-media-container:hover,
+    .post-navigation .nav-links a:hover,
+    .bwp-about-author-container:hover,
+    .comment-respond:hover,
+    .comment-body:hover,
+    #comments .no-comments:hover,
+    .comment-navigation .nav-links a:hover,
+    .bwp-related-post-wrap:hover,
+    .bwp-page-404-container:hover,
+    .bwp-sidebar-wrap:hover {
+      top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+  #bwp-header-wrap {
+    background-color: #2e3340;
+  }
+  .bwp-header-bg-overlay,
+  .bwp-header-rs-bg-overlay {
+    background-color: rgba(46, 51, 64, 0.9);
+  }
+    .bwp-content a,
+    .comment-content a,
+    .bwp-post-quote a {
+      color: #2052bf;
+    }
+</style>
+<link rel='stylesheet' id='enlighter-local-css'  href='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.css?ver=3.9.0' type='text/css' media='all' />
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery4a5f.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[]};
+var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/cookie-law-info/public/js/cookie-law-info-public3cf4.js?ver=1.8.8'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/respond.min.js?ver=1.4.2'></script>
+<![endif]-->
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/mootools-core-yc9086.js?ver=3.9.0'></script>
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.js?ver=3.9.0'></script>
+<link rel='https://api.w.org/' href='../wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+<link rel='prev' title='Primi passi con Electron' href='https://codingjam.it/primi-passi-con-electron/' />
+<link rel='next' title='Ionic 2: prime impressioni' href='https://codingjam.it/ionic-2-prime-impressioni/' />
+<meta name="generator" content="WordPress 5.4.1" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://codingjam.it/?p=13934' />
+<link rel="alternate" type="application/json+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Fjava-ee-integration-test-con-arquillian%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Fjava-ee-integration-test-con-arquillian%2F&amp;format=xml" />
+<link rel="amphtml" href="https://codingjam.it/java-ee-integration-test-con-arquillian/amp/"><script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"droide","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":false,"windowButton":false,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" sizes="32x32" />
+<link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://codingjam.it/wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-270x270.png" />
+</head>
+
+<body class="post-template-default single single-post postid-13934 single-format-standard wp-custom-logo">
+
+
+<!-- header -->
+<header id="bwp-header-wrap" class="bwp-header-simple">
+
+  <!-- header bg -->
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P6261835_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg-overlay"></div>
+
+    <!-- header content -->
+    <div class="container">
+      <div class="bwp-header-content-container">
+
+        <!-- row 1 - logo + navigation -->
+        <div class="bwp-main-navigation-container clearfix">
+
+          
+        <!-- image logo -->
+        <div class="bwp-logo-container">
+          <a href="../index.html" class="custom-logo-link" rel="home"><img width="207" height="70" src="../wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png" class="custom-logo" alt="CodingJam" srcset="https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png 207w, https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco-150x51.png 150w" sizes="(max-width: 207px) 100vw, 207px" /></a>        </div>
+        <!-- end image logo -->
+
+        
+      <!-- search -->
+      <div class="bwp-header-search-container hidden-sm hidden-xs">
+        <a href="#" id="bwp-header-search-icon">
+          <i class="fa fa-search"></i>
+        </a>
+        <div class="bwp-dropdown-search-container bwp-search-hidden">
+          
+<!-- search form -->
+<form id="searchform" role="search" method="get" action="https://codingjam.it/">
+  <div class="input-group">
+    <input type="text" name="s" id="s" class="bwp-search-field form-control" placeholder="Enter your search query...">
+    <span class="input-group-btn">
+      <button type="submit" class="btn bwp-search-submit">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+</form>
+<!-- end search form -->
+        </div>
+      </div>
+      <!-- end search -->
+
+      
+      <!-- menu -->
+      <div class="bwp-menu-container hidden-sm hidden-xs">
+        <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-2" class="sf-menu"><li id="menu-item-12007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li id="menu-item-12022" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li id="menu-item-12009" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li id="menu-item-12020" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li id="menu-item-12017" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li id="menu-item-12006" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li id="menu-item-12005" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li id="menu-item-12008" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li id="menu-item-12014" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li id="menu-item-12012" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li id="menu-item-12010" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li id="menu-item-12021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li id="menu-item-12016" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li id="menu-item-12015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li id="menu-item-12019" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li id="menu-item-12018" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>      </div>
+      <!-- end menu -->
+
+      
+      <!-- mobile menu -->
+      <div class="bwp-mobile-menu-container hidden-md hidden-lg">
+        <!-- mobile menu icon -->
+        <a href="#" id="bwp-mobile-menu-icon">
+          <i class="fa fa-bars"></i>
+        </a>
+        <!-- end mobile menu icon -->
+        <!-- dropdown mobile menu -->
+        <div class="bwp-dropdown-mobile-menu bwp-mobile-menu-hidden">
+          <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-3" class="bwp-mobile-menu list-unstyled"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>        </div>
+        <!-- end dropdown mobile menu -->
+      </div>
+      <!-- end mobile menu -->
+
+      
+        </div>
+        <!-- end row 1 - logo + navigation -->
+
+        
+          <!-- row 2 - header custom text -->
+          <div class="bwp-header-custom-text-container">
+            
+        <!-- custom text - single page -->
+        <h1 class="bwp-header-custom-title entry-title">
+          Java EE integration test con Arquillian        </h1>
+                <div class="bwp-header-transparent-line clearfix">
+          <span class="bwp-header-t-line-1"></span>
+          <span class="bwp-header-t-line-2"></span>
+        </div>
+        <!-- end custom text -->
+
+                  </div>
+          <!-- end row 2 - header custom text -->
+
+          
+      </div>
+    </div>
+    <!-- end header content -->
+  </div>
+  <!-- end header bg -->
+
+  
+        <!-- sticky navigation -->
+        <div class="bwp-sticky-navigation-wrap bwp-transition-4 clearfix">
+          <!-- sticky navigation icon -->
+          <a href="#" id="bwp-sticky-navigation-icon">
+            <i class="fa fa-bars"></i>
+          </a>
+          <!-- end sticky navigation icon -->
+          <!-- sticky navigation container -->
+          <div class="bwp-sticky-navigation-container bwp-sticky-navigation-hidden">
+            <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-4" class="sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>          </div>
+          <!-- end sticky navigation container -->
+        </div>
+        <!-- end sticky navigation -->
+
+        
+</header>
+<!-- end header -->
+
+  <!-- blog post - single page -->
+  <section id="bwp-single-page-wrap">
+    <div class="container">
+      <div class="bwp-single-page-container" >
+
+        
+                  <div class="row"><div class="col-md-8 bwp-single-content-col bwp-sidebar-right"><div class="bwp-single-content-col-wrap" role="main">
+        
+        <!-- article -->
+        <article id="post-13934" class="bwp-single-article bwp-transition-3">
+
+          
+          <!-- content container -->
+          <div class="bwp-single-content">
+
+            <!-- content -->
+            <div class="bwp-content entry-content clearfix">
+              <h1>Java Enterprise e test di integrazione con Arquillian</h1>
+<p>Scrivere i test durante lo sviluppo (o prima, se fate <a href="https://it.wikipedia.org/wiki/Test_driven_development" target="_blank">TDD</a>) è molto importante. L&#8217;uso quotidiano di framework di <em>mocking</em> come <a href="http://mockito.org/" target="_blank">Mockito</a> o <a href="http://easymock.org/" target="_blank">EasyMock</a> (magari aiutati dal mitico <a href="https://github.com/jayway/powermock" target="_blank">PowerMock</a>) hanno notevolmente semplificato la scrittura di test di unità permettendo di svincolarsi dai framework e dal resto del mondo che circonda la funzionalità che stiamo sviluppando.<br />
+Ad un certo punto però bisogna comunque fare i conti con il mondo reale ed integrare le parti: ed è qua che, almeno nel contesto Java Enterprise, le cose si complicano. Avviare un contesto Spring, soprattutto in fase di test, è molto semplice. Purtroppo in Java EE puro non è mai stato così, almeno fino a prima di vedere <a href="http://arquillian.org/" target="_blank">Arquillian</a> all&#8217;opera. Arquillian non è certo uscito ieri, ma vista la velocità con cui si avviano alcuni application server di oggi e lo sviluppo molto orientato alle API, adesso è molto più facile scrivere test di integrazione, direttamente sui server veri.</p>
+<h2>Fino a ieri</h2>
+<p>Fino a qualche anno fa infatti molti application server erano dei carrozzoni che impiegavano minuti ad avviarsi, per cui era lento e noioso avere un feedback da un test di integrazione: ammesso che si riuscisse a fare un deploy automatico, si riusciva solo a testare tutto lo stack (dal web al db per intendersi), per non parlare dei problemi del tipo: chi avvia il server in automatico? E quando?</p>
+<p>La scorciatoia quindi è sempre stata quella di aggirare il problema cercando di avviare dal test dei &#8220;contesti&#8221; che simulassero al meglio parte dell&#8217;ambiente messo a disposizione dall&#8217;application server: mentre è relativamente facile avviare un vero contesto JPA o CDI, un po&#8217; meno lo è per EJB (a meno di non mettere in mezzo <a href="http://tomee.apache.org/" target="_blank">OpenEJB</a> o gli <a href="http://docs.oracle.com/javaee/6/tutorial/doc/gkcrr.html" target="_blank">Embedded Container</a>, disponibili da EJB 3.1): di fatto però si tratta di contesti esterni che <em>assomigliano molto</em> a quelli forniti dal server in cui girerà l&#8217;applicazione, ma non uguali, quindi la possibilità di avere dei test con falsi positivi è molto alta.</p>
+<p>Arquillian invece adotta il principio opposto, ovvero &#8220;<em>what you test is what you run</em>&#8220;: permette infatti di fare il <strong>deploy sul server reale</strong> delle <strong>sole funzionalità inerenti al test</strong>, permettendo anche di controllare <strong>l&#8217;avvio e lo stop del server</strong>. Quello che testi quindi viene <strong>eseguito nell&#8217;ambiente reale</strong> in cui girerà a regime.<br />
+Con l&#8217;aiuto poi di <a href="http://arquillian.org/guides/shrinkwrap_introduction/" target="_blank">ShrinkWrap</a>, Arquillian crea dei piccoli <tt>jar</tt>, <tt>war</tt> o <tt>ear</tt> (chiamati &#8220;<em>micro deployments</em>&#8220;) contenenti <strong>solo quello che vogliamo testare</strong> (<em>compresa la classe di test stessa</em>!), rendendo più veloce la fase di deploy. </p>
+<p>Ma di che server target stiamo parlando? Arquillian è capace di dialogare con numerosi server, da JBoss a GlassFish, da Tomcat o Jetty al LibertyProfile di IBM tramite opportuni <a href="http://arquillian.org/modules/" target="_blank">moduli</a>. Non solo, può anche avviare semplici container come CDI (Weld) o EJB (OpenEJB). Tutti i dettagli sulle configurazioni possono essere trovati sulla <a href="https://docs.jboss.org/author/display/ARQ/Container+adapters" target="_blank">documentazione ufficiale</a>.</p>
+<p>Questo post è basato su test JUnit eseguiti su <a href="http://wildfly.org/" target="_blank">WildFly 10</a>. Cerchiamo di capire quindi come si fa a mettere in piedi un test di integrazione.</p>
+<h2>Prerequisiti</h2>
+<p>Visto che gli archetipi Maven dei progetti per JBoss prevedono già Arquillian pronto all&#8217;uso, è più conveniente partire da una situazione funzionante invece che perdersi in eventuali configurazioni. Il progetto di esempio che sta alla base di questo post, ovvero la classica API per creare e consultare &#8220;Todo List&#8221;, si trova su <a href="https://github.com/coding-jam/arquillian-tests" target="_blank">GitHub</a>, e risponde ai seguenti prerequisiti:</p>
+<ul>
+<li>E&#8217; necessario aver scaricato un application server JBoss: in questo caso <a href="http://wildfly.org/" target="_blank">WildFly 10</a> (10.0.0.Final).</li>
+<li>La variabile d&#8217;ambiente <tt>JBOSS_HOME</tt> deve puntare alla cartella root di WildFly (dopo vedremo perché)
+</ul>
+<p>Partendo quindi dall&#8217;archetipo Maven per WildFly (per esempio da riga di comando):</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">
+mvn archetype:generate -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-javaee7-webapp-ear-blank-archetype
+</pre>
+<p>verrà generato un progetto con la classica struttura a tre moduli:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="raw">
+my-project
+ - my-project-ear
+ - my-project-ejb
+ - my-project-web
+</pre>
+<p>Solo il progetto <tt>my-project-ejb</tt> è pronto per Arquillian: tra le risorse, nella cartella <tt>my-project-ejb/src/main/resources</tt>, troviamo infatti il file <tt><strong>arquillian.xml</strong></tt>. E&#8217; il file di configurazione principale, ricercato automaticamente nella root del classpath al momento del lancio di un test per determinare dove e su che tipo di server fare il deploy:</p>
+<p><pre data-enlighter-language="xml" class="EnlighterJSRAW" data-enlighter-highlight="10">
+&lt;arquillian xmlns=&quot;http://jboss.org/schema/arquillian&quot;
+   xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+   xsi:schemaLocation=&quot;http://jboss.org/schema/arquillian
+        http://jboss.org/schema/arquillian/arquillian_1_0.xsd&quot;&gt;
+
+   &lt;!-- Force the use of the Servlet 3.0 protocol with all containers, as it is the most mature --&gt;
+   &lt;defaultProtocol type=&quot;Servlet 3.0&quot; /&gt;
+
+   &lt;!-- Example configuration for a remote WildFly instance --&gt;
+   &lt;container qualifier=&quot;jboss&quot; default=&quot;true&quot;&gt;
+        &lt;!-- By default, arquillian will use the JBOSS_HOME environment variable. --&gt;
+   &lt;/container&gt;
+
+&lt;/arquillian&gt;
+</pre></p>
+<p>Senza modificare nessuna configurazione, Arquillian farà il deploy su qualsiasi JBoss server che risponde alla variable d&#8217;ambiente <tt>JBOSS_HOME</tt>, ovviamente su <tt>localhost</tt>. Per il momento ci va più che bene, più avanti vedremo come fare un deploy su un server remoto. In questo modo è possibile usare per i test il server vero e proprio, <strong>compreso il datasource JTA</strong> o i <strong>profili di sicurezza</strong> reali, piuttosto che le <strong>code JMS</strong> o qualsiasi altro servizio dell&#8217;application server solitamente disponibile.</p>
+<p>Guardando invece il <tt>pom.xml</tt> sempre del progetto <tt>my-project-ejb</tt>, notiamo le dipendenze di Arquillian:</p>
+<p><pre data-enlighter-language="xml" class="EnlighterJSRAW">
+&lt;dependency&gt;
+    &lt;groupId&gt;org.jboss.arquillian.junit&lt;/groupId&gt;
+    &lt;artifactId&gt;arquillian-junit-container&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.jboss.arquillian.protocol&lt;/groupId&gt;
+    &lt;artifactId&gt;arquillian-protocol-servlet&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.jboss.shrinkwrap.resolver&lt;/groupId&gt;
+    &lt;artifactId&gt;shrinkwrap-resolver-impl-maven&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</pre></p>
+<p>(che sono in <tt>scope test</tt> per via del <tt>bom <em>jboss-javaee-7.0-with-tools</em></tt>), ma soprattutto i due profili che fanno la magia:</p>
+<p><pre data-enlighter-language="xml" class="EnlighterJSRAW" data-enlighter-highlight="6,16">
+&lt;profile&gt;
+    &lt;id&gt;arq-wildfly-managed&lt;/id&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.wildfly&lt;/groupId&gt;
+            &lt;artifactId&gt;wildfly-arquillian-container-managed&lt;/artifactId&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/profile&gt;
+&lt;profile&gt;
+    &lt;id&gt;arq-wildfly-remote&lt;/id&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.wildfly&lt;/groupId&gt;
+            &lt;artifactId&gt;wildfly-arquillian-container-remote&lt;/artifactId&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/profile&gt;
+</pre></p>
+<p>I nomi sono molto parlanti: <tt>arq-wildfly-managed</tt> esegue i test di integrazione in un <strong>server gestito da Arquillian</strong> stesso, avviato quindi nella stessa JVM del test. Il framework si preoccupa quindi di <strong>avviare</strong> il server, <strong>deployare</strong> l&#8217;artefatto, <strong>eseguire i test</strong>, eseguire l&#8217;<strong>undeploy</strong> e <strong>fermare</strong> il server. Anche se WildFly è estremamente veloce ad avviarsi, i tempi di risposta dell&#8217;intero processo possono essere considerati non accettabili durante lo sviluppo. In fase di sviluppo quindi è più conveniente usare il profilo <tt>arq-wildfly-remote</tt>: Arquillian <strong>deployerà l&#8217;artefatto su un server già avviato</strong> su <tt>localhost</tt> (nella configurazione attuale), <strong>eseguirà i test</strong> ed effettuerà l&#8217;<strong>undeploy</strong>. Per Arquillian &#8220;remote&#8221; significa <em>differente JVM</em> rispetto a quella che esegue il test, ma può voler dire anche <em>macchina differente</em>, come vedremo più avanti.</p>
+<h2>Prima di cominciare</h2>
+<p>A mio avviso la configurazione delle dipendenze Arquillian e i profili mutuati dall&#8217;archetipo non sono proprio adatti ad un progetto &#8220;reale&#8221; perché i test vengono eseguiti da <em><a href="http://maven.apache.org/surefire/maven-surefire-plugin/" target="_blank">surefire</a></em> (nella fase di <tt><strong>test</strong></tt> di <em>Maven</em>, come se fossero considerati di unità) invece che da <em><a href="http://maven.apache.org/surefire/maven-failsafe-plugin/" target="_blank">failsafe</a></em> (in fase di <tt><strong>integration-test</strong></tt>), come abbiamo già avuto modo di <a href="../maven-integration-tests/index.html" target="_blank">scoprire tempo fa</a>.</p>
+<p>Nel <a href="https://github.com/coding-jam/arquillian-tests" target="_blank">progetto di esempio di GitHub</a> sono presenti quindi le seguenti modifiche:</p>
+<ul>
+<li>aggiunto il <a href="https://github.com/coding-jam/arquillian-tests/tree/master/arquillian-tests-test-utils" target="_blank">modulo Maven &#8220;<em>test-utils</em>&#8220;</a> che contiene tutte le dipendenze di Arquillian (spostate dal progetto ejb) e le classi di utilità di test (che vedremo tra poco)</li>
+<li>i profili <tt>arq-wildfly-managed</tt> e <tt>arq-wildfly-remote</tt> sono stati invece spostati nel <a href="https://github.com/coding-jam/arquillian-tests/blob/master/pom.xml" target="_blank">parent pom</a> e arricchiti con il plugin <em>failsafe</em>, in modo da eseguire i test nella fase di <tt>integration-test</tt>:<br />
+<pre data-enlighter-language="xml" class="EnlighterJSRAW">
+&lt;plugin&gt;
+    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+    &lt;artifactId&gt;maven-failsafe-plugin&lt;/artifactId&gt;
+    &lt;version&gt;2.18.1&lt;/version&gt;
+    &lt;executions&gt;
+        &lt;execution&gt;
+            &lt;goals&gt;
+                &lt;goal&gt;integration-test&lt;/goal&gt;
+                &lt;goal&gt;verify&lt;/goal&gt;
+            &lt;/goals&gt;
+        &lt;/execution&gt;
+    &lt;/executions&gt;
+&lt;/plugin&gt;
+</pre>
+</li>
+</ul>
+<h2>Arquillian all&#8217;opera: setup di un test</h2>
+<p>Cominciamo subito testando il modulo ejb che definisce un <a href="https://codingjam.it/ejb3-stateless-vs-stateful-quale-e-la-differenza/" target="_blank">Session Bean Stateless</a> per il CRUD dei task (<code><a href="https://github.com/coding-jam/arquillian-tests/blob/master/arquillian-tests-ejb/src/main/java/it/codingjam/arquilliantests/logic/services/TaskService.java" target="_blank">TaskService</a></code>). </p>
+<p>Per prima cosa è necessario preparare il <strong>test</strong> e il <strong>deployment</strong>:</p>
+<p><pre data-enlighter-language="java" class="EnlighterJSRAW" data-enlighter-highlight="1,4,5">
+@RunWith(Arquillian.class)
+public class TaskServiceIT {
+
+    @Deployment
+    public static Archive&lt;?&gt; createDeployment() {
+        ...
+    }
+...
+}
+</pre></p>
+<p>L&#8217;annotazione <tt>@RunWith(Arquillian.class)</tt> sulla classe di test di integrazione (<code>TaskService<strong>IT</strong>.java</code>, da notare il suffisso <tt>IT</tt>, come vuole <em>failsafe</em>) richiede a sua volta un <strong>metodo statico</strong> e <strong>pubblico</strong>, <strong>annotato con <tt>@Deployment</tt></strong>, che <strong>restituisce un <tt>Archive</tt></strong>, ovvero il nostro &#8220;micro deployment&#8221;.</p>
+<h3>Micro deployment</h3>
+<p>Come abbiamo già detto, Arquillian permette di eseguire i test su una versione ridotta della nostra applicazione, deployando solo le classi necessarie. Come si crea questo artefatto? Grazie a <strong>ShrinkWrap</strong> possiamo creare un <strong>oggetto Java che rappresenta un archivio deployabile</strong>, per esempio:</p>
+<p><pre data-enlighter-language="java" class="EnlighterJSRAW">
+@Deployment
+public static Archive&lt;?&gt; createDeployment() {
+    return ShrinkWrap.create(JavaArchive.class, &quot;arquillian-tests-ejb.jar&quot;)
+        .addPackages(true, &quot;it.codingjam.arquilliantests.logic&quot;, &quot;it.codingjam.arquilliantests.utils&quot;)
+        .addAsManifestResource(EmptyAsset.INSTANCE, &quot;beans.xml&quot;)
+        .addAsManifestResource(&quot;META-INF/persistence.xml&quot;, &quot;persistence.xml&quot;)
+        .addAsResource(&quot;META-INF/orm.xml&quot;)
+        .merge(getMavenDependencies());
+}
+</pre></p>
+<p>Vediamo nel dettaglio:</p>
+<ul>
+<li><tt><strong>create</strong></tt>: crea un oggetto <tt>JavaArchive</tt> che rappresenta un jar di nome <em>arquillian-tests-ejb.jar</em>.</li>
+<li><tt><strong>addPackages</strong></tt>: aggiunge al jar ricorsivamente (tramite il primo parametro booleano) i package specificati</li>
+<li><tt><strong>addAsManifestResource</strong></tt>: aggiunge risorse alla cartella META-INF del jar. Nel primo caso viene creato al volo un <tt>bean.xml</tt> vuoto per attivare CDI; nel secondo invece, si dice di usare il file <tt>META-INF/persistence.xml</tt> del nostro progetto come <tt>persistence.xml</tt> del jar che si sta &#8220;impacchettando&#8221;.</li>
+<li><tt><strong>addAsResource</strong></tt>: versione generica del metodo precedente, crea una risorsa nel jar. Questo metodo, come il precedente, ha diversi overload: quando è usato con un singolo parametro, significa che sorgente e destinazione coincidono.</li>
+<li><tt><strong>merge</strong></tt>: visto che si tratta di un jar, non è possibile aggiungere le dipendenze Maven necessarie come si farebbe in un war o in un ear. E&#8217; necessari creare quindi uno <strong>uber-jar</strong>, fondendo (<em>merge</em> appunto) le dipendenze con le nostre classi. <tt>getMavenDependencies</tt> infatti ritorna un jar <strong>contenente tutte le dipendenze</strong> necessarie e verrà unito al micro deployment.</li>
+<p><pre data-enlighter-language="java" class="EnlighterJSRAW">
+private static JavaArchive getMavenDependencies() {
+   return ShrinkWrap.createFromZipFile(JavaArchive.class,
+                                 resolveMavenDependencies().asSingleFile());
+}
+</pre></p>
+<p>Cosa fa quindi <tt>resolveMavenDependencies</tt>?
+</ul>
+<h4>Gestione delle dipendenze</h4>
+<p>E&#8217; difficile pensare ad un progetto senza dipendenze di terze parti, di conseguenza ci deve essere un modo per includere anche nel micro deployment che stiamo creando. Per mettere d&#8217;accordo ShringWrap con Maven è necessario aggiungere una dipendenza:</p>
+<p><pre data-enlighter-language="xml" class="EnlighterJSRAW">
+&lt;dependency&gt;
+    &lt;groupId&gt;org.jboss.shrinkwrap.resolver&lt;/groupId&gt;
+    &lt;artifactId&gt;shrinkwrap-resolver-impl-maven&lt;/artifactId&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+</pre></p>
+<p>(in questo progetto la versione viene ereditata dal BOM di WildFly). A questo punto possiamo implementare <tt>resolveMavenDependencies</tt></p>
+<p><pre data-enlighter-language="java" class="EnlighterJSRAW">
+private static MavenFormatStage resolveMavenDependencies() {
+   return Maven.resolver()
+            .loadPomFromFile(&quot;pom.xml&quot;)
+            .importRuntimeDependencies()
+            .resolve(&quot;commons-codec:commons-codec&quot;)
+            .withTransitivity();
+}
+</pre></p>
+<ul>
+<li><tt><strong>resolver</strong></tt>: crea un&#8217;istanza del risolutore delle dipendenze Maven.</li>
+<li><tt><strong>loadPomFromFile</strong></tt>: configura il resolver con il <tt>pom.xml</tt> specificato.</li>
+<li><tt><strong>importRuntimeDependencies</strong></tt>: a discapito del nome, aggiunge al resolver le dipendenze in scope <em>compile</em>, <em>system</em>, <em>import</em> e <em>runtime</em>.</li>
+<li><tt><strong>resolve</strong></tt>: avvia il vero e proprio meccanismo di risoluzione delle dipendenze, specificate nella forma canonica &#8220;<tt>groupId:artifactId</tt>&#8220;.</li>
+<li><tt><strong>withTransitivity</strong></tt>: risolve ricorsivamente le dipendenze specificate dal metodo precedente.</li>
+</ul>
+<h2>Il mio primo test di integrazione</h2>
+<p>Dal momento che anche la classe di test farà parte del micro deployment, è possibile usare <code>@Inject</code> <strong>per iniettare nel test la classe da testare</strong> (<tt>TaskService</tt>):</p>
+<p><pre data-enlighter-language="java" class="EnlighterJSRAW">
+@Inject
+private TaskService taskService;
+
+@Test
+public void shouldNotFindTask() {
+   Optional&lt;Task&gt; user = taskService.getBy(-1, &quot;testUser&quot;);
+   assertFalse(user.isPresent());
+}
+</pre></p>
+<p>Per il resto, niente di nuovo! Dal momento che la classe di test risulta un bean deployato a tutti gli effetti, possiamo anche usare l&#8217;<code>EntityManager</code> o la <code>UserTransaction</code> per preparare il database o svuotarlo (come per esempio la classe <a href="https://github.com/coding-jam/arquillian-tests/blob/master/arquillian-tests-test-utils/src/main/java/it/codingjam/arquilliantests/utils/TestDbUtils.java" target="_blank">TestDbUtils</a>).</p>
+<p>A questo punto siamo pronto a lanciare il test di integrazione (con Maven per esempio), ricordandoci di attivare il profilo desiderato (<tt>arq-wildfly-managed</tt> o <tt>arq-wildfly-remote</tt>). Nel caso in cui si voglia far gestire il server ad Arquillian:</p>
+<pre class="brush: plain; title: ; notranslate" title="">
+mvn verify -Parq-wildfly-managed
+</pre>
+<p>Se lanciato da una IDE, è necessario attivare il profilo prima di lanciare il test, sia in Eclipse</p>
+<div class="text-centered">
+<a href="https://codingjam.it/wp-content/uploads/2016/07/eclipse-maven-profiles.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2016/07/eclipse-maven-profiles-300x107.png" alt="Java EE integration test con Arquillian: Eclipse Select Maven profile" width="300" height="107" class="aligncenter size-medium wp-image-13956" srcset="https://codingjam.it/wp-content/uploads/2016/07/eclipse-maven-profiles-300x107.png 300w, https://codingjam.it/wp-content/uploads/2016/07/eclipse-maven-profiles-768x273.png 768w, https://codingjam.it/wp-content/uploads/2016/07/eclipse-maven-profiles-1024x364.png 1024w, https://codingjam.it/wp-content/uploads/2016/07/eclipse-maven-profiles.png 1294w, https://codingjam.it/wp-content/uploads/2016/07/eclipse-maven-profiles-300x107@2x.png 600w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+</div>
+<p>che IntelliJ</p>
+<div class="text-centered">
+<a href="https://codingjam.it/wp-content/uploads/2016/07/intellij-maven-profiles.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2016/07/intellij-maven-profiles-258x300.png" alt="Java EE integration test con Arquillian: Intellij Select Maven Profile" width="258" height="300" class="aligncenter size-medium wp-image-13957" srcset="https://codingjam.it/wp-content/uploads/2016/07/intellij-maven-profiles-258x300.png 258w, https://codingjam.it/wp-content/uploads/2016/07/intellij-maven-profiles.png 622w, https://codingjam.it/wp-content/uploads/2016/07/intellij-maven-profiles-258x300@2x.png 516w" sizes="(max-width: 258px) 100vw, 258px" /></a>
+</div>
+<p>Una volta lanciato, guardando la console, si noterà ad un certo punto che verrà avviato il server, e verrà deployato un <tt>war</tt>!! </p>
+<pre class="EnlighterJSRAW" data-enlighter-language="generic">
+WFLYUT0021: Registered web context: /test
+WFLYSRV0010: Deployed "test.war" (runtime-name : "test.war")
+</pre>
+<p>Come mai? Non in tutti gli application server è possibile deployare un <tt>jar</tt>, quindi Arquillian genera un archivio <tt>war</tt> <em>wrapper</em> per poter effettuare il deploy ed eseguire i test.</p>
+<p>Ovviamente ShrinkWrap permette di creare anche un <tt>war</tt> per testare il modulo web, in modo molto simile a quanto visto per il <tt>jar</tt>:</p>
+<p><pre data-enlighter-language="java" class="EnlighterJSRAW">
+@Deployment
+public static Archive&lt;?&gt; createDeployment() {
+    return ShrinkWrap.create(WebArchive.class, &quot;arquillian-tests-web.war&quot;)
+         .addPackages(true, &quot;it.codingjam.arquilliantests&quot;, &quot;it.codingjam.arquilliantests.utils&quot;)
+         .addAsWebInfResource(EmptyAsset.INSTANCE, &quot;beans.xml&quot;)
+         .addAsResource(&quot;META-INF/persistence.xml&quot;)
+         .addAsResource(&quot;META-INF/orm.xml&quot;)
+         .addAsLibraries(resolveMavenDependencies().asFile());
+}
+</pre></p>
+<p><code>WebArchive</code> offre qualche metodo in più rispetto a <code>JavaArchive</code>:</p>
+<ul>
+<li><tt><strong>addAsWebInfResource</strong></tt>: aggiunge risorse alla cartella <tt>WEB-INF</tt>. Come nel caso del <tt>jar</tt>, è necessario avere un <tt>bean.xml</tt> per attivare CDI.</li>
+<li><tt><strong>addAsLibraries</strong></tt>: si aggiungono le dipendenze (Maven in questo caso) all&#8217;archivio come si farebbe normalmente.</li>
+</ul>
+<p>Deployando questo archivio web, si scopre che viene associato un <em>context path</em> con lo stesso nome del war:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="generic">
+WFLYUT0021: Registered web context: /arquillian-tests-web
+WFLYSRV0010: Deployed "arquillian-tests-web.war" (runtime-name : "arquillian-tests-web.war")
+</pre>
+<p>è possibile quindi testare le nostre API REST con una vera e propria chiamata HTTP, magari con l&#8217;API client di JAX-RS 2:</p>
+<p><pre data-enlighter-language="java" class="EnlighterJSRAW">
+@Test
+public void shouldGetTaskForUser1() {
+   WebTarget target = ClientBuilder.newClient().target(&quot;http://localhost:8080/arquillian-tests-web/api/v1&quot;);
+   Response response = target.path(&quot;todos/1&quot;).queryParam(&quot;user&quot;, &quot;user1&quot;)
+            .request()
+            .accept(MediaType.APPLICATION_JSON_TYPE)
+            .get();
+
+   assertNotNull(response);
+   assertEquals(200, response.getStatus());
+}
+</pre></p>
+<h2>Debug di un test</h2>
+<p>Sembrerebbe un argomento scontato ma merita un cenno. La modalità &#8220;managed&#8221; (ovvero il profilo <tt>arq-wildfly-managed</tt>) non è compatibile con il debug: avviando infatti il test in debug e mettendo un breakpoint, si ha la spiacevole sorpresa che viene ignorato! Come fare quindi? La modalità &#8220;<strong>remote</strong>&#8221; (<tt>arq-wildfly-remote</tt>) ci viene in aiuto! L&#8217;importante è <strong>avviare il server in modalità debug</strong> dalla nostra IDE preferita: dal momento che sappiamo che la <em>classe di test viene deployata</em>, è facile aspettarsi di debuggare il test come se fosse una classe della nostra applicazione.</p>
+<h2>Ulteriori configurazioni</h2>
+<h3>Server remoto</h3>
+<p>Fin qua abbiamo usato Arquillian senza toccare la configurazione base. Nel caso di debug, abbiamo parlato di &#8220;server remoto&#8221;, ma di fatto siamo sempre su <tt>localhost</tt>. In generale può fare comodo eseguire il <strong>deploy remoto su un server che risiede in un&#8217;altra macchina</strong>: come fare quindi? Nel caso di WildFly è molto semplice: aggiungiamo un <strong>nuovo blocco</strong> <tt>container</tt> al file <tt>arquillian.xml</tt></p>
+<p><pre data-enlighter-language="xml" class="EnlighterJSRAW">
+&lt;container qualifier=&quot;qa_jboss&quot;&gt;
+    &lt;configuration&gt;
+        &lt;property name=&quot;managementAddress&quot;&gt;192.168.100.123&lt;/property&gt;
+        &lt;property name=&quot;managementPort&quot;&gt;9990&lt;/property&gt;
+    &lt;/configuration&gt;
+&lt;/container&gt;
+</pre></p>
+<p>Questo nuovo container ha un nome identificativo (<em>qa_jboss</em>) che useremo per <strong>attivarelo</strong>. Per questo nuovo container è possibile configurare: <tt>managementAddress</tt>, <tt>managementPort</tt>, <tt>username</tt> e <tt>password</tt>. In questo caso quindi abbiamo ipotizzato di avere il server <strong>già avviato</strong> all&#8217;indirizzo <tt>192.168.100.123</tt> con management console alla porta 9990, senza autenticazione.</p>
+<p>Per usare questo nuovo container basta creare un <strong>nuovo profilo Maven</strong>, chiamato per esempio <tt>arq-wildfly-quality</tt>, identico alla versione remote, ma dove si <em>specifica il container da usare</em>:</p>
+<p><pre data-enlighter-language="xml" class="EnlighterJSRAW" data-enlighter-highlight="24">
+&lt;profile&gt;
+    &lt;id&gt;arq-wildfly-quality&lt;/id&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.wildfly&lt;/groupId&gt;
+            &lt;artifactId&gt;wildfly-arquillian-container-remote&lt;/artifactId&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-failsafe-plugin&lt;/artifactId&gt;
+                &lt;version&gt;2.18.1&lt;/version&gt;
+                &lt;executions&gt;
+                    &lt;execution&gt;
+                        &lt;goals&gt;
+                            &lt;goal&gt;integration-test&lt;/goal&gt;
+                            &lt;goal&gt;verify&lt;/goal&gt;
+                        &lt;/goals&gt;
+                        &lt;configuration&gt;
+                            &lt;systemPropertyVariables&gt;
+                                &lt;arquillian.launch&gt;qa_jboss&lt;/arquillian.launch&gt;
+                            &lt;/systemPropertyVariables&gt;
+                        &lt;/configuration&gt;
+                    &lt;/execution&gt;
+                &lt;/executions&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+&lt;/profile&gt;
+</pre></p>
+<p>che è equivalente a passare il parametro <tt>-Darquillian.launch=qa_jboss</tt> se <em>non</em> si volesse creare un nuovo profilo.</p>
+<h3>Autodownload del server</h3>
+<p>Una strada totalmente inversa a quella vista adesso è quella <em>non avere nessun server già preparato o configurato</em>, ma permettere a Maven di <em>scaricarlo al volo prima di lanciare i test</em>. Personalmente ritengo che in contesto lavorativo non è un caso d&#8217;uso frequente perché molto spesso l&#8217;application server ha sempre qualche configurazione personalizzata, come il datasource piuttosto che i driver JDBC, la security o le code JMS. A scopo didattico però è bene sapere che si può fare, basta aggiungere il plugin Maven per scaricare WildFly come dipendenza:</p>
+<p><pre data-enlighter-language="xml" class="EnlighterJSRAW" data-enlighter-highlight="8,10,20">
+&lt;plugin&gt;
+    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+    &lt;artifactId&gt;maven-dependency-plugin&lt;/artifactId&gt;
+    &lt;version&gt;2.8&lt;/version&gt;
+    &lt;executions&gt;
+        &lt;execution&gt;
+            &lt;id&gt;unpack&lt;/id&gt;
+            &lt;phase&gt;process-test-classes&lt;/phase&gt;
+            &lt;goals&gt;
+                &lt;goal&gt;unpack&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+                &lt;artifactItems&gt;
+                    &lt;artifactItem&gt;
+                        &lt;groupId&gt;org.wildfly&lt;/groupId&gt;
+                        &lt;artifactId&gt;wildfly-dist&lt;/artifactId&gt;
+                        &lt;version&gt;${version.wildfly}&lt;/version&gt;
+                        &lt;type&gt;zip&lt;/type&gt;
+                        &lt;overWrite&gt;false&lt;/overWrite&gt;
+                        &lt;outputDirectory&gt;target&lt;/outputDirectory&gt;
+                    &lt;/artifactItem&gt;
+                &lt;/artifactItems&gt;
+            &lt;/configuration&gt;
+        &lt;/execution&gt;
+    &lt;/executions&gt;
+&lt;/plugin&gt;
+</pre></p>
+<p>che viene decompresso nella cartella <tt>target</tt> prima di eseguire i test. Qualche ritocco al <tt>failsafe-plugin</tt>:</p>
+<p><pre data-enlighter-language="xml" class="EnlighterJSRAW" data-enlighter-highlight="13-21,23">
+&lt;plugin&gt;
+    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+    &lt;artifactId&gt;maven-failsafe-plugin&lt;/artifactId&gt;
+    &lt;version&gt;2.18.1&lt;/version&gt;
+    &lt;executions&gt;
+        &lt;execution&gt;
+            &lt;goals&gt;
+                &lt;goal&gt;integration-test&lt;/goal&gt;
+                &lt;goal&gt;verify&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+                &lt;systemPropertyVariables&gt;
+                    &lt;arquillian.launch&gt;
+                        qa_jboss
+                    &lt;/arquillian.launch&gt;
+                    &lt;java.util.logging.manager&gt;
+                        org.jboss.logmanager.LogManager
+                    &lt;/java.util.logging.manager&gt;
+                    &lt;jboss.home&gt;
+                        ${project.basedir}/target/wildfly-10.0.0.Final
+                    &lt;/jboss.home&gt;
+                &lt;/systemPropertyVariables&gt;
+                &lt;redirectTestOutputToFile&gt;false&lt;/redirectTestOutputToFile&gt;
+            &lt;/configuration&gt;
+        &lt;/execution&gt;
+    &lt;/executions&gt;
+&lt;/plugin&gt;
+</pre></p>
+<p>ed il gioco è fatto.</p>
+<h2>Conclusioni</h2>
+<p>I test di integrazione nel mondo Java EE sono sempre stati un tallone d&#8217;Achille: adesso abbiamo uno strumento dalla nostra parte che ci permette di eseguire i test su un&#8217;istanza reale del server target, senza creare contesti &#8220;fasulli&#8221; per ovviare alla mancanza di uno standard sui test di integrazione nella specifica Java Enterprise.</p>
+            </div>
+            <!-- end content -->
+
+            
+                <!-- social sharing buttons / counters -->
+                <div class="row">
+                  <div class="col-md-7">
+                    
+    <!-- social sharing buttons -->
+    <div class="bwp-single-share-wrap">
+      <span>Share:</span>
+      <ul class="bwp-single-share list-unstyled">
+        <!-- facebook -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/java-ee-integration-test-con-arquillian/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/java-ee-integration-test-con-arquillian/" target="_blank" class="bwp-share-link bwp-facebook-share">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <!-- end facebook -->
+        <!-- twitter -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/java-ee-integration-test-con-arquillian/&amp;text=java-ee-integration-test-con-arquillian', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/java-ee-integration-test-con-arquillian/&amp;text=java-ee-integration-test-con-arquillian" target="_blank" class="bwp-share-link bwp-twitter-share">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <!-- end twitter -->
+        <!-- google+ -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/java-ee-integration-test-con-arquillian/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/java-ee-integration-test-con-arquillian/" target="_blank" class="bwp-share-link bwp-google-plus-share">
+            <i class="fa fa-google-plus"></i>
+          </a>
+        </li>
+        <!-- end google+ -->
+        <!-- vk -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/java-ee-integration-test-con-arquillian/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/java-ee-integration-test-con-arquillian/" target="_blank" class="bwp-share-link bwp-vk-share">
+            <i class="fa fa-vk"></i>
+          </a>
+        </li>
+        <!-- end vk -->
+        <!-- pinterest -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/java-ee-integration-test-con-arquillian/&amp;media=&amp;description=java-ee-integration-test-con-arquillian', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/java-ee-integration-test-con-arquillian/&amp;media=&amp;description=java-ee-integration-test-con-arquillian" target="_blank" class="bwp-share-link bwp-pinterest-share">
+            <i class="fa fa-pinterest-p"></i>
+          </a>
+        </li>
+        <!-- end pinterest -->
+      </ul>
+    </div>
+    <!-- end social sharing buttons -->
+
+                      </div>
+                  <div class="col-md-5">
+                    
+    <!-- counters -->
+    <ul class="bwp-single-counters list-unstyled clearfix ">
+                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>0</a></li>
+                </ul>
+    <!-- end counters -->
+
+                      </div>
+                </div>
+                <!-- end social sharing buttons / counters -->
+
+                
+      <!-- metadata -->
+      <div class="bwp-single-metadata-wrap ">
+        <ul class="bwp-single-metadata list-unstyled clearfix">
+                      <!-- author -->
+            <li>
+              <span class="vcard author">
+                <span class="fn">
+                  <i class="fa fa-pencil-square-o"></i><a href="../author/andrea-como/index.html" title="Posts by Andrea Como" rel="author">Andrea Como</a>                </span>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end author -->
+                                <!-- date -->
+            <li>
+                            <span class="date updated">
+                <i class="fa fa-clock-o"></i><a href="https://codingjam.it/2016/08/02/">02/08/2016</a>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end date -->
+                                <!-- categories -->
+            <li>
+              <i class="fa fa-bookmark-o"></i><a href="../category/java/index.html" rel="category tag">Java</a>, <a href="../category/test-2/index.html" rel="category tag">Test</a>, <a href="https://codingjam.it/category/application-server/wildfly/" rel="category tag">WildFly</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end categories -->
+                                <!-- tags -->
+            <li>
+              <i class="fa fa-tags"></i><a href="https://codingjam.it/tag/arquillian/" rel="tag">Arquillian</a>, <a href="https://codingjam.it/tag/integration-test/" rel="tag">integration test</a>, <a href="https://codingjam.it/tag/java-ee-7/" rel="tag">Java EE 7</a>, <a href="https://codingjam.it/tag/java-enterprise/" rel="tag">Java Enterprise</a>, <a href="../tag/maven/index.html" rel="tag">maven</a>, <a href="https://codingjam.it/tag/wildfly/" rel="tag">Wildfly</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end tags -->
+                  </ul>
+      </div>
+      <!-- end metadata -->
+
+      
+          </div>
+          <!-- end content container -->
+
+        </article>
+        <!-- end article -->
+
+        
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://codingjam.it/primi-passi-con-electron/" rel="prev"><span class="meta-nav"><i class="fa fa-angle-left"></i>Previous post</span><span class="post-title-nav">Primi passi con Electron</span></a></div><div class="nav-next"><a href="https://codingjam.it/ionic-2-prime-impressioni/" rel="next"><span class="meta-nav">Next post<i class="fa fa-angle-right"></i></span><span class="post-title-nav">Ionic 2: prime impressioni</span></a></div></div>
+	</nav>
+    <!-- about the author -->
+    <div class="bwp-about-author-container bwp-transition-3 clearfix">
+      <!-- avatar -->
+      <div class="bwp-about-author-avatar">
+        <a href="../author/andrea-como/index.html">
+          <img alt='' src='https://secure.gravatar.com/avatar/684ede46c9386ff5430335a42fd5b011?s=150&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/684ede46c9386ff5430335a42fd5b011?s=300&#038;d=mm&#038;r=g 2x' class='avatar avatar-150 photo' height='150' width='150' />        </a>
+      </div>
+      <!-- end avatar -->
+      <!-- biographical info -->
+      <div class="bwp-about-author-bio-wrap">
+        <h3 class="bwp-about-author-name">
+          <a href="../author/andrea-como/index.html" title="Posts by Andrea Como" rel="author">Andrea Como</a>          <span><i class="fa fa-angle-double-right"></i>84 Posts</span>
+        </h3>
+        <div class="bwp-about-author-bio">
+          Sono un <strong>software engineer</strong> focalizzato nella progettazione e sviluppo di applicazioni web in Java. Presso <a href="http://www.omniagroup.it/">OmniaGroup</a> ricopro il ruolo di <strong>Tech Leader</strong> sulle tecnologie legate alla piattaforma Java EE 5 (come WebSphere 7.0, EJB3, JPA 1 (EclipseLink), JSF 1.2 (Mojarra) e RichFaces 3) e Java EE 6 con JBoss AS 7, in particolare di CDI, JAX-RS, nonché di EJB 3.1, JPA2, JSF2 e RichFaces 4. Al momento mi occupo di ECM, in particolar modo sulla customizzazione di Alfresco 4 e sulla sua installazione con tecnologie da devops come Vagrant e Chef. 
+In passato ho lavorato con la piattaforma alternativa alla enterprise per lo sviluppo web: Java SE 6, Tomcat 6, Hibernate 3 e Spring 2.5. Nei ritagli di tempo sviluppo siti web in PHP e ASP. Per maggiori informazioni consulta il mio <a href="http://resume.linkedinlabs.com/qoqlpivm">curriculum pubblico</a>.
+
+<a href="https://twitter.com/andrea_como">Follow me on Twitter</a>  -  <a href="http://www.linkedin.com/pub/andrea-como/19/291/99">LinkedIn profile</a> - <a href="https://plus.google.com/u/0/111647274412905676850/posts?rel=author">Google+</a>        </div>
+                  <ul class="bwp-about-author-social list-unstyled clearfix">
+                              <li><a href="http://andrea_como/" target="_blank" class="bwp-a-twitter-link"><i class="fa fa-twitter"></i></a></li>
+                                  <li><a href="http://www.cosenonjaviste.it/?team=andrea-como" target="_blank" class="bwp-a-website-link"><i class="fa fa-link"></i></a></li>
+                          </ul>
+              </div>
+      <!-- end biographical info -->
+    </div>
+    <!-- end about the author -->
+
+    
+<!-- comments -->
+<div id="comments" class="comments-area">
+
+	
+	
+		<div id="respond" class="comment-respond">
+		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='13934' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+	
+</div>
+<!-- end comments -->
+
+    <!-- related posts (by tags) -->
+    <div class="bwp-related-posts-container bwp-show-2-posts">
+      <div class="bwp-o-hidden">
+
+        <!-- title -->
+        <h2 class="bwp-related-posts-title">
+          You might also like:        </h2>
+        <!-- end title -->
+
+        <!-- posts list -->
+        <div class="bwp-related-posts clearfix">
+
+          
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="../organizziamoci-con-maven-parte-ii/index.html">Organizziamoci con Maven &#8211; Parte II</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p style="text-align: justify">Nel <a href="http://www.cosenonjaviste.it/organizziamoci-con-maven-parte-i/">precedente articolo</a> abbiamo introdotto <a href="http://maven.apache.org/">Apache Maven</a> e ne abbiamo visto le basi, nonché abbiamo creato alcuni progetti. Il tutto è stato affrontato lavorando con Maven come tool da riga di comando ed effettivamente lo è&#8230;<br />
+Tuttavia abbiamo bisogno di integrare questo tool con un IDE che nel nostro caso è Eclipse. Vediamo come possiamo rendere i nostri progetti compatibili con l&#8217;IDE?</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="../2012/04/16/index.html" class="bwp-post-date">
+        <span class="date updated">16/04/2012</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="../organizziamoci-con-maven-parte-ii/index.html" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="../4-facce-in-padella-oggi-ancora-pi-ricche-getting-started-with-jboss-richfaces-4-x/index.html">4 Facce in padella &#8211; oggi ancora pi&ugrave; Ricche (Getting started with JBoss RichFaces 4.x)</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p align="justify">Il progetto JBoss RichFaces è un framework di componenti UI evoluti basati sulla specifica JavaServer Faces (JSF) e arricchiti di funzionalità Ajax avanzate. Il 29 Marzo è uscita la attesa nuova versione, JBoss RichFaces 4.0, che introduce il pieno supporto alla specifica 2.0 delle JSF oltre a molte novità interessanti, tra cui la validazione lato client. In questo semplice tutorial vediamo assieme come creare un Hello World con JBoss RichFaces 4.x su JBoss AS 6 ed Eclipse. </p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="../2011/04/25/index.html" class="bwp-post-date">
+        <span class="date updated">25/04/2011</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="../4-facce-in-padella-oggi-ancora-pi-ricche-getting-started-with-jboss-richfaces-4-x/index.html" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+        </div>
+        <!-- end posts list -->
+
+      </div>
+    </div>
+    <!-- end related posts -->
+
+    
+                  </div><!-- /bwp-single-content-col-wrap --></div><!-- /col-md-8 --><div class="col-md-4 bwp-sidebar-col bwp-sidebar-right">
+        
+                  </div><!-- /col --></div><!-- /row -->
+        
+      </div>
+    </div>
+  </section>
+  <!-- end blog post - single page -->
+
+  
+<!-- footer -->
+<footer id="bwp-footer-wrap">
+  <div class="container">
+    <div class="bwp-footer-container clearfix">
+
+              <!-- footer text -->
+        <div class="bwp-footer-text">
+          CodingJam        </div>
+        <!-- end footer text -->
+      
+              <!-- social links -->
+        <ul class="bwp-footer-social-links list-unstyled clearfix">
+          <li><a href="https://twitter.com/codingjam" target="_blank" class="bwp-f-twitter-link"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.facebook.com/codingjamit/" target="_blank" class="bwp-f-facebook-link"><i class="fa fa-facebook"></i></a></li><li><a href="https://github.com/coding-jam" target="_blank" class="bwp-f-github-link"><i class="fa fa-github"></i></a></li>        </ul>
+        <!-- end social links -->
+      
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+
+<!--googleoff: all--><div id="cookie-law-info-bar"><span>Questo sito Web utilizza i cookie per migliorare la tua esperienza. Daremo per scontato che per te sia ok, ma puoi disattivarlo se lo desideri..<a role='button' tabindex='0' data-cli_action="accept" id="cookie_action_close_header"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button" style="display:inline-block; ">Accetto</a>  <a role='button' tabindex='0' id="cookie_action_close_header_reject"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header_reject cli_action_button"  data-cli_action="reject">Annulla</a> <a href='../cookie.html' id="CONSTANT_OPEN_URL" target="_blank"  class="cli-plugin-main-link"  style="display:inline-block;" >Read More</a></span></div><div id="cookie-law-info-again" style="display:none;"><span id="cookie_hdr_showagain">Privacy & Cookies</span></div><div class="cli-modal" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+    <div class="cli-modal-content cli-bar-popup">
+      <button type="button" class="cli-modal-close" id="cliModalClose">
+        <svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+        <span class="wt-cli-sr-only">Close</span>
+      </button>
+      <div class="cli-modal-body">
+        <div class="cli-container-fluid cli-tab-container">
+    <div class="cli-row">
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0">
+            <div class="cli-privacy-overview">
+                                                   
+                <div class="cli-privacy-content">
+                    <div class="cli-privacy-content-text"></div>
+                </div>
+                <a class="cli-privacy-readmore" data-readmore-text="Show more" data-readless-text="Show less"></a>            </div>
+        </div>  
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+              
+                            <div class="cli-tab-section">
+                    <div class="cli-tab-header">
+                        <a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab" >
+                            Necessary 
+                        </a>
+                    
+                    <span class="cli-necessary-caption">Always Enabled</span>                     </div>
+                    <div class="cli-tab-content">
+                        <div class="cli-tab-pane cli-fade" data-id="necessary">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+              
+                       
+        </div>
+    </div> 
+</div> 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<script type="text/javascript">
+  /* <![CDATA[ */
+  cli_cookiebar_settings='{"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":false,"button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":true,"button_1_new_win":false,"button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":false,"button_2_hidebar":false,"button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":true,"button_3_new_win":false,"button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#fff","button_4_as_button":true,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":false,"scroll_close_reload":false,"accept_close_reload":false,"reject_close_reload":false,"showagain_tab":true,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":false,"show_once":"10000","logging_on":false,"as_popup":false,"popup_overlay":true,"bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"}';
+  /* ]]> */
+</script>
+<!--googleon: all--><script type='text/javascript' src='../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore09b1.js?ver=3.0.9b'></script>
+<script type='text/javascript' src='https://codingjam.it/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js?ver=3.0.9b'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore09b1.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeEclipse09b1.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = true;
+	SyntaxHighlighter.defaults['tab-size'] = 2;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/bootstrap.min7433.js?ver=3.3.7'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.parallaxc358.js?ver=1.1.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/superfish.min97e9.js?ver=1.7.9'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel.min3ba1.js?ver=1.3.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/magnific-popup/jquery.magnific-popup.minf488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
+</body>
+
+<!-- Mirrored from codingjam.it/java-ee-integration-test-con-arquillian/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:38 GMT -->
+</html>

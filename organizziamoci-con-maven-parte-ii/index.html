@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from codingjam.it/organizziamoci-con-maven-parte-ii/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="pingback" href="../xmlrpc.php">
+
+  <title>Organizziamoci con Maven &#8211; Parte II &#8211; CodingJam</title>
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Feed" href="../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Comments Feed" href="../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Organizziamoci con Maven &#8211; Parte II Comments Feed" href="https://codingjam.it/organizziamoci-con-maven-parte-ii/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='../wp-content/plugins/gutenberg/build/block-library/stylea4fb.css?ver=1591004795' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-gdpr-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='melissa-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lato%3A400%2C400i%2C700%2C700i%7CNoto+Serif%3A400%2C400i%2C700%2C700i&amp;subset=latin&amp;ver=1.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../wp-content/themes/melissa/css/bootstrap.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-theme-css'  href='../wp-content/themes/melissa/css/bootstrap-theme.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-ie10-viewport-bug-workaround-css'  href='../wp-content/themes/melissa/css/ie10-viewport-bug-workaround8a54.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='../wp-content/themes/melissa/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-carousel-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-theme-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.theme3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='magnific-popup-css'  href='../wp-content/themes/melissa/assets/magnific-popup/magnific-popupf488.css?ver=1.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-style-css'  href='../wp-content/themes/melissa/style3ec8.css?ver=1.1.6' type='text/css' media='all' />
+<style id='melissa-style-inline-css' type='text/css'>
+
+    .bwp-post-media img,
+    .bwp-post-carousel-item img,
+    .widget_bwp_posts_slider_item img {
+      width: 100%;
+      margin: 0;
+    }
+    .bwp-post-wrap:hover {
+      margin-top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+    #bwp-masonry-container.no-masonry .bwp-post-wrap:hover {
+      top: 0;
+    }
+    .bwp-no-results-container:hover,
+    .bwp-single-article:hover,
+    .bwp-featured-media-container:hover,
+    .post-navigation .nav-links a:hover,
+    .bwp-about-author-container:hover,
+    .comment-respond:hover,
+    .comment-body:hover,
+    #comments .no-comments:hover,
+    .comment-navigation .nav-links a:hover,
+    .bwp-related-post-wrap:hover,
+    .bwp-page-404-container:hover,
+    .bwp-sidebar-wrap:hover {
+      top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+  #bwp-header-wrap {
+    background-color: #2e3340;
+  }
+  .bwp-header-bg-overlay,
+  .bwp-header-rs-bg-overlay {
+    background-color: rgba(46, 51, 64, 0.9);
+  }
+    .bwp-content a,
+    .comment-content a,
+    .bwp-post-quote a {
+      color: #2052bf;
+    }
+</style>
+<link rel='stylesheet' id='enlighter-local-css'  href='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.css?ver=3.9.0' type='text/css' media='all' />
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery4a5f.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[]};
+var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/cookie-law-info/public/js/cookie-law-info-public3cf4.js?ver=1.8.8'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/respond.min.js?ver=1.4.2'></script>
+<![endif]-->
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/mootools-core-yc9086.js?ver=3.9.0'></script>
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.js?ver=3.9.0'></script>
+<link rel='https://api.w.org/' href='../wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+<link rel='prev' title='Organizziamoci con Maven &#8211; Parte I' href='https://codingjam.it/organizziamoci-con-maven-parte-i/' />
+<link rel='next' title='JSF 2 e il versionamento delle risorse' href='https://codingjam.it/jsf-2-e-il-versionamento-delle-risorse/' />
+<meta name="generator" content="WordPress 5.4.1" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://codingjam.it/?p=5478' />
+<link rel="alternate" type="application/json+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Forganizziamoci-con-maven-parte-ii%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Forganizziamoci-con-maven-parte-ii%2F&amp;format=xml" />
+<link rel="amphtml" href="https://codingjam.it/organizziamoci-con-maven-parte-ii/amp/"><script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"droide","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":false,"windowButton":false,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" sizes="32x32" />
+<link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://codingjam.it/wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-270x270.png" />
+</head>
+
+<body class="post-template-default single single-post postid-5478 single-format-standard wp-custom-logo">
+
+
+<!-- header -->
+<header id="bwp-header-wrap" class="bwp-header-simple">
+
+  <!-- header bg -->
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P6261835_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg-overlay"></div>
+
+    <!-- header content -->
+    <div class="container">
+      <div class="bwp-header-content-container">
+
+        <!-- row 1 - logo + navigation -->
+        <div class="bwp-main-navigation-container clearfix">
+
+          
+        <!-- image logo -->
+        <div class="bwp-logo-container">
+          <a href="../index.html" class="custom-logo-link" rel="home"><img width="207" height="70" src="../wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png" class="custom-logo" alt="CodingJam" srcset="https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png 207w, https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco-150x51.png 150w" sizes="(max-width: 207px) 100vw, 207px" /></a>        </div>
+        <!-- end image logo -->
+
+        
+      <!-- search -->
+      <div class="bwp-header-search-container hidden-sm hidden-xs">
+        <a href="#" id="bwp-header-search-icon">
+          <i class="fa fa-search"></i>
+        </a>
+        <div class="bwp-dropdown-search-container bwp-search-hidden">
+          
+<!-- search form -->
+<form id="searchform" role="search" method="get" action="https://codingjam.it/">
+  <div class="input-group">
+    <input type="text" name="s" id="s" class="bwp-search-field form-control" placeholder="Enter your search query...">
+    <span class="input-group-btn">
+      <button type="submit" class="btn bwp-search-submit">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+</form>
+<!-- end search form -->
+        </div>
+      </div>
+      <!-- end search -->
+
+      
+      <!-- menu -->
+      <div class="bwp-menu-container hidden-sm hidden-xs">
+        <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-2" class="sf-menu"><li id="menu-item-12007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li id="menu-item-12022" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li id="menu-item-12009" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li id="menu-item-12020" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li id="menu-item-12017" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li id="menu-item-12006" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li id="menu-item-12005" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li id="menu-item-12008" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li id="menu-item-12014" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li id="menu-item-12012" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li id="menu-item-12010" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li id="menu-item-12021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li id="menu-item-12016" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li id="menu-item-12015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li id="menu-item-12019" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li id="menu-item-12018" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>      </div>
+      <!-- end menu -->
+
+      
+      <!-- mobile menu -->
+      <div class="bwp-mobile-menu-container hidden-md hidden-lg">
+        <!-- mobile menu icon -->
+        <a href="#" id="bwp-mobile-menu-icon">
+          <i class="fa fa-bars"></i>
+        </a>
+        <!-- end mobile menu icon -->
+        <!-- dropdown mobile menu -->
+        <div class="bwp-dropdown-mobile-menu bwp-mobile-menu-hidden">
+          <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-3" class="bwp-mobile-menu list-unstyled"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>        </div>
+        <!-- end dropdown mobile menu -->
+      </div>
+      <!-- end mobile menu -->
+
+      
+        </div>
+        <!-- end row 1 - logo + navigation -->
+
+        
+          <!-- row 2 - header custom text -->
+          <div class="bwp-header-custom-text-container">
+            
+        <!-- custom text - single page -->
+        <h1 class="bwp-header-custom-title entry-title">
+          Organizziamoci con Maven &#8211; Parte II        </h1>
+                <div class="bwp-header-transparent-line clearfix">
+          <span class="bwp-header-t-line-1"></span>
+          <span class="bwp-header-t-line-2"></span>
+        </div>
+        <!-- end custom text -->
+
+                  </div>
+          <!-- end row 2 - header custom text -->
+
+          
+      </div>
+    </div>
+    <!-- end header content -->
+  </div>
+  <!-- end header bg -->
+
+  
+        <!-- sticky navigation -->
+        <div class="bwp-sticky-navigation-wrap bwp-transition-4 clearfix">
+          <!-- sticky navigation icon -->
+          <a href="#" id="bwp-sticky-navigation-icon">
+            <i class="fa fa-bars"></i>
+          </a>
+          <!-- end sticky navigation icon -->
+          <!-- sticky navigation container -->
+          <div class="bwp-sticky-navigation-container bwp-sticky-navigation-hidden">
+            <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-4" class="sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>          </div>
+          <!-- end sticky navigation container -->
+        </div>
+        <!-- end sticky navigation -->
+
+        
+</header>
+<!-- end header -->
+
+  <!-- blog post - single page -->
+  <section id="bwp-single-page-wrap">
+    <div class="container">
+      <div class="bwp-single-page-container" >
+
+        
+                  <div class="row"><div class="col-md-8 bwp-single-content-col bwp-sidebar-right"><div class="bwp-single-content-col-wrap" role="main">
+        
+        <!-- article -->
+        <article id="post-5478" class="bwp-single-article bwp-transition-3">
+
+          
+          <!-- content container -->
+          <div class="bwp-single-content">
+
+            <!-- content -->
+            <div class="bwp-content entry-content clearfix">
+              <p style="text-align: justify">Nel <a href="http://www.cosenonjaviste.it/organizziamoci-con-maven-parte-i/">precedente articolo</a> abbiamo introdotto <a href="http://maven.apache.org/">Apache Maven</a> e ne abbiamo visto le basi, nonché abbiamo creato alcuni progetti. Il tutto è stato affrontato lavorando con Maven come tool da riga di comando ed effettivamente lo è&#8230;<br />
+Tuttavia abbiamo bisogno di integrare questo tool con un IDE che nel nostro caso è Eclipse. Vediamo come possiamo rendere i nostri progetti compatibili con l&#8217;IDE?<br />
+Basta semplicemente lanciare uno dei seguenti comandi nella directory principale del progetto (cioè allo stesso livello del file <tt>pom.xml</tt>):</p>
+<p style="text-align: justify">Se si tratta di un progetto Java (cioè creato mediante il template <strong>maven-archetype-quickstart</strong>), il comando è:</p>
+<blockquote><p><code>mvn eclipse:eclipse</code></p></blockquote>
+<p style="text-align: justify">Invece se si tratta di un progetto web (cioè creato mediante il template <strong>maven-archetype-webapp</strong>), allora il comando diventa:</p>
+<blockquote><p><code>mvn eclipse:eclipse -Dwtpversion=2.0</code></p></blockquote>
+<p style="text-align: justify">A questo punto siete pronti per importare i vostri progetti su Eclipse. Per questi progetti singoli è sufficiente:</p>
+<p><strong> File -&gt; Import… -&gt; General -&gt; Existing Projects into Workspace -&gt; select root directory&gt;  (select Project) -&gt; Finish</strong></p>
+<p style="text-align: justify">Per importare invece progetti modulari su Eclipse le cose si complicano ed è necessaria una procedura piuttosto complessa, pertanto vi rimando a questa <a title="guida" href="http://maven.apache.org/guides/mini/guide-ide-eclipse.html#Multiple_Module_Project">guida</a> sulla documentazione ufficiale, dalla quale potete estrapolare la procedura che ci serve.<br />
+I guai non finiscono quì, infatti ci occorre un modo per eseguire i comandi (anche se possiamo farlo sempre da riga di comando). Possiamo farlo usando Maven da <strong>external tool</strong>, come descritto in <a href="http://www.mkyong.com/maven/integrate-maven-with-eclipse-via-external-tool-configuration/">questo articolo</a> postato su <a href="http://www.mkyong.com/">mkyong.com</a>.<br />
+Se questo vi sembra troppo oneroso per arrivare ad utilizzare Maven con il vostro IDE preferito, sappiate che esiste un plugin di Eclipse che ci semplifica notevolmente la vita. Sto parlando di&#8230;</p>
+<h2>m2e</h2>
+<p style="text-align: justify"><a href="http://eclipse.org/m2e/">m2e</a> (precedentemente chiamato <strong>m2eclipse</strong>) è un plugin per sfruttare la potenza di Maven in Eclipse e senza ricorrere all&#8217;istallazione di Maven sul computer, così come abbiamo visto nell&#8217;<a href="http://www.cosenonjaviste.it/organizziamoci-con-maven-parte-i/">articolo precedente</a>.<br />
+Per disporre di <strong>m2e</strong> su Eclipse, occorre cercarlo sul <a href="http://marketplace.eclipse.org/marketplace-client-intro">marketplace</a> ed installarlo, oppure procedere come segue:</p>
+<p><strong>Help → install new software -&gt; add</strong>, aggiungo il segurnte url</p>
+<blockquote><p><code>http://download.eclipse.org/technology/m2e/releases</code></p></blockquote>
+<p>e selezionare <strong>Maven integration for Eclipse</strong>, poi <strong>Next</strong> e ancora <strong>Next</strong> fino al <strong>Finish</strong>.</p>
+<div style="margin: 20px" align="center"><a href="http://www.cosenonjaviste.it/wp-content/uploads/2012/03/m2eclipse.png"><img class="aligncenter size-medium wp-image-4903" src="http://www.cosenonjaviste.it/wp-content/uploads/2012/03/m2eclipse-290x300.png" alt="" width="290" height="300" srcset="https://codingjam.it/wp-content/uploads/2012/03/m2eclipse-290x300.png 290w, https://codingjam.it/wp-content/uploads/2012/03/m2eclipse.png 751w" sizes="(max-width: 290px) 100vw, 290px" /></a></div>
+<p style="text-align: justify">Una volta istallato possiamo procedere alla creazione di un nuovo progetto con Eclipse che per ragioni di completezza sarà un progetto modulare. 🙂</p>
+<p style="text-align: justify"><strong>File -&gt; New -&gt; Project</strong>, nel wizard per il <strong>New Project</strong>, selezioniamo<strong> Maven -&gt; Maven Project</strong>:</p>
+<div style="margin: 20px" align="center"><a href="http://www.cosenonjaviste.it/wp-content/uploads/2012/03/new1.png"><img class="aligncenter size-medium wp-image-4902" src="http://www.cosenonjaviste.it/wp-content/uploads/2012/03/new1-300x287.png" alt="" width="300" height="287" srcset="https://codingjam.it/wp-content/uploads/2012/03/new1-300x287.png 300w, https://codingjam.it/wp-content/uploads/2012/03/new1.png 521w" sizes="(max-width: 300px) 100vw, 300px" /></a></div>
+<p style="text-align: justify">Nella prima pagina del wizard selezioniamo <strong>Create a simple project</strong> e poi click su <strong>Next</strong>. Nella successiva pagina scegliamo il <strong>Group id</strong> e l&#8217;<strong>Artifact id</strong>, come nella sottostante figura. Impostiamo il valore di <strong>packaging </strong> a <code>pom</code> e clicchiamo su <strong>Finish</strong>.</p>
+<div style="margin: 20px" align="center"><a href="http://www.cosenonjaviste.it/wp-content/uploads/2012/03/mavenOnEclipse.png"><img class="aligncenter size-medium wp-image-5360" src="http://www.cosenonjaviste.it/wp-content/uploads/2012/03/mavenOnEclipse-300x258.png" alt="" width="300" height="258" srcset="https://codingjam.it/wp-content/uploads/2012/03/mavenOnEclipse-300x258.png 300w, https://codingjam.it/wp-content/uploads/2012/03/mavenOnEclipse.png 701w" sizes="(max-width: 300px) 100vw, 300px" /></a></div>
+<p style="text-align: justify">Aggiungiamo due moduli al progetto, per primo creiamo un progetto Java: <strong>New -&gt; Maven Module</strong>.<br />
+In questo caso impostiamo <strong>Module Name</strong> che sarà <code>javaOnEclipse</code> e <strong>Parent Project</strong> che sarà <code>mavenOnEclipse</code>. Poi  ancora <strong>Next.</strong></p>
+<div style="margin: 20px" align="center"><a href="http://www.cosenonjaviste.it/wp-content/uploads/2012/04/javaOnEclipse2.png"><img class="aligncenter size-medium wp-image-5421" src="http://www.cosenonjaviste.it/wp-content/uploads/2012/04/javaOnEclipse2-300x162.png" alt="" width="300" height="162" srcset="https://codingjam.it/wp-content/uploads/2012/04/javaOnEclipse2-300x162.png 300w, https://codingjam.it/wp-content/uploads/2012/04/javaOnEclipse2.png 681w" sizes="(max-width: 300px) 100vw, 300px" /></a></div>
+<p>Nella successiva pagina selezioniamo <code>maven-archetype-quickstart</code> e andiamo avanti con <strong>Next</strong></p>
+<div style="margin: 20px" align="center"><a href="http://www.cosenonjaviste.it/wp-content/uploads/2012/04/quick.png"><img class="aligncenter size-medium wp-image-5423" src="http://www.cosenonjaviste.it/wp-content/uploads/2012/04/quick-300x258.png" alt="" width="300" height="258" srcset="https://codingjam.it/wp-content/uploads/2012/04/quick-300x258.png 300w, https://codingjam.it/wp-content/uploads/2012/04/quick.png 700w" sizes="(max-width: 300px) 100vw, 300px" /></a></div>
+<p>Di seguito scegliamo il <strong>Group id</strong>, l&#8217;<strong>Artifact id</strong>, <strong>versione</strong> e <strong>package</strong> come in figura. Poi clicchiamo su <strong>Finish</strong>.</p>
+<div style="margin: 20px" align="center"><a href="http://www.cosenonjaviste.it/wp-content/uploads/2012/04/javaOnEclipseArchetype.png"><img class="aligncenter size-medium wp-image-5425" src="http://www.cosenonjaviste.it/wp-content/uploads/2012/04/javaOnEclipseArchetype-300x258.png" alt="" width="300" height="258" srcset="https://codingjam.it/wp-content/uploads/2012/04/javaOnEclipseArchetype-300x258.png 300w, https://codingjam.it/wp-content/uploads/2012/04/javaOnEclipseArchetype.png 701w" sizes="(max-width: 300px) 100vw, 300px" /></a></div>
+<p style="text-align: justify">Creiamo il secondo modulo, che è un progetto Web: <strong>New -&gt; Maven Module</strong>. Il processo è analogo al precedente:<br />
+ impostiamo <strong>Module Name</strong> che sarà <code>webOnEclipse</code> e <strong>Parent Project</strong> come il precedente <code>mavenOnEclipse</code>, poi avanti con <strong>Next.</strong> Nella successiva pagina selezioniamo <code>maven-archetype-webapp</code> e andiamo avanti con <strong>Next</strong>.<br />
+Di seguito scegliamo <strong>Group id</strong>, <strong>Artifact id</strong>, <strong>version</strong> e <strong>package</strong> impostando i medesimi valori, poi clicchiamo su <strong>Finish</strong>&#8230; E ci siamo!</p>
+<p style="text-align: justify">Adesso dovremmo avere il nuovo progetto su Eclipse con la medesima struttura già vista per i progetti modulari con Maven, così come descritto nel <a href="http://www.cosenonjaviste.it/organizziamoci-con-maven-parte-i/">precedente articolo</a>.<br />
+Facciamo ora in modo che la web application usi il modulo Java (<code>javaOnEclipse</code>). Per impostare questa dipendenza fra i due moduli usiamo il comando <strong>Maven -&gt; Add dependency</strong> disponibile nel menù contestuale del progetto web.</p>
+<div style="margin: 20px" align="center"><a href="http://www.cosenonjaviste.it/wp-content/uploads/2012/04/dependency.png"><img class="aligncenter size-medium wp-image-5445" src="http://www.cosenonjaviste.it/wp-content/uploads/2012/04/dependency-300x261.png" alt="" width="300" height="261" srcset="https://codingjam.it/wp-content/uploads/2012/04/dependency-300x261.png 300w, https://codingjam.it/wp-content/uploads/2012/04/dependency.png 492w" sizes="(max-width: 300px) 100vw, 300px" /></a></div>
+<p style="text-align: justify">Sempre con questo comando possiamo aggiungere le librerie che si vogliono utilizzare di cui Maven scaricherà i jar e tutte le loro dipendenze, provvedendo poi ad aggiungerle nel <strong>classpath</strong>.</p>
+<p style="text-align: justify">Adesso siamo pronti per lanciare tutti i goals che vogliamo, in particolare siamo pronti per compilare.<br />
+Con il tasto destro sul progetto <code>mavenOnEclipse</code> selezioniamo <strong>Run As -&gt;Maven build&#8230;</strong> specificando <code>package</code> nel campo <strong>Goals</strong> e clicchiamo su <strong>Run.</strong></p>
+<div style="margin: 20px" align="center"><a href="http://www.cosenonjaviste.it/wp-content/uploads/2012/04/run.png"><img class="aligncenter size-medium wp-image-5452" src="http://www.cosenonjaviste.it/wp-content/uploads/2012/04/run-300x276.png" alt="" width="300" height="276" srcset="https://codingjam.it/wp-content/uploads/2012/04/run-300x276.png 300w, https://codingjam.it/wp-content/uploads/2012/04/run.png 735w" sizes="(max-width: 300px) 100vw, 300px" /></a></div>
+<p style="text-align: justify">Al termine della compilazione nella cartella <tt>target</tt> del progetto web troveremo il <strong>war</strong> pronto per essere usato, con il progetto Java già incluso nel war stesso. Esattamente come abbiamo visto per il caso di progetti modulari nell&#8217;articolo precedente.</p>
+<p style="text-align: justify">A proposito dei progetti modulari, cambiamo completamente argomento e vediamo qualcosa di simile, cioè di un&#8217;altra tipologia di relazione tra progetti Maven. Parliamo di&#8230;</p>
+<h2>Ereditarietà</h2>
+<p style="text-align: justify">Un&#8217;altra caratteristica molto potente e unica di Maven è la possibilità di relazionare tra loro i progetti con <strong>legami di ereditarietà</strong>, un po&#8217; come avviene con le classi Java.<br />
+In Maven l&#8217;ereditarietà permette di creare nuovi <strong>POM</strong> file che ereditano le relazioni definite in un altro POM genitore detto <strong>super POM</strong>. I progetti genitori e, come abbiamo visto, quelli esclusivamente aggregabili devono specificare il valore <code>pom</code> all&#8217;interno del campo <code>packaging</code>. Questo campo serve in generale per indicare la natura del prodotto finale: <strong>jar</strong>, <strong>war</strong>, <strong>ear</strong>, ma anche <strong>Maven-plugin</strong>, <strong>rar</strong>, etc&#8230; A meno che il valore non corrisponda a <code>pom</code>, nel qual caso si indicano progetti &#8220;genitore&#8221; o aggregabili.<br />
+Gli elementi ereditabili dai discendenti che si possono specificare in un POM genitore sono:</p>
+<ul>
+<li>dipendenze</li>
+<li>lista degli sviluppatori e contributori</li>
+<li>esecuzioni dei plugin con id corrispondenti</li>
+<li>configurazione dei plugin</li>
+<li>risorse</li>
+</ul>
+<p style="text-align: justify">Qualora si intenda ereditare da un altro file <tt>pom.xml</tt> le relative coordinate di questo genitore (<strong>groupId</strong>, <strong>artifactId</strong>, <strong>version</strong>), esse vanno specificate all&#8217;interno della sezione <code>project</code>, che dispone di un ulteriore campo non obbligatorio, denominato <code>relativePath</code>. Questo indica il <strong>path</strong> in cui cercare il progetto genitore specificato, prima di accedere al repository locale e a quello remoto.<br />
+Vediamo un esempio di relazione di ereditarietà (si noti che il file in questione non riporta i campi <strong>groupId</strong> e <strong>version</strong> in quanto ereditati dal POM genitore):</p>
+<p><pre data-enlighter-language="xml" class="EnlighterJSRAW">
+&lt;project&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    &lt;parent&gt;
+        &lt;groupId&gt;it.cosenonjaviste&lt;/groupId&gt;
+        &lt;artifactId&gt;Padre&lt;/artifactId&gt;
+        &lt;version&gt;1&lt;/version&gt;
+    &lt;/parent&gt;
+    &lt;artifactId&gt;Figlio&lt;/artifactId&gt;
+&lt;/project&gt;
+</pre></p>
+<p style="text-align: justify" dir="ltr">I POM genitore sono in grado di definire informazioni relative alle dipendenze utilizzate nei progetti discendenti, ad esempio nel definire una dipendenza da una particolare versione di <strong>log4j</strong>, dichiarata attraverso le relative coordinate (<strong>groupId</strong>, <strong>artifactId</strong>, <strong>version</strong>). Qualora si decidesse di utilizzare questa caratteristica, i file POM discendenti potrebbero limitarsi a definire, nella propria lista di dipendenze, solo il campo <strong>groupId</strong> e <strong>artifactId</strong> per log4j. La versione sarebbe invece ottenuta dal file POM genitore. E così facendo avrei un solo punto dove tenere aggiornata la versione, qualora dovesse occorrere modificarla.</p>
+<h2>Conclusioni</h2>
+<p style="text-align: justify" dir="ltr">Come abbiamo visto, Maven fra le altre cose consente di:</p>
+<ul style="text-align: justify">
+<li>automatizzare tutte le fasi del build</li>
+<li>eseguire dei test durante il ciclo di build</li>
+<li>gestire le dipendenze con efficacia</li>
+<li>creare lo scheletro del progetto tramite dei template</li>
+</ul>
+<p style="text-align: justify">Grazie all’elevato grado di standardizzazione globale, che Maven porta nel processo di creazione e realizzazione di un progetto, si  avrà così per il progetto stesso una struttura meglio formata, piu riusabile e sicuramente più comprensibile da terzi.<br />
+Inoltre Maven incoraggia anche pratiche di sviluppo di tipo <a href="http://en.wikipedia.org/wiki/Test-driven_development">Test driven</a> grazie al testing integrato nel processo di building.<br />
+Purtroppo Maven è un sistema piuttosto complesso che può fare tante altre cose oltre a quelle qui viste, ma la documentazione reperibile sul sito ufficiale a mio avviso non è delle migliori. E per questo, se volete approfondire l&#8217;argomento, vi suggerisco i seguenti articoli e riferimenti:</p>
+<ul>
+<li><a href="http://blog2js.appspot.com/?entry=281">Gestione di una web app con Eclipse e Maven su Blog4j</a></li>
+<li><a href="http://www.valeriofinazzo.it/joomla/maven/">Serie di articoli dedicati a Maven</a></li>
+<li><a href="http://java.html.it/articoli/leggi/2774/maven-organizzazione-dei-progetti-java/">Maven, organizzazione dei progetti Java su Html.it</a></li>
+<li><a href="http://www.sonatype.com/book/reference/public-book.html">Maven: The Definitive Guide (inglese)</a></li>
+</ul>
+            </div>
+            <!-- end content -->
+
+            
+                <!-- social sharing buttons / counters -->
+                <div class="row">
+                  <div class="col-md-7">
+                    
+    <!-- social sharing buttons -->
+    <div class="bwp-single-share-wrap">
+      <span>Share:</span>
+      <ul class="bwp-single-share list-unstyled">
+        <!-- facebook -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/organizziamoci-con-maven-parte-ii/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/organizziamoci-con-maven-parte-ii/" target="_blank" class="bwp-share-link bwp-facebook-share">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <!-- end facebook -->
+        <!-- twitter -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/organizziamoci-con-maven-parte-ii/&amp;text=organizziamoci-con-maven-parte-ii', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/organizziamoci-con-maven-parte-ii/&amp;text=organizziamoci-con-maven-parte-ii" target="_blank" class="bwp-share-link bwp-twitter-share">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <!-- end twitter -->
+        <!-- google+ -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/organizziamoci-con-maven-parte-ii/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/organizziamoci-con-maven-parte-ii/" target="_blank" class="bwp-share-link bwp-google-plus-share">
+            <i class="fa fa-google-plus"></i>
+          </a>
+        </li>
+        <!-- end google+ -->
+        <!-- vk -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/organizziamoci-con-maven-parte-ii/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/organizziamoci-con-maven-parte-ii/" target="_blank" class="bwp-share-link bwp-vk-share">
+            <i class="fa fa-vk"></i>
+          </a>
+        </li>
+        <!-- end vk -->
+        <!-- pinterest -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/organizziamoci-con-maven-parte-ii/&amp;media=&amp;description=organizziamoci-con-maven-parte-ii', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/organizziamoci-con-maven-parte-ii/&amp;media=&amp;description=organizziamoci-con-maven-parte-ii" target="_blank" class="bwp-share-link bwp-pinterest-share">
+            <i class="fa fa-pinterest-p"></i>
+          </a>
+        </li>
+        <!-- end pinterest -->
+      </ul>
+    </div>
+    <!-- end social sharing buttons -->
+
+                      </div>
+                  <div class="col-md-5">
+                    
+    <!-- counters -->
+    <ul class="bwp-single-counters list-unstyled clearfix ">
+                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>10</a></li>
+                </ul>
+    <!-- end counters -->
+
+                      </div>
+                </div>
+                <!-- end social sharing buttons / counters -->
+
+                
+      <!-- metadata -->
+      <div class="bwp-single-metadata-wrap ">
+        <ul class="bwp-single-metadata list-unstyled clearfix">
+                      <!-- author -->
+            <li>
+              <span class="vcard author">
+                <span class="fn">
+                  <i class="fa fa-pencil-square-o"></i><a href="https://codingjam.it/author/gamendola/" title="Posts by Gianni Amendola" rel="author">Gianni Amendola</a>                </span>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end author -->
+                                <!-- date -->
+            <li>
+                            <span class="date updated">
+                <i class="fa fa-clock-o"></i><a href="../2012/04/16/index.html">16/04/2012</a>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end date -->
+                                <!-- categories -->
+            <li>
+              <i class="fa fa-bookmark-o"></i><a href="../category/java/index.html" rel="category tag">Java</a>, <a href="../category/tutorial-2/index.html" rel="category tag">Tutorial</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end categories -->
+                                <!-- tags -->
+            <li>
+              <i class="fa fa-tags"></i><a href="../tag/eclipse-2/index.html" rel="tag">eclipse</a>, <a href="https://codingjam.it/tag/guida/" rel="tag">Guida</a>, <a href="https://codingjam.it/tag/howto/" rel="tag">howto</a>, <a href="../tag/java/index.html" rel="tag">Java</a>, <a href="../tag/maven/index.html" rel="tag">maven</a>, <a href="../tag/tutorial/index.html" rel="tag">tutorial</a>, <a href="https://codingjam.it/tag/tutorial-java/" rel="tag">tutorial java</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end tags -->
+                  </ul>
+      </div>
+      <!-- end metadata -->
+
+      
+          </div>
+          <!-- end content container -->
+
+        </article>
+        <!-- end article -->
+
+        
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://codingjam.it/organizziamoci-con-maven-parte-i/" rel="prev"><span class="meta-nav"><i class="fa fa-angle-left"></i>Previous post</span><span class="post-title-nav">Organizziamoci con Maven &#8211; Parte I</span></a></div><div class="nav-next"><a href="https://codingjam.it/jsf-2-e-il-versionamento-delle-risorse/" rel="next"><span class="meta-nav">Next post<i class="fa fa-angle-right"></i></span><span class="post-title-nav">JSF 2 e il versionamento delle risorse</span></a></div></div>
+	</nav>
+    <!-- about the author -->
+    <div class="bwp-about-author-container bwp-transition-3 clearfix">
+      <!-- avatar -->
+      <div class="bwp-about-author-avatar">
+        <a href="https://codingjam.it/author/gamendola/">
+          <img alt='' src='https://secure.gravatar.com/avatar/3eec077e672a69f5acddbade0c9f4aaf?s=150&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/3eec077e672a69f5acddbade0c9f4aaf?s=300&#038;d=mm&#038;r=g 2x' class='avatar avatar-150 photo' height='150' width='150' />        </a>
+      </div>
+      <!-- end avatar -->
+      <!-- biographical info -->
+      <div class="bwp-about-author-bio-wrap">
+        <h3 class="bwp-about-author-name">
+          <a href="https://codingjam.it/author/gamendola/" title="Posts by Gianni Amendola" rel="author">Gianni Amendola</a>          <span><i class="fa fa-angle-double-right"></i>9 Posts</span>
+        </h3>
+        <div class="bwp-about-author-bio">
+          Sono laureato in Ingegneria Informatica e lavoro dal 2008  come <strong>sviluppatore Java</strong> presso <a href="http://www.omniagroup.it/">OmniaGroup</a>. 
+Sviluppo principalmente applicazioni web  soprattutto su piattaforme alternative come ad esempio  lo stack <strong>JSF+Spring+Hibernate</strong> (o altri ORM) oppure lo stack <strong>JavaScript(JQuery o ExtJS)+Spring+Hibernate</strong> su Tomcat, o  sui principali AS (<strong>WebSphere,Weblogic,Glassfish, Jboss</strong>). Nei ritagli di tempo mi diletto a programmare su piattaforma <strong>Android</strong> e con altri linguaggi, quali ad esempio <strong>Python</strong>.  <a href="http://www.linkedin.com/profile/view?id=24810313&amp;trk=tab_pro">LinkedIn profile</a>        </div>
+                  <ul class="bwp-about-author-social list-unstyled clearfix">
+                              <li><a href="http://www.cosenonjaviste.it/?team=gianni-amendola" target="_blank" class="bwp-a-website-link"><i class="fa fa-link"></i></a></li>
+                          </ul>
+              </div>
+      <!-- end biographical info -->
+    </div>
+    <!-- end about the author -->
+
+    
+<!-- comments -->
+<div id="comments" class="comments-area">
+
+	
+		<h2 class="comments-title">
+			10 thoughts on &ldquo;Organizziamoci con Maven &#8211; Parte II&rdquo;		</h2>
+
+		<ol class="comment-list">
+					<li id="comment-106" class="comment even thread-even depth-1 parent">
+			<article id="div-comment-106" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/61e2be4387b9b6be70c3a6721311f9d3?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/61e2be4387b9b6be70c3a6721311f9d3?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Ste</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-106">
+							<time datetime="2012-04-16T10:29:00+02:00">
+								16/04/2012 at 10:29							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Molto interessante il tutorial! Mi interesserebbe sapere se ci sia il modo, una volta creato il war, di automatizzare le fasi di deploy/publish dell&#8217;artefatto sul Tomcat integrato in eclipse. In pratica vorrei gestire con Maven il classico comando &#8220;Run as&#8221;&#8211;&gt;&#8221;Run on server&#8221;.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/organizziamoci-con-maven-parte-ii/?replytocom=106#respond' data-commentid="106" data-postid="5478" data-belowelement="div-comment-106" data-respondelement="respond" aria-label='Reply to Ste'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-107" class="comment odd alt depth-2">
+			<article id="div-comment-107" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/3eec077e672a69f5acddbade0c9f4aaf?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/3eec077e672a69f5acddbade0c9f4aaf?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Gianni Amendola</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-107">
+							<time datetime="2012-04-16T11:23:00+02:00">
+								16/04/2012 at 11:23							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Se usi Eclipse una volta compilato e creato il war puoi avviare il server proprio  con il classico &#8220;Run as&#8221;&#8211;&gt;&#8221;Run on server&#8221;.<br />
+Altrimenti potresti usare il plugin tomcat-maven-plugin, di seguito ti posto un link che mostra come http://www.avajava.com/tutorials/lessons/how-do-i-deploy-a-maven-web-application-to-tomcat.html</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/organizziamoci-con-maven-parte-ii/?replytocom=107#respond' data-commentid="107" data-postid="5478" data-belowelement="div-comment-107" data-respondelement="respond" aria-label='Reply to Gianni Amendola'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-179" class="comment even thread-odd thread-alt depth-1 parent">
+			<article id="div-comment-179" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/75e01a3de99a77ef5f35ddb066092167?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/75e01a3de99a77ef5f35ddb066092167?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Roberto Simoni</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-179">
+							<time datetime="2012-11-19T14:08:00+01:00">
+								19/11/2012 at 14:08							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Interessante. Aggiungo che è anche possibile configurare Maven per fare TDD su codice Javascript di una webapp già esistente. Ho scritto un post a riguardo:</p>
+<p><a href="http://rsimoni.blogspot.it/2012/11/configurare-maven-per-far-tdd-con.html" rel="nofollow ugc">http://rsimoni.blogspot.it/2012/11/configurare-maven-per-far-tdd-con.html</a></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/organizziamoci-con-maven-parte-ii/?replytocom=179#respond' data-commentid="179" data-postid="5478" data-belowelement="div-comment-179" data-respondelement="respond" aria-label='Reply to Roberto Simoni'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-182" class="comment odd alt depth-2">
+			<article id="div-comment-182" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/3eec077e672a69f5acddbade0c9f4aaf?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/3eec077e672a69f5acddbade0c9f4aaf?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Gianni Amendola</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-182">
+							<time datetime="2012-11-27T10:28:00+01:00">
+								27/11/2012 at 10:28							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Molto interessante 🙂</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/organizziamoci-con-maven-parte-ii/?replytocom=182#respond' data-commentid="182" data-postid="5478" data-belowelement="div-comment-182" data-respondelement="respond" aria-label='Reply to Gianni Amendola'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-229" class="pingback even thread-even depth-1">
+			<div class="comment-body">
+				Pingback: <a href='http://www.cosenonjaviste.it/maven-site-generation-e-reportistica/' rel='external nofollow ugc' class='url'>Maven: Site generation e reportistica, generare il sito web di un progetto con Maven e i report per analizzare il codice | Cose Non Javiste</a> 			</div>
+		</li><!-- #comment-## -->
+		<li id="comment-241" class="pingback odd alt thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback: <a href='http://www.cosenonjaviste.it/organizziamoci-con-maven-parte-i/' rel='external nofollow ugc' class='url'>Organizziamoci con Maven – Parte I | Cose Non Javiste</a> 			</div>
+		</li><!-- #comment-## -->
+		<li id="comment-257" class="comment even thread-even depth-1">
+			<article id="div-comment-257" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/969259ba8428b9dec7b4bdf21051c696?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/969259ba8428b9dec7b4bdf21051c696?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn"><a href='http://www.facebook.com/filiano.d.maria' rel='external nofollow ugc' class='url'>Filiano Di Maria</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-257">
+							<time datetime="2013-03-05T15:49:00+01:00">
+								05/03/2013 at 15:49							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Ciao la guida è molto interessante e soprattutto molto chiara. Avrei comunque bisogno di un aiutino&#8230; premetto che sto utilizzando m2e. Vorrei aggiungere un repository (quello di geotool).Inserisco i tag repositories e repository, solo che non mi trova gli artifactId&#8230;credo di saltare quache passaggio. c&#8217;è una scorciatoia da eclipse?</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/organizziamoci-con-maven-parte-ii/?replytocom=257#respond' data-commentid="257" data-postid="5478" data-belowelement="div-comment-257" data-respondelement="respond" aria-label='Reply to Filiano Di Maria'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-414" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-414" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/0f999795deb2b8dfdf5cd0e92ee04b7d?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/0f999795deb2b8dfdf5cd0e92ee04b7d?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Dave</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-414">
+							<time datetime="2014-03-16T19:57:00+01:00">
+								16/03/2014 at 19:57							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Grazie per i due articoli, sei stato molto gentile quando scrivi che la documentazione ufficiale non e&#8217; molto chiara&#8230;.. direi che e&#8217; una chiavica! sia la 5 minuti che la 30 minuti, quel che non mi era chiaro era come definire i goal&#8230;</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/organizziamoci-con-maven-parte-ii/?replytocom=414#respond' data-commentid="414" data-postid="5478" data-belowelement="div-comment-414" data-respondelement="respond" aria-label='Reply to Dave'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-500" class="comment even thread-even depth-1">
+			<article id="div-comment-500" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/5322faa4554a56fc10412233c4344b79?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/5322faa4554a56fc10412233c4344b79?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Elia</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-500">
+							<time datetime="2014-10-31T12:01:00+01:00">
+								31/10/2014 at 12:01							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Se si decide di eseguire il comando &#8220;mvn eclipse:eclipse -Dwtpversion=2.0&#8221; da console sulla root del progetto web del vostro tutorial viene segnalato il fatto che la dipendenza con il pacchetto javaModule non viene risolta e propone varie alternative. Ci saranno problemi poi con il progetto creato per Eclipse?</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/organizziamoci-con-maven-parte-ii/?replytocom=500#respond' data-commentid="500" data-postid="5478" data-belowelement="div-comment-500" data-respondelement="respond" aria-label='Reply to Elia'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-543" class="pingback odd alt thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback: <a href='https://mauroprogramsite.wordpress.com/2015/03/02/maven-dipendenze-transitive/' rel='external nofollow ugc' class='url'>maven-dipendenze-transitive | mauroprogram&#039;s Blog</a> 			</div>
+		</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+		<div id="respond" class="comment-respond">
+		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='5478' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+	
+</div>
+<!-- end comments -->
+
+    <!-- related posts (by tags) -->
+    <div class="bwp-related-posts-container bwp-show-2-posts">
+      <div class="bwp-o-hidden">
+
+        <!-- title -->
+        <h2 class="bwp-related-posts-title">
+          You might also like:        </h2>
+        <!-- end title -->
+
+        <!-- posts list -->
+        <div class="bwp-related-posts clearfix">
+
+          
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="https://codingjam.it/hello-world-in-java-con-eclipse/">Hello World in Java con Eclipse</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>Inauguriamo con il post di oggi una serie di mini tutorial video, chiamati VideoNonJavisti. L&#8217;idea è di utilizzare il formato multimediale per gli how-to più operativi e pratici, perché più diretto e meno noioso. Cominciamo con un tutorial base: realizzare un &#8220;Hello World&#8221; in Java utilizzando l&#8217;ide di sviluppo Eclipse.</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2011/02/16/" class="bwp-post-date">
+        <span class="date updated">16/02/2011</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="https://codingjam.it/hello-world-in-java-con-eclipse/" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                    <!-- media - featured image -->
+                    <figure class="bwp-post-media">
+                                              <a href="../scala-gli-impliciti/index.html" class="bwp-post-media-link">
+                                              <img width="706" height="397" src="https://codingjam.it/wp-content/uploads/2018/12/scala-706x397.jpg" class="attachment-melissa-img-706-auto size-melissa-img-706-auto wp-post-image" alt="linguaggio scala" srcset="https://codingjam.it/wp-content/uploads/2018/12/scala-706x397.jpg 706w, https://codingjam.it/wp-content/uploads/2018/12/scala-300x169.jpg 300w, https://codingjam.it/wp-content/uploads/2018/12/scala-768x432.jpg 768w, https://codingjam.it/wp-content/uploads/2018/12/scala-1024x576.jpg 1024w, https://codingjam.it/wp-content/uploads/2018/12/scala-150x84.jpg 150w, https://codingjam.it/wp-content/uploads/2018/12/scala-1200x675.jpg 1200w, https://codingjam.it/wp-content/uploads/2018/12/scala.jpg 1920w" sizes="(max-width: 706px) 100vw, 706px" />                        <div class="bwp-post-bg-overlay bwp-transition-4"></div>
+                        <div class="bwp-post-hover-icon-wrap">
+                          <div class="bwp-post-hover-icon-alignment">
+                            <div class="bwp-post-hover-icon-center">
+                              <span class="bwp-transition-4"><i class="fa fa-share"></i></span>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </figure>
+                    <!-- end media -->
+
+                    
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="../scala-gli-impliciti/index.html">Scala: gli impliciti</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>Una guida introduttiva sull&#8217;utilizzo degli impliciti in Scala.</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="../2018/12/10/index.html" class="bwp-post-date">
+        <span class="date updated">10/12/2018</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="../scala-gli-impliciti/index.html" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+        </div>
+        <!-- end posts list -->
+
+      </div>
+    </div>
+    <!-- end related posts -->
+
+    
+                  </div><!-- /bwp-single-content-col-wrap --></div><!-- /col-md-8 --><div class="col-md-4 bwp-sidebar-col bwp-sidebar-right">
+        
+                  </div><!-- /col --></div><!-- /row -->
+        
+      </div>
+    </div>
+  </section>
+  <!-- end blog post - single page -->
+
+  
+<!-- footer -->
+<footer id="bwp-footer-wrap">
+  <div class="container">
+    <div class="bwp-footer-container clearfix">
+
+              <!-- footer text -->
+        <div class="bwp-footer-text">
+          CodingJam        </div>
+        <!-- end footer text -->
+      
+              <!-- social links -->
+        <ul class="bwp-footer-social-links list-unstyled clearfix">
+          <li><a href="https://twitter.com/codingjam" target="_blank" class="bwp-f-twitter-link"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.facebook.com/codingjamit/" target="_blank" class="bwp-f-facebook-link"><i class="fa fa-facebook"></i></a></li><li><a href="https://github.com/coding-jam" target="_blank" class="bwp-f-github-link"><i class="fa fa-github"></i></a></li>        </ul>
+        <!-- end social links -->
+      
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+
+<!--googleoff: all--><div id="cookie-law-info-bar"><span>Questo sito Web utilizza i cookie per migliorare la tua esperienza. Daremo per scontato che per te sia ok, ma puoi disattivarlo se lo desideri..<a role='button' tabindex='0' data-cli_action="accept" id="cookie_action_close_header"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button" style="display:inline-block; ">Accetto</a>  <a role='button' tabindex='0' id="cookie_action_close_header_reject"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header_reject cli_action_button"  data-cli_action="reject">Annulla</a> <a href='../cookie.html' id="CONSTANT_OPEN_URL" target="_blank"  class="cli-plugin-main-link"  style="display:inline-block;" >Read More</a></span></div><div id="cookie-law-info-again" style="display:none;"><span id="cookie_hdr_showagain">Privacy & Cookies</span></div><div class="cli-modal" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+    <div class="cli-modal-content cli-bar-popup">
+      <button type="button" class="cli-modal-close" id="cliModalClose">
+        <svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+        <span class="wt-cli-sr-only">Close</span>
+      </button>
+      <div class="cli-modal-body">
+        <div class="cli-container-fluid cli-tab-container">
+    <div class="cli-row">
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0">
+            <div class="cli-privacy-overview">
+                                                   
+                <div class="cli-privacy-content">
+                    <div class="cli-privacy-content-text"></div>
+                </div>
+                <a class="cli-privacy-readmore" data-readmore-text="Show more" data-readless-text="Show less"></a>            </div>
+        </div>  
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+              
+                            <div class="cli-tab-section">
+                    <div class="cli-tab-header">
+                        <a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab" >
+                            Necessary 
+                        </a>
+                    
+                    <span class="cli-necessary-caption">Always Enabled</span>                     </div>
+                    <div class="cli-tab-content">
+                        <div class="cli-tab-pane cli-fade" data-id="necessary">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+              
+                       
+        </div>
+    </div> 
+</div> 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<script type="text/javascript">
+  /* <![CDATA[ */
+  cli_cookiebar_settings='{"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":false,"button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":true,"button_1_new_win":false,"button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":false,"button_2_hidebar":false,"button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":true,"button_3_new_win":false,"button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#fff","button_4_as_button":true,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":false,"scroll_close_reload":false,"accept_close_reload":false,"reject_close_reload":false,"showagain_tab":true,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":false,"show_once":"10000","logging_on":false,"as_popup":false,"popup_overlay":true,"bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"}';
+  /* ]]> */
+</script>
+<!--googleon: all--><script type='text/javascript' src='../wp-content/themes/melissa/js/bootstrap.min7433.js?ver=3.3.7'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.parallaxc358.js?ver=1.1.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/superfish.min97e9.js?ver=1.7.9'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel.min3ba1.js?ver=1.3.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/magnific-popup/jquery.magnific-popup.minf488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
+</body>
+
+<!-- Mirrored from codingjam.it/organizziamoci-con-maven-parte-ii/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:38 GMT -->
+</html>

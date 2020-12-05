@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from codingjam.it/puppeteer-usare-chrome-come-un-api/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="pingback" href="../xmlrpc.php">
+
+  <title>Puppeteer: usare Chrome come un API &#8211; CodingJam</title>
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Feed" href="../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Comments Feed" href="../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Puppeteer: usare Chrome come un API Comments Feed" href="https://codingjam.it/puppeteer-usare-chrome-come-un-api/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='../wp-content/plugins/gutenberg/build/block-library/stylea4fb.css?ver=1591004795' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-gdpr-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='melissa-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lato%3A400%2C400i%2C700%2C700i%7CNoto+Serif%3A400%2C400i%2C700%2C700i&amp;subset=latin&amp;ver=1.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../wp-content/themes/melissa/css/bootstrap.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-theme-css'  href='../wp-content/themes/melissa/css/bootstrap-theme.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-ie10-viewport-bug-workaround-css'  href='../wp-content/themes/melissa/css/ie10-viewport-bug-workaround8a54.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='../wp-content/themes/melissa/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-carousel-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-theme-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.theme3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='magnific-popup-css'  href='../wp-content/themes/melissa/assets/magnific-popup/magnific-popupf488.css?ver=1.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-style-css'  href='../wp-content/themes/melissa/style3ec8.css?ver=1.1.6' type='text/css' media='all' />
+<style id='melissa-style-inline-css' type='text/css'>
+
+    .bwp-post-media img,
+    .bwp-post-carousel-item img,
+    .widget_bwp_posts_slider_item img {
+      width: 100%;
+      margin: 0;
+    }
+    .bwp-post-wrap:hover {
+      margin-top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+    #bwp-masonry-container.no-masonry .bwp-post-wrap:hover {
+      top: 0;
+    }
+    .bwp-no-results-container:hover,
+    .bwp-single-article:hover,
+    .bwp-featured-media-container:hover,
+    .post-navigation .nav-links a:hover,
+    .bwp-about-author-container:hover,
+    .comment-respond:hover,
+    .comment-body:hover,
+    #comments .no-comments:hover,
+    .comment-navigation .nav-links a:hover,
+    .bwp-related-post-wrap:hover,
+    .bwp-page-404-container:hover,
+    .bwp-sidebar-wrap:hover {
+      top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+  #bwp-header-wrap {
+    background-color: #2e3340;
+  }
+  .bwp-header-bg-overlay,
+  .bwp-header-rs-bg-overlay {
+    background-color: rgba(46, 51, 64, 0.9);
+  }
+    .bwp-content a,
+    .comment-content a,
+    .bwp-post-quote a {
+      color: #2052bf;
+    }
+</style>
+<link rel='stylesheet' id='enlighter-local-css'  href='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.css?ver=3.9.0' type='text/css' media='all' />
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery4a5f.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[]};
+var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/cookie-law-info/public/js/cookie-law-info-public3cf4.js?ver=1.8.8'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/respond.min.js?ver=1.4.2'></script>
+<![endif]-->
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/mootools-core-yc9086.js?ver=3.9.0'></script>
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.js?ver=3.9.0'></script>
+<link rel='https://api.w.org/' href='../wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+<link rel='prev' title='Migliora i tuoi log con il Mapped Diagnostic Context (MDC)' href='../migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc/index.html' />
+<link rel='next' title='Chatta con noi' href='../slack/index.html' />
+<meta name="generator" content="WordPress 5.4.1" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://codingjam.it/?p=15096' />
+<link rel="alternate" type="application/json+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Fpuppeteer-usare-chrome-come-un-api%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Fpuppeteer-usare-chrome-come-un-api%2F&amp;format=xml" />
+<link rel="amphtml" href="https://codingjam.it/puppeteer-usare-chrome-come-un-api/amp/"><script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"droide","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":false,"windowButton":false,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" sizes="32x32" />
+<link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://codingjam.it/wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-270x270.png" />
+</head>
+
+<body class="post-template-default single single-post postid-15096 single-format-standard wp-custom-logo">
+
+
+<!-- header -->
+<header id="bwp-header-wrap" class="bwp-header-simple">
+
+  <!-- header bg -->
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P6261835_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg-overlay"></div>
+
+    <!-- header content -->
+    <div class="container">
+      <div class="bwp-header-content-container">
+
+        <!-- row 1 - logo + navigation -->
+        <div class="bwp-main-navigation-container clearfix">
+
+          
+        <!-- image logo -->
+        <div class="bwp-logo-container">
+          <a href="../index.html" class="custom-logo-link" rel="home"><img width="207" height="70" src="../wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png" class="custom-logo" alt="CodingJam" srcset="https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png 207w, https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco-150x51.png 150w" sizes="(max-width: 207px) 100vw, 207px" /></a>        </div>
+        <!-- end image logo -->
+
+        
+      <!-- search -->
+      <div class="bwp-header-search-container hidden-sm hidden-xs">
+        <a href="#" id="bwp-header-search-icon">
+          <i class="fa fa-search"></i>
+        </a>
+        <div class="bwp-dropdown-search-container bwp-search-hidden">
+          
+<!-- search form -->
+<form id="searchform" role="search" method="get" action="https://codingjam.it/">
+  <div class="input-group">
+    <input type="text" name="s" id="s" class="bwp-search-field form-control" placeholder="Enter your search query...">
+    <span class="input-group-btn">
+      <button type="submit" class="btn bwp-search-submit">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+</form>
+<!-- end search form -->
+        </div>
+      </div>
+      <!-- end search -->
+
+      
+      <!-- menu -->
+      <div class="bwp-menu-container hidden-sm hidden-xs">
+        <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-2" class="sf-menu"><li id="menu-item-12007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li id="menu-item-12022" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li id="menu-item-12009" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li id="menu-item-12020" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li id="menu-item-12017" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li id="menu-item-12006" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li id="menu-item-12005" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li id="menu-item-12008" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li id="menu-item-12014" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li id="menu-item-12012" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li id="menu-item-12010" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li id="menu-item-12021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li id="menu-item-12016" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li id="menu-item-12015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li id="menu-item-12019" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li id="menu-item-12018" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>      </div>
+      <!-- end menu -->
+
+      
+      <!-- mobile menu -->
+      <div class="bwp-mobile-menu-container hidden-md hidden-lg">
+        <!-- mobile menu icon -->
+        <a href="#" id="bwp-mobile-menu-icon">
+          <i class="fa fa-bars"></i>
+        </a>
+        <!-- end mobile menu icon -->
+        <!-- dropdown mobile menu -->
+        <div class="bwp-dropdown-mobile-menu bwp-mobile-menu-hidden">
+          <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-3" class="bwp-mobile-menu list-unstyled"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>        </div>
+        <!-- end dropdown mobile menu -->
+      </div>
+      <!-- end mobile menu -->
+
+      
+        </div>
+        <!-- end row 1 - logo + navigation -->
+
+        
+          <!-- row 2 - header custom text -->
+          <div class="bwp-header-custom-text-container">
+            
+        <!-- custom text - single page -->
+        <h1 class="bwp-header-custom-title entry-title">
+          Puppeteer: usare Chrome come un API        </h1>
+                <div class="bwp-header-transparent-line clearfix">
+          <span class="bwp-header-t-line-1"></span>
+          <span class="bwp-header-t-line-2"></span>
+        </div>
+        <!-- end custom text -->
+
+                  </div>
+          <!-- end row 2 - header custom text -->
+
+          
+      </div>
+    </div>
+    <!-- end header content -->
+  </div>
+  <!-- end header bg -->
+
+  
+        <!-- sticky navigation -->
+        <div class="bwp-sticky-navigation-wrap bwp-transition-4 clearfix">
+          <!-- sticky navigation icon -->
+          <a href="#" id="bwp-sticky-navigation-icon">
+            <i class="fa fa-bars"></i>
+          </a>
+          <!-- end sticky navigation icon -->
+          <!-- sticky navigation container -->
+          <div class="bwp-sticky-navigation-container bwp-sticky-navigation-hidden">
+            <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-4" class="sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>          </div>
+          <!-- end sticky navigation container -->
+        </div>
+        <!-- end sticky navigation -->
+
+        
+</header>
+<!-- end header -->
+
+  <!-- blog post - single page -->
+  <section id="bwp-single-page-wrap">
+    <div class="container">
+      <div class="bwp-single-page-container" >
+
+        
+                  <div class="row"><div class="col-md-8 bwp-single-content-col bwp-sidebar-right"><div class="bwp-single-content-col-wrap" role="main">
+        
+        <!-- article -->
+        <article id="post-15096" class="bwp-single-article bwp-transition-3">
+
+          
+          <!-- content container -->
+          <div class="bwp-single-content">
+
+            <!-- content -->
+            <div class="bwp-content entry-content clearfix">
+              <p>La versione 59 di Chrome ha portato un&#8217;interessante novità per chi si occupa di sviluppo web. Da questa versione infatti <strong>è possibile lanciare il famoso browser targato Google in modalità <i>headless</i></strong>, senza cioè nessuna interfaccia grafica. Inoltre il team Chrome ha anche rilasciato <a href="https://github.com/GoogleChrome/puppeteer" rel="noopener" target="_blank">Puppeteer</a>, una API Node che permette di pilotare un&#8217;instanza di Chrome. Installando il pacchetto con il comando <code>npm i puppeteer</code>, all&#8217;interno della cartella <em>node_modules</em> verrà aggiunta un&#8217;installazione di Chromium che verrà utilizzata durante l&#8217;esecuzione degli script.</p>
+<h2>Test end-to-end</h2>
+<p>L&#8217;utilizzo più immediato di Puppeteer è quello di <strong>tool per testing <em>end-to-end</em></strong>, simile all&#8217;accoppiata <a href="../test-end-end-con-nightwatch-js/index.html" rel="noopener" target="_blank">Nightwatch</a> + Selenium. Puppeteer ci da infatti una serie di comandi per aprire una pagina, selezionare un elemento del DOM tramite selettore e simulare l&#8217;intervento dell&#8217;utente. In pratica tutto quello che ci serve per creare una suite di test <em>end-to-end</em>. Qui di seguito un esempio di test, fatto con <a href="https://facebook.github.io/jest/" rel="noopener" target="_blank">Jest</a>, per la navigazione di CodingJam.</p>
+<pre class="brush: jscript; title: ; notranslate" title="">
+const URL = 'https://codingjam.it/'
+const POST_LINK_SELECTOR = '.entry-title a'
+const POST_TITLE_SELECTOR = 'div.post-title'
+
+let browser
+
+describe('navigation', () =&gt; {
+  test(`navigation should work`, async () =&gt; {
+    const page = await browser.newPage()
+    await page.goto(URL)
+    const href = await page.$eval(POST_LINK_SELECTOR, el =&gt; el.href)
+    await page.click(POST_LINK_SELECTOR)
+    await page.waitForSelector(POST_TITLE_SELECTOR)
+    expect(page.url()).toBe(href)
+    await page.close()
+  })
+})
+
+beforeAll(async () =&gt; {
+  browser = await puppeteer.launch()
+})
+
+afterAll(() =&gt; {
+  browser.close()
+})
+</pre>
+<p>Quello che facciamo con questo test è:</p>
+<ul>
+<li>Aprire CondingJam attraverso il metodo <code>goto</code></li>
+<li>Estrarre l&#8217;<i>href</i> del primo link attraverso il metodo <code>$eval</code></li>
+<li>Clicchiamo sul pirmo link tramite il metodo <code>click</code></li>
+<li>Infine controlliamo che l&#8217;url finale sia effettivamente quello del link</li>
+</ul>
+<h2>Chrome DevTools Protocol</h2>
+<p>Per quanto Puppeteer sia <strong>più immediato da configurare rispetto a Nightwatch e Selenium</strong>, le due soluzioni sono molto simili. Ma le funzionalità di Puppeteer <em>non finiscono qui</em>. Un esempio di queste funzionalità nasce dal test scritto qui di seguito.</p>
+<pre class="brush: jscript; title: ; notranslate" title="">
+const getFirstContentfulPaint = async page =&gt; {
+  const value = await page.evaluate(() =&gt; {
+    const firstContentfulPaintEntry = window.performance
+            .getEntriesByType('paint')
+            .find(entry =&gt; entry.name === 'first-contentful-paint')
+    return firstContentfulPaintEntry &amp;&amp; Math.round(firstContentfulPaintEntry.startTime)
+  })
+
+  return value
+}
+
+describe('performances', () =&gt; {
+  test('should have the first contentful paint in less than 2 seconds', async () =&gt; {
+    const FIRST_PAINT_MAX_VALUE = 2000
+
+    const page = await browser.newPage()
+
+    await page.goto(URL)
+    await page.waitForSelector('header')
+
+    const firstContentfulPaint = await getFirstContentfulPaint(page)
+
+    expect(firstContentfulPaint).toBeLessThanOrEqual(FIRST_PAINT_MAX_VALUE)
+  })
+})
+</pre>
+<p>Lo scopo di questo test è quello di misurare il <a href="https://gtmetrix.com/blog/first-contentful-paint-explained/" rel="noopener" target="_blank">First Contentful Paint</a> di un&#8217;applicazione web. Questa operazione viene fatta tramite <strong>la nuova API <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance" rel="noopener" target="_blank">Performance</a></strong>. Cosa succede se proviamo a lanciare questo test due volte di fila? Il secondo valore di First Contentful Paint risulterà più <i>basso</i> grazie alla cache del browser. <strong>Questo è una palese violazione del principio di <a href="https://github.com/ghsukumar/SFDC_Best_Practices/wiki/F.I.R.S.T-Principles-of-Unit-Testing" rel="noopener" target="_blank">ripetibilità</a> del testing</strong>.</p>
+<figure id="attachment_15102" aria-describedby="caption-attachment-15102" style="width: 720px" class="wp-caption aligncenter"><a href="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.30.16.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.30.16.png" alt="Test con Cache" width="720" height="168" class="size-full wp-image-15102" srcset="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.30.16.png 720w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.30.16-300x70.png 300w" sizes="(max-width: 720px) 100vw, 720px" /></a><figcaption id="caption-attachment-15102" class="wp-caption-text">Il valore di First Contentful Paint risulta più basso dopo il primo test</figcaption></figure>
+<p><i>Under the hood</i> Puppeteer utilizza il Chrome DevTools Protocol (<code>CDP</code>), <strong>un protocollo che permette di effettuare tutte le operazioni presenti all&#8217;interno dei tool per sviluppatori di Chrome</strong> collegandosi ad un&#8217;istanza attiva del browser. Molti delle operazioni possibili grazie a questo protocollo sono esposte in maniera automatica dall&#8217;oggetto <code><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page" rel="noopener" target="_blank">page</a></code> di Puppeteer. Ma se c&#8217;è bisogno di andare <i>più in profondità</i> è possibile creare una sessione <code>CDP</code> e lanciare i comandi in maniera manuale. Si può riscrivere il test precedente aggiungendo un&#8217;istruzione <code>CDP</code> per la pulizia della cache.</p>
+<pre class="brush: jscript; highlight: [6,7]; title: ; notranslate" title="">
+test('should have the first contentful paint in less than 2 seconds', async () =&gt; {
+    const FIRST_PAINT_MAX_VALUE = 2000
+
+    const page = await browser.newPage()
+
+    const client = await page.target().createCDPSession()
+    await client.send('Network.clearBrowserCache')
+
+    await page.goto(URL)
+    await page.waitForSelector('header')
+
+    const firstContentfulPaint = await getFirstContentfulPaint(page)
+
+    expect(firstContentfulPaint).toBeLessThanOrEqual(FIRST_PAINT_MAX_VALUE)
+})
+</pre>
+<p>Il prossimo test rende ancora più chiara la potenza messa a disposizione da Puppeteer. Nel test precedente il First Contentful Paint viene calcolato collengadonsi a CodingJam <strong>sfruttando la rete della macchina che lancia il test</strong>. La quale può essere di sviluppo o di <a href="https://travis-ci.org/coding-jam/no-selenium-e2e-testing" rel="noopener" target="_blank">Continous Integration</a>. <strong>Tramite una sessione <code>CDP</code> possiamo emulare una velocità di connessione a nostra scelta.</strong></p>
+<pre class="brush: jscript; highlight: [8,9,10,11,12,13,14]; title: ; notranslate" title="">
+test('should have the first contentful paint in less than 10 seconds on a slow network', async () =&gt; {
+  const FIRST_PAINT_MAX_VALUE = 10000
+
+  const page = await browser.newPage()
+
+  const client = await page.target().createCDPSession()
+  await client.send('Network.clearBrowserCache')
+  await client.send('Network.emulateNetworkConditions', {
+    offline: false,
+    latency: 100,
+    downloadThroughput: 750 * 1024,
+    uploadThroughput: 200 * 1024,
+    connectionType: 'cellular3g'
+  })
+
+  await page.goto(URL)
+  await page.waitForSelector('header')
+
+  const firstContentfulPaint = await getFirstContentfulPaint(page)
+
+  expect(firstContentfulPaint).toBeLessThanOrEqual(FIRST_PAINT_MAX_VALUE)
+})
+</pre>
+<p>Questa operazione <strong>può essere effettuata anche con i Chrome DevTools in maniera manuale</strong>, come per qualsiasi altro metodo del protocollo <code>CDP</code>. Per il <code>CDP</code> non esiste moltissima documentazione, ma Google ha pubblicato il <a href="https://chromedevtools.github.io/devtools-protocol/" rel="noopener" target="_blank">Chrome DevTools Protocol Viewer</a> contenente una lista aggiornata dei metodi esposti e dei parametri necessari per il loro funzionamento.</p>
+<figure id="attachment_15106" aria-describedby="caption-attachment-15106" style="width: 740px" class="wp-caption aligncenter"><a href="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.45.43.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.45.43-1024x414.png" alt="Chrome DevTools" width="740" height="299" class="size-large wp-image-15106" srcset="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.45.43-1024x414.png 1024w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.45.43-300x121.png 300w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.45.43-768x310.png 768w" sizes="(max-width: 740px) 100vw, 740px" /></a><figcaption id="caption-attachment-15106" class="wp-caption-text">Ecco l&#8217;operazione equivalente nei Chrome DevTools</figcaption></figure>
+<h2>Device Descriptors</h2>
+<p>Altra caratteristica che rende i Chrome DevTools molto apprezzati da chiunque abbia lavorato con applicazioni <a href="https://codingjam.it/?s=Cordova" rel="noopener" target="_blank">Cordova</a> o in generale con un&#8217;applicazione web mobile first, è <strong>l&#8217;emulazione del viewport dei vari device</strong>.</p>
+<figure id="attachment_15108" aria-describedby="caption-attachment-15108" style="width: 617px" class="wp-caption aligncenter"><a href="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.51.57.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.51.57-617x1024.png" alt="Device Emulation" width="617" height="1024" class="size-large wp-image-15108" srcset="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.51.57-617x1024.png 617w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.51.57-181x300.png 181w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.51.57-768x1275.png 768w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.51.57.png 782w" sizes="(max-width: 617px) 100vw, 617px" /></a><figcaption id="caption-attachment-15108" class="wp-caption-text">Emulazione Device in Chrome DevTools</figcaption></figure>
+<p>Quelli presenti nello screenshot sono solo un <i>subset</i> dei device che Chrome è in grado di emulare. In realtà nascosti nei settings avanzati ce ne sono <strong>ben 53</strong>. Questi stessi dispositivi sono presenti anche in Puppeteer e possono essere utilizzati nei nostri test. </p>
+<pre class="brush: jscript; highlight: [2,15,17]; title: ; notranslate" title="">
+const puppeteer = require('puppeteer')
+const devices = require('puppeteer/DeviceDescriptors')
+const path = require('path')
+
+const URL = 'https://codingjam.it/'
+
+const screenshotsPath = path.join(__dirname, '..', 'screenshosts')
+
+module.exports = async () =&gt; {
+  const browser = await puppeteer.launch()
+  const page = await browser.newPage()
+  for (let index = 0; index &lt; devices.length; index++) {
+    const device = devices[index]
+    try {
+      await page.emulate(device)
+      await page.goto(URL)
+      await page.screenshot({
+        path: path.join(screenshotsPath, `${device.name}.png`)
+      })
+    } catch (e) {
+      console.error(`Error in creating screenshot for ${device.name}: ${e.message}`)
+    }
+  }
+  await page.close()
+  await browser.close()
+}
+</pre>
+<figure id="attachment_15110" aria-describedby="caption-attachment-15110" style="width: 740px" class="wp-caption aligncenter"><a href="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.56.47.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.56.47-861x1024.png" alt="Lista Screenshot" width="740" height="880" class="size-large wp-image-15110" srcset="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.56.47-861x1024.png 861w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.56.47-252x300.png 252w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.56.47-768x913.png 768w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.56.47.png 1134w" sizes="(max-width: 740px) 100vw, 740px" /></a><figcaption id="caption-attachment-15110" class="wp-caption-text">Screenshots generati con Puppeteer</figcaption></figure>
+<p>Questa tenica apre una serie di possibilità, <strong>la prima è quella dei Visual Regression Test</strong>. In questo tipo di test si fa la comparazione di due screenshot uno considerato valido e l&#8217;altro risultato di un test. Se i due differiscono per più di una determinata percentuale di pixel, il test <strong><i>fallisce</i></strong>. Grazie ai <code>DeviceDescriptors</code> possiamo effettuare facilmente questo tipo di test <strong>su 53 differenti viewport</strong>.</p>
+<p>Altri test che si possono fare sono quelli legati al device emulato. Capita spesso che a seconda della tipologia di device (desktop o mobile) la nostra applicazione si debba comportare in maniera leggermente differente. <strong>In questi casi si posso scrivere suite di test per Desktop e delle suite specifiche per i nostri <i>target devices</i> principali</strong>.</p>
+<h2>Report Engine</h2>
+<p>Altro modo di utilizzare Chrome in modalità <i>headless</i> è quello di utilizzare la sua funzione di <a href="https://www.labnol.org/software/save-web-page-as-pdf/21153/" rel="noopener" target="_blank">salvataggio PDF</a> per <strong>creare un semplice motore di report</strong>.</p>
+<pre class="brush: jscript; title: ; notranslate" title="">
+async () =&gt; {
+  const browser = await puppeteer.launch()
+  const page = await browser.newPage()
+  for (let i = 1; i &lt;= TOTAL_PAGES; i++) {
+    try {
+      const url = `https://codingjam.it/page/${i}/?s=javascript`
+      await page.goto(url)
+      await page.pdf({
+        path: path.join(pdfPath, `page_${i}.pdf`)
+      })
+    } catch (e) {
+      console.error(`Error in converting page ${i}: ${e.message}`)
+    }
+  }
+  await page.close()
+  await browser.close()
+}
+</pre>
+<p>Lo scopo di questo script è quello di creare un PDF per ogni pagina della ricerca di CodingJam per la <i>keyword</i> &#8220;JavaScript&#8221;. Questa opzione non ha la potenza di un tool quale <a href="https://www.jaspersoft.com/" rel="noopener" target="_blank">JasperReports</a>. Ma se il caso d&#8217;uso non prevede qualche milione di righe è possibile utilizzare Puppeteer <strong>risparmiando il tempo di creazione dei layout dei report ma sfruttando delle pagine web già esistenti.</strong>. L&#8217;output di questo script sarà equivalente a quello su carta stampata: infatti di default Puppeteer genera un output basato sul <a href="https://www.w3.org/TR/CSS21/media.html" rel="noopener" target="_blank">media type</a> <code>print</code>. Se volete invece utilizzare il media type <code>screen</code> e ottenere un qualcosa di simile a quello che si vede a schermo basta utilizzare l&#8217;istruzione <code>page.emulateMedia('screen')</code>.</p>
+<figure id="attachment_15112" aria-describedby="caption-attachment-15112" style="width: 740px" class="wp-caption aligncenter"><a href="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-12-at-19.28.39.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-12-at-19.28.39-1024x593.png" alt="CodingJam PDF" width="740" height="429" class="size-large wp-image-15112" srcset="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-12-at-19.28.39-1024x593.png 1024w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-12-at-19.28.39-300x174.png 300w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-12-at-19.28.39-768x445.png 768w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-12-at-19.28.39.png 1140w" sizes="(max-width: 740px) 100vw, 740px" /></a><figcaption id="caption-attachment-15112" class="wp-caption-text">Se qualcuno dovessero mai servire, ecco un report delle ricerche di CodingJam 😉</figcaption></figure>
+<h2>Conclusioni</h2>
+<p>Puppeteer è uno strumento molto <i>versatile</i>. Ci permette di controllare in tutto e per tutto (ed in maniera <strong>automatizzata</strong>) Chrome che ormai da tempo non è più solo un browser ma un vero proprio strumento per sviluppatori web, proprio grazie ai sui DevTools. Ci sono molti scenari interessanti da approfondire, ma che occuperebbero troppo spazio per questo post introduttivo. Uno di questi è la possibilità di utilizzare Puppeteer per abilitare il <strong>Server Side Rendering su una Single Page Application basata su un framework che non la supporta nativamente, come il &#8220;vecchio&#8221; AngularJS</strong>. Se siete curiosi trovate il codice completo degli esempi su <a href="https://github.com/coding-jam/puppeteer-examples" rel="noopener" target="_blank">GitHub</a>. Alla prossima!</p>
+            </div>
+            <!-- end content -->
+
+            
+                <!-- social sharing buttons / counters -->
+                <div class="row">
+                  <div class="col-md-7">
+                    
+    <!-- social sharing buttons -->
+    <div class="bwp-single-share-wrap">
+      <span>Share:</span>
+      <ul class="bwp-single-share list-unstyled">
+        <!-- facebook -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/puppeteer-usare-chrome-come-un-api/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/puppeteer-usare-chrome-come-un-api/" target="_blank" class="bwp-share-link bwp-facebook-share">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <!-- end facebook -->
+        <!-- twitter -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/puppeteer-usare-chrome-come-un-api/&amp;text=puppeteer-usare-chrome-come-un-api', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/puppeteer-usare-chrome-come-un-api/&amp;text=puppeteer-usare-chrome-come-un-api" target="_blank" class="bwp-share-link bwp-twitter-share">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <!-- end twitter -->
+        <!-- google+ -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/puppeteer-usare-chrome-come-un-api/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/puppeteer-usare-chrome-come-un-api/" target="_blank" class="bwp-share-link bwp-google-plus-share">
+            <i class="fa fa-google-plus"></i>
+          </a>
+        </li>
+        <!-- end google+ -->
+        <!-- vk -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/puppeteer-usare-chrome-come-un-api/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/puppeteer-usare-chrome-come-un-api/" target="_blank" class="bwp-share-link bwp-vk-share">
+            <i class="fa fa-vk"></i>
+          </a>
+        </li>
+        <!-- end vk -->
+        <!-- pinterest -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/puppeteer-usare-chrome-come-un-api/&amp;media=&amp;description=puppeteer-usare-chrome-come-un-api', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/puppeteer-usare-chrome-come-un-api/&amp;media=&amp;description=puppeteer-usare-chrome-come-un-api" target="_blank" class="bwp-share-link bwp-pinterest-share">
+            <i class="fa fa-pinterest-p"></i>
+          </a>
+        </li>
+        <!-- end pinterest -->
+      </ul>
+    </div>
+    <!-- end social sharing buttons -->
+
+                      </div>
+                  <div class="col-md-5">
+                    
+    <!-- counters -->
+    <ul class="bwp-single-counters list-unstyled clearfix ">
+                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>5</a></li>
+                </ul>
+    <!-- end counters -->
+
+                      </div>
+                </div>
+                <!-- end social sharing buttons / counters -->
+
+                
+      <!-- metadata -->
+      <div class="bwp-single-metadata-wrap ">
+        <ul class="bwp-single-metadata list-unstyled clearfix">
+                      <!-- author -->
+            <li>
+              <span class="vcard author">
+                <span class="fn">
+                  <i class="fa fa-pencil-square-o"></i><a href="../author/francesco-strazzullo/index.html" title="Posts by Francesco Strazzullo" rel="author">Francesco Strazzullo</a>                </span>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end author -->
+                                <!-- date -->
+            <li>
+                            <span class="date updated">
+                <i class="fa fa-clock-o"></i><a href="https://codingjam.it/2018/02/21/">21/02/2018</a>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end date -->
+                                <!-- categories -->
+            <li>
+              <i class="fa fa-bookmark-o"></i><a href="../category/tutorial-2/index.html" rel="category tag">Tutorial</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end categories -->
+                            </ul>
+      </div>
+      <!-- end metadata -->
+
+      
+          </div>
+          <!-- end content container -->
+
+        </article>
+        <!-- end article -->
+
+        
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="../migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc/index.html" rel="prev"><span class="meta-nav"><i class="fa fa-angle-left"></i>Previous post</span><span class="post-title-nav">Migliora i tuoi log con il Mapped Diagnostic Context (MDC)</span></a></div><div class="nav-next"><a href="../slack/index.html" rel="next"><span class="meta-nav">Next post<i class="fa fa-angle-right"></i></span><span class="post-title-nav">Chatta con noi</span></a></div></div>
+	</nav>
+    <!-- about the author -->
+    <div class="bwp-about-author-container bwp-transition-3 clearfix">
+      <!-- avatar -->
+      <div class="bwp-about-author-avatar">
+        <a href="../author/francesco-strazzullo/index.html">
+          <img alt='' src='https://secure.gravatar.com/avatar/f0012066f4fad79deb33bf5e9799b557?s=150&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/f0012066f4fad79deb33bf5e9799b557?s=300&#038;d=mm&#038;r=g 2x' class='avatar avatar-150 photo' height='150' width='150' />        </a>
+      </div>
+      <!-- end avatar -->
+      <!-- biographical info -->
+      <div class="bwp-about-author-bio-wrap">
+        <h3 class="bwp-about-author-name">
+          <a href="../author/francesco-strazzullo/index.html" title="Posts by Francesco Strazzullo" rel="author">Francesco Strazzullo</a>          <span><i class="fa fa-angle-double-right"></i>30 Posts</span>
+        </h3>
+        <div class="bwp-about-author-bio">
+          Sono uno sviluppatore front-end, speaker e trainer per <a href="https://www.flowing.it/">Flowing</a>. Oltre a scrivere su vari blog (tra cui codingjam!) sono l'autore de libro <a href="https://www.amazon.it/gp/product/1484249666">"Frameworkless Front-end Development"</a>. Nel tempo libero mi piace cucinare cibo etnico e giocare ai videogame.        </div>
+                  <ul class="bwp-about-author-social list-unstyled clearfix">
+                              <li><a href="http://@thestrazz86/" target="_blank" class="bwp-a-twitter-link"><i class="fa fa-twitter"></i></a></li>
+                                  <li><a href="https://github.com/francesco-strazzullo" target="_blank" class="bwp-a-github-link"><i class="fa fa-github"></i></a></li>
+                                  <li><a href="http://www.cosenonjaviste.it/?team=francesco-strazzullo" target="_blank" class="bwp-a-website-link"><i class="fa fa-link"></i></a></li>
+                          </ul>
+              </div>
+      <!-- end biographical info -->
+    </div>
+    <!-- end about the author -->
+
+    
+<!-- comments -->
+<div id="comments" class="comments-area">
+
+	
+		<h2 class="comments-title">
+			5 thoughts on &ldquo;Puppeteer: usare Chrome come un API&rdquo;		</h2>
+
+		<ol class="comment-list">
+					<li id="comment-801" class="comment even thread-even depth-1">
+			<article id="div-comment-801" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/6aae6795979c9d317c4ff5d3a1fd82b4?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/6aae6795979c9d317c4ff5d3a1fd82b4?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Alessandro Bx</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-801">
+							<time datetime="2018-02-22T17:08:00+01:00">
+								22/02/2018 at 17:08							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>l&#8217;abbinamento Nightwatch + Selenium mi era piaciuto molto Puppeteer sembra dare più potenzialità, da quello che ho capito però è limitato a Chrome e questo non permette di fare i test cross browser.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/puppeteer-usare-chrome-come-un-api/?replytocom=801#respond' data-commentid="801" data-postid="15096" data-belowelement="div-comment-801" data-respondelement="respond" aria-label='Reply to Alessandro Bx'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-802" class="comment odd alt thread-odd thread-alt depth-1 parent">
+			<article id="div-comment-802" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/6aae6795979c9d317c4ff5d3a1fd82b4?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/6aae6795979c9d317c4ff5d3a1fd82b4?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Alessandro Bx</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-802">
+							<time datetime="2018-02-22T17:08:00+01:00">
+								22/02/2018 at 17:08							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>l&#8217;abbinamento Nightwatch + Selenium mi era piaciuto molto Puppeteer sembra avere più potenzialità, da quello che ho capito però è limitato a Chrome e questo non permette di fare i test cross browser.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/puppeteer-usare-chrome-come-un-api/?replytocom=802#respond' data-commentid="802" data-postid="15096" data-belowelement="div-comment-802" data-respondelement="respond" aria-label='Reply to Alessandro Bx'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-803" class="comment even depth-2">
+			<article id="div-comment-803" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/f0012066f4fad79deb33bf5e9799b557?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/f0012066f4fad79deb33bf5e9799b557?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn"><a href='http://www.francescostrazzullo.info/' rel='external nofollow ugc' class='url'>Francesco Strazzullo</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-803">
+							<time datetime="2018-02-22T17:50:00+01:00">
+								22/02/2018 at 17:50							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Ciao Alessandro. Hai ragione, Nightwatch permette di testare su qualsiasi browser. Puppeteer infatti non è un tool per testing, ma una vera e propria API su Node per comandare Chrome. Il test è solo uno dei modi di utilizzo. Come un po&#8217; tutto nello sviluppo software è una questione di compromessi. Se la tua base di utenza di permette di non testare su ogni browser ma il test su chrome è già abbastanza allora Puppeteer può esserti utile. Se invece il tuo business ha bisogno di essere certo di funzionare su tutte le versioni di IE allora hai bisogno di qualcosa basato su selenium</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/puppeteer-usare-chrome-come-un-api/?replytocom=803#respond' data-commentid="803" data-postid="15096" data-belowelement="div-comment-803" data-respondelement="respond" aria-label='Reply to Francesco Strazzullo'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-804" class="comment odd alt thread-even depth-1 parent">
+			<article id="div-comment-804" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/ef5e7c7efcc09ae691eff1007480a120?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/ef5e7c7efcc09ae691eff1007480a120?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Fabio Biondi</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-804">
+							<time datetime="2018-02-23T10:32:00+01:00">
+								23/02/2018 at 10:32							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Ottimo articolo Francesco.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/puppeteer-usare-chrome-come-un-api/?replytocom=804#respond' data-commentid="804" data-postid="15096" data-belowelement="div-comment-804" data-respondelement="respond" aria-label='Reply to Fabio Biondi'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-805" class="comment even depth-2">
+			<article id="div-comment-805" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/f0012066f4fad79deb33bf5e9799b557?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/f0012066f4fad79deb33bf5e9799b557?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn"><a href='http://www.francescostrazzullo.info/' rel='external nofollow ugc' class='url'>Francesco Strazzullo</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-805">
+							<time datetime="2018-02-23T10:58:00+01:00">
+								23/02/2018 at 10:58							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Grazie!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/puppeteer-usare-chrome-come-un-api/?replytocom=805#respond' data-commentid="805" data-postid="15096" data-belowelement="div-comment-805" data-respondelement="respond" aria-label='Reply to Francesco Strazzullo'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+		<div id="respond" class="comment-respond">
+		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='15096' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+	
+</div>
+<!-- end comments -->
+
+                  </div><!-- /bwp-single-content-col-wrap --></div><!-- /col-md-8 --><div class="col-md-4 bwp-sidebar-col bwp-sidebar-right">
+        
+                  </div><!-- /col --></div><!-- /row -->
+        
+      </div>
+    </div>
+  </section>
+  <!-- end blog post - single page -->
+
+  
+<!-- footer -->
+<footer id="bwp-footer-wrap">
+  <div class="container">
+    <div class="bwp-footer-container clearfix">
+
+              <!-- footer text -->
+        <div class="bwp-footer-text">
+          CodingJam        </div>
+        <!-- end footer text -->
+      
+              <!-- social links -->
+        <ul class="bwp-footer-social-links list-unstyled clearfix">
+          <li><a href="https://twitter.com/codingjam" target="_blank" class="bwp-f-twitter-link"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.facebook.com/codingjamit/" target="_blank" class="bwp-f-facebook-link"><i class="fa fa-facebook"></i></a></li><li><a href="https://github.com/coding-jam" target="_blank" class="bwp-f-github-link"><i class="fa fa-github"></i></a></li>        </ul>
+        <!-- end social links -->
+      
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+
+<!--googleoff: all--><div id="cookie-law-info-bar"><span>Questo sito Web utilizza i cookie per migliorare la tua esperienza. Daremo per scontato che per te sia ok, ma puoi disattivarlo se lo desideri..<a role='button' tabindex='0' data-cli_action="accept" id="cookie_action_close_header"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button" style="display:inline-block; ">Accetto</a>  <a role='button' tabindex='0' id="cookie_action_close_header_reject"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header_reject cli_action_button"  data-cli_action="reject">Annulla</a> <a href='../cookie.html' id="CONSTANT_OPEN_URL" target="_blank"  class="cli-plugin-main-link"  style="display:inline-block;" >Read More</a></span></div><div id="cookie-law-info-again" style="display:none;"><span id="cookie_hdr_showagain">Privacy & Cookies</span></div><div class="cli-modal" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+    <div class="cli-modal-content cli-bar-popup">
+      <button type="button" class="cli-modal-close" id="cliModalClose">
+        <svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+        <span class="wt-cli-sr-only">Close</span>
+      </button>
+      <div class="cli-modal-body">
+        <div class="cli-container-fluid cli-tab-container">
+    <div class="cli-row">
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0">
+            <div class="cli-privacy-overview">
+                                                   
+                <div class="cli-privacy-content">
+                    <div class="cli-privacy-content-text"></div>
+                </div>
+                <a class="cli-privacy-readmore" data-readmore-text="Show more" data-readless-text="Show less"></a>            </div>
+        </div>  
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+              
+                            <div class="cli-tab-section">
+                    <div class="cli-tab-header">
+                        <a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab" >
+                            Necessary 
+                        </a>
+                    
+                    <span class="cli-necessary-caption">Always Enabled</span>                     </div>
+                    <div class="cli-tab-content">
+                        <div class="cli-tab-pane cli-fade" data-id="necessary">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+              
+                       
+        </div>
+    </div> 
+</div> 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<script type="text/javascript">
+  /* <![CDATA[ */
+  cli_cookiebar_settings='{"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":false,"button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":true,"button_1_new_win":false,"button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":false,"button_2_hidebar":false,"button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":true,"button_3_new_win":false,"button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#fff","button_4_as_button":true,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":false,"scroll_close_reload":false,"accept_close_reload":false,"reject_close_reload":false,"showagain_tab":true,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":false,"show_once":"10000","logging_on":false,"as_popup":false,"popup_overlay":true,"bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"}';
+  /* ]]> */
+</script>
+<!--googleon: all--><script type='text/javascript' src='../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore09b1.js?ver=3.0.9b'></script>
+<script type='text/javascript' src='../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJScript09b1.js?ver=3.0.9b'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore09b1.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeEclipse09b1.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = true;
+	SyntaxHighlighter.defaults['tab-size'] = 2;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/bootstrap.min7433.js?ver=3.3.7'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.parallaxc358.js?ver=1.1.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/superfish.min97e9.js?ver=1.7.9'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel.min3ba1.js?ver=1.3.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/magnific-popup/jquery.magnific-popup.minf488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
+</body>
+
+<!-- Mirrored from codingjam.it/puppeteer-usare-chrome-come-un-api/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+</html>

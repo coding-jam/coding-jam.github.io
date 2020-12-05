@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from codingjam.it/algoritmi-genetici-con-scala-gioconda/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="pingback" href="../xmlrpc.php">
+
+  <title>Algoritmi genetici con Scala: La Gioconda &#8211; CodingJam</title>
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Feed" href="../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Comments Feed" href="../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Algoritmi genetici con Scala: La Gioconda Comments Feed" href="https://codingjam.it/algoritmi-genetici-con-scala-gioconda/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='../wp-content/plugins/gutenberg/build/block-library/stylea4fb.css?ver=1591004795' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-gdpr-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='melissa-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lato%3A400%2C400i%2C700%2C700i%7CNoto+Serif%3A400%2C400i%2C700%2C700i&amp;subset=latin&amp;ver=1.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../wp-content/themes/melissa/css/bootstrap.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-theme-css'  href='../wp-content/themes/melissa/css/bootstrap-theme.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-ie10-viewport-bug-workaround-css'  href='../wp-content/themes/melissa/css/ie10-viewport-bug-workaround8a54.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='../wp-content/themes/melissa/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-carousel-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-theme-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.theme3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='magnific-popup-css'  href='../wp-content/themes/melissa/assets/magnific-popup/magnific-popupf488.css?ver=1.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-style-css'  href='../wp-content/themes/melissa/style3ec8.css?ver=1.1.6' type='text/css' media='all' />
+<style id='melissa-style-inline-css' type='text/css'>
+
+    .bwp-post-media img,
+    .bwp-post-carousel-item img,
+    .widget_bwp_posts_slider_item img {
+      width: 100%;
+      margin: 0;
+    }
+    .bwp-post-wrap:hover {
+      margin-top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+    #bwp-masonry-container.no-masonry .bwp-post-wrap:hover {
+      top: 0;
+    }
+    .bwp-no-results-container:hover,
+    .bwp-single-article:hover,
+    .bwp-featured-media-container:hover,
+    .post-navigation .nav-links a:hover,
+    .bwp-about-author-container:hover,
+    .comment-respond:hover,
+    .comment-body:hover,
+    #comments .no-comments:hover,
+    .comment-navigation .nav-links a:hover,
+    .bwp-related-post-wrap:hover,
+    .bwp-page-404-container:hover,
+    .bwp-sidebar-wrap:hover {
+      top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+  #bwp-header-wrap {
+    background-color: #2e3340;
+  }
+  .bwp-header-bg-overlay,
+  .bwp-header-rs-bg-overlay {
+    background-color: rgba(46, 51, 64, 0.9);
+  }
+    .bwp-content a,
+    .comment-content a,
+    .bwp-post-quote a {
+      color: #2052bf;
+    }
+</style>
+<link rel='stylesheet' id='enlighter-local-css'  href='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.css?ver=3.9.0' type='text/css' media='all' />
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery4a5f.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[]};
+var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/cookie-law-info/public/js/cookie-law-info-public3cf4.js?ver=1.8.8'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/respond.min.js?ver=1.4.2'></script>
+<![endif]-->
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/mootools-core-yc9086.js?ver=3.9.0'></script>
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.js?ver=3.9.0'></script>
+<link rel='https://api.w.org/' href='../wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+<link rel='prev' title='Introduzione ad Angular CLI' href='../introduzione-ad-angular-cli/index.html' />
+<link rel='next' title='Perché Kotlin è il miglior linguaggio per sviluppare su Android' href='https://codingjam.it/perche-kotlin-e-il-miglior-linguaggio-per-sviluppare-su-android/' />
+<meta name="generator" content="WordPress 5.4.1" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://codingjam.it/?p=14843' />
+<link rel="alternate" type="application/json+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Falgoritmi-genetici-con-scala-gioconda%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Falgoritmi-genetici-con-scala-gioconda%2F&amp;format=xml" />
+<link rel="amphtml" href="https://codingjam.it/algoritmi-genetici-con-scala-gioconda/amp/"><script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"droide","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":false,"windowButton":false,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" sizes="32x32" />
+<link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://codingjam.it/wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-270x270.png" />
+</head>
+
+<body class="post-template-default single single-post postid-14843 single-format-standard wp-custom-logo">
+
+
+<!-- header -->
+<header id="bwp-header-wrap" class="bwp-header-simple">
+
+  <!-- header bg -->
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P6261835_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg-overlay"></div>
+
+    <!-- header content -->
+    <div class="container">
+      <div class="bwp-header-content-container">
+
+        <!-- row 1 - logo + navigation -->
+        <div class="bwp-main-navigation-container clearfix">
+
+          
+        <!-- image logo -->
+        <div class="bwp-logo-container">
+          <a href="../index.html" class="custom-logo-link" rel="home"><img width="207" height="70" src="../wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png" class="custom-logo" alt="CodingJam" srcset="https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png 207w, https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco-150x51.png 150w" sizes="(max-width: 207px) 100vw, 207px" /></a>        </div>
+        <!-- end image logo -->
+
+        
+      <!-- search -->
+      <div class="bwp-header-search-container hidden-sm hidden-xs">
+        <a href="#" id="bwp-header-search-icon">
+          <i class="fa fa-search"></i>
+        </a>
+        <div class="bwp-dropdown-search-container bwp-search-hidden">
+          
+<!-- search form -->
+<form id="searchform" role="search" method="get" action="https://codingjam.it/">
+  <div class="input-group">
+    <input type="text" name="s" id="s" class="bwp-search-field form-control" placeholder="Enter your search query...">
+    <span class="input-group-btn">
+      <button type="submit" class="btn bwp-search-submit">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+</form>
+<!-- end search form -->
+        </div>
+      </div>
+      <!-- end search -->
+
+      
+      <!-- menu -->
+      <div class="bwp-menu-container hidden-sm hidden-xs">
+        <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-2" class="sf-menu"><li id="menu-item-12007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li id="menu-item-12022" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li id="menu-item-12009" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li id="menu-item-12020" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li id="menu-item-12017" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li id="menu-item-12006" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li id="menu-item-12005" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li id="menu-item-12008" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li id="menu-item-12014" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li id="menu-item-12012" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li id="menu-item-12010" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li id="menu-item-12021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li id="menu-item-12016" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li id="menu-item-12015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li id="menu-item-12019" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li id="menu-item-12018" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>      </div>
+      <!-- end menu -->
+
+      
+      <!-- mobile menu -->
+      <div class="bwp-mobile-menu-container hidden-md hidden-lg">
+        <!-- mobile menu icon -->
+        <a href="#" id="bwp-mobile-menu-icon">
+          <i class="fa fa-bars"></i>
+        </a>
+        <!-- end mobile menu icon -->
+        <!-- dropdown mobile menu -->
+        <div class="bwp-dropdown-mobile-menu bwp-mobile-menu-hidden">
+          <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-3" class="bwp-mobile-menu list-unstyled"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>        </div>
+        <!-- end dropdown mobile menu -->
+      </div>
+      <!-- end mobile menu -->
+
+      
+        </div>
+        <!-- end row 1 - logo + navigation -->
+
+        
+          <!-- row 2 - header custom text -->
+          <div class="bwp-header-custom-text-container">
+            
+        <!-- custom text - single page -->
+        <h1 class="bwp-header-custom-title entry-title">
+          Algoritmi genetici con Scala: La Gioconda        </h1>
+                <div class="bwp-header-transparent-line clearfix">
+          <span class="bwp-header-t-line-1"></span>
+          <span class="bwp-header-t-line-2"></span>
+        </div>
+        <!-- end custom text -->
+
+                  </div>
+          <!-- end row 2 - header custom text -->
+
+          
+      </div>
+    </div>
+    <!-- end header content -->
+  </div>
+  <!-- end header bg -->
+
+  
+        <!-- sticky navigation -->
+        <div class="bwp-sticky-navigation-wrap bwp-transition-4 clearfix">
+          <!-- sticky navigation icon -->
+          <a href="#" id="bwp-sticky-navigation-icon">
+            <i class="fa fa-bars"></i>
+          </a>
+          <!-- end sticky navigation icon -->
+          <!-- sticky navigation container -->
+          <div class="bwp-sticky-navigation-container bwp-sticky-navigation-hidden">
+            <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-4" class="sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>          </div>
+          <!-- end sticky navigation container -->
+        </div>
+        <!-- end sticky navigation -->
+
+        
+</header>
+<!-- end header -->
+
+  <!-- blog post - single page -->
+  <section id="bwp-single-page-wrap">
+    <div class="container">
+      <div class="bwp-single-page-container" >
+
+        
+                  <div class="row"><div class="col-md-8 bwp-single-content-col bwp-sidebar-right"><div class="bwp-single-content-col-wrap" role="main">
+        
+        <!-- article -->
+        <article id="post-14843" class="bwp-single-article bwp-transition-3">
+
+          
+  <!-- media - featured image -->
+  <figure class="bwp-post-media">
+          <a href="../wp-content/uploads/2017/08/lagioconda-e1502321367329.png" class="bwp-popup-image" title="Algoritmi genetici con Scala: La Gioconda">
+          <img width="734" height="200" src="../wp-content/uploads/2017/08/lagioconda-e1502321367329.png" class="attachment-melissa-img-1200-auto size-melissa-img-1200-auto wp-post-image" alt="" />      <span class="bwp-expand-icon bwp-transition-4"><i class="fa fa-expand"></i></span>
+    </a>
+      </figure>
+  <!-- end media -->
+
+  
+          <!-- content container -->
+          <div class="bwp-single-content">
+
+            <!-- content -->
+            <div class="bwp-content entry-content clearfix">
+              <h2 id="toc_0">Premessa</h2>
+<p><em>Voi programmatori mettete il codice, le performance ma non i principi di funzionamento.</em></p>
+<p>Così mi è stato detto quando ho fatto vedere il video qui sotto. In effetti, mi sono accorto di averlo mostrato in diverse occasioni rispiegando ogni volta come funzionava il codice dietro le quinte.  Spinto allora dal principio DRY, ho deciso di documentare il piccolo esperimento di <em>algoritmo genetico</em> che ho realizzato con Play Framework, Akka e Scala e la cui esecuzione è mostrata proprio dal filmato qui proposto. Più che un tutorial su questi temi, troverete una specie di diario di viaggio di cosa ho realizzato e imparato realizzando la copia di un&#8217;immagine usando degli algoritmi genetici con Scala.</p>
+<p><iframe width="1040" height="585" src="https://www.youtube.com/embed/bcf_UEe1bY4?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
+<p>Non so quante probabilità ci siano che uno dei lettori di CodingJam utilizzi i <em>genetic algorithm</em> (GA), tuttavia sono una classe importante di algoritmi che permette di risolvere <a href="https://en.wikipedia.org/wiki/List_of_genetic_algorithm_applications">svariati problemi</a>. Ogni tanto è divertente sviluppare e presentare su questo blog qualcosa che non necessariamente derivi da un&#39;esperienza di produzione, ma che permetta invece di esplorare argomenti sconosciuti. E&#39; questo quello che ho fatto nel progetto <a href="https://github.com/coding-jam/lagioconda">LaGioconda</a> e che qui vi racconto.</p>
+<p><img src="https://codingjam.it/wp-content/uploads/2017/07/St_5-xband-antenna.jpg" alt=""><br />
+<em>L&#8217;antenna NASA per la spedizione ST5 del 2006. Questa forma &#8220;bizzarra&#8221; è stata individuata da un algoritmo genetico per ottimizzare il guadagno del segnale</em></p>
+<h2 id="toc_1">Algoritmi genetici</h2>
+<p>La teoria dell&#39;evoluzione prevede che un organismo si adatti ad un ambiente ostile, modificando generazione dopo generazione le proprie caratteristiche. Solo gli organismi che si adeguano meglio e più in fretta sono in grado di sopravvivere. Un organismo vivente è composto da cellule che contengono cromosomi identici. Un cromosoma a sua volta consiste di geni che sono blocchi di DNA e codificano una specifica proteina.</p>
+<p>La ricombinazione o <em>crossover</em> è il primo passo della riproduzione. I geni dei genitori generano un nuovo cromosoma (<em>offspring</em>) che può essere <em>mutato</em>. Durante la mutazione, uno o più elementi sono modificati a causa di errori nella replica. Il nuovo individuo può essere più o meno adatto all&#39;ambiente in cui vive: chiamiamo <em>fitness</em> questa capacità. Gli individui con fitness migliore sono quelli con più alta probabilità di sopravvivenza e quindi di riproduzione. </p>
+<p>Lo scopo di un algoritmo genetico è quello di risolvere un problema di ottimizzazione trovando la miglior soluzione possibile tra un gruppo di possibili risultati (<em>popolazione</em>) ispirandosi ai meccanismi dell&#39;evoluzione.</p>
+<p>Un GA parte da una popolazione casuale e applica un passo di riproduzione generando un nuovo set di individui. Se nella nuova generazione esiste un individuo la cui fitness è superiore ad una soglia richiesta, l&#39;algoritmo termina. Altrimenti si ripete iterativamente la riproduzione e la valutazione dei nuovi individui. Per far in modo che l&#39;evoluzione sia positiva, cioè il problema venga risolto, il crossover favorisce gli individui con fitness migliore. La mutation invece permette di introdurre delle variazioni casuali che potenzialmente migliorano il risultato.</p>
+<p>Ma perché andare a scomodare questa metodologia e non scrivere direttamente del codice che risolva il problema? Si utilizza un GA quando:</p>
+<ul>
+<li> può essere complicato scrivere l&#39;algoritmo o non è ben chiaro come farlo, </li>
+<li> il problema cambia in continuazione,</li>
+<li> non è possibile cercare in tutto lo spazio delle soluzioni,</li>
+<li> una soluzione &quot;buona abbastanza&quot; è accettabile.</li>
+</ul>
+<h2 id="toc_2">Mona Lisa smile</h2>
+<p>Il tipo di problema che ho voluto risolvere è stata la copia di un&#8217;immagine: sapreste scrivere un algoritmo che posizioni 250 cerchi colorati in un rettangolo in modo tale che la disposizione di questi sia in grado di &quot;disegnare&quot; la Gioconda di Da Vinci? La risoluzione analitica potrebbe essere difficile, ma con una buona funzione di fitness a disposizione e un po&#39; di tempo macchina si può provare la strada dell&#39;algoritmo genetico. Volendo, si può anche trovare un&#39;applicazione pratica a questo esperimento: potrebbe essere usato come compressore lossy di immagini. Il video mostra nel primo riquadro l&#39;immagine originale, nel secondo l&#39;algoritmo genetico che ho implementato assieme a due varianti nel terzo e quarto riquadro.</p>
+<h3 id="toc_3">La codifica e decodifica</h3>
+<p>Una delle prime cose da decidere è come rappresentare il DNA di un individuo e come trasformare una soluzione del problema nei cromosomi e viceversa. Ho scelto l&#39;approccio più semplice e più usato codificando ogni gene con una sequenza di <code>0</code> e <code>1</code>. </p>
+<p>Ho fatto corrispondere poi ogni cerchio ad un gene; un gene codifica la posizione del centro, il raggio ed il colore in RGB. Per semplificarmi un po&#39; i calcoli, ho deciso che avrei copiato un&#39;immagine 256&#215;256. In questo modo ho usato 8 più 8 bit per il centro del cerchio, 4 per un raggio massimo di 16 pixel e 8 bit per ognuno dei tre colori di base, 44 bit in totale. Sempre per facilitarmi le cose, ho deciso che un individuo avesse un solo cromosoma che contenesse tutti i geni.</p>
+<h3 id="toc_4">La funzione di fitness</h3>
+<p>La funzione di fitness valuta quanto un membro della popolazione si stia avvicinando alla soluzione e meriti di riprodursi tramandando il suo patrimonio genetico. Di solito il valore è normalizzato dove <code>1</code> corrisponde al risultato perfetto. </p>
+<p>Nel mio caso la funzione è intuitiva. Dato un individuo, i suoi geni vengono usati per disegnare i cerchi in una immagine in memoria. La bitmap così ottenuta viene confrontata pixel per pixel con Monna Lisa calcolando la distanza euclidea normalizzata. In altre parole, più i colori sono vicini punto per punto, migliore è l&#39;immagine e più il fitness sarà vicino ad 1. Quest&#39;ultimo valore è teorico, cioè verrebbe raggiunto probabilmente con tanti cerchi quanti i pixel dell&#39;immagine originale. </p>
+<h3 id="toc_5">L&#39;algoritmo</h3>
+<p>Anche l&#39;algoritmo ha una formulazione iterativa molto semplice:</p>
+<ol>
+<li>generare casualmente una prima popolazione di <code>n</code> elementi;</li>
+<li>valutare la funzione di fitness per ogni membro della popolazione corrente;</li>
+<li>se tra gli individui ne esiste uno il cui fitness è superiore ad una soglia impostata, allora è stata trovata la soluzione al problema e l&#39;algoritmo termina;</li>
+<li>altrimenti tramite crossover e mutazione preparare una nuova generazione di individui e ritornare al passo 2.</li>
+</ol>
+<p>Quello descritto è un schema generale a cui possono essere applicate molte varianti. Ad esempio, possiamo utilizzare diversi modi per scegliere quali individui sono candidati a riprodursi e quali invece non tramanderanno il loro patrimonio alla generazione successiva. Un metodo classico è la <em>wheel selection</em>, dove in pratica, la probabilità di riproduzione è proporzionale alla fitness. Supponiamo di avere tre individui e di ordinarli per fitness che può andare da <code>0</code> a <code>100</code>, ad esempio <code>(80, 70, 50)</code>. Il primo individuo avrà probabilità <code>80/200 = 40%</code> di riprodursi, il secondo <code>70/200 = 35%</code> e il terzo <code>50/200 = 25%</code>. Generiamo un numero casuale tra <code>0</code> e <code>100</code>. Se cade tra <code>0</code> e <code>40</code> (escluso), verrà scelto il primo individuo, tra <code>40</code> e <code>75</code> (escluso) verrà selezionato il secondo, altrimenti verrà preso il terzo.</p>
+<p>Nulla vieta di applicare un altro criterio come ad esempio far riprodurre sempre un individuo scelto tra il miglior 50% della popolazione con uno scelto tra la popolazione rimanente. Quale funzionerà meglio? Difficile da dire, in questa classe di algoritmi bisogna sperimentare con diverse configurazioni e aggiustare il tiro valutando di volta in volta il comportamento. Una cosa sicuramente da evitare è quella di favorire <em>troppo</em> gli individui migliori. Un algoritmo genetico può richiedere molte generazioni prima di restituire un risultato accettabile, se favoriamo subito un individuo con una fitness ancora bassa, finiremo in un <em>massimo locale</em>, cioè in una soluzione buona ma non abbastanza. Perché l&#39;algoritmo insisterà nel tramandare uno specifico patrimonio genetico senza cercare altrove altre soluzioni migliori.</p>
+<p>Una tecnica che si può usare quando l&#39;algoritmo converge troppo presto è quella presa in prestito dal <a href="https://it.wikipedia.org/wiki/Simulated_annealing"><em>simulated annealing</em></a>. All&#39;inizio dell&#39;esecuzione l&#39;algoritmo non favorisce troppo gli individui con fitness più alta ma lascia spazio anche a soluzioni non ottimali. Queste potrebbero però convergere verso risultati migliori di quello corrente. Man mano che le generazioni passano invece, incrementiamo la probabilità di riproduzione per gli individui migliori. </p>
+<h3 id="toc_6">Crossover e mutation</h3>
+<p>Dopo aver scelto due individui, va deciso come combinare le loro informazioni genetiche. Il crossover che ho implementato prevede di costruire il nuovo individuo scegliendo gene per gene dal primo genitore o dal secondo con una probabilità del 50% ciascuno. Anche in questo caso, è possibile sbizzarrirsi e sperimentare altre modalità.</p>
+<p>Come in natura, introduciamo un &quot;errore di copia&quot;, cioè una variazione casuale nel patrimonio genetico. Questo cambiamento potrebbe essere positivo o negativo, sarà la funzione di fitness a valutarlo.</p>
+<p>Nell&#39;implementazione proposta la mutazione avviene con una probabilità del 5%. Sono modificati 4 geni scelti a caso e in ciascuno un bit casuale viene invertito. Perché questi parametri? Una probabilità di mutazione troppo alta, cambiare troppi geni o troppi bit trasforma il GA in una specie di ricerca pseudocasuale. In pratica, è come se generassimo soluzioni a caso e chiedessimo semplicemente di controllarle senza indirizzare l&#39;algoritmo. Le combinazioni possibili sono troppe (<code>2^(250*44)</code>) perché la procedura risponda in tempi accettabili. D&#39;altra parte, se le mutazioni sono limitate o infrequenti, ritorniamo al problema del massimo locale. </p>
+<p>La mutazione introduce la possibilità che la nuova generazione sia peggiore di quella precedente. Per evitare questo si può introdurre il concetto di <em>elitarismo</em>. I migliori individui di una popolazione, di solito una percentuale piccola, vengono riportati nella generazione successiva. </p>
+<h2 id="toc_7">Hillclimb e VecGen</h2>
+<p>Come avrete intuito dal video, ogni esecuzione dell&#39;algoritmo richiede ore e nel mentre c&#39;è molto tempo per pensare a come ottimizzarlo (o per dormire ;-)). Ho introdotto quindi due varianti. La prima si chiama <a href="https://en.wikipedia.org/wiki/Hill_climbing">Hill Climbing</a>. Consiste nel prendere la soluzione corrente e cercare di vedere se &quot;attorno&quot; ce n&#39;è una migliore. Per individuare un vicino, posso scegliere un cerchio e modificare leggermente le sue caratteristiche spostando il centro nelle quattro direzioni, aumentando o diminuendo il raggio e incrementando o decrementando ogni singolo canale del colore. Se una di queste variazioni permette di migliorare la fitness, allora posso usare questo nuovo individuo come soluzione e introdurlo nella popolazione.</p>
+<p>Agire sulle caratteristiche del cerchio e non sul corrispondente gene vuol dire che stiamo uscendo dal GA e usando una tecnica di ottimizzazione diversa. L&#39;Hill Climbing potrebbe anche essere utilizzato da solo, basterebbe partire da una soluzione a caso e ripetere la ricerca di un vicino migliore fin tanto che non si raggiunge la fitness desiderata. Per evitare di snaturare troppo l&#39;algoritmo genetico ho deciso di usare questo metodo solo quando dopo un po&#39; di generazioni l&#39;individuo migliore non cambia fitness. Nel video, il terzo riquadro mostra l&#39;effetto di questa ottimizzazione rispetto alla soluzione di base che è in seconda posizione.</p>
+<p>La seconda variante è ispirata ad un software chiamato <em>VecGen</em>, di cui però non è disponibile il codice, ma restano i video su <a href="https://www.youtube.com/results?search_query=vecGen">YouTube</a>. Sono venuto a conoscenza di VecGen durante una presentazione del <a href="http://2016.bee-scala.org/speaker/tzofia-shiftan/">BeeScala 2016</a> ed è proprio da quel talk che mi è venuta l&#39;idea di implementare l&#39;algoritmo di cui parlo in questo post. In VecGen l&#39;approccio è un po&#39; diverso. Al posto di partire subito con 250 cerchi limitati a 16 pixel di raggio, parto con un solo cerchio che può avere un raggio di 256 pixel.</p>
+<p>Sempre tramite GA e Hill Climbing cerco di posizionare il cerchio in modo da migliorare il valore di fitness. Quando non è più possibile migliorare la soluzione, aggiungo un secondo cerchio e riparto. Questa variante è presentata nel quarto riquadro e si può notare come il risultato finale si avvicini molto all&#39;immagine originale, soprattutto se socchiudete gli occhi ;-). Non ho fissato un numero massimo di cerchi, semplicemente ho terminato l&#39;algoritmo quando il risultato mi sembrava soddisfacente. </p>
+<h2 id="toc_8">Scala, Akka e Play Framework</h2>
+<p>Lavorando correntemente con Scala, Akka e Play Framework è stato naturale per me usare queste tecnologie. In particolare ho scelto Akka perché volevo calcolare più fitness in parallelo sfruttando il multithreading senza doverlo programmare a basso livello. Tuttavia, nonostante l&#39;uso di Akka, da subito mi sono accorto che le prestazioni non erano quelle che mi aspettavo. Indagando un po&#39; con il profiler, ho realizzato che anche se provavo ad andare in parallelo, tutti gli attori si bloccavano nel medesimo punto, il calcolo della funzione di fitness. In effetti le API di Java sottostanti per il disegno dell&#39;immagine <a href="https://stackoverflow.com/a/5544714/1360888">non sono</a> e non potranno mai essere multithreading. Quindi aumentare il grado di parallelismo con più thread non dava miglioramenti perché le chiamate venivano serializzate. Di fatto mi sono trovato davanti ad un vicolo cieco, con questo collo di bottiglia l&#39;algoritmo ci avrebbe messo molto a girare. </p>
+<p>Sono riuscito però a risolvere questo problema con un piccolo trucco: se in una singola JVM sono limitato dall&#39;uso di una sola funzione di fitness alla volta, allora posso usare più virtual machine contemporaneamente. Akka permette di realizzare velocemente un servizio che giri su più nodi. Ho eseguito il cluster in locale lanciando più istanze del progetto con parametro <em>backend</em> o <em>frontend</em>. L&#39;unico nodo di frontend realizzato con Play comunica con il browser e gestisce l&#39;algoritmo come nella soluzione con singola virtual machine. Il calcolo della fitness viene demandato ad attori su istanze di backend: Akka si occupa di rendere trasparente la comunicazione tra attori su nodi diversi. Le JVM dedicate al backend sono state lanciate usando pochi megabyte di RAM. Ho potuto quindi utilizzare diverse istanze diminuendo di un ordine di grandezza il tempo richiesto per ottenere una soluzione accettabile.</p>
+<h2 id="toc_9">Conclusioni</h2>
+<p><img src="https://codingjam.it/wp-content/uploads/2017/07/penny.png" alt=""><br />
+<a href="https://www.youtube.com/watch?v=FQohCwxiVso&amp;feature=youtu.be&amp;t=1m46s"><em>Ah, davvero molto utile.. solo una domanda, perché? Perché possiamo!</em></a></p>
+<p>Come detto all&#39;inizio, questo post non è un tutorial e non ha la pretesa di sostituirsi ad una trattazione rigorosa degli algoritmi genetici. Anche il codice è solo un punto di partenza e può essere sicuramente migliorato. Spero solo di aver incuriosito il lettore casuale nel voler usare un&#39;immagine diversa, nel modificare l&#39;algoritmo, variare la funzione di fitness, o sbirciare quello che si può realizzare con Akka in un ambiente distribuito. Personalmente mi sono divertito molto a realizzare questo progetto partendo, in pratica, da nessuna nozione sull&#39;argomento. Ma se qualcuno sarà incuriosito dagli algoritmi genetici a causa (anche) di questo post, avrò ottenuto un risultato ancora più interessante. </p>
+<p>Un grazie a Francesco e Ubaldo per l&#8217;aiuto sul frontend.</p>
+            </div>
+            <!-- end content -->
+
+            
+                <!-- social sharing buttons / counters -->
+                <div class="row">
+                  <div class="col-md-7">
+                    
+    <!-- social sharing buttons -->
+    <div class="bwp-single-share-wrap">
+      <span>Share:</span>
+      <ul class="bwp-single-share list-unstyled">
+        <!-- facebook -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/algoritmi-genetici-con-scala-gioconda/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/algoritmi-genetici-con-scala-gioconda/" target="_blank" class="bwp-share-link bwp-facebook-share">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <!-- end facebook -->
+        <!-- twitter -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/algoritmi-genetici-con-scala-gioconda/&amp;text=algoritmi-genetici-con-scala-la-gioconda', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/algoritmi-genetici-con-scala-gioconda/&amp;text=algoritmi-genetici-con-scala-la-gioconda" target="_blank" class="bwp-share-link bwp-twitter-share">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <!-- end twitter -->
+        <!-- google+ -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/algoritmi-genetici-con-scala-gioconda/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/algoritmi-genetici-con-scala-gioconda/" target="_blank" class="bwp-share-link bwp-google-plus-share">
+            <i class="fa fa-google-plus"></i>
+          </a>
+        </li>
+        <!-- end google+ -->
+        <!-- vk -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/algoritmi-genetici-con-scala-gioconda/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/algoritmi-genetici-con-scala-gioconda/" target="_blank" class="bwp-share-link bwp-vk-share">
+            <i class="fa fa-vk"></i>
+          </a>
+        </li>
+        <!-- end vk -->
+        <!-- pinterest -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/algoritmi-genetici-con-scala-gioconda/&amp;media=https://codingjam.it/wp-content/uploads/2017/08/lagioconda-e1502321367329.png&amp;description=algoritmi-genetici-con-scala-la-gioconda', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/algoritmi-genetici-con-scala-gioconda/&amp;media=https://codingjam.it/wp-content/uploads/2017/08/lagioconda-e1502321367329.png&amp;description=algoritmi-genetici-con-scala-la-gioconda" target="_blank" class="bwp-share-link bwp-pinterest-share">
+            <i class="fa fa-pinterest-p"></i>
+          </a>
+        </li>
+        <!-- end pinterest -->
+      </ul>
+    </div>
+    <!-- end social sharing buttons -->
+
+                      </div>
+                  <div class="col-md-5">
+                    
+    <!-- counters -->
+    <ul class="bwp-single-counters list-unstyled clearfix ">
+                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>4</a></li>
+                </ul>
+    <!-- end counters -->
+
+                      </div>
+                </div>
+                <!-- end social sharing buttons / counters -->
+
+                
+      <!-- metadata -->
+      <div class="bwp-single-metadata-wrap ">
+        <ul class="bwp-single-metadata list-unstyled clearfix">
+                      <!-- author -->
+            <li>
+              <span class="vcard author">
+                <span class="fn">
+                  <i class="fa fa-pencil-square-o"></i><a href="../author/giampaolo-trapasso/index.html" title="Posts by Giampaolo Trapasso" rel="author">Giampaolo Trapasso</a>                </span>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end author -->
+                                <!-- date -->
+            <li>
+                            <span class="date updated">
+                <i class="fa fa-clock-o"></i><a href="https://codingjam.it/2017/08/02/">02/08/2017</a>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end date -->
+                                <!-- categories -->
+            <li>
+              <i class="fa fa-bookmark-o"></i><a href="https://codingjam.it/category/akka/" rel="category tag">Akka</a>, <a href="../category/scala/index.html" rel="category tag">Scala</a>, <a href="../category/tutorial-2/index.html" rel="category tag">Tutorial</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end categories -->
+                                <!-- tags -->
+            <li>
+              <i class="fa fa-tags"></i><a href="https://codingjam.it/tag/akka/" rel="tag">akka</a>, <a href="https://codingjam.it/tag/cromosoma/" rel="tag">cromosoma</a>, <a href="https://codingjam.it/tag/gene/" rel="tag">gene</a>, <a href="https://codingjam.it/tag/genetic-algorithm/" rel="tag">genetic algorithm</a>, <a href="https://codingjam.it/tag/gioconda/" rel="tag">gioconda</a>, <a href="https://codingjam.it/tag/github/" rel="tag">github</a>, <a href="https://codingjam.it/tag/image-copy/" rel="tag">image copy</a>, <a href="https://codingjam.it/tag/play/" rel="tag">play</a>, <a href="../tag/scala/index.html" rel="tag">Scala</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end tags -->
+                  </ul>
+      </div>
+      <!-- end metadata -->
+
+      
+          </div>
+          <!-- end content container -->
+
+        </article>
+        <!-- end article -->
+
+        
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="../introduzione-ad-angular-cli/index.html" rel="prev"><span class="meta-nav"><i class="fa fa-angle-left"></i>Previous post</span><span class="post-title-nav">Introduzione ad Angular CLI</span></a></div><div class="nav-next"><a href="https://codingjam.it/perche-kotlin-e-il-miglior-linguaggio-per-sviluppare-su-android/" rel="next"><span class="meta-nav">Next post<i class="fa fa-angle-right"></i></span><span class="post-title-nav">Perché Kotlin è il miglior linguaggio per sviluppare su Android</span></a></div></div>
+	</nav>
+    <!-- about the author -->
+    <div class="bwp-about-author-container bwp-transition-3 clearfix">
+      <!-- avatar -->
+      <div class="bwp-about-author-avatar">
+        <a href="../author/giampaolo-trapasso/index.html">
+          <img alt='' src='https://secure.gravatar.com/avatar/2fc7c345f3c40aad02aca88459b1eb4a?s=150&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/2fc7c345f3c40aad02aca88459b1eb4a?s=300&#038;d=mm&#038;r=g 2x' class='avatar avatar-150 photo' height='150' width='150' />        </a>
+      </div>
+      <!-- end avatar -->
+      <!-- biographical info -->
+      <div class="bwp-about-author-bio-wrap">
+        <h3 class="bwp-about-author-name">
+          <a href="../author/giampaolo-trapasso/index.html" title="Posts by Giampaolo Trapasso" rel="author">Giampaolo Trapasso</a>          <span><i class="fa fa-angle-double-right"></i>35 Posts</span>
+        </h3>
+        <div class="bwp-about-author-bio">
+          Sono laureato in Informatica e attualmente lavoro come Software Engineer in Databiz Srl. Mi diverto a programmare usando Java e Scala, Akka, RxJava e Cassandra. 
+
+Qui mio modesto contributo su
+<a href="http://stackoverflow.com/users/1360888/giampaolo">
+StackOverflow
+</a> e il mio account su <a href="https://github.com/giampaolotrapasso">GitHub</a>        </div>
+                  <ul class="bwp-about-author-social list-unstyled clearfix">
+                              <li><a href="http://tr4p0/" target="_blank" class="bwp-a-twitter-link"><i class="fa fa-twitter"></i></a></li>
+                                  <li><a href="http://www.codingjam.it/?team=giampaolo-trapasso" target="_blank" class="bwp-a-website-link"><i class="fa fa-link"></i></a></li>
+                          </ul>
+              </div>
+      <!-- end biographical info -->
+    </div>
+    <!-- end about the author -->
+
+    
+<!-- comments -->
+<div id="comments" class="comments-area">
+
+	
+		<h2 class="comments-title">
+			4 thoughts on &ldquo;Algoritmi genetici con Scala: La Gioconda&rdquo;		</h2>
+
+		<ol class="comment-list">
+					<li id="comment-773" class="comment even thread-even depth-1 parent">
+			<article id="div-comment-773" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/343fee7d54777e167ac4fc9fb5d84e8a?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/343fee7d54777e167ac4fc9fb5d84e8a?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Alessandro Jag Antonacci</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-773">
+							<time datetime="2017-08-02T10:15:00+02:00">
+								02/08/2017 at 10:15							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Giampaolo grazie davvero per questo articolo. Scoprii questi algoritmi ai tempi dell&#8217;università ma poter vedere del codice che implementa materialmente tutto il processo è fenomenale; l&#8217;ho forkato subito su github,comincerò a smanettarci da subito</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/algoritmi-genetici-con-scala-gioconda/?replytocom=773#respond' data-commentid="773" data-postid="14843" data-belowelement="div-comment-773" data-respondelement="respond" aria-label='Reply to Alessandro Jag Antonacci'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-774" class="comment odd alt depth-2">
+			<article id="div-comment-774" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/2fc7c345f3c40aad02aca88459b1eb4a?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/2fc7c345f3c40aad02aca88459b1eb4a?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Giampaolo Trapasso</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-774">
+							<time datetime="2017-08-10T01:23:00+02:00">
+								10/08/2017 at 01:23							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Grazie a te Alessandro :). Anche solo fare un test con un&#8217;altra immagine sarebbe interessante :). Aspetto allora le tue PR e se ti va, raggiungici su slack. A presto!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/algoritmi-genetici-con-scala-gioconda/?replytocom=774#respond' data-commentid="774" data-postid="14843" data-belowelement="div-comment-774" data-respondelement="respond" aria-label='Reply to Giampaolo Trapasso'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-776" class="comment even thread-odd thread-alt depth-1 parent">
+			<article id="div-comment-776" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/037f9eb883fa3fd68e7ba507050ae9a7?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/037f9eb883fa3fd68e7ba507050ae9a7?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Marco Accardi</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-776">
+							<time datetime="2017-08-18T17:56:00+02:00">
+								18/08/2017 at 17:56							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>complimenti. argomento molto stimolante. Mi ha incuriosito.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/algoritmi-genetici-con-scala-gioconda/?replytocom=776#respond' data-commentid="776" data-postid="14843" data-belowelement="div-comment-776" data-respondelement="respond" aria-label='Reply to Marco Accardi'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-777" class="comment odd alt depth-2">
+			<article id="div-comment-777" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/2fc7c345f3c40aad02aca88459b1eb4a?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/2fc7c345f3c40aad02aca88459b1eb4a?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Giampaolo Trapasso</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-777">
+							<time datetime="2017-08-19T22:17:00+02:00">
+								19/08/2017 at 22:17							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Grazie Marco, gli inviti sono sempre i soliti: forkare il codice per giocarci un po&#8217; e raggiungerci su slack 🙂</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/algoritmi-genetici-con-scala-gioconda/?replytocom=777#respond' data-commentid="777" data-postid="14843" data-belowelement="div-comment-777" data-respondelement="respond" aria-label='Reply to Giampaolo Trapasso'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+		<div id="respond" class="comment-respond">
+		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='14843' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+	
+</div>
+<!-- end comments -->
+
+    <!-- related posts (by tags) -->
+    <div class="bwp-related-posts-container bwp-show-2-posts">
+      <div class="bwp-o-hidden">
+
+        <!-- title -->
+        <h2 class="bwp-related-posts-title">
+          You might also like:        </h2>
+        <!-- end title -->
+
+        <!-- posts list -->
+        <div class="bwp-related-posts clearfix">
+
+          
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="https://codingjam.it/alla-faccia-dellinterfaccia-scala-a-tratti/">Alla faccia dell&#8217;interfaccia: Scala a Tratti</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p align="justify">Platone definiva l’essere umano come “Bipede implume dotato di anima“: aveva sicuramente in mente i Tratti Scala, nella sua lungimiranza. I tratti, analoghi alle interfacce Java, offrono in più la possibilità di centralizzare codice, maggiore flessibilità associata a un migliore controllo. Non ci credete? Leggiamo insieme questo post!</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2011/08/02/" class="bwp-post-date">
+        <span class="date updated">02/08/2011</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="https://codingjam.it/alla-faccia-dellinterfaccia-scala-a-tratti/" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="https://codingjam.it/cosenonjaviste-codemotion/">CoseNonJaviste @ Codemotion</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>Sabato 5 Marzo alcuni membri di CoseNonJaviste (Andrea Como, Fabio Collini e Manuele Piastra) si sono recati nella città eterna per partecipare al Codemotion, la nuova edizione del JavaDay.</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2011/03/10/" class="bwp-post-date">
+        <span class="date updated">10/03/2011</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="https://codingjam.it/cosenonjaviste-codemotion/" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+        </div>
+        <!-- end posts list -->
+
+      </div>
+    </div>
+    <!-- end related posts -->
+
+    
+                  </div><!-- /bwp-single-content-col-wrap --></div><!-- /col-md-8 --><div class="col-md-4 bwp-sidebar-col bwp-sidebar-right">
+        
+                  </div><!-- /col --></div><!-- /row -->
+        
+      </div>
+    </div>
+  </section>
+  <!-- end blog post - single page -->
+
+  
+<!-- footer -->
+<footer id="bwp-footer-wrap">
+  <div class="container">
+    <div class="bwp-footer-container clearfix">
+
+              <!-- footer text -->
+        <div class="bwp-footer-text">
+          CodingJam        </div>
+        <!-- end footer text -->
+      
+              <!-- social links -->
+        <ul class="bwp-footer-social-links list-unstyled clearfix">
+          <li><a href="https://twitter.com/codingjam" target="_blank" class="bwp-f-twitter-link"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.facebook.com/codingjamit/" target="_blank" class="bwp-f-facebook-link"><i class="fa fa-facebook"></i></a></li><li><a href="https://github.com/coding-jam" target="_blank" class="bwp-f-github-link"><i class="fa fa-github"></i></a></li>        </ul>
+        <!-- end social links -->
+      
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+
+<!--googleoff: all--><div id="cookie-law-info-bar"><span>Questo sito Web utilizza i cookie per migliorare la tua esperienza. Daremo per scontato che per te sia ok, ma puoi disattivarlo se lo desideri..<a role='button' tabindex='0' data-cli_action="accept" id="cookie_action_close_header"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button" style="display:inline-block; ">Accetto</a>  <a role='button' tabindex='0' id="cookie_action_close_header_reject"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header_reject cli_action_button"  data-cli_action="reject">Annulla</a> <a href='../cookie.html' id="CONSTANT_OPEN_URL" target="_blank"  class="cli-plugin-main-link"  style="display:inline-block;" >Read More</a></span></div><div id="cookie-law-info-again" style="display:none;"><span id="cookie_hdr_showagain">Privacy & Cookies</span></div><div class="cli-modal" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+    <div class="cli-modal-content cli-bar-popup">
+      <button type="button" class="cli-modal-close" id="cliModalClose">
+        <svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+        <span class="wt-cli-sr-only">Close</span>
+      </button>
+      <div class="cli-modal-body">
+        <div class="cli-container-fluid cli-tab-container">
+    <div class="cli-row">
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0">
+            <div class="cli-privacy-overview">
+                                                   
+                <div class="cli-privacy-content">
+                    <div class="cli-privacy-content-text"></div>
+                </div>
+                <a class="cli-privacy-readmore" data-readmore-text="Show more" data-readless-text="Show less"></a>            </div>
+        </div>  
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+              
+                            <div class="cli-tab-section">
+                    <div class="cli-tab-header">
+                        <a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab" >
+                            Necessary 
+                        </a>
+                    
+                    <span class="cli-necessary-caption">Always Enabled</span>                     </div>
+                    <div class="cli-tab-content">
+                        <div class="cli-tab-pane cli-fade" data-id="necessary">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+              
+                       
+        </div>
+    </div> 
+</div> 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<script type="text/javascript">
+  /* <![CDATA[ */
+  cli_cookiebar_settings='{"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":false,"button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":true,"button_1_new_win":false,"button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":false,"button_2_hidebar":false,"button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":true,"button_3_new_win":false,"button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#fff","button_4_as_button":true,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":false,"scroll_close_reload":false,"accept_close_reload":false,"reject_close_reload":false,"showagain_tab":true,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":false,"show_once":"10000","logging_on":false,"as_popup":false,"popup_overlay":true,"bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"}';
+  /* ]]> */
+</script>
+<!--googleon: all--><script type='text/javascript' src='../wp-content/themes/melissa/js/bootstrap.min7433.js?ver=3.3.7'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.parallaxc358.js?ver=1.1.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/superfish.min97e9.js?ver=1.7.9'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel.min3ba1.js?ver=1.3.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/magnific-popup/jquery.magnific-popup.minf488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
+</body>
+
+<!-- Mirrored from codingjam.it/algoritmi-genetici-con-scala-gioconda/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+</html>

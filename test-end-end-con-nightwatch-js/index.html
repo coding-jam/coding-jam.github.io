@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from codingjam.it/test-end-end-con-nightwatch-js/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="pingback" href="../xmlrpc.php">
+
+  <title>Test end-to-end con Nightwatch.js &#8211; CodingJam</title>
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Feed" href="../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Comments Feed" href="../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Test end-to-end con Nightwatch.js Comments Feed" href="https://codingjam.it/test-end-end-con-nightwatch-js/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='../wp-content/plugins/gutenberg/build/block-library/stylea4fb.css?ver=1591004795' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-gdpr-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='melissa-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lato%3A400%2C400i%2C700%2C700i%7CNoto+Serif%3A400%2C400i%2C700%2C700i&amp;subset=latin&amp;ver=1.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../wp-content/themes/melissa/css/bootstrap.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-theme-css'  href='../wp-content/themes/melissa/css/bootstrap-theme.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-ie10-viewport-bug-workaround-css'  href='../wp-content/themes/melissa/css/ie10-viewport-bug-workaround8a54.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='../wp-content/themes/melissa/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-carousel-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-theme-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.theme3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='magnific-popup-css'  href='../wp-content/themes/melissa/assets/magnific-popup/magnific-popupf488.css?ver=1.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-style-css'  href='../wp-content/themes/melissa/style3ec8.css?ver=1.1.6' type='text/css' media='all' />
+<style id='melissa-style-inline-css' type='text/css'>
+
+    .bwp-post-media img,
+    .bwp-post-carousel-item img,
+    .widget_bwp_posts_slider_item img {
+      width: 100%;
+      margin: 0;
+    }
+    .bwp-post-wrap:hover {
+      margin-top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+    #bwp-masonry-container.no-masonry .bwp-post-wrap:hover {
+      top: 0;
+    }
+    .bwp-no-results-container:hover,
+    .bwp-single-article:hover,
+    .bwp-featured-media-container:hover,
+    .post-navigation .nav-links a:hover,
+    .bwp-about-author-container:hover,
+    .comment-respond:hover,
+    .comment-body:hover,
+    #comments .no-comments:hover,
+    .comment-navigation .nav-links a:hover,
+    .bwp-related-post-wrap:hover,
+    .bwp-page-404-container:hover,
+    .bwp-sidebar-wrap:hover {
+      top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+  #bwp-header-wrap {
+    background-color: #2e3340;
+  }
+  .bwp-header-bg-overlay,
+  .bwp-header-rs-bg-overlay {
+    background-color: rgba(46, 51, 64, 0.9);
+  }
+    .bwp-content a,
+    .comment-content a,
+    .bwp-post-quote a {
+      color: #2052bf;
+    }
+</style>
+<link rel='stylesheet' id='enlighter-local-css'  href='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.css?ver=3.9.0' type='text/css' media='all' />
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery4a5f.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[]};
+var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/cookie-law-info/public/js/cookie-law-info-public3cf4.js?ver=1.8.8'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/respond.min.js?ver=1.4.2'></script>
+<![endif]-->
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/mootools-core-yc9086.js?ver=3.9.0'></script>
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.js?ver=3.9.0'></script>
+<link rel='https://api.w.org/' href='../wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+<link rel='prev' title='JCache con Spring Boot e Hazelcast' href='../jcache-con-spring-boot-e-hazelcast/index.html' />
+<link rel='next' title='Angular 2 diventa 4 (per adesso)!' href='../angular-2-diventa-4-per-adesso/index.html' />
+<meta name="generator" content="WordPress 5.4.1" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://codingjam.it/?p=14617' />
+<link rel="alternate" type="application/json+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Ftest-end-end-con-nightwatch-js%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Ftest-end-end-con-nightwatch-js%2F&amp;format=xml" />
+<link rel="amphtml" href="https://codingjam.it/test-end-end-con-nightwatch-js/amp/"><script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"droide","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":false,"windowButton":false,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" sizes="32x32" />
+<link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://codingjam.it/wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-270x270.png" />
+</head>
+
+<body class="post-template-default single single-post postid-14617 single-format-standard wp-custom-logo">
+
+
+<!-- header -->
+<header id="bwp-header-wrap" class="bwp-header-simple">
+
+  <!-- header bg -->
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P6261835_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg-overlay"></div>
+
+    <!-- header content -->
+    <div class="container">
+      <div class="bwp-header-content-container">
+
+        <!-- row 1 - logo + navigation -->
+        <div class="bwp-main-navigation-container clearfix">
+
+          
+        <!-- image logo -->
+        <div class="bwp-logo-container">
+          <a href="../index.html" class="custom-logo-link" rel="home"><img width="207" height="70" src="../wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png" class="custom-logo" alt="CodingJam" srcset="https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png 207w, https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco-150x51.png 150w" sizes="(max-width: 207px) 100vw, 207px" /></a>        </div>
+        <!-- end image logo -->
+
+        
+      <!-- search -->
+      <div class="bwp-header-search-container hidden-sm hidden-xs">
+        <a href="#" id="bwp-header-search-icon">
+          <i class="fa fa-search"></i>
+        </a>
+        <div class="bwp-dropdown-search-container bwp-search-hidden">
+          
+<!-- search form -->
+<form id="searchform" role="search" method="get" action="https://codingjam.it/">
+  <div class="input-group">
+    <input type="text" name="s" id="s" class="bwp-search-field form-control" placeholder="Enter your search query...">
+    <span class="input-group-btn">
+      <button type="submit" class="btn bwp-search-submit">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+</form>
+<!-- end search form -->
+        </div>
+      </div>
+      <!-- end search -->
+
+      
+      <!-- menu -->
+      <div class="bwp-menu-container hidden-sm hidden-xs">
+        <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-2" class="sf-menu"><li id="menu-item-12007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li id="menu-item-12022" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li id="menu-item-12009" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li id="menu-item-12020" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li id="menu-item-12017" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li id="menu-item-12006" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li id="menu-item-12005" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li id="menu-item-12008" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li id="menu-item-12014" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li id="menu-item-12012" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li id="menu-item-12010" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li id="menu-item-12021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li id="menu-item-12016" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li id="menu-item-12015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li id="menu-item-12019" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li id="menu-item-12018" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>      </div>
+      <!-- end menu -->
+
+      
+      <!-- mobile menu -->
+      <div class="bwp-mobile-menu-container hidden-md hidden-lg">
+        <!-- mobile menu icon -->
+        <a href="#" id="bwp-mobile-menu-icon">
+          <i class="fa fa-bars"></i>
+        </a>
+        <!-- end mobile menu icon -->
+        <!-- dropdown mobile menu -->
+        <div class="bwp-dropdown-mobile-menu bwp-mobile-menu-hidden">
+          <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-3" class="bwp-mobile-menu list-unstyled"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>        </div>
+        <!-- end dropdown mobile menu -->
+      </div>
+      <!-- end mobile menu -->
+
+      
+        </div>
+        <!-- end row 1 - logo + navigation -->
+
+        
+          <!-- row 2 - header custom text -->
+          <div class="bwp-header-custom-text-container">
+            
+        <!-- custom text - single page -->
+        <h1 class="bwp-header-custom-title entry-title">
+          Test end-to-end con Nightwatch.js        </h1>
+                <div class="bwp-header-transparent-line clearfix">
+          <span class="bwp-header-t-line-1"></span>
+          <span class="bwp-header-t-line-2"></span>
+        </div>
+        <!-- end custom text -->
+
+                  </div>
+          <!-- end row 2 - header custom text -->
+
+          
+      </div>
+    </div>
+    <!-- end header content -->
+  </div>
+  <!-- end header bg -->
+
+  
+        <!-- sticky navigation -->
+        <div class="bwp-sticky-navigation-wrap bwp-transition-4 clearfix">
+          <!-- sticky navigation icon -->
+          <a href="#" id="bwp-sticky-navigation-icon">
+            <i class="fa fa-bars"></i>
+          </a>
+          <!-- end sticky navigation icon -->
+          <!-- sticky navigation container -->
+          <div class="bwp-sticky-navigation-container bwp-sticky-navigation-hidden">
+            <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-4" class="sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>          </div>
+          <!-- end sticky navigation container -->
+        </div>
+        <!-- end sticky navigation -->
+
+        
+</header>
+<!-- end header -->
+
+  <!-- blog post - single page -->
+  <section id="bwp-single-page-wrap">
+    <div class="container">
+      <div class="bwp-single-page-container" >
+
+        
+                  <div class="row"><div class="col-md-8 bwp-single-content-col bwp-sidebar-right"><div class="bwp-single-content-col-wrap" role="main">
+        
+        <!-- article -->
+        <article id="post-14617" class="bwp-single-article bwp-transition-3">
+
+          
+          <!-- content container -->
+          <div class="bwp-single-content">
+
+            <!-- content -->
+            <div class="bwp-content entry-content clearfix">
+              <p>C&#8217;è una categoria di test che spesso sono snobbati dagli sviluppatori: i test end-to-end (E2E). Per test end-to-end si intende <strong>un test che copre l&#8217;intero flow dell&#8217;applicazione integrando tutti gli elementi di cui è composta</strong>. In questo post ci occuperemo in particolare di test E2E di un&#8217;applicazione web, in questo caso questi test sono detti anche UI o funzionali. In pratica simuleremo i click e le altre interazioni dell&#8217;utente con un browser <i>reale</i> che navigherà l&#8217;applicazione <i>reale</i>. <a href="https://www.mountaingoatsoftware.com/">Mike Cohn</a> nella sua famosa piramide del testing li posiziona in cima.</p>
+<figure style="width: 256px" class="wp-caption aligncenter"><a href="https://www.scrumalliance.org/community/spotlight/mike-cohn/december-2014/test-automation-let-service-be-your-middle-man"><img src="https://www.mountaingoatsoftware.com/uploads/blog/Testpyramid.jpg" width="256" height="179" alt="Testing pyramid" class="size-large" /></a><figcaption class="wp-caption-text">Photo by https://www.scrumalliance.org/</figcaption></figure>
+<p>Il fatto che siano in cima alla piramide sta a significare che il loro numero dovrebbe essere inferiore a quello dei test unitari o di <a href="../maven-integration-tests/index.html" target="_blank">integrazione</a>. Questo perché <strong>i test E2E sono molto costosi a livello di architettura da mettere in piedi, come tempi di esecuzione e come tempi di scrittura</strong>. Questo però non significa che non debbano essere presenti all&#8217;interno delle vostre applicazioni. Soprattutto se lavorate in grossi progetti frontend ci sono alcuni tipi di bug che sono difficilmente replicabili se non con questa tipologia di test. Il software che useremo per creare questi test è <a href="http://nightwatchjs.org/" target="_blank">Nightwatch.js</a>. Come altri strumenti simili è un wrapper Node.js di Selenium il famoso tool di browser automation scritto in Java.</p>
+<figure id="attachment_14629" aria-describedby="caption-attachment-14629" style="width: 740px" class="wp-caption aligncenter"><a href="https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-17.18.28.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-17.18.28-1024x384.png" alt="Il logo di Nightwatch.js" width="740" height="278" class="size-large wp-image-14629" srcset="https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-17.18.28-1024x384.png 1024w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-17.18.28-300x113.png 300w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-17.18.28-768x288.png 768w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-17.18.28.png 1280w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-17.18.28-300x113@2x.png 600w" sizes="(max-width: 740px) 100vw, 740px" /></a><figcaption id="caption-attachment-14629" class="wp-caption-text">Il logo di Nightwatch.js</figcaption></figure>
+<h2>Installazione e Configurazione</h2>
+<p>Nightwatch.js è un pacchetto <i>npm</i>, quindi per installarlo va aggiunto al <code>package.json</code>. Altra dipendenza utile è <code>selenium-standalone</code>, pacchetto ci permette di installare agevolmente il <code>jar</code> di selenium ed i <a href="https://www.w3.org/TR/webdriver/" target="_blank">WebDriver</a> per i vari browser. Ecco il <code>package.json</code> completo.</p>
+<pre class="brush: jscript; highlight: [13]; title: ; notranslate" title="">
+{
+  &quot;name&quot;: &quot;nightwatchjs-example&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;repository&quot;: &quot;git@github.com:coding-jam/nightwatchjs-example.git&quot;,
+  &quot;author&quot;: &quot;Francesco Strazzullo &lt;francesco.strazzullo86@gmail.com&gt;&quot;,
+  &quot;license&quot;: &quot;MIT&quot;,
+  &quot;devDependencies&quot;: {
+    &quot;nightwatch&quot;: &quot;0.9.15&quot;,
+    &quot;selenium-standalone&quot;: &quot;6.4.1&quot;
+  },
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;nightwatch&quot;,
+    &quot;postinstall&quot;: &quot;selenium-standalone install&quot;
+  }
+}
+</pre>
+<p>Nello <i>script</i> di <code>postinstall</code> usiamo proprio <code>selenium-standalone</code> per installare selenium in automatico ogni volta che viene lanciato il comando <code>npm install</code>. Utilizzeremo invece <i>l&#8217;alias</i> <code>npm test</code> per lanciare i test di Nightwatch.</p>
+<p>La configurazione di Nightwatch va inserita nel file <code>nightwatch.conf.js</code> che dovrà essere presente nella <i>root</i> del nostro progetto. Questo è un file di configurazione di esempio.</p>
+<pre class="brush: jscript; highlight: [1,9]; title: ; notranslate" title="">
+const selenium = {
+  start_process: true,
+  server_path: './node_modules/selenium-standalone/.selenium/selenium-server/3.4.0-server.jar',
+  cli_args: {
+    'webdriver.chrome.driver': './node_modules/selenium-standalone/.selenium/chromedriver/2.29-x64-chromedriver'
+  }
+}
+
+const test_settings = {
+  default: {
+    desiredCapabilities: {
+      browserName: 'chrome'
+    }
+  }
+}
+
+module.exports = {
+  src_folders: 'tests',
+  selenium,
+  test_settings
+}
+</pre>
+<p>Questa configurazione è divisa in due macroblocchi. Il primo è la configurazione di selenium stesso. In questa sezione sono presenti i path di selenium e del webdriver di Chrome. L&#8217;altro invece riguarda gli <i>enviroment</i> di testing. Nel nostro caso abbiamo solo quello di default dove indichiamo che il browser che vogliamo utilizzare durante i  test è Chrome.</p>
+<h2>Scriviamo dei test</h2>
+<p>In questo primo test vedremo come <strong>testare la navigazione di un sito web</strong>. Ovviamente come sito d’esempio prenderemo proprio il nostro blog.</p>
+<pre class="brush: jscript; title: ; notranslate" title="">
+module.exports = {
+  'Coding Jam - Navigation': browser =&gt; {
+    browser
+      .url('https://codingjam.it/')
+      .waitForElementVisible('.entry-title a', 5000)
+      .getAttribute('.entry-title a', 'href', (result) =&gt; {
+        browser.click('.entry-title a')
+        .pause(1000)
+        .assert.urlEquals(result.value)
+        .end()
+      })
+  }
+}
+</pre>
+<p>Durante l&#8217;esecuzione di questo test nightwatch cerca il primo link all&#8217;interno di un elemento del DOM con la classe <code>entry-title</code> (in pratica i titoli dei post sulla nostra homepage). Una volta individuato l&#8217;elemento questo viene cliccato e infine facciamo un&#8217;asserzione sul fatto che il nuovo URL sia esattamente identico all&#8217;attributo <code>href</code> del link stesso.</p>
+<figure id="attachment_14636" aria-describedby="caption-attachment-14636" style="width: 740px" class="wp-caption aligncenter"><a href="https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2-1024x640.png" alt="Testing Coding Jam!" width="740" height="463" class="size-large wp-image-14636" srcset="https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2-1024x640.png 1024w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2-300x188.png 300w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2-768x480.png 768w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2-400x250.png 400w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2-1024x640@2x.png 2048w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2-300x188@2x.png 600w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2-768x480@2x.png 1536w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2-400x250@2x.png 800w" sizes="(max-width: 740px) 100vw, 740px" /></a><figcaption id="caption-attachment-14636" class="wp-caption-text">Testing Coding Jam!</figcaption></figure>
+<p>Continuiamo con altri test: questa volta testeremo una <a href="https://en.wikipedia.org/wiki/Single-page_application">single page application</a>. In particolare utilizzeremo con <i>target</i> una delle innumerevoli versioni di <a href="http://todomvc.com/" target="_blank">TodoMVC</a>: in particolare quella in <a href="https://www.polymer-project.org/" target="_blank">Polymer</a>. <strong>In pratica TodoMVC è una raccolta di semplici applicazioni <i>todo-list</i> tutte identiche tra loro</strong>, sviluppate con framework differenti per valutarne peculiarità e differenze. Potete vedere il funzionamento di questa applicazione della <i>gif</i> qui sotto.</p>
+<figure id="attachment_14620" aria-describedby="caption-attachment-14620" style="width: 640px" class="wp-caption aligncenter"><a href="https://codingjam.it/wp-content/uploads/2017/05/TodoMVC.gif" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2017/05/TodoMVC.gif" alt="TodoMVC" width="640" height="320" class="size-full wp-image-14620" /></a><figcaption id="caption-attachment-14620" class="wp-caption-text">TodoMVC</figcaption></figure>
+<p>Il prossimo test è sull&#8217;aggiunta di un <i>todo</i>. Controlliamo che all&#8217;inizio la lista dei <i>todo</i> sia vuota. Dopodiché, dopo aver inserito del testo nella casella di <i>input</i> e simulato la pressione del tasto invio, verifichiamo che un elemento contenente il testo inserito sia effettivamente nella lista.</p>
+<pre class="brush: jscript; title: ; notranslate" title="">
+module.exports = {
+  'TodoMVC - Add': browser =&gt; {
+    const TODO_ITEM_SELECTOR = 'ul[id=&quot;todo-list&quot;] li'
+    const TODO_TEXT = 'This is my first Todo'
+
+    browser
+      .url('http://todomvc.com/examples/polymer/index.html')
+      .waitForElementVisible('body', 1000)
+      .assert.elementNotPresent(TODO_ITEM_SELECTOR)
+      .setValue('input', TODO_TEXT)
+      .keys(browser.Keys.ENTER)
+      .assert.elementPresent(TODO_ITEM_SELECTOR)
+      .assert.containsText(TODO_ITEM_SELECTOR, TODO_TEXT)
+      .end()
+  }
+}
+</pre>
+<p>Questo test è facilmente leggibile, ma immaginate di avere un&#8217;applicazione con <strong>decine di viste differenti dove per ognuna l&#8217;utente può effettuare decine di operazioni differenti</strong>. Se volessimo testare un flusso complesso di un&#8217;applicazione del genere, il codice dei test diventerebbe immediatamente poco chiaro. <strong>Il pattern che di solito utilizzo per risolvere questo problema è quello dei <em><a href="https://www.thoughtworks.com/insights/blog/using-page-objects-overcome-protractors-shortcomings" target="_blank">Page Objects</a></em></strong>. In pratica si crea un oggetto per ognuna delle viste dell&#8217;applicazione. Questi oggetti hanno poi tanti metodi pubblici quante sono le operazioni possibili sulla quella vista da parte dell&#8217;utente. Questa è una versione non completa della nostra TodoMVC, in quanto sono presenti solo le azioni di aggiunta ed eliminazione di un <i>todo</i>.</p>
+<pre class="brush: jscript; title: ; notranslate" title="">
+class TodoMVC {
+  constructor (browser) {
+    this.browser = browser
+  }
+
+  open () {
+    this.browser
+        .url('http://todomvc.com/examples/polymer/index.html')
+        .waitForElementVisible('body', 1000)
+
+    return this
+  }
+
+  addTodo (text) {
+    this.browser
+    .setValue('input', text)
+    .keys(this.browser.Keys.ENTER)
+
+    return this
+  }
+
+  deleteTodo (index) {
+    const todoItemSelector = `ul[id=&quot;todo-list&quot;] li .td-item:nth-of-type(${index + 1})`
+    const deleteItemSelector = `.destroy:nth-of-type(${index + 1})`
+
+    this.browser
+        .moveToElement(todoItemSelector, 10, 10)
+        .waitForElementVisible(deleteItemSelector, 1000)
+        .click(deleteItemSelector)
+    return this
+  }
+}
+</pre>
+<p>In questo caso il test precedente sull&#8217;aggiunta di un <i>todo</i> diventa:</p>
+<pre class="brush: jscript; title: ; notranslate" title="">
+const TODO_ITEM_SELECTOR = 'ul[id=&quot;todo-list&quot;] li'
+const FIRST_TODO_TEXT = 'This is my first Todo'
+const SECOND_TODO_TEXT = 'This is my second Todo'
+
+module.exports = {
+  'TodoMVC - Add': browser =&gt; {
+    const todomvc = new TodoMVC(browser)
+    todomvc.open()
+
+    browser.assert.elementNotPresent(TODO_ITEM_SELECTOR)
+
+    todomvc.addTodo(FIRST_TODO_TEXT)
+
+    browser
+        .assert.elementPresent(TODO_ITEM_SELECTOR)
+        .assert.containsText(TODO_ITEM_SELECTOR, FIRST_TODO_TEXT)
+        .end()
+  },
+}
+</pre>
+<p><strong>Come potete vedere la lettura (e quindi la manutenibilità) del test è notevolmente migliorata.</strong> La cosa diventa ancora più palese nei prossimi due test che riguardano invece la cancellazione di un <i>todo</i>.</p>
+<pre class="brush: jscript; title: ; notranslate" title="">
+module.exports = {
+  'TodoMVC - Delete': browser =&gt; {
+    const todomvc = new TodoMVC(browser)
+
+    todomvc
+        .open()
+        .addTodo(FIRST_TODO_TEXT)
+        .deleteTodo(0)
+
+    browser
+        .assert.elementNotPresent(TODO_ITEM_SELECTOR)
+        .end()
+  },
+  'TodoMVC - Delete More': browser =&gt; {
+    const todomvc = new TodoMVC(browser)
+
+    todomvc
+        .open()
+        .addTodo(FIRST_TODO_TEXT)
+        .addTodo(SECOND_TODO_TEXT)
+        .deleteTodo(0)
+
+    browser
+        .assert.elementPresent(TODO_ITEM_SELECTOR)
+        .assert.containsText(TODO_ITEM_SELECTOR, SECOND_TODO_TEXT)
+        .end()
+  }
+}
+</pre>
+<h2>Conclusioni</h2>
+<p><strong>Scrivere test E2E per applicazioni &#8220;reali&#8221; non è mai semplice</strong>. Un assaggio del tipo di complessità che vi troverete ad affrontare lo potete trovare nel codice della funzione <code>deleteTodo</code>. In questa funzione infatti <strong>bisogna simulare lo spostamento del mouse sopra il testo del <i>todo</i> e attendere la fine dell&#8217;animazione che fa comparire il pulsante per la cancellazione</strong>. Ovviamente questo tipo di codice è davvero fragile e rischia di rompersi con ogni piccola modifica, anche solo di uno stile CSS. Ma come detto in apertura del post alcune funzionalità possono essere testate esclusivamente con questa modalità. Un consiglio è affiancare a questa modalità di test anche del <a href="http://www.francescostrazzullo.info/blog/2016/12/monkey-testing-con-gremlins-js/" target="_blank">monkey testing</a>. Se siete curiosi e volete sporcarvi le mani potete trovare tutto il codice su <a href="https://github.com/coding-jam/nightwatchjs-example" target="_blank">Github</a>. Alla prossima.</p>
+            </div>
+            <!-- end content -->
+
+            
+                <!-- social sharing buttons / counters -->
+                <div class="row">
+                  <div class="col-md-7">
+                    
+    <!-- social sharing buttons -->
+    <div class="bwp-single-share-wrap">
+      <span>Share:</span>
+      <ul class="bwp-single-share list-unstyled">
+        <!-- facebook -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/test-end-end-con-nightwatch-js/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/test-end-end-con-nightwatch-js/" target="_blank" class="bwp-share-link bwp-facebook-share">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <!-- end facebook -->
+        <!-- twitter -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/test-end-end-con-nightwatch-js/&amp;text=test-end-to-end-con-nightwatch-js', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/test-end-end-con-nightwatch-js/&amp;text=test-end-to-end-con-nightwatch-js" target="_blank" class="bwp-share-link bwp-twitter-share">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <!-- end twitter -->
+        <!-- google+ -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/test-end-end-con-nightwatch-js/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/test-end-end-con-nightwatch-js/" target="_blank" class="bwp-share-link bwp-google-plus-share">
+            <i class="fa fa-google-plus"></i>
+          </a>
+        </li>
+        <!-- end google+ -->
+        <!-- vk -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/test-end-end-con-nightwatch-js/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/test-end-end-con-nightwatch-js/" target="_blank" class="bwp-share-link bwp-vk-share">
+            <i class="fa fa-vk"></i>
+          </a>
+        </li>
+        <!-- end vk -->
+        <!-- pinterest -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/test-end-end-con-nightwatch-js/&amp;media=&amp;description=test-end-to-end-con-nightwatch-js', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/test-end-end-con-nightwatch-js/&amp;media=&amp;description=test-end-to-end-con-nightwatch-js" target="_blank" class="bwp-share-link bwp-pinterest-share">
+            <i class="fa fa-pinterest-p"></i>
+          </a>
+        </li>
+        <!-- end pinterest -->
+      </ul>
+    </div>
+    <!-- end social sharing buttons -->
+
+                      </div>
+                  <div class="col-md-5">
+                    
+    <!-- counters -->
+    <ul class="bwp-single-counters list-unstyled clearfix ">
+                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>2</a></li>
+                </ul>
+    <!-- end counters -->
+
+                      </div>
+                </div>
+                <!-- end social sharing buttons / counters -->
+
+                
+      <!-- metadata -->
+      <div class="bwp-single-metadata-wrap ">
+        <ul class="bwp-single-metadata list-unstyled clearfix">
+                      <!-- author -->
+            <li>
+              <span class="vcard author">
+                <span class="fn">
+                  <i class="fa fa-pencil-square-o"></i><a href="../author/francesco-strazzullo/index.html" title="Posts by Francesco Strazzullo" rel="author">Francesco Strazzullo</a>                </span>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end author -->
+                                <!-- date -->
+            <li>
+                            <span class="date updated">
+                <i class="fa fa-clock-o"></i><a href="https://codingjam.it/2017/05/16/">16/05/2017</a>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end date -->
+                                <!-- categories -->
+            <li>
+              <i class="fa fa-bookmark-o"></i><a href="../category/tutorial-2/index.html" rel="category tag">Tutorial</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end categories -->
+                            </ul>
+      </div>
+      <!-- end metadata -->
+
+      
+          </div>
+          <!-- end content container -->
+
+        </article>
+        <!-- end article -->
+
+        
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="../jcache-con-spring-boot-e-hazelcast/index.html" rel="prev"><span class="meta-nav"><i class="fa fa-angle-left"></i>Previous post</span><span class="post-title-nav">JCache con Spring Boot e Hazelcast</span></a></div><div class="nav-next"><a href="../angular-2-diventa-4-per-adesso/index.html" rel="next"><span class="meta-nav">Next post<i class="fa fa-angle-right"></i></span><span class="post-title-nav">Angular 2 diventa 4 (per adesso)!</span></a></div></div>
+	</nav>
+    <!-- about the author -->
+    <div class="bwp-about-author-container bwp-transition-3 clearfix">
+      <!-- avatar -->
+      <div class="bwp-about-author-avatar">
+        <a href="../author/francesco-strazzullo/index.html">
+          <img alt='' src='https://secure.gravatar.com/avatar/f0012066f4fad79deb33bf5e9799b557?s=150&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/f0012066f4fad79deb33bf5e9799b557?s=300&#038;d=mm&#038;r=g 2x' class='avatar avatar-150 photo' height='150' width='150' />        </a>
+      </div>
+      <!-- end avatar -->
+      <!-- biographical info -->
+      <div class="bwp-about-author-bio-wrap">
+        <h3 class="bwp-about-author-name">
+          <a href="../author/francesco-strazzullo/index.html" title="Posts by Francesco Strazzullo" rel="author">Francesco Strazzullo</a>          <span><i class="fa fa-angle-double-right"></i>30 Posts</span>
+        </h3>
+        <div class="bwp-about-author-bio">
+          Sono uno sviluppatore front-end, speaker e trainer per <a href="https://www.flowing.it/">Flowing</a>. Oltre a scrivere su vari blog (tra cui codingjam!) sono l'autore de libro <a href="https://www.amazon.it/gp/product/1484249666">"Frameworkless Front-end Development"</a>. Nel tempo libero mi piace cucinare cibo etnico e giocare ai videogame.        </div>
+                  <ul class="bwp-about-author-social list-unstyled clearfix">
+                              <li><a href="http://@thestrazz86/" target="_blank" class="bwp-a-twitter-link"><i class="fa fa-twitter"></i></a></li>
+                                  <li><a href="https://github.com/francesco-strazzullo" target="_blank" class="bwp-a-github-link"><i class="fa fa-github"></i></a></li>
+                                  <li><a href="http://www.cosenonjaviste.it/?team=francesco-strazzullo" target="_blank" class="bwp-a-website-link"><i class="fa fa-link"></i></a></li>
+                          </ul>
+              </div>
+      <!-- end biographical info -->
+    </div>
+    <!-- end about the author -->
+
+    
+<!-- comments -->
+<div id="comments" class="comments-area">
+
+	
+		<h2 class="comments-title">
+			2 thoughts on &ldquo;Test end-to-end con Nightwatch.js&rdquo;		</h2>
+
+		<ol class="comment-list">
+					<li id="comment-767" class="comment even thread-even depth-1 parent">
+			<article id="div-comment-767" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/6aae6795979c9d317c4ff5d3a1fd82b4?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/6aae6795979c9d317c4ff5d3a1fd82b4?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Alessandro Bx</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-767">
+							<time datetime="2017-07-29T10:30:00+02:00">
+								29/07/2017 at 10:30							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>&#8216; Usare nightwatch.js con selenium e comodissimo grazie per avermelo fatto scoprire</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/test-end-end-con-nightwatch-js/?replytocom=767#respond' data-commentid="767" data-postid="14617" data-belowelement="div-comment-767" data-respondelement="respond" aria-label='Reply to Alessandro Bx'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-768" class="comment odd alt depth-2">
+			<article id="div-comment-768" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/7fb0eed4a7e26cf94b73b310e55257b2?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/7fb0eed4a7e26cf94b73b310e55257b2?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Francesco Strazzullo</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-768">
+							<time datetime="2017-07-30T11:00:00+02:00">
+								30/07/2017 at 11:00							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Di nulla Alessandro, se ti interessa discutere di questo e di altro sul mondo JS o in generale sullo sviluppo vieni pure a trovarci nel nostro slack <a href="https://slackin-codingjam.herokuapp.com/" rel="nofollow ugc">https://slackin-codingjam.herokuapp.com/</a></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/test-end-end-con-nightwatch-js/?replytocom=768#respond' data-commentid="768" data-postid="14617" data-belowelement="div-comment-768" data-respondelement="respond" aria-label='Reply to Francesco Strazzullo'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+		<div id="respond" class="comment-respond">
+		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='14617' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+	
+</div>
+<!-- end comments -->
+
+                  </div><!-- /bwp-single-content-col-wrap --></div><!-- /col-md-8 --><div class="col-md-4 bwp-sidebar-col bwp-sidebar-right">
+        
+                  </div><!-- /col --></div><!-- /row -->
+        
+      </div>
+    </div>
+  </section>
+  <!-- end blog post - single page -->
+
+  
+<!-- footer -->
+<footer id="bwp-footer-wrap">
+  <div class="container">
+    <div class="bwp-footer-container clearfix">
+
+              <!-- footer text -->
+        <div class="bwp-footer-text">
+          CodingJam        </div>
+        <!-- end footer text -->
+      
+              <!-- social links -->
+        <ul class="bwp-footer-social-links list-unstyled clearfix">
+          <li><a href="https://twitter.com/codingjam" target="_blank" class="bwp-f-twitter-link"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.facebook.com/codingjamit/" target="_blank" class="bwp-f-facebook-link"><i class="fa fa-facebook"></i></a></li><li><a href="https://github.com/coding-jam" target="_blank" class="bwp-f-github-link"><i class="fa fa-github"></i></a></li>        </ul>
+        <!-- end social links -->
+      
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+
+<!--googleoff: all--><div id="cookie-law-info-bar"><span>Questo sito Web utilizza i cookie per migliorare la tua esperienza. Daremo per scontato che per te sia ok, ma puoi disattivarlo se lo desideri..<a role='button' tabindex='0' data-cli_action="accept" id="cookie_action_close_header"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button" style="display:inline-block; ">Accetto</a>  <a role='button' tabindex='0' id="cookie_action_close_header_reject"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header_reject cli_action_button"  data-cli_action="reject">Annulla</a> <a href='../cookie.html' id="CONSTANT_OPEN_URL" target="_blank"  class="cli-plugin-main-link"  style="display:inline-block;" >Read More</a></span></div><div id="cookie-law-info-again" style="display:none;"><span id="cookie_hdr_showagain">Privacy & Cookies</span></div><div class="cli-modal" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+    <div class="cli-modal-content cli-bar-popup">
+      <button type="button" class="cli-modal-close" id="cliModalClose">
+        <svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+        <span class="wt-cli-sr-only">Close</span>
+      </button>
+      <div class="cli-modal-body">
+        <div class="cli-container-fluid cli-tab-container">
+    <div class="cli-row">
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0">
+            <div class="cli-privacy-overview">
+                                                   
+                <div class="cli-privacy-content">
+                    <div class="cli-privacy-content-text"></div>
+                </div>
+                <a class="cli-privacy-readmore" data-readmore-text="Show more" data-readless-text="Show less"></a>            </div>
+        </div>  
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+              
+                            <div class="cli-tab-section">
+                    <div class="cli-tab-header">
+                        <a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab" >
+                            Necessary 
+                        </a>
+                    
+                    <span class="cli-necessary-caption">Always Enabled</span>                     </div>
+                    <div class="cli-tab-content">
+                        <div class="cli-tab-pane cli-fade" data-id="necessary">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+              
+                       
+        </div>
+    </div> 
+</div> 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<script type="text/javascript">
+  /* <![CDATA[ */
+  cli_cookiebar_settings='{"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":false,"button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":true,"button_1_new_win":false,"button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":false,"button_2_hidebar":false,"button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":true,"button_3_new_win":false,"button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#fff","button_4_as_button":true,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":false,"scroll_close_reload":false,"accept_close_reload":false,"reject_close_reload":false,"showagain_tab":true,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":false,"show_once":"10000","logging_on":false,"as_popup":false,"popup_overlay":true,"bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"}';
+  /* ]]> */
+</script>
+<!--googleon: all--><script type='text/javascript' src='../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore09b1.js?ver=3.0.9b'></script>
+<script type='text/javascript' src='../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJScript09b1.js?ver=3.0.9b'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore09b1.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeEclipse09b1.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = true;
+	SyntaxHighlighter.defaults['tab-size'] = 2;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/bootstrap.min7433.js?ver=3.3.7'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.parallaxc358.js?ver=1.1.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/superfish.min97e9.js?ver=1.7.9'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel.min3ba1.js?ver=1.3.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/magnific-popup/jquery.magnific-popup.minf488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
+</body>
+
+<!-- Mirrored from codingjam.it/test-end-end-con-nightwatch-js/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html amp lang="en-US" i-amphtml-layout="" i-amphtml-no-boilerplate="" transformed="self;v=1">
+<!-- Mirrored from codingjam.it/integration-test-con-maven-e-docker/amp/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="utf-8"><style amp-runtime="" i-amphtml-version="012011200012001">html{overflow-x:hidden!important}html.i-amphtml-fie{height:100%!important;width:100%!important}html:not([amp4ads]),html:not([amp4ads]) body{height:auto!important}html:not([amp4ads]) body{margin:0!important}body{-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%}html.i-amphtml-singledoc.i-amphtml-embedded{-ms-touch-action:pan-y;touch-action:pan-y}html.i-amphtml-fie>body,html.i-amphtml-singledoc>body{overflow:visible!important}html.i-amphtml-fie:not(.i-amphtml-inabox)>body,html.i-amphtml-singledoc:not(.i-amphtml-inabox)>body{position:relative!important}html.i-amphtml-webview>body{overflow-x:hidden!important;overflow-y:visible!important;min-height:100vh!important}html.i-amphtml-ios-embed-legacy>body{overflow-x:hidden!important;overflow-y:auto!important;position:absolute!important}html.i-amphtml-ios-embed{overflow-y:auto!important;position:static}#i-amphtml-wrapper{overflow-x:hidden!important;overflow-y:auto!important;position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;margin:0!important;display:block!important}html.i-amphtml-ios-embed.i-amphtml-ios-overscroll,html.i-amphtml-ios-embed.i-amphtml-ios-overscroll>#i-amphtml-wrapper{-webkit-overflow-scrolling:touch!important}#i-amphtml-wrapper>body{position:relative!important;border-top:1px solid transparent!important}#i-amphtml-wrapper+body{visibility:visible}#i-amphtml-wrapper+body .i-amphtml-lightbox-element,#i-amphtml-wrapper+body[i-amphtml-lightbox]{visibility:hidden}#i-amphtml-wrapper+body[i-amphtml-lightbox] .i-amphtml-lightbox-element{visibility:visible}#i-amphtml-wrapper.i-amphtml-scroll-disabled,.i-amphtml-scroll-disabled{overflow-x:hidden!important;overflow-y:hidden!important}amp-instagram{padding:54px 0px 0px!important;background-color:#fff}amp-iframe iframe{box-sizing:border-box!important}[amp-access][amp-access-hide]{display:none}[subscriptions-dialog],body:not(.i-amphtml-subs-ready) [subscriptions-action],body:not(.i-amphtml-subs-ready) [subscriptions-section]{display:none!important}amp-experiment,amp-live-list>[update]{display:none}.i-amphtml-jank-meter{position:fixed;background-color:rgba(232,72,95,0.5);bottom:0;right:0;color:#fff;font-size:16px;z-index:1000;padding:5px}amp-list[resizable-children]>.i-amphtml-loading-container.amp-hidden{display:none!important}amp-list [fetch-error],amp-list[load-more] [load-more-button],amp-list[load-more] [load-more-end],amp-list[load-more] [load-more-failed],amp-list[load-more] [load-more-loading]{display:none}amp-list[diffable] div[role=list]{display:block}amp-story-page,amp-story[standalone]{min-height:1px!important;display:block!important;height:100%!important;margin:0!important;padding:0!important;overflow:hidden!important;width:100%!important}amp-story[standalone]{background-color:#202125!important;position:relative!important}amp-story-page{background-color:#757575}amp-story .amp-active>div,amp-story .i-amphtml-loader-background{display:none!important}amp-story-page:not(:first-of-type):not([distance]):not([active]){transform:translateY(1000vh)!important}amp-autocomplete{position:relative!important;display:inline-block!important}amp-autocomplete>input,amp-autocomplete>textarea{padding:0.5rem;border:1px solid rgba(0,0,0,0.33)}.i-amphtml-autocomplete-results,amp-autocomplete>input,amp-autocomplete>textarea{font-size:1rem;line-height:1.5rem}[amp-fx^=fly-in]{visibility:hidden}amp-script[nodom]{position:fixed!important;top:0!important;width:1px!important;height:1px!important;overflow:hidden!important;visibility:hidden}
+/*# sourceURL=/css/ampdoc.css*/[hidden]{display:none!important}.i-amphtml-element{display:inline-block}.i-amphtml-blurry-placeholder{transition:opacity 0.3s cubic-bezier(0.0,0.0,0.2,1)!important;pointer-events:none}[layout=nodisplay]:not(.i-amphtml-element){display:none!important}.i-amphtml-layout-fixed,[layout=fixed][width][height]:not(.i-amphtml-layout-fixed){display:inline-block;position:relative}.i-amphtml-layout-responsive,[layout=responsive][width][height]:not(.i-amphtml-layout-responsive),[width][height][heights]:not([layout]):not(.i-amphtml-layout-responsive),[width][height][sizes]:not([layout]):not(.i-amphtml-layout-responsive){display:block;position:relative}.i-amphtml-layout-intrinsic,[layout=intrinsic][width][height]:not(.i-amphtml-layout-intrinsic){display:inline-block;position:relative;max-width:100%}.i-amphtml-layout-intrinsic .i-amphtml-sizer{max-width:100%}.i-amphtml-intrinsic-sizer{max-width:100%;display:block!important}.i-amphtml-layout-container,.i-amphtml-layout-fixed-height,[layout=container],[layout=fixed-height][height]:not(.i-amphtml-layout-fixed-height){display:block;position:relative}.i-amphtml-layout-fill,.i-amphtml-layout-fill.i-amphtml-notbuilt,[layout=fill]:not(.i-amphtml-layout-fill){display:block;overflow:hidden!important;position:absolute;top:0;left:0;bottom:0;right:0}.i-amphtml-layout-flex-item,[layout=flex-item]:not(.i-amphtml-layout-flex-item){display:block;position:relative;-ms-flex:1 1 auto;flex:1 1 auto}.i-amphtml-layout-fluid{position:relative}.i-amphtml-layout-size-defined{overflow:hidden!important}.i-amphtml-layout-awaiting-size{position:absolute!important;top:auto!important;bottom:auto!important}i-amphtml-sizer{display:block!important}@supports (aspect-ratio:1/1){i-amphtml-sizer.i-amphtml-disable-for-ar{display:none!important}}.i-amphtml-blurry-placeholder,.i-amphtml-fill-content{display:block;height:0;max-height:100%;max-width:100%;min-height:100%;min-width:100%;width:0;margin:auto}.i-amphtml-layout-size-defined .i-amphtml-fill-content{position:absolute;top:0;left:0;bottom:0;right:0}.i-amphtml-replaced-content,.i-amphtml-screen-reader{padding:0!important;border:none!important}.i-amphtml-screen-reader{position:fixed!important;top:0px!important;left:0px!important;width:4px!important;height:4px!important;opacity:0!important;overflow:hidden!important;margin:0!important;display:block!important;visibility:visible!important}.i-amphtml-screen-reader~.i-amphtml-screen-reader{left:8px!important}.i-amphtml-screen-reader~.i-amphtml-screen-reader~.i-amphtml-screen-reader{left:12px!important}.i-amphtml-screen-reader~.i-amphtml-screen-reader~.i-amphtml-screen-reader~.i-amphtml-screen-reader{left:16px!important}.i-amphtml-unresolved{position:relative;overflow:hidden!important}.i-amphtml-select-disabled{-webkit-user-select:none!important;-ms-user-select:none!important;user-select:none!important}.i-amphtml-notbuilt,[layout]:not(.i-amphtml-element),[width][height][heights]:not([layout]):not(.i-amphtml-element),[width][height][sizes]:not([layout]):not(.i-amphtml-element){position:relative;overflow:hidden!important;color:transparent!important}.i-amphtml-notbuilt:not(.i-amphtml-layout-container)>*,[layout]:not([layout=container]):not(.i-amphtml-element)>*,[width][height][heights]:not([layout]):not(.i-amphtml-element)>*,[width][height][sizes]:not([layout]):not(.i-amphtml-element)>*{display:none}amp-img:not(.i-amphtml-element)[i-amphtml-ssr]>img.i-amphtml-fill-content{display:block}.i-amphtml-notbuilt:not(.i-amphtml-layout-container),[layout]:not([layout=container]):not(.i-amphtml-element),[width][height][heights]:not([layout]):not(.i-amphtml-element),[width][height][sizes]:not([layout]):not(.i-amphtml-element){color:transparent!important;line-height:0!important}.i-amphtml-ghost{visibility:hidden!important}.i-amphtml-element>[placeholder],[layout]:not(.i-amphtml-element)>[placeholder],[width][height][heights]:not([layout]):not(.i-amphtml-element)>[placeholder],[width][height][sizes]:not([layout]):not(.i-amphtml-element)>[placeholder]{display:block}.i-amphtml-element>[placeholder].amp-hidden,.i-amphtml-element>[placeholder].hidden{visibility:hidden}.i-amphtml-element:not(.amp-notsupported)>[fallback],.i-amphtml-layout-container>[placeholder].amp-hidden,.i-amphtml-layout-container>[placeholder].hidden{display:none}.i-amphtml-layout-size-defined>[fallback],.i-amphtml-layout-size-defined>[placeholder]{position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;z-index:1}.i-amphtml-notbuilt>[placeholder]{display:block!important}.i-amphtml-hidden-by-media-query{display:none!important}.i-amphtml-element-error{background:red!important;color:#fff!important;position:relative!important}.i-amphtml-element-error:before{content:attr(error-message)}i-amp-scroll-container,i-amphtml-scroll-container{position:absolute;top:0;left:0;right:0;bottom:0;display:block}i-amp-scroll-container.amp-active,i-amphtml-scroll-container.amp-active{overflow:auto;-webkit-overflow-scrolling:touch}.i-amphtml-loading-container{display:block!important;pointer-events:none;z-index:1}.i-amphtml-notbuilt>.i-amphtml-loading-container{display:block!important}.i-amphtml-loading-container.amp-hidden{visibility:hidden}.i-amphtml-element>[overflow]{cursor:pointer;position:relative;z-index:2;visibility:hidden;display:initial;line-height:normal}.i-amphtml-element>[overflow].amp-visible{visibility:visible}template{display:none!important}.amp-border-box,.amp-border-box *,.amp-border-box :after,.amp-border-box :before{box-sizing:border-box}amp-pixel{display:none!important}amp-analytics,amp-auto-ads,amp-story-auto-ads{position:fixed!important;top:0!important;width:1px!important;height:1px!important;overflow:hidden!important;visibility:hidden}html.i-amphtml-fie>amp-analytics{position:initial!important}[visible-when-invalid]:not(.visible),form [submit-error],form [submit-success],form [submitting]{display:none}amp-accordion{display:block!important}amp-accordion>section{float:none!important}amp-accordion>section>*{float:none!important;display:block!important;overflow:hidden!important;position:relative!important}amp-accordion,amp-accordion>section{margin:0}amp-accordion:not(.i-amphtml-built)>section>:last-child{display:none!important}amp-accordion:not(.i-amphtml-built)>section[expanded]>:last-child{display:block!important}
+/*# sourceURL=/css/ampshared.css*/</style><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1"><meta name="generator" content="AMP Plugin v1.5.3; mode=reader"><meta name="generator" content="WordPress 5.4.1"><title>Integration Test con Maven e Docker – CodingJam</title><link rel="preconnect" href="https://cdn.ampproject.org/"><link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js"><script async="" src="https://cdn.ampproject.org/v0.js"></script><style amp-custom="">.amp-wp-enforced-sizes{max-width:100%;margin:0 auto}amp-img.amp-wp-enforced-sizes[layout="intrinsic"] > img{object-fit:contain}html{background:#0a89c0}body{background:#fff;color:#353535;font-family:Georgia,"Times New Roman",Times,Serif;font-weight:300;line-height:1.75em}p,ul,figure{margin:0 0 1em;padding:0}a,a:visited{color:#0a89c0}a:hover,a:active,a:focus{color:#353535}.amp-wp-meta,.amp-wp-header div,.amp-wp-title,.amp-wp-tax-category,.amp-wp-tax-tag,.amp-wp-comments-link,.amp-wp-footer p,.back-to-top{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen-Sans","Ubuntu","Cantarell","Helvetica Neue",sans-serif}.amp-wp-header{background-color:#0a89c0}.amp-wp-header div{color:#fff;font-size:1em;font-weight:400;margin:0 auto;max-width:calc(840px - 32px);padding:.875em 16px;position:relative}.amp-wp-header a{color:#fff;text-decoration:none}.amp-wp-header .amp-wp-site-icon{background-color:#fff;border:1px solid #fff;border-radius:50%;position:absolute;right:18px;top:10px}.amp-wp-article{color:#353535;font-weight:400;margin:1.5em auto;max-width:840px;overflow-wrap:break-word;word-wrap:break-word}.amp-wp-article-header{align-items:center;align-content:stretch;display:flex;flex-wrap:wrap;justify-content:space-between;margin:1.5em 16px 0}.amp-wp-title{color:#353535;display:block;flex:1 0 100%;font-weight:900;margin:0 0 .625em;width:100%}.amp-wp-meta{color:#696969;display:inline-block;flex:2 1 50%;font-size:.875em;line-height:1.5em;margin:0 0 1.5em;padding:0}.amp-wp-article-header .amp-wp-meta:last-of-type{text-align:right}.amp-wp-article-header .amp-wp-meta:first-of-type{text-align:left}.amp-wp-byline amp-img,.amp-wp-byline .amp-wp-author{display:inline-block;vertical-align:middle}.amp-wp-byline amp-img{border:1px solid #0a89c0;border-radius:50%;position:relative;margin-right:6px}.amp-wp-posted-on{text-align:right}.amp-wp-article-featured-image{margin:0 0 1em}.amp-wp-article-featured-image amp-img{margin:0 auto}.amp-wp-article-content{margin:0 16px}.amp-wp-article-content ul{margin-left:1em}.amp-wp-article-content .wp-caption{max-width:100%}.amp-wp-article-content amp-img{margin:0 auto}.wp-caption{padding:0}.amp-wp-article-footer .amp-wp-meta{display:block}.amp-wp-tax-category,.amp-wp-tax-tag{color:#696969;font-size:.875em;line-height:1.5em;margin:1.5em 16px}.amp-wp-comments-link{color:#696969;font-size:.875em;line-height:1.5em;text-align:center;margin:2.25em 0 1.5em}.amp-wp-comments-link a{border-style:solid;border-color:#c2c2c2;border-width:1px 1px 2px;border-radius:4px;background-color:transparent;color:#0a89c0;cursor:pointer;display:block;font-size:14px;font-weight:600;line-height:18px;margin:0 auto;max-width:200px;padding:11px 16px;text-decoration:none;width:50%;-webkit-transition:background-color .2s ease;transition:background-color .2s ease}.amp-wp-footer{border-top:1px solid #c2c2c2;margin:calc(1.5em - 1px) 0 0}.amp-wp-footer div{margin:0 auto;max-width:calc(840px - 32px);padding:1.25em 16px 1.25em;position:relative}.amp-wp-footer h2{font-size:1em;line-height:1.375em;margin:0 0 .5em}.amp-wp-footer p{color:#696969;font-size:.8em;line-height:1.5em;margin:0 85px 0 0}.amp-wp-footer a{text-decoration:none}.back-to-top{bottom:1.275em;font-size:.8em;font-weight:600;line-height:2em;position:absolute;right:16px}
+
+/*# sourceURL=amp-custom.css */</style><link rel="canonical" href="../index.html"><script type="application/ld+json">{"@context":"http:\/\/schema.org","publisher":{"@type":"Organization","name":"CodingJam","logo":"https:\/\/codingjam.it\/wp-content\/uploads\/2018\/09\/cropped-logo-cnj-bianco.png"},"@type":"BlogPosting","mainEntityOfPage":"https:\/\/codingjam.it\/integration-test-con-maven-e-docker\/","headline":"Integration Test con Maven e Docker","datePublished":"2016-10-10T07:49:41+02:00","dateModified":"2016-10-09T22:21:38+02:00","author":{"@type":"Person","name":"Andrea Como"},"image":"https:\/\/codingjam.it\/wp-content\/uploads\/2016\/09\/docker.png"}</script></head><body class="">
+
+<header id="top" class="amp-wp-header"><div>
+		<a href="../../index.html">
+										<amp-img src="../../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" width="32" height="32" class="amp-wp-site-icon i-amphtml-layout-fixed i-amphtml-layout-size-defined" style="width:32px;height:32px;" i-amphtml-layout="fixed"></amp-img><span class="amp-site-title">
+				CodingJam			</span>
+		</a>
+
+					</div>
+</header><article class="amp-wp-article"><header class="amp-wp-article-header"><h1 class="amp-wp-title">Integration Test con Maven e Docker</h1>
+			<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="https://secure.gravatar.com/avatar/684ede46c9386ff5430335a42fd5b011?s=24&amp;d=mm&amp;r=g" alt="Andrea Como" width="24" height="24" layout="fixed" class="i-amphtml-layout-fixed i-amphtml-layout-size-defined" style="width:24px;height:24px;" i-amphtml-layout="fixed"></amp-img><span class="amp-wp-author author vcard">Andrea Como</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2016-10-10T09:49:41+00:00">
+		4 years ago	</time></div>
+	</header><figure class="amp-wp-article-featured-image wp-caption"><amp-img width="1024" height="611" src="https://codingjam.it/wp-content/uploads/2016/09/docker-1024x611.png" class="attachment-large size-large wp-post-image amp-wp-enforced-sizes i-amphtml-layout-intrinsic i-amphtml-layout-size-defined" alt="" srcset="https://codingjam.it/wp-content/uploads/2016/09/docker-1024x611.png 1024w, https://codingjam.it/wp-content/uploads/2016/09/docker-300x179.png 300w, https://codingjam.it/wp-content/uploads/2016/09/docker-768x459.png 768w, https://codingjam.it/wp-content/uploads/2016/09/docker.png 1050w, https://codingjam.it/wp-content/uploads/2016/09/docker-300x179@2x.png 600w" layout="intrinsic" i-amphtml-layout="intrinsic"><i-amphtml-sizer class="i-amphtml-sizer"><img alt="" aria-hidden="true" class="i-amphtml-intrinsic-sizer" role="presentation" src="data:image/svg+xml;charset=utf-8,<svg height=&quot;611&quot; width=&quot;1024&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot;/>"></i-amphtml-sizer><noscript><img width="1024" height="611" src="https://codingjam.it/wp-content/uploads/2016/09/docker-1024x611.png" class="attachment-large size-large wp-post-image" alt="" srcset="https://codingjam.it/wp-content/uploads/2016/09/docker-1024x611.png 1024w, https://codingjam.it/wp-content/uploads/2016/09/docker-300x179.png 300w, https://codingjam.it/wp-content/uploads/2016/09/docker-768x459.png 768w, https://codingjam.it/wp-content/uploads/2016/09/docker.png 1050w, https://codingjam.it/wp-content/uploads/2016/09/docker-300x179@2x.png 600w" sizes="(max-width: 1024px) 100vw, 1024px"></noscript></amp-img></figure><div class="amp-wp-article-content">
+		<p>Non è la prima volta che parliamo di <strong>integration test</strong>, croce e delizia dello sviluppo. Sono complessi da fare perché richiedono la compartecipazione dei sistemi necessari all’applicazione che siamo sviluppando. <a href="../../maven-integration-tests/index.html" target="_blank">Avevamo visto come nel <strong>ciclo di build di Maven</strong></a> l’uso del plugin <em><a href="http://maven.apache.org/surefire/maven-failsafe-plugin/" target="_blank">failsafe</a></em> ci aiuta ad eseguire questo tipo di test nella fase giusta. <a href="../../java-ee-integration-test-con-arquillian/index.html" target="_blank">Abbiamo visto poi come Arquillian</a> permette di controllare un application server durante gli integration test. Quello che non abbiamo visto fino adesso è come <strong>controllare i sistemi a contorno</strong>, per esempio un database, per costruire dei veri e propri test automatici <strong>end-to-end</strong>. In questo post vedremo quindi come eseguire dei test di integrazione di una applicazione basata su <strong><a href="http://tomcat.apache.org/" target="_blank">Tomcat</a></strong> e <strong><a href="https://www.postgresql.org/" target="_blank">PostgreSQL</a></strong> con l’aiuto di <strong><a href="https://www.docker.com/" target="_blank">Docker</a></strong>!</p>
+<h2>Scenario</h2>
+<p>Immaginiamo di dover sviluppare i test di integrazione su una applicazione web, basata su Tomcat, che esegue il CRUD dei dati su un database (PostgreSQL in questo caso), attraverso una API REST (in questo caso possiamo definirli anche <strong>end-to-end</strong>, visto che no abbiamo interfaccia grafica). Il test più efficace è sicuramente quello più vicino ad una situazione reale: chiamate HTTP dai nostri test alla nostra applicazione deployata su un Tomcat che fa le query sul database.</p>
+<p>Gli obiettivi sono:</p>
+<ul><li>eseguire i test in modo automatico</li>
+<li>controllare l’avvio e lo spegnimento dei sistemi (Tomcat e PostgreSQL)</li>
+<li>test portabili, indipendenti dall’ambiente in cui si trovano i sistemi che si integrano, in modo da poter girare sia in ambiente di sviluppo che soprattutto su un server di <strong>continuos integration</strong> (come <a href="https://jenkins.io/" target="_blank">Jenkins</a>), senza doversi preoccupare di porte occupate dai servizi richiesti dalle varie build.</li>
+</ul><h2>Maven e Tomcat</h2>
+<p>Il primo obiettivo è facilmente raggiungibile con Maven: nel suo ciclo di build, prevede test e integration test. Ogni fase solitamente espone degli “<em>hook</em>” di <strong>pre</strong> e <strong>post</strong> fase, al quale si possono agganciare altri plugin per eseguire certe operazioni. </p>
+<p>Possiamo così ottenere parzialmente il secondo e il terzo obiettivo con il <tt><strong><a href="http://tomcat.apache.org/maven-plugin-2.0/tomcat7-maven-plugin/" target="_blank">tomcat7-maven-plugin</a></strong></tt>, come avevamo <a href="../../maven-integration-tests/index.html#pre-post-it" target="_blank">già visto</a>. Tomcat infatti viene scaricato al momento se non disponibile, rendendo il test portabile e indipendente dall’ambiente. Inoltre, è possibile avviare il server prima dei test e stopparlo al termine.</p>
+<p>Ci sono però diversi vincoli:</p>
+<ul><li>possiamo controllare Tomcat e il deploy, ma non la porta (default 8080) su cui si avvia il server. Questo comunque è un problema aggirabile come vedremo a breve</li>
+<li>il plugin non supporta le versioni di Tomcat successive alla 7 (e sembra che non siano previste versioni nuove del plugin).</li>
+</ul><p>E il database? Se si presuppone che il database sia sempre disponibile, possiamo accontentarci di questa soluzione (avendo presente i vincoli). Esiste un <tt><a href="https://github.com/adrianboimvaser/postgresql-maven-plugin" target="_blank">postgresql-maven-plugin</a></tt> molto interessante su Github, che promette di poter controllare PostgreSQL durante la fase di integration test. A giudicare dal codice sembra però che il database debba comunque essere installato sulla macchina: viene quindi meno la portabilità.</p>
+<p>Per raggiungere pienamente i tre obiettivi sarebbe necessario che Tomcat e PostgreSQL girassero in <strong>contenitori isolati</strong> (per evitare conflitti di porte), <strong>consistenti</strong> e possibilmente <strong>scaricabili e configurabili in modo automatico</strong>. Per far questo, accanto a Maven abbiamo bisogno di <a href="https://www.docker.com/" target="_blank">Docker</a>!</p>
+<h2>Docker Docker Docker!!</h2>
+<p>Il movimento dei <a href="https://it.wikipedia.org/wiki/DevOps" target="_blank">DevOps</a> ha avvicinato il mondo degli sviluppatori (Dev) a quello degli operatori (Ops), che, contaminandosi a vicenda, ha spinto l’applicazione del principio <a href="https://it.wikipedia.org/wiki/Don%27t_Repeat_Yourself" target="_blank">DRY</a> (Don’t Repeat Yourself) a livello di gestione dell’infrastruttura e della delivery. Sono nati quindi strumenti fantastici come <a href="https://www.vagrantup.com/" target="_blank">Vagrant</a> per il <em>provisioning</em> delle macchine virtuali, nonché modalità di <em>configurazione avanzate automatiche</em> con <a href="https://www.ansible.com/" target="_blank">Ansible</a>, <a href="https://puppet.com/" target="_blank">Puppet</a> o <a href="https://www.chef.io/chef/" target="_blank">Chef</a>. L’idea è quella di creare <strong>artefatti immutabili</strong>, dove l’<em>artefatto è una macchina virtuale</em>!! C’è da modificare la configurazione della macchina? Bene, si aggiorna lo script e si rigenera la macchina in automatico, tutto in pochi minuti.</p>
+<p>Gestire una infrastruttura virtualizzata con strumenti automatici permette di controllare cosa c’è installato sulle macchine (perché nessuno le modifica più) e soprattutto permette di replicarle senza nessuno sforzo. Di fatto però, è probabile che gran parte delle macchine virtuali abbiano in comune tutto lo strato del sistema operativo (Linux), che diventa quindi ridondante: perché quindi non <strong>“virtualizzare” solo una parte di esso</strong>, cioè quello che cambia tra una macchina e l’altra? Da questa idea nasce Docker! </p>
+<p>Docker è quindi figlio della virtualizzazione, che non sostituisce: sfruttando <strong>caratteristiche specifiche del <em>Kernel Linux</em></strong> (come <tt><a href="https://en.wikipedia.org/wiki/Cgroups" target="_blank">cgroups</a></tt> introdotto da Google nel 2008), Docker crea dei <strong>contenitori isolati</strong>, visti dal sistema <em>host</em> come <em>processi</em>, che invece internamente appaiono come delle vere e proprie macchine virtuali con la propria interfaccia di rete e le proprie risorse (proprio grazie al partizionamento che ne fa <tt>cgroups</tt>). Già con questa premessa si capisce che sia i container Docker che la macchina <em>host</em> possono essere <strong>solo Linux</strong>. Recentemente sono usciti <a href="https://docs.docker.com/docker-for-mac/" target="_blank">Docker per Mac</a> e <a href="https://docs.docker.com/docker-for-windows/" target="_blank">per Windows</a>, che, invece di sfruttare <a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a> per far girare una macchina virtuale Linux che faccia da <em>host</em> per Docker (come faceva fino a ieri <a href="https://www.docker.com/products/docker-toolbox" target="_blank">Docker Toolbox</a>), non fanno altro che sfruttare i virtualizzatori nativi introdotti nelle <strong>versioni più recenti di questi OS</strong> (rispettivamente <em><a href="https://github.com/mist64/xhyve" target="_blank">xhyve</a></em> e <em><a href="https://en.wikipedia.org/wiki/Hyper-V" target="_blank">Hyper-V</a></em>) per avviare <a href="https://alpinelinux.org/" target="_blank">Alpine Linux</a>, una versione estremamente leggera di Linux adatta ad essere <em>host</em> di container, trasparente però ai sistemi operativi veri e propri ospitanti. Il risultato è quindi che si usa Docker da Mac o Windows come se si fosse su Linux.</p>
+<h3>Cosa se ne fa uno sviluppatore?</h3>
+<p>Docker può essere estremamente utile sia in <strong>fase di sviluppo</strong> che di <strong>test</strong> perché si possono creare, configurare, avviare e distruggere container in modo estremamente semplice. Inoltre, un container può essere usato anche come <strong>artefatto finale</strong> per il deploy!! Non è così più necessario preoccuparsi della configurazione dell’ambiente di produzione perché <strong>viene generato direttamente in fase di sviluppo</strong>: si parla così oggi di <strong>immutable deploy</strong>, dove ad ogni rilascio <em>viene generata un nuova immagine Docker</em> con la nostra applicazione. A differenza delle VM infatti, con Docker è buona norma creare contenitori con <strong>uno e un solo servizio</strong>, che si presta bene a contenere l’applicazione che stiamo sviluppando, in modo da essere facilmente replicabile (per <em>scalare orizzontalmente</em>) isolandolo dal sistema host.</p>
+<h2>Maven e Docker</h2>
+<p>Dopo aver tessuto le lodi di Docker e le modalità di utilizzo, vediamo come possono semplificarci la vita nei test di integrazione.</p>
+<p>Riuscire a costruire dei <strong>test completamente automatici</strong> per la fase di “<em>integration-test</em>” di Maven che fossero i <strong>più vicini possibile al caso reale</strong> e che <strong>girassero anche sul server di <em>Continuous Integration</em></strong> (come Jenkins) senza problemi è sempre stata una sfida. Adesso con Docker, controllato da Maven, è finalmente possibile in modo piuttosto semplice: il tempo impiegato inizialmente per “incastrare” le configurazioni è ampiamente ripagato dai risultati!</p>
+<p>Prerequisiti:</p>
+<ul><li><a href="https://maven.apache.org/" target="_blank">Maven</a> (testato sulla v3.2.3)</li>
+<li><a href="https://www.docker.com/products/docker" target="_blank">Docker for Linux/Mac/Windows</a> (testato sulla 1.12.1 for Mac). Nel caso si usi ancora <a href="https://www.docker.com/products/docker-toolbox" target="_blank">Docker Toolbox</a> è possibile che si debba <a href="https://dmp.fabric8.io/#global-configuration" target="_blank">indicare esplicitamente l’host</a> su cui si trova il Docker Daemon.</li>
+</ul><p>Cercando “<a href="https://www.google.it/webhp?sourceid=chrome-instant&amp;ion=1&amp;espv=2&amp;ie=UTF-8#q=maven+docker" target="_blank">maven docker</a>” su Google, spicca il plugin Maven di <a href="https://github.com/fabric8io/docker-maven-plugin" target="_blank">Fabric8</a> per Docker, soprattutto per l’ambia documentazione. In realtà esistono quattro plugin che permettono di usare Maven con Docker e quelli di Fabric8 li hanno <a href="https://github.com/fabric8io/shootout-docker-maven" target="_blank">messi a confronto</a>. Indovinate chi vince?</p>
+<h3>Configurazione base con Fabric8 plugin</h3>
+<p>Prima di pensare a qualsiasi container da creare e avviare, è necessario innanzitutto <em>impostare il plugin failsafe</em> come <a href="../../maven-integration-tests/index.html#failsafe-in-practice" target="_blank">abbiamo già imparato</a> e poi il plugin di <strong>Fabric8</strong> in modo che <strong>crei</strong> e/o <strong>avvii</strong> i container in fase di <tt>pre-integration-test</tt> e li <strong>fermi</strong> (e li <strong>distrugga</strong>) in fase di <tt>post-integration-test</tt></p>
+<p></p><pre data-enlighter-language="xml" class="EnlighterJSRAW" data-enlighter-highlight="12,14,15,20,22">
+&lt;plugin&gt;
+    &lt;groupId&gt;io.fabric8&lt;/groupId&gt;
+    &lt;artifactId&gt;docker-maven-plugin&lt;/artifactId&gt;
+    &lt;version&gt;0.15.16&lt;/version&gt;
+    &lt;configuration&gt;
+        &lt;showLogs&gt;true&lt;/showLogs&gt;
+        ...
+    &lt;/configuration&gt;
+    &lt;executions&gt;
+        &lt;execution&gt;
+            &lt;id&gt;start&lt;/id&gt;
+            &lt;phase&gt;pre-integration-test&lt;/phase&gt;
+            &lt;goals&gt;
+                &lt;goal&gt;build&lt;/goal&gt;
+                &lt;goal&gt;start&lt;/goal&gt;
+            &lt;/goals&gt;
+        &lt;/execution&gt;
+        &lt;execution&gt;
+            &lt;id&gt;stop&lt;/id&gt;
+            &lt;phase&gt;post-integration-test&lt;/phase&gt;
+            &lt;goals&gt;
+                &lt;goal&gt;stop&lt;/goal&gt;
+            &lt;/goals&gt;
+        &lt;/execution&gt;
+    &lt;/executions&gt;
+&lt;/plugin&gt;
+</pre>
+<p>Questo è boilerplate: la parte più interessante invece sta nel blocco <tt>configuration</tt>.</p>
+<h2>PostgreSQL e Docker: test business logic su base dati</h2>
+<p>Cominciamo quindi con le cose semplici: avviare un container con PostgreSQL, creare il database e impostare username e password.</p>
+<p>L’<a href="https://hub.docker.com/_/postgres/" target="_blank">immagine Docker di PostgreSQL</a> è già pronta per noi su <a href="https://hub.docker.com/" target="_blank">Docker Hub</a>!</p>
+<p>Basta quindi aggiungere nel blocco <tt>configuration</tt> la configurazione per l’immagine Docker che ci interessa:</p>
+<p></p><pre data-enlighter-language="xml" class="EnlighterJSRAW" data-enlighter-highlight="4,7-9,12">
+&lt;images&gt;
+    &lt;image&gt;
+        &lt;alias&gt;postgres-integration-test&lt;/alias&gt;
+        &lt;name&gt;postgres:9&lt;/name&gt;
+        &lt;run&gt;
+            &lt;env&gt;
+                &lt;POSTGRES_USER&gt;todolist&lt;/POSTGRES_USER&gt;
+                &lt;POSTGRES_PASSWORD&gt;todolist&lt;/POSTGRES_PASSWORD&gt;
+                &lt;POSTGRES_DB&gt;todo_list&lt;/POSTGRES_DB&gt;
+            &lt;/env&gt;
+            &lt;ports&gt;
+                &lt;port&gt;postgres.port:5432&lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;wait&gt;
+                &lt;log&gt;database system is ready to accept connections&lt;/log&gt;
+                &lt;time&gt;20000&lt;/time&gt;
+            &lt;/wait&gt;
+        &lt;/run&gt;
+    &lt;/image&gt;
+&lt;/images&gt;
+</pre>
+<p>Senza scendere nei dettagli, ci basta sapere che <strong>per creare un container</strong> abbiamo bisogno prima di una fase di “<strong>build</strong>” <strong>a partire da un <a href="http://docs.docker.com/engine/reference/builder/" target="_blank">Dockerfile</a> che genera un’immagine</strong> (cioè una sorta di container “archetipo” in sola lettura), e poi una di “<strong>run</strong>” che genera il container vero e proprio con la nostra configurazione.</p>
+<p>Visto che l’<a href="https://hub.docker.com/_/postgres/" target="_blank">immagine Docker di PostgreSQL 9.5</a> (definita dal <em>nome:label</em> “<tt>postgres:9</tt>” su <a href="https://hub.docker.com/" target="_blank">Docker Hub</a>) è già pronta (cioè è già stata generata da un <tt>Dockerfile</tt>) e non abbiamo bisogno di generarne una nuova perché ci va bene così com’è, possiamo saltare direttamente alla fase di <em>run</em>, dove possiamo specificare una serie di parametri per il runtime:</p>
+<ul><li><tt>env</tt>: è possibile definire i valori per le variabili d’ambiente che mette a disposizione il container</li>
+<li><tt>ports</tt>: nella forma <tt>host-port:container-port</tt>; definisce su che porta dell’host esporre il servizio fornito dal container. Se è una stringa, come in questo caso, viene automaticamente <em>generata una variabile Maven</em> a cui viene <em>assegnata una porta libera dell’host</em>! Che ce ne facciamo? Per esempio, per testare direttamente le query da JUnit, abbiamo bisogno di sapere indirizzo e porta del database: <em>failsafe</em> infatti, tramite il tag <tt>systemPropertyVariables</tt>, può <strong>esporre una variabile Maven come variabile di sistema</strong>:<br><pre data-enlighter-language="xml" class="EnlighterJSRAW" data-enlighter-highlight="7,8">
+&lt;plugin&gt;
+    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+    &lt;artifactId&gt;maven-failsafe-plugin&lt;/artifactId&gt;
+    &lt;version&gt;2.18.1&lt;/version&gt;
+    &lt;configuration&gt;
+        &lt;systemPropertyVariables&gt;
+            &lt;DB_PORT_5432_TCP_ADDR&gt;localhost&lt;/DB_PORT_5432_TCP_ADDR&gt;
+            &lt;DB_PORT_5432_TCP_PORT&gt;${postgres.port}&lt;/DB_PORT_5432_TCP_PORT&gt;
+        &lt;/systemPropertyVariables&gt;
+    &lt;/configuration&gt;
+    &lt;executions&gt;
+        &lt;execution&gt;
+            &lt;goals&gt;
+                &lt;goal&gt;integration-test&lt;/goal&gt;
+                &lt;goal&gt;verify&lt;/goal&gt;
+            &lt;/goals&gt;
+        &lt;/execution&gt;
+    &lt;/executions&gt;
+&lt;/plugin&gt;
+</pre>
+<p>recuperabile facilmente in Java in modo programmatico:<br></p><pre data-enlighter-language="java" class="EnlighterJSRAW">
+String dbHost = System.getProperty("DB_PORT_5432_TCP_ADDR");
+String dbPort = System.getProperty("DB_PORT_5432_TCP_PORT");
+</pre>
+<p>o come property di Spring (in caso venga usato):</p>
+<p></p><pre data-enlighter-language="java" class="EnlighterJSRAW">
+@Value("${DB_PORT_5432_TCP_ADDR}")
+private String dbHost;
+
+@Value("${DB_PORT_5432_TCP_PORT}")
+private String dbPort;
+</pre>
+</li>
+<li><tt>wait</tt>: serve per identificare quando il servizio è pronto. In questo caso, si aspetta una specifica stringa di log, per un tempo massimo di 20 secondi. Se invece si usa solo il tag <tt>time</tt> all’interno di <tt>wait</tt>, allora la build attende quel tempo prima di proseguire.</li>
+</ul><p>Per verificare se la configurazione funziona, basta eseguire da riga di comando:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">
+mvn docker:run
+</pre>
+<p>per avviare il database (l’unico configurato al momento). Per verificare se il container è veramente attivo (e a che porta ha effettuato il binding sull’host), possiamo usare <em>direttamente il normale comando docker</em>:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">
+docker ps
+</pre>
+<p>Per <em>fermare e cancellare</em> il container:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell">
+mvn docker:stop
+</pre>
+<p>Siamo quindi in grado di ottenere dei <strong>test di integrazione automatici e portabili</strong> (perché il database viene <em>scaricato</em>, <em>configurato</em> e <em>avviato automaticamente</em>) e capaci di girare anche in un contesto di continuous integration perché non dobbiamo preoccuparci di conflitto di porte.</p>
+<p>Questo tipo di configurazione è quindi <em>ideale per la logica di business che si appoggia ad una base dati</em>.<br>
+Un progetto di esempio si trova sul <a href="https://github.com/coding-jam/todo-list-jaxrs-spring-docker" target="_blank">GitHub di CodingJam</a>, dove il modulo Maven “<tt>todo-list-jaxrs-spring-services</tt>” avvia un container PostgreSQL per testare le query.</p>
+<p>Ma che succede se vogliamo allargare il tiro, arrivando a fare dei veri e propri <strong>test end-to-end</strong> che includono anche il livello di API?</p>
+<h2>Tomcat, PostgreSQL e Docker: test end-to-end</h2>
+<p>Per fare un test di integrazione completo di tipo <em>end-to-end</em> è necessario <strong>avviare tutto lo stack</strong> necessario al funzionamento dell’applicazione: vedremo quindi come <em>eseguire i test</em> a partire dalle API REST, effettuando chiamate HTTP da JUnit tramite <a href="https://jersey.java.net/documentation/latest/client.html" target="_blank">JAX-RS 2 client</a> su un <strong>Tomcat avviato in un container Docker</strong> (dove è deployata la nostra applicazione) <strong>che dialoga con un altro container</strong> (in modo isolato) <strong>dove si trova PostgreSQL</strong> (dove è presente il nostro schema).</p>
+<p>Aggiungiamo quindi l’immagine Docker di Tomcat al <tt>pom.xml</tt>:</p>
+<p></p><pre data-enlighter-language="xml" class="EnlighterJSRAW" data-enlighter-highlight="6,10,13,22,27">
+&lt;images&gt;
+    &lt;image&gt;
+        &lt;alias&gt;todolist-tomcat&lt;/alias&gt;
+        &lt;name&gt;%g/todolist-tomcat:%l&lt;/name&gt;
+        &lt;build&gt;
+            &lt;args&gt;
+                &lt;POSTGRES_DRV_VER&gt;${postgresql.version}&lt;/POSTGRES_DRV_VER&gt;
+                &lt;ARTIFACT&gt;${project.build.finalName}.${project.packaging}&lt;/ARTIFACT&gt;
+            &lt;/args&gt;
+            &lt;dockerFileDir&gt;
+                ${project.basedir}/src/it/resources/docker/tomcat
+            &lt;/dockerFileDir&gt;
+            &lt;assembly&gt;
+                &lt;descriptorRef&gt;artifact&lt;/descriptorRef&gt;
+            &lt;/assembly&gt;
+        &lt;/build&gt;
+        &lt;run&gt;
+            &lt;ports&gt;
+                &lt;port&gt;tomcat.port:8080&lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;wait&gt;
+                &lt;http&gt;
+                    &lt;url&gt;http://${docker.host.address}:${tomcat.port}&lt;/url&gt;
+                &lt;/http&gt;
+                &lt;time&gt;30000&lt;/time&gt;
+            &lt;/wait&gt;
+            &lt;links&gt;
+                &lt;link&gt;postgres-integration-test:db&lt;/link&gt;
+            &lt;/links&gt;
+        &lt;/run&gt;
+    &lt;/image&gt;
+    &lt;image&gt;
+        &lt;alias&gt;postgres-integration-test&lt;/alias&gt;
+        ...
+    &lt;/image&gt;
+&lt;/images&gt;
+</pre>
+<p>Dal momento che dobbiamo personalizzare l’immagine Tomcat di Docker con la nostra applicazione e le dipendenze lato server (come il driver PostgreSQL per esempio), in questo caso useremo anche la fase di <tt><a href="https://dmp.fabric8.io/#docker:build" target="_blank">build</a></tt> dell’immagine, a partire da un <tt><a href="https://github.com/coding-jam/todo-list-jaxrs-spring-docker/blob/master/todo-list-jaxrs-spring-web/src/it/resources/docker/tomcat/Dockerfile" target="_blank">Dockerfile</a></tt>. Rispetto al caso del database, abbiamo una situazione più articolata:</p>
+<ul><li><tt>args</tt> si popolano le cosiddette <em><a href="https://docs.docker.com/engine/reference/commandline/build/" target="_blank">build-args</a></em>, dichiarate nel <tt>Dockerfile</tt>. In questo caso si specifica qual è il nome dell’artefatto da copiare nell’immagine e la versione del driver di PostgreSQL da scaricare.</li>
+<li><tt>dockerFileDir</tt>: specifica dove trovare il <tt>Dockerfile</tt> da cui creare l’immagine. Tutti gli altri file presenti nella cartella possono essere usati come risorse statiche a cui si può accedere durante la fase di build (per essere copiati nell’immagine per esempio). Il valore di default è <tt>${project.basedir}/src/main/docker</tt>.</li>
+<li><tt><a href="https://dmp.fabric8.io/#build-assembly" target="_blank">assembly</a></tt>: definisce quali sono gli artefatti Maven che vanno a finire nel contesto di build di Docker (cioè cosa si può eccedere dal Dockerfile). Mentre quindi il <tt>dockerFileDir</tt> definisce il contesto base in cui si trovano i file statici da portare nel processo di build di Docker, in questo caso si fa riferimento agli artefatti veri e propri prodotti da Maven. Per capire meglio qual era il contesto Docker, date un occhio alla cartella <tt>target/docker</tt> dopo la fase di build.
+</li></ul><p>Il descrittore della fase di <tt>run</tt> in questo caso ci riserva due tag nuovi rispetto a quanto visto per il database:</p>
+<ul><li><tt>http</tt>: il container si considera avviato quando è disponibile l’indirizzo specificato. <tt>docker.host.address</tt> è la variabile che contiene l’indirizzo dell’host Docker su cui di fa il binding (che è <tt>localhost</tt>, tranne nel caso in cui si usi <a href="https://www.docker.com/products/docker-toolbox" target="_blank">Docker Toolbox</a>). Come nel caso del database, anche in questa situazione <tt>tomcat.port</tt> rappresenta un porta libera e casuale del sistema, recuperabile nei test JUnit come variabile si sistema. La <a href="https://github.com/junit-team/junit4/wiki/Rules" target="_blank">Rule JUnit</a> <code><a href="https://github.com/coding-jam/todo-list-jaxrs-spring-docker/blob/master/todo-list-jaxrs-spring-web/src/it/java/it/codingjam/todolist/api/rules/WebClientRule.java" target="_blank">WebClientRule</a></code> ne è un esempio.</li>
+<li><tt><a href="https://dmp.fabric8.io/#start-links" target="_blank">links</a></tt>: le due macchine vengono collegate a livello network e non solo: la macchina di Tomcat quindi riceve una serie di variabili d’ambiente da quella di PostgreSQL permettendogli, per esempio, di sapere <em>ip e porta sulla quale il database espone il servizio</em>.</li>
+</ul><p>Un esempio pratico si trova sul <a href="https://github.com/coding-jam/todo-list-jaxrs-spring-docker" target="_blank">GitHub di CodingJam</a>, nel <tt><a href="https://github.com/coding-jam/todo-list-jaxrs-spring-docker/blob/master/todo-list-jaxrs-spring-web/pom.xml" target="_blank">pom.xml</a></tt> del modulo Maven “<tt>todo-list-jaxrs-spring-web</tt>“.</p>
+<h2>Conclusioni</h2>
+<p>La coppia Maven + Docker permette quindi di spingere le potenzialità dei test di integrazione fino ad un livello di affidabilità dei test mai visto fino adesso. I container Docker gestiti da Maven infatti non sono dei mock o dei surrogati dei sistemi da integrare, ma sono le vere istanze isolate in sandbox. Con questa soluzione quindi abbiamo raggiunto i tre obiettivi che ci eravamo prefissati: test automatici, capaci di controllare e configurare i sistemi integranti, rieseguibili e portabili tra un ambiente e l’altro.</p>
+	</div>
+
+	<footer class="amp-wp-article-footer"><div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="../../category/docker/index.html" rel="category tag">Docker</a>, <a href="../../category/maven/index.html" rel="category tag">Maven</a>, <a href="../../category/test-2/index.html" rel="category tag">Test</a>, <a href="../../category/tutorial-2/index.html" rel="category tag">Tutorial</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="../../tag/docker/index.html" rel="tag">Docker</a>, <a href="../../tag/integration-tests/index.html" rel="tag">Integration tests</a>, <a href="../../tag/junit/index.html" rel="tag">JUnit</a>, <a href="../../tag/maven/index.html" rel="tag">maven</a>, <a href="../../tag/postgresql/index.html" rel="tag">postgresql</a>, <a href="../../tag/tomcat/index.html" rel="tag">tomcat</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="../index.html#comments">
+			Leave a Comment		</a>
+	</div>
+	</footer></article><footer class="amp-wp-footer"><div>
+		<h2>CodingJam</h2>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer></body>
+<!-- Mirrored from codingjam.it/integration-test-con-maven-e-docker/amp/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:38 GMT -->
+</html>

@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from codingjam.it/angularjs-1-5-incontra-i-components/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="pingback" href="../xmlrpc.php">
+
+  <title>AngularJS 1.5+ incontra i Components &#8211; CodingJam</title>
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Feed" href="../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Comments Feed" href="../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; AngularJS 1.5+ incontra i Components Comments Feed" href="https://codingjam.it/angularjs-1-5-incontra-i-components/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='../wp-content/plugins/gutenberg/build/block-library/stylea4fb.css?ver=1591004795' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-gdpr-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='melissa-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lato%3A400%2C400i%2C700%2C700i%7CNoto+Serif%3A400%2C400i%2C700%2C700i&amp;subset=latin&amp;ver=1.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../wp-content/themes/melissa/css/bootstrap.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-theme-css'  href='../wp-content/themes/melissa/css/bootstrap-theme.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-ie10-viewport-bug-workaround-css'  href='../wp-content/themes/melissa/css/ie10-viewport-bug-workaround8a54.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='../wp-content/themes/melissa/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-carousel-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-theme-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.theme3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='magnific-popup-css'  href='../wp-content/themes/melissa/assets/magnific-popup/magnific-popupf488.css?ver=1.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-style-css'  href='../wp-content/themes/melissa/style3ec8.css?ver=1.1.6' type='text/css' media='all' />
+<style id='melissa-style-inline-css' type='text/css'>
+
+    .bwp-post-media img,
+    .bwp-post-carousel-item img,
+    .widget_bwp_posts_slider_item img {
+      width: 100%;
+      margin: 0;
+    }
+    .bwp-post-wrap:hover {
+      margin-top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+    #bwp-masonry-container.no-masonry .bwp-post-wrap:hover {
+      top: 0;
+    }
+    .bwp-no-results-container:hover,
+    .bwp-single-article:hover,
+    .bwp-featured-media-container:hover,
+    .post-navigation .nav-links a:hover,
+    .bwp-about-author-container:hover,
+    .comment-respond:hover,
+    .comment-body:hover,
+    #comments .no-comments:hover,
+    .comment-navigation .nav-links a:hover,
+    .bwp-related-post-wrap:hover,
+    .bwp-page-404-container:hover,
+    .bwp-sidebar-wrap:hover {
+      top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+  #bwp-header-wrap {
+    background-color: #2e3340;
+  }
+  .bwp-header-bg-overlay,
+  .bwp-header-rs-bg-overlay {
+    background-color: rgba(46, 51, 64, 0.9);
+  }
+    .bwp-content a,
+    .comment-content a,
+    .bwp-post-quote a {
+      color: #2052bf;
+    }
+</style>
+<link rel='stylesheet' id='enlighter-local-css'  href='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.css?ver=3.9.0' type='text/css' media='all' />
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery4a5f.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[]};
+var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/cookie-law-info/public/js/cookie-law-info-public3cf4.js?ver=1.8.8'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/respond.min.js?ver=1.4.2'></script>
+<![endif]-->
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/mootools-core-yc9086.js?ver=3.9.0'></script>
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.js?ver=3.9.0'></script>
+<link rel='https://api.w.org/' href='../wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+<link rel='prev' title='AngularJS in ES6' href='https://codingjam.it/angularjs-in-es6/' />
+<link rel='next' title='Webpack ECMAScript 6 &#8211; Parte I' href='https://codingjam.it/webpack-ecmascript-6-parte/' />
+<meta name="generator" content="WordPress 5.4.1" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://codingjam.it/?p=14147' />
+<link rel="alternate" type="application/json+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Fangularjs-1-5-incontra-i-components%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Fangularjs-1-5-incontra-i-components%2F&amp;format=xml" />
+<link rel="amphtml" href="https://codingjam.it/angularjs-1-5-incontra-i-components/amp/"><script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"droide","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":false,"windowButton":false,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" sizes="32x32" />
+<link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://codingjam.it/wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-270x270.png" />
+</head>
+
+<body class="post-template-default single single-post postid-14147 single-format-standard wp-custom-logo">
+
+
+<!-- header -->
+<header id="bwp-header-wrap" class="bwp-header-simple">
+
+  <!-- header bg -->
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P7101915_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg-overlay"></div>
+
+    <!-- header content -->
+    <div class="container">
+      <div class="bwp-header-content-container">
+
+        <!-- row 1 - logo + navigation -->
+        <div class="bwp-main-navigation-container clearfix">
+
+          
+        <!-- image logo -->
+        <div class="bwp-logo-container">
+          <a href="../index.html" class="custom-logo-link" rel="home"><img width="207" height="70" src="../wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png" class="custom-logo" alt="CodingJam" srcset="https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png 207w, https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco-150x51.png 150w" sizes="(max-width: 207px) 100vw, 207px" /></a>        </div>
+        <!-- end image logo -->
+
+        
+      <!-- search -->
+      <div class="bwp-header-search-container hidden-sm hidden-xs">
+        <a href="#" id="bwp-header-search-icon">
+          <i class="fa fa-search"></i>
+        </a>
+        <div class="bwp-dropdown-search-container bwp-search-hidden">
+          
+<!-- search form -->
+<form id="searchform" role="search" method="get" action="https://codingjam.it/">
+  <div class="input-group">
+    <input type="text" name="s" id="s" class="bwp-search-field form-control" placeholder="Enter your search query...">
+    <span class="input-group-btn">
+      <button type="submit" class="btn bwp-search-submit">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+</form>
+<!-- end search form -->
+        </div>
+      </div>
+      <!-- end search -->
+
+      
+      <!-- menu -->
+      <div class="bwp-menu-container hidden-sm hidden-xs">
+        <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-2" class="sf-menu"><li id="menu-item-12007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li id="menu-item-12022" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li id="menu-item-12009" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li id="menu-item-12020" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li id="menu-item-12017" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li id="menu-item-12006" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li id="menu-item-12005" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li id="menu-item-12008" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li id="menu-item-12014" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li id="menu-item-12012" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li id="menu-item-12010" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li id="menu-item-12021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li id="menu-item-12016" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li id="menu-item-12015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li id="menu-item-12019" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li id="menu-item-12018" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>      </div>
+      <!-- end menu -->
+
+      
+      <!-- mobile menu -->
+      <div class="bwp-mobile-menu-container hidden-md hidden-lg">
+        <!-- mobile menu icon -->
+        <a href="#" id="bwp-mobile-menu-icon">
+          <i class="fa fa-bars"></i>
+        </a>
+        <!-- end mobile menu icon -->
+        <!-- dropdown mobile menu -->
+        <div class="bwp-dropdown-mobile-menu bwp-mobile-menu-hidden">
+          <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-3" class="bwp-mobile-menu list-unstyled"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>        </div>
+        <!-- end dropdown mobile menu -->
+      </div>
+      <!-- end mobile menu -->
+
+      
+        </div>
+        <!-- end row 1 - logo + navigation -->
+
+        
+          <!-- row 2 - header custom text -->
+          <div class="bwp-header-custom-text-container">
+            
+        <!-- custom text - single page -->
+        <h1 class="bwp-header-custom-title entry-title">
+          AngularJS 1.5+ incontra i Components        </h1>
+                <div class="bwp-header-transparent-line clearfix">
+          <span class="bwp-header-t-line-1"></span>
+          <span class="bwp-header-t-line-2"></span>
+        </div>
+        <!-- end custom text -->
+
+                  </div>
+          <!-- end row 2 - header custom text -->
+
+          
+      </div>
+    </div>
+    <!-- end header content -->
+  </div>
+  <!-- end header bg -->
+
+  
+        <!-- sticky navigation -->
+        <div class="bwp-sticky-navigation-wrap bwp-transition-4 clearfix">
+          <!-- sticky navigation icon -->
+          <a href="#" id="bwp-sticky-navigation-icon">
+            <i class="fa fa-bars"></i>
+          </a>
+          <!-- end sticky navigation icon -->
+          <!-- sticky navigation container -->
+          <div class="bwp-sticky-navigation-container bwp-sticky-navigation-hidden">
+            <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-4" class="sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>          </div>
+          <!-- end sticky navigation container -->
+        </div>
+        <!-- end sticky navigation -->
+
+        
+</header>
+<!-- end header -->
+
+  <!-- blog post - single page -->
+  <section id="bwp-single-page-wrap">
+    <div class="container">
+      <div class="bwp-single-page-container" >
+
+        
+                  <div class="row"><div class="col-md-8 bwp-single-content-col bwp-sidebar-right"><div class="bwp-single-content-col-wrap" role="main">
+        
+        <!-- article -->
+        <article id="post-14147" class="bwp-single-article bwp-transition-3">
+
+          
+          <!-- content container -->
+          <div class="bwp-single-content">
+
+            <!-- content -->
+            <div class="bwp-content entry-content clearfix">
+              <p>AngularJS non molto tempo fa, con la versione 1.5, ha introdotto nativamente il concetto di <strong>WebComponent</strong>, &#8220;portando a casa&#8221; gran parte dell&#8217;esperienza fatta con Angular 2. Cominciare ad usare i Components con AngularJS oggi non solo significa scrivere codice molto più facilmente aggiornabile verso Angular 2, soprattutto se scritto in <a href="https://codingjam.it/angularjs-in-es6/" target="_blank">ES6</a>, ma permette anche di modularizzare e riusare il codice in modo più semplice, in linea con lo stile di programmazione del frontend che sarà sempre più orientato ai componenti.</p>
+<h2>Perché i componenti? E le direttive?</h2>
+<p>Secondo la <a href="https://docs.angularjs.org/guide/component" target="_blank">documentazione ufficiale</a>, un <em>component</em> non è altro che una <em>speciale direttiva</em>&#8230; più semplice! Di fatto, le direttive di AngularJS potevano essere usate per isolare parti del DOM per creare componenti, ma non solo. Possono essere attributi di un tag, si possono comporre, possono manipolare il DOM o il modello e così via. Diciamoci la verità: il concetto di direttiva è troppo ampio da diventare ambiguo! Con l&#8217;introduzione dei componenti, si definisce un preciso perimetro di competenze tra ciò che un componente deve fare e cosa non deve. Per esempio, i componenti <strong>non</strong> vanno usati se si ha necessità di operare in fase di &#8220;pre-link&#8221; o &#8220;compile&#8221; (perché non ci sono!), possono essere solo dei <strong>tag</strong> (che ne aggregano altri) e mai attributi di un tag e hanno sempre uno <strong>scope isolato</strong>, riducendo al massimo l&#8217;accoppiamento parent-child (che è uno dei grandi &#8220;rischi&#8221; a cui ti portano delle direttive a mio avviso). </p>
+<p>Di fatto quindi, adottare i componenti permette di scrivere codice più facilmente portabile verso Angular 2, introducendo una architettura modulare del DOM più manutenibile rispetto alle solite direttive. Nell&#8217;architettura a componenti, una applicazione diventa una struttura di tag ad albero nella quale ognuno ha <strong>ben definito i propri input e output</strong> (limitando quindi il <em>two-way databinding</em> come vedremo a breve) così da rendere <strong>più prevedibile il cambiamento di stato</strong> dell&#8217;applicazione e dei suoi componenti. In questa struttura, solitamente i tag più <em>vicini alla radice</em> sono definiti &#8220;<strong>smart components</strong>&#8221; perché sono quelli che gestiscono i dati, quelli più <em>vicini alle foglie</em> invece sono detti &#8220;<strong>dumb components</strong>&#8221; perché sono di pura interazione e sono altamente riusabili.<br />
+Per avvicinarsi ai componenti, un primo passo quindi può essere quello di <strong>convertire qualche direttiva in un componente</strong>: su <a href="https://dzone.com/articles/from-ng-controller-to-components-with-angular-15" target="_blank" target="_blank">DZone</a> spiegano come!</p>
+<p>A proposito di <a href="https://codingjam.it/introduzione-ad-angular-2-parte-1/" target="_blank">Angular 2</a>, quando ne abbiamo parlato qua su CodingJam, abbiamo portato come esempio una applicazione che gestisce i TODO. Facciamo quindi una sorta di &#8220;downgrade&#8221; ad AngularJS (controcorrente si!!) per capire quanto poche siano le differenze, soprattutto se lavoriamo in ES6. Abbiamo già visto infatti nello <a href="https://codingjam.it/angularjs-in-es6/" target="_blank">scorso post</a> come si lavora con AngularJS e ES6, quindi basta vedere adesso come scrivere i component.</p>
+<h2>Quick start</h2>
+<p>Meglio vedere un po&#8217; di codice prima di tante chiacchiere. Secondo la documentazione ufficiale, per scrivere un componente basta:</p>
+<p><pre data-enlighter-language="js" class="EnlighterJSRAW">
+function TodoListController() {
+
+}
+
+angular.module(&#039;todoApp&#039;).component(&#039;todoList&#039;, {
+  templateUrl: &#039;todo-list.html&#039;,
+  controller: TodoListController,
+  bindings: {
+    todos: &#039;=&#039;
+  }
+});
+</pre></p>
+<p>Come forse atteso, un componente si dichiara tramite la funzione <code>.component()</code>, che si aspetta due argomenti:</p>
+<ul>
+<li>il nome del componente (che corrisponderà al tag html <tt>todo-list</tt>: come avviene nelle direttive, si passa dal <em>camel case</em> al <em>kebab case</em>)</li>
+<li>oggetto di configurazione (a differenza del solito, in questo caso <strong>non</strong> è prevista una <em>factory function</em>)</li>
+</ul>
+<p>Il componente quindi può essere usato come se fosse un nuovo tag:</p>
+<p><pre data-enlighter-language="html" class="EnlighterJSRAW">
+&lt;div ng-controller=&quot;MainCtrl as ctrl&quot;&gt;
+  &lt;todo-list todos=&quot;ctrl.todoList&quot;&gt;&lt;/todo-list&gt;
+&lt;/div&gt;
+</pre></p>
+<p>A prima vista non è quindi molto dissimile dalle direttive che già conosciamo (anzi, dal punto di vista dell&#8217;html è uguale). Vediamo quindi alcuni aspetti su come deve essere costruito l&#8217;oggetto di configurazione:</p>
+<ul>
+<li><tt>templateUrl</tt>: è il percorso del file che contiene il template html da applicare. E&#8217; possibile usare anche <tt>template</tt> per indicare direttamente l&#8217;html in-line (in una stringa).</li>
+<li><tt>controller</tt>: ogni componente probabilmente avrà un controller associato. Normalmente vi si accede dal template tramite l&#8217;alias <tt><strong>$ctrl</strong></tt>, ma è possibile customizzarlo tramite <tt>controllerAs</tt>.</li>
+<li><tt>bindings</tt>: lo <strong>scope</strong> di un componente è <strong>sempre isolato</strong> (a differenza delle direttive). Tramite il bindings si definisce il legame tra il componente e il mondo esterno.</li>
+</ul>
+<p>L&#8217;<a href="https://docs.angularjs.org/guide/component#comparison-between-directive-definition-and-component-definition" target="_blank">elenco completo</a> è disponibile sulla documentazione ufficiale.</p>
+<h3>I componenti e lo scope</h3>
+<p>Le direttive, a differenza dei componenti, hanno molta (troppa a mio avviso) libertà, soprattutto per quanto riguarda lo <strong>scope delle variabili</strong>. E&#8217; molto comodo infatti rendere dipendente una direttiva dal contesto in cui viene usata, ma così non è riusabile: spesso quindi è meglio isolarne lo scope, altrimenti al crescere dell&#8217;applicazione non si capisce più chi modifica cosa. Con i componenti invece si è obbligati: lo <strong>scope è sempre isolato</strong>! Questo permette di impostare una architettura a componenti dove si definisce in modo chiaro <strong>input e output del componente</strong> (come se fosse una sorta di API): i componenti quindi <strong>non manipolano né DOM, né dati che sono <em>fuori dal proprio scope</em></strong>, ma ricevono degli input e producono degli output attraverso l&#8217;interazione della <em>view</em> che mettono a disposizione.</p>
+<p>A differenza però di Angular 2, dove questa architettura input/output è l&#8217;unico modo per usare i componenti, in AngularJS non è così: i componenti infatti sono sostanzialmente delle direttive, per cui il binding:<br />
+<pre data-enlighter-language="js" class="EnlighterJSRAW">
+bindings: {
+   todos: &#039;=&#039;
+}
+</pre></p>
+<p>è <strong>bidirezionale</strong>, cioè che una modifica all&#8217;interno del componente di <tt>todos</tt> si ripercuote anche nel padre.</p>
+<p>Il detto &#8220;il troppo stroppia&#8221; è applicabile anche in questo caso: troppo binding bidirezionale (cioè con il simbolo <code>'='</code>) fa male a tal punto da essere diventato una <em>worst practice</em> per i componenti! Meglio ricorrere al <em>one-way binding</em> come questo:</p>
+<p><pre data-enlighter-language="js" class="EnlighterJSRAW">
+bindings: {
+   todos: &#039;&lt;&#039;,   //INPUT
+   caption: &#039;@&#039;, //INPUT
+   onDone: &#039;&amp;&#039;,  //OUTPUT
+}
+</pre></p>
+<p>Che significano questi segni?</p>
+<ul>
+<li><code>'@'</code>: <strong>binding di interpolazione</strong> (che funge da input) usato anche nelle direttive per quei <em>valori provenienti dal DOM</em> come le stringhe.</li>
+<li><code>'&lt;'</code>: <strong>binding monodirezionale</strong> (di <strong>input</strong>) introdotto in AngularJS 1.5, supportato anche dalle direttive. Usando questo simbolo, la variabile di scope <strong>non viene messa in watch</strong>, quindi se gli si assegna un nuovo valore, il padre non cambia. Attenzione però: la <em>referenza è la stessa sia nel padre che ne figlio</em>, quindi una modifica su ogni suo attributo si ripercuote nel padre. Questo è un motivo in più per impedire ad un componente di modificare i dati che riceve in ingresso! E&#8217; bene gestire ogni modifica tramite gli <em>eventi di output</em> (ovvero chiamate alle funzioni che vengono passate al componente). La notazione <code>'<?'</code> rende il <strong>parametro di input opzionale</strong>.</li>
+<li><code>'&'</code>: come nelle direttive, questo simbolo serve per <em>passare una funzione al componente</em> in modo da essere usata come callback degli eventi (per <strong>generare un output</strong>) verso il componente chiamante.</li>
+</ul>
+<h2>Ciclo di vita di un componente</h2>
+<p>Come in Angular 2, anche i componenti di AngularJS sono scanditi da un proprio ciclo di vita, che è praticamente uguale a quello della versione 2, probabilmente per facilitarne l'upgrade. Dalla versione 1.5.3 infatti è possibile implementare dei "<em>lifecycle hooks</em>" <strong>sia per direttive che componenti</strong>: ciò significa dichiarare funzioni con un nome specifico nel controller del component che vengono richiamate nelle specifiche fasi di vita del componente stesso. Tra questi:</p>
+<ul>
+<li><code>$onInit()</code>: chiamato sul controller dopo che le variabili di binding sono disponibili. E' il posto giusto dove gestire anche la <strong>comunicazione tra componenti</strong>, dove è possibile iniettare nel controller figlio il controller del componente padre. La <a href="https://docs.angularjs.org/guide/component#intercomponent-communication" target="_blank">documentazione ufficiale</a> ha un esempio a riguardo. Questo approccio a mio avviso può essere utile per instaurare una comunicazione "privata" tra figlio e padre, senza dover passare dagli eventi, che, come abbiamo detto, fanno parte dell'API pubblica del componente.</li>
+<li><code>$onChanges(changesObj)</code>: chiamato quando si registra un cambiamento su un binding monodirezionale. Da notare che si riferisce al cambiamento di referenza sulla variabile di binding (per esempio una riassegnazione), non alla modifica di un suo attributo!</li>
+<li><code>$onDestroy()</code>: chiamato sul controller quando viene distrutto lo scope.</li>
+<li><code>$postLink()</code>: è il posto giusto dove manipolare il DOM del componente. Dall'introduzione dei "lifecycle hooks", questa affermazione ha lasciato diverse persone perplesse, compreso me. Una delle regole d'oro infatti è sempre stata quella di non manipolare il DOM nei controller: viene fuori adesso invece che l'affermazione è sempre vera, ad esclusione dei controller dei componenti (e delle direttive). Come si accede quindi al DOM? E' possibile iniettare nel controller l'elemento che rappresenta il componente tramite <tt>$element</tt>.</li>
+</ul>
+<p>Ulteriori dettagli interessanti possono essere trovati sul blog di <a href="http://blog.thoughtram.io/angularjs/2016/03/29/exploring-angular-1.5-lifecycle-hooks.html" target="_blank">Thoughtram</a>.</p>
+<h2>Esempio</h2>
+<p>Torniamo quindi al codice: su <a href="https://github.com/coding-jam/angularjs-todo-list-components" target="_blank">Github è presente un progetto di test</a> che fa proprio il downgrade della <a href="https://github.com/coding-jam/angular2-todo-list" target="_blank">Todo List creata in Angular2</a> qualche tempo fa.</p>
+<p>Tutti gli esempio sono stati scritti in ES6, per somigliare il più possibile alla versione di Angular2 (addio <tt>$scope</tt> quindi!), con grande ispirazione tratta da <a href="https://github.com/orizens/angular-es6-styleguide" target="_blank">AngularJS ES6 style guide</a>.</p>
+<p>Cominciamo quindi con il componente principale chiamato <tt>todos</tt>. </p>
+<p><pre data-enlighter-language="js" class="EnlighterJSRAW">
+import angular from &#039;angular&#039;;
+import {TodoFormComponent} from &#039;../todo-form/todo-form.component&#039;;
+import {TodoListComponent} from &#039;../todo-list/todo-list.component&#039;;
+
+const TodosComponent = {
+    selector: &#039;todos&#039;,
+    template: `
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;h1 class=&quot;text-center&quot;&gt;{{$ctrl.title}}&lt;/h1&gt;
+            &lt;todo-form on-new-element=&quot;$ctrl.addNewElement($event)&quot;&gt;&lt;/todo-form&gt;
+            &lt;hr/&gt;
+            &lt;todo-list todos=&quot;$ctrl.todoList&quot; 
+                       on-done=&quot;$ctrl.markDone($event)&quot; 
+                       on-undone=&quot;$ctrl.markUndone($event)&quot;&gt;&lt;/todo-list&gt;
+    	&lt;/div&gt;
+    `,
+    controller: class TodosController {
+        /* @ngInject */
+        constructor($log, TodoListService) {
+            ...
+        }
+        addNewElement(todoLabel) { ... }
+        markDone(todo) { ... }
+        markUndone(todo) { ... }
+    }
+}
+</pre></p>
+<p>Possiamo quindi considerare il nostro componente come un'oggetto (<em>costante</em>) fatto proprio come la sintassi di AngularJS si aspetta (cioè con l'attributo <tt>controller</tt> o <tt>template</tt>). Siamo liberi però di renderlo "migliore" dichiarando il <strong>controller come classe</strong> o aggiungendo l'<strong>attributo <tt>selector</tt></strong>, in modo da sapere come si chiama il componente semplicemente guardando questo oggetto. Non dimentichiamoci poi di registrare il nuovo componente nel modulo che stiamo creando:</p>
+<p><pre data-enlighter-language="js" class="EnlighterJSRAW">
+angular.module(&#039;todos-module&#039;, [])
+    .component(TodosComponent.selector, TodosComponent);
+</pre></p>
+<p>Detto questo, date un'occhiata alle differenze tra <tt>TodosComponent</tt> in <a href="https://github.com/coding-jam/angularjs-todo-list-components/blob/master/app/components/todos/todos.component.js" target="_blank">AngularJS</a> e <a href="https://github.com/coding-jam/angular2-todo-list/blob/master/app/todos.components.ts" target="_blank">Angular2</a>!!</p>
+<h3>Input e Output di un componente</h3>
+<p>Vale la pena insistere ancora un po' sul concetto di <em>input</em> e <em>output</em> di un componente, in alternativa al binding bidirezionale. Abbiamo visto le motivazioni che hanno portato a questo cambio di paradigma, ma come si realizza nel concreto?</p>
+<p>L'idea è che:</p>
+<ul>
+<li>gli <strong>input</strong> consistono nel passare la referenza di una variabile al componente</li>
+<li>gli <strong>output</strong> consistono nel passare una funzione al componente, invocata da esso quando vuole restituire un valore al padre</li>
+</ul>
+<p>Di fatto quindi è un <strong>approccio di design</strong>: niente vieta in AngularJS di modificare gli input ricevuti! E' solo quindi una questione di disciplina delegare la modifica di un dato ricevuto nuovamente al chiamante, tramite la callback fornita (con il binding <code>'&'</code>). In Angular2 invece gli output vengono restituiti al componente padre sempre <strong>tramite eventi</strong>: in questo caso non è possibile farlo e la soluzione adottata è quella delle callback, che per convenzione hanno sempre un nome che ricorda un evento (per esempio <tt>on-done</tt>).</p>
+<p>Nel template di <tt>todos</tt> vediamo per esempio:<br />
+<pre data-enlighter-language="html" class="EnlighterJSRAW">
+&lt;todo-list todos=&quot;$ctrl.todoList&quot; 
+     on-done=&quot;$ctrl.markDone($event)&quot; 
+     on-undone=&quot;$ctrl.markUndone($event)&quot;&gt;&lt;/todo-list&gt;
+</pre></p>
+<p>La variabile <code>todoList</code> di <tt>TodosController</tt> viene passata in input al componente figlio e legata alla variabile <code>todos</code> del suo controller. Allo stesso modo, in output, le funzioni <code>markDone</code> e <code>markUndone</code> vengono associate rispettivamente agli eventi del componente figlio <code>on-done</code> e <code>on-undone</code>.</p>
+<p>Da notare <code>$event</code>: avrebbe potuto chiamarsi in qualsiasi modo (ma questo è il nome che va usato in Angular2, quindi meglio mettersi avanti), ma l'importante è che sia definito se ci si aspetta che il <em>componente figlio passi un valore come argomento alla funzione</em>, altrimenti non viene propagato. </p>
+<p>Il componente <tt>todo-list</tt> infatti definisce come binding:</p>
+<p><pre data-enlighter-language="js" class="EnlighterJSRAW">
+bindings: {
+   todos: &#039;&lt;&#039;,
+   onDone: &#039;&amp;&#039;,
+   onUndone: &#039;&amp;&#039;
+}
+</pre></p>
+<p>un attributo (input) e due funzioni (output - occhio al <em>kebab-case</em> che diventa <em>camelCase</em> come nelle direttive!!) che nel template, vengono usate così:</p>
+<p><pre data-enlighter-language="html" class="EnlighterJSRAW">
+&lt;button ng-click=&quot;$ctrl.onDone({$event: todo})&quot; ng-show=&quot;!todo.done&quot;&gt;Done&lt;/button&gt;
+&lt;button ng-click=&quot;$ctrl.onUndone({$event: todo})&quot; ng-show=&quot;todo.done&quot;&gt;Redo&lt;/button&gt;
+</pre></p>
+<p>Per passare quindi la variabile <tt>todo</tt> al componente padre, è necessario che sia "<strong>wrappata</strong>" in un oggetto che ha come chiave <code>$event</code> (o come è stato chiamato nel template del componente padre). Il componente padre riceve direttamente il valore:</p>
+<p><pre data-enlighter-language="js" class="EnlighterJSRAW">
+markDone(todo) {
+   todo.done = true;
+}
+</pre></p>
+<h2>Conclusioni</h2>
+<p>Con l'introduzione dei componenti in AngularJS, si avvicina il paradigma di programmazione a quello del web che sarà. Onestamente ho molti dubbi che in una applicazione mediamente complessa si riesca a fare l'upgrade ad Angular2 anche se si cominciano ad adottare i componenti. A prescindere da questo, rimane un ottimo approccio di sviluppo a mio avviso, soprattutto per la questione degli input/output che mettono ordine e rendono meno imprevedibile le propagazioni di cambiamenti di stato.</p>
+            </div>
+            <!-- end content -->
+
+            
+                <!-- social sharing buttons / counters -->
+                <div class="row">
+                  <div class="col-md-7">
+                    
+    <!-- social sharing buttons -->
+    <div class="bwp-single-share-wrap">
+      <span>Share:</span>
+      <ul class="bwp-single-share list-unstyled">
+        <!-- facebook -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/angularjs-1-5-incontra-i-components/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/angularjs-1-5-incontra-i-components/" target="_blank" class="bwp-share-link bwp-facebook-share">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <!-- end facebook -->
+        <!-- twitter -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/angularjs-1-5-incontra-i-components/&amp;text=angularjs-1-5-incontra-i-components', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/angularjs-1-5-incontra-i-components/&amp;text=angularjs-1-5-incontra-i-components" target="_blank" class="bwp-share-link bwp-twitter-share">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <!-- end twitter -->
+        <!-- google+ -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/angularjs-1-5-incontra-i-components/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/angularjs-1-5-incontra-i-components/" target="_blank" class="bwp-share-link bwp-google-plus-share">
+            <i class="fa fa-google-plus"></i>
+          </a>
+        </li>
+        <!-- end google+ -->
+        <!-- vk -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/angularjs-1-5-incontra-i-components/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/angularjs-1-5-incontra-i-components/" target="_blank" class="bwp-share-link bwp-vk-share">
+            <i class="fa fa-vk"></i>
+          </a>
+        </li>
+        <!-- end vk -->
+        <!-- pinterest -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/angularjs-1-5-incontra-i-components/&amp;media=&amp;description=angularjs-1-5-incontra-i-components', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/angularjs-1-5-incontra-i-components/&amp;media=&amp;description=angularjs-1-5-incontra-i-components" target="_blank" class="bwp-share-link bwp-pinterest-share">
+            <i class="fa fa-pinterest-p"></i>
+          </a>
+        </li>
+        <!-- end pinterest -->
+      </ul>
+    </div>
+    <!-- end social sharing buttons -->
+
+                      </div>
+                  <div class="col-md-5">
+                    
+    <!-- counters -->
+    <ul class="bwp-single-counters list-unstyled clearfix ">
+                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>1</a></li>
+                </ul>
+    <!-- end counters -->
+
+                      </div>
+                </div>
+                <!-- end social sharing buttons / counters -->
+
+                
+      <!-- metadata -->
+      <div class="bwp-single-metadata-wrap ">
+        <ul class="bwp-single-metadata list-unstyled clearfix">
+                      <!-- author -->
+            <li>
+              <span class="vcard author">
+                <span class="fn">
+                  <i class="fa fa-pencil-square-o"></i><a href="../author/andrea-como/index.html" title="Posts by Andrea Como" rel="author">Andrea Como</a>                </span>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end author -->
+                                <!-- date -->
+            <li>
+                            <span class="date updated">
+                <i class="fa fa-clock-o"></i><a href="../2016/12/23/index.html">23/12/2016</a>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end date -->
+                                <!-- categories -->
+            <li>
+              <i class="fa fa-bookmark-o"></i><a href="../category/angularjs/index.html" rel="category tag">AngularJS</a>, <a href="../category/javascript/index.html" rel="category tag">Javascript</a>, <a href="../category/tutorial-2/index.html" rel="category tag">Tutorial</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end categories -->
+                                <!-- tags -->
+            <li>
+              <i class="fa fa-tags"></i><a href="https://codingjam.it/tag/angularjs/" rel="tag">AngularJS</a>, <a href="https://codingjam.it/tag/binding/" rel="tag">binding</a>, <a href="../tag/javascript-2/index.html" rel="tag">javascript</a>, <a href="https://codingjam.it/tag/webcomponent/" rel="tag">WebComponent</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end tags -->
+                  </ul>
+      </div>
+      <!-- end metadata -->
+
+      
+          </div>
+          <!-- end content container -->
+
+        </article>
+        <!-- end article -->
+
+        
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://codingjam.it/angularjs-in-es6/" rel="prev"><span class="meta-nav"><i class="fa fa-angle-left"></i>Previous post</span><span class="post-title-nav">AngularJS in ES6</span></a></div><div class="nav-next"><a href="https://codingjam.it/webpack-ecmascript-6-parte/" rel="next"><span class="meta-nav">Next post<i class="fa fa-angle-right"></i></span><span class="post-title-nav">Webpack ECMAScript 6 &#8211; Parte I</span></a></div></div>
+	</nav>
+    <!-- about the author -->
+    <div class="bwp-about-author-container bwp-transition-3 clearfix">
+      <!-- avatar -->
+      <div class="bwp-about-author-avatar">
+        <a href="../author/andrea-como/index.html">
+          <img alt='' src='https://secure.gravatar.com/avatar/684ede46c9386ff5430335a42fd5b011?s=150&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/684ede46c9386ff5430335a42fd5b011?s=300&#038;d=mm&#038;r=g 2x' class='avatar avatar-150 photo' height='150' width='150' />        </a>
+      </div>
+      <!-- end avatar -->
+      <!-- biographical info -->
+      <div class="bwp-about-author-bio-wrap">
+        <h3 class="bwp-about-author-name">
+          <a href="../author/andrea-como/index.html" title="Posts by Andrea Como" rel="author">Andrea Como</a>          <span><i class="fa fa-angle-double-right"></i>84 Posts</span>
+        </h3>
+        <div class="bwp-about-author-bio">
+          Sono un <strong>software engineer</strong> focalizzato nella progettazione e sviluppo di applicazioni web in Java. Presso <a href="http://www.omniagroup.it/">OmniaGroup</a> ricopro il ruolo di <strong>Tech Leader</strong> sulle tecnologie legate alla piattaforma Java EE 5 (come WebSphere 7.0, EJB3, JPA 1 (EclipseLink), JSF 1.2 (Mojarra) e RichFaces 3) e Java EE 6 con JBoss AS 7, in particolare di CDI, JAX-RS, nonché di EJB 3.1, JPA2, JSF2 e RichFaces 4. Al momento mi occupo di ECM, in particolar modo sulla customizzazione di Alfresco 4 e sulla sua installazione con tecnologie da devops come Vagrant e Chef. 
+In passato ho lavorato con la piattaforma alternativa alla enterprise per lo sviluppo web: Java SE 6, Tomcat 6, Hibernate 3 e Spring 2.5. Nei ritagli di tempo sviluppo siti web in PHP e ASP. Per maggiori informazioni consulta il mio <a href="http://resume.linkedinlabs.com/qoqlpivm">curriculum pubblico</a>.
+
+<a href="https://twitter.com/andrea_como">Follow me on Twitter</a>  -  <a href="http://www.linkedin.com/pub/andrea-como/19/291/99">LinkedIn profile</a> - <a href="https://plus.google.com/u/0/111647274412905676850/posts?rel=author">Google+</a>        </div>
+                  <ul class="bwp-about-author-social list-unstyled clearfix">
+                              <li><a href="http://andrea_como/" target="_blank" class="bwp-a-twitter-link"><i class="fa fa-twitter"></i></a></li>
+                                  <li><a href="http://www.cosenonjaviste.it/?team=andrea-como" target="_blank" class="bwp-a-website-link"><i class="fa fa-link"></i></a></li>
+                          </ul>
+              </div>
+      <!-- end biographical info -->
+    </div>
+    <!-- end about the author -->
+
+    
+<!-- comments -->
+<div id="comments" class="comments-area">
+
+	
+		<h2 class="comments-title">
+			1 thought on &ldquo;AngularJS 1.5+ incontra i Components&rdquo;		</h2>
+
+		<ol class="comment-list">
+					<li id="comment-814" class="comment even thread-even depth-1">
+			<article id="div-comment-814" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/5e8882edcb6f227ef2ddc50ff273aaee?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/5e8882edcb6f227ef2ddc50ff273aaee?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">alessandrofalchi</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-814">
+							<time datetime="2018-05-01T09:57:00+02:00">
+								01/05/2018 at 09:57							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Spiegazione chiara, grazie!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/angularjs-1-5-incontra-i-components/?replytocom=814#respond' data-commentid="814" data-postid="14147" data-belowelement="div-comment-814" data-respondelement="respond" aria-label='Reply to alessandrofalchi'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+		<div id="respond" class="comment-respond">
+		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='14147' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+	
+</div>
+<!-- end comments -->
+
+    <!-- related posts (by tags) -->
+    <div class="bwp-related-posts-container bwp-show-2-posts">
+      <div class="bwp-o-hidden">
+
+        <!-- title -->
+        <h2 class="bwp-related-posts-title">
+          You might also like:        </h2>
+        <!-- end title -->
+
+        <!-- posts list -->
+        <div class="bwp-related-posts clearfix">
+
+          
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                    <!-- media - featured image -->
+                    <figure class="bwp-post-media">
+                                              <a href="https://codingjam.it/angularjs-in-es6/" class="bwp-post-media-link">
+                                              <img width="500" height="300" src="https://codingjam.it/wp-content/uploads/2016/12/angular-es6.png" class="attachment-melissa-img-706-auto size-melissa-img-706-auto wp-post-image" alt="" srcset="https://codingjam.it/wp-content/uploads/2016/12/angular-es6.png 500w, https://codingjam.it/wp-content/uploads/2016/12/angular-es6-300x180.png 300w" sizes="(max-width: 500px) 100vw, 500px" />                        <div class="bwp-post-bg-overlay bwp-transition-4"></div>
+                        <div class="bwp-post-hover-icon-wrap">
+                          <div class="bwp-post-hover-icon-alignment">
+                            <div class="bwp-post-hover-icon-center">
+                              <span class="bwp-transition-4"><i class="fa fa-share"></i></span>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </figure>
+                    <!-- end media -->
+
+                    
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="https://codingjam.it/angularjs-in-es6/">AngularJS in ES6</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>Non molto tempo fa con un post di <a href="https://codingjam.it/author/unnikked/" target="_blank">Nicola Malizia</a> abbiamo visto le novità introdotte da JavaScript 6 (o meglio <a href="http://es6-features.org/" target="_blank">ECMAScript 6</a> o ES6 per gli amici). Nonostante la <a href="https://kangax.github.io/compat-table/es6/" target="_blank">matrice di compatibilità</a> di ES6 con i maggiori browser sia sempre più &#8220;piena&#8221;, si ricorre spesso ai <em>transpiler</em> (come <a href="https://github.com/google/traceur-compiler" target="_blank">Traceur</a> o <a href="https://babeljs.io/" target="_blank">Babel</a>) per usare oggi gran parte delle caratteristiche future di JavaScript. Vediamo quindi come usare oggi alcune delle caratteristiche di ES6 anche con AngularJS!</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2016/12/13/" class="bwp-post-date">
+        <span class="date updated">13/12/2016</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="https://codingjam.it/angularjs-in-es6/" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                    <!-- media - featured image -->
+                    <figure class="bwp-post-media">
+                                              <a href="https://codingjam.it/introduzione-ad-angular-2-parte-1/" class="bwp-post-media-link">
+                                              <img width="706" height="424" src="https://codingjam.it/wp-content/uploads/2016/04/angular2.png" class="attachment-melissa-img-706-auto size-melissa-img-706-auto wp-post-image" alt="" srcset="https://codingjam.it/wp-content/uploads/2016/04/angular2.png 750w, https://codingjam.it/wp-content/uploads/2016/04/angular2-300x180.png 300w, https://codingjam.it/wp-content/uploads/2016/04/angular2-300x180@2x.png 600w" sizes="(max-width: 706px) 100vw, 706px" />                        <div class="bwp-post-bg-overlay bwp-transition-4"></div>
+                        <div class="bwp-post-hover-icon-wrap">
+                          <div class="bwp-post-hover-icon-alignment">
+                            <div class="bwp-post-hover-icon-center">
+                              <span class="bwp-transition-4"><i class="fa fa-share"></i></span>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </figure>
+                    <!-- end media -->
+
+                    
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="https://codingjam.it/introduzione-ad-angular-2-parte-1/">Introduzione ad Angular 2 &#8211; Parte 1</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>E&#8217; tanto che se ne parla e finalmente Angular 2 è arrivato alla versione beta! Possiamo considerare le API ormai stabili dal punto di vista sintattico (visto che dalla alpha qualcosa è cambiato), per cui è il momento di cominciare a studiarlo senza aspettarsi straordinari cambiamenti da qui alla release ufficiale. Quei rumors che dicevano che Angular 2 era del tutto diverso dalla versione 1 erano veri? Ebbene si, Angular 2 fa un grande passo a vanti, si trasforma e diventa&#8230; <a href="https://facebook.github.io/react/docs/tutorial.html" target="_blank">React</a>!!! Apparte gli scherzi, a prima vista sembra che Angular 2 sia più parente del framework di Facebook che del suo predecessore, almeno per quanto riguarda i concetti base. Scavando un po&#8217; però si riconosce il nostro vecchio amico AngularJS&#8230;</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2016/04/12/" class="bwp-post-date">
+        <span class="date updated">12/04/2016</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="https://codingjam.it/introduzione-ad-angular-2-parte-1/" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+        </div>
+        <!-- end posts list -->
+
+      </div>
+    </div>
+    <!-- end related posts -->
+
+    
+                  </div><!-- /bwp-single-content-col-wrap --></div><!-- /col-md-8 --><div class="col-md-4 bwp-sidebar-col bwp-sidebar-right">
+        
+                  </div><!-- /col --></div><!-- /row -->
+        
+      </div>
+    </div>
+  </section>
+  <!-- end blog post - single page -->
+
+  
+<!-- footer -->
+<footer id="bwp-footer-wrap">
+  <div class="container">
+    <div class="bwp-footer-container clearfix">
+
+              <!-- footer text -->
+        <div class="bwp-footer-text">
+          CodingJam        </div>
+        <!-- end footer text -->
+      
+              <!-- social links -->
+        <ul class="bwp-footer-social-links list-unstyled clearfix">
+          <li><a href="https://twitter.com/codingjam" target="_blank" class="bwp-f-twitter-link"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.facebook.com/codingjamit/" target="_blank" class="bwp-f-facebook-link"><i class="fa fa-facebook"></i></a></li><li><a href="https://github.com/coding-jam" target="_blank" class="bwp-f-github-link"><i class="fa fa-github"></i></a></li>        </ul>
+        <!-- end social links -->
+      
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+
+<!--googleoff: all--><div id="cookie-law-info-bar"><span>Questo sito Web utilizza i cookie per migliorare la tua esperienza. Daremo per scontato che per te sia ok, ma puoi disattivarlo se lo desideri..<a role='button' tabindex='0' data-cli_action="accept" id="cookie_action_close_header"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button" style="display:inline-block; ">Accetto</a>  <a role='button' tabindex='0' id="cookie_action_close_header_reject"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header_reject cli_action_button"  data-cli_action="reject">Annulla</a> <a href='../cookie.html' id="CONSTANT_OPEN_URL" target="_blank"  class="cli-plugin-main-link"  style="display:inline-block;" >Read More</a></span></div><div id="cookie-law-info-again" style="display:none;"><span id="cookie_hdr_showagain">Privacy & Cookies</span></div><div class="cli-modal" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+    <div class="cli-modal-content cli-bar-popup">
+      <button type="button" class="cli-modal-close" id="cliModalClose">
+        <svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+        <span class="wt-cli-sr-only">Close</span>
+      </button>
+      <div class="cli-modal-body">
+        <div class="cli-container-fluid cli-tab-container">
+    <div class="cli-row">
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0">
+            <div class="cli-privacy-overview">
+                                                   
+                <div class="cli-privacy-content">
+                    <div class="cli-privacy-content-text"></div>
+                </div>
+                <a class="cli-privacy-readmore" data-readmore-text="Show more" data-readless-text="Show less"></a>            </div>
+        </div>  
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+              
+                            <div class="cli-tab-section">
+                    <div class="cli-tab-header">
+                        <a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab" >
+                            Necessary 
+                        </a>
+                    
+                    <span class="cli-necessary-caption">Always Enabled</span>                     </div>
+                    <div class="cli-tab-content">
+                        <div class="cli-tab-pane cli-fade" data-id="necessary">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+              
+                       
+        </div>
+    </div> 
+</div> 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<script type="text/javascript">
+  /* <![CDATA[ */
+  cli_cookiebar_settings='{"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":false,"button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":true,"button_1_new_win":false,"button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":false,"button_2_hidebar":false,"button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":true,"button_3_new_win":false,"button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#fff","button_4_as_button":true,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":false,"scroll_close_reload":false,"accept_close_reload":false,"reject_close_reload":false,"showagain_tab":true,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":false,"show_once":"10000","logging_on":false,"as_popup":false,"popup_overlay":true,"bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"}';
+  /* ]]> */
+</script>
+<!--googleon: all--><script type='text/javascript' src='../wp-content/themes/melissa/js/bootstrap.min7433.js?ver=3.3.7'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.parallaxc358.js?ver=1.1.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/superfish.min97e9.js?ver=1.7.9'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel.min3ba1.js?ver=1.3.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/magnific-popup/jquery.magnific-popup.minf488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
+</body>
+
+<!-- Mirrored from codingjam.it/angularjs-1-5-incontra-i-components/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+</html>

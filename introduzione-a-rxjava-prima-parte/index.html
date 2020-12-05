@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from codingjam.it/introduzione-a-rxjava-prima-parte/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="pingback" href="../xmlrpc.php">
+
+  <title>RxJava &#8211; Observable e Observer &#8211; CodingJam</title>
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Feed" href="../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Comments Feed" href="../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; RxJava &#8211; Observable e Observer Comments Feed" href="https://codingjam.it/introduzione-a-rxjava-prima-parte/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='../wp-content/plugins/gutenberg/build/block-library/stylea4fb.css?ver=1591004795' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-gdpr-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='melissa-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lato%3A400%2C400i%2C700%2C700i%7CNoto+Serif%3A400%2C400i%2C700%2C700i&amp;subset=latin&amp;ver=1.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../wp-content/themes/melissa/css/bootstrap.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-theme-css'  href='../wp-content/themes/melissa/css/bootstrap-theme.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-ie10-viewport-bug-workaround-css'  href='../wp-content/themes/melissa/css/ie10-viewport-bug-workaround8a54.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='../wp-content/themes/melissa/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-carousel-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-theme-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.theme3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='magnific-popup-css'  href='../wp-content/themes/melissa/assets/magnific-popup/magnific-popupf488.css?ver=1.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-style-css'  href='../wp-content/themes/melissa/style3ec8.css?ver=1.1.6' type='text/css' media='all' />
+<style id='melissa-style-inline-css' type='text/css'>
+
+    .bwp-post-media img,
+    .bwp-post-carousel-item img,
+    .widget_bwp_posts_slider_item img {
+      width: 100%;
+      margin: 0;
+    }
+    .bwp-post-wrap:hover {
+      margin-top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+    #bwp-masonry-container.no-masonry .bwp-post-wrap:hover {
+      top: 0;
+    }
+    .bwp-no-results-container:hover,
+    .bwp-single-article:hover,
+    .bwp-featured-media-container:hover,
+    .post-navigation .nav-links a:hover,
+    .bwp-about-author-container:hover,
+    .comment-respond:hover,
+    .comment-body:hover,
+    #comments .no-comments:hover,
+    .comment-navigation .nav-links a:hover,
+    .bwp-related-post-wrap:hover,
+    .bwp-page-404-container:hover,
+    .bwp-sidebar-wrap:hover {
+      top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+  #bwp-header-wrap {
+    background-color: #2e3340;
+  }
+  .bwp-header-bg-overlay,
+  .bwp-header-rs-bg-overlay {
+    background-color: rgba(46, 51, 64, 0.9);
+  }
+    .bwp-content a,
+    .comment-content a,
+    .bwp-post-quote a {
+      color: #2052bf;
+    }
+</style>
+<link rel='stylesheet' id='enlighter-local-css'  href='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.css?ver=3.9.0' type='text/css' media='all' />
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery4a5f.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[]};
+var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/cookie-law-info/public/js/cookie-law-info-public3cf4.js?ver=1.8.8'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/respond.min.js?ver=1.4.2'></script>
+<![endif]-->
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/mootools-core-yc9086.js?ver=3.9.0'></script>
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.js?ver=3.9.0'></script>
+<link rel='https://api.w.org/' href='../wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+<link rel='prev' title='Nuovo libro di programmazione Android: sviluppare applicazioni per Android in 7 giorni' href='https://codingjam.it/nuovo-libro-di-programmazione-android-sviluppare-applicazioni-per-android-in-7-giorni/' />
+<link rel='next' title='Creare un back-end REST con Spark' href='https://codingjam.it/creare-un-back-end-rest-con-spark/' />
+<meta name="generator" content="WordPress 5.4.1" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://codingjam.it/?p=11729' />
+<link rel="alternate" type="application/json+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Fintroduzione-a-rxjava-prima-parte%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Fintroduzione-a-rxjava-prima-parte%2F&amp;format=xml" />
+<link rel="amphtml" href="https://codingjam.it/introduzione-a-rxjava-prima-parte/amp/"><script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"droide","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":false,"windowButton":false,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" sizes="32x32" />
+<link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://codingjam.it/wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-270x270.png" />
+</head>
+
+<body class="post-template-default single single-post postid-11729 single-format-standard wp-custom-logo">
+
+
+<!-- header -->
+<header id="bwp-header-wrap" class="bwp-header-simple">
+
+  <!-- header bg -->
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P6261835_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg-overlay"></div>
+
+    <!-- header content -->
+    <div class="container">
+      <div class="bwp-header-content-container">
+
+        <!-- row 1 - logo + navigation -->
+        <div class="bwp-main-navigation-container clearfix">
+
+          
+        <!-- image logo -->
+        <div class="bwp-logo-container">
+          <a href="../index.html" class="custom-logo-link" rel="home"><img width="207" height="70" src="../wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png" class="custom-logo" alt="CodingJam" srcset="https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png 207w, https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco-150x51.png 150w" sizes="(max-width: 207px) 100vw, 207px" /></a>        </div>
+        <!-- end image logo -->
+
+        
+      <!-- search -->
+      <div class="bwp-header-search-container hidden-sm hidden-xs">
+        <a href="#" id="bwp-header-search-icon">
+          <i class="fa fa-search"></i>
+        </a>
+        <div class="bwp-dropdown-search-container bwp-search-hidden">
+          
+<!-- search form -->
+<form id="searchform" role="search" method="get" action="https://codingjam.it/">
+  <div class="input-group">
+    <input type="text" name="s" id="s" class="bwp-search-field form-control" placeholder="Enter your search query...">
+    <span class="input-group-btn">
+      <button type="submit" class="btn bwp-search-submit">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+</form>
+<!-- end search form -->
+        </div>
+      </div>
+      <!-- end search -->
+
+      
+      <!-- menu -->
+      <div class="bwp-menu-container hidden-sm hidden-xs">
+        <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-2" class="sf-menu"><li id="menu-item-12007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li id="menu-item-12022" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li id="menu-item-12009" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li id="menu-item-12020" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li id="menu-item-12017" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li id="menu-item-12006" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li id="menu-item-12005" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li id="menu-item-12008" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li id="menu-item-12014" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li id="menu-item-12012" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li id="menu-item-12010" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li id="menu-item-12021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li id="menu-item-12016" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li id="menu-item-12015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li id="menu-item-12019" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li id="menu-item-12018" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>      </div>
+      <!-- end menu -->
+
+      
+      <!-- mobile menu -->
+      <div class="bwp-mobile-menu-container hidden-md hidden-lg">
+        <!-- mobile menu icon -->
+        <a href="#" id="bwp-mobile-menu-icon">
+          <i class="fa fa-bars"></i>
+        </a>
+        <!-- end mobile menu icon -->
+        <!-- dropdown mobile menu -->
+        <div class="bwp-dropdown-mobile-menu bwp-mobile-menu-hidden">
+          <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-3" class="bwp-mobile-menu list-unstyled"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>        </div>
+        <!-- end dropdown mobile menu -->
+      </div>
+      <!-- end mobile menu -->
+
+      
+        </div>
+        <!-- end row 1 - logo + navigation -->
+
+        
+          <!-- row 2 - header custom text -->
+          <div class="bwp-header-custom-text-container">
+            
+        <!-- custom text - single page -->
+        <h1 class="bwp-header-custom-title entry-title">
+          RxJava &#8211; Observable e Observer        </h1>
+                <div class="bwp-header-transparent-line clearfix">
+          <span class="bwp-header-t-line-1"></span>
+          <span class="bwp-header-t-line-2"></span>
+        </div>
+        <!-- end custom text -->
+
+                  </div>
+          <!-- end row 2 - header custom text -->
+
+          
+      </div>
+    </div>
+    <!-- end header content -->
+  </div>
+  <!-- end header bg -->
+
+  
+        <!-- sticky navigation -->
+        <div class="bwp-sticky-navigation-wrap bwp-transition-4 clearfix">
+          <!-- sticky navigation icon -->
+          <a href="#" id="bwp-sticky-navigation-icon">
+            <i class="fa fa-bars"></i>
+          </a>
+          <!-- end sticky navigation icon -->
+          <!-- sticky navigation container -->
+          <div class="bwp-sticky-navigation-container bwp-sticky-navigation-hidden">
+            <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-4" class="sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>          </div>
+          <!-- end sticky navigation container -->
+        </div>
+        <!-- end sticky navigation -->
+
+        
+</header>
+<!-- end header -->
+
+  <!-- blog post - single page -->
+  <section id="bwp-single-page-wrap">
+    <div class="container">
+      <div class="bwp-single-page-container" >
+
+        
+                  <div class="row"><div class="col-md-8 bwp-single-content-col bwp-sidebar-right"><div class="bwp-single-content-col-wrap" role="main">
+        
+        <!-- article -->
+        <article id="post-11729" class="bwp-single-article bwp-transition-3">
+
+          
+          <!-- content container -->
+          <div class="bwp-single-content">
+
+            <!-- content -->
+            <div class="bwp-content entry-content clearfix">
+              <p>Se c&#8217;è una tecnologia che periodicamente incrocia la mia strada questa è sicuramente RxJava dove Rx sta per Reactive Extensions. Forse non avrete sentito parlare direttamente di RxJava ma di RxJS, RxScala, RxGroovy e così via. Tutti porting derivanti dalla libreria originale Rx in .NET che a sua volta possiamo inserire nel grande contenitore del <a href="http://en.wikipedia.org/wiki/Functional_reactive_programming">Functional Reactive Programming</a>. In questo post introdurremo RxJava mettendo in evidenza i meccanismi di base. La documentazione di RxJava è già abbastanza esaustiva di per se (Rx è conosciuta per i <em>marble diagrams</em>), quindi ci concentreremo su qualche esempio che metta assieme spunti differenti.</p>
+<h2>Ma cos&#8217;è RxJava?</h2>
+<p>Per rispondere bene dovremmo capire il significato di <em>reactive</em> e forse anche dopo aver letto la voce di Wikipedia sul <a href="http://en.wikipedia.org/wiki/Reactive_programming">reactive programming</a> probabilmente non avremmo le idee chiare su RxJava. Quindi in prima approssimazione lasciamo perdere questo aggettivo e diciamo cosa fa RxJava per noi. Questa libreria ci offre un modello di programmazione dove possiamo lavorare con gli eventi derivanti dalla UI o da chiamate asincrone alla stessa maniera con cui operiamo sulle collezioni e sugli <a href="http://www.cosenonjaviste.it/category/java/java-8/">stream di Java 8</a>. Possiamo trasformare gli eventi usando funzioni come map, flatmap, filter, ecc. Però al posto di costruire del codice che risponde agli eventi (leggi callback), trattiamo questi eventi come un flusso che viene modificato e gestito man mano che si genera ad opera della classe <code>Observable</code>. Cerchiamo di inquadrarla meglio. Quando ci serve avere un oggetto da un metodo, definiamo il nostro metodo in questo modo:</p>
+<pre class="brush: java; title: ; notranslate" title="">
+T getObject()
+</pre>
+<p>mentre se ci serve una collezione scriveremo</p>
+<pre class="brush: java; title: ; notranslate" title="">
+Iterable&lt;T&gt; getCollection() 
+</pre>
+<p>Ora se ci spostiamo nel campo dell&#8217;esecuzione asincrona e vogliamo gestire un oggetto che sarà disponibile successivamente, andiamo a realizzare un metodo con questo stile:</p>
+<pre class="brush: java; title: ; notranslate" title="">
+Future&lt;T&gt; getObject() 
+</pre>
+<p>Ci manca quindi l&#8217;ultima combinazione: una collezione i cui elementi saranno disponibili in futuro ma non necessariamente tutti nello stesso istante. La soluzione di RxJava per questo caso è proprio la classe Observable:</p>
+<pre class="brush: java; title: ; notranslate" title="">
+Observable&lt;T&gt; getCollection() 
+</pre>
+<a href="http://www.cosenonjaviste.it/wp-content/uploads/2014/11/rxjava-la-classe-observable.png"><img src="http://www.cosenonjaviste.it/wp-content/uploads/2014/11/rxjava-la-classe-observable-1024x177.png" alt="La classe Observable" width="512" height="89" class="size-large wp-image-11734" srcset="https://codingjam.it/wp-content/uploads/2014/11/rxjava-la-classe-observable-1024x177.png 1024w, https://codingjam.it/wp-content/uploads/2014/11/rxjava-la-classe-observable-300x52.png 300w, https://codingjam.it/wp-content/uploads/2014/11/rxjava-la-classe-observable-1280x222.png 1280w, https://codingjam.it/wp-content/uploads/2014/11/rxjava-la-classe-observable.png 1658w" sizes="(max-width: 512px) 100vw, 512px" /></a>
+<p>Un Observable è un oggetto che emette zero o più elementi per poi terminare con successo oppure durante il flusso degli elementi si interrompe a causa di un errore. Dall&#8217;altra parte abbiamo gli <em>osservatori</em> di tipo <code>Observer</code> che consumano l&#8217;elemento e gestiscono la terminazione dell&#8217;Observable (oppure il suo errore). Per gestire correttamente un Observable, un Observer implementa i metodi:</p>
+<ul>
+<li><code>onNext</code></li>
+<li><code>onComplete</code></li>
+<li><code>onError</code></li>
+</ul>
+<p>Questo pattern è molto simile all&#8217;observer &#8220;classico&#8221; in quanto lo estende ma ci sono delle differenze importanti. In generale l&#8217;Observable non emette elementi se non c&#8217;è alcun Observer (ma è possibile realizzare anche <em>hot</em> Observable dove questa regola non vale). Inoltre, l&#8217;Observer viene notificato quanto l&#8217;Observable smette di produrre elementi perché termina o perché fallisce. Questo implica anche che non è necessario rimuovere l&#8217;Observer dall&#8217;Observable quanto quest&#8217;ultimo è stato consumato perché avviene automaticamente.</p>
+<h2>Talk is cheap, show me the code</h2>
+<p>Ora che abbiamo chiarito i concetti fondamentali siamo pronti a sperimentare. In questa prima parte useremo sempre il thread principale, nonostante la &#8220;predisposizione&#8221; degli Observable alla gestione asincrona, nulla vieta di usare gli Observable solo in modalità sincrona.</p>
+<p>Definire un Observable è molto semplice: qualsiasi collezione può essere trasformata in Observable:</p>
+<pre class="brush: java; title: ; notranslate" title="">
+List&lt;String&gt; cityList = new ArrayList&lt;&gt;();
+cityList.add(&quot;Berlin&quot;);
+cityList.add(&quot;Roma&quot;);
+cityList.add(&quot;Madrid&quot;);
+cityList.add(&quot;Wien&quot;);
+		
+Observable&lt;String&gt; cities = Observable.from(cityList);
+</pre>
+<p>RxJava mette a disposizione anche dei metodi di utilità per semplificarci la vita, come il metodo <code>just</code> che costruisce un Observable partendo da una lista di oggetti. Un modo alternativo di costruire un Observable è questo:</p>
+<pre class="brush: java; title: ; notranslate" title="">
+Observable&lt;String&gt; moreCities = Observable.just(&quot;Zurich&quot;, &quot;London&quot;, &quot;Paris&quot;);
+</pre>
+<p>Possiamo anche generare Observable combinandone di esistenti. Ad esempio, posso fondere i due Observable precedenti con l&#8217;operatore <code>concatWith</code>:</p>
+<pre class="brush: java; title: ; notranslate" title="">
+Observable&lt;String&gt; allCities = cities.concatWith(moreCities);
+</pre>
+<p>Cosa fa esattamente questo metodo? Come dicevamo prima, la documentazione è fatta molto bene, quindi riporto qui sotto il <em>marble diagram</em>, cioè il diagramma a biglie, per il metodo concatWith.</p>
+<p><a href="http://www.cosenonjaviste.it/wp-content/uploads/2014/11/metodo-concat-rxjava.png"><img src="http://www.cosenonjaviste.it/wp-content/uploads/2014/11/metodo-concat-rxjava-1024x742.png" alt="metodo-concat-rxjava" width="512" height="371" class="aligncenter size-large wp-image-11735" srcset="https://codingjam.it/wp-content/uploads/2014/11/metodo-concat-rxjava-1024x742.png 1024w, https://codingjam.it/wp-content/uploads/2014/11/metodo-concat-rxjava-300x217.png 300w, https://codingjam.it/wp-content/uploads/2014/11/metodo-concat-rxjava-1280x928.png 1280w, https://codingjam.it/wp-content/uploads/2014/11/metodo-concat-rxjava.png 1550w" sizes="(max-width: 512px) 100vw, 512px" /></a></p>
+<p>L&#8217;immagine spiega molto meglio di come possiamo fare noi a parole: la freccia a destra indica l&#8217;avanzamento del tempo, abbiamo due Observable quindi due frecce. Il risultato del metodo è un nuovo Observable composto dagli elementi del primo seguiti dagli elementi del secondo mantenendo l&#8217;ordine. Gli Observable indicati terminano nell&#8217;istante indicato dalla stanghetta verticale.</p>
+<p>Tutta la documentazione di RxJava è realizzata in questa maniera, la difficoltà nell&#8217;uso di questa libreria non starà quindi nel capire come funziona un operatore, ma piuttosto quale tra le decine di operatori presenti è quello giusto per quello che dobbiamo fare 🙂 .</p>
+<p>L&#8217;Observable è pronto, implementiamo l&#8217;interfaccia Observer per fare qualcosa con la lista delle città: ci servono tre metodi.</p>
+<pre class="brush: java; title: ; notranslate" title="">
+Observer&lt;String&gt; traveller = new Observer&lt;String&gt;() {
+
+  @Override
+  public void onCompleted() {
+    System.out.println(&quot;My trip is finished&quot;);
+  }
+
+  @Override
+    public void onError(Throwable e) {
+    System.out.println(&quot;I won't complete my trip!&quot;);
+  }
+
+  @Override
+  public void onNext(String t) {
+    System.out.println(&quot;I've just visited &quot; + t);
+  }
+
+};
+</pre>
+<p>L&#8217;unica cosa che resta ora da fare è associare l&#8217;Observable al suo Observer tramite il metodo <code>subscribe</code></p>
+<pre class="brush: java; title: ; notranslate" title="">
+allCities.subscribe(traveller);
+</pre>
+<p>Il risultato prodotto è quello riportato qui sotto</p>
+<pre class="brush: plain; title: ; notranslate" title="">
+I've just visited Zurich
+I've just visited London
+I've just visited Paris
+I've just visited Berlin
+I've just visited Roma
+I've just visited Madrid
+I've just visited Wien
+My trip is finished
+</pre>
+<p>Se non vogliamo costruire un Observer, possiamo anche limitarci a passare il comportamento che vogliamo applicare solo nel caso <em>onNext</em>: basta implementare l&#8217;interfaccia <code>Action1</code> </p>
+<pre class="brush: java; title: ; notranslate" title="">
+Action1&lt;String&gt; weather = new Action1&lt;String&gt;(){
+  @Override
+  public void call(String city) {
+    System.out.println(&quot;The weather is sunny in &quot; + city);
+  }
+			
+};
+
+allCities.subscribe(weather);
+</pre>
+<p>per ottenere questo risultato:</p>
+<pre class="brush: plain; title: ; notranslate" title="">
+The weather is sunny in Zurich
+The weather is sunny in London
+The weather is sunny in Paris
+The weather is sunny in Berlin
+The weather is sunny in Roma
+The weather is sunny in Madrid
+The weather is sunny in Wien
+</pre>
+<p>Per fortuna con le  <a href="http://www.cosenonjaviste.it/java-8-lambda-in-7-minuti-o-quasi/">lambda</a> di Java 8, possiamo scrivere tutto in maniera più compatta e risparmiare un sacco di codice.</p>
+<pre class="brush: java; title: ; notranslate" title="">
+allCities.subscribe(city -&gt; System.out.println(&quot;The weather is sunny in &quot; + city));
+</pre>
+<h2>Un po&#8217; di trasformazioni</h2>
+<p>Abbiamo visto le due operazioni indispensabili: la creazione di un Observable e la sottoscrizione di un Observer. Prima che gli elementi arrivino all&#8217;Observer possiamo applicare gli operatori che vogliamo in un modo del tutto simile a quelli che applichiamo su di uno <a href="http://www.cosenonjaviste.it/java-8-uno-sguardo-agli-stream/">stream di Java 8</a>. Facciamo un piccolo esempio:</p>
+<pre class="brush: java; title: ; notranslate" title="">
+allCities.map(city -&gt; city.toUpperCase())
+         .filter(city -&gt; city.length() &gt; 5)
+         .take(3)
+         .subscribe(city -&gt; System.out.println(&quot;I LOVE &quot; + city));
+</pre>
+<p>Guardiamo in dettaglio un operatore alla volta, il metodo <code>map</code> trasforma in maiuscolo gli elementi emessi dall&#8217;Observable. Dell&#8217;Observable risultante non prendiamo tutti gli elementi ma solo quelli che soddisfano la condizione passata a <code>filter</code>, cioè solo le città con un nome più lungo di cinque caratteri. Infine, non usiamo tutte le stringhe a disposizione ma solo le prime tre e finalmente raggiungono l&#8217;Observer che li stampa su console ottenendo questo risultato:</p>
+<pre class="brush: plain; title: ; notranslate" title="">
+I LOVE BERLIN
+I LOVE MADRID
+I LOVE WIEN
+</pre>
+<p>Facciamo un esempio diverso in modo da introdurre altri operatori:</p>
+<pre class="brush: java; title: ; notranslate" title="">
+cities.zipWith(moreCities, (String s1, String s2) -&gt; &quot;From &quot; + s1 + &quot; to &quot; + s2)
+      .doOnNext(s -&gt; System.out.println(&quot;#Debug: &quot;+ s))
+      .map(s -&gt; s.toLowerCase())
+      .subscribe(System.out::println);
+</pre>
+<p>Anche il metodo <code>zipWith</code> unisce due Observable, ma a differenza di concat, prende gli elementi emessi da due Observable e li combina a due a due secondo una funzione passata come parametro. Qui usiamo zipWith per generare una nuova stringa che comprende due città. Si noti che siccome <code>cities</code> ha quattro elementi mentre <code>moreCities</code> ne ha tre, il risultato sarà lungo quanto il più corto dei due Observable.<br />
+Il metodo <code>doOnNext</code> consente di applicare un&#8217;azione intermedia sull&#8217;Observable, nel nostro caso lo usiamo per debuggare su console il risultato del metodo zip. Eseguendo questo esempio otteniamo quindi:</p>
+<pre class="brush: plain; title: ; notranslate" title="">
+#Debug: From Zurich to Berlin
+from zurich to berlin
+#Debug: From London to Roma
+from london to roma
+#Debug: From Paris to Madrid
+from paris to madrid
+</pre>
+<h2>Non finisce qui</h2>
+<p>Siamo giunti al termine di questa prima parte su RxJava. Abbiamo introdotto la classe Observable e probabilmente non avrete incontrato grosse difficoltà a seguire gli esempi fatti fino qui se usate già da un po&#8217; <a href="http://www.cosenonjaviste.it/java-8-in-practice-parte-1-filtro-e-trasformazione-dei-dati-in-uno-stream/">gli stream di Java 8</a> (o quelli di <a href="http://www.cosenonjaviste.it/?s=scala">Scala</a>). In effetti, adoperando RxJava solo in modalità sincrona, non ho trovato molte differenze concettuali con gli stream di Java, tanto da farmi sembrare RxJava solo una versione molto più ricca di quanto avevo già a disposizione. La vera forza di RxJava sta però nel modo in cui tratta Observable e Observer che si trovano su thread diversi, rendendo molto più semplice la programmazione asincrona. Le cose si faranno più interessanti nei prossimi post, intanto potete provare il codice di questo articolo su <a href="https://github.com/giampaolotrapasso/CoseNonJavisteRxJava">GitHub</a>.</p>
+            </div>
+            <!-- end content -->
+
+            
+                <!-- social sharing buttons / counters -->
+                <div class="row">
+                  <div class="col-md-7">
+                    
+    <!-- social sharing buttons -->
+    <div class="bwp-single-share-wrap">
+      <span>Share:</span>
+      <ul class="bwp-single-share list-unstyled">
+        <!-- facebook -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/introduzione-a-rxjava-prima-parte/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/introduzione-a-rxjava-prima-parte/" target="_blank" class="bwp-share-link bwp-facebook-share">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <!-- end facebook -->
+        <!-- twitter -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/introduzione-a-rxjava-prima-parte/&amp;text=rxjava-observable-e-observer', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/introduzione-a-rxjava-prima-parte/&amp;text=rxjava-observable-e-observer" target="_blank" class="bwp-share-link bwp-twitter-share">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <!-- end twitter -->
+        <!-- google+ -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/introduzione-a-rxjava-prima-parte/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/introduzione-a-rxjava-prima-parte/" target="_blank" class="bwp-share-link bwp-google-plus-share">
+            <i class="fa fa-google-plus"></i>
+          </a>
+        </li>
+        <!-- end google+ -->
+        <!-- vk -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/introduzione-a-rxjava-prima-parte/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/introduzione-a-rxjava-prima-parte/" target="_blank" class="bwp-share-link bwp-vk-share">
+            <i class="fa fa-vk"></i>
+          </a>
+        </li>
+        <!-- end vk -->
+        <!-- pinterest -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/introduzione-a-rxjava-prima-parte/&amp;media=&amp;description=rxjava-observable-e-observer', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/introduzione-a-rxjava-prima-parte/&amp;media=&amp;description=rxjava-observable-e-observer" target="_blank" class="bwp-share-link bwp-pinterest-share">
+            <i class="fa fa-pinterest-p"></i>
+          </a>
+        </li>
+        <!-- end pinterest -->
+      </ul>
+    </div>
+    <!-- end social sharing buttons -->
+
+                      </div>
+                  <div class="col-md-5">
+                    
+    <!-- counters -->
+    <ul class="bwp-single-counters list-unstyled clearfix ">
+                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>6</a></li>
+                </ul>
+    <!-- end counters -->
+
+                      </div>
+                </div>
+                <!-- end social sharing buttons / counters -->
+
+                
+      <!-- metadata -->
+      <div class="bwp-single-metadata-wrap ">
+        <ul class="bwp-single-metadata list-unstyled clearfix">
+                      <!-- author -->
+            <li>
+              <span class="vcard author">
+                <span class="fn">
+                  <i class="fa fa-pencil-square-o"></i><a href="../author/giampaolo-trapasso/index.html" title="Posts by Giampaolo Trapasso" rel="author">Giampaolo Trapasso</a>                </span>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end author -->
+                                <!-- date -->
+            <li>
+                            <span class="date updated">
+                <i class="fa fa-clock-o"></i><a href="https://codingjam.it/2014/11/26/">26/11/2014</a>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end date -->
+                                <!-- categories -->
+            <li>
+              <i class="fa fa-bookmark-o"></i><a href="https://codingjam.it/category/librerie/" rel="category tag">Librerie</a>, <a href="../category/rxjava/index.html" rel="category tag">RxJava</a>, <a href="../category/tutorial-2/index.html" rel="category tag">Tutorial</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end categories -->
+                                <!-- tags -->
+            <li>
+              <i class="fa fa-tags"></i><a href="https://codingjam.it/tag/home/" rel="tag">Home</a>, <a href="https://codingjam.it/tag/rxjava/" rel="tag">RxJava</a>, <a href="https://codingjam.it/tag/stream/" rel="tag">stream</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end tags -->
+                  </ul>
+      </div>
+      <!-- end metadata -->
+
+      
+          </div>
+          <!-- end content container -->
+
+        </article>
+        <!-- end article -->
+
+        
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://codingjam.it/nuovo-libro-di-programmazione-android-sviluppare-applicazioni-per-android-in-7-giorni/" rel="prev"><span class="meta-nav"><i class="fa fa-angle-left"></i>Previous post</span><span class="post-title-nav">Nuovo libro di programmazione Android: sviluppare applicazioni per Android in 7 giorni</span></a></div><div class="nav-next"><a href="https://codingjam.it/creare-un-back-end-rest-con-spark/" rel="next"><span class="meta-nav">Next post<i class="fa fa-angle-right"></i></span><span class="post-title-nav">Creare un back-end REST con Spark</span></a></div></div>
+	</nav>
+    <!-- about the author -->
+    <div class="bwp-about-author-container bwp-transition-3 clearfix">
+      <!-- avatar -->
+      <div class="bwp-about-author-avatar">
+        <a href="../author/giampaolo-trapasso/index.html">
+          <img alt='' src='https://secure.gravatar.com/avatar/2fc7c345f3c40aad02aca88459b1eb4a?s=150&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/2fc7c345f3c40aad02aca88459b1eb4a?s=300&#038;d=mm&#038;r=g 2x' class='avatar avatar-150 photo' height='150' width='150' />        </a>
+      </div>
+      <!-- end avatar -->
+      <!-- biographical info -->
+      <div class="bwp-about-author-bio-wrap">
+        <h3 class="bwp-about-author-name">
+          <a href="../author/giampaolo-trapasso/index.html" title="Posts by Giampaolo Trapasso" rel="author">Giampaolo Trapasso</a>          <span><i class="fa fa-angle-double-right"></i>35 Posts</span>
+        </h3>
+        <div class="bwp-about-author-bio">
+          Sono laureato in Informatica e attualmente lavoro come Software Engineer in Databiz Srl. Mi diverto a programmare usando Java e Scala, Akka, RxJava e Cassandra. 
+
+Qui mio modesto contributo su
+<a href="http://stackoverflow.com/users/1360888/giampaolo">
+StackOverflow
+</a> e il mio account su <a href="https://github.com/giampaolotrapasso">GitHub</a>        </div>
+                  <ul class="bwp-about-author-social list-unstyled clearfix">
+                              <li><a href="http://tr4p0/" target="_blank" class="bwp-a-twitter-link"><i class="fa fa-twitter"></i></a></li>
+                                  <li><a href="http://www.codingjam.it/?team=giampaolo-trapasso" target="_blank" class="bwp-a-website-link"><i class="fa fa-link"></i></a></li>
+                          </ul>
+              </div>
+      <!-- end biographical info -->
+    </div>
+    <!-- end about the author -->
+
+    
+<!-- comments -->
+<div id="comments" class="comments-area">
+
+	
+		<h2 class="comments-title">
+			6 thoughts on &ldquo;RxJava &#8211; Observable e Observer&rdquo;		</h2>
+
+		<ol class="comment-list">
+					<li id="comment-622" class="comment even thread-even depth-1 parent">
+			<article id="div-comment-622" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/3a0e5e346c96ab09f3e0388c16c34956?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/3a0e5e346c96ab09f3e0388c16c34956?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn"><a href='http://www.marcozanetti.it/' rel='external nofollow ugc' class='url'>Marco Zanetti</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-622">
+							<time datetime="2015-07-06T10:00:00+02:00">
+								06/07/2015 at 10:00							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Che bomba! Grazie mille per questo tutorial! 🙂</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/introduzione-a-rxjava-prima-parte/?replytocom=622#respond' data-commentid="622" data-postid="11729" data-belowelement="div-comment-622" data-respondelement="respond" aria-label='Reply to Marco Zanetti'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-629" class="comment odd alt depth-2">
+			<article id="div-comment-629" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/2fc7c345f3c40aad02aca88459b1eb4a?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/2fc7c345f3c40aad02aca88459b1eb4a?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Giampaolo Trapasso</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-629">
+							<time datetime="2015-07-17T23:13:00+02:00">
+								17/07/2015 at 23:13							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>ti ringrazio! di RxJava si parla anche in altri due tutorial e nello screencast di Fabio. Facci sapere se ti piacciono 🙂</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/introduzione-a-rxjava-prima-parte/?replytocom=629#respond' data-commentid="629" data-postid="11729" data-belowelement="div-comment-629" data-respondelement="respond" aria-label='Reply to Giampaolo Trapasso'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-648" class="comment even thread-odd thread-alt depth-1 parent">
+			<article id="div-comment-648" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/aba2c8e311ee55c2df7e2025ef8c1111?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/aba2c8e311ee55c2df7e2025ef8c1111?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">PlutoUberAlles</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-648">
+							<time datetime="2015-11-11T01:22:00+01:00">
+								11/11/2015 at 01:22							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Fantastico!<br />
+Grazie mille! Spero facciate anche la seconda parte!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/introduzione-a-rxjava-prima-parte/?replytocom=648#respond' data-commentid="648" data-postid="11729" data-belowelement="div-comment-648" data-respondelement="respond" aria-label='Reply to PlutoUberAlles'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-649" class="comment odd alt depth-2">
+			<article id="div-comment-649" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/2fc7c345f3c40aad02aca88459b1eb4a?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/2fc7c345f3c40aad02aca88459b1eb4a?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Giampaolo Trapasso</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-649">
+							<time datetime="2015-11-11T08:47:00+01:00">
+								11/11/2015 at 08:47							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Ciao! Si ci sono altri due post di approfondimento specifici su Rx e anche uno screencast. Li trovi cercando &#8220;RX&#8221; nella barra di ricerca. Facci sapere cosa ne pensi.<br />
+ps. Un collega mi ha segnalato che il terzo post ha un refuso sull&#8217;output in console. Devo correggerlo.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/introduzione-a-rxjava-prima-parte/?replytocom=649#respond' data-commentid="649" data-postid="11729" data-belowelement="div-comment-649" data-respondelement="respond" aria-label='Reply to Giampaolo Trapasso'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-703" class="comment even thread-even depth-1">
+			<article id="div-comment-703" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/b6b3ca8ad3c0cbd083b53b2710fc5f22?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/b6b3ca8ad3c0cbd083b53b2710fc5f22?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn"><a href='http://www.devabee.com/' rel='external nofollow ugc' class='url'>Tiziano Basile</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-703">
+							<time datetime="2016-04-26T16:53:00+02:00">
+								26/04/2016 at 16:53							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Mi ci voleva proprio un&#8217;introduzione a RxJava fatta come si deve! Grazie per la condivisione 😉</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/introduzione-a-rxjava-prima-parte/?replytocom=703#respond' data-commentid="703" data-postid="11729" data-belowelement="div-comment-703" data-respondelement="respond" aria-label='Reply to Tiziano Basile'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-817" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-817" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/6aae6795979c9d317c4ff5d3a1fd82b4?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/6aae6795979c9d317c4ff5d3a1fd82b4?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Alessandro Bx</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-817">
+							<time datetime="2018-06-08T15:37:00+02:00">
+								08/06/2018 at 15:37							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Grazie del ottima introduzione mi ha chiarito molte cose su RX.java</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/introduzione-a-rxjava-prima-parte/?replytocom=817#respond' data-commentid="817" data-postid="11729" data-belowelement="div-comment-817" data-respondelement="respond" aria-label='Reply to Alessandro Bx'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+		<div id="respond" class="comment-respond">
+		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='11729' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+	
+</div>
+<!-- end comments -->
+
+    <!-- related posts (by tags) -->
+    <div class="bwp-related-posts-container bwp-show-2-posts">
+      <div class="bwp-o-hidden">
+
+        <!-- title -->
+        <h2 class="bwp-related-posts-title">
+          You might also like:        </h2>
+        <!-- end title -->
+
+        <!-- posts list -->
+        <div class="bwp-related-posts clearfix">
+
+          
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="../angularjs-mini-how-to-prima-parte/index.html">AngularJS mini How-To (prima parte)</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>In questo tutorial diviso in due parti, vedremo come realizzare una semplice applicazione con AngularJS, il framework Javascript di Google.</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="../2014/07/02/index.html" class="bwp-post-date">
+        <span class="date updated">02/07/2014</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="../angularjs-mini-how-to-prima-parte/index.html" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="https://codingjam.it/creare-una-classe-in-scala/">Creare una classe in Scala</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>Creare una classe in Scala In questo post vedremo come creare una classe in Scala: avremo un approccio &#8220;morbido&#8221;, scriveremo una classe in Scala come se stessimo programmando in Java e via via la traghetteremo verso una sintassi da Scalista (?) navigato. In pochi semplici passi scopriremo come Scala ci permette di liberarci di molto codice, pur mantenendo la stessa espressività. Ci serve qualcosa di semplice e per questo esempio propongo di modellare un hard disk, un tipo di dato [&hellip;]</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2014/10/07/" class="bwp-post-date">
+        <span class="date updated">07/10/2014</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="https://codingjam.it/creare-una-classe-in-scala/" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+        </div>
+        <!-- end posts list -->
+
+      </div>
+    </div>
+    <!-- end related posts -->
+
+    
+                  </div><!-- /bwp-single-content-col-wrap --></div><!-- /col-md-8 --><div class="col-md-4 bwp-sidebar-col bwp-sidebar-right">
+        
+                  </div><!-- /col --></div><!-- /row -->
+        
+      </div>
+    </div>
+  </section>
+  <!-- end blog post - single page -->
+
+  
+<!-- footer -->
+<footer id="bwp-footer-wrap">
+  <div class="container">
+    <div class="bwp-footer-container clearfix">
+
+              <!-- footer text -->
+        <div class="bwp-footer-text">
+          CodingJam        </div>
+        <!-- end footer text -->
+      
+              <!-- social links -->
+        <ul class="bwp-footer-social-links list-unstyled clearfix">
+          <li><a href="https://twitter.com/codingjam" target="_blank" class="bwp-f-twitter-link"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.facebook.com/codingjamit/" target="_blank" class="bwp-f-facebook-link"><i class="fa fa-facebook"></i></a></li><li><a href="https://github.com/coding-jam" target="_blank" class="bwp-f-github-link"><i class="fa fa-github"></i></a></li>        </ul>
+        <!-- end social links -->
+      
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+
+<!--googleoff: all--><div id="cookie-law-info-bar"><span>Questo sito Web utilizza i cookie per migliorare la tua esperienza. Daremo per scontato che per te sia ok, ma puoi disattivarlo se lo desideri..<a role='button' tabindex='0' data-cli_action="accept" id="cookie_action_close_header"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button" style="display:inline-block; ">Accetto</a>  <a role='button' tabindex='0' id="cookie_action_close_header_reject"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header_reject cli_action_button"  data-cli_action="reject">Annulla</a> <a href='../cookie.html' id="CONSTANT_OPEN_URL" target="_blank"  class="cli-plugin-main-link"  style="display:inline-block;" >Read More</a></span></div><div id="cookie-law-info-again" style="display:none;"><span id="cookie_hdr_showagain">Privacy & Cookies</span></div><div class="cli-modal" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+    <div class="cli-modal-content cli-bar-popup">
+      <button type="button" class="cli-modal-close" id="cliModalClose">
+        <svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+        <span class="wt-cli-sr-only">Close</span>
+      </button>
+      <div class="cli-modal-body">
+        <div class="cli-container-fluid cli-tab-container">
+    <div class="cli-row">
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0">
+            <div class="cli-privacy-overview">
+                                                   
+                <div class="cli-privacy-content">
+                    <div class="cli-privacy-content-text"></div>
+                </div>
+                <a class="cli-privacy-readmore" data-readmore-text="Show more" data-readless-text="Show less"></a>            </div>
+        </div>  
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+              
+                            <div class="cli-tab-section">
+                    <div class="cli-tab-header">
+                        <a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab" >
+                            Necessary 
+                        </a>
+                    
+                    <span class="cli-necessary-caption">Always Enabled</span>                     </div>
+                    <div class="cli-tab-content">
+                        <div class="cli-tab-pane cli-fade" data-id="necessary">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+              
+                       
+        </div>
+    </div> 
+</div> 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<script type="text/javascript">
+  /* <![CDATA[ */
+  cli_cookiebar_settings='{"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":false,"button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":true,"button_1_new_win":false,"button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":false,"button_2_hidebar":false,"button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":true,"button_3_new_win":false,"button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#fff","button_4_as_button":true,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":false,"scroll_close_reload":false,"accept_close_reload":false,"reject_close_reload":false,"showagain_tab":true,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":false,"show_once":"10000","logging_on":false,"as_popup":false,"popup_overlay":true,"bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"}';
+  /* ]]> */
+</script>
+<!--googleon: all--><script type='text/javascript' src='../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore09b1.js?ver=3.0.9b'></script>
+<script type='text/javascript' src='https://codingjam.it/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJava.js?ver=3.0.9b'></script>
+<script type='text/javascript' src='https://codingjam.it/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js?ver=3.0.9b'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore09b1.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeEclipse09b1.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = true;
+	SyntaxHighlighter.defaults['tab-size'] = 2;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/bootstrap.min7433.js?ver=3.3.7'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.parallaxc358.js?ver=1.1.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/superfish.min97e9.js?ver=1.7.9'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel.min3ba1.js?ver=1.3.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/magnific-popup/jquery.magnific-popup.minf488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
+</body>
+
+<!-- Mirrored from codingjam.it/introduzione-a-rxjava-prima-parte/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:38 GMT -->
+</html>

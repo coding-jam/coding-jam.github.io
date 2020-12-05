@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from codingjam.it/angularjs-mini-how-to-prima-parte/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="pingback" href="../xmlrpc.php">
+
+  <title>AngularJS mini How-To (prima parte) &#8211; CodingJam</title>
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Feed" href="../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Comments Feed" href="../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; AngularJS mini How-To (prima parte) Comments Feed" href="https://codingjam.it/angularjs-mini-how-to-prima-parte/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='../wp-content/plugins/gutenberg/build/block-library/stylea4fb.css?ver=1591004795' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-gdpr-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='melissa-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lato%3A400%2C400i%2C700%2C700i%7CNoto+Serif%3A400%2C400i%2C700%2C700i&amp;subset=latin&amp;ver=1.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../wp-content/themes/melissa/css/bootstrap.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-theme-css'  href='../wp-content/themes/melissa/css/bootstrap-theme.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-ie10-viewport-bug-workaround-css'  href='../wp-content/themes/melissa/css/ie10-viewport-bug-workaround8a54.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='../wp-content/themes/melissa/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-carousel-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-theme-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.theme3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='magnific-popup-css'  href='../wp-content/themes/melissa/assets/magnific-popup/magnific-popupf488.css?ver=1.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-style-css'  href='../wp-content/themes/melissa/style3ec8.css?ver=1.1.6' type='text/css' media='all' />
+<style id='melissa-style-inline-css' type='text/css'>
+
+    .bwp-post-media img,
+    .bwp-post-carousel-item img,
+    .widget_bwp_posts_slider_item img {
+      width: 100%;
+      margin: 0;
+    }
+    .bwp-post-wrap:hover {
+      margin-top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+    #bwp-masonry-container.no-masonry .bwp-post-wrap:hover {
+      top: 0;
+    }
+    .bwp-no-results-container:hover,
+    .bwp-single-article:hover,
+    .bwp-featured-media-container:hover,
+    .post-navigation .nav-links a:hover,
+    .bwp-about-author-container:hover,
+    .comment-respond:hover,
+    .comment-body:hover,
+    #comments .no-comments:hover,
+    .comment-navigation .nav-links a:hover,
+    .bwp-related-post-wrap:hover,
+    .bwp-page-404-container:hover,
+    .bwp-sidebar-wrap:hover {
+      top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+  #bwp-header-wrap {
+    background-color: #2e3340;
+  }
+  .bwp-header-bg-overlay,
+  .bwp-header-rs-bg-overlay {
+    background-color: rgba(46, 51, 64, 0.9);
+  }
+    .bwp-content a,
+    .comment-content a,
+    .bwp-post-quote a {
+      color: #2052bf;
+    }
+</style>
+<link rel='stylesheet' id='enlighter-local-css'  href='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.css?ver=3.9.0' type='text/css' media='all' />
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery4a5f.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[]};
+var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/cookie-law-info/public/js/cookie-law-info-public3cf4.js?ver=1.8.8'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/respond.min.js?ver=1.4.2'></script>
+<![endif]-->
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/mootools-core-yc9086.js?ver=3.9.0'></script>
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.js?ver=3.9.0'></script>
+<link rel='https://api.w.org/' href='../wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+<link rel='prev' title='Tomcat e datasource: come criptare la password del database' href='https://codingjam.it/tomcat-e-datasource-come-criptare-la-password-del-database/' />
+<link rel='next' title='AngularJS mini How-To (seconda parte)' href='https://codingjam.it/angularjs-mini-how-to-seconda-parte/' />
+<meta name="generator" content="WordPress 5.4.1" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://codingjam.it/?p=11291' />
+<link rel="alternate" type="application/json+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Fangularjs-mini-how-to-prima-parte%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Fangularjs-mini-how-to-prima-parte%2F&amp;format=xml" />
+<link rel="amphtml" href="https://codingjam.it/angularjs-mini-how-to-prima-parte/amp/"><script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"droide","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":false,"windowButton":false,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" sizes="32x32" />
+<link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://codingjam.it/wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-270x270.png" />
+</head>
+
+<body class="post-template-default single single-post postid-11291 single-format-standard wp-custom-logo">
+
+
+<!-- header -->
+<header id="bwp-header-wrap" class="bwp-header-simple">
+
+  <!-- header bg -->
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P7101915_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg-overlay"></div>
+
+    <!-- header content -->
+    <div class="container">
+      <div class="bwp-header-content-container">
+
+        <!-- row 1 - logo + navigation -->
+        <div class="bwp-main-navigation-container clearfix">
+
+          
+        <!-- image logo -->
+        <div class="bwp-logo-container">
+          <a href="../index.html" class="custom-logo-link" rel="home"><img width="207" height="70" src="../wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png" class="custom-logo" alt="CodingJam" srcset="https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png 207w, https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco-150x51.png 150w" sizes="(max-width: 207px) 100vw, 207px" /></a>        </div>
+        <!-- end image logo -->
+
+        
+      <!-- search -->
+      <div class="bwp-header-search-container hidden-sm hidden-xs">
+        <a href="#" id="bwp-header-search-icon">
+          <i class="fa fa-search"></i>
+        </a>
+        <div class="bwp-dropdown-search-container bwp-search-hidden">
+          
+<!-- search form -->
+<form id="searchform" role="search" method="get" action="https://codingjam.it/">
+  <div class="input-group">
+    <input type="text" name="s" id="s" class="bwp-search-field form-control" placeholder="Enter your search query...">
+    <span class="input-group-btn">
+      <button type="submit" class="btn bwp-search-submit">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+</form>
+<!-- end search form -->
+        </div>
+      </div>
+      <!-- end search -->
+
+      
+      <!-- menu -->
+      <div class="bwp-menu-container hidden-sm hidden-xs">
+        <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-2" class="sf-menu"><li id="menu-item-12007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li id="menu-item-12022" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li id="menu-item-12009" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li id="menu-item-12020" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li id="menu-item-12017" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li id="menu-item-12006" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li id="menu-item-12005" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li id="menu-item-12008" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li id="menu-item-12014" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li id="menu-item-12012" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li id="menu-item-12010" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li id="menu-item-12021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li id="menu-item-12016" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li id="menu-item-12015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li id="menu-item-12019" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li id="menu-item-12018" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>      </div>
+      <!-- end menu -->
+
+      
+      <!-- mobile menu -->
+      <div class="bwp-mobile-menu-container hidden-md hidden-lg">
+        <!-- mobile menu icon -->
+        <a href="#" id="bwp-mobile-menu-icon">
+          <i class="fa fa-bars"></i>
+        </a>
+        <!-- end mobile menu icon -->
+        <!-- dropdown mobile menu -->
+        <div class="bwp-dropdown-mobile-menu bwp-mobile-menu-hidden">
+          <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-3" class="bwp-mobile-menu list-unstyled"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>        </div>
+        <!-- end dropdown mobile menu -->
+      </div>
+      <!-- end mobile menu -->
+
+      
+        </div>
+        <!-- end row 1 - logo + navigation -->
+
+        
+          <!-- row 2 - header custom text -->
+          <div class="bwp-header-custom-text-container">
+            
+        <!-- custom text - single page -->
+        <h1 class="bwp-header-custom-title entry-title">
+          AngularJS mini How-To (prima parte)        </h1>
+                <div class="bwp-header-transparent-line clearfix">
+          <span class="bwp-header-t-line-1"></span>
+          <span class="bwp-header-t-line-2"></span>
+        </div>
+        <!-- end custom text -->
+
+                  </div>
+          <!-- end row 2 - header custom text -->
+
+          
+      </div>
+    </div>
+    <!-- end header content -->
+  </div>
+  <!-- end header bg -->
+
+  
+        <!-- sticky navigation -->
+        <div class="bwp-sticky-navigation-wrap bwp-transition-4 clearfix">
+          <!-- sticky navigation icon -->
+          <a href="#" id="bwp-sticky-navigation-icon">
+            <i class="fa fa-bars"></i>
+          </a>
+          <!-- end sticky navigation icon -->
+          <!-- sticky navigation container -->
+          <div class="bwp-sticky-navigation-container bwp-sticky-navigation-hidden">
+            <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-4" class="sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>          </div>
+          <!-- end sticky navigation container -->
+        </div>
+        <!-- end sticky navigation -->
+
+        
+</header>
+<!-- end header -->
+
+  <!-- blog post - single page -->
+  <section id="bwp-single-page-wrap">
+    <div class="container">
+      <div class="bwp-single-page-container" >
+
+        
+                  <div class="row"><div class="col-md-8 bwp-single-content-col bwp-sidebar-right"><div class="bwp-single-content-col-wrap" role="main">
+        
+        <!-- article -->
+        <article id="post-11291" class="bwp-single-article bwp-transition-3">
+
+          
+          <!-- content container -->
+          <div class="bwp-single-content">
+
+            <!-- content -->
+            <div class="bwp-content entry-content clearfix">
+              <h2>Cosè AngularJS?</h2>
+<p>Angular è un framework Javascript, essenziale per le oramai sempre più diffuse single-page application (e anche per i più comuni siti web). AngularJS s’ispira al <b>pattern MVC (Model View Controller)</b>, un paradigma architetturale utilizzato da molti linguaggi di programmazione che rende la struttura del codice più semplice e flessibile. Definiamone brevemente il significato:</p>
+<ul>
+<li>Model: rappresenta la struttura dati che sta dietro un pezzo dell’applicazione. Solitamente i Model vendono definiti tramite oggetti JSON. Per esempio il modello di una lista di utenti potrebbe essere definito in questo modo:
+<pre class="brush: jscript; title: ; notranslate" title="">
+{
+   &quot;users&quot;:[
+      {
+         &quot;name&quot;:&quot;Mario Rossi&quot;,
+         &quot;id&quot;:&quot;123&quot;
+      },
+      {
+         &quot;name&quot;:&quot;Luca Verdi&quot;,
+         &quot;id&quot;:&quot;456&quot;
+      }
+   ]
+}
+</pre>
+</li>
+<li>View: si tratta delle componenti grafiche che vengono definite all’interno dei file HTML. Una volta associati agli elementi grafici i relativi campi del Model, Angular aggiornerà in automatico i dati mantenendo la consistenza tra le informazioni presenti nei Model e quelle visualizzate nelle View;</li>
+<li>Controller: hanno lo scopo di controllare le interazioni dell’utente e gestire l’aggiornamento dei dati. In sintesi dovranno contenere l’intelligenza della nostra web-app.</li>
+</ul>
+<h2>Il primo passo con AngularJS</h2>
+<p>Per creare un progetto AngularJS è necessario scaricare preventivamente la libreria dal home page del progetto (<a href="https://angularjs.org/">https://angularjs.org/</a>), oppure utilizzare la libreria tramite il CDN di Google inserendone il riferimento nella pagina HTML, come mostrato qui di seguito:</p>
+<pre class="brush: xml; title: ; notranslate" title="">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head lang=&quot;en&quot;&gt;
+      &lt;meta charset=&quot;UTF-8&quot;&gt;
+      &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>Fatto! Abbiamo configurato il necessario per iniziare ad utilizzare il framework. Introduciamo ora alcuni concetti di base, partendo dalla struttura minima di una pagina Angular.</p>
+<pre class="brush: xml; title: ; notranslate" title="">
+&lt;!DOCTYPE html&gt;
+&lt;html ng-app&gt;
+&lt;head lang=&quot;en&quot;&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;My first AngularJS app&lt;/title&gt;
+    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;13 + 12 = {{13+12}}&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>Il risultato di questa prime righe sarà una pagina web con la scritta “12 + 13 = 25”. Iniziamo dunque ad analizzare gli elementi che compongono questa il file HTML. Per prima cosa notiamo l’attributo <code>ng-app</code> nel tag <code>&lt;html ng-app&gt;</code>; si tratta di una direttiva di Angular che indica al framework quale elemento del DOM dovrà utilizzare come radice per la nostra applicazione. In questo caso abbiamo utilizzato l’intera pagina ma, più in generale, avremmo potuto inserirlo all’interno del tag <code>&lt;body&gt;</code> o addirittura all’interno di un singolo <code>&lt;div&gt;</code>. Un altro elemento rilevante, che abbiamo in parte già accennato, è il caricamento della libreria. Questo, oltre ad importare gli oggetti definiti in AngularJS, avvia il processo di <b>bootstrap</b>. In sintesi, dopo il caricamento del documento HTML, viene effettuata la compilazione del DOM (ovvero della struttura ad albero che compone al pagina HTML) a partire dall’elemento marcato con l’attributo <code>ng-app</code>, elaborando ogni direttiva, binding ed espressione incontrati. Al termine della fase di bootstrap, AngularJS si mette in attesa del verificarsi di eventi sul browser. Infine, l’ultimo elemento rilevante è rappresentato dalla direttiva <b>{{12+13}}</b>. Si tratta di un comando che AngularJS è in grado di valutare e sostituire con il relativo risultato. La valutazione di tali comandi non avviene solo in fase di bootstrap ma è costante per tutto il tempo in cui la pagina web sarà visibile. Nello specifico viene creato un binding tra l’elemento grafico e una variabile del model; ogni volta che il valore della variabile cambia, il componente grafico viene aggiornato di conseguenza, e viceversa. Possiamo verificare questa affermazione osservando il risultato del prossimo esempio:</p>
+<pre class="brush: xml; title: ; notranslate" title="">
+&lt;!DOCTYPE html&gt;
+&lt;html ng-app&gt;
+&lt;head lang=&quot;en&quot;&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;My first AngularJS app&lt;/title&gt;
+    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+La somma di
+&lt;input type=&quot;number&quot; ng-model=&quot;addendo1&quot; /&gt;
+e
+&lt;input type=&quot;number&quot; ng-model=&quot;addendo2&quot; /&gt;
+è
+{{addendo1 + addendo2}}
+&lt;/html&gt;
+</pre>
+<p>In questo esempio sono state inserite due caselle di testo in cui l’utente può inserire due numeri che verranno sommati ed il cui risultato verrà stampato in tempo reale subito a lato. L’elemento chiave in questo caso è rappresentato dalla direttiva <code>ng-model</code>; questo si occupa di creare un binding bidirezionale tra ciascun campo di input e due variabili (in questo caso <code>addendo1</code> e <code>addendo2</code> definite all’interno del model. Le modifiche sui campi di input vengono sincronizzate con le relative variabili causando così la rivalutazione dell’espressione <code>{{addendo1 + addendo2}}</code> che stamperà il risultato dell’operazione. Abbiamo quindi definito un applicazione composta da una View e da un Model con due variabili, in grado di fare una semplice somma, senza scrivere nemmeno una riga di codice Javascript.</p>
+<h2>Creare applicazioni MVC</h2>
+<p>Vediamo ora come poter creare una single-page-application con delle view basate su dei modelli ad hoc che andremo a definire, e come introdurre dei controller che gestiscano le interazioni dell’utente con la nostra applicazione. Al fine di associare questi concetti ad un ambito quanto meno verosimile, andremo a creare un catalogo dei piloti iscritti al campionato mondiale di MotoGP 2014.</p>
+<h3>View</h3>
+<p>Innanzitutto definiamo la view che conterrà la lista dei piloti.</p>
+<pre class="brush: xml; title: ; notranslate" title="">
+&lt;!DOCTYPE html&gt;
+&lt;html ng-app&gt;
+&lt;head lang=&quot;en&quot;&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Moto GP riders&lt;/title&gt;
+    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;controller.js&quot;&gt;&lt;/script&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;/&gt;
+&lt;/head&gt;
+&lt;body ng-controller=&quot;mainController&quot;&gt;
+&lt;ul class=&quot;rider-list&quot;&gt;
+    &lt;li ng-repeat=&quot;rider in riders&quot;&gt;
+        &lt;img ng-src=&quot;img/riders/{{rider.number}}.jpg&quot; alt=&quot;{{rider.name}}&quot;/&gt;
+
+        &lt;div class=&quot;info&quot;&gt;
+            &lt;p class=&quot;flag-n&quot;&gt;
+                &lt;img alt=&quot;{{rider.nation}}&quot; ng-src=&quot;img/nation/{{rider.nation}}.png&quot;&gt;
+                &lt;span class=&quot;num&quot;&gt;{{rider.number}}&lt;/span&gt;
+            &lt;/p&gt;
+
+            &lt;p class=&quot;name&quot;&gt;{{rider.name}}&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>Tralasciando la sezione <code>head</code> che contiene i vari riferimenti alle librerie e CSS, la parte interessante è contenuta all’interno del tag <code>&lt;body&gt;</code>, ovvero una lista di elementi, ognuno dei quali contiene alcune immagini del pilota (bandiera e foto), il nome ed il numero. Possiamo evidenziare alcune nuove direttive che istruiscono il framework su come generare la view:</p>
+<ul>
+<li>La direttiva <code>ng-repeat</code> indica al sistema di generare tanti elementi <code>&lt;li&gt;</code> quanti sono i piloti contenuti nel modello. La sintassi utilizzata è la seguente:
+<pre class="brush: jscript; title: ; notranslate" title="">
+ng-repeat=”rider in riders”
+</pre>
+<p>dove <code>riders</code> è il modello che contiene la lista di tutti i piloti iscritti al campionato mondiale di MotoGp, mentre <code>rider</code> rappresenta il pilota correntemente preso in considerazione all’interno di un singolo ciclo di iterazione;</li>
+<li>La direttiva <code>ng-src</code> svolge la stessa funzione del attributo <code>src</code>. Anche se apparentemente il risultato è il medesimo, tale direttiva fa si che l’espressione <code>{{rider.number}}</code> venga valutata prima di importare l’immagine; in caso contrario l’espressione sarebbe stata considerata come nome associato al file JPEG puntando quindi ad url inesistente.</li>
+<li>La direttiva <code>ng-controller</code> indica qual è il controller associato all’elemento, ovvero chi dovrà gestire le interazioni che si verificheranno all’interno del tag <code>&lt;body&gt;</code></li>
+</ul>
+<h3>Controller/Model</h3>
+<p>Passiamo ora ad analizzare quanto scritto nel file <i>controller.js</i>, il quale, come intuibile dal nome, conterrà il codice necessario alla definizione del controller:</p>
+<pre class="brush: jscript; title: ; notranslate" title="">
+var riders = [
+	{
+    	name: &quot;Valentino Rossi&quot;,
+    	number: 46,
+    	team: &quot;Movistar Yamaha MotoGP&quot;,
+    	nation: 'ita',
+    	height: 182,
+    	weight: 65,
+    	city: &quot;Urbino&quot;
+	},
+	...
+]
+
+var mainController = function ($scope) {
+	$scope.riders = riders;
+}
+</pre>
+<p>Il modello per la nostra single page application è formato da un oggetto JSON che contiene la lista dei piloti (per compattezza ne è stato riportato solo il primo), per ognuno dei quali viene fornito il nome,il numero di gara, i team associato ed altre informazioni. Per quanto riguarda il controller, viene definito nella funzione subito sotto; si tratta di una semplice funzione Javascript nella quale viene estesa la variabile <code>$scope</code> con l’attributo <code>riders</code> che punta alla lista dei piloti descritta poco fa. L’aspetto più oscuro è il parametro <code>$scope</code>. Si tratta del contesto entro il quale verranno valutate le espressioni incluse all’interno del tag per cui è definito questo controller. In altre parole potremmo riferirci alla variabile <code>riders</code> solo all’interno del sottoalbero <code>&lt;body&gt;</code> mentre per gli altri elementi come <code>&lt;html&gt;</code> o <code>&lt;head&gt;</code> questa non sarà definita. Tornando alla parte HTML, possiamo apprezzare come la variabile <code>riders</code> si trovi all’interno dello scope assegnato al mainController e, tramite la direttiva <code>ng-repeat</code>, come sia possibile accedere ad ogni iterazione alle proprietà del motociclista corrente. E’ possibile reperire il codice sorgente di questo passo al seguente indirizzo: <a href="https://github.com/yupitz/motoGpRiders/tree/step3">https://github.com/yupitz/motoGpRiders/tree/step3</a> Il risultato è mostrato nell’immagine seguente. <a href="http://www.cosenonjaviste.it/wp-content/uploads/2014/07/piloti.png"><img class="aligncenter size-medium wp-image-11305" src="http://www.cosenonjaviste.it/wp-content/uploads/2014/07/piloti-300x207.png" alt="piloti" width="300" height="207" srcset="https://codingjam.it/wp-content/uploads/2014/07/piloti-300x207.png 300w, https://codingjam.it/wp-content/uploads/2014/07/piloti-1024x708.png 1024w, https://codingjam.it/wp-content/uploads/2014/07/piloti-1280x886.png 1280w, https://codingjam.it/wp-content/uploads/2014/07/piloti.png 1436w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+<h2>Filtri e ordinamenti</h2>
+<p>Aggiorniamo la nostra single-page-application inserendo la possibilità di filtrare la nostra lista di piloti. Anche in questo caso AngularJS facilita molto questa operazione. Aggiungiamo alla pagina HTML un campo di ricerca tramite il seguente codice:</p>
+<pre class="brush: jscript; title: ; notranslate" title="">
+&lt;input type=&quot;text&quot; ng-model=&quot;query&quot; placeholder=&quot;Search...&quot;/&gt;
+</pre>
+<p>Com’è possibile notare, anche in questo caso abbiamo utilizzato la direttiva <code>ng-model</code> per creare un binding tra la casella di testo ed una variabile del model. Da notare che non abbiamo avuto bisogno di esplicitare la dichiarazione della variabile <code>query</code> all’interno dei nostri file Javascript; questa viene generata in modo automatico dal framework e resa disponibile all’interno dello scope corrente. Modifichiamo quindi l’espressione assegnata alla direttiva <code>ng-repeat</code> come mostrato di seguito:</p>
+<pre class="brush: jscript; title: ; notranslate" title="">
+&lt;ng-repeat=&quot;rider in riders | filter:query&quot;&gt;
+</pre>
+<p>Così facendo abbiamo definito un filtro, applicato alla lista di piloti, che valuta la presenza del valore <code>query</code> all’interno dei campi associati al model di ciascun pilota. La valutazione dei filtri avviene in modo dinamico, ovvero il risultato viene rivalutato ogni volta che il valore del modello query cambia. Oltre alla funzione <code>filter</code>, AngularJS mette a disposizione diversi filtri utili per la formattazione e l’ordinamento dei valori contenuti all’interno delle view; ecco i più comuni: <a href="http://www.cosenonjaviste.it/wp-content/uploads/2014/07/angular-table.png"><img class="aligncenter size-large wp-image-11312" src="http://www.cosenonjaviste.it/wp-content/uploads/2014/07/angular-table-1024x351.png" alt="angular-table" width="512" height="175" srcset="https://codingjam.it/wp-content/uploads/2014/07/angular-table-1024x351.png 1024w, https://codingjam.it/wp-content/uploads/2014/07/angular-table-300x103.png 300w, https://codingjam.it/wp-content/uploads/2014/07/angular-table-1280x439.png 1280w, https://codingjam.it/wp-content/uploads/2014/07/angular-table.png 1596w" sizes="(max-width: 512px) 100vw, 512px" /></a> Questi filtri possono essere utilizzati in combinazione gli uni con gli altri separandoli con un carattere pipe (<code>|</code>). Ad esempio è possibile filtrare i piloti e ordinarli in base al loro numero di gara nel seguente modo</p>
+<pre class="brush: jscript; title: ; notranslate" title="">
+&lt;ng-repeat=&quot;rider in riders | filter:query | orderBy:'number' &quot;&gt;
+</pre>
+<p>E’ possibile reperire il codice sorgente di questo passo al seguente indirizzo: <a href="https://github.com/yupitz/motoGpRiders/tree/step4">https://github.com/yupitz/motoGpRiders/tree/step4</a></p>
+<h3>Non finisce qui</h3>
+<p>Termina qui la prima parte del tutorial, nella prossima parte vedremo come realizzare i template, gestire le rotte e recuperare i dati dal backend.</p>
+            </div>
+            <!-- end content -->
+
+            
+                <!-- social sharing buttons / counters -->
+                <div class="row">
+                  <div class="col-md-7">
+                    
+    <!-- social sharing buttons -->
+    <div class="bwp-single-share-wrap">
+      <span>Share:</span>
+      <ul class="bwp-single-share list-unstyled">
+        <!-- facebook -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/angularjs-mini-how-to-prima-parte/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/angularjs-mini-how-to-prima-parte/" target="_blank" class="bwp-share-link bwp-facebook-share">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <!-- end facebook -->
+        <!-- twitter -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/angularjs-mini-how-to-prima-parte/&amp;text=angularjs-mini-how-to-prima-parte', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/angularjs-mini-how-to-prima-parte/&amp;text=angularjs-mini-how-to-prima-parte" target="_blank" class="bwp-share-link bwp-twitter-share">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <!-- end twitter -->
+        <!-- google+ -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/angularjs-mini-how-to-prima-parte/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/angularjs-mini-how-to-prima-parte/" target="_blank" class="bwp-share-link bwp-google-plus-share">
+            <i class="fa fa-google-plus"></i>
+          </a>
+        </li>
+        <!-- end google+ -->
+        <!-- vk -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/angularjs-mini-how-to-prima-parte/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/angularjs-mini-how-to-prima-parte/" target="_blank" class="bwp-share-link bwp-vk-share">
+            <i class="fa fa-vk"></i>
+          </a>
+        </li>
+        <!-- end vk -->
+        <!-- pinterest -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/angularjs-mini-how-to-prima-parte/&amp;media=&amp;description=angularjs-mini-how-to-prima-parte', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/angularjs-mini-how-to-prima-parte/&amp;media=&amp;description=angularjs-mini-how-to-prima-parte" target="_blank" class="bwp-share-link bwp-pinterest-share">
+            <i class="fa fa-pinterest-p"></i>
+          </a>
+        </li>
+        <!-- end pinterest -->
+      </ul>
+    </div>
+    <!-- end social sharing buttons -->
+
+                      </div>
+                  <div class="col-md-5">
+                    
+    <!-- counters -->
+    <ul class="bwp-single-counters list-unstyled clearfix ">
+                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>5</a></li>
+                </ul>
+    <!-- end counters -->
+
+                      </div>
+                </div>
+                <!-- end social sharing buttons / counters -->
+
+                
+      <!-- metadata -->
+      <div class="bwp-single-metadata-wrap ">
+        <ul class="bwp-single-metadata list-unstyled clearfix">
+                      <!-- author -->
+            <li>
+              <span class="vcard author">
+                <span class="fn">
+                  <i class="fa fa-pencil-square-o"></i><a href="https://codingjam.it/author/alessandro-modolo/" title="Posts by Alessandro Modolo" rel="author">Alessandro Modolo</a>                </span>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end author -->
+                                <!-- date -->
+            <li>
+                            <span class="date updated">
+                <i class="fa fa-clock-o"></i><a href="../2014/07/02/index.html">02/07/2014</a>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end date -->
+                                <!-- categories -->
+            <li>
+              <i class="fa fa-bookmark-o"></i><a href="../category/angularjs/index.html" rel="category tag">AngularJS</a>, <a href="../category/tutorial-2/index.html" rel="category tag">Tutorial</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end categories -->
+                                <!-- tags -->
+            <li>
+              <i class="fa fa-tags"></i><a href="https://codingjam.it/tag/angularjs/" rel="tag">AngularJS</a>, <a href="https://codingjam.it/tag/binding/" rel="tag">binding</a>, <a href="https://codingjam.it/tag/google/" rel="tag">Google</a>, <a href="https://codingjam.it/tag/home/" rel="tag">Home</a>, <a href="../tag/javascript-2/index.html" rel="tag">javascript</a>, <a href="https://codingjam.it/tag/pattern-mvc/" rel="tag">pattern mvc</a>, <a href="../tag/tutorial/index.html" rel="tag">tutorial</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end tags -->
+                  </ul>
+      </div>
+      <!-- end metadata -->
+
+      
+          </div>
+          <!-- end content container -->
+
+        </article>
+        <!-- end article -->
+
+        
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://codingjam.it/tomcat-e-datasource-come-criptare-la-password-del-database/" rel="prev"><span class="meta-nav"><i class="fa fa-angle-left"></i>Previous post</span><span class="post-title-nav">Tomcat e datasource: come criptare la password del database</span></a></div><div class="nav-next"><a href="https://codingjam.it/angularjs-mini-how-to-seconda-parte/" rel="next"><span class="meta-nav">Next post<i class="fa fa-angle-right"></i></span><span class="post-title-nav">AngularJS mini How-To (seconda parte)</span></a></div></div>
+	</nav>
+    <!-- about the author -->
+    <div class="bwp-about-author-container bwp-transition-3 clearfix">
+      <!-- avatar -->
+      <div class="bwp-about-author-avatar">
+        <a href="https://codingjam.it/author/alessandro-modolo/">
+          <img alt='' src='https://secure.gravatar.com/avatar/e4dbec7cbee2e4e1fd8f6f5e933b5097?s=150&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/e4dbec7cbee2e4e1fd8f6f5e933b5097?s=300&#038;d=mm&#038;r=g 2x' class='avatar avatar-150 photo' height='150' width='150' />        </a>
+      </div>
+      <!-- end avatar -->
+      <!-- biographical info -->
+      <div class="bwp-about-author-bio-wrap">
+        <h3 class="bwp-about-author-name">
+          <a href="https://codingjam.it/author/alessandro-modolo/" title="Posts by Alessandro Modolo" rel="author">Alessandro Modolo</a>          <span><i class="fa fa-angle-double-right"></i>2 Posts</span>
+        </h3>
+        <div class="bwp-about-author-bio">
+          Dopo essermi laureato in informatica nel 2012, specializzandomi nella progettazione e sviluppo software, ho intrapreso il mio cammino lavorativo come programmatore. Ho avuto moto di conoscere da vicino gli ambienti silverlight e android, ma da un'anno a questa parte mi dedico allo sviluppo di applicazioni ibride in campo mobile.        </div>
+                  <ul class="bwp-about-author-social list-unstyled clearfix">
+                              <li><a href="http://www.cosenonjaviste.it/?team=alessandro-modolo" target="_blank" class="bwp-a-website-link"><i class="fa fa-link"></i></a></li>
+                          </ul>
+              </div>
+      <!-- end biographical info -->
+    </div>
+    <!-- end about the author -->
+
+    
+<!-- comments -->
+<div id="comments" class="comments-area">
+
+	
+		<h2 class="comments-title">
+			5 thoughts on &ldquo;AngularJS mini How-To (prima parte)&rdquo;		</h2>
+
+		<ol class="comment-list">
+					<li id="comment-460" class="comment even thread-even depth-1 parent">
+			<article id="div-comment-460" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/b26716a3b92946c847d2fc83860fae6e?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/b26716a3b92946c847d2fc83860fae6e?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Fabio</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-460">
+							<time datetime="2014-07-03T15:00:00+02:00">
+								03/07/2014 at 15:00							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Forse sono io che non ho capito bene, ma mi pare che i frammenti di codice siano parziali.<br />
+Nel primissimo frammento, ad esempio, non vedo da nessuna parte il tag  il cui significato è spiegato subito dopo</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/angularjs-mini-how-to-prima-parte/?replytocom=460#respond' data-commentid="460" data-postid="11291" data-belowelement="div-comment-460" data-respondelement="respond" aria-label='Reply to Fabio'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-461" class="comment odd alt depth-2">
+			<article id="div-comment-461" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/2fc7c345f3c40aad02aca88459b1eb4a?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/2fc7c345f3c40aad02aca88459b1eb4a?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Giampaolo Trapasso</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-461">
+							<time datetime="2014-07-03T17:17:00+02:00">
+								03/07/2014 at 17:17							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Ciao Fabio, grazie della segnalazione. Ieri sera abbiamo aggiornato i plugin e qualcosa deve essere andato storto. Ora il post è in ordine</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/angularjs-mini-how-to-prima-parte/?replytocom=461#respond' data-commentid="461" data-postid="11291" data-belowelement="div-comment-461" data-respondelement="respond" aria-label='Reply to Giampaolo Trapasso'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-462" class="pingback even thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback: <a href='http://www.cosenonjaviste.it/angularjs-mini-how-to-seconda-parte/' rel='external nofollow ugc' class='url'>AngularJS mini How-To (seconda parte) :: CoseNonJaviste</a> 			</div>
+		</li><!-- #comment-## -->
+		<li id="comment-696" class="comment odd alt thread-even depth-1">
+			<article id="div-comment-696" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/a129b5e2076adfb33f3e3f1756cd47d1?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/a129b5e2076adfb33f3e3f1756cd47d1?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn"><a href='http://www.stilisticamente.com/' rel='external nofollow ugc' class='url'>Marco Grazia</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-696">
+							<time datetime="2016-03-19T09:52:00+01:00">
+								19/03/2016 at 09:52							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Ciao, ho notato che il tuo esempio, l&#8217;ultimo, non funziona più con l&#8217;ultima versione del ramo 1.x. Per la precisione la 1.5.x<br />
+La console di FF Developer da come errore: ( riporto testualmente la pagina di AngularJS DOCS )</p>
+<p>Error: ng:areq</p>
+<p>Bad Argument</p>
+<p>Argument &#8216;mainController&#8217; is not a function, got undefined</p>
+<p>Description</p>
+<p>AngularJS often asserts that certain values will be present and truthy using a<br />
+helper function. If the assertion fails, this error is thrown. To fix this problem,<br />
+make sure that the value the assertion expects is defined and truthy.</p>
+<p>Mentre funziona perfettamente con la versione CDN fornita nel tutorial.<br />
+Ora ti darei volentieri una mano, ma sto studiando da poco Angular e non so ancora dove mettere le mani.<br />
+Ciao Marco.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/angularjs-mini-how-to-prima-parte/?replytocom=696#respond' data-commentid="696" data-postid="11291" data-belowelement="div-comment-696" data-respondelement="respond" aria-label='Reply to Marco Grazia'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-705" class="comment even thread-odd thread-alt depth-1">
+			<article id="div-comment-705" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/b6b3ca8ad3c0cbd083b53b2710fc5f22?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/b6b3ca8ad3c0cbd083b53b2710fc5f22?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn"><a href='http://www.devabee.com/' rel='external nofollow ugc' class='url'>Tiziano Basile</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-705">
+							<time datetime="2016-04-26T16:59:00+02:00">
+								26/04/2016 at 16:59							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Mi sono sempre ripromesso di imparare AngularJS, mi sa che è la volta buona che comincio davvero</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/angularjs-mini-how-to-prima-parte/?replytocom=705#respond' data-commentid="705" data-postid="11291" data-belowelement="div-comment-705" data-respondelement="respond" aria-label='Reply to Tiziano Basile'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+		<div id="respond" class="comment-respond">
+		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='11291' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+	
+</div>
+<!-- end comments -->
+
+    <!-- related posts (by tags) -->
+    <div class="bwp-related-posts-container bwp-show-2-posts">
+      <div class="bwp-o-hidden">
+
+        <!-- title -->
+        <h2 class="bwp-related-posts-title">
+          You might also like:        </h2>
+        <!-- end title -->
+
+        <!-- posts list -->
+        <div class="bwp-related-posts clearfix">
+
+          
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                    <!-- media - featured image -->
+                    <figure class="bwp-post-media">
+                                              <a href="../scala-gli-impliciti/index.html" class="bwp-post-media-link">
+                                              <img width="706" height="397" src="https://codingjam.it/wp-content/uploads/2018/12/scala-706x397.jpg" class="attachment-melissa-img-706-auto size-melissa-img-706-auto wp-post-image" alt="linguaggio scala" srcset="https://codingjam.it/wp-content/uploads/2018/12/scala-706x397.jpg 706w, https://codingjam.it/wp-content/uploads/2018/12/scala-300x169.jpg 300w, https://codingjam.it/wp-content/uploads/2018/12/scala-768x432.jpg 768w, https://codingjam.it/wp-content/uploads/2018/12/scala-1024x576.jpg 1024w, https://codingjam.it/wp-content/uploads/2018/12/scala-150x84.jpg 150w, https://codingjam.it/wp-content/uploads/2018/12/scala-1200x675.jpg 1200w, https://codingjam.it/wp-content/uploads/2018/12/scala.jpg 1920w" sizes="(max-width: 706px) 100vw, 706px" />                        <div class="bwp-post-bg-overlay bwp-transition-4"></div>
+                        <div class="bwp-post-hover-icon-wrap">
+                          <div class="bwp-post-hover-icon-alignment">
+                            <div class="bwp-post-hover-icon-center">
+                              <span class="bwp-transition-4"><i class="fa fa-share"></i></span>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </figure>
+                    <!-- end media -->
+
+                    
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="../scala-gli-impliciti/index.html">Scala: gli impliciti</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>Una guida introduttiva sull&#8217;utilizzo degli impliciti in Scala.</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="../2018/12/10/index.html" class="bwp-post-date">
+        <span class="date updated">10/12/2018</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="../scala-gli-impliciti/index.html" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="../vuex-state-management-per-vue/index.html">Vuex: state management per Vue</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>Nello scorso articolo ho introdotto alcune caratteristiche del framework, focalizzandomi principalmente sulla core library. In questo nuovo articolo introdurrò Vuex, una libreria ufficiale per lo state management di applicazioni scritte in Vue. Come si può intuire dal nome, si parla di una libreria che si inspira a Flux, Redux e architetture Elm ma di fatto è un implementazione specifica per Vue e che quindi meglio si adatta al sistema di reattività del framework stesso. Per capire i concetti e sintassi di [&hellip;]</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2018/04/11/" class="bwp-post-date">
+        <span class="date updated">11/04/2018</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="../vuex-state-management-per-vue/index.html" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+        </div>
+        <!-- end posts list -->
+
+      </div>
+    </div>
+    <!-- end related posts -->
+
+    
+                  </div><!-- /bwp-single-content-col-wrap --></div><!-- /col-md-8 --><div class="col-md-4 bwp-sidebar-col bwp-sidebar-right">
+        
+                  </div><!-- /col --></div><!-- /row -->
+        
+      </div>
+    </div>
+  </section>
+  <!-- end blog post - single page -->
+
+  
+<!-- footer -->
+<footer id="bwp-footer-wrap">
+  <div class="container">
+    <div class="bwp-footer-container clearfix">
+
+              <!-- footer text -->
+        <div class="bwp-footer-text">
+          CodingJam        </div>
+        <!-- end footer text -->
+      
+              <!-- social links -->
+        <ul class="bwp-footer-social-links list-unstyled clearfix">
+          <li><a href="https://twitter.com/codingjam" target="_blank" class="bwp-f-twitter-link"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.facebook.com/codingjamit/" target="_blank" class="bwp-f-facebook-link"><i class="fa fa-facebook"></i></a></li><li><a href="https://github.com/coding-jam" target="_blank" class="bwp-f-github-link"><i class="fa fa-github"></i></a></li>        </ul>
+        <!-- end social links -->
+      
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+
+<!--googleoff: all--><div id="cookie-law-info-bar"><span>Questo sito Web utilizza i cookie per migliorare la tua esperienza. Daremo per scontato che per te sia ok, ma puoi disattivarlo se lo desideri..<a role='button' tabindex='0' data-cli_action="accept" id="cookie_action_close_header"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button" style="display:inline-block; ">Accetto</a>  <a role='button' tabindex='0' id="cookie_action_close_header_reject"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header_reject cli_action_button"  data-cli_action="reject">Annulla</a> <a href='../cookie.html' id="CONSTANT_OPEN_URL" target="_blank"  class="cli-plugin-main-link"  style="display:inline-block;" >Read More</a></span></div><div id="cookie-law-info-again" style="display:none;"><span id="cookie_hdr_showagain">Privacy & Cookies</span></div><div class="cli-modal" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+    <div class="cli-modal-content cli-bar-popup">
+      <button type="button" class="cli-modal-close" id="cliModalClose">
+        <svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+        <span class="wt-cli-sr-only">Close</span>
+      </button>
+      <div class="cli-modal-body">
+        <div class="cli-container-fluid cli-tab-container">
+    <div class="cli-row">
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0">
+            <div class="cli-privacy-overview">
+                                                   
+                <div class="cli-privacy-content">
+                    <div class="cli-privacy-content-text"></div>
+                </div>
+                <a class="cli-privacy-readmore" data-readmore-text="Show more" data-readless-text="Show less"></a>            </div>
+        </div>  
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+              
+                            <div class="cli-tab-section">
+                    <div class="cli-tab-header">
+                        <a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab" >
+                            Necessary 
+                        </a>
+                    
+                    <span class="cli-necessary-caption">Always Enabled</span>                     </div>
+                    <div class="cli-tab-content">
+                        <div class="cli-tab-pane cli-fade" data-id="necessary">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+              
+                       
+        </div>
+    </div> 
+</div> 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<script type="text/javascript">
+  /* <![CDATA[ */
+  cli_cookiebar_settings='{"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":false,"button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":true,"button_1_new_win":false,"button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":false,"button_2_hidebar":false,"button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":true,"button_3_new_win":false,"button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#fff","button_4_as_button":true,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":false,"scroll_close_reload":false,"accept_close_reload":false,"reject_close_reload":false,"showagain_tab":true,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":false,"show_once":"10000","logging_on":false,"as_popup":false,"popup_overlay":true,"bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"}';
+  /* ]]> */
+</script>
+<!--googleon: all--><script type='text/javascript' src='../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore09b1.js?ver=3.0.9b'></script>
+<script type='text/javascript' src='../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJScript09b1.js?ver=3.0.9b'></script>
+<script type='text/javascript' src='../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushXml09b1.js?ver=3.0.9b'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore09b1.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeEclipse09b1.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = true;
+	SyntaxHighlighter.defaults['tab-size'] = 2;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/bootstrap.min7433.js?ver=3.3.7'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.parallaxc358.js?ver=1.1.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/superfish.min97e9.js?ver=1.7.9'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel.min3ba1.js?ver=1.3.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/magnific-popup/jquery.magnific-popup.minf488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
+</body>
+
+<!-- Mirrored from codingjam.it/angularjs-mini-how-to-prima-parte/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+</html>

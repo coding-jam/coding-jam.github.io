@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from codingjam.it/divide-et-impera-spremere-il-processore-con-il-framework-forkjoin/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="pingback" href="../xmlrpc.php">
+
+  <title>Divide et impera: spremere il processore con il framework Fork/Join &#8211; CodingJam</title>
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Feed" href="../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Comments Feed" href="../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Divide et impera: spremere il processore con il framework Fork/Join Comments Feed" href="https://codingjam.it/divide-et-impera-spremere-il-processore-con-il-framework-forkjoin/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='../wp-content/plugins/gutenberg/build/block-library/stylea4fb.css?ver=1591004795' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-gdpr-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='melissa-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lato%3A400%2C400i%2C700%2C700i%7CNoto+Serif%3A400%2C400i%2C700%2C700i&amp;subset=latin&amp;ver=1.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../wp-content/themes/melissa/css/bootstrap.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-theme-css'  href='../wp-content/themes/melissa/css/bootstrap-theme.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-ie10-viewport-bug-workaround-css'  href='../wp-content/themes/melissa/css/ie10-viewport-bug-workaround8a54.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='../wp-content/themes/melissa/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-carousel-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-theme-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.theme3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='magnific-popup-css'  href='../wp-content/themes/melissa/assets/magnific-popup/magnific-popupf488.css?ver=1.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-style-css'  href='../wp-content/themes/melissa/style3ec8.css?ver=1.1.6' type='text/css' media='all' />
+<style id='melissa-style-inline-css' type='text/css'>
+
+    .bwp-post-media img,
+    .bwp-post-carousel-item img,
+    .widget_bwp_posts_slider_item img {
+      width: 100%;
+      margin: 0;
+    }
+    .bwp-post-wrap:hover {
+      margin-top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+    #bwp-masonry-container.no-masonry .bwp-post-wrap:hover {
+      top: 0;
+    }
+    .bwp-no-results-container:hover,
+    .bwp-single-article:hover,
+    .bwp-featured-media-container:hover,
+    .post-navigation .nav-links a:hover,
+    .bwp-about-author-container:hover,
+    .comment-respond:hover,
+    .comment-body:hover,
+    #comments .no-comments:hover,
+    .comment-navigation .nav-links a:hover,
+    .bwp-related-post-wrap:hover,
+    .bwp-page-404-container:hover,
+    .bwp-sidebar-wrap:hover {
+      top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+  #bwp-header-wrap {
+    background-color: #2e3340;
+  }
+  .bwp-header-bg-overlay,
+  .bwp-header-rs-bg-overlay {
+    background-color: rgba(46, 51, 64, 0.9);
+  }
+    .bwp-content a,
+    .comment-content a,
+    .bwp-post-quote a {
+      color: #2052bf;
+    }
+</style>
+<link rel='stylesheet' id='enlighter-local-css'  href='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.css?ver=3.9.0' type='text/css' media='all' />
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery4a5f.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[]};
+var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/cookie-law-info/public/js/cookie-law-info-public3cf4.js?ver=1.8.8'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/respond.min.js?ver=1.4.2'></script>
+<![endif]-->
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/mootools-core-yc9086.js?ver=3.9.0'></script>
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.js?ver=3.9.0'></script>
+<link rel='https://api.w.org/' href='../wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+<link rel='prev' title='Il primo ScalaDay italiano' href='https://codingjam.it/il-primo-scaladay-italiano/' />
+<link rel='next' title='Sviluppo di applicazioni Android con AndroidAnnotations' href='https://codingjam.it/sviluppo-di-applicazioni-android-con-androidannotations/' />
+<meta name="generator" content="WordPress 5.4.1" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://codingjam.it/?p=8104' />
+<link rel="alternate" type="application/json+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Fdivide-et-impera-spremere-il-processore-con-il-framework-forkjoin%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Fdivide-et-impera-spremere-il-processore-con-il-framework-forkjoin%2F&amp;format=xml" />
+<link rel="amphtml" href="https://codingjam.it/divide-et-impera-spremere-il-processore-con-il-framework-forkjoin/amp/"><script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"droide","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":false,"windowButton":false,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" sizes="32x32" />
+<link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://codingjam.it/wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-270x270.png" />
+</head>
+
+<body class="post-template-default single single-post postid-8104 single-format-standard wp-custom-logo">
+
+
+<!-- header -->
+<header id="bwp-header-wrap" class="bwp-header-simple">
+
+  <!-- header bg -->
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P7101915_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg-overlay"></div>
+
+    <!-- header content -->
+    <div class="container">
+      <div class="bwp-header-content-container">
+
+        <!-- row 1 - logo + navigation -->
+        <div class="bwp-main-navigation-container clearfix">
+
+          
+        <!-- image logo -->
+        <div class="bwp-logo-container">
+          <a href="../index.html" class="custom-logo-link" rel="home"><img width="207" height="70" src="../wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png" class="custom-logo" alt="CodingJam" srcset="https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png 207w, https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco-150x51.png 150w" sizes="(max-width: 207px) 100vw, 207px" /></a>        </div>
+        <!-- end image logo -->
+
+        
+      <!-- search -->
+      <div class="bwp-header-search-container hidden-sm hidden-xs">
+        <a href="#" id="bwp-header-search-icon">
+          <i class="fa fa-search"></i>
+        </a>
+        <div class="bwp-dropdown-search-container bwp-search-hidden">
+          
+<!-- search form -->
+<form id="searchform" role="search" method="get" action="https://codingjam.it/">
+  <div class="input-group">
+    <input type="text" name="s" id="s" class="bwp-search-field form-control" placeholder="Enter your search query...">
+    <span class="input-group-btn">
+      <button type="submit" class="btn bwp-search-submit">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+</form>
+<!-- end search form -->
+        </div>
+      </div>
+      <!-- end search -->
+
+      
+      <!-- menu -->
+      <div class="bwp-menu-container hidden-sm hidden-xs">
+        <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-2" class="sf-menu"><li id="menu-item-12007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li id="menu-item-12022" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li id="menu-item-12009" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li id="menu-item-12020" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li id="menu-item-12017" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li id="menu-item-12006" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li id="menu-item-12005" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li id="menu-item-12008" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li id="menu-item-12014" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li id="menu-item-12012" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li id="menu-item-12010" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li id="menu-item-12021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li id="menu-item-12016" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li id="menu-item-12015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li id="menu-item-12019" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li id="menu-item-12018" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>      </div>
+      <!-- end menu -->
+
+      
+      <!-- mobile menu -->
+      <div class="bwp-mobile-menu-container hidden-md hidden-lg">
+        <!-- mobile menu icon -->
+        <a href="#" id="bwp-mobile-menu-icon">
+          <i class="fa fa-bars"></i>
+        </a>
+        <!-- end mobile menu icon -->
+        <!-- dropdown mobile menu -->
+        <div class="bwp-dropdown-mobile-menu bwp-mobile-menu-hidden">
+          <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-3" class="bwp-mobile-menu list-unstyled"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>        </div>
+        <!-- end dropdown mobile menu -->
+      </div>
+      <!-- end mobile menu -->
+
+      
+        </div>
+        <!-- end row 1 - logo + navigation -->
+
+        
+          <!-- row 2 - header custom text -->
+          <div class="bwp-header-custom-text-container">
+            
+        <!-- custom text - single page -->
+        <h1 class="bwp-header-custom-title entry-title">
+          Divide et impera: spremere il processore con il framework Fork/Join        </h1>
+                <div class="bwp-header-transparent-line clearfix">
+          <span class="bwp-header-t-line-1"></span>
+          <span class="bwp-header-t-line-2"></span>
+        </div>
+        <!-- end custom text -->
+
+                  </div>
+          <!-- end row 2 - header custom text -->
+
+          
+      </div>
+    </div>
+    <!-- end header content -->
+  </div>
+  <!-- end header bg -->
+
+  
+        <!-- sticky navigation -->
+        <div class="bwp-sticky-navigation-wrap bwp-transition-4 clearfix">
+          <!-- sticky navigation icon -->
+          <a href="#" id="bwp-sticky-navigation-icon">
+            <i class="fa fa-bars"></i>
+          </a>
+          <!-- end sticky navigation icon -->
+          <!-- sticky navigation container -->
+          <div class="bwp-sticky-navigation-container bwp-sticky-navigation-hidden">
+            <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-4" class="sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>          </div>
+          <!-- end sticky navigation container -->
+        </div>
+        <!-- end sticky navigation -->
+
+        
+</header>
+<!-- end header -->
+
+  <!-- blog post - single page -->
+  <section id="bwp-single-page-wrap">
+    <div class="container">
+      <div class="bwp-single-page-container" >
+
+        
+                  <div class="row"><div class="col-md-8 bwp-single-content-col bwp-sidebar-right"><div class="bwp-single-content-col-wrap" role="main">
+        
+        <!-- article -->
+        <article id="post-8104" class="bwp-single-article bwp-transition-3">
+
+          
+          <!-- content container -->
+          <div class="bwp-single-content">
+
+            <!-- content -->
+            <div class="bwp-content entry-content clearfix">
+              <p align="justify">Il framework Fork/Join (F/J) è una piccola libreria che permette di parallelizzare gli algoritmi di tipo <em>divide et impera</em>. Introdotta con Java 7, (ma disponibile anche in Java 6) consente di sfruttare l&#8217;architettura multicore del processore per scomporre l&#8217;esecuzione un algoritmo in più parti che vengono elaborate contemporaneamente (fork) e ricombinarle alla fine (join) ottenendo un aumento significativo nelle prestazioni. Vediamo assieme come trarre vantaggio da questa nuova feature di Java 7.</p>
+<h3>Divide et impera</h3>
+<p align="justify">
+Fork/Join nasce per parallelizzare gli algoritmi di tipo <em>divide et impera</em> di cui facciamo un breve richiamo. Questa classe di algoritmi prevede che un problema &#8220;complesso&#8221; venga suddiviso in due o più sottoproblemi più piccoli (<em>divide</em>). Se anche questi sono ancora troppo grandi vengono suddivisi ulteriormente e il processo viene ripetuto fino ad ottenere un insieme di problemi risolvibili banalmente o per lo meno semplicemente (<em>impera</em>). Le soluzioni vengono poi ricombinate nel verso opposto alla scomposizione aggregando soluzioni via via più complesse fino ad ottenere il risultato del problema iniziale. Due classici esempi sono sicuramente <a href="http://it.wikipedia.org/wiki/Quicksort">QuickSort</a> e <a href="http://it.wikipedia.org/wiki/Merge_sort">MergeSort</a>.</p>
+<p align="justify">Un algoritmo <em>divide et impera</em> viene programmato &#8220;naturalmente&#8221; in maniera ricorsiva (possiamo sempre, poi, realizzare una versione iterativa più efficiente), dove: </p>
+<ul>
+<li>ogni divisione corrisponde ad un passo di ricorsione;</li>
+<li>la base di ricorsione corrisponde all&#8217;<em>impera</em>;</li>
+<li>il ritorno dalla ricorsione permette di ricombinare il risultato.</ul>
+<p align="justify">A meno di lanciarsi nell&#8217;avventura di una implementazione fatta con i thread, tutto questo lavoro ad oggi viene svolto da un unico processore, lasciando gli altri a sonnecchiare o poco più. Uno spreco bello e buono sapendo che i moderni processori sono dotati di più core (non parleremo di <a href="http://it.wikipedia.org/wiki/Hyperthreading" target="_blank">hyper-threading</a> perché per Java <a href="http://stackoverflow.com/q/11738133/1360888" target="_blank">non fa alcuna differenza</a>).</p>
+<h3>Fork/Join</h3>
+<p align="justify">Fork/Join entra in gioco a questo punto, aiutando a suddividere il carico di lavoro su più processori nella fase di <em>divide</em>. Dal punto di vista di chi <em>utilizza</em> F/J (cioè noi) l&#8217;idea di base è molto semplice. In F/J ogni problema da risolvere viene chiamato task e viene implementato come sottoclasse di <code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/RecursiveTask.html" target="_blank">java.util.concurrent.RecursiveTask</a></code>. Quando il dato che il task deve elaborare è troppo grande, vengono creati nuovi task con un sottoinsieme dei dati iniziali e lanciati tramite il metodo <code>fork</code>. Da questo punto in poi, l&#8217;esecuzione diventa parallela. Terminato ogni sottotask, che ovviamente può essere ancora spezzato in unità più piccole, avviene la fase di join, dove il risultato di ogni sottotask è disponibile e viene combinato con gli altri per fornire la soluzione richiesta. Tutto qui. </p>
+<p align="justify">Passiamo a vedere un po&#8217; di codice che risolve un problema volutamente semplice. Abbiamo una lista di oggetti comparabili, vogliamo trovare quanti di questi sono uguali ad un oggetto di test. La classe <code>Counter</code> svolge questo lavoro senza riservarci sorprese.</p>
+<pre class="brush: java; title: ; notranslate" title="">
+package it.cosenonjaviste.testforkjoin;
+
+import java.util.*;
+
+public class Counter&lt;T extends Comparable&lt;T&gt;&gt; {
+    private List&lt;T&gt; _list;
+    private T _test;
+
+    public Counter(List&lt;T&gt; list, T test) {
+        _list = list;
+        _test = test;
+    }
+
+    public int doWork() {
+        int count = 0;
+        for (int i = 0; i &lt; _list.size(); i++) {
+            if (_list.get(i).compareTo(_test) == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
+</pre>
+<p align="justify">Passiamo ora ad una versione ricorsiva della classe dove suddividiamo in due parti il problema. Per comodità, passiamo sempre tutta la lista di oggetti ma ne limitiamo l&#8217;accesso utilizzando degli indici.</p>
+<pre class="brush: java; title: ; notranslate" title="">
+package it.cosenonjaviste.testforkjoin;
+
+import java.util.*;
+
+public class CounterR&lt;T extends Comparable&lt;T&gt;&gt; {
+  private List&lt;T&gt; _list;
+  private T _test;
+  private int _start;
+  private int _end;
+
+  public CounterR(List&lt;T&gt; list, T test, int start,
+      int end) {
+    _list = list;
+    _test = test;
+    _start = start;
+    _end = end;
+  }
+
+  public CounterR(List&lt;T&gt; list, T test) {
+    this(list, test, 0, list.size());
+  }
+
+  public Integer doWork() {
+    if (_start == _end)
+      return 0;
+
+    if (_start + 1 == _end) {
+      if (_list.get(_start).compareTo(_test) == 0)
+        return 1;
+      else
+        return 0;
+    } else {
+      int size = (_end - _start) + 1;
+
+      // split initial problem
+      CounterR&lt;T&gt; c1 = new CounterR&lt;T&gt;(_list, _test,
+          _start, _start + size / 2);
+      CounterR&lt;T&gt; c2 = new CounterR&lt;T&gt;(_list, _test,
+          _start + size / 2 + 1, _start + size - 1);
+      return c1.doWork() + c2.doWork();
+    }
+
+  }
+}
+</pre>
+<p align="justify">E&#8217; venuto il momento di applicare F/J. A questo punto faremo in modo che <code>CounterR</code> estenda la classe di framework <code>RecursiveTask</code>: chiamiamo <code>CounterFJ</code> questa estensione e ne implementiamo il metodo astratto <code>compute</code>. In questo metodo, che sostituisce <code>doWork</code>, creeremo nuove istanze di <code>CounterFJ</code> che lavoreranno solo su di una porzione del problema; come prima, passiamo tutta la lista di input ma ne limitiamo l&#8217;accesso utilizzando degli indici. </p>
+<p align="justify">Per effettuare il <em>divide</em> in parallelo, utilizzeremo il metodo <code>fork</code> su ogni istanza di <code>CounterFJ</code>. Una volta che tutti i sotto task sono terminati, usando il metodo <code>join</code> otteremmo il conteggio delle occorrenze che andremo a sommare per dare il risultato finale.</p>
+<pre class="brush: java; title: ; notranslate" title="">
+package it.cosenonjaviste.testforkjoin;
+
+import java.util.*;
+import java.util.concurrent.*;
+
+public class CounterFJ&lt;T extends Comparable&lt;T&gt;&gt;
+    extends RecursiveTask&lt;Integer&gt; {
+
+  private static final int THRESHOLD = 250;
+  private static final long serialVersionUID = 5129597438543076860L;
+  private List&lt;T&gt; _list;
+  private T _test;
+  private int _start;
+  private int _end;
+
+  public CounterFJ(List&lt;T&gt; list, T test, int start,
+      int end) {
+    _list = list;
+    _test = test;
+    _start = start;
+    _end = end;
+  }
+
+  public CounterFJ(List&lt;T&gt; list, T test) {
+    this(list, test, 0, list.size());
+  }
+
+  @Override
+  protected Integer compute() {
+
+    if (_end - _start &lt; THRESHOLD) {
+      int count = 0;
+      for (int i = _start; i &lt; _end; i++) {
+        if (_list.get(i).compareTo(_test) == 0) {
+          count++;
+        }
+      }
+      return new Integer(count);
+    }
+
+    int size = (_end - _start) + 1;
+
+    // split initial problem in two
+    CounterFJ&lt;T&gt; subTask1 = new CounterFJ&lt;T&gt;(_list,
+        _test, _start, _start + size / 2);
+    CounterFJ&lt;T&gt; subTask2 = new CounterFJ&lt;T&gt;(_list,
+        _test, _start + size / 2 + 1, _start + size
+            - 1);
+
+    subTask1.fork();
+    subTask2.fork();
+
+    Integer count = subTask1.join() + subTask2.join();
+
+    return count;
+  }
+}
+</pre>
+<p align="justify">Come prima, ci siamo limitati a suddividere la lista in due parti soltanto, tuttavia è possibile realizzare una versione un po&#8217; più sofisticata  che permetta di parametrizzare anche il fattore di suddivisione. A differenza dell&#8217;esempio ricorsivo però, fissiamo una soglia per la dimensione del problema (threshold) sotto la quale non ha senso continuare a generare nuovi task perché il costo del fork supera quello della risoluzione immediata. Se invece la dimensione del problema è abbastanza grande, costruiamo i sotto-task suddividendo l&#8217;input. Messi da parte i task, invochiamo il <code>fork</code> su ciascuno e, al termine dell&#8217;esecuzione parallela, recuperiamo il risultato tramite <code>join</code>. La chiamata al task iniziale è presentata immediatamente qui sotto:</p>
+<pre class="brush: java; title: ; notranslate" title="">
+Long test = 42L;
+CounterFJ&lt;Long&gt; counter = new CounterFJ&lt;&gt;(list,test);
+
+ForkJoinPool pool = new ForkJoinPool();
+pool.invoke(counter);
+System.out.println(&quot;Occurrences:&quot; + counter.join());
+</pre>
+<p align="justify">La cosa che salta subito all&#8217;occhio è l&#8217;utilizzo della classe <code>ForkJoinPool</code> che è l&#8217;entry point del framework. Tramite il metodo <code>invoke</code>, andiamo ad eseguire il <code>RecursiveTask</code> di partenza che restituirà il risultato dell&#8217;esecuzione sempre tramite il metodo <code>join</code>. <code>ForkJoinPool</code> ha anche un costruttore alternativo che permette di specificare il grado di parallelismo che si vuole raggiungere. Qualora si utilizzi il costruttore di default, viene utilizzato il numero di processori <a href="http://stackoverflow.com/q/4523331/1360888" target="_blank">che la JVM ha a disposizione</a>.</p>
+<p align="justify">E&#8217; possibile specificare un grado di parallelismo superiore al numero di processori disponibili, tuttavia questo comporterà un degrado delle prestazioni tale da essere peggiore dell&#8217;esecuzione senza Fork/Join.</p>
+<h3>Le prestazioni</h3>
+<p align="justify">Non è interesse di questo post fare uno studio approfondito delle prestazioni di F/J, anche perché i lettori più curiosi possono trovare molte più informazioni <a href="http://gee.cs.oswego.edu/dl/papers/fj.pdf" title="A Java Fork/Join Framework" target="_blank">qui</a>, piuttosto vogliamo dare un&#8217;idea qualitativa del miglioramento di prestazioni con il grafico presentato qui sotto. Sull&#8217;asse Y si trova il tempo di esecuzione della ricerca in millisecondi, sull&#8217;asse X il numero di elementi della lista. Sono presentati tre grafici: senza F/J (verde), usando due core (rosso) e utilizzando quattro core (blu). L&#8217;esecuzione è stata ripetuta più volte sullo stesso set di dati generato casualmente all&#8217;inizio della batteria di test, incrementando gradualmente la dimensione del problema.<br />
+<a href="http://www.cosenonjaviste.it/wp-content/uploads/2013/02/graficofj.png"><img src="http://www.cosenonjaviste.it/wp-content/uploads/2013/02/graficofj.png" alt="Prestazioni Fork/Join" width="600" height="390" class="alignnone size-medium wp-image-8974" srcset="https://codingjam.it/wp-content/uploads/2013/02/graficofj.png 779w, https://codingjam.it/wp-content/uploads/2013/02/graficofj-300x195.png 300w" sizes="(max-width: 600px) 100vw, 600px" /></a></p>
+<h3>Alcune avvertenze</h3>
+<p align="justify">Fork/Join è molto semplice da usare, ma bisogna avere prestare attenzione ad alcuni aspetti a cui abbiamo già accennato ma che qui riepiloghiamo:</p>
+<ul>
+<li>non specificare un grado di parallelismo maggiore del numero di processori disponibili, altrimenti vengono vanificati i vantaggi del framework;</li>
+<li>prevedere una soglia sotto la quale non generare più task, altrimenti l&#8217;overhead di gestione del parallelismo è più grande del benificio acquisito;</li>
+<li>i task non devono essere bloccati su operazioni di I/O, Fork/Join è stato pensato per algoritmi che fanno pesante uso della CPU, <a href="http://stackoverflow.com/q/8206318/1360888" target="_blank">non per sostituirsi</a> alla gestione multithreaded di cui costituiscono piuttosto un complemento.
+</ul>
+<h3>Dietro le quinte</h3>
+<p align="justify">Ma come funziona internamente F/J? Diamo una spiegazione semplificata lasciando ai più volenterosi <a href="http://gee.cs.oswego.edu/dl/papers/fj.pdf" title="A Java Fork/Join Framework" target="_blank">l&#8217;approfondimento</a>. Ogni thread allocato dal <code>ForkJoinPool</code> dispone di una coda doppia cioè che supporta sia operazioni FIFO che LIFO. In questa coda, detta <em>deque</em>, vengono accodati i task da eseguire e che sono estratti con politica LIFO. All&#8217;inizio dell&#8217;esecuzione, un solo thread accoda il primo task e lo esegue. Se il thread  incontra un fork durante l&#8217;esecuzione, accoda i nuovi task nella propria coda e li processa estraendo i più recenti dalla coda. Se invece viene incontrata un&#8217;operazione di join, il thread processa gli altri task, se ce ne sono, fino a che è possibile continuare l&#8217;operazione di join.  Qualora un thread non abbia task da eseguire, prende un task dalla coda di un altro thread  estraendolo dal fondo della coda (FIFO). Quindi il procedimento si ripete fino a che tutti i thread non abbiano svuotato la propria coda. A seguito di questa strategia si afferma che F/J è basato sul work-stealing, concetto mutuato direttamente da un altro framework chiamato Cilk. E&#8217; possibile dimostrare <a href="http://stackoverflow.com/q/14076890/1360888" target="_blank">facilmente</a> che in F/J i task si spostano di continuo da un thread all&#8217;altro ma per rendere più evidente questo aspetto abbiamo preparato un piccolo programma che ne da dimostrazione. Due screenshot estratti da una esecuzione e qui sotto illustrati permettono di interpretare più agevolmente il video. </p>
+<p><em>Screenshot 1</em><br />
+<a href="http://www.cosenonjaviste.it/wp-content/uploads/2013/04/fj-passo1.png"><img src="http://www.cosenonjaviste.it/wp-content/uploads/2013/04/fj-passo1.png" alt="fj-passo1" width="561" height="182" class="alignnone size-full wp-image-9342" srcset="https://codingjam.it/wp-content/uploads/2013/04/fj-passo1.png 561w, https://codingjam.it/wp-content/uploads/2013/04/fj-passo1-300x97.png 300w" sizes="(max-width: 561px) 100vw, 561px" /></a></p>
+<p align="justify">Nell&#8217;istante rappresentato nel primo screenshot, un solo thread è in esecuzione e il suo deque contiene tre task, i numeri tra parentesi rappresentano la porzione di array che viene esaminata. Si deduce quindi che l&#8217;array iniziale è stato diviso in due parti.</p>
+<p><em>Screenshot 2</em><br />
+<a href="http://www.cosenonjaviste.it/wp-content/uploads/2013/04/fj-passo2.png"><img src="http://www.cosenonjaviste.it/wp-content/uploads/2013/04/fj-passo2.png" alt="fj-passo2" width="561" height="246" class="alignnone size-full wp-image-9343" srcset="https://codingjam.it/wp-content/uploads/2013/04/fj-passo2.png 561w, https://codingjam.it/wp-content/uploads/2013/04/fj-passo2-300x131.png 300w" sizes="(max-width: 561px) 100vw, 561px" /></a></p>
+<p align="justify">Successivamente (secondo screenshot) altri tre thread nel pool &#8220;rubano&#8221; i task dal deque del primo. Il task spostato viene identificato con un rettangolino sul lato destro dello stesso colore del thread che lo ha preso. Il rettangolino a sinistra rappresenta invece il thread di partenza. Un task di colore &#8220;pieno&#8221; indica che il task non è ancora stato completato, un colore più chiaro indica nuovamente che il task è stato spostato, mentre il task viene colorato di bianco se la sua elaborazione è stata completata.</p>
+<p align="justify">Per coloro che volessero vedere un esempio di esecuzione è <a href="http://www.cosenonjaviste.it/wp-content/uploads/2013/04/flashfj.htm" target="_blank">disponibile un piccolo video</a> dove avvengono diversi &#8220;furti&#8221; di task tra un thread e l&#8217;altro. Quelli che invece vogliono smanettare sui parametri e vedere il comportamento del framework possono scaricare il <a href="http://www.cosenonjaviste.it/wp-content/uploads/2013/04/VisualFJExample.java_.txt" target="_blank">sorgente</a> della applicazione. </p>
+<h3>Conclusioni</h3>
+<p align="justify">Fork/Join è un framework molto semplice ma contemporaneamente molto potente. Sicuramente sarà di aiuto per ottimizzare quelle operazioni che stressano la CPU e ridurne il tempo di esecuzione. Tuttavia, anche se non avete l&#8217;esigenza di andare a fare ottimizzazioni così specifiche del codice, F/J lavorerà comunque per voi in futuro perché l&#8217;esecuzione parallela delle <a href="http://www.cosenonjaviste.it/il-java-che-verra-una-breve-introduzione-alle-espressioni-lambda/" target="_blank">lambda expression</a> di cui abbiamo parlato tempo fa <a href="http://cr.openjdk.java.net/~briangoetz/lambda/sotc3.html" target="_blank">utilizza</a> proprio questo framework.</p>
+<h3>Per approfondire</h3>
+<ul>
+<li><a href="http://gee.cs.oswego.edu/dl/papers/fj.pdf" title="A Java Fork/Join Framework" target="_blank">A Java Fork/Join Framework</a></li>
+<li><a href="http://it.wikipedia.org/wiki/Divide_et_impera_(informatica)" target="_blank">Divide et impera</a></li>
+<li><a href="http://www.javacodegeeks.com/2011/02/java-forkjoin-parallel-programming.html" target="_blank">Java Fork/Join for Parallel Programming</a></li>
+<li><a href="http://www.infoq.com/news/2007/07/concurrency-java-se-7" title="New Concurrency Features for Java SE 7" target="_blank">New Concurrency Features for Java SE 7</a></li>
+<li><a href="http://www.ibm.com/developerworks/java/library/j-jtp11137/index.html" target="_blank">Java theory and practice: Stick a fork in it.<br />
+Learn how to exploit fine-grained parallelism using the fork-join framework coming in Java 7</a></li>
+<li><a href="http://www.drdobbs.com/jvm/using-jdk-7s-forkjoin-framework/231000556" target="_blank">Using JDK 7&#8217;s Fork/Join Framework</a></li>
+<li><a href="http://www.oracle.com/technetwork/articles/java/fork-join-422606.html" target="_blank">Fork and Join: Java Can Excel at Painless Parallel Programming Too!</a></li>
+<li><a href="http://stackoverflow.com/q/8206318/1360888"  target="_blank">Is Java&#8217;s fork-and-join thread pool is good for executing IO bound task?</a></li>
+            </div>
+            <!-- end content -->
+
+            
+                <!-- social sharing buttons / counters -->
+                <div class="row">
+                  <div class="col-md-7">
+                    
+    <!-- social sharing buttons -->
+    <div class="bwp-single-share-wrap">
+      <span>Share:</span>
+      <ul class="bwp-single-share list-unstyled">
+        <!-- facebook -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/divide-et-impera-spremere-il-processore-con-il-framework-forkjoin/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/divide-et-impera-spremere-il-processore-con-il-framework-forkjoin/" target="_blank" class="bwp-share-link bwp-facebook-share">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <!-- end facebook -->
+        <!-- twitter -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/divide-et-impera-spremere-il-processore-con-il-framework-forkjoin/&amp;text=divide-et-impera-spremere-il-processore-con-il-framework-fork-join', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/divide-et-impera-spremere-il-processore-con-il-framework-forkjoin/&amp;text=divide-et-impera-spremere-il-processore-con-il-framework-fork-join" target="_blank" class="bwp-share-link bwp-twitter-share">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <!-- end twitter -->
+        <!-- google+ -->
+        <li>
+          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/divide-et-impera-spremere-il-processore-con-il-framework-forkjoin/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/divide-et-impera-spremere-il-processore-con-il-framework-forkjoin/" target="_blank" class="bwp-share-link bwp-google-plus-share">
+            <i class="fa fa-google-plus"></i>
+          </a>
+        </li>
+        <!-- end google+ -->
+        <!-- vk -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/divide-et-impera-spremere-il-processore-con-il-framework-forkjoin/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/divide-et-impera-spremere-il-processore-con-il-framework-forkjoin/" target="_blank" class="bwp-share-link bwp-vk-share">
+            <i class="fa fa-vk"></i>
+          </a>
+        </li>
+        <!-- end vk -->
+        <!-- pinterest -->
+        <li>
+          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/divide-et-impera-spremere-il-processore-con-il-framework-forkjoin/&amp;media=&amp;description=divide-et-impera-spremere-il-processore-con-il-framework-fork-join', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/divide-et-impera-spremere-il-processore-con-il-framework-forkjoin/&amp;media=&amp;description=divide-et-impera-spremere-il-processore-con-il-framework-fork-join" target="_blank" class="bwp-share-link bwp-pinterest-share">
+            <i class="fa fa-pinterest-p"></i>
+          </a>
+        </li>
+        <!-- end pinterest -->
+      </ul>
+    </div>
+    <!-- end social sharing buttons -->
+
+                      </div>
+                  <div class="col-md-5">
+                    
+    <!-- counters -->
+    <ul class="bwp-single-counters list-unstyled clearfix ">
+                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>1</a></li>
+                </ul>
+    <!-- end counters -->
+
+                      </div>
+                </div>
+                <!-- end social sharing buttons / counters -->
+
+                
+      <!-- metadata -->
+      <div class="bwp-single-metadata-wrap ">
+        <ul class="bwp-single-metadata list-unstyled clearfix">
+                      <!-- author -->
+            <li>
+              <span class="vcard author">
+                <span class="fn">
+                  <i class="fa fa-pencil-square-o"></i><a href="../author/giampaolo-trapasso/index.html" title="Posts by Giampaolo Trapasso" rel="author">Giampaolo Trapasso</a>                </span>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end author -->
+                                <!-- date -->
+            <li>
+                            <span class="date updated">
+                <i class="fa fa-clock-o"></i><a href="../2013/05/06/index.html">06/05/2013</a>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end date -->
+                                <!-- categories -->
+            <li>
+              <i class="fa fa-bookmark-o"></i><a href="../category/java/index.html" rel="category tag">Java</a>, <a href="https://codingjam.it/category/java/java7/" rel="category tag">Java7</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end categories -->
+                                <!-- tags -->
+            <li>
+              <i class="fa fa-tags"></i><a href="../tag/cpu/index.html" rel="tag">CPU</a>, <a href="https://codingjam.it/tag/fork/" rel="tag">fork</a>, <a href="https://codingjam.it/tag/framework-2/" rel="tag">framework</a>, <a href="../tag/java/index.html" rel="tag">Java</a>, <a href="https://codingjam.it/tag/java7-2/" rel="tag">java7</a>, <a href="https://codingjam.it/tag/join/" rel="tag">join</a>, <a href="https://codingjam.it/tag/lambda-expressions/" rel="tag">lambda expressions</a>, <a href="https://codingjam.it/tag/multithreading/" rel="tag">multithreading</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end tags -->
+                  </ul>
+      </div>
+      <!-- end metadata -->
+
+      
+          </div>
+          <!-- end content container -->
+
+        </article>
+        <!-- end article -->
+
+        
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://codingjam.it/il-primo-scaladay-italiano/" rel="prev"><span class="meta-nav"><i class="fa fa-angle-left"></i>Previous post</span><span class="post-title-nav">Il primo ScalaDay italiano</span></a></div><div class="nav-next"><a href="https://codingjam.it/sviluppo-di-applicazioni-android-con-androidannotations/" rel="next"><span class="meta-nav">Next post<i class="fa fa-angle-right"></i></span><span class="post-title-nav">Sviluppo di applicazioni Android con AndroidAnnotations</span></a></div></div>
+	</nav>
+    <!-- about the author -->
+    <div class="bwp-about-author-container bwp-transition-3 clearfix">
+      <!-- avatar -->
+      <div class="bwp-about-author-avatar">
+        <a href="../author/giampaolo-trapasso/index.html">
+          <img alt='' src='https://secure.gravatar.com/avatar/2fc7c345f3c40aad02aca88459b1eb4a?s=150&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/2fc7c345f3c40aad02aca88459b1eb4a?s=300&#038;d=mm&#038;r=g 2x' class='avatar avatar-150 photo' height='150' width='150' />        </a>
+      </div>
+      <!-- end avatar -->
+      <!-- biographical info -->
+      <div class="bwp-about-author-bio-wrap">
+        <h3 class="bwp-about-author-name">
+          <a href="../author/giampaolo-trapasso/index.html" title="Posts by Giampaolo Trapasso" rel="author">Giampaolo Trapasso</a>          <span><i class="fa fa-angle-double-right"></i>35 Posts</span>
+        </h3>
+        <div class="bwp-about-author-bio">
+          Sono laureato in Informatica e attualmente lavoro come Software Engineer in Databiz Srl. Mi diverto a programmare usando Java e Scala, Akka, RxJava e Cassandra. 
+
+Qui mio modesto contributo su
+<a href="http://stackoverflow.com/users/1360888/giampaolo">
+StackOverflow
+</a> e il mio account su <a href="https://github.com/giampaolotrapasso">GitHub</a>        </div>
+                  <ul class="bwp-about-author-social list-unstyled clearfix">
+                              <li><a href="http://tr4p0/" target="_blank" class="bwp-a-twitter-link"><i class="fa fa-twitter"></i></a></li>
+                                  <li><a href="http://www.codingjam.it/?team=giampaolo-trapasso" target="_blank" class="bwp-a-website-link"><i class="fa fa-link"></i></a></li>
+                          </ul>
+              </div>
+      <!-- end biographical info -->
+    </div>
+    <!-- end about the author -->
+
+    
+<!-- comments -->
+<div id="comments" class="comments-area">
+
+	
+		<h2 class="comments-title">
+			1 thought on &ldquo;Divide et impera: spremere il processore con il framework Fork/Join&rdquo;		</h2>
+
+		<ol class="comment-list">
+					<li id="comment-538" class="pingback even thread-even depth-1">
+			<div class="comment-body">
+				Pingback: <a href='http://www.cosenonjaviste.it/java-8-uno-sguardo-agli-stream/' rel='external nofollow ugc' class='url'>Java 8: uno sguardo agli stream, il tutorial di CoseNonJaviste :: CoseNonJaviste</a> 			</div>
+		</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+		<div id="respond" class="comment-respond">
+		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='8104' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+	
+</div>
+<!-- end comments -->
+
+    <!-- related posts (by tags) -->
+    <div class="bwp-related-posts-container bwp-show-2-posts">
+      <div class="bwp-o-hidden">
+
+        <!-- title -->
+        <h2 class="bwp-related-posts-title">
+          You might also like:        </h2>
+        <!-- end title -->
+
+        <!-- posts list -->
+        <div class="bwp-related-posts clearfix">
+
+          
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="https://codingjam.it/retrolambda-lambda-expression-anche-su-java-7/">Retrolambda: lambda expression anche su Java 7</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>Non vedete l&#8217;ora di poter lavorare in modo funzionale con le espressioni lambda anche in Java? Purtroppo però siete bloccati su Java 7 e potete solo sognarle la notte&#8230; Almeno fino ad oggi! Esiste un progetto molto interessante su GitHub che porta le espressioni lambda su Java 7 (e in teoria anche prima), vediamo insieme cosa offre. Vade retro Basta con le anonymous class che complicano la lettura del codice: da oggi anche in Java 7 possiamo ordinare una lista [&hellip;]</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2015/04/22/" class="bwp-post-date">
+        <span class="date updated">22/04/2015</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="https://codingjam.it/retrolambda-lambda-expression-anche-su-java-7/" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="https://codingjam.it/java-8-uno-sguardo-agli-stream/">Java 8: uno sguardo agli stream</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p align="justify">Nel <a href="http://www.cosenonjaviste.it/java-8-lambda-in-7-minuti-o-quasi/">post precedente</a> abbiamo introdotto le lambda expression : funzioni anonime che possiamo utilizzare dove sia prevista un&#8217;interfaccia con un solo metodo astratto. In questo articolo useremo le lambda con gli stream, un nuovo strumento che ci permetterà di lavorare con le collezioni in maniera efficiente e compatta grazie proprio alla programmazione funzionale.</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2014/02/12/" class="bwp-post-date">
+        <span class="date updated">12/02/2014</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="https://codingjam.it/java-8-uno-sguardo-agli-stream/" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+        </div>
+        <!-- end posts list -->
+
+      </div>
+    </div>
+    <!-- end related posts -->
+
+    
+                  </div><!-- /bwp-single-content-col-wrap --></div><!-- /col-md-8 --><div class="col-md-4 bwp-sidebar-col bwp-sidebar-right">
+        
+                  </div><!-- /col --></div><!-- /row -->
+        
+      </div>
+    </div>
+  </section>
+  <!-- end blog post - single page -->
+
+  
+<!-- footer -->
+<footer id="bwp-footer-wrap">
+  <div class="container">
+    <div class="bwp-footer-container clearfix">
+
+              <!-- footer text -->
+        <div class="bwp-footer-text">
+          CodingJam        </div>
+        <!-- end footer text -->
+      
+              <!-- social links -->
+        <ul class="bwp-footer-social-links list-unstyled clearfix">
+          <li><a href="https://twitter.com/codingjam" target="_blank" class="bwp-f-twitter-link"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.facebook.com/codingjamit/" target="_blank" class="bwp-f-facebook-link"><i class="fa fa-facebook"></i></a></li><li><a href="https://github.com/coding-jam" target="_blank" class="bwp-f-github-link"><i class="fa fa-github"></i></a></li>        </ul>
+        <!-- end social links -->
+      
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+
+<!--googleoff: all--><div id="cookie-law-info-bar"><span>Questo sito Web utilizza i cookie per migliorare la tua esperienza. Daremo per scontato che per te sia ok, ma puoi disattivarlo se lo desideri..<a role='button' tabindex='0' data-cli_action="accept" id="cookie_action_close_header"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button" style="display:inline-block; ">Accetto</a>  <a role='button' tabindex='0' id="cookie_action_close_header_reject"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header_reject cli_action_button"  data-cli_action="reject">Annulla</a> <a href='../cookie.html' id="CONSTANT_OPEN_URL" target="_blank"  class="cli-plugin-main-link"  style="display:inline-block;" >Read More</a></span></div><div id="cookie-law-info-again" style="display:none;"><span id="cookie_hdr_showagain">Privacy & Cookies</span></div><div class="cli-modal" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+    <div class="cli-modal-content cli-bar-popup">
+      <button type="button" class="cli-modal-close" id="cliModalClose">
+        <svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+        <span class="wt-cli-sr-only">Close</span>
+      </button>
+      <div class="cli-modal-body">
+        <div class="cli-container-fluid cli-tab-container">
+    <div class="cli-row">
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0">
+            <div class="cli-privacy-overview">
+                                                   
+                <div class="cli-privacy-content">
+                    <div class="cli-privacy-content-text"></div>
+                </div>
+                <a class="cli-privacy-readmore" data-readmore-text="Show more" data-readless-text="Show less"></a>            </div>
+        </div>  
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+              
+                            <div class="cli-tab-section">
+                    <div class="cli-tab-header">
+                        <a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab" >
+                            Necessary 
+                        </a>
+                    
+                    <span class="cli-necessary-caption">Always Enabled</span>                     </div>
+                    <div class="cli-tab-content">
+                        <div class="cli-tab-pane cli-fade" data-id="necessary">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+              
+                       
+        </div>
+    </div> 
+</div> 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<script type="text/javascript">
+  /* <![CDATA[ */
+  cli_cookiebar_settings='{"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":false,"button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":true,"button_1_new_win":false,"button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":false,"button_2_hidebar":false,"button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":true,"button_3_new_win":false,"button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#fff","button_4_as_button":true,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":false,"scroll_close_reload":false,"accept_close_reload":false,"reject_close_reload":false,"showagain_tab":true,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":false,"show_once":"10000","logging_on":false,"as_popup":false,"popup_overlay":true,"bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"}';
+  /* ]]> */
+</script>
+<!--googleon: all--><script type='text/javascript' src='../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore09b1.js?ver=3.0.9b'></script>
+<script type='text/javascript' src='https://codingjam.it/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJava.js?ver=3.0.9b'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore09b1.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeEclipse09b1.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = true;
+	SyntaxHighlighter.defaults['tab-size'] = 2;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/bootstrap.min7433.js?ver=3.3.7'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.parallaxc358.js?ver=1.1.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/superfish.min97e9.js?ver=1.7.9'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel.min3ba1.js?ver=1.3.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/magnific-popup/jquery.magnific-popup.minf488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
+</body>
+
+<!-- Mirrored from codingjam.it/divide-et-impera-spremere-il-processore-con-il-framework-forkjoin/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:38 GMT -->
+</html>

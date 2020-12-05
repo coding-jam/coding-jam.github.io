@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html amp lang="en-US" i-amphtml-layout="" i-amphtml-no-boilerplate="" transformed="self;v=1">
+<!-- Mirrored from codingjam.it/come-creare-un-motore-di-rendering-custom-in-javascript/amp/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="utf-8"><style amp-runtime="" i-amphtml-version="012011200012001">html{overflow-x:hidden!important}html.i-amphtml-fie{height:100%!important;width:100%!important}html:not([amp4ads]),html:not([amp4ads]) body{height:auto!important}html:not([amp4ads]) body{margin:0!important}body{-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%}html.i-amphtml-singledoc.i-amphtml-embedded{-ms-touch-action:pan-y;touch-action:pan-y}html.i-amphtml-fie>body,html.i-amphtml-singledoc>body{overflow:visible!important}html.i-amphtml-fie:not(.i-amphtml-inabox)>body,html.i-amphtml-singledoc:not(.i-amphtml-inabox)>body{position:relative!important}html.i-amphtml-webview>body{overflow-x:hidden!important;overflow-y:visible!important;min-height:100vh!important}html.i-amphtml-ios-embed-legacy>body{overflow-x:hidden!important;overflow-y:auto!important;position:absolute!important}html.i-amphtml-ios-embed{overflow-y:auto!important;position:static}#i-amphtml-wrapper{overflow-x:hidden!important;overflow-y:auto!important;position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;margin:0!important;display:block!important}html.i-amphtml-ios-embed.i-amphtml-ios-overscroll,html.i-amphtml-ios-embed.i-amphtml-ios-overscroll>#i-amphtml-wrapper{-webkit-overflow-scrolling:touch!important}#i-amphtml-wrapper>body{position:relative!important;border-top:1px solid transparent!important}#i-amphtml-wrapper+body{visibility:visible}#i-amphtml-wrapper+body .i-amphtml-lightbox-element,#i-amphtml-wrapper+body[i-amphtml-lightbox]{visibility:hidden}#i-amphtml-wrapper+body[i-amphtml-lightbox] .i-amphtml-lightbox-element{visibility:visible}#i-amphtml-wrapper.i-amphtml-scroll-disabled,.i-amphtml-scroll-disabled{overflow-x:hidden!important;overflow-y:hidden!important}amp-instagram{padding:54px 0px 0px!important;background-color:#fff}amp-iframe iframe{box-sizing:border-box!important}[amp-access][amp-access-hide]{display:none}[subscriptions-dialog],body:not(.i-amphtml-subs-ready) [subscriptions-action],body:not(.i-amphtml-subs-ready) [subscriptions-section]{display:none!important}amp-experiment,amp-live-list>[update]{display:none}.i-amphtml-jank-meter{position:fixed;background-color:rgba(232,72,95,0.5);bottom:0;right:0;color:#fff;font-size:16px;z-index:1000;padding:5px}amp-list[resizable-children]>.i-amphtml-loading-container.amp-hidden{display:none!important}amp-list [fetch-error],amp-list[load-more] [load-more-button],amp-list[load-more] [load-more-end],amp-list[load-more] [load-more-failed],amp-list[load-more] [load-more-loading]{display:none}amp-list[diffable] div[role=list]{display:block}amp-story-page,amp-story[standalone]{min-height:1px!important;display:block!important;height:100%!important;margin:0!important;padding:0!important;overflow:hidden!important;width:100%!important}amp-story[standalone]{background-color:#202125!important;position:relative!important}amp-story-page{background-color:#757575}amp-story .amp-active>div,amp-story .i-amphtml-loader-background{display:none!important}amp-story-page:not(:first-of-type):not([distance]):not([active]){transform:translateY(1000vh)!important}amp-autocomplete{position:relative!important;display:inline-block!important}amp-autocomplete>input,amp-autocomplete>textarea{padding:0.5rem;border:1px solid rgba(0,0,0,0.33)}.i-amphtml-autocomplete-results,amp-autocomplete>input,amp-autocomplete>textarea{font-size:1rem;line-height:1.5rem}[amp-fx^=fly-in]{visibility:hidden}amp-script[nodom]{position:fixed!important;top:0!important;width:1px!important;height:1px!important;overflow:hidden!important;visibility:hidden}
+/*# sourceURL=/css/ampdoc.css*/[hidden]{display:none!important}.i-amphtml-element{display:inline-block}.i-amphtml-blurry-placeholder{transition:opacity 0.3s cubic-bezier(0.0,0.0,0.2,1)!important;pointer-events:none}[layout=nodisplay]:not(.i-amphtml-element){display:none!important}.i-amphtml-layout-fixed,[layout=fixed][width][height]:not(.i-amphtml-layout-fixed){display:inline-block;position:relative}.i-amphtml-layout-responsive,[layout=responsive][width][height]:not(.i-amphtml-layout-responsive),[width][height][heights]:not([layout]):not(.i-amphtml-layout-responsive),[width][height][sizes]:not([layout]):not(.i-amphtml-layout-responsive){display:block;position:relative}.i-amphtml-layout-intrinsic,[layout=intrinsic][width][height]:not(.i-amphtml-layout-intrinsic){display:inline-block;position:relative;max-width:100%}.i-amphtml-layout-intrinsic .i-amphtml-sizer{max-width:100%}.i-amphtml-intrinsic-sizer{max-width:100%;display:block!important}.i-amphtml-layout-container,.i-amphtml-layout-fixed-height,[layout=container],[layout=fixed-height][height]:not(.i-amphtml-layout-fixed-height){display:block;position:relative}.i-amphtml-layout-fill,.i-amphtml-layout-fill.i-amphtml-notbuilt,[layout=fill]:not(.i-amphtml-layout-fill){display:block;overflow:hidden!important;position:absolute;top:0;left:0;bottom:0;right:0}.i-amphtml-layout-flex-item,[layout=flex-item]:not(.i-amphtml-layout-flex-item){display:block;position:relative;-ms-flex:1 1 auto;flex:1 1 auto}.i-amphtml-layout-fluid{position:relative}.i-amphtml-layout-size-defined{overflow:hidden!important}.i-amphtml-layout-awaiting-size{position:absolute!important;top:auto!important;bottom:auto!important}i-amphtml-sizer{display:block!important}@supports (aspect-ratio:1/1){i-amphtml-sizer.i-amphtml-disable-for-ar{display:none!important}}.i-amphtml-blurry-placeholder,.i-amphtml-fill-content{display:block;height:0;max-height:100%;max-width:100%;min-height:100%;min-width:100%;width:0;margin:auto}.i-amphtml-layout-size-defined .i-amphtml-fill-content{position:absolute;top:0;left:0;bottom:0;right:0}.i-amphtml-replaced-content,.i-amphtml-screen-reader{padding:0!important;border:none!important}.i-amphtml-screen-reader{position:fixed!important;top:0px!important;left:0px!important;width:4px!important;height:4px!important;opacity:0!important;overflow:hidden!important;margin:0!important;display:block!important;visibility:visible!important}.i-amphtml-screen-reader~.i-amphtml-screen-reader{left:8px!important}.i-amphtml-screen-reader~.i-amphtml-screen-reader~.i-amphtml-screen-reader{left:12px!important}.i-amphtml-screen-reader~.i-amphtml-screen-reader~.i-amphtml-screen-reader~.i-amphtml-screen-reader{left:16px!important}.i-amphtml-unresolved{position:relative;overflow:hidden!important}.i-amphtml-select-disabled{-webkit-user-select:none!important;-ms-user-select:none!important;user-select:none!important}.i-amphtml-notbuilt,[layout]:not(.i-amphtml-element),[width][height][heights]:not([layout]):not(.i-amphtml-element),[width][height][sizes]:not([layout]):not(.i-amphtml-element){position:relative;overflow:hidden!important;color:transparent!important}.i-amphtml-notbuilt:not(.i-amphtml-layout-container)>*,[layout]:not([layout=container]):not(.i-amphtml-element)>*,[width][height][heights]:not([layout]):not(.i-amphtml-element)>*,[width][height][sizes]:not([layout]):not(.i-amphtml-element)>*{display:none}amp-img:not(.i-amphtml-element)[i-amphtml-ssr]>img.i-amphtml-fill-content{display:block}.i-amphtml-notbuilt:not(.i-amphtml-layout-container),[layout]:not([layout=container]):not(.i-amphtml-element),[width][height][heights]:not([layout]):not(.i-amphtml-element),[width][height][sizes]:not([layout]):not(.i-amphtml-element){color:transparent!important;line-height:0!important}.i-amphtml-ghost{visibility:hidden!important}.i-amphtml-element>[placeholder],[layout]:not(.i-amphtml-element)>[placeholder],[width][height][heights]:not([layout]):not(.i-amphtml-element)>[placeholder],[width][height][sizes]:not([layout]):not(.i-amphtml-element)>[placeholder]{display:block}.i-amphtml-element>[placeholder].amp-hidden,.i-amphtml-element>[placeholder].hidden{visibility:hidden}.i-amphtml-element:not(.amp-notsupported)>[fallback],.i-amphtml-layout-container>[placeholder].amp-hidden,.i-amphtml-layout-container>[placeholder].hidden{display:none}.i-amphtml-layout-size-defined>[fallback],.i-amphtml-layout-size-defined>[placeholder]{position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;z-index:1}.i-amphtml-notbuilt>[placeholder]{display:block!important}.i-amphtml-hidden-by-media-query{display:none!important}.i-amphtml-element-error{background:red!important;color:#fff!important;position:relative!important}.i-amphtml-element-error:before{content:attr(error-message)}i-amp-scroll-container,i-amphtml-scroll-container{position:absolute;top:0;left:0;right:0;bottom:0;display:block}i-amp-scroll-container.amp-active,i-amphtml-scroll-container.amp-active{overflow:auto;-webkit-overflow-scrolling:touch}.i-amphtml-loading-container{display:block!important;pointer-events:none;z-index:1}.i-amphtml-notbuilt>.i-amphtml-loading-container{display:block!important}.i-amphtml-loading-container.amp-hidden{visibility:hidden}.i-amphtml-element>[overflow]{cursor:pointer;position:relative;z-index:2;visibility:hidden;display:initial;line-height:normal}.i-amphtml-element>[overflow].amp-visible{visibility:visible}template{display:none!important}.amp-border-box,.amp-border-box *,.amp-border-box :after,.amp-border-box :before{box-sizing:border-box}amp-pixel{display:none!important}amp-analytics,amp-auto-ads,amp-story-auto-ads{position:fixed!important;top:0!important;width:1px!important;height:1px!important;overflow:hidden!important;visibility:hidden}html.i-amphtml-fie>amp-analytics{position:initial!important}[visible-when-invalid]:not(.visible),form [submit-error],form [submit-success],form [submitting]{display:none}amp-accordion{display:block!important}amp-accordion>section{float:none!important}amp-accordion>section>*{float:none!important;display:block!important;overflow:hidden!important;position:relative!important}amp-accordion,amp-accordion>section{margin:0}amp-accordion:not(.i-amphtml-built)>section>:last-child{display:none!important}amp-accordion:not(.i-amphtml-built)>section[expanded]>:last-child{display:block!important}
+/*# sourceURL=/css/ampshared.css*/</style><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1"><meta name="generator" content="AMP Plugin v1.5.3; mode=reader"><meta name="generator" content="WordPress 5.4.1"><title>Come creare un motore di rendering in JavaScript – CodingJam</title><link rel="preconnect" href="https://cdn.ampproject.org/"><link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js"><script async="" src="https://cdn.ampproject.org/v0.js"></script><script src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js" async="" custom-element="amp-youtube"></script><style amp-custom="">.wp-block-image{margin-bottom:1em}.wp-block-image amp-img{max-width:100%}.wp-block-image.aligncenter{text-align:center}.wp-block-image .aligncenter{display:table}.wp-block-image .aligncenter>figcaption{display:table-caption;caption-side:bottom}.wp-block-image .aligncenter{margin-left:auto;margin-right:auto}.wp-block-image figcaption{margin-top:.5em;margin-bottom:1em}.aligncenter{clear:both}.wp-block-image figcaption{color:#555d66;font-size:13px;text-align:center}.aligncenter{margin-top:1em;margin-right:auto;margin-bottom:1em;margin-left:auto}.aligncenter{display:block;text-align:center;margin-left:auto;margin-right:auto}.amp-wp-enforced-sizes{max-width:100%;margin:0 auto}amp-img.amp-wp-enforced-sizes[layout="intrinsic"] > img{object-fit:contain}html{background:#0a89c0}body{background:#fff;color:#353535;font-family:Georgia,"Times New Roman",Times,Serif;font-weight:300;line-height:1.75em}p,figure{margin:0 0 1em;padding:0}a,a:visited{color:#0a89c0}a:hover,a:active,a:focus{color:#353535}.amp-wp-meta,.amp-wp-header div,.amp-wp-title,.amp-wp-tax-category,.amp-wp-tax-tag,.amp-wp-comments-link,.amp-wp-footer p,.back-to-top{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen-Sans","Ubuntu","Cantarell","Helvetica Neue",sans-serif}.amp-wp-header{background-color:#0a89c0}.amp-wp-header div{color:#fff;font-size:1em;font-weight:400;margin:0 auto;max-width:calc(840px - 32px);padding:.875em 16px;position:relative}.amp-wp-header a{color:#fff;text-decoration:none}.amp-wp-header .amp-wp-site-icon{background-color:#fff;border:1px solid #fff;border-radius:50%;position:absolute;right:18px;top:10px}.amp-wp-article{color:#353535;font-weight:400;margin:1.5em auto;max-width:840px;overflow-wrap:break-word;word-wrap:break-word}.amp-wp-article-header{align-items:center;align-content:stretch;display:flex;flex-wrap:wrap;justify-content:space-between;margin:1.5em 16px 0}.amp-wp-title{color:#353535;display:block;flex:1 0 100%;font-weight:900;margin:0 0 .625em;width:100%}.amp-wp-meta{color:#696969;display:inline-block;flex:2 1 50%;font-size:.875em;line-height:1.5em;margin:0 0 1.5em;padding:0}.amp-wp-article-header .amp-wp-meta:last-of-type{text-align:right}.amp-wp-article-header .amp-wp-meta:first-of-type{text-align:left}.amp-wp-byline amp-img,.amp-wp-byline .amp-wp-author{display:inline-block;vertical-align:middle}.amp-wp-byline amp-img{border:1px solid #0a89c0;border-radius:50%;position:relative;margin-right:6px}.amp-wp-posted-on{text-align:right}.amp-wp-article-content{margin:0 16px}.amp-wp-article-content amp-img{margin:0 auto}amp-youtube{background:#c2c2c2;margin:0 -16px 1.5em}.amp-wp-article-footer .amp-wp-meta{display:block}.amp-wp-tax-category,.amp-wp-tax-tag{color:#696969;font-size:.875em;line-height:1.5em;margin:1.5em 16px}.amp-wp-comments-link{color:#696969;font-size:.875em;line-height:1.5em;text-align:center;margin:2.25em 0 1.5em}.amp-wp-comments-link a{border-style:solid;border-color:#c2c2c2;border-width:1px 1px 2px;border-radius:4px;background-color:transparent;color:#0a89c0;cursor:pointer;display:block;font-size:14px;font-weight:600;line-height:18px;margin:0 auto;max-width:200px;padding:11px 16px;text-decoration:none;width:50%;-webkit-transition:background-color .2s ease;transition:background-color .2s ease}.amp-wp-footer{border-top:1px solid #c2c2c2;margin:calc(1.5em - 1px) 0 0}.amp-wp-footer div{margin:0 auto;max-width:calc(840px - 32px);padding:1.25em 16px 1.25em;position:relative}.amp-wp-footer h2{font-size:1em;line-height:1.375em;margin:0 0 .5em}.amp-wp-footer p{color:#696969;font-size:.8em;line-height:1.5em;margin:0 85px 0 0}.amp-wp-footer a{text-decoration:none}.back-to-top{bottom:1.275em;font-size:.8em;font-weight:600;line-height:2em;position:absolute;right:16px}
+
+/*# sourceURL=amp-custom.css */</style><link rel="canonical" href="../index.html"><script type="application/ld+json">{"@context":"http:\/\/schema.org","publisher":{"@type":"Organization","name":"CodingJam","logo":"https:\/\/codingjam.it\/wp-content\/uploads\/2018\/09\/cropped-logo-cnj-bianco.png"},"@type":"BlogPosting","mainEntityOfPage":"https:\/\/codingjam.it\/come-creare-un-motore-di-rendering-custom-in-javascript\/","headline":"Come creare un motore di rendering in JavaScript","datePublished":"2019-08-27T06:30:20+02:00","dateModified":"2019-08-23T07:01:13+02:00","author":{"@type":"Person","name":"Francesco Strazzullo"},"image":"https:\/\/codingjam.it\/wp-content\/uploads\/2019\/08\/frameworkless__vertical-pw-1.png"}</script></head><body class="">
+
+<header id="top" class="amp-wp-header"><div>
+		<a href="../../index.html">
+										<amp-img src="../../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" width="32" height="32" class="amp-wp-site-icon i-amphtml-layout-fixed i-amphtml-layout-size-defined" style="width:32px;height:32px;" i-amphtml-layout="fixed"></amp-img><span class="amp-site-title">
+				CodingJam			</span>
+		</a>
+
+					</div>
+</header><article class="amp-wp-article"><header class="amp-wp-article-header"><h1 class="amp-wp-title">Come creare un motore di rendering in JavaScript</h1>
+			<div class="amp-wp-meta amp-wp-byline">
+					<amp-img src="https://secure.gravatar.com/avatar/f0012066f4fad79deb33bf5e9799b557?s=24&amp;d=mm&amp;r=g" alt="Francesco Strazzullo" width="24" height="24" layout="fixed" class="i-amphtml-layout-fixed i-amphtml-layout-size-defined" style="width:24px;height:24px;" i-amphtml-layout="fixed"></amp-img><span class="amp-wp-author author vcard">Francesco Strazzullo</span>
+	</div>
+<div class="amp-wp-meta amp-wp-posted-on">
+	<time datetime="2019-08-27T08:30:20+00:00">
+		1 year ago	</time></div>
+	</header><div class="amp-wp-article-content">
+		
+<p>Uno degli aspetti più importanti dello sviluppo front-end è quello di <em>mostrare</em> agli utenti dei dati utili a svolgere l’attività per la quale la nostra web application è stata creata. Se volessimo portare questa definizione su un piano più tecnico potremmo dire che il nostro scopo è <strong>trasformare i dati in una serie di elementi del DOM</strong>: in altre parole fare quello che si chiama <em>rendering</em>. La parte di codice che, a basso livello, si occupa di creare, manipolare ed eliminare elementi del DOM viene di solito chiamata Rendering Engine. Questa parte di applicazione viene di solito delegata ai Framework come Angular, Vue o a librerie come React. </p>
+
+
+
+<p>Lo scopo di questo post è quello di spiegare quali sono i passi per poter creare un rendering engine <em>from scratch</em>, non facendo leva su nessun tipo di dipendenza.</p>
+
+
+
+<h2>Frameworkless Movement</h2>
+
+
+
+<p>Perché per uno sviluppatore front-end dovrebbe essere utile saper sviluppare da zero un rendering engine? Perchè, anche quando si decide di affidare una parte importante delle nostre applicazioni ad un framework, <strong>bisogna conoscere i principi e le architetture che sono dietro i tool che utilizziamo</strong>. Questo è uno dei motivi che hanno portato alla creazione del <em>Frameworkless Movement</em>: un gruppo di persone interessate allo sviluppo senza framework. Per altre informazioni sul movimento e sui suoi principi fondanti potete consultare il <a href="https://github.com/frameworkless-movement/manifesto">Manifesto</a> presente su GitHub.</p>
+
+
+
+<figure class="wp-block-image"><amp-img src="../../wp-content/uploads/2019/08/frameworkless__vertical-pw-1-1024x1024.png" alt="" class="wp-image-18035 amp-wp-enforced-sizes i-amphtml-layout-intrinsic i-amphtml-layout-size-defined" srcset="https://codingjam.it/wp-content/uploads/2019/08/frameworkless__vertical-pw-1-1024x1024.png 1024w, https://codingjam.it/wp-content/uploads/2019/08/frameworkless__vertical-pw-1-150x150.png 150w, https://codingjam.it/wp-content/uploads/2019/08/frameworkless__vertical-pw-1-300x300.png 300w, https://codingjam.it/wp-content/uploads/2019/08/frameworkless__vertical-pw-1-768x768.png 768w, https://codingjam.it/wp-content/uploads/2019/08/frameworkless__vertical-pw-1-471x471.png 471w, https://codingjam.it/wp-content/uploads/2019/08/frameworkless__vertical-pw-1-706x706.png 706w, https://codingjam.it/wp-content/uploads/2019/08/frameworkless__vertical-pw-1-1200x1200.png 1200w, https://codingjam.it/wp-content/uploads/2019/08/frameworkless__vertical-pw-1.png 1667w" width="1024" height="1024" layout="intrinsic" i-amphtml-layout="intrinsic"><i-amphtml-sizer class="i-amphtml-sizer"><img alt="" aria-hidden="true" class="i-amphtml-intrinsic-sizer" role="presentation" src="data:image/svg+xml;charset=utf-8,<svg height=&quot;1024&quot; width=&quot;1024&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot;/>"></i-amphtml-sizer><noscript><img src="../../wp-content/uploads/2019/08/frameworkless__vertical-pw-1-1024x1024.png" alt="" class="wp-image-18035" srcset="https://codingjam.it/wp-content/uploads/2019/08/frameworkless__vertical-pw-1-1024x1024.png 1024w, https://codingjam.it/wp-content/uploads/2019/08/frameworkless__vertical-pw-1-150x150.png 150w, https://codingjam.it/wp-content/uploads/2019/08/frameworkless__vertical-pw-1-300x300.png 300w, https://codingjam.it/wp-content/uploads/2019/08/frameworkless__vertical-pw-1-768x768.png 768w, https://codingjam.it/wp-content/uploads/2019/08/frameworkless__vertical-pw-1-471x471.png 471w, https://codingjam.it/wp-content/uploads/2019/08/frameworkless__vertical-pw-1-706x706.png 706w, https://codingjam.it/wp-content/uploads/2019/08/frameworkless__vertical-pw-1-1200x1200.png 1200w, https://codingjam.it/wp-content/uploads/2019/08/frameworkless__vertical-pw-1.png 1667w" sizes="(max-width: 1024px) 100vw, 1024px" width="1024" height="1024"></noscript></amp-img><figcaption>Il Logo del Frameworkless Movement</figcaption></figure><h2>Applicazione di Esempio</h2>
+
+
+
+<p>Per sviluppare il nostro engine utilizzeremo come base <a href="http://todomvc.com/">TodoMVC</a>: una <em>todo-list</em> abbastanza basilare che trovate già sviluppata con i maggiori framework front-end esistenti. <a href="http://todomvc.com/examples/vanillajs/">Qui</a> trovate una live demo di un’implementazione di TodoMVC. Per motivi di spazio la nostra versione di TodoMVC sarà solo parziale, non comprendendo la gestione degli eventi invocati dagli utenti, una versione completa è consultabile su <a href="https://github.com/Apress/frameworkless-front-end-development/blob/master/Chapter03/01.3/index.js">GitHub</a>. L’Engine che andremo a creare sarà basato su una semplice astrazione: <strong>sarà una </strong><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-pure-function-d1c076bec976"><strong>funzione pura</strong></a><strong> dello stato dell’applicazione</strong>.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><amp-img src="../../wp-content/uploads/2019/08/1-5.png" alt="" class="wp-image-18038 amp-wp-enforced-sizes i-amphtml-layout-intrinsic i-amphtml-layout-size-defined" srcset="https://codingjam.it/wp-content/uploads/2019/08/1-5.png 456w, https://codingjam.it/wp-content/uploads/2019/08/1-5-300x47.png 300w, https://codingjam.it/wp-content/uploads/2019/08/1-5-150x23.png 150w" width="456" height="71" layout="intrinsic" i-amphtml-layout="intrinsic"><i-amphtml-sizer class="i-amphtml-sizer"><img alt="" aria-hidden="true" class="i-amphtml-intrinsic-sizer" role="presentation" src="data:image/svg+xml;charset=utf-8,<svg height=&quot;71&quot; width=&quot;456&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot;/>"></i-amphtml-sizer><noscript><img src="../../wp-content/uploads/2019/08/1-5.png" alt="" class="wp-image-18038" srcset="https://codingjam.it/wp-content/uploads/2019/08/1-5.png 456w, https://codingjam.it/wp-content/uploads/2019/08/1-5-300x47.png 300w, https://codingjam.it/wp-content/uploads/2019/08/1-5-150x23.png 150w" sizes="(max-width: 456px) 100vw, 456px" width="456" height="71"></noscript></amp-img><figcaption>La struttura del nostro engine</figcaption></figure></div>
+
+
+
+<p>Iniziamo creando la struttura vuota di un’applicazione TodoMVC all’interno della <code>index.html</code>.</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="xml" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">&lt;body&gt;
+    &lt;section class="todoapp"&gt;
+        &lt;header class="header"&gt;
+            &lt;h1&gt;todos&lt;/h1&gt;
+            &lt;input class="new-todo" placeholder="What needs to be done?" autofocus&gt;
+        &lt;/header&gt;
+        &lt;section class="main"&gt;
+            &lt;input id="toggle-all" class="toggle-all" type="checkbox"&gt;
+            &lt;label for="toggle-all"&gt;Mark all as complete&lt;/label&gt;
+            &lt;ul class="todo-list"&gt;
+            &lt;/ul&gt;
+        &lt;/section&gt;
+        &lt;footer class="footer"&gt;
+            &lt;span class="todo-count"&gt;1 Item Left&lt;/span&gt;
+            &lt;ul class="filters"&gt;
+                &lt;li&gt;
+                    &lt;a href="#/"&gt;All&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a href="#/active"&gt;Active&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a href="#/completed"&gt;Completed&lt;/a&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;button class="clear-completed"&gt;Clear completed&lt;/button&gt;
+        &lt;/footer&gt;
+    &lt;/section&gt;
+&lt;/body&gt;</pre>
+
+
+
+<p>Per capire bene la struttura della nostra applicazione, iniziamo dalla <code>index.js</code> dove avviene il <em>boot</em> della nostra applicazione.</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="12,13" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">import getTodos from './getTodos.js'
+import view from './view.js'
+
+const state = {
+  todos: getTodos(),
+  currentFilter: 'All'
+}
+
+const main = document.querySelector('.todoapp')
+
+window.requestAnimationFrame(() =&gt; {
+  const newMain = view(main, state)
+  main.replaceWith(newMain)
+})</pre>
+
+
+
+<p>Il meccanismo alla base del nostro rendering engine è il seguente: si utilizza  l’HTML esistente come base. Questa base insieme allo stato dell’applicazione vengono utilizzati dalla funzione <code>view</code> (il cuore del nostro engine) per <strong>creare un nuovo albero di DOM che viene poi sostituito al precedente</strong> tramite <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/replaceWith">replaceWith</a></code>. Per i più curiosi, il nostro stato è creato tramite la funzione <code>getTodos</code> che è una piccola utility basata su <a href="https://github.com/marak/Faker.js/">Faker.js</a> di cui potete leggere il codice su <a href="https://github.com/Apress/frameworkless-front-end-development/blob/master/Chapter02/01/getTodos.js">GitHub</a>.</p>
+
+
+
+<h2>La prima versione dell’Engine</h2>
+
+
+
+<p>Quella che vedete qui è la prima versione dell’engine che andremo a creare insieme.</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="39,58" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">const getTodoElement = todo =&gt; {
+  const {
+    text,
+    completed
+  } = todo
+
+  return `
+  &lt;li ${completed ? 'class="completed"' : ''}&gt;
+    &lt;div class="view"&gt;
+      &lt;input 
+        ${completed ? 'checked' : ''}
+        class="toggle" 
+        type="checkbox"&gt;
+      &lt;label&gt;${text}&lt;/label&gt;
+      &lt;button class="destroy"&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;input class="edit" value="${text}"&gt;
+  &lt;/li&gt;`
+}
+
+const getTodoCount = todos =&gt; {
+  const notCompleted = todos
+    .filter(todo =&gt; !todo.completed)
+
+  const { length } = notCompleted
+  if (length === 1) {
+    return '1 Item left'
+  }
+
+  return `${length} Items left`
+}
+
+export default (targetElement, state) =&gt; {
+  const {
+    currentFilter,
+    todos
+  } = state
+
+  const element = targetElement.cloneNode(true)
+
+  const list = element.querySelector('.todo-list')
+  const counter = element.querySelector('.todo-count')
+  const filters = element.querySelector('.filters')
+
+  list.innerHTML = todos.map(getTodoElement).join('')
+  counter.textContent = getTodoCount(todos)
+
+  Array
+    .from(filters.querySelectorAll('li a'))
+    .forEach(a =&gt; {
+      if (a.textContent === currentFilter) {
+        a.classList.add('selected')
+      } else {
+        a.classList.remove('selected')
+      }
+    })
+
+  return element
+}</pre>
+
+
+
+<p>Guardando il codice, diventa ancora più chiaro il meccanismo alla base di questo semplice engine. L’elemento passato come parametro viene clonato (tramite il metodo <code>cloneNode</code>), modificato in modo da rappresentare lo stato dell’applicazione e infine restituito. La purezza di questo engine ne garantisce un’estrema testabilità, data proprio dal fatto che <strong>dipende esclusivamente dai parametri di ingresso</strong>.</p>
+
+
+
+<h2>Un Engine a “Componenti”</h2>
+
+
+
+<p>Questa prima versione dell’engine non è per nulla <em>leggibile</em>. Tutte le modifiche al DOM sono in un unico file che già da adesso risulta confusionario e complicato. Una soluzione del genere non è per nulla accettabile in un sistema reale. I framework front-end (ma anche le <a href="../../custom-elements/index.html">API native</a>) risolvono questo problema tramite <strong>la possibilità di creare componenti</strong>. In questo prossimo esempio non arriveremo a creare un registro di componenti (cosa che probabilmente farà parte di un post a parte in futuro) ma semplicemente la <code>view</code> viene spezzettata in una serie di funzioni pure, questo comporta un aumento della leggibilità e della manutenibilità del codice.</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="1,2,3,15,16,17" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">import todosView from './todos.js'
+import counterView from './counter.js'
+import filtersView from './filters.js'
+
+export default (targetElement, state) =&gt; {
+  const element = targetElement.cloneNode(true)
+
+  const list = element
+    .querySelector('.todo-list')
+  const counter = element
+    .querySelector('.todo-count')
+  const filters = element
+    .querySelector('.filters')
+
+  list.replaceWith(todosView(list, state))
+  counter.replaceWith(counterView(counter, state))
+  filters.replaceWith(filtersView(filters, state))
+
+  return element
+}</pre>
+
+
+
+<p>Come vedete, sia questa funzione che tutte le funzioni al suo interno <strong>hanno la stessa forma</strong>: prendono in ingresso una base e lo stato e restituiscono una copia degli elementi stessi. Questa caratteristica <strong>è la base per la creazione di un sistema a componenti</strong> come quelli presenti in Angular, React e così via. Su <a href="https://github.com/Apress/frameworkless-front-end-development/tree/master/Chapter02/02/view">GitHub</a> trovate il codice di tutti i “componenti” della nostra piccola applicazione. Qui nel post riporto esclusivamente il codice del componente <code>list</code> e la relativa suite di test unitari.</p>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">const getTodoElement = todo =&gt; {
+  const {
+    text,
+    completed
+  } = todo
+
+  return `
+      &lt;li ${completed ? 'class="completed"' : ''}&gt;
+        &lt;div class="view"&gt;
+          &lt;input 
+            ${completed ? 'checked' : ''}
+            class="toggle" 
+            type="checkbox"&gt;
+          &lt;label&gt;${text}&lt;/label&gt;
+          &lt;button class="destroy"&gt;&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;input class="edit" value="${text}"&gt;
+      &lt;/li&gt;`
+}
+
+export default (targetElement, { todos }) =&gt; {
+  const newTodoList = targetElement.cloneNode(true)
+  const todosElements = todos
+    .map(getTodoElement)
+    .join('')
+  newTodoList.innerHTML = todosElements
+  return newTodoList
+}</pre>
+
+
+
+<pre class="EnlighterJSRAW" data-enlighter-language="js" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">import todosView from './todos.js'
+
+let targetElement
+
+describe('filtersView', () =&gt; {
+  beforeEach(() =&gt; {
+    targetElement = document.createElement('ul')
+  })
+
+  test('should create an li for every todo element', () =&gt; {
+    const newCounter = todosView(targetElement, {
+      todos: [
+        {
+          text: 'First',
+          completed: true
+        },
+        {
+          text: 'Second',
+          completed: false
+        },
+        {
+          text: 'Third',
+          completed: false
+        }
+      ]
+    })
+
+    const items = newCounter.querySelectorAll('li')
+    expect(items.length).toBe(3)
+  })
+
+  test('should set the right attributes to every li according to the todos', () =&gt; {
+    const newCounter = todosView(targetElement, {
+      todos: [
+        {
+          text: 'First',
+          completed: true
+        },
+        {
+          text: 'Second',
+          completed: false
+        }
+      ]
+    })
+
+    const [firstItem, secondItem] = newCounter.querySelectorAll('li')
+
+    expect(firstItem.classList.contains('completed')).toBe(true)
+    expect(firstItem.querySelector('.toggle').checked).toBe(true)
+    expect(firstItem.querySelector('label').textContent).toBe('First')
+    expect(firstItem.querySelector('.edit').value).toBe('First')
+
+    expect(secondItem.classList.contains('completed')).toBe(false)
+    expect(secondItem.querySelector('.toggle').checked).toBe(false)
+    expect(secondItem.querySelector('label').textContent).toBe('Second')
+    expect(secondItem.querySelector('.edit').value).toBe('Second')
+  })
+})</pre>
+
+
+
+<h2>Conclusioni</h2>
+
+
+
+<p><strong>Il Rendering è un argomento molto complesso e difficile da distillare in un unico post.</strong> Ci sono altri aspetti da considerare che saranno probabilmente parte di post successivi quali: creazione di un registro di componenti, misurazione performance e creazione di un algoritmo performante in stile <a href="https://bitsofco.de/understanding-the-virtual-dom/">virtual DOM</a>. Se volete approfondire l’argomento potete acquistare il mio libro <em><a href="https://www.amazon.it/gp/product/1484249666">“Frameworkless Front-end Development”</a></em> che raccoglie una serie di esempi su vari aspetti importanti di applicazioni web quali Rendering, gestione eventi e Routing. Tutto il sorgente, sia di questo post che di tutto il libro, è disponibile su <a href="https://github.com/Apress/frameworkless-front-end-development">GitHub</a>.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><amp-img src="https://raw.githubusercontent.com/Apress/frameworkless-front-end-development/master/9781484249666.jpg" alt="" width="200" height="285" class="amp-wp-enforced-sizes i-amphtml-layout-intrinsic i-amphtml-layout-size-defined" layout="intrinsic" i-amphtml-layout="intrinsic"><i-amphtml-sizer class="i-amphtml-sizer"><img alt="" aria-hidden="true" class="i-amphtml-intrinsic-sizer" role="presentation" src="data:image/svg+xml;charset=utf-8,<svg height=&quot;285&quot; width=&quot;200&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot;/>"></i-amphtml-sizer><noscript><img src="https://raw.githubusercontent.com/Apress/frameworkless-front-end-development/master/9781484249666.jpg" alt="" width="200" height="285" class=""></noscript></amp-img><figcaption>Frameworkless Front-end Development</figcaption></figure></div>
+
+
+
+<p></p><p>Inoltre questo argomento è stato anche il tema centrale di un mio talk al JSDay 2019 tenutasi a Verona, di cui trovate il video qui sotto. Alla Prossima!</p>
+
+
+
+<p> <amp-youtube data-videoid="T9x7Bkpw4hg" layout="responsive" width="1040" height="585" class="i-amphtml-layout-responsive i-amphtml-layout-size-defined" i-amphtml-layout="responsive"><i-amphtml-sizer style="display:block;padding-top:56.2500%;"></i-amphtml-sizer><a placeholder href="https://www.youtube.com/watch?v=T9x7Bkpw4hg"><amp-img src="https://i.ytimg.com/vi/T9x7Bkpw4hg/hqdefault.jpg" layout="fill" object-fit="cover" class="amp-wp-enforced-sizes i-amphtml-layout-fill i-amphtml-layout-size-defined" i-amphtml-layout="fill"><noscript><img src="https://i.ytimg.com/vi/T9x7Bkpw4hg/hqdefault.jpg"></noscript></amp-img></a></amp-youtube></p>
+	</div>
+
+	<footer class="amp-wp-article-footer"><div class="amp-wp-meta amp-wp-tax-category">
+		Categories: <a href="../../category/tutorial-2/index.html" rel="category tag">Tutorial</a>	</div>
+
+	<div class="amp-wp-meta amp-wp-tax-tag">
+		Tags: <a href="../../tag/frameworkless/index.html" rel="tag">Frameworkless</a>, <a href="../../tag/javascript-2/index.html" rel="tag">javascript</a>, <a href="../../tag/rendering/index.html" rel="tag">Rendering</a>	</div>
+		<div class="amp-wp-meta amp-wp-comments-link">
+		<a href="../index.html#respond">
+			Leave a Comment		</a>
+	</div>
+	</footer></article><footer class="amp-wp-footer"><div>
+		<h2>CodingJam</h2>
+		<a href="#top" class="back-to-top">Back to top</a>
+	</div>
+</footer></body>
+<!-- Mirrored from codingjam.it/come-creare-un-motore-di-rendering-custom-in-javascript/amp/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+</html>
