@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<!-- Mirrored from codingjam.it/jcache-con-spring-boot-e-hazelcast/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/jcache-con-spring-boot-e-hazelcast/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="UTF-8">
@@ -310,7 +310,7 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
 <h2>Una cache applicativa</h2>
 <p>Immaginiamo di avere un metodo della nostra logica di business che esegue operazioni onerose e che sono idempotenti (cioè rendono sempre lo stesso risultato e non hanno <em>side-effect</em>) a parità di input: sarebbe uno spreco di risorse rieseguire sempre le stesse operazioni per vedere sempre gli stessi risultati! Perché quindi non <strong>salvare temporaneamente</strong> in memoria questi risultati per velocizzare gli accessi successivi? Ecco che a<strong>bbiamo bisogno di un sistema di <em>caching</em></strong>, magari tramite AOP per non impattare il codice che già abbiamo: la specifica <strong>JCache</strong> serve proprio a questo!</p>
 <h2>Spring Cache vs JCache</h2>
-<p>La <a href="http://docs.spring.io/spring/docs/4.1.0.BUILD-SNAPSHOT/spring-framework-reference/html/cache.html" target="_blank">documentazione</a> relativa alla gestione della cache è piuttosto esaustiva e mette a confronto l&#8217;implementazione di Spring con la specifica JCache: di fatto si somigliano molto, ma come spesso accade la specifica è leggermente indietro rispetto ai &#8220;vendor&#8221;, probabilmente per essere più generica e applicabile possibile. I due sistemi sono sostanzialmente uguali, tranne per il fatto che l&#8217;implementazione di Spring permette di usare <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html" target="_blank">Spring Expression Language (SpEL)</a> per definire, per esempio, delle <a href="http://docs.spring.io/spring/docs/4.1.0.BUILD-SNAPSHOT/spring-framework-reference/html/cache.html#cache-annotations-cacheable-condition" target="_blank">condizioni di attivabilità della cache</a>.</p>
+<p>La <a href="http://docs.spring.io/spring/docs/4.1.0.BUILD-SNAPSHOT/spring-framework-reference/html/cache.html" target="_blank" rel="noopener noreferrer">documentazione</a> relativa alla gestione della cache è piuttosto esaustiva e mette a confronto l&#8217;implementazione di Spring con la specifica JCache: di fatto si somigliano molto, ma come spesso accade la specifica è leggermente indietro rispetto ai &#8220;vendor&#8221;, probabilmente per essere più generica e applicabile possibile. I due sistemi sono sostanzialmente uguali, tranne per il fatto che l&#8217;implementazione di Spring permette di usare <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html" target="_blank" rel="noopener noreferrer">Spring Expression Language (SpEL)</a> per definire, per esempio, delle <a href="http://docs.spring.io/spring/docs/4.1.0.BUILD-SNAPSHOT/spring-framework-reference/html/cache.html#cache-annotations-cacheable-condition" target="_blank" rel="noopener noreferrer">condizioni di attivabilità della cache</a>.</p>
 <p>Se non se ne ha necessità, si può tranquillamente rimanere sulla specifica, in modo da avere codice facilmente riusabile (non che sia difficile eventualmente &#8220;tradurlo&#8221;).</p>
 <h2>Conosciamo JCache</h2>
 <p>La specifica JCache definisce una serie di <strong>annotazioni da applicare ai metodi</strong> delle classi della nostra logica di business che determinano in che modo l&#8217;output del metodo debba essere &#8220;cachato&#8221; (o tolto dalla cache), vediamole nel dettaglio:</p>
@@ -354,11 +354,11 @@ public class PersonService {
    ...
 }
 </pre></p>
-<p>Ulteriori approfondimenti e confronti con Spring Cache possono essere trovati sul <a href="https://spring.io/blog/2014/04/14/cache-abstraction-jcache-jsr-107-annotations-support" target="_blank">blog di Spring</a>.</p>
+<p>Ulteriori approfondimenti e confronti con Spring Cache possono essere trovati sul <a href="https://spring.io/blog/2014/04/14/cache-abstraction-jcache-jsr-107-annotations-support" target="_blank" rel="noopener noreferrer">blog di Spring</a>.</p>
 <h2>JCache e il supporto di Spring</h2>
-<p>Usare JCache con Spring, e in particolare con Spring Boot, è molto facile, soprattutto per la varietà di <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-caching.html#_supported_cache_providers" target="_blank">provider di cache che supporta</a>. Tutti sono documentati piuttosto bene, a parte <a href="https://hazelcast.com/" target="_blank">Hazelcast</a>, che è proprio quella di cui parleremo! Perché Hazelcast? Se avete bisogno di una cache in <em>memoria distribuita</em>, per esempio in una architettura a microservizi, è una delle migliori scelte. La stessa scelta l&#8217;hanno fatta nomi come <a href="https://www.paypal.com/it/home" target="_blank">PayPal</a>, <a href="https://www.mulesoft.com/" target="_blank">MuleSoft</a> e <a href="https://www.alfresco.com/" target="_blank">Alfresco</a>.</p>
+<p>Usare JCache con Spring, e in particolare con Spring Boot, è molto facile, soprattutto per la varietà di <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-caching.html#_supported_cache_providers" target="_blank" rel="noopener noreferrer">provider di cache che supporta</a>. Tutti sono documentati piuttosto bene, a parte <a href="https://hazelcast.com/" target="_blank" rel="noopener noreferrer">Hazelcast</a>, che è proprio quella di cui parleremo! Perché Hazelcast? Se avete bisogno di una cache in <em>memoria distribuita</em>, per esempio in una architettura a microservizi, è una delle migliori scelte. La stessa scelta l&#8217;hanno fatta nomi come <a href="https://www.paypal.com/it/home" target="_blank" rel="noopener noreferrer">PayPal</a>, <a href="https://www.mulesoft.com/" target="_blank" rel="noopener noreferrer">MuleSoft</a> e <a href="https://www.alfresco.com/" target="_blank" rel="noopener noreferrer">Alfresco</a>.</p>
 <h3>Un po&#8217; di codice</h3>
-<p>Se non avete un progetto Spring Boot, il miglior modo per cominciare è <a href="https://start.spring.io/" target="_blank">Spring Initializr</a>. A questo punto, per usare JCache, sono necessarie tre dipendenze:</p>
+<p>Se non avete un progetto Spring Boot, il miglior modo per cominciare è <a href="https://start.spring.io/" target="_blank" rel="noopener noreferrer">Spring Initializr</a>. A questo punto, per usare JCache, sono necessarie tre dipendenze:</p>
 <ol>
 <li>l&#8217;API di specifica
 <p><pre data-enlighter-language="xml" class="EnlighterJSRAW">
@@ -424,10 +424,10 @@ spring.hazelcast.config=classpath:hazelcast.xml
 <p>in modo che non si attivi l&#8217;inizializzazione con la configurazione di default
 </li>
 </ol>
-<p>Con queste due accortezze la vostra cache funzionerà alla perfezione! Sul <a href="https://github.com/coding-jam/spring-hazelcast-jcache-poc" target="_blank">nostro GitHub</a> è disponibile un progetto di prova (con diversi tag che evidenziano in che situazione accade la doppia istanza).</p>
+<p>Con queste due accortezze la vostra cache funzionerà alla perfezione! Sul <a href="https://github.com/coding-jam/spring-hazelcast-jcache-poc" target="_blank" rel="noopener noreferrer">nostro GitHub</a> è disponibile un progetto di prova (con diversi tag che evidenziano in che situazione accade la doppia istanza).</p>
 <h2>Ultime considerazioni</h2>
 <p>Di fatto cos&#8217;è una cache? Semplificando, non è altro che una &#8220;mappa&#8221; <strong>chiave-valore</strong>: è importante quindi capire come viene generata questa chiave, per non ritrovarsi dei valori inattesi.</p>
-<p>Il <a href="http://docs.spring.io/spring/docs/4.1.0.BUILD-SNAPSHOT/spring-framework-reference/html/cache.html#cache-annotations-cacheable-default-key" target="_blank">comportamento di default</a> della generazione delle chiavi in Spring è definito dalla classe <code>SimpleKeyGenerator</code> che si basa sui parametri di input del metodo annotato:</p>
+<p>Il <a href="http://docs.spring.io/spring/docs/4.1.0.BUILD-SNAPSHOT/spring-framework-reference/html/cache.html#cache-annotations-cacheable-default-key" target="_blank" rel="noopener noreferrer">comportamento di default</a> della generazione delle chiavi in Spring è definito dalla classe <code>SimpleKeyGenerator</code> che si basa sui parametri di input del metodo annotato:</p>
 <ul>
 <li>se non ha parametri, la chiave è <code>SimpleKey.EMPTY</code></li>
 <li>se ne ha uno, la chiave è l&#8217;istanza del parametro</li>
@@ -460,69 +460,8 @@ public class CacheConfig extends CachingConfigurerSupport {
             <!-- end content -->
 
             
-                <!-- social sharing buttons / counters -->
-                <div class="row">
-                  <div class="col-md-7">
-                    
-    <!-- social sharing buttons -->
-    <div class="bwp-single-share-wrap">
-      <span>Share:</span>
-      <ul class="bwp-single-share list-unstyled">
-        <!-- facebook -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/" target="_blank" class="bwp-share-link bwp-facebook-share">
-            <i class="fa fa-facebook"></i>
-          </a>
-        </li>
-        <!-- end facebook -->
-        <!-- twitter -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/&amp;text=jcache-con-spring-boot-e-hazelcast', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/&amp;text=jcache-con-spring-boot-e-hazelcast" target="_blank" class="bwp-share-link bwp-twitter-share">
-            <i class="fa fa-twitter"></i>
-          </a>
-        </li>
-        <!-- end twitter -->
-        <!-- google+ -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/" target="_blank" class="bwp-share-link bwp-google-plus-share">
-            <i class="fa fa-google-plus"></i>
-          </a>
-        </li>
-        <!-- end google+ -->
-        <!-- vk -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/" target="_blank" class="bwp-share-link bwp-vk-share">
-            <i class="fa fa-vk"></i>
-          </a>
-        </li>
-        <!-- end vk -->
-        <!-- pinterest -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/&amp;media=&amp;description=jcache-con-spring-boot-e-hazelcast', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/jcache-con-spring-boot-e-hazelcast/&amp;media=&amp;description=jcache-con-spring-boot-e-hazelcast" target="_blank" class="bwp-share-link bwp-pinterest-share">
-            <i class="fa fa-pinterest-p"></i>
-          </a>
-        </li>
-        <!-- end pinterest -->
-      </ul>
-    </div>
-    <!-- end social sharing buttons -->
-
-                      </div>
-                  <div class="col-md-5">
-                    
-    <!-- counters -->
-    <ul class="bwp-single-counters list-unstyled clearfix ">
-                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>0</a></li>
-                </ul>
-    <!-- end counters -->
-
-                      </div>
-                </div>
-                <!-- end social sharing buttons / counters -->
-
-                
       <!-- metadata -->
-      <div class="bwp-single-metadata-wrap ">
+      <div class="bwp-single-metadata-wrap bwp-no-single-share-and-counters">
         <ul class="bwp-single-metadata list-unstyled clearfix">
                       <!-- author -->
             <li>
@@ -595,23 +534,6 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
     <!-- end about the author -->
 
     
-<!-- comments -->
-<div id="comments" class="comments-area">
-
-	
-	
-		<div id="respond" class="comment-respond">
-		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='14524' id='comment_post_ID' />
-<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-</p></form>	</div><!-- #respond -->
-	
-</div>
-<!-- end comments -->
-
     <!-- related posts (by tags) -->
     <div class="bwp-related-posts-container bwp-show-2-posts">
       <div class="bwp-o-hidden">
@@ -636,14 +558,14 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
                   
                                       <!-- title -->
                     <h3 class="bwp-post-title entry-title">
-                      <a href="https://codingjam.it/il-pattern-decorator-e-java-ee-6-quando-il-vecchio-si-fa-nuovo-con-cdi/">Il Pattern Decorator e Java EE 6: quando il vecchio si fa nuovo con CDI</a>
+                      <a href="https://codingjam.it/jsf-backingbean/">JSF 1.2 Basics: i backing bean</a>
                     </h3>
                     <!-- end title -->
                     
                   
       <!-- excerpt -->
       <div class="bwp-post-excerpt entry-content">
-        <p class="text-justify">Per chi è cresciuto a pane e <a href="http://it.wikipedia.org/wiki/Gang_of_four" target="_blank">GoF</a> non sarà certo la prima volta che sente parlare del <a href="http://en.wikipedia.org/wiki/Decorator_pattern" target="_blank">Pattern Decorator</a>. In due parole, questo pattern permette di aggiungere in modo modulare funzionalità, a <em>compile-time</em>, ai metodi di una classe esistente, mantenendone l&#8217;interfaccia intatta. L&#8217;aggiunta o la rimozione di queste funzionalità risulta quindi totalmente trasparente all&#8217;utilizzatore. Nel contesto attuale dello sviluppo Java, sempre più governato da &#8220;container&#8221; che risolvono automaticamente le dipendenze, implementare questo pattern poteva non essere banale fino a ieri. La nuova specifica <strong>Context and Dependancy Injection (CDI)</strong> introdotta in Java EE 6 invece supporta nativamente i decoratori: vediamo come.</p>
+        <p align="justify">Dopo il post &#8220;teorico-ma-non-troppo&#8221; sul lifecycle, mettiamo un po&#8217; le mani in pasta per  creare e successivamente ampliare la nostra prima pagina JSF Richfaces&#8230;vediamo come, partendo dalle basi!</p>
       </div>
       <!-- end excerpt -->
 
@@ -651,12 +573,12 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
     <!-- date + read more link -->
     <div class="bwp-post-details-wrap clearfix">
       <!-- date -->
-            <a href="https://codingjam.it/2012/06/27/" class="bwp-post-date">
-        <span class="date updated">27/06/2012</span>
+            <a href="https://codingjam.it/2011/06/15/" class="bwp-post-date">
+        <span class="date updated">15/06/2011</span>
       </a>
       <!-- end date -->
       <!-- read more link -->
-      <a href="https://codingjam.it/il-pattern-decorator-e-java-ee-6-quando-il-vecchio-si-fa-nuovo-con-cdi/" class="bwp-read-more">Read more</a>
+      <a href="https://codingjam.it/jsf-backingbean/" class="bwp-read-more">Read more</a>
       <!-- end read more link -->
     </div>
     <!-- end date + read more link -->
@@ -689,7 +611,7 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
       <!-- excerpt -->
       <div class="bwp-post-excerpt entry-content">
         <p>Negli ultimi anni non si sente altro che parlare di microservizi: se fai microservizi sei <em>cool</em>, altrimenti sei vecchio. Il salto da una applicazione monolitica ad una costellazione di piccole applicazioni però può essere più doloroso di quanto si pensi se non si hanno strumenti in grado di supportare le problematiche introdotte dai sistemi distribuiti.<br />
-Spring è sempre stato una garanzia e non sorprende se oggi come oggi <strong><a href="http://projects.spring.io/spring-cloud/" rel="noopener" target="_blank">Spring Cloud</a></strong> si sia ritagliato nel giro di poco tempo il ruolo di framework leader quando si pensa ai <em>microservizi nel mondo Java</em>.</p>
+Spring è sempre stato una garanzia e non sorprende se oggi come oggi <strong><a href="http://projects.spring.io/spring-cloud/" rel="noopener noreferrer" target="_blank">Spring Cloud</a></strong> si sia ritagliato nel giro di poco tempo il ruolo di framework leader quando si pensa ai <em>microservizi nel mondo Java</em>.</p>
       </div>
       <!-- end excerpt -->
 
@@ -811,12 +733,12 @@ Spring è sempre stato una garanzia e non sorprende se oggi come oggi <strong><a
 <script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
-var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"1520cabb4b","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
 </body>
 
-<!-- Mirrored from codingjam.it/jcache-con-spring-boot-e-hazelcast/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/jcache-con-spring-boot-e-hazelcast/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 </html>

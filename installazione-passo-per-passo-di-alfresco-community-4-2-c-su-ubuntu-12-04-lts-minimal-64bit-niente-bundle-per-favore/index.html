@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from codingjam.it/installazione-passo-per-passo-di-alfresco-community-4-2-c-su-ubuntu-12-04-lts-minimal-64bit-niente-bundle-per-favore/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="pingback" href="../xmlrpc.php">
+
+  <title>Installazione di Alfresco Community su Ubuntu 12.04, niente bundle &#8211; CodingJam</title>
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Feed" href="../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Comments Feed" href="../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Installazione di Alfresco Community su Ubuntu 12.04, niente bundle Comments Feed" href="https://codingjam.it/installazione-passo-per-passo-di-alfresco-community-4-2-c-su-ubuntu-12-04-lts-minimal-64bit-niente-bundle-per-favore/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='../wp-content/plugins/gutenberg/build/block-library/stylea4fb.css?ver=1591004795' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-gdpr-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='melissa-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lato%3A400%2C400i%2C700%2C700i%7CNoto+Serif%3A400%2C400i%2C700%2C700i&amp;subset=latin&amp;ver=1.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../wp-content/themes/melissa/css/bootstrap.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-theme-css'  href='../wp-content/themes/melissa/css/bootstrap-theme.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-ie10-viewport-bug-workaround-css'  href='../wp-content/themes/melissa/css/ie10-viewport-bug-workaround8a54.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='../wp-content/themes/melissa/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-carousel-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-theme-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.theme3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='magnific-popup-css'  href='../wp-content/themes/melissa/assets/magnific-popup/magnific-popupf488.css?ver=1.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-style-css'  href='../wp-content/themes/melissa/style3ec8.css?ver=1.1.6' type='text/css' media='all' />
+<style id='melissa-style-inline-css' type='text/css'>
+
+    .bwp-post-media img,
+    .bwp-post-carousel-item img,
+    .widget_bwp_posts_slider_item img {
+      width: 100%;
+      margin: 0;
+    }
+    .bwp-post-wrap:hover {
+      margin-top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+    #bwp-masonry-container.no-masonry .bwp-post-wrap:hover {
+      top: 0;
+    }
+    .bwp-no-results-container:hover,
+    .bwp-single-article:hover,
+    .bwp-featured-media-container:hover,
+    .post-navigation .nav-links a:hover,
+    .bwp-about-author-container:hover,
+    .comment-respond:hover,
+    .comment-body:hover,
+    #comments .no-comments:hover,
+    .comment-navigation .nav-links a:hover,
+    .bwp-related-post-wrap:hover,
+    .bwp-page-404-container:hover,
+    .bwp-sidebar-wrap:hover {
+      top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+  #bwp-header-wrap {
+    background-color: #2e3340;
+  }
+  .bwp-header-bg-overlay,
+  .bwp-header-rs-bg-overlay {
+    background-color: rgba(46, 51, 64, 0.9);
+  }
+    .bwp-content a,
+    .comment-content a,
+    .bwp-post-quote a {
+      color: #2052bf;
+    }
+</style>
+<link rel='stylesheet' id='enlighter-local-css'  href='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.css?ver=3.9.0' type='text/css' media='all' />
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery4a5f.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[]};
+var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/cookie-law-info/public/js/cookie-law-info-public3cf4.js?ver=1.8.8'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/respond.min.js?ver=1.4.2'></script>
+<![endif]-->
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/mootools-core-yc9086.js?ver=3.9.0'></script>
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.js?ver=3.9.0'></script>
+<link rel='https://api.w.org/' href='../wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+<link rel='prev' title='Injection o lookup programmatico? Aiutati che CDI t&#8217;aiuta' href='https://codingjam.it/injection-o-lookup-programmatico-aiutati-che-cdi-taiuta/' />
+<link rel='next' title='Alfresco Audit Analysis and Reporting (A.A.A.R.)' href='https://codingjam.it/alfresco-audit-analysis-and-reporting-a-a-a-r/' />
+<meta name="generator" content="WordPress 5.4.1" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://codingjam.it/?p=8466' />
+<link rel="alternate" type="application/json+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Finstallazione-passo-per-passo-di-alfresco-community-4-2-c-su-ubuntu-12-04-lts-minimal-64bit-niente-bundle-per-favore%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Finstallazione-passo-per-passo-di-alfresco-community-4-2-c-su-ubuntu-12-04-lts-minimal-64bit-niente-bundle-per-favore%2F&amp;format=xml" />
+<link rel="amphtml" href="https://codingjam.it/installazione-passo-per-passo-di-alfresco-community-4-2-c-su-ubuntu-12-04-lts-minimal-64bit-niente-bundle-per-favore/amp/"><script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"droide","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":false,"windowButton":false,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" sizes="32x32" />
+<link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://codingjam.it/wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-270x270.png" />
+</head>
+
+<body class="post-template-default single single-post postid-8466 single-format-standard wp-custom-logo">
+
+
+<!-- header -->
+<header id="bwp-header-wrap" class="bwp-header-simple">
+
+  <!-- header bg -->
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P6261835_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg-overlay"></div>
+
+    <!-- header content -->
+    <div class="container">
+      <div class="bwp-header-content-container">
+
+        <!-- row 1 - logo + navigation -->
+        <div class="bwp-main-navigation-container clearfix">
+
+          
+        <!-- image logo -->
+        <div class="bwp-logo-container">
+          <a href="../index.html" class="custom-logo-link" rel="home"><img width="207" height="70" src="../wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png" class="custom-logo" alt="CodingJam" srcset="https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png 207w, https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco-150x51.png 150w" sizes="(max-width: 207px) 100vw, 207px" /></a>        </div>
+        <!-- end image logo -->
+
+        
+      <!-- search -->
+      <div class="bwp-header-search-container hidden-sm hidden-xs">
+        <a href="#" id="bwp-header-search-icon">
+          <i class="fa fa-search"></i>
+        </a>
+        <div class="bwp-dropdown-search-container bwp-search-hidden">
+          
+<!-- search form -->
+<form id="searchform" role="search" method="get" action="https://codingjam.it/">
+  <div class="input-group">
+    <input type="text" name="s" id="s" class="bwp-search-field form-control" placeholder="Enter your search query...">
+    <span class="input-group-btn">
+      <button type="submit" class="btn bwp-search-submit">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+</form>
+<!-- end search form -->
+        </div>
+      </div>
+      <!-- end search -->
+
+      
+      <!-- menu -->
+      <div class="bwp-menu-container hidden-sm hidden-xs">
+        <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-2" class="sf-menu"><li id="menu-item-12007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li id="menu-item-12022" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li id="menu-item-12009" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li id="menu-item-12020" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li id="menu-item-12017" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li id="menu-item-12006" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li id="menu-item-12005" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li id="menu-item-12008" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li id="menu-item-12014" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li id="menu-item-12012" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li id="menu-item-12010" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li id="menu-item-12021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li id="menu-item-12016" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li id="menu-item-12015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li id="menu-item-12019" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li id="menu-item-12018" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>      </div>
+      <!-- end menu -->
+
+      
+      <!-- mobile menu -->
+      <div class="bwp-mobile-menu-container hidden-md hidden-lg">
+        <!-- mobile menu icon -->
+        <a href="#" id="bwp-mobile-menu-icon">
+          <i class="fa fa-bars"></i>
+        </a>
+        <!-- end mobile menu icon -->
+        <!-- dropdown mobile menu -->
+        <div class="bwp-dropdown-mobile-menu bwp-mobile-menu-hidden">
+          <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-3" class="bwp-mobile-menu list-unstyled"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>        </div>
+        <!-- end dropdown mobile menu -->
+      </div>
+      <!-- end mobile menu -->
+
+      
+        </div>
+        <!-- end row 1 - logo + navigation -->
+
+        
+          <!-- row 2 - header custom text -->
+          <div class="bwp-header-custom-text-container">
+            
+        <!-- custom text - single page -->
+        <h1 class="bwp-header-custom-title entry-title">
+          Installazione di Alfresco Community su Ubuntu 12.04, niente bundle        </h1>
+                <div class="bwp-header-transparent-line clearfix">
+          <span class="bwp-header-t-line-1"></span>
+          <span class="bwp-header-t-line-2"></span>
+        </div>
+        <!-- end custom text -->
+
+                  </div>
+          <!-- end row 2 - header custom text -->
+
+          
+      </div>
+    </div>
+    <!-- end header content -->
+  </div>
+  <!-- end header bg -->
+
+  
+        <!-- sticky navigation -->
+        <div class="bwp-sticky-navigation-wrap bwp-transition-4 clearfix">
+          <!-- sticky navigation icon -->
+          <a href="#" id="bwp-sticky-navigation-icon">
+            <i class="fa fa-bars"></i>
+          </a>
+          <!-- end sticky navigation icon -->
+          <!-- sticky navigation container -->
+          <div class="bwp-sticky-navigation-container bwp-sticky-navigation-hidden">
+            <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-4" class="sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>          </div>
+          <!-- end sticky navigation container -->
+        </div>
+        <!-- end sticky navigation -->
+
+        
+</header>
+<!-- end header -->
+
+  <!-- blog post - single page -->
+  <section id="bwp-single-page-wrap">
+    <div class="container">
+      <div class="bwp-single-page-container" >
+
+        
+                  <div class="row"><div class="col-md-8 bwp-single-content-col bwp-sidebar-right"><div class="bwp-single-content-col-wrap" role="main">
+        
+        <!-- article -->
+        <article id="post-8466" class="bwp-single-article bwp-transition-3">
+
+          
+          <!-- content container -->
+          <div class="bwp-single-content">
+
+            <!-- content -->
+            <div class="bwp-content entry-content clearfix">
+              <p class="text-justify"><a href="http://wiki.alfresco.com/wiki/Download_and_Install_Alfresco"><img class="alignleft  wp-image-8549" title="community_4_2_it" src="http://www.cosenonjaviste.it/wp-content/uploads/2013/01/community_4_2_it.png" alt="" width="186" height="103" /></a>In questo post vediamo insieme come installare <strong>Alfresco Community 4.2.c</strong>, l’ultima versione oggi disponibile del diffusissimo Open Source Enterprise Content Management, su <strong>Ubuntu 12.04 LTS minimal 64bit</strong> con <strong>Apache Tomcat 7.0.30</strong> e <strong>PostgreSQL 9.0.4</strong>. L&#8217;installazione proposta non è la &#8220;facile&#8221; e comoda <em>bundle</em> consigliata da Alfresco per la valutazione del prodotto, ma la versione più &#8220;robusta&#8221; consigliata per una più affidabile e manutenibile installazione. Come di nostra preferenza vi proponiamo  una descrizione &#8220;step by step&#8221;, più semplice da capire, provare e sperimentare: spero sarete d&#8217;accordo.</p>
+<h3 id="Before_stating...">Prima di iniziare…</h3>
+<p class="text-justify">Lancia un terminale (se vuoi con lo shortcut <code>Ctrl+Alt+T</code>) e digita i comandi seguenti:</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get purge openjdk-\*
+adduser alfresco
+Enter new UNIX password: alfresco
+adduser postgres
+Enter new UNIX password: postgres
+su – alfresco
+sudo mkdir -p /opt/alfresco
+sudo chown alfresco:alfresco /opt/alfresco
+sudo mkdir -p /opt/postgresql
+sudo chown postgres:postgres /opt/postgresql
+sudo adduser alfresco sudo
+sudo adduser postgres sudo
+</pre>
+<p class="text-justify">L&#8217;installazione e l&#8217;esecuzione dei processi di alfresco avverranno nell&#8217;utente &#8216;alfresco&#8217; (e non certo &#8216;root&#8217;, come da best practice). Stessa cosa per PostgreSQL che girerà come utente &#8216;postgres&#8217; (e non certo &#8216;root&#8217;).</p>
+<h3>Installare il JDK 1.7u7</h3>
+<p class="text-justify">Scarica il <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK Java 7</a> e poi su terminale digita:</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+mkdir -p /opt/alfresco/java
+</pre>
+<p class="text-justify">Scarica ‘jdk-7u7-linux-x64.tar.gz’ nella directory ‘/opt/alfresco/java’ con <i>owner</i> alfresco (usa il comando <em>chown</em> descritto di seguito) ed i permessi di ‘execute’ (usa il comando <em>chmod</em> descritto di seguito).</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+tar xvzf jdk-7u7-linux-x64.tar.gz
+chown -R alfresco:alfresco jdk1.7.0_07
+rm -rf jdk-7u7-linux-x64.tar.gz
+sudo nano /etc/profile.d/java.sh
+</pre>
+<p class="text-justify">Aggiungi le linee seguenti salvando le modifiche:</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+export JAVA_HOME=/opt/alfresco/java/jdk1.7.0_07
+export PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+</pre>
+<p class="text-justify">Verifica che l&#8217;installazione sia andata a buon fine:</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+su – alfresco
+java -version
+javac -version
+</pre>
+<h3 id="ImageMagick">ImageMagick</h3>
+<p class="text-justify"><a href="http://www.imagemagick.org/script/index.php">ImageMagik</a> è lo strumento (opzionale ma importante) che Alfresco utilizza per creare le anteprime dei documenti. Per installarlo:</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+sudo apt-get install ghostscript
+sudo apt-get install imagemagick
+whereis convert
+convert –version
+</pre>
+<p class="text-justify">Se tutto è installato correttamente vedrai l&#8217;help di ImageMagik riportante la versione del prodotto.</p>
+<h3 id="FFMpeg">FFMpeg</h3>
+<p class="text-justify"><a href="http://ffmpeg.org/">FFMpeg</a> è lo strumento (opzionale ma importante) che Alfresco utilizza per gestire gli stream audio e video. Per installarlo:</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+sudo apt-get install ffmpeg
+whereis ffmpeg
+ffmpeg
+</pre>
+<p class="text-justify">Se tutto è installato corretamente vedrai l&#8217;help di FFMpeg.</p>
+<h3 id="LibreOffice">LibreOffice</h3>
+<p class="text-justify">Inutile dire cosa sia <a href="http://www.libreoffice.org/" target="_blank" rel="noopener noreferrer">LibreOffice</a> e a cosa serva. Alfresco utilizza <a href="http://www.libreoffice.org/" target="_blank" rel="noopener noreferrer">LibreOffice</a> (ma potrebbe anche utilizzare <a href="http://www.openoffice.org/" target="_blank" rel="noopener noreferrer">Apache OpenOffice</a>) per l&#8217;anteprima dei documenti nei formati doc, docx, xls, ecc. Lo installiamo con i seguenti comandi:</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+sudo apt-get install libreoffice
+whereis soffice
+soffice –version (suggested v3.5)
+</pre>
+<p class="text-justify">Se tutto è installato correttamente vedrai l&#8217;help di <a href="http://www.libreoffice.org/" target="_blank" rel="noopener noreferrer">LibreOffice</a> riportante la versione del prodotto.</p>
+<h3 id="SWFTools">SWFTools</h3>
+<p class="text-justify"><a href="http://www.swftools.org/">SWFTools</a> è lo strumento (opzionale ma importante) che Alfresco utilizza per gestire l&#8217;anteprima dei documenti tramite un plugin flash che ne permette funzionalità di zooming, preview, ecc. Ecco i comandi per l&#8217;installazione:</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+sudo apt-get install libart-2.0-2 libjpeg62 libgif-dev
+wget &quot;http://launchpadlibrarian.net/43569089/swftools_0.9.0-0ubuntu2_i386.deb&quot;;
+chmod a+x swftools_0.9.0-0ubuntu2_i386.deb
+sudo dpkg -i swftools_0.9.0-0ubuntu2_i386.deb
+rm -rf swftools_0.9.0-0ubuntu2_i386.deb
+pdf2swf –version
+whereis pdf2swf
+</pre>
+<p class="text-justify">Se tutto è installato corretamente vedrai l&#8217;help di SWFTools riportante la versione del prodotto.</p>
+<h3 id="PostgreSQL_9.0.4">PostgreSQL 9.0.4</h3>
+<p class="text-justify">Procediamo compilando i sorgenti PostgreSQL ed installandolo separatamente:</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+su – postgres
+cd /opt/postgresql
+wget &quot;ftp://ftp.postgresql.org/pub/source/v9.0.4/postgresql-9.0.4.tar.gz&quot;;
+chmod a+x postgresql-9.0.4.tar.gz
+gunzip postgresql-9.0.4.tar.gz
+tar xvf postgresql-9.0.4.tar
+rm -rf postgresql-9.0.4.tar
+sudo apt-get install gcc libreadline-dev bison flex zlib1g-dev make
+mkdir /opt/postgresql/9.0.4
+cd /opt/postgresql/postgresql-9.0.4/
+./configure exec_prefix=/opt/postgresql/9.0.4
+make exec_prefix=/opt/postgresql/9.0.4
+sudo make install exec_prefix=/opt/postgresql/9.0.4
+sudo chown -R postgres:postgres /opt/postgresql/9.0.4
+mkdir /opt/postgresql/9.0.4/data
+mkdir /opt/postgresql/9.0.4/log
+nano /home/postgres/.environment-9.0.4
+</pre>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+#!/bin/sh
+
+export POSTGRESQL_VERSION=9.0.4
+export LD_LIBRARY_PATH=/opt/postgresql/${POSTGRESQL_VERSION}/lib
+export PATH=/opt/postgresql/${POSTGRESQL_VERSION}/bin:${PATH}
+</pre>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+chmod a+x /home/postgres/.environment-9.0.4
+/home/postgres/.environment-9.0.4
+/opt/postgresql/9.0.4/bin/initdb -D /opt/postgresql/9.0.4/data/ –encoding=UNICODE
+nano /home/postgres/postgresql-9.0.4
+</pre>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+#!/bin/sh -e
+
+# Parameters: start or stop.
+export POSTGRESQL_VERSION=9.0.4
+
+# Check parameter.
+if [ &quot;$1&quot; != &quot;start&quot; ] &amp;amp;&amp;amp; [ &quot;$1&quot; != &quot;stop&quot; ]; then
+echo &quot;Specify start or stop as first parameter.&quot;
+exit
+fi
+
+# Add stop switch.
+__STOP_SWITCH=&quot;&quot;
+if [ &quot;$1&quot; = &quot;stop&quot; ]; then
+__STOP_MODE=&quot;smart&quot;
+__STOP_SWITCH=&quot;-m $__STOP_MODE&quot;
+echo &quot;Stop switch is: $__STOP_SWITCH&quot;
+fi
+
+# Do it.
+export LD_LIBRARY_PATH=/opt/postgresql/${POSTGRESQL_VERSION}/lib
+
+~/.environment-${POSTGRESQL_VERSION}
+/opt/postgresql/${POSTGRESQL_VERSION}/bin/pg_ctl -D /opt/postgresql/${POSTGRESQL_VERSION}/data -l /opt/postgresql/${POSTGRESQL_VERSION}/log/postgresql.log $1 $__STOP_SWITCH
+</pre>
+<p class="text-justify">Il comando ‘~/.environment-${POSTGRESQL_VERSION}’ potrebbe non funzionare. In quel caso usa al suo posto ‘. .environment-${POSTGRESQL_VERSION}’.</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+chmod a+x /home/postgres/postgresql-9.0.4
+exit
+sudo nano /etc/init.d/postgresql.9.0.4
+</pre>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+#!/bin/sh -e
+
+case &quot;$1&quot; in
+
+ start)
+  echo &quot;Starting postgres&quot;
+  /bin/su - postgres -c &quot;/home/postgres/postgresql-9.0.4 start&quot;
+  ;;
+ stop)
+  echo &quot;Stopping postgres&quot;
+  /bin/su - postgres -c &quot;/home/postgres/postgresql-9.0.4 stop&quot;
+  ;;
+ * )
+  echo &quot;Usage: service postgresql-9.0.4 {start|stop}&quot;
+  exit 1
+
+esac
+
+exit 0
+</pre>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+sudo chmod a+x /etc/init.d/postgresql.9.0.4
+service postgresql.9.0.4 start
+</pre>
+<p class="text-justify">Creazione del database di funzionamento di Alfresco (user: alfresco, password: alfresco, schema: alfresco):</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+su – postgres
+. .environment-9.0.4
+psql
+CREATE ROLE alfresco WITH PASSWORD ‘alfresco’ LOGIN;
+CREATE DATABASE alfresco WITH OWNER alfresco;
+ + d
+psql -U alfresco -d alfresco
+ALTER USER alfresco WITH PASSWORD ‘alfresco’;
+ + d
+exit
+</pre>
+<h3 id="Tomcat_7.0.30">Tomcat 7.0.30</h3>
+<p class="text-justify">Scaricare <a href="http://tomcat.apache.org/">l&#8217;ultima versione di Tomcat</a>. Di seguito lanciare il terminare e digitare:</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+cd /opt/alfresco
+</pre>
+<p class="text-justify">Scarica ‘Tomcat 7.0′ che trovi nella pagina di <a href="http://tomcat.apache.org/download-70.cgi">download di Tomcat 7.0</a> tramite la navigazione: Quick Navigation -&gt; Archives -&gt; 7.0.30 -&gt; bin -&gt; apache-tomcat-7.0.30.tar.gz</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+wget http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.30/bin/apache-tomcat-7.0.30.tar.gz
+chmod a+x apache-tomcat-7.0.30.tar.gz
+tar -xvf apache-tomcat-7.0.30.tar.gz
+rm -rf apache-tomcat-7.0.30.tar.gz
+mv apache-tomcat-7.0.30 /opt/alfresco/tomcat
+/opt/alfresco/tomcat/bin/startup.sh
+</pre>
+<p class="text-justify">A questo punto controlla che il servizio sia avviato correttamente aprendo un browser ed accedendo all&#8217;indirizzo <a href="http://localhost:8080/" target="_blank" rel="noopener noreferrer">http://localhost:8080</a>. In caso la pagina sia accessibile il nostro Tomcat è installato nella sua configurazione standard ed è possibile proseguire con le personalizzazioni richieste da Alfresco:</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+/opt/alfresco/tomcat/bin/shutdown.sh
+cp /opt/alfresco/tomcat/conf/catalina.properties /opt/alfresco/tomcat/conf/catalina.properties.orig
+nano /opt/alfresco/tomcat/conf/catalina.properties
+</pre>
+<p class="text-justify">Valorizzare &#8216;shared.loader&#8217; come segue.</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+shared.loader=${catalina.base}/shared/classes,${catalina.base}/shared/lib/*.jar
+</pre>
+<p class="text-justify">Uscire, salvare e proseguire.</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+cp /opt/alfresco/tomcat/conf/server.xml /opt/alfresco/tomcat/conf/server.xml.orig
+nano /opt/alfresco/tomcat/conf/server.xml
+</pre>
+<p class="text-justify">Aggiungere &#8216;URIEncoding=”UTF-8″‘ a</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+&amp;lt;Connector port=”8080″ protocol=”HTTP/1.1″…
+</pre>
+<p class="text-justify">Uscire, salvare e proseguire come segue:</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+nano /opt/alfresco/tomcat/conf/context.xml
+</pre>
+<p style="text-align: justify;">Aggiungere:</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+&amp;lt;Valve className=&quot;org.apache.catalina.authenticator.SSLAuthenticator&quot; securePagesWithPragma=&quot;false&quot; /&amp;gt;
+</pre>
+<h3 id="Alfresco_4.2.c">Alfresco 4.2.c</h3>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+mkdir /opt/alfresco/tomcat/shared
+mkdir /opt/alfresco/tomcat/shared/classes
+mkdir /opt/alfresco/tomcat/shared/lib
+mkdir /opt/alfresco/tomcat/endorsed
+wget &amp;lt;a href=&quot;http://dl.alfresco.com/release/community/build-04576/alfresco-community-4.2.c.zip&quot;&amp;gt;http://dl.alfresco.com/release/community/build-04576/alfresco-community-4.2.c.zip&amp;lt;/a&amp;gt;
+chmod a+x alfresco-community-4.2.c.zip
+sudo apt-get install unzip
+unzip alfresco-community-4.2.c.zip
+mv web-server/endorsed/* /opt/alfresco/tomcat/endorsed
+mv web-server/shared/* /opt/alfresco/tomcat/shared
+mv web-server/lib/* /opt/alfresco/tomcat/lib
+mv web-server/webapps/* /opt/alfresco/tomcat/webapps/
+rm -rf README.txt
+rm -R web-server/
+rm -rf alfresco-community-4.2.c.zip
+</pre>
+<p style="text-align: justify;">Per far funzionare la gestione dei documenti con LibreOffice, Alfresco richiede che quest&#8217;ultimo sia in esecuzione come processo <em>headless</em> e residente. Durante lo startup poi, Alfresco procederà a &#8220;cercare&#8221; il processo in esecuzione utilizzandolo quando necessario. Vi accorgerete se qualcosa non è andato a buon fine se Alfresco, dopo il suo avvio, non visualizzerà la preview dei documenti &#8220;office&#8221;.</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+nano /opt/alfresco/start_oo.sh
+</pre>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+#!/bin/sh -e
+
+SOFFICE_ROOT=/usr/bin
+&quot;${SOFFICE_ROOT}/soffice&quot; &quot;--accept=socket,host=localhost,port=8100;urp;StarOffice.ServiceManager&quot; --nologo --headless &amp;amp;
+</pre>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+chmod uga+x /opt/alfresco/start_oo.sh
+/opt/alfresco/start_oo.sh
+killall soffice.bin
+nano /opt/alfresco/alfresco.sh
+</pre>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+#!/bin/sh -e
+
+# Start or stop Alfresco server
+
+# Set the following to where Tomcat is installed
+ALF_HOME=/opt/alfresco
+cd &quot;$ALF_HOME&quot;
+APPSERVER=&quot;${ALF_HOME}/tomcat&quot;
+export CATALINA_HOME=&quot;$APPSERVER&quot;
+
+# Set any default JVM values
+export JAVA_OPTS='-Xms512m -Xmx768m -Xss768k -XX:MaxPermSize=256m -XX:NewSize=256m -server'
+export JAVA_OPTS=&quot;${JAVA_OPTS} -Dalfresco.home=${ALF_HOME} -Dcom.sun.management.jmxremote&quot;
+
+if [ &quot;$1&quot; = &quot;start&quot; ]; then
+ &quot;${APPSERVER}/bin/startup.sh&quot;
+ if [ -r ./start_oo.sh ]; then
+  &quot;${ALF_HOME}/start_oo.sh&quot;
+ fi
+elif [ &quot;$1&quot; = &quot;stop&quot; ]; then
+ &quot;${APPSERVER}/bin/shutdown.sh&quot;
+ killall -u alfresco java
+ killall -u alfresco soffice.bin
+fi
+</pre>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+chmod uga+x /opt/alfresco/alfresco.sh
+sudo nano /etc/init.d/alfresco
+</pre>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+#!/bin/sh -e
+
+ALFRESCO_SCRIPT=&quot;/opt/alfresco/alfresco.sh&quot;
+
+if [ &quot;$1&quot; = &quot;start&quot; ]; then
+ su - alfresco &quot;${ALFRESCO_SCRIPT}&quot; &quot;start&quot;
+elif [ &quot;$1&quot; = &quot;stop&quot; ]; then
+ su - alfresco &quot;${ALFRESCO_SCRIPT}&quot; &quot;stop&quot;
+elif [ &quot;$1&quot; = &quot;restart&quot; ]; then
+ su - alfresco &quot;${ALFRESCO_SCRIPT}&quot; &quot;stop&quot;
+ su - alfresco &quot;${ALFRESCO_SCRIPT}&quot; &quot;start&quot;
+else
+ echo &quot;Usage: /etc/init.d/alfresco [start|stop|restart]&quot;
+fi
+</pre>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+sudo chmod uga+x /etc/init.d/alfresco
+sudo chown alfresco:alfresco /etc/init.d/alfresco
+mkdir /opt/alfresco/alf_data
+cp /opt/alfresco/tomcat/shared/classes/alfresco-global.properties.sample /opt/alfresco/tomcat/shared/classes/alfresco-global.properties
+nano /opt/alfresco/tomcat/shared/classes/alfresco-global.properties
+</pre>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+...
+dir.root=/opt/alfresco/alf_data
+#IMPORTANT: comment dir.keystore
+...
+db.username=alfresco
+db.password=alfresco
+...
+db.schema.update=true
+...
+db.driver=org.postgresql.Driver
+db.url=jdbc:postgresql://localhost:5432/alfresco
+...
+index.recovery.mode=AUTO
+...
+authentication.chain=alfrescoNtlm1:alfrescoNtlm
+...
+alfresco.rmi.services.host=0.0.0.0
+</pre>
+<p style="text-align: justify;">A questo punto tutto è pronto per il deploy ed il primo avvio&#8230;</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+service alfresco start
+tail -f /opt/alfresco/tomcat/logs/catalina.out -c 10000
+</pre>
+<p style="text-align: justify;">Apri il broswer all&#8217;indirizzo &#8216;http://localhost:8080/share&#8217;.</p>
+<h3 id="Servizi_configurabili_dalle_propriet.2BAOA-">Servizi opzionali (ma importanti) configurabili dalle proprietà</h3>
+<p style="text-align: justify;">Come descritto in precedenza Alfresco utilizza diversi servizi opzionali (ma importanti per l&#8217;utente) per il suo funzionamento. Di seguito vediamo come attivarli.</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+service alfresco stop
+nano /opt/alfresco/tomcat/shared/classes/alfresco-global.properties
+</pre>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+#
+# External locations
+#-------------
+# OpenOffice
+ooo.exe=/usr/lib/libreoffice/program/soffice.bin
+ooo.enabled=false
+jodconverter.officeHome=/usr/lib/libreoffice
+jodconverter.portNumbers=8100
+jodconverter.enabled=true
+# ImageMagick installation
+img.root=/usr/share/doc/imagemagick
+img.exe=/usr/bin/convert
+# SWFTools exe
+swf.exe=/usr/bin/pdf2swf
+</pre>
+<p style="text-align: justify;">Adesso tutto è completo e possiamo procedere al riavvio.</p>
+<pre class="brush: bash; gutter: false; title: ; notranslate" title="">
+service alfresco start
+tail -f /opt/alfresco/tomcat/logs/catalina.out -c 10000
+</pre>
+<p style="text-align: justify;">Buon divertimento con Alfresco!</p>
+<h3 id="Conclusioni.2BAOA-">Conclusioni</h3>
+<p style="text-align: justify;">In questo post è descritta la modalità di installazione <i>enterprise</i> di Alfresco Community 4.2.c con PostgreSQL su piattaforma Ubuntu. L&#8217;installazione, descritta in modalita <i>step by step</i> è alternativa alla distribuzione <i>bundle</i> che viene indicata come installazione semplificata e dichiarata non adatta per essere totalmente controllata e personalizzata.</p>
+            </div>
+            <!-- end content -->
+
+            
+      <!-- metadata -->
+      <div class="bwp-single-metadata-wrap bwp-no-single-share-and-counters">
+        <ul class="bwp-single-metadata list-unstyled clearfix">
+                      <!-- author -->
+            <li>
+              <span class="vcard author">
+                <span class="fn">
+                  <i class="fa fa-pencil-square-o"></i><a href="https://codingjam.it/author/fcorti/" title="Posts by Francesco Corti" rel="author">Francesco Corti</a>                </span>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end author -->
+                                <!-- date -->
+            <li>
+                            <span class="date updated">
+                <i class="fa fa-clock-o"></i><a href="../2013/01/19/index.html">19/01/2013</a>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end date -->
+                                <!-- categories -->
+            <li>
+              <i class="fa fa-bookmark-o"></i><a href="https://codingjam.it/category/alfresco-2/" rel="category tag">Alfresco</a>, <a href="../category/tutorial-2/index.html" rel="category tag">Tutorial</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end categories -->
+                                <!-- tags -->
+            <li>
+              <i class="fa fa-tags"></i><a href="https://codingjam.it/tag/alfresco/" rel="tag">alfresco</a>, <a href="https://codingjam.it/tag/ecm/" rel="tag">ecm</a>, <a href="../tag/postgresql/index.html" rel="tag">postgresql</a>, <a href="../tag/tomcat/index.html" rel="tag">tomcat</a>, <a href="https://codingjam.it/tag/ubuntu/" rel="tag">ubuntu</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end tags -->
+                  </ul>
+      </div>
+      <!-- end metadata -->
+
+      
+          </div>
+          <!-- end content container -->
+
+        </article>
+        <!-- end article -->
+
+        
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://codingjam.it/injection-o-lookup-programmatico-aiutati-che-cdi-taiuta/" rel="prev"><span class="meta-nav"><i class="fa fa-angle-left"></i>Previous post</span><span class="post-title-nav">Injection o lookup programmatico? Aiutati che CDI t&#8217;aiuta</span></a></div><div class="nav-next"><a href="https://codingjam.it/alfresco-audit-analysis-and-reporting-a-a-a-r/" rel="next"><span class="meta-nav">Next post<i class="fa fa-angle-right"></i></span><span class="post-title-nav">Alfresco Audit Analysis and Reporting (A.A.A.R.)</span></a></div></div>
+	</nav>
+    <!-- about the author -->
+    <div class="bwp-about-author-container bwp-transition-3 clearfix">
+      <!-- avatar -->
+      <div class="bwp-about-author-avatar">
+        <a href="https://codingjam.it/author/fcorti/">
+          <img alt='' src='https://secure.gravatar.com/avatar/7d8758b63c7b2a873b3b925267ba912d?s=150&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/7d8758b63c7b2a873b3b925267ba912d?s=300&#038;d=mm&#038;r=g 2x' class='avatar avatar-150 photo' height='150' width='150' />        </a>
+      </div>
+      <!-- end avatar -->
+      <!-- biographical info -->
+      <div class="bwp-about-author-bio-wrap">
+        <h3 class="bwp-about-author-name">
+          <a href="https://codingjam.it/author/fcorti/" title="Posts by Francesco Corti" rel="author">Francesco Corti</a>          <span><i class="fa fa-angle-double-right"></i>6 Posts</span>
+        </h3>
+        <div class="bwp-about-author-bio">
+          PreSale Engineer e Senior Developer per soluzioni di <b>Enterprise Content Management</b> e <b>Business Intelligence</b>. Prediligo Alfresco ECM, Hyland OnBase e <a href="http://www.mywebdoc.it/">WebDoc</a> per la conservazione sostitutiva. Business Intelligence con Pentaho Open Source BI, Palo.net, SAP Business Objects, QlikView, Microsoft BI Platform. Enterprise portal and Collaboration con Liferay.  
+<a href="http://fcorti.com/">Blog</a> - <a href="http://it.linkedin.com/in/fcorti/">LinkedIn</a> - <a href="http://it.gravatar.com/francescocorti">Gravatar</a>.        </div>
+                  <ul class="bwp-about-author-social list-unstyled clearfix">
+                              <li><a href="http://frkcorti/" target="_blank" class="bwp-a-twitter-link"><i class="fa fa-twitter"></i></a></li>
+                                  <li><a href="http://fcorti.com/" target="_blank" class="bwp-a-website-link"><i class="fa fa-link"></i></a></li>
+                          </ul>
+              </div>
+      <!-- end biographical info -->
+    </div>
+    <!-- end about the author -->
+
+    
+<!-- comments -->
+<div id="comments" class="comments-area">
+
+	
+		<h2 class="comments-title">
+			10 thoughts on &ldquo;Installazione di Alfresco Community su Ubuntu 12.04, niente bundle&rdquo;		</h2>
+
+		<ol class="comment-list">
+					<li id="comment-236" class="comment even thread-even depth-1 parent">
+			<article id="div-comment-236" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/965f25421c0d710ea66f84d845a0bea3?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/965f25421c0d710ea66f84d845a0bea3?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Info</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-236">
+							<time datetime="2013-02-09T23:30:00+01:00">
+								09/02/2013 at 23:30							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p> Buon articolo, ma pieno di inesattezze e di errori di copia ed incolla. </p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-240" class="comment odd alt depth-2 parent">
+			<article id="div-comment-240" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo avatar-default' height='104' width='104' />						<b class="fn"><a href='http://twitter.com/FrkCorti' rel='external nofollow ugc' class='url'>Francesco Corti</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-240">
+							<time datetime="2013-02-10T10:02:00+01:00">
+								10/02/2013 at 10:02							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Ciao, ti ringrazio per il feedback e per l’apprezzamento.<br />
+Riguardo ai refusi, hai ragione ed abbiamo provveduto… capita quando le cose da fare sono tante.<br />
+Riguardo alle inesattezze ti sarei molto grato/a di farmi sapere se di tipo &#8220;refuso” o nei contenuti perché interverrei volentieri… migliorare è sempre possibile (i miei contatti privati sono nella firma dell’articolo).</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-519" class="comment even depth-3 parent">
+			<article id="div-comment-519" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/b7c4eac8d6abc4b52775acae7b41f7e2?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/b7c4eac8d6abc4b52775acae7b41f7e2?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Francesco Savona</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-519">
+							<time datetime="2014-11-28T13:36:00+01:00">
+								28/11/2014 at 13:36							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Ciao, volevo sapere se qst guida andava bene anche per la versione community e se avevi news sull&#8217;installazione in un ambiente con l&#8217;ultima versione di UBUNTU (14) (sempre con alfresco community 5.0.b)</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-522" class="comment odd alt depth-4">
+			<article id="div-comment-522" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/53f5069a67bc9b6293f2523f8a90604a?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/53f5069a67bc9b6293f2523f8a90604a?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn"><a href='http://www.cosenonjaviste.it/' rel='external nofollow ugc' class='url'>CoseNonJaviste</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-522">
+							<time datetime="2014-12-10T00:09:00+01:00">
+								10/12/2014 at 00:09							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Ciao. Le istruzioni sono valide in buona parte anche per Ubuntu 14.04 (non sono sicuro per ImageMagick e FFMpeg). Per il resto, aggiorna le versioni di Java, Tomcat e Libreoffice come richiesto da Alfresco 5.0.c (<a href="https://wiki.alfresco.com/wiki/Alfresco_Community_5.0.c_Release_Notes" rel="nofollow ugc">https://wiki.alfresco.com/wiki/Alfresco_Community_5.0.c_Release_Notes</a>).</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-252" class="comment even thread-odd thread-alt depth-1 parent">
+			<article id="div-comment-252" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/276bc3299e6220ebd86038644870dd66?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/276bc3299e6220ebd86038644870dd66?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Coyote Ugly</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-252">
+							<time datetime="2013-02-28T10:21:00+01:00">
+								28/02/2013 at 10:21							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Ciao Francesco. Ho provato a seguire la tua utilissima guida. Purtroppo ho riscontrato alcuni problemi, ecco un paio di considerazioni:</p>
+<p>* Nei primissimi comandi quando crei gli utenti alfresco e postgres probabilmente ti sei dimenticato di indicare che a questi vanno assegnati i permessi di sudouser:<br />
+sudo adduser alfresco sudo<br />
+sudo adduser postgres sudo<br />
+Altrimenti non si riesce neppure a creare le folder dentro /opt .</p>
+<p>* FFMpeg si installa correttamente, tuttavia quando vai a lanciare il comando:<br />
+ffmpeg<br />
+compare il seguente warning:<br />
+******************************************************************************<br />
+ffmpeg version 0.8.5-4:0.8.5-0ubuntu0.12.04.1, Copyright (c) 2000-2012 the Libav developers<br />
+  built on Jan 24 2013 18:01:36 with gcc 4.6.3<br />
+*** THIS PROGRAM IS DEPRECATED ***<br />
+This program is only provided for compatibility and will be removed in a future release. Please use avconv instead.<br />
+Hyper fast Audio and Video encoder<br />
+usage: ffmpeg [options] [[infile options] -i infile]&#8230; {[outfile options] outfile}&#8230;<br />
+Use -h to get full help or, even better, run &#8216;man ffmpeg&#8217;<br />
+******************************************************************************<br />
+Sembra che il programma stia per essere deprecato (come si comporterà alfresco? Lo sostituirà?). In ogni caso presumo comunque che il warning non sia importante per il nostro scopo e lo possiamo tralasciare.</p>
+<p>* L&#8217;installazione di SWFTools invece non va a buon fine. infatti dopo aver lanciato sudo dpkg -i swftools_0.9.0-0ubuntu2_i386.deb sembra che ci siano dei problemi:<br />
+******************************************************************************<br />
+Selezionato il pacchetto swftools:i386 non precedentemente selezionato.<br />
+(Lettura del database&#8230; 80775 file e directory attualmente installati.)<br />
+Estrazione di swftools:i386 (da swftools_0.9.0-0ubuntu2_i386.deb)&#8230;<br />
+dpkg: problemi con le dipendenze impediscono la configurazione di swftools:i386:<br />
+ swftools:i386 dipende da libart-2.0-2 (&gt;= 2.3.18).<br />
+ swftools:i386 dipende da libc6 (&gt;= 2.7).<br />
+ swftools:i386 dipende da libfontconfig1 (&gt;= 2.8.0).<br />
+ swftools:i386 dipende da libfreetype6 (&gt;= 2.2.1).<br />
+ swftools:i386 dipende da libgcc1 (&gt;= 1:4.1.1).<br />
+ swftools:i386 dipende da libgif4 (&gt;= 4.1.4).<br />
+ swftools:i386 dipende da libjpeg62.<br />
+ swftools:i386 dipende da libstdc++6 (&gt;= 4.1.1).<br />
+ swftools:i386 dipende da zlib1g (&gt;= 1:1.1.4).<br />
+ swftools:i386 dipende da gsfonts.<br />
+dpkg: errore nell&#8217;elaborare swftools:i386 (&#8211;install):<br />
+ problemi con le dipendenze &#8211; lasciato non configurato<br />
+Elaborazione dei trigger per man-db&#8230;<br />
+Si sono verificati degli errori nell&#8217;elaborazione:<br />
+ swftools:i386<br />
+******************************************************************************<br />
+il comando &#8220;pdf2swf –version&#8221; restituisce questo: -su: /usr/bin/pdf2swf: File o directory non esistente<br />
+mentre &#8220;whereis pdf2swf&#8221; restituisce: pdf2swf: /usr/bin/pdf2swf /usr/bin/X11/pdf2swf /usr/share/man/man1/pdf2swf.1.gz<br />
+Quindi questa questione resta da risolvere.</p>
+<p>* Quando si esegue &#8220;sudo apt-get install gcc libreadline-dev bison flex zlib1g-dev make&#8221; vengono restituiti degli errori con delle dipendenze: Si possono risolvere molto semplicemente con un &#8220;apt-get -f install&#8221;. Nessun problema.</p>
+<p>* Quando si esegue &#8220;make exec_prefix=/opt/postgresql/9.0.4&#8221; mi è sembrato di vedere alcuni warning ma al termine dell&#8217;installazione era tutto OK.</p>
+<p>* Purtroppo arriviano al punto in cui mi sono bloccato:<br />
+Ho notato che se eseguo il comando &#8220;service postgresql.9.0.4 start&#8221;, compare un solo messaggio &#8220;server starting&#8221;, ma tuttavia posgres non sembra andare su, e non compare nessun pid verificando con il comando &#8220;top&#8221;. Infatti andando avanti ed arrivati al punto in cui eseguire il comando &#8220;psql&#8221; ci si deve fermare a causa di questo errore:<br />
+***************************************************************************<br />
+psql: could not connect to server: File o directory non esistente<br />
+ Is the server running locally and accepting<br />
+ connections on Unix domain socket &#8220;/tmp/.s.PGSQL.5432&#8221;?<br />
+***************************************************************************<br />
+Se nel file &#8220;/home/postgres/postgresql-9.0.4&#8221; provo a sostituire </p>
+<p>&#8220;~/.environment-${POSTGRESQL_VERSION}&#8221; con<br />
+&#8220;. .environment-${POSTGRESQL_VERSION}&#8221;<br />
+e provo ad avviare postgres, ricevo questo errore: &#8220;/home/postgres/postgresql-9.0.4: 22: .: .environment-9.0.4: not found&#8221;</p>
+<p>Hai idea di cosa possa esserci che non va? Portroppo più di così sembra che non si possa procedere.<br />
+Ciao!</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-253" class="comment odd alt depth-2 parent">
+			<article id="div-comment-253" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo avatar-default' height='104' width='104' />						<b class="fn"><a href='http://twitter.com/FrkCorti' rel='external nofollow ugc' class='url'>Francesco Corti</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-253">
+							<time datetime="2013-03-03T09:13:00+01:00">
+								03/03/2013 at 09:13							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Ciao, scusa il ritardo con il quale rispondo.<br />
+Grazie per i feedback e per il tempo speso.<br />
+Chi ha provato sa che l&#8217;installazione &#8220;non bundle&#8221; di Alfresco permette maggiore controllo ma non è affatto banale, come hai avuto modo di toccare con mano.</p>
+<p>Vengo alle osservazioni, sperando di riuscire a compattarle il più possibile&#8230;</p>
+<p># Si, certo, tipicamente anche io imposto gli utenti &#8216;alfresco e &#8216;postgres&#8217; come sudoers altrimenti la procedura è decisamente più complicata perché un utente sudoer dovrebbe impostare tutto per loro&#8230; troppo complicato.<br />
+Ho aggiornato il contenuto del post.</p>
+<p># Su FFMpeg hai ragione ma quì c&#8217;è un conflitto con Alfresco che &#8220;non si comporta bene&#8221; con le ultime versioni di FFMpeg.<br />
+Ossia, Alfresco dichiara compatibilità con una versione precedente di FFMpeg (ci ho perso diversi giorni dietro a questo problema) e utilizzando le ultime versioni non si vedono durante il preview dei documenti. Personalmente ho trovato questo &#8220;workaround&#8221; di utilizzare una versione meno recente ma sono alla ricerca della soluzione definitiva che stiamo sperimentando.<br />
+In ogni caso, se hai novità in merito (o ne avessi io) vediamo di riparlarne per aggiornare la guida e per diffondere l&#8217;informazione.<br />
+Ovvio che mi aspetto che Alfresco stessa avanzi in questo senso con la compatibilità con versioni di FFMpeg più recenti (cosa che credo di poter dare per scontato).</p>
+<p># Su SWFTools il problema è chiaramente derivato dalla mancanza di dipendenze (lo dice anche il log che riporti).<br />
+Potrebbe essere, ma ipotizzo, che apt-get non è riuscito da installarle per mancanza di connessione o della versione giusta nel server di aggiornamento (ho avuto diverse volte questo problema).<br />
+Mi confermi di avere eseguito con successo anche il comando &#8216;sudo apt-get install libart-2.0-2 libjpeg62 libgif-dev&#8217;?<br />
+In ogni caso i problemi che rilevi, che potrebbero succedere, sono risolvibili &#8220;insistendo&#8221;. 🙂<br />
+Lo so, non è il massimo detto così ma su Ubuntu la vita va un po&#8217; così&#8230; manca la connessione su un server di aggiornamenti e non trova quello che si aspetta, conflitti fra le versioni, ecc.</p>
+<p># Il sospetto sul punto precedente (problemi con la connessione con il server degli update) mi sembra confermato dal problema che hai avuto con il “sudo apt-get install gcc libreadline-dev bison flex zlib1g-dev make”. Non ho mai dovuto fare un &#8216;force&#8221; dell&#8217;install.<br />
+In ogni caso condivido quello che scrivi e ribadisco quanto detto prima: &#8220;insistere&#8221; per ottenere la versione corretta dei pacchetti/software/aggiornamenti.</p>
+<p># Warning su “make exec_prefix=/opt/postgresql/9.0.4&#8243;.<br />
+Si, può darsi, però non ho mai avuto problemi in tal senso.<br />
+Spesso ci confrontiamo sull&#8217;utilità di installare PostgreSQL compilando i sorgenti&#8230; forse è un po&#8217; esagerato ma le scuole di pensiero sono molteplici.<br />
+Si potrebbe anche installare da una comodissima apt-get (i puristi non sarebbero troppo d&#8217;accordo con me).<br />
+Quello che conta è che non ci siano errori sul comando &#8216;sudo make install exec_prefix=/opt/postgresql/9.0.4&#8217;&#8230; se ci sono stati problemi ai passi precedenti, arrivati qui esplode tutto.</p>
+<p># Start di postgreSQL fallito.<br />
+Detto così non riesco a vedere il problema però ti suggerisco di: verificare i log in &#8216;/var/log&#8217; per capire quale sia il problema nel dettaglio oppure, più drasticamente, installare postgresql con apt-get invece che ricompilando i sorgenti. Per la stabilità dell&#8217;architettura non dovrebbe essere un problema perchè Alfresco, effettivamente, è piuttosto &#8220;astratto&#8221; rispetto al database.</p>
+<p>Fammi sapere&#8230; anche perché se c&#8217;è da far crescere qualcosa nel processo di installazione, lo faccio volentieri.</p>
+<p>Saluti.</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-256" class="comment even depth-3 parent">
+			<article id="div-comment-256" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/276bc3299e6220ebd86038644870dd66?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/276bc3299e6220ebd86038644870dd66?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Coyote Ugly</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-256">
+							<time datetime="2013-03-05T10:37:00+01:00">
+								05/03/2013 at 10:37							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Ciao, ecco alcuni aggiornamenti:<br />
+*Per quanto riguarda l&#8217; SWFTools per non perderci troppo tempo ho risolto molto spartanamente aggiungendo il repository ppa:guilhem-fr/swftools ed installandolo con apt . In ogni caso ti confermo che  &#8216;sudo apt-get install libart-2.0-2 libjpeg62 libgif-dev&#8217; era andato a buon fine. Comunque sembra andato.<br />
+*Ho scoperto il motivo del mancato start di postgres: Consultando il file /opt/postgresql/9.0.4/log/postgresql.log si legge chiaramente &#8216;postgres cannot access the server configuration file &#8220;/opt/postgresql/9.0.4/data/postgresql.conf&#8221;: File o directory non esistente&#8217; .<br />
+Bisogna creare manualmente questo file? Come va configurato? Dovrebbe esseresi già creato da solo?<br />
+Per quanto riguarda l&#8217;installazoione via apt-get, ho qualche dubbio in quanto mi sembra che non sia possibile installare una old versione specifica (nel nostro caso la 9.0.4) . Alfresco potrebbe dare problemi con la 9.1 ?<br />
+In caso, dopo aver aver installaro via apt-get, l&#8217;unica configurazione manuale da fare (oltre a creare lo schema) sarebbe il file &#8220;/home/postgres/.environment-9.1&#8221; ?</p>
+<p>Un saluto!</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-258" class="comment odd alt depth-4 parent">
+			<article id="div-comment-258" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo avatar-default' height='104' width='104' />						<b class="fn"><a href='http://twitter.com/FrkCorti' rel='external nofollow ugc' class='url'>Francesco Corti</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-258">
+							<time datetime="2013-03-09T17:27:00+01:00">
+								09/03/2013 at 17:27							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Ciao C.U.,</p>
+<p>Scusa il ritardo con cui rispondo e grazie per il prezioso contributo.</p>
+<p>[SWFTools] Non ti nego che anche io mi faccio poche domande con questa installazione in particolare. Bene sia andato.</p>
+<p>[PostgreSQL] Non ho mai avuto questo problema. Sarebbe da ricontrollare il processo di installazione perché abbiamo utilizzato questo processo su una decina (e più) di installazioni senza problemi&#8230; almeno in questo punto specifico 😉 Sull&#8217;apt-get: hai ragione, dura installare versioni &#8220;precedenti&#8221;. Alfresco non usa grosse specificità del database (o almeno non abbiamo mai avuto grossi problemi legati alle versioni) però la Alfresco dichiara la compatibilità con una versione specifica. Per l&#8217;ultima domanda: con l&#8217;installazione tramite apt-get non importerebbe quel file di configurazione.</p>
+<p>Saluti.</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-261" class="comment even depth-5 parent">
+			<article id="div-comment-261" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/276bc3299e6220ebd86038644870dd66?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/276bc3299e6220ebd86038644870dd66?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo' height='104' width='104' />						<b class="fn">Coyote Ugly</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-261">
+							<time datetime="2013-03-20T10:34:00+01:00">
+								20/03/2013 at 10:34							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Ciao, finalmente dopo alcuni giorni sono riuscito a trovare il tempo per procedere con le prove.<br />
+Visto<br />
+ che si tratta comunque di un test, ho optato per installare postgres<br />
+via apt-get anche se l&#8217;ultima versione non è garantita. In questo modo<br />
+l&#8217;unica configurazione che ho dovuto fare è stato creare il DB con i<br />
+relativi permessi.<br />
+I passi successivi della guida mi sono tutti buoni<br />
+ ed andati a buon fine, tuttavia devo dire che è un peccato che alcuni<br />
+tag HTML nelle parti di codice che hai postato siano venuti fuori<br />
+sporchi ( probabilmente perchè bloccati dallo stile di testo dell&#8217;editor<br />
+ del sito ? ), rendendo la comprensione praticamente impossibile.<br />
+Tuttavia seguendo la stessa guida che hai postato sul tuo ottimo blog<br />
+personale sono riuscito senza problemi ad andare avanti.<br />
+Premettendo che devo ancora effettuare un test compleeto, Alfresco è partito, e le funzionalità di base sembrano essere OK.<br />
+Mi<br />
+ permane tuttavia un problema, infatti non riesco ad avere le preview<br />
+dei documenti da Share. Problema di Imagemagick e SWFTools ?<br />
+In<br />
+sincerità non ho ancora avuto il tempo di mettermi a guardare il<br />
+problema (leggere il log ecc..), magari è una cavolata. Ma ci sono<br />
+suggerimenti a riguardo?</p>
+<p>Un saluto!</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-262" class="comment odd alt depth-5">
+			<article id="div-comment-262" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/?s=104&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/?s=208&#038;d=mm&#038;r=g 2x' class='avatar avatar-104 photo avatar-default' height='104' width='104' />						<b class="fn"><a href='http://twitter.com/FrkCorti' rel='external nofollow ugc' class='url'>Francesco Corti</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="index.html#comment-262">
+							<time datetime="2013-03-24T08:55:00+01:00">
+								24/03/2013 at 08:55							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Ciao C.U.,</p>
+<p>Ottimo lavoro!</p>
+<p>Sui tag HTML che non si vedono: dai sistemi operativi/browser che utilizzo vedo tutto correttamente. Se hai modo di segnalarmi ambiente e browser utilizzati vediamo di risolvere. Se poi potessi provare anche da altri ambienti per controllare se i problemi di visualizzazione persistono, sarebbe super.</p>
+<p>Sulle preview: hai toccato il tasto delicato. Infatti, se la configurazione è fatta correttamente è improbabile avere problemi sul resto. La preview, invece, è aspetto mooolto delicato. I fattori, nella mia esperienza, potrebbero essere diversi e quasi mai gli stessi: il processo soffice headless non lanciato (lo riconosci se non vedi solo i documenti office), ImageMagik (che spesso da errori nel log) e diverso altro. Spero di averti dato qualche spunto per controllare nel tuo caso.</p>
+<p>Approfondire questi aspetti è sicuramente un lato interessante per completare questa modalità di installazione.</p>
+<p>Saluti.</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+			<p class="no-comments">Comments are closed.</p>
+	
+	
+</div>
+<!-- end comments -->
+
+    <!-- related posts (by tags) -->
+    <div class="bwp-related-posts-container bwp-show-2-posts">
+      <div class="bwp-o-hidden">
+
+        <!-- title -->
+        <h2 class="bwp-related-posts-title">
+          You might also like:        </h2>
+        <!-- end title -->
+
+        <!-- posts list -->
+        <div class="bwp-related-posts clearfix">
+
+          
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="https://codingjam.it/speciale-devops-virtualizzazione/">Speciale <strong>Devops</strong>: la virtualizzazione</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>Introduzione Con questo primo articolo iniziamo lo speciale &#8220;CoseNonJaviste Devops&#8220;. Lo speciale si comporrà di una serie di articoli che copriranno i seguenti argomenti: Cos’è la virtualizzazione (questo post); Crea la tua macchina virtuale con VirtualBox; Cos’è il movimento Devops; Vagrant: le basi; Vagrant: configura la tua infrastruttura; Vagrant: concetti avanzati; Vagrant + Chef per il provisioning; Chef: concetti avanzati; Case study: crea uno stack di lavoro completo. Pronto a iniziare? La virtualizzazione La virtualizzazione è una tecnologia informatica che [&hellip;]</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2014/05/16/" class="bwp-post-date">
+        <span class="date updated">16/05/2014</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="https://codingjam.it/speciale-devops-virtualizzazione/" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="https://codingjam.it/liferay-esporre-web-services-custom/">Liferay: Esporre Web Services Custom</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>Nel momento i cui cerchiamo di spingerci oltre quello che strumenti di sviluppo ci offrono di “default”, è quasi certo che incontreremo qualche difficoltà ad andare avanti e molto spesso la difficoltà è dovuta alla disponibilità di scarsa documentazione. Nell’ambito del Service Layers, la piattaforma di sviluppo di Liferay consente in modo semplice e veloce di generare tutto lo strato dei servizi, sia locali sia remoti (Liferay Inc., 2014) per i plugin (Liferay Inc., 2014) da noi creati. Nel corso di [&hellip;]</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2014/04/01/" class="bwp-post-date">
+        <span class="date updated">01/04/2014</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="https://codingjam.it/liferay-esporre-web-services-custom/" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+        </div>
+        <!-- end posts list -->
+
+      </div>
+    </div>
+    <!-- end related posts -->
+
+    
+                  </div><!-- /bwp-single-content-col-wrap --></div><!-- /col-md-8 --><div class="col-md-4 bwp-sidebar-col bwp-sidebar-right">
+        
+                  </div><!-- /col --></div><!-- /row -->
+        
+      </div>
+    </div>
+  </section>
+  <!-- end blog post - single page -->
+
+  
+<!-- footer -->
+<footer id="bwp-footer-wrap">
+  <div class="container">
+    <div class="bwp-footer-container clearfix">
+
+              <!-- footer text -->
+        <div class="bwp-footer-text">
+          CodingJam        </div>
+        <!-- end footer text -->
+      
+              <!-- social links -->
+        <ul class="bwp-footer-social-links list-unstyled clearfix">
+          <li><a href="https://twitter.com/codingjam" target="_blank" class="bwp-f-twitter-link"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.facebook.com/codingjamit/" target="_blank" class="bwp-f-facebook-link"><i class="fa fa-facebook"></i></a></li><li><a href="https://github.com/coding-jam" target="_blank" class="bwp-f-github-link"><i class="fa fa-github"></i></a></li>        </ul>
+        <!-- end social links -->
+      
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+
+<!--googleoff: all--><div id="cookie-law-info-bar"><span>Questo sito Web utilizza i cookie per migliorare la tua esperienza. Daremo per scontato che per te sia ok, ma puoi disattivarlo se lo desideri..<a role='button' tabindex='0' data-cli_action="accept" id="cookie_action_close_header"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button" style="display:inline-block; ">Accetto</a>  <a role='button' tabindex='0' id="cookie_action_close_header_reject"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header_reject cli_action_button"  data-cli_action="reject">Annulla</a> <a href='../cookie.html' id="CONSTANT_OPEN_URL" target="_blank"  class="cli-plugin-main-link"  style="display:inline-block;" >Read More</a></span></div><div id="cookie-law-info-again" style="display:none;"><span id="cookie_hdr_showagain">Privacy & Cookies</span></div><div class="cli-modal" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+    <div class="cli-modal-content cli-bar-popup">
+      <button type="button" class="cli-modal-close" id="cliModalClose">
+        <svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+        <span class="wt-cli-sr-only">Close</span>
+      </button>
+      <div class="cli-modal-body">
+        <div class="cli-container-fluid cli-tab-container">
+    <div class="cli-row">
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0">
+            <div class="cli-privacy-overview">
+                                                   
+                <div class="cli-privacy-content">
+                    <div class="cli-privacy-content-text"></div>
+                </div>
+                <a class="cli-privacy-readmore" data-readmore-text="Show more" data-readless-text="Show less"></a>            </div>
+        </div>  
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+              
+                            <div class="cli-tab-section">
+                    <div class="cli-tab-header">
+                        <a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab" >
+                            Necessary 
+                        </a>
+                    
+                    <span class="cli-necessary-caption">Always Enabled</span>                     </div>
+                    <div class="cli-tab-content">
+                        <div class="cli-tab-pane cli-fade" data-id="necessary">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+              
+                       
+        </div>
+    </div> 
+</div> 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<script type="text/javascript">
+  /* <![CDATA[ */
+  cli_cookiebar_settings='{"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":false,"button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":true,"button_1_new_win":false,"button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":false,"button_2_hidebar":false,"button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":true,"button_3_new_win":false,"button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#fff","button_4_as_button":true,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":false,"scroll_close_reload":false,"accept_close_reload":false,"reject_close_reload":false,"showagain_tab":true,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":false,"show_once":"10000","logging_on":false,"as_popup":false,"popup_overlay":true,"bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"}';
+  /* ]]> */
+</script>
+<!--googleon: all--><script type='text/javascript' src='../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore09b1.js?ver=3.0.9b'></script>
+<script type='text/javascript' src='https://codingjam.it/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushBash.js?ver=3.0.9b'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore09b1.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeEclipse09b1.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = true;
+	SyntaxHighlighter.defaults['tab-size'] = 2;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/bootstrap.min7433.js?ver=3.3.7'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.parallaxc358.js?ver=1.1.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/superfish.min97e9.js?ver=1.7.9'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel.min3ba1.js?ver=1.3.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/magnific-popup/jquery.magnific-popup.minf488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"1520cabb4b","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
+</body>
+
+<!-- Mirrored from codingjam.it/installazione-passo-per-passo-di-alfresco-community-4-2-c-su-ubuntu-12-04-lts-minimal-64bit-niente-bundle-per-favore/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:25 GMT -->
+</html>

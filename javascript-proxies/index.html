@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<!-- Mirrored from codingjam.it/javascript-proxies/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/javascript-proxies/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="UTF-8">
@@ -116,7 +116,7 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
 <header id="bwp-header-wrap" class="bwp-header-simple">
 
   <!-- header bg -->
-    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P6261835_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P7101915_2.jpg) 50% 0 no-repeat">
     <div class="bwp-header-bg-overlay"></div>
 
     <!-- header content -->
@@ -306,13 +306,13 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
 
             <!-- content -->
             <div class="bwp-content entry-content clearfix">
-              <p>Qualche tempo fa abbiamo ospitato un ottimo <a href="https://codingjam.it/una-introduzione-es6/">post</a> sulle novità di EcmaScript 6. Ovviamente lo scopo di quel post era introduttivo e non ha esplorato tutte le nuove funzionalità messe a disposizione dal nuovo standard. <strong>Tra queste una delle più interessanti è l&#8217;introduzione dei <em>Proxies</em></strong>. Il <em>Proxy</em> è uno dei design pattern classici definiti dalla <em>Gang of Four</em> nel loro libro <a href="https://it.wikipedia.org/wiki/Design_Patterns" target="_blank">&#8220;Design Patterns&#8221;</a>. <strong>Un Proxy è un oggetto che funziona da &#8220;interfaccia&#8221; verso l&#8217;esterno di un altro oggetto. </strong>Lo schema UML del pattern è il seguente:</p>
+              <p>Qualche tempo fa abbiamo ospitato un ottimo <a href="https://codingjam.it/una-introduzione-es6/">post</a> sulle novità di EcmaScript 6. Ovviamente lo scopo di quel post era introduttivo e non ha esplorato tutte le nuove funzionalità messe a disposizione dal nuovo standard. <strong>Tra queste una delle più interessanti è l&#8217;introduzione dei <em>Proxies</em></strong>. Il <em>Proxy</em> è uno dei design pattern classici definiti dalla <em>Gang of Four</em> nel loro libro <a href="https://it.wikipedia.org/wiki/Design_Patterns" target="_blank" rel="noopener noreferrer">&#8220;Design Patterns&#8221;</a>. <strong>Un Proxy è un oggetto che funziona da &#8220;interfaccia&#8221; verso l&#8217;esterno di un altro oggetto. </strong>Lo schema UML del pattern è il seguente:</p>
 <figure style="width: 439px" class="wp-caption aligncenter"><img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Proxy_pattern_diagram.svg" width="439" height="245" alt="Proxy Pattern" class="size-large" /><figcaption class="wp-caption-text">Proxy Pattern &#8211; Wikimedia Commons</figcaption></figure>
 <p>Gli scopi di un <em>Proxy</em> sono molteplici e dipendono molto dal contesto. Piuttosto che fare una carrellata teorica di possibili scenari, vedremo dei casi pratici di utilizzo.</p>
 <h2>Compatiblità</h2>
-<p>Prima di buttarci a capofitto negli esempi facciamo un attimo il punto sulla compatibilità di questa nuova <em>feature</em>. La situazione attuale (Dicembre 2016) che potete controllare sulla pagina dedicata di <a href="http://caniuse.com/#feat=proxy" target="_blank">caniuse.com</a> è la seguente:</p>
+<p>Prima di buttarci a capofitto negli esempi facciamo un attimo il punto sulla compatibilità di questa nuova <em>feature</em>. La situazione attuale (Dicembre 2016) che potete controllare sulla pagina dedicata di <a href="http://caniuse.com/#feat=proxy" target="_blank" rel="noopener noreferrer">caniuse.com</a> è la seguente:</p>
 <figure style="width: 1600px" class="wp-caption aligncenter"><a href="http://caniuse.com/#feat=proxy"><img src="https://cdn-images-1.medium.com/max/1600/1*WBACO0TDWcAMWVSGkLGjpQ.png" width="1600" height="433" alt="Compatibilità Proxy Object" class="size-large" /></a><figcaption class="wp-caption-text">Compatibilità Proxy Object</figcaption></figure>
-<p>Come vedete non è possibile utilizzarlo in produzione <em>&#8220;as is&#8221;</em>. Si può però utilizzare questo <a href="https://github.com/GoogleChrome/proxy-polyfill" target="_blank">polyfill</a> parziale del team di Google Chrome, oppure questo <a href="https://www.npmjs.com/package/babel-plugin-proxy" target="_blank">plugin</a> per Babel se utilizzate già il noto <em>transpiler</em>.</p>
+<p>Come vedete non è possibile utilizzarlo in produzione <em>&#8220;as is&#8221;</em>. Si può però utilizzare questo <a href="https://github.com/GoogleChrome/proxy-polyfill" target="_blank" rel="noopener noreferrer">polyfill</a> parziale del team di Google Chrome, oppure questo <a href="https://www.npmjs.com/package/babel-plugin-proxy" target="_blank" rel="noopener noreferrer">plugin</a> per Babel se utilizzate già il noto <em>transpiler</em>.</p>
 <h2>Logging</h2>
 <p>Nel nostro primo incontro con i <em>Proxies</em> ci occuperemo di Logging. Il caso d&#8217;uso è il seguente: immaginate di avere un oggetto che non ha nessuna business logic ma semplicemente proprietà. Vogliamo ora loggare tutti gli accessi a questo oggetto, in pratica vogliamo scrivere in console ogni volta che una proprietà viene letta tramite <em>getter</em> o scritta tramite <em>setter</em>.</p>
 <p><pre data-enlighter-language="js" class="EnlighterJSRAW" data-enlighter-highlight="8,13,20">
@@ -454,74 +454,13 @@ person.age = &#039;30&#039; //should throw
 </pre></p>
 <p>In questo caso abbiamo un validazione davvero semplicistica, possiamo solo definire se la proprietà di un oggetto è una <code>String</code> oppure un <code>Number</code>. Ma partendo da questo esempio, con poche righe di codice, si può creare un <em>engine</em> di validazione davvero complesso. Potremmo infatti collegare regole di business ai nostri oggetti oppure <strong>creare un piccolo <em>type system</em> a runtime per JavaScript</strong>.</p>
 <h2>Conclusioni</h2>
-<p>Come avete potuto vedere i JavaScript <em>Proxies</em> sono davvero uno strumento potente. Permettono con poche righe di creare architetture davvero complesse. Soprattutto per la loro struttura sono facilmente integrabili con qualsiasi framework e con una <em>codebase</em> già esistente. Per chi volesse approfondire ho anche scritto un post su <a href="https://medium.com/@TheStrazz86/create-a-fully-reactive-ui-framework-with-javascript-proxies-and-virtual-dom-c6fb28253776#.la7v30hr7">Medium</a> su come <strong>creare tramite i <em>Proxies</em> e il <a href="https://github.com/Matt-Esch/virtual-dom" target="_blank">Virtual Dom</a> un piccolo framework reattivo</strong>. Alla prossima.</p>
+<p>Come avete potuto vedere i JavaScript <em>Proxies</em> sono davvero uno strumento potente. Permettono con poche righe di creare architetture davvero complesse. Soprattutto per la loro struttura sono facilmente integrabili con qualsiasi framework e con una <em>codebase</em> già esistente. Per chi volesse approfondire ho anche scritto un post su <a href="https://medium.com/@TheStrazz86/create-a-fully-reactive-ui-framework-with-javascript-proxies-and-virtual-dom-c6fb28253776#.la7v30hr7">Medium</a> su come <strong>creare tramite i <em>Proxies</em> e il <a href="https://github.com/Matt-Esch/virtual-dom" target="_blank" rel="noopener noreferrer">Virtual Dom</a> un piccolo framework reattivo</strong>. Alla prossima.</p>
             </div>
             <!-- end content -->
 
             
-                <!-- social sharing buttons / counters -->
-                <div class="row">
-                  <div class="col-md-7">
-                    
-    <!-- social sharing buttons -->
-    <div class="bwp-single-share-wrap">
-      <span>Share:</span>
-      <ul class="bwp-single-share list-unstyled">
-        <!-- facebook -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/javascript-proxies/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/javascript-proxies/" target="_blank" class="bwp-share-link bwp-facebook-share">
-            <i class="fa fa-facebook"></i>
-          </a>
-        </li>
-        <!-- end facebook -->
-        <!-- twitter -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/javascript-proxies/&amp;text=javascript-proxies', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/javascript-proxies/&amp;text=javascript-proxies" target="_blank" class="bwp-share-link bwp-twitter-share">
-            <i class="fa fa-twitter"></i>
-          </a>
-        </li>
-        <!-- end twitter -->
-        <!-- google+ -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/javascript-proxies/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/javascript-proxies/" target="_blank" class="bwp-share-link bwp-google-plus-share">
-            <i class="fa fa-google-plus"></i>
-          </a>
-        </li>
-        <!-- end google+ -->
-        <!-- vk -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/javascript-proxies/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/javascript-proxies/" target="_blank" class="bwp-share-link bwp-vk-share">
-            <i class="fa fa-vk"></i>
-          </a>
-        </li>
-        <!-- end vk -->
-        <!-- pinterest -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/javascript-proxies/&amp;media=&amp;description=javascript-proxies', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/javascript-proxies/&amp;media=&amp;description=javascript-proxies" target="_blank" class="bwp-share-link bwp-pinterest-share">
-            <i class="fa fa-pinterest-p"></i>
-          </a>
-        </li>
-        <!-- end pinterest -->
-      </ul>
-    </div>
-    <!-- end social sharing buttons -->
-
-                      </div>
-                  <div class="col-md-5">
-                    
-    <!-- counters -->
-    <ul class="bwp-single-counters list-unstyled clearfix ">
-                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>0</a></li>
-                </ul>
-    <!-- end counters -->
-
-                      </div>
-                </div>
-                <!-- end social sharing buttons / counters -->
-
-                
       <!-- metadata -->
-      <div class="bwp-single-metadata-wrap ">
+      <div class="bwp-single-metadata-wrap bwp-no-single-share-and-counters">
         <ul class="bwp-single-metadata list-unstyled clearfix">
                       <!-- author -->
             <li>
@@ -587,23 +526,6 @@ person.age = &#039;30&#039; //should throw
     <!-- end about the author -->
 
     
-<!-- comments -->
-<div id="comments" class="comments-area">
-
-	
-	
-		<div id="respond" class="comment-respond">
-		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='14175' id='comment_post_ID' />
-<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-</p></form>	</div><!-- #respond -->
-	
-</div>
-<!-- end comments -->
-
                   </div><!-- /bwp-single-content-col-wrap --></div><!-- /col-md-8 --><div class="col-md-4 bwp-sidebar-col bwp-sidebar-right">
         
                   </div><!-- /col --></div><!-- /row -->
@@ -691,12 +613,12 @@ person.age = &#039;30&#039; //should throw
 <script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
-var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"1520cabb4b","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
 </body>
 
-<!-- Mirrored from codingjam.it/javascript-proxies/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/javascript-proxies/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<!-- Mirrored from codingjam.it/web-animations-api/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:38 GMT -->
+<!-- Mirrored from codingjam.it/web-animations-api/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:25 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="UTF-8">
@@ -329,7 +329,7 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
 <h2>Web Animations Api</h2>
 <p>Questo approccio ha però dei limiti, <strong>immaginate ad esempio di voler scatenare una funzione JavaScript al termine dell&#8217;animazione</strong>. Questa cosa non è facilmente fattibile a meno di <em>hack</em> clamorosi come appoggiarsi a <code>setTimeout</code> vari ed eventuali. In nostro soccorso ci sono le <strong>Web Animations Api</strong>, nuova <a href="https://www.w3.org/TR/web-animations/">specifica</a> W3C che <strong>permette di controllare le nostre animazioni CSS con del semplice codice JavaScript</strong>. Come vedremo grazie a questa Api potremmo controllare il flusso di un&#8217;animazione e, soprattutto, combinarle in gruppi o sequenze. <strong>Il tutto senza perdere l&#8217;espressività <em>semantica</em> data dal CSS3</strong>.</p>
 <h2>Can I use it?</h2>
-<p>Sbirciando sulla documentazione di <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API" target="_blank">MDN</a> vediamo che questa Api è sperimentale, perciò non è supportata ancora da tutti i browser. Interrogando il sito <a href="http://caniuse.com/#search=web%20animation" target="_blank">caniuse.com</a> possiamo vedere che <strong>è implementata esclusivamente da Chrome, Opera e Firefox</strong>. Per fortuna è disponibile un polyfill di cui potete recuperare il codice in questo repository <a href="https://github.com/web-animations/web-animations-js" target="_blank">GitHub</a>.</p>
+<p>Sbirciando sulla documentazione di <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API" target="_blank" rel="noopener noreferrer">MDN</a> vediamo che questa Api è sperimentale, perciò non è supportata ancora da tutti i browser. Interrogando il sito <a href="http://caniuse.com/#search=web%20animation" target="_blank" rel="noopener noreferrer">caniuse.com</a> possiamo vedere che <strong>è implementata esclusivamente da Chrome, Opera e Firefox</strong>. Per fortuna è disponibile un polyfill di cui potete recuperare il codice in questo repository <a href="https://github.com/web-animations/web-animations-js" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
 <figure id="attachment_14043" aria-describedby="caption-attachment-14043" style="width: 740px" class="wp-caption aligncenter"><a href="https://codingjam.it/wp-content/uploads/2016/09/Schermata_2016-08-31_alle_16.12.22.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2016/09/Schermata_2016-08-31_alle_16.12.22-1024x278.png" alt="Compatibilità Web Animations API" width="740" height="201" class="size-large wp-image-14043" srcset="https://codingjam.it/wp-content/uploads/2016/09/Schermata_2016-08-31_alle_16.12.22-1024x278.png 1024w, https://codingjam.it/wp-content/uploads/2016/09/Schermata_2016-08-31_alle_16.12.22-300x81.png 300w, https://codingjam.it/wp-content/uploads/2016/09/Schermata_2016-08-31_alle_16.12.22-768x208.png 768w, https://codingjam.it/wp-content/uploads/2016/09/Schermata_2016-08-31_alle_16.12.22.png 1600w, https://codingjam.it/wp-content/uploads/2016/09/Schermata_2016-08-31_alle_16.12.22-300x81@2x.png 600w, https://codingjam.it/wp-content/uploads/2016/09/Schermata_2016-08-31_alle_16.12.22-768x208@2x.png 1536w" sizes="(max-width: 740px) 100vw, 740px" /></a><figcaption id="caption-attachment-14043" class="wp-caption-text">Compatibilità Web Animations API</figcaption></figure>
 <h2>Let&#8217;s code</h2>
 <p>Partiamo con un primo esempio: una semplice animazione che muove un&#8217;immagine da sinistra verso destra tramite la proprietà <code>left</code>. Il markup della nostra pagina è il seguente:</p>
@@ -410,7 +410,7 @@ range.addEventListener(&quot;input&quot;, function() {
     }
 }, false);
 </pre>
-<p>Per creare un&#8217;animazione dobbiamo innanzitutto creare un oggetto <code>KeyframeEffect</code> a cui passiamo l&#8217;elemento del DOM a cui vogliamo applicare l&#8217;animazione i <em>keyframes</em> ed il <em>timing</em>. Usiamo poi questo oggetto per creare un <code>Animation</code> e collegarla alla <em><a href="https://developer.mozilla.org/it/docs/Web/API/Document/timeline" target="_blank">timeline</a></em> della pagina. <strong>Notate che per definire l&#8217;animazione abbiamo utilizzato per le stesse proprietà che avremmo utilizzato per una normale animazione CSS</strong>. Una volta ottenuta l&#8217;animazione possiamo:</p>
+<p>Per creare un&#8217;animazione dobbiamo innanzitutto creare un oggetto <code>KeyframeEffect</code> a cui passiamo l&#8217;elemento del DOM a cui vogliamo applicare l&#8217;animazione i <em>keyframes</em> ed il <em>timing</em>. Usiamo poi questo oggetto per creare un <code>Animation</code> e collegarla alla <em><a href="https://developer.mozilla.org/it/docs/Web/API/Document/timeline" target="_blank" rel="noopener noreferrer">timeline</a></em> della pagina. <strong>Notate che per definire l&#8217;animazione abbiamo utilizzato per le stesse proprietà che avremmo utilizzato per una normale animazione CSS</strong>. Una volta ottenuta l&#8217;animazione possiamo:</p>
 <ul>
 <li>
 Controllare l&#8217;animazione tramite i metodi <code>play</code>, <code>pause</code> e <code>reverse</code>
@@ -425,7 +425,7 @@ Modificare la velocità (ed il verso) dell&#8217;animazione tramite la propriet�
 Posizionare l&#8217;animazione in un momento preciso nel tempo tramite la proprietà <code>currentTime</code>
     </li>
 </ul>
-<p>Potete provare questa animazione a questa pagina <a href="https://e-xtrategy.github.io/web-animations-api-examples/pages/basic.html" target="_blank">demo</a>.</p>
+<p>Potete provare questa animazione a questa pagina <a href="https://e-xtrategy.github.io/web-animations-api-examples/pages/basic.html" target="_blank" rel="noopener noreferrer">demo</a>.</p>
 <figure id="attachment_14047" aria-describedby="caption-attachment-14047" style="width: 912px" class="wp-caption aligncenter"><a href="https://codingjam.it/wp-content/uploads/2016/09/Schermata-2016-09-22-alle-16.48.38.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2016/09/Schermata-2016-09-22-alle-16.48.38.png" alt="Web Animations Api" width="912" height="372" class="size-full wp-image-14047" srcset="https://codingjam.it/wp-content/uploads/2016/09/Schermata-2016-09-22-alle-16.48.38.png 912w, https://codingjam.it/wp-content/uploads/2016/09/Schermata-2016-09-22-alle-16.48.38-300x122.png 300w, https://codingjam.it/wp-content/uploads/2016/09/Schermata-2016-09-22-alle-16.48.38-768x313.png 768w, https://codingjam.it/wp-content/uploads/2016/09/Schermata-2016-09-22-alle-16.48.38-300x122@2x.png 600w" sizes="(max-width: 912px) 100vw, 912px" /></a><figcaption id="caption-attachment-14047" class="wp-caption-text">Web Animations Api</figcaption></figure>
 <h2>Gruppi e Sequenze</h2>
 <p>Come accennato all&#8217;inizio del post tramite le Web Animations Api possiamo anche animare gruppi di oggetti o creare una sequenza di animazioni. Vediamo subito il prossimo esempio sulla creazione dei gruppi. Per i prossimi esempi il markup sarà identico, avremo semplicemente più <code>div</code> da muovere.</p>
@@ -474,7 +474,7 @@ var animation = new Animation(group,document.timeline);
 
 //Controllo animazione
 </pre>
-<p>In questo caso sfruttiamo l&#8217;oggetto <code>GroupEffect</code> per wrappare un array di <code>KeyframeEffect</code>. Il risultato sarà una serie di oggetti che si muovono contemporaneamente. Potete giocare con queste animazioni in questa <a href="https://e-xtrategy.github.io/web-animations-api-examples/pages/group.html" target="_blank">demo</a>. Vediamo come, in maniera del tutto similare, possiamo invece creare una sequenza.</p>
+<p>In questo caso sfruttiamo l&#8217;oggetto <code>GroupEffect</code> per wrappare un array di <code>KeyframeEffect</code>. Il risultato sarà una serie di oggetti che si muovono contemporaneamente. Potete giocare con queste animazioni in questa <a href="https://e-xtrategy.github.io/web-animations-api-examples/pages/group.html" target="_blank" rel="noopener noreferrer">demo</a>. Vediamo come, in maniera del tutto similare, possiamo invece creare una sequenza.</p>
 <pre class="brush: jscript; highlight: [23]; title: ; notranslate" title="">
 var elements = document.querySelectorAll('.logo');
 var effects = [];
@@ -504,78 +504,17 @@ var animation = new Animation(sequence,document.timeline);
 
 //Controllo animazione
 </pre>
-<p>Il codice è praticamente identico se non fosse per l&#8217;utilizzo dell&#8217;oggetto <code>SequenceEffect</code>. Come per i precedenti esempi avete a disposizione una pagina <a href="https://e-xtrategy.github.io/web-animations-api-examples/pages/sequence.html" target="_blank">demo</a>.</p>
-<p><strong>Le due tecniche si posso ovviamente mescolare tra loro per ottenere delle animazioni davvero complesse</strong> come quella visibile in questo ultimo <a href="https://e-xtrategy.github.io/web-animations-api-examples/pages/interaction.html" target="_blank">esempio</a>. Provate a cliccare su &#8220;Full Screen&#8221; e notate come gli elementi scompaiono dallo schermo in sequenza.</p>
+<p>Il codice è praticamente identico se non fosse per l&#8217;utilizzo dell&#8217;oggetto <code>SequenceEffect</code>. Come per i precedenti esempi avete a disposizione una pagina <a href="https://e-xtrategy.github.io/web-animations-api-examples/pages/sequence.html" target="_blank" rel="noopener noreferrer">demo</a>.</p>
+<p><strong>Le due tecniche si posso ovviamente mescolare tra loro per ottenere delle animazioni davvero complesse</strong> come quella visibile in questo ultimo <a href="https://e-xtrategy.github.io/web-animations-api-examples/pages/interaction.html" target="_blank" rel="noopener noreferrer">esempio</a>. Provate a cliccare su &#8220;Full Screen&#8221; e notate come gli elementi scompaiono dallo schermo in sequenza.</p>
 <figure id="attachment_14052" aria-describedby="caption-attachment-14052" style="width: 740px" class="wp-caption aligncenter"><a href="https://codingjam.it/wp-content/uploads/2016/09/Schermata-2016-09-22-alle-17.10.27.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2016/09/Schermata-2016-09-22-alle-17.10.27-1024x562.png" alt="Gestione di layout complessi con Web Animations Api" width="740" height="406" class="size-large wp-image-14052" srcset="https://codingjam.it/wp-content/uploads/2016/09/Schermata-2016-09-22-alle-17.10.27-1024x562.png 1024w, https://codingjam.it/wp-content/uploads/2016/09/Schermata-2016-09-22-alle-17.10.27-300x165.png 300w, https://codingjam.it/wp-content/uploads/2016/09/Schermata-2016-09-22-alle-17.10.27-768x421.png 768w, https://codingjam.it/wp-content/uploads/2016/09/Schermata-2016-09-22-alle-17.10.27-1024x562@2x.png 2048w, https://codingjam.it/wp-content/uploads/2016/09/Schermata-2016-09-22-alle-17.10.27-300x165@2x.png 600w, https://codingjam.it/wp-content/uploads/2016/09/Schermata-2016-09-22-alle-17.10.27-768x421@2x.png 1536w" sizes="(max-width: 740px) 100vw, 740px" /></a><figcaption id="caption-attachment-14052" class="wp-caption-text">Gestione di layout complessi con Web Animations Api</figcaption></figure>
 <h2>Conclusioni</h2>
-<p>Qualcuno di voi potrebbe dire che lo stesso risultato lo si può ottenere con <a href="http://api.jquery.com/animate/" target="_blank">jQuery.animate</a>, ma in realtà la differenza è <em>sostanziale</em>. <strong>Nei browser dove questa Api è supportata nativamente ha performance quasi del tutto identiche a quelle applicate tramite foglio di stile</strong>, per via del fatto che il browser sfrutta lo stesso <em>engine</em> delle animazioni CSS. Anche negli altri casi però le performance sono molto alte, come potete verificare voi stessi grazie a questo <a href="https://mozdevs.github.io/Animation-examples/" target="_blank">sito</a> creato da Mozilla. Per chi è curioso il codice di tutti gli esempi è disponibile in questo repository <a href="https://github.com/e-xtrategy/web-animations-api-examples" target="_blank">GitHub</a>. Alla prossima.</p>
+<p>Qualcuno di voi potrebbe dire che lo stesso risultato lo si può ottenere con <a href="http://api.jquery.com/animate/" target="_blank" rel="noopener noreferrer">jQuery.animate</a>, ma in realtà la differenza è <em>sostanziale</em>. <strong>Nei browser dove questa Api è supportata nativamente ha performance quasi del tutto identiche a quelle applicate tramite foglio di stile</strong>, per via del fatto che il browser sfrutta lo stesso <em>engine</em> delle animazioni CSS. Anche negli altri casi però le performance sono molto alte, come potete verificare voi stessi grazie a questo <a href="https://mozdevs.github.io/Animation-examples/" target="_blank" rel="noopener noreferrer">sito</a> creato da Mozilla. Per chi è curioso il codice di tutti gli esempi è disponibile in questo repository <a href="https://github.com/e-xtrategy/web-animations-api-examples" target="_blank" rel="noopener noreferrer">GitHub</a>. Alla prossima.</p>
             </div>
             <!-- end content -->
 
             
-                <!-- social sharing buttons / counters -->
-                <div class="row">
-                  <div class="col-md-7">
-                    
-    <!-- social sharing buttons -->
-    <div class="bwp-single-share-wrap">
-      <span>Share:</span>
-      <ul class="bwp-single-share list-unstyled">
-        <!-- facebook -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/web-animations-api/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/web-animations-api/" target="_blank" class="bwp-share-link bwp-facebook-share">
-            <i class="fa fa-facebook"></i>
-          </a>
-        </li>
-        <!-- end facebook -->
-        <!-- twitter -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/web-animations-api/&amp;text=web-animations-api', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/web-animations-api/&amp;text=web-animations-api" target="_blank" class="bwp-share-link bwp-twitter-share">
-            <i class="fa fa-twitter"></i>
-          </a>
-        </li>
-        <!-- end twitter -->
-        <!-- google+ -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/web-animations-api/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/web-animations-api/" target="_blank" class="bwp-share-link bwp-google-plus-share">
-            <i class="fa fa-google-plus"></i>
-          </a>
-        </li>
-        <!-- end google+ -->
-        <!-- vk -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/web-animations-api/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/web-animations-api/" target="_blank" class="bwp-share-link bwp-vk-share">
-            <i class="fa fa-vk"></i>
-          </a>
-        </li>
-        <!-- end vk -->
-        <!-- pinterest -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/web-animations-api/&amp;media=&amp;description=web-animations-api', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/web-animations-api/&amp;media=&amp;description=web-animations-api" target="_blank" class="bwp-share-link bwp-pinterest-share">
-            <i class="fa fa-pinterest-p"></i>
-          </a>
-        </li>
-        <!-- end pinterest -->
-      </ul>
-    </div>
-    <!-- end social sharing buttons -->
-
-                      </div>
-                  <div class="col-md-5">
-                    
-    <!-- counters -->
-    <ul class="bwp-single-counters list-unstyled clearfix ">
-                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>0</a></li>
-                </ul>
-    <!-- end counters -->
-
-                      </div>
-                </div>
-                <!-- end social sharing buttons / counters -->
-
-                
       <!-- metadata -->
-      <div class="bwp-single-metadata-wrap ">
+      <div class="bwp-single-metadata-wrap bwp-no-single-share-and-counters">
         <ul class="bwp-single-metadata list-unstyled clearfix">
                       <!-- author -->
             <li>
@@ -646,23 +585,6 @@ var animation = new Animation(sequence,document.timeline);
     <!-- end about the author -->
 
     
-<!-- comments -->
-<div id="comments" class="comments-area">
-
-	
-	
-		<div id="respond" class="comment-respond">
-		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='14033' id='comment_post_ID' />
-<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-</p></form>	</div><!-- #respond -->
-	
-</div>
-<!-- end comments -->
-
     <!-- related posts (by tags) -->
     <div class="bwp-related-posts-container bwp-show-2-posts">
       <div class="bwp-o-hidden">
@@ -687,14 +609,14 @@ var animation = new Animation(sequence,document.timeline);
                   
                                       <!-- title -->
                     <h3 class="bwp-post-title entry-title">
-                      <a href="https://codingjam.it/javascript-lato-server-e-la-scelta-giusta/">Javascript lato server? E&#8217; la scelta giusta?</a>
+                      <a href="https://codingjam.it/vue-js/">Vue.js</a>
                     </h3>
                     <!-- end title -->
                     
                   
       <!-- excerpt -->
       <div class="bwp-post-excerpt entry-content">
-        <p>Fin dalla sua nascita Javascript ha avuto una vita travagliata, è stato creato per aggiungere dinamicità a pagine web ma negli anni è diventato molto di più. Ha avuto anche momenti bui (quando Google ha creato GWT sembrava che stesse quasi per scomparire) ma è sempre tornato alla ribalta. Adesso Javascript sembra essere il linguaggio cool del momento e per questo lo troviamo ovunque, dal database alla logica di business lato server al client dentro la pagina web. Ma è [&hellip;]</p>
+        <p>Vue.js In questo articolo parleremo di Vue.js (si pronuncia come la parola view), una libreria per la realizzazione applicazioni web di front end, che dalla versione 2 (uscita circa un anno fa ma che non aveva stravolto la precedente) sta sempre più acquisendo popolarità, come segnalano anche le ultime statistiche da Github. Vue.js non porta il &#8220;peso&#8221; di una grossa azienda alle sue spalle come per Angular (Google) e React (Facebook) ma è idea e lavoro (si è formato e [&hellip;]</p>
       </div>
       <!-- end excerpt -->
 
@@ -702,12 +624,12 @@ var animation = new Animation(sequence,document.timeline);
     <!-- date + read more link -->
     <div class="bwp-post-details-wrap clearfix">
       <!-- date -->
-            <a href="https://codingjam.it/2013/09/12/" class="bwp-post-date">
-        <span class="date updated">12/09/2013</span>
+            <a href="https://codingjam.it/2017/10/25/" class="bwp-post-date">
+        <span class="date updated">25/10/2017</span>
       </a>
       <!-- end date -->
       <!-- read more link -->
-      <a href="https://codingjam.it/javascript-lato-server-e-la-scelta-giusta/" class="bwp-read-more">Read more</a>
+      <a href="https://codingjam.it/vue-js/" class="bwp-read-more">Read more</a>
       <!-- end read more link -->
     </div>
     <!-- end date + read more link -->
@@ -732,14 +654,14 @@ var animation = new Animation(sequence,document.timeline);
                   
                                       <!-- title -->
                     <h3 class="bwp-post-title entry-title">
-                      <a href="https://codingjam.it/indicatori-di-caricamento-con-richfaces-4-e-jquery-blockui/">Indicatori di caricamento con RichFaces 4 e jQuery BlockUI</a>
+                      <a href="https://codingjam.it/tutorial-javascript-parte-i/">Tutorial JavaScript &#8211; Parte I</a>
                     </h3>
                     <!-- end title -->
                     
                   
       <!-- excerpt -->
       <div class="bwp-post-excerpt entry-content">
-        <p style="text-align:justify">La novità più importante di RichFaces 4 è stata sicuramente il passaggio da prototype a jQuery, questo cambiamento ha portato una maggiore leggerezza di tutto il framework e molti altri vantaggi. Per sviluppatori si aprono molti scenari interessanti in quanto i numerosi <a href="http://plugins.jquery.com/" target="_blank">plugin di jQuery</a> già sviluppati possono essere integrati facilmente in una web app. In questo post vediamo come sfruttare <a href="http://jquery.malsup.com/block/" target="_blank">jQuery BlockUI</a> per creare facilmente un indicatore di caricamento associato a una chiamata ajax.</p>
+        <p align="justify">JavaScript è un linguaggio di programmazione che a prima vista sembra facile da imparare, soprattutto per chi conosce Java o un altro linguaggio con la stessa sintassi. In realtà non è così semplice come può sembrare e sicuramente non è un Java in miniatura che gira all&#8217;interno di una pagina web! In questo tutorial vedremo come entrare nel mondo JavaScript per poterlo usare in modo strutturato e per avere una base per utilizzare i vari framework tipo jQuery, extJs/Sencha Touch, Dojo, Prototype e script.aculo.us.</p>
       </div>
       <!-- end excerpt -->
 
@@ -747,12 +669,12 @@ var animation = new Animation(sequence,document.timeline);
     <!-- date + read more link -->
     <div class="bwp-post-details-wrap clearfix">
       <!-- date -->
-            <a href="https://codingjam.it/2012/02/08/" class="bwp-post-date">
-        <span class="date updated">08/02/2012</span>
+            <a href="https://codingjam.it/2011/06/07/" class="bwp-post-date">
+        <span class="date updated">07/06/2011</span>
       </a>
       <!-- end date -->
       <!-- read more link -->
-      <a href="https://codingjam.it/indicatori-di-caricamento-con-richfaces-4-e-jquery-blockui/" class="bwp-read-more">Read more</a>
+      <a href="https://codingjam.it/tutorial-javascript-parte-i/" class="bwp-read-more">Read more</a>
       <!-- end read more link -->
     </div>
     <!-- end date + read more link -->
@@ -907,12 +829,12 @@ var animation = new Animation(sequence,document.timeline);
 <script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
-var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"1520cabb4b","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
 </body>
 
-<!-- Mirrored from codingjam.it/web-animations-api/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:38 GMT -->
+<!-- Mirrored from codingjam.it/web-animations-api/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:25 GMT -->
 </html>

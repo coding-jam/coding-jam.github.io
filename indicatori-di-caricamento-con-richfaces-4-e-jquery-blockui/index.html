@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from codingjam.it/indicatori-di-caricamento-con-richfaces-4-e-jquery-blockui/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="pingback" href="../xmlrpc.php">
+
+  <title>Indicatori di caricamento con RichFaces 4 e jQuery BlockUI &#8211; CodingJam</title>
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Feed" href="../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Comments Feed" href="../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Indicatori di caricamento con RichFaces 4 e jQuery BlockUI Comments Feed" href="https://codingjam.it/indicatori-di-caricamento-con-richfaces-4-e-jquery-blockui/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='../wp-content/plugins/gutenberg/build/block-library/stylea4fb.css?ver=1591004795' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-gdpr-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr3cf4.css?ver=1.8.8' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='melissa-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lato%3A400%2C400i%2C700%2C700i%7CNoto+Serif%3A400%2C400i%2C700%2C700i&amp;subset=latin&amp;ver=1.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='../wp-content/themes/melissa/css/bootstrap.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-theme-css'  href='../wp-content/themes/melissa/css/bootstrap-theme.min7433.css?ver=3.3.7' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-ie10-viewport-bug-workaround-css'  href='../wp-content/themes/melissa/css/ie10-viewport-bug-workaround8a54.css?ver=1.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='../wp-content/themes/melissa/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-carousel-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-theme-css'  href='../wp-content/themes/melissa/assets/owl-carousel/owl.theme3ba1.css?ver=1.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='magnific-popup-css'  href='../wp-content/themes/melissa/assets/magnific-popup/magnific-popupf488.css?ver=1.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='melissa-style-css'  href='../wp-content/themes/melissa/style3ec8.css?ver=1.1.6' type='text/css' media='all' />
+<style id='melissa-style-inline-css' type='text/css'>
+
+    .bwp-post-media img,
+    .bwp-post-carousel-item img,
+    .widget_bwp_posts_slider_item img {
+      width: 100%;
+      margin: 0;
+    }
+    .bwp-post-wrap:hover {
+      margin-top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+    #bwp-masonry-container.no-masonry .bwp-post-wrap:hover {
+      top: 0;
+    }
+    .bwp-no-results-container:hover,
+    .bwp-single-article:hover,
+    .bwp-featured-media-container:hover,
+    .post-navigation .nav-links a:hover,
+    .bwp-about-author-container:hover,
+    .comment-respond:hover,
+    .comment-body:hover,
+    #comments .no-comments:hover,
+    .comment-navigation .nav-links a:hover,
+    .bwp-related-post-wrap:hover,
+    .bwp-page-404-container:hover,
+    .bwp-sidebar-wrap:hover {
+      top: 0;
+      -webkit-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      -moz-box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+      box-shadow: 0 4px 0 -2px rgba(46,51,64,0.1);
+    }
+  #bwp-header-wrap {
+    background-color: #2e3340;
+  }
+  .bwp-header-bg-overlay,
+  .bwp-header-rs-bg-overlay {
+    background-color: rgba(46, 51, 64, 0.9);
+  }
+    .bwp-content a,
+    .comment-content a,
+    .bwp-post-quote a {
+      color: #2052bf;
+    }
+</style>
+<link rel='stylesheet' id='enlighter-local-css'  href='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.css?ver=3.9.0' type='text/css' media='all' />
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery4a5f.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[]};
+var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/plugins/cookie-law-info/public/js/cookie-law-info-public3cf4.js?ver=1.8.8'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://codingjam.it/wp-content/themes/melissa/js/respond.min.js?ver=1.4.2'></script>
+<![endif]-->
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/mootools-core-yc9086.js?ver=3.9.0'></script>
+<script type='text/javascript' src='../wp-content/plugins/enlighter/resources/EnlighterJS.min9086.js?ver=3.9.0'></script>
+<link rel='https://api.w.org/' href='../wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+<link rel='prev' title='4 pezzi facili sulle WeakHashMap' href='https://codingjam.it/4-pezzi-facili-sulle-weakhashmap/' />
+<link rel='next' title='Le Google Guava Libraries: mini tutorial da 10 minuti' href='https://codingjam.it/le-google-guava-libraries-mini-tutorial-da-10-minuti/' />
+<meta name="generator" content="WordPress 5.4.1" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://codingjam.it/?p=3947' />
+<link rel="alternate" type="application/json+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Findicatori-di-caricamento-con-richfaces-4-e-jquery-blockui%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://codingjam.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcodingjam.it%2Findicatori-di-caricamento-con-richfaces-4-e-jquery-blockui%2F&amp;format=xml" />
+<link rel="amphtml" href="https://codingjam.it/indicatori-di-caricamento-con-richfaces-4-e-jquery-blockui/amp/"><script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"droide","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":false,"windowButton":false,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-32x32.png" sizes="32x32" />
+<link rel="icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://codingjam.it/wp-content/uploads/2018/09/cropped-codingjam-jar-transp-white-big-512-270x270.png" />
+</head>
+
+<body class="post-template-default single single-post postid-3947 single-format-standard wp-custom-logo">
+
+
+<!-- header -->
+<header id="bwp-header-wrap" class="bwp-header-simple">
+
+  <!-- header bg -->
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P6261835_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg-overlay"></div>
+
+    <!-- header content -->
+    <div class="container">
+      <div class="bwp-header-content-container">
+
+        <!-- row 1 - logo + navigation -->
+        <div class="bwp-main-navigation-container clearfix">
+
+          
+        <!-- image logo -->
+        <div class="bwp-logo-container">
+          <a href="../index.html" class="custom-logo-link" rel="home"><img width="207" height="70" src="../wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png" class="custom-logo" alt="CodingJam" srcset="https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco.png 207w, https://codingjam.it/wp-content/uploads/2018/09/cropped-logo-cnj-bianco-150x51.png 150w" sizes="(max-width: 207px) 100vw, 207px" /></a>        </div>
+        <!-- end image logo -->
+
+        
+      <!-- search -->
+      <div class="bwp-header-search-container hidden-sm hidden-xs">
+        <a href="#" id="bwp-header-search-icon">
+          <i class="fa fa-search"></i>
+        </a>
+        <div class="bwp-dropdown-search-container bwp-search-hidden">
+          
+<!-- search form -->
+<form id="searchform" role="search" method="get" action="https://codingjam.it/">
+  <div class="input-group">
+    <input type="text" name="s" id="s" class="bwp-search-field form-control" placeholder="Enter your search query...">
+    <span class="input-group-btn">
+      <button type="submit" class="btn bwp-search-submit">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+</form>
+<!-- end search form -->
+        </div>
+      </div>
+      <!-- end search -->
+
+      
+      <!-- menu -->
+      <div class="bwp-menu-container hidden-sm hidden-xs">
+        <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-2" class="sf-menu"><li id="menu-item-12007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li id="menu-item-12022" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li id="menu-item-12009" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li id="menu-item-12020" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li id="menu-item-12017" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li id="menu-item-12006" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li id="menu-item-12005" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li id="menu-item-12008" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li id="menu-item-12014" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li id="menu-item-12012" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li id="menu-item-12010" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li id="menu-item-12021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li id="menu-item-12016" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li id="menu-item-12015" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li id="menu-item-12019" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li id="menu-item-12018" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>      </div>
+      <!-- end menu -->
+
+      
+      <!-- mobile menu -->
+      <div class="bwp-mobile-menu-container hidden-md hidden-lg">
+        <!-- mobile menu icon -->
+        <a href="#" id="bwp-mobile-menu-icon">
+          <i class="fa fa-bars"></i>
+        </a>
+        <!-- end mobile menu icon -->
+        <!-- dropdown mobile menu -->
+        <div class="bwp-dropdown-mobile-menu bwp-mobile-menu-hidden">
+          <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-3" class="bwp-mobile-menu list-unstyled"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>        </div>
+        <!-- end dropdown mobile menu -->
+      </div>
+      <!-- end mobile menu -->
+
+      
+        </div>
+        <!-- end row 1 - logo + navigation -->
+
+        
+          <!-- row 2 - header custom text -->
+          <div class="bwp-header-custom-text-container">
+            
+        <!-- custom text - single page -->
+        <h1 class="bwp-header-custom-title entry-title">
+          Indicatori di caricamento con RichFaces 4 e jQuery BlockUI        </h1>
+                <div class="bwp-header-transparent-line clearfix">
+          <span class="bwp-header-t-line-1"></span>
+          <span class="bwp-header-t-line-2"></span>
+        </div>
+        <!-- end custom text -->
+
+                  </div>
+          <!-- end row 2 - header custom text -->
+
+          
+      </div>
+    </div>
+    <!-- end header content -->
+  </div>
+  <!-- end header bg -->
+
+  
+        <!-- sticky navigation -->
+        <div class="bwp-sticky-navigation-wrap bwp-transition-4 clearfix">
+          <!-- sticky navigation icon -->
+          <a href="#" id="bwp-sticky-navigation-icon">
+            <i class="fa fa-bars"></i>
+          </a>
+          <!-- end sticky navigation icon -->
+          <!-- sticky navigation container -->
+          <div class="bwp-sticky-navigation-container bwp-sticky-navigation-hidden">
+            <nav class="menu-menu-navigation-2-container"><ul id="menu-menu-navigation-4" class="sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12007"><a href="#">Programmazione</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12022"><a href="../category/java/index.html">Java</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12009"><a href="../category/java/java-8/index.html">Java 8</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12020"><a href="../category/rxjava/index.html">RxJava</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12017"><a href="../category/scala/index.html">Scala</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12006"><a href="../category/agile/index.html">Agile</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12005"><a href="../category/android/index.html">Android</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12008"><a href="#">Web</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12014"><a href="../category/angularjs/index.html">AngularJS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12012"><a href="../category/ejb/index.html">EJB</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12010"><a href="../category/javascript/index.html">Javascript</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12021"><a href="../category/application-server/jboss/index.html">JBoss</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-12016"><a href="../category/jsf/index.html">JSF</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12015"><a href="../category/jquery-2/index.html">jQuery</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12019"><a href="../category/spring-2/index.html">Spring</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12018"><a href="../category/application-server/websphere/index.html">Websphere</a></li>
+</ul>
+</li>
+</ul></nav>          </div>
+          <!-- end sticky navigation container -->
+        </div>
+        <!-- end sticky navigation -->
+
+        
+</header>
+<!-- end header -->
+
+  <!-- blog post - single page -->
+  <section id="bwp-single-page-wrap">
+    <div class="container">
+      <div class="bwp-single-page-container" >
+
+        
+                  <div class="row"><div class="col-md-8 bwp-single-content-col bwp-sidebar-right"><div class="bwp-single-content-col-wrap" role="main">
+        
+        <!-- article -->
+        <article id="post-3947" class="bwp-single-article bwp-transition-3">
+
+          
+          <!-- content container -->
+          <div class="bwp-single-content">
+
+            <!-- content -->
+            <div class="bwp-content entry-content clearfix">
+              <p style="text-align:justify">La novità più importante di RichFaces 4 è stata sicuramente il passaggio da <a href="http://www.prototypejs.org/" target="_blank" rel="noopener noreferrer">Prototype</a> a <a href="http://jquery.com/" target="_blank" rel="noopener noreferrer">jQuery</a>: questo cambiamento ha portato una maggiore leggerezza di tutto il framework e molti altri vantaggi. Per gli sviluppatori si aprono molti scenari interessanti in quanto i numerosi <a href="http://plugins.jquery.com/" target="_blank" rel="noopener noreferrer">plugin di jQuery</a> presenti in rete possono essere integrati facilmente in una web app. In questo post vediamo come sfruttare <a href="http://jquery.malsup.com/block/" target="_blank" rel="noopener noreferrer">jQuery BlockUI</a> per creare facilmente un indicatore di caricamento associato a una chiamata ajax.</p>
+<h3>a4j:status</h3>
+<p style="text-align:justify">Il tag <code>status</code> della tag library <code>a4j</code> permette di eseguire un codice javascript o mostrare un elemento html in corrispondenza di una chiamata ajax. Un esempio classico (presente anche nello showcase di <a href="http://showcase.richfaces.org/richfaces/component-sample.jsf?demo=status&amp;skin=blueSky" title="RichFaces showcase" target="_blank" rel="noopener noreferrer">Richfaces 4.1</a>) è una gif animata che compare cliccando su un button o durante una validazione di un campo:</p>
+<pre class="brush: xml; title: ; notranslate" title="">
+&lt;a4j:status&gt;
+    &lt;f:facet name=&quot;start&quot;&gt;
+        &lt;h:graphicImage value=&quot;/images/ai.gif&quot; alt=&quot;ai&quot;/&gt;
+    &lt;/f:facet&gt;
+&lt;/a4j:status&gt;
+</pre>
+<p style="text-align:justify">Aggiungendo un tag come questo all&#8217;interno di una form nel caso di una chiamata ajax sarà automaticamente mostrato il contenuto del <code>facet start</code>, alla fine della chiamata sarà automaticamente nascosto.</p>
+<h3>jQuery BlockUI</h3>
+<p style="text-align:justify">L&#8217;esempio visto è molto semplice, ma come possiamo fare se vogliamo mettere una &#8220;schermatura&#8221; sulla pagina in modo da evitare altri input? Possiamo utilizzare <a href="http://jquery.malsup.com/block/" target="_blank" rel="noopener noreferrer">jQuery BlockUI</a>, un ottimo <strong>plugin di jQuery</strong> che ci permette di &#8220;bloccare&#8221; la nostra pagina. Vediamo come integrare questa libreria dentro una pagina RichFaces, partendo da una pagina molto semplice con una form:</p>
+<pre class="brush: xml; title: ; notranslate" title="">
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;
+ xmlns:h=&quot;http://java.sun.com/jsf/html&quot;
+ xmlns:f=&quot;http://java.sun.com/jsf/core&quot;
+ xmlns:ui=&quot;http://java.sun.com/jsf/facelets&quot;
+ xmlns:a4j=&quot;http://richfaces.org/a4j&quot;
+ xmlns:rich=&quot;http://richfaces.org/rich&quot;&gt;
+&lt;f:view&gt;
+&lt;h:head&gt;&lt;title&gt;a4j status&lt;/title&gt;&lt;/h:head&gt;
+&lt;h:body&gt;
+&lt;rich:panel header=&quot;a4j status&quot;&gt;
+    &lt;h:form&gt;
+        &lt;h:panelGrid columns=&quot;2&quot;&gt;
+            &lt;h:outputText value=&quot;UserName&quot; /&gt;
+            &lt;h:inputText /&gt;
+            &lt;h:outputText value=&quot;Password&quot; /&gt;
+            &lt;h:inputText /&gt;
+        &lt;/h:panelGrid&gt;
+        &lt;a4j:commandButton value=&quot;Check password&quot;
+            action=&quot;#{loginBean.check()}&quot; /&gt;
+        &lt;a4j:commandButton value=&quot;Login&quot; 
+            action=&quot;#{loginBean.login()}&quot; /&gt;
+    &lt;/h:form&gt;
+&lt;/rich:panel&gt;
+&lt;/h:body&gt;
+&lt;/f:view&gt;
+&lt;/html&gt;
+</pre>
+<p style="text-align:justify">Il risultato finale è questo:</p>
+<p><a href="http://www.cosenonjaviste.it/wp-content/uploads/2012/01/a4jstatus_form.png"><img src="http://www.cosenonjaviste.it/wp-content/uploads/2012/01/a4jstatus_form.png" alt="" title="a4jstatus_form" width="494" height="516" class="aligncenter size-full wp-image-4057" srcset="https://codingjam.it/wp-content/uploads/2012/01/a4jstatus_form.png 494w, https://codingjam.it/wp-content/uploads/2012/01/a4jstatus_form-287x300.png 287w" sizes="(max-width: 494px) 100vw, 494px" /></a></p>
+<p style="text-align:justify">jQuery BlockUI è, come molti plugin di jQuery, molto semplice da usare: eseguendo <code>$.blockUI()</code> viene eseguita una schermatura della pagina, chiamando <code>$.unblockUI()</code> la schermatura viene tolta. Come possiamo fare a usarlo con un <code>a4j:status</code>? Basta sfruttare gli attributi <code>onstart</code>, <code>onsuccess</code> e <code>onerror</code> che contengono codice JavaScript invocato automaticamente in corrispondenza di una chiamata ajax. Il tag risultante da aggiungere dentro la form è il seguente:</p>
+<pre class="brush: xml; title: ; notranslate" title="">
+&lt;a4j:status onstart=&quot;$.blockUI();&quot;
+    onerror=&quot;$.unblockUI();&quot;
+    onsuccess=&quot;$.unblockUI();&quot; /&gt;
+</pre>
+<p style="text-align:justify">Per poter utilizzare il plugin dobbiamo anche includere il codice JavaScript nella pagina: il modo più semplice per aggiungerlo è includere questo tag <code>script</code> dopo l&#8217;apertura del tag <code>h:body</code>:</p>
+<pre class="brush: xml; title: ; notranslate" title="">
+&lt;script type=&quot;text/javascript&quot;
+    src=&quot;http://malsup.github.com/jquery.blockUI.js&quot; /&gt;
+</pre>
+<p style="text-align:justify">Il risultato è questo, cliccando un button parte la chiamata a jQuery BlockUI che scherma l&#8217;intera pagina:</p>
+<p><a href="http://www.cosenonjaviste.it/wp-content/uploads/2012/01/a4jstatus_form_pagina.png"><img src="http://www.cosenonjaviste.it/wp-content/uploads/2012/01/a4jstatus_form_pagina.png" alt="" title="a4jstatus_form_pagina" width="494" height="516" class="aligncenter size-full wp-image-4056" srcset="https://codingjam.it/wp-content/uploads/2012/01/a4jstatus_form_pagina.png 494w, https://codingjam.it/wp-content/uploads/2012/01/a4jstatus_form_pagina-287x300.png 287w" sizes="(max-width: 494px) 100vw, 494px" /></a></p>
+<h3>Indicatore di caricamento su un div</h3>
+<p style="text-align:justify">La <em>a</em> dell&#8217;acronimo ajax sta per <em>asynchronous</em>, bloccare tutta la pagina durante una chiamata può sembrare un controsenso! Vediamo quindi come bloccare solo una parte della pagina, per esempio un div che contiene alcuni campi. Per questo jQuery BlockUI ci viene in aiuto mettendo a disposizione il metodo <code>block</code> richiamabile su qualunque oggetto jQuery. Il modo più semplice di sfruttare questo metodo è creare un div (ovvero un <code>h:panelGroup</code> con <code>layout="block"</code>) con una classe css (per esempio <code>inputGrid</code>) e richiamare il metodo JavaScript <code>$('.inputGrid').block()</code>.</p>
+<p style="text-align:justify">Usare una classe css per identificare un div può sembrare strano, la soluzione più naturale in questi casi è usare l&#8217;id del div per identificarlo. Però usando RichFaces l&#8217;id dei tag html risultanti sono calcolati dal framework, è necessario usare la function <code>rich:clientId</code> in un expression language per ottenerlo. Per semplificare il codice decidiamo di aggiungere una classe css usata come marker che non ha nessuno stile associato:</p>
+<pre class="brush: xml; title: ; notranslate" title="">
+&lt;h:form&gt;
+	&lt;a4j:status onstart=&quot;$.blockUI();&quot;
+		onerror=&quot;$.unblockUI();&quot; onsuccess=&quot;$.unblockUI();&quot; /&gt;
+	&lt;a4j:status onstart=&quot;$('.inputGrid').block({ 
+			message: 'Processing...', 
+			css: { border: '3px solid #F00' },
+			overlayCSS: { backgroundColor: '#00f' }
+		});&quot;
+		name=&quot;passwordStatus&quot;
+		onerror=&quot;$('.inputGrid').unblock();&quot; 
+		onsuccess=&quot;$('.inputGrid').unblock();&quot; /&gt;
+
+	&lt;h:panelGroup layout=&quot;block&quot; styleClass=&quot;inputGrid&quot;&gt;
+		&lt;h:panelGrid columns=&quot;2&quot;&gt;
+			&lt;h:outputText value=&quot;UserName&quot; /&gt;
+			&lt;h:inputText /&gt;
+			&lt;h:outputText value=&quot;Password&quot; /&gt;
+			&lt;h:inputText /&gt;
+		&lt;/h:panelGrid&gt;
+		&lt;a4j:commandButton value=&quot;Check password&quot; 
+			action=&quot;#{loginBean.check()}&quot;
+			status=&quot;passwordStatus&quot; /&gt;
+		&lt;a4j:commandButton value=&quot;Login&quot; 
+			action=&quot;#{loginBean.login()}&quot; /&gt;
+	&lt;/h:panelGroup&gt;
+&lt;/h:form&gt;
+</pre>
+<p style="text-align:justify">In questa pagina ci sono due <code>a4j:status</code>, il secondo contiene l&#8217;attributo <code>name</code> che ci permette di identificarlo. Infatti nel primo <code>commandButton</code> è presente l&#8217;attributo <code>status</code> che indica quale status usare. Il secondo <code>commandButton</code> non avendo questo attributo utilizza lo status di default della form (ovvero quello senza attributo <code>name</code>).</p>
+<p style="text-align:justify">Avendo sfruttato anche un po&#8217; di attributi per cambiare lo stile del plugin otteniamo il seguente risultato (ok, potevamo sfruttare meglio questi attributi viste le scelte dei colori.. :)):</p>
+<p><a href="http://www.cosenonjaviste.it/wp-content/uploads/2012/01/a4jstatus_form_div.png"><img src="http://www.cosenonjaviste.it/wp-content/uploads/2012/01/a4jstatus_form_div.png" alt="" title="a4jstatus_form_div" width="494" height="516" class="aligncenter size-full wp-image-4055" srcset="https://codingjam.it/wp-content/uploads/2012/01/a4jstatus_form_div.png 494w, https://codingjam.it/wp-content/uploads/2012/01/a4jstatus_form_div-287x300.png 287w" sizes="(max-width: 494px) 100vw, 494px" /></a></p>
+<h3>Conclusioni</h3>
+<p style="text-align:justify">Finisce qui questo post, il plugin di jQuery visto può rivelarsi molto utile. Se non avete ancora letto il nostro <a href="http://www.cosenonjaviste.it/tutorial-javascript-parte-i/" target="_blank" rel="noopener noreferrer">tutorial JavaScript</a> e siete allergici al JavaScript potete includerlo dentro un custom tag facelet.</p>
+<p style="text-align:justify">I plugin di jQuery sono veramente tanti, il <a href="http://plugins.jquery.com/" target="_blank" rel="noopener noreferrer">sito ufficiale</a> è in ristrutturazione ma <a href="http://lmgtfy.com/?q=jquery+plugin" target="_blank" rel="noopener noreferrer">cercando su Google</a> se ne possono trovare facilmente molti. Se ne conoscete qualcuno che può essere utile in una rich internet application con RichFaces 4 fatecelo sapere nei commenti!</p>
+<h3>Libri consigliati</h3>
+<p><center></p>
+<table>
+<tr>
+<td>
+<iframe src="http://rcm-it.amazon.it/e/cm?t=cose-21&amp;o=29&amp;p=8&amp;l=as1&amp;asins=1935182323&amp;ref=tf_til&amp;fc1=000000&amp;IS2=1&amp;lt1=_blank&amp;m=amazon&amp;lc1=0000FF&amp;bc1=000000&amp;bg1=FFFFFF&amp;f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+</td>
+<td>
+<iframe src="http://rcm-it.amazon.it/e/cm?t=cose-21&amp;o=29&amp;p=8&amp;l=as1&amp;asins=1849516545&amp;ref=tf_til&amp;fc1=000000&amp;IS2=1&amp;lt1=_blank&amp;m=amazon&amp;lc1=0000FF&amp;bc1=000000&amp;bg1=FFFFFF&amp;f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+</td>
+<td>
+<iframe src="http://rcm-it.amazon.it/e/cm?t=cose-21&amp;o=29&amp;p=8&amp;l=as1&amp;asins=8850330340&amp;ref=tf_til&amp;fc1=000000&amp;IS2=1&amp;lt1=_blank&amp;m=amazon&amp;lc1=0000FF&amp;bc1=000000&amp;bg1=FFFFFF&amp;f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+</td>
+</tr>
+</table>
+<p><center></p>
+            </div>
+            <!-- end content -->
+
+            
+      <!-- metadata -->
+      <div class="bwp-single-metadata-wrap bwp-no-single-share-and-counters">
+        <ul class="bwp-single-metadata list-unstyled clearfix">
+                      <!-- author -->
+            <li>
+              <span class="vcard author">
+                <span class="fn">
+                  <i class="fa fa-pencil-square-o"></i><a href="https://codingjam.it/author/fabio-collini/" title="Posts by Fabio Collini" rel="author">Fabio Collini</a>                </span>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end author -->
+                                <!-- date -->
+            <li>
+                            <span class="date updated">
+                <i class="fa fa-clock-o"></i><a href="../2012/02/08/index.html">08/02/2012</a>
+              </span>
+              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end date -->
+                                <!-- categories -->
+            <li>
+              <i class="fa fa-bookmark-o"></i><a href="https://codingjam.it/category/ajax/" rel="category tag">AJAX</a>, <a href="../category/jsf/index.html" rel="category tag">JSF</a>, <a href="https://codingjam.it/category/richfaces/richfaces-4-0/" rel="category tag">Richfaces 4.0</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end categories -->
+                                <!-- tags -->
+            <li>
+              <i class="fa fa-tags"></i><a href="https://codingjam.it/tag/ajax/" rel="tag">AJAX</a>, <a href="../tag/javascript-2/index.html" rel="tag">javascript</a>, <a href="https://codingjam.it/tag/jsf-2/" rel="tag">JSF 2</a>, <a href="https://codingjam.it/tag/richfaces-2/" rel="tag">richfaces</a>, <a href="../tag/tutorial/index.html" rel="tag">tutorial</a>, <a href="https://codingjam.it/tag/tutorial-richfaces/" rel="tag">tutorial richfaces</a>              <span class="bwp-metadata-slash">/</span>
+            </li>
+            <!-- end tags -->
+                  </ul>
+      </div>
+      <!-- end metadata -->
+
+      
+          </div>
+          <!-- end content container -->
+
+        </article>
+        <!-- end article -->
+
+        
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://codingjam.it/4-pezzi-facili-sulle-weakhashmap/" rel="prev"><span class="meta-nav"><i class="fa fa-angle-left"></i>Previous post</span><span class="post-title-nav">4 pezzi facili sulle WeakHashMap</span></a></div><div class="nav-next"><a href="https://codingjam.it/le-google-guava-libraries-mini-tutorial-da-10-minuti/" rel="next"><span class="meta-nav">Next post<i class="fa fa-angle-right"></i></span><span class="post-title-nav">Le Google Guava Libraries: mini tutorial da 10 minuti</span></a></div></div>
+	</nav>
+    <!-- about the author -->
+    <div class="bwp-about-author-container bwp-transition-3 clearfix">
+      <!-- avatar -->
+      <div class="bwp-about-author-avatar">
+        <a href="https://codingjam.it/author/fabio-collini/">
+          <img alt='' src='https://secure.gravatar.com/avatar/e598eeb5b7ef8846bfdfd0afbc65c2c9?s=150&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/e598eeb5b7ef8846bfdfd0afbc65c2c9?s=300&#038;d=mm&#038;r=g 2x' class='avatar avatar-150 photo' height='150' width='150' />        </a>
+      </div>
+      <!-- end avatar -->
+      <!-- biographical info -->
+      <div class="bwp-about-author-bio-wrap">
+        <h3 class="bwp-about-author-name">
+          <a href="https://codingjam.it/author/fabio-collini/" title="Posts by Fabio Collini" rel="author">Fabio Collini</a>          <span><i class="fa fa-angle-double-right"></i>60 Posts</span>
+        </h3>
+        <div class="bwp-about-author-bio">
+          Software Architect con esperienza su piattaforma J2EE e attualmente focalizzato principalmente in progetti di sviluppo di applicazioni Android.
+
+Attualmente sono in <a href="http://nanabianca.it/">Nana Bianca</a> dove mi occupo dello sviluppo di alcune app Android.
+
+Coautore della seconda edizione di <a href="https://www.amazon.it/gp/product/8868950715/ref=as_li_ss_tl?ie=UTF8&amp;camp=3370&amp;creative=24114&amp;creativeASIN=8868950715&amp;linkCode=as2&amp;tag=cose-21">Android Programmazione Avanzata</a> e docente di corsi di sviluppo su piattaforma Android.
+
+
+<a href="https://twitter.com/fabioCollini">Follow me on Twitter</a>  -  <a href="http://www.linkedin.com/in/fabiocollini">LinkedIn profile</a>        </div>
+                  <ul class="bwp-about-author-social list-unstyled clearfix">
+                              <li><a href="http://fabiocollini/" target="_blank" class="bwp-a-twitter-link"><i class="fa fa-twitter"></i></a></li>
+                                  <li><a href="http://www.cosenonjaviste.it/?team=fabio-collini" target="_blank" class="bwp-a-website-link"><i class="fa fa-link"></i></a></li>
+                          </ul>
+              </div>
+      <!-- end biographical info -->
+    </div>
+    <!-- end about the author -->
+
+    
+    <!-- related posts (by tags) -->
+    <div class="bwp-related-posts-container bwp-show-2-posts">
+      <div class="bwp-o-hidden">
+
+        <!-- title -->
+        <h2 class="bwp-related-posts-title">
+          You might also like:        </h2>
+        <!-- end title -->
+
+        <!-- posts list -->
+        <div class="bwp-related-posts clearfix">
+
+          
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="https://codingjam.it/cross-field-validation-validazione-incrociata-con-jsf-e-richfaces-4/">Cross-field validation: validazione incrociata con JSF e RichFaces 4</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p class="text-justify">A chi non è mai capitato di compilare una form web che chiedeva di ripetere la password o l&#8217;indirizzo mail per conferma? Una richiesta più che legittima quando si stanno inserendo dati importanti. L&#8217;implementazione di questa logica è banale, ma quando si lavora con certi framework è bene seguirne le <em>best practice</em> per non ritrovarsi in situazioni spiacevoli. Prendiamo per esempio <strong>JSF</strong>: come si potrebbe realizzare la <strong>validazione incrociata</strong> tra i campi? Vediamo insieme un paio di soluzioni!!</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2012/03/16/" class="bwp-post-date">
+        <span class="date updated">16/03/2012</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="https://codingjam.it/cross-field-validation-validazione-incrociata-con-jsf-e-richfaces-4/" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="https://codingjam.it/gson-da-java-a-json-e-viceversa-primi-passi/">Gson, da Java a JSON e viceversa: primi passi</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>Gson è una libreria molto potente per la serializzazione/deserializzazione JSON realizzata da Google. In questo tutorial suddiviso in due parti, vedremo come utilizzarla per le trasformazioni più semplici fino ad arrivare a casi più complessi.</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2013/12/10/" class="bwp-post-date">
+        <span class="date updated">10/12/2013</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="https://codingjam.it/gson-da-java-a-json-e-viceversa-primi-passi/" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+        </div>
+        <!-- end posts list -->
+
+      </div>
+    </div>
+    <!-- end related posts -->
+
+    
+                  </div><!-- /bwp-single-content-col-wrap --></div><!-- /col-md-8 --><div class="col-md-4 bwp-sidebar-col bwp-sidebar-right">
+        
+                  </div><!-- /col --></div><!-- /row -->
+        
+      </div>
+    </div>
+  </section>
+  <!-- end blog post - single page -->
+
+  
+<!-- footer -->
+<footer id="bwp-footer-wrap">
+  <div class="container">
+    <div class="bwp-footer-container clearfix">
+
+              <!-- footer text -->
+        <div class="bwp-footer-text">
+          CodingJam        </div>
+        <!-- end footer text -->
+      
+              <!-- social links -->
+        <ul class="bwp-footer-social-links list-unstyled clearfix">
+          <li><a href="https://twitter.com/codingjam" target="_blank" class="bwp-f-twitter-link"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.facebook.com/codingjamit/" target="_blank" class="bwp-f-facebook-link"><i class="fa fa-facebook"></i></a></li><li><a href="https://github.com/coding-jam" target="_blank" class="bwp-f-github-link"><i class="fa fa-github"></i></a></li>        </ul>
+        <!-- end social links -->
+      
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+
+<!--googleoff: all--><div id="cookie-law-info-bar"><span>Questo sito Web utilizza i cookie per migliorare la tua esperienza. Daremo per scontato che per te sia ok, ma puoi disattivarlo se lo desideri..<a role='button' tabindex='0' data-cli_action="accept" id="cookie_action_close_header"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button" style="display:inline-block; ">Accetto</a>  <a role='button' tabindex='0' id="cookie_action_close_header_reject"  class="large cli-plugin-button cli-plugin-main-button cookie_action_close_header_reject cli_action_button"  data-cli_action="reject">Annulla</a> <a href='../cookie.html' id="CONSTANT_OPEN_URL" target="_blank"  class="cli-plugin-main-link"  style="display:inline-block;" >Read More</a></span></div><div id="cookie-law-info-again" style="display:none;"><span id="cookie_hdr_showagain">Privacy & Cookies</span></div><div class="cli-modal" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+    <div class="cli-modal-content cli-bar-popup">
+      <button type="button" class="cli-modal-close" id="cliModalClose">
+        <svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+        <span class="wt-cli-sr-only">Close</span>
+      </button>
+      <div class="cli-modal-body">
+        <div class="cli-container-fluid cli-tab-container">
+    <div class="cli-row">
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0">
+            <div class="cli-privacy-overview">
+                                                   
+                <div class="cli-privacy-content">
+                    <div class="cli-privacy-content-text"></div>
+                </div>
+                <a class="cli-privacy-readmore" data-readmore-text="Show more" data-readless-text="Show less"></a>            </div>
+        </div>  
+        <div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+              
+                            <div class="cli-tab-section">
+                    <div class="cli-tab-header">
+                        <a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab" >
+                            Necessary 
+                        </a>
+                    
+                    <span class="cli-necessary-caption">Always Enabled</span>                     </div>
+                    <div class="cli-tab-content">
+                        <div class="cli-tab-pane cli-fade" data-id="necessary">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+              
+                       
+        </div>
+    </div> 
+</div> 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<script type="text/javascript">
+  /* <![CDATA[ */
+  cli_cookiebar_settings='{"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":false,"button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":true,"button_1_new_win":false,"button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":false,"button_2_hidebar":false,"button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":true,"button_3_new_win":false,"button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#fff","button_4_as_button":true,"font_family":"inherit","header_fix":false,"notify_animate_hide":true,"notify_animate_show":false,"notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":false,"scroll_close_reload":false,"accept_close_reload":false,"reject_close_reload":false,"showagain_tab":true,"showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":false,"show_once":"10000","logging_on":false,"as_popup":false,"popup_overlay":true,"bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"}';
+  /* ]]> */
+</script>
+<!--googleon: all--><script type='text/javascript' src='../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore09b1.js?ver=3.0.9b'></script>
+<script type='text/javascript' src='../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushXml09b1.js?ver=3.0.9b'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore09b1.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeEclipse09b1.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = true;
+	SyntaxHighlighter.defaults['tab-size'] = 2;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/bootstrap.min7433.js?ver=3.3.7'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/jquery.parallaxc358.js?ver=1.1.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/superfish.min97e9.js?ver=1.7.9'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/owl-carousel/owl.carousel.min3ba1.js?ver=1.3.3'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/assets/magnific-popup/jquery.magnific-popup.minf488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"1520cabb4b","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
+</body>
+
+<!-- Mirrored from codingjam.it/indicatori-di-caricamento-con-richfaces-4-e-jquery-blockui/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:25 GMT -->
+</html>

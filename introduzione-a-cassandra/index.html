@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<!-- Mirrored from codingjam.it/introduzione-a-cassandra/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/introduzione-a-cassandra/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:25 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="UTF-8">
@@ -97,7 +97,7 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
 <link rel='https://api.w.org/' href='../wp-json/index.html' />
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
 <link rel='prev' title='Introduzione ad Angular 2 &#8211; Parte 1' href='https://codingjam.it/introduzione-ad-angular-2-parte-1/' />
-<link rel='next' title='Google Maps JavaScript API' href='../google-maps-javascript-api/index.html' />
+<link rel='next' title='Google Maps JavaScript API' href='https://codingjam.it/google-maps-javascript-api/' />
 <meta name="generator" content="WordPress 5.4.1" />
 <link rel="canonical" href="index.html" />
 <link rel='shortlink' href='https://codingjam.it/?p=13684' />
@@ -116,7 +116,7 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
 <header id="bwp-header-wrap" class="bwp-header-simple">
 
   <!-- header bg -->
-    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P7101915_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P6261835_2.jpg) 50% 0 no-repeat">
     <div class="bwp-header-bg-overlay"></div>
 
     <!-- header content -->
@@ -318,7 +318,7 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
               <p align="justify">Con questa introduzione iniziamo una serie di approfondimenti dedicati a Cassandra, un database NoSql che, come tanti altri progetti, è sotto l&#8217;ombrello di Apache. Cassandra, per gli amici C*, nasce all&#8217;interno di Facebook per supportare il sistema di messaggistica ed è diventato opensource nel 2008 per poi passare sotto Apache nel 2010. La versione più recente è la <del datetime="2016-04-14T19:35:43+00:00">3.4</del> 3.5 anche se nella pratica, molti si affidano ancora alla più vecchia 2.2 il cui supporto finirà a fine anno.</p>
 <p align="justify">Stiamo parlando di un progetto molto utilizzato e i principali adopter, come si vede dall&#8217;immagine qui sotto, sono davvero <a href="http://www.planetcassandra.org/companies/">tanti!</a> A noi basta sapere che se Netflix, Spotify, Instagram, Sony, Soundcloud.. (e mi fermo) lo usano, devono esserci delle caratteristiche interessanti e dei buoni risultati per specifici casi d&#8217;uso.</p>
 <p><p><a href="https://codingjam.it/wp-content/uploads/2016/04/apache-cassandra-users.png" rel="attachment wp-att-13693" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2016/04/apache-cassandra-users-1024x728.png" alt="apache cassandra users" width="740" height="526" class="aligncenter size-large wp-image-13693" srcset="https://codingjam.it/wp-content/uploads/2016/04/apache-cassandra-users-1024x728.png 1024w, https://codingjam.it/wp-content/uploads/2016/04/apache-cassandra-users-300x213.png 300w, https://codingjam.it/wp-content/uploads/2016/04/apache-cassandra-users-768x546.png 768w, https://codingjam.it/wp-content/uploads/2016/04/apache-cassandra-users.png 1054w, https://codingjam.it/wp-content/uploads/2016/04/apache-cassandra-users-300x213@2x.png 600w" sizes="(max-width: 740px) 100vw, 740px" /></a></p>
-<p align="justify">In effetti Cassandra parte già con un buon DNA, ereditando da <a href="https://it.wikipedia.org/wiki/BigTable" target="_blank">Google Big Table</a> il modello di storage e da <a href="https://en.wikipedia.org/wiki/Dynamo_(storage_system)" target="_blank">Amazon Dynamo</a> la gestione del cluster. Questo ha permesso di realizzare un database distribuito pensato per gestire grandi quantità di dati usando diversi server, fornendo alta disponibilità (high availability) ma senza un single point of failure. Senza, cioè, il fatto che il downtime di un nodo del cluster renda il sistema non utilizzabile come può avvenire in certe architetture di tipo master/slave. Un&#8217;altra caratteristica interessante è la linear scalability. Supponiamo di avere un cluster Cassandra composto da 10 nodi, aggiungendo altri 2 nodi, ad esempio, siamo abbastanza confidenti nel migliorare le prestazioni del cluster grosso modo del 20%, cosa non sempre così semplice da verificare per altri sistemi.  Inoltre, C* è pensato out-of-the-box per lavorare con una topologia di rete distribuita su più data center tenendo conto di come replicare i dati tra server geograficamente distanti.</p>
+<p align="justify">In effetti Cassandra parte già con un buon DNA, ereditando da <a href="https://it.wikipedia.org/wiki/BigTable" target="_blank" rel="noopener noreferrer">Google Big Table</a> il modello di storage e da <a href="https://en.wikipedia.org/wiki/Dynamo_(storage_system)" target="_blank" rel="noopener noreferrer">Amazon Dynamo</a> la gestione del cluster. Questo ha permesso di realizzare un database distribuito pensato per gestire grandi quantità di dati usando diversi server, fornendo alta disponibilità (high availability) ma senza un single point of failure. Senza, cioè, il fatto che il downtime di un nodo del cluster renda il sistema non utilizzabile come può avvenire in certe architetture di tipo master/slave. Un&#8217;altra caratteristica interessante è la linear scalability. Supponiamo di avere un cluster Cassandra composto da 10 nodi, aggiungendo altri 2 nodi, ad esempio, siamo abbastanza confidenti nel migliorare le prestazioni del cluster grosso modo del 20%, cosa non sempre così semplice da verificare per altri sistemi.  Inoltre, C* è pensato out-of-the-box per lavorare con una topologia di rete distribuita su più data center tenendo conto di come replicare i dati tra server geograficamente distanti.</p>
 <p align="justify">Dal punto di vista della distanza dal modello relazionale, c&#8217;è da dire che Cassandra non è un database relazionale, tuttavia il CQL, che è il linguaggio che si usa per definire lo schema e manipolare i dati, è in molti casi identico a SQL. Ci sono delle profonde differenze però sul modo che C* usa per memorizzare i dati internamente. Di fatto Cassandra è un ibrido tra un database key-value e uno column oriented ma usando CQL è difficile rendersene conto. La vecchia interfaccia <a href="https://thrift.apache.org/">Thrift</a>, invece, rendeva molto più evidente il modello interno, tuttavia è stata deprecata e di fatto non viene più mantenuta.</p>
 <h3>Com&#8217;è fatto Cassandra</h3>
 <p align="justify">In Cassandra, ognuno dei nodi appartenente ad un cluster ha lo stesso ruolo degli altri (a parte una piccolissima eccezione): per questa caratteristica C* viene detto peer-to-peer. Già da questo si può capire perché non ci sia un single-point-of-failure: nessuno dei nodi è critico per il funzionamento del sistema, perché può essere sostituito dagli altri. Come è possibile questo? La prima cosa da dire è che i dati del database sono distribuiti equamente all&#8217;interno del cluster tra tutti i nodi, ogni nodo però non memorizza solo la sua porzione di dati, ma anche una replica parziale dei dati degli altri.</p>
@@ -342,69 +342,8 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
             <!-- end content -->
 
             
-                <!-- social sharing buttons / counters -->
-                <div class="row">
-                  <div class="col-md-7">
-                    
-    <!-- social sharing buttons -->
-    <div class="bwp-single-share-wrap">
-      <span>Share:</span>
-      <ul class="bwp-single-share list-unstyled">
-        <!-- facebook -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/introduzione-a-cassandra/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/introduzione-a-cassandra/" target="_blank" class="bwp-share-link bwp-facebook-share">
-            <i class="fa fa-facebook"></i>
-          </a>
-        </li>
-        <!-- end facebook -->
-        <!-- twitter -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/introduzione-a-cassandra/&amp;text=introduzione-a-cassandra', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/introduzione-a-cassandra/&amp;text=introduzione-a-cassandra" target="_blank" class="bwp-share-link bwp-twitter-share">
-            <i class="fa fa-twitter"></i>
-          </a>
-        </li>
-        <!-- end twitter -->
-        <!-- google+ -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/introduzione-a-cassandra/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/introduzione-a-cassandra/" target="_blank" class="bwp-share-link bwp-google-plus-share">
-            <i class="fa fa-google-plus"></i>
-          </a>
-        </li>
-        <!-- end google+ -->
-        <!-- vk -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/introduzione-a-cassandra/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/introduzione-a-cassandra/" target="_blank" class="bwp-share-link bwp-vk-share">
-            <i class="fa fa-vk"></i>
-          </a>
-        </li>
-        <!-- end vk -->
-        <!-- pinterest -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/introduzione-a-cassandra/&amp;media=https://codingjam.it/wp-content/uploads/2016/04/2000px-Cassandra_logo.svg_.png&amp;description=introduzione-a-cassandra', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/introduzione-a-cassandra/&amp;media=https://codingjam.it/wp-content/uploads/2016/04/2000px-Cassandra_logo.svg_.png&amp;description=introduzione-a-cassandra" target="_blank" class="bwp-share-link bwp-pinterest-share">
-            <i class="fa fa-pinterest-p"></i>
-          </a>
-        </li>
-        <!-- end pinterest -->
-      </ul>
-    </div>
-    <!-- end social sharing buttons -->
-
-                      </div>
-                  <div class="col-md-5">
-                    
-    <!-- counters -->
-    <ul class="bwp-single-counters list-unstyled clearfix ">
-                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>0</a></li>
-                </ul>
-    <!-- end counters -->
-
-                      </div>
-                </div>
-                <!-- end social sharing buttons / counters -->
-
-                
       <!-- metadata -->
-      <div class="bwp-single-metadata-wrap ">
+      <div class="bwp-single-metadata-wrap bwp-no-single-share-and-counters">
         <ul class="bwp-single-metadata list-unstyled clearfix">
                       <!-- author -->
             <li>
@@ -418,7 +357,7 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
                                 <!-- date -->
             <li>
                             <span class="date updated">
-                <i class="fa fa-clock-o"></i><a href="https://codingjam.it/2016/04/19/">19/04/2016</a>
+                <i class="fa fa-clock-o"></i><a href="../2016/04/19/index.html">19/04/2016</a>
               </span>
               <span class="bwp-metadata-slash">/</span>
             </li>
@@ -447,7 +386,7 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
         
 	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
 		<h2 class="screen-reader-text">Post navigation</h2>
-		<div class="nav-links"><div class="nav-previous"><a href="https://codingjam.it/introduzione-ad-angular-2-parte-1/" rel="prev"><span class="meta-nav"><i class="fa fa-angle-left"></i>Previous post</span><span class="post-title-nav">Introduzione ad Angular 2 &#8211; Parte 1</span></a></div><div class="nav-next"><a href="../google-maps-javascript-api/index.html" rel="next"><span class="meta-nav">Next post<i class="fa fa-angle-right"></i></span><span class="post-title-nav">Google Maps JavaScript API</span></a></div></div>
+		<div class="nav-links"><div class="nav-previous"><a href="https://codingjam.it/introduzione-ad-angular-2-parte-1/" rel="prev"><span class="meta-nav"><i class="fa fa-angle-left"></i>Previous post</span><span class="post-title-nav">Introduzione ad Angular 2 &#8211; Parte 1</span></a></div><div class="nav-next"><a href="https://codingjam.it/google-maps-javascript-api/" rel="next"><span class="meta-nav">Next post<i class="fa fa-angle-right"></i></span><span class="post-title-nav">Google Maps JavaScript API</span></a></div></div>
 	</nav>
     <!-- about the author -->
     <div class="bwp-about-author-container bwp-transition-3 clearfix">
@@ -479,23 +418,6 @@ StackOverflow
     <!-- end about the author -->
 
     
-<!-- comments -->
-<div id="comments" class="comments-area">
-
-	
-	
-		<div id="respond" class="comment-respond">
-		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='13684' id='comment_post_ID' />
-<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-</p></form>	</div><!-- #respond -->
-	
-</div>
-<!-- end comments -->
-
     <!-- related posts (by tags) -->
     <div class="bwp-related-posts-container bwp-show-2-posts">
       <div class="bwp-o-hidden">
@@ -520,14 +442,14 @@ StackOverflow
                   
                                       <!-- title -->
                     <h3 class="bwp-post-title entry-title">
-                      <a href="https://codingjam.it/intervista-a-marco-ballante-fondatore-di-javajob-it/">Intervista a <strong>Marco Ballante</strong>, fondatore di <strong>JavaJob.it</strong></a>
+                      <a href="https://codingjam.it/le-google-guava-libraries-mini-tutorial-da-10-minuti/">Le Google Guava Libraries: mini tutorial da 10 minuti</a>
                     </h3>
                     <!-- end title -->
                     
                   
       <!-- excerpt -->
       <div class="bwp-post-excerpt entry-content">
-        <p>Cos&#8217;è JavaJob? Sarebbe bello se esistesse un servizio web italiano che supporta le aziende nella ricerca di lavoro e aiuta i candidati a cogliere, nel modo più semplice possibile, le migliori opportunità del mercato, il tutto incentrato sulla tecnologia Java. C&#8217;è una bella notizia: questo servizio esiste e si chiama JavaJob. E c&#8217;è di più: il sito ospita anche un blog che tratta del mondo Java e del relativo mercato del lavoro. Noi di CoseNonJaviste abbiamo avuto il piacere di [&hellip;]</p>
+        <p style="text-align: justify;">Il Progetto <a href="http://code.google.com/p/guava-libraries/" target="_blank" rel="noopener noreferrer">Google Guava</a> contiene molte delle core libraries usate da Google nei progetti Java-based. Queste librerie coprono molti aspetti: le collection, la cache, la gestione della concorrenza, il processamento delle stringhe, l&#8217;I/O e così via e possono essere un valido aiuto per lo sviluppatore, rendendo il codice più coinciso e manutenibile. Andiamo a scoprirle insieme?</p>
       </div>
       <!-- end excerpt -->
 
@@ -535,12 +457,12 @@ StackOverflow
     <!-- date + read more link -->
     <div class="bwp-post-details-wrap clearfix">
       <!-- date -->
-            <a href="https://codingjam.it/2013/11/06/" class="bwp-post-date">
-        <span class="date updated">06/11/2013</span>
+            <a href="https://codingjam.it/2012/02/10/" class="bwp-post-date">
+        <span class="date updated">10/02/2012</span>
       </a>
       <!-- end date -->
       <!-- read more link -->
-      <a href="https://codingjam.it/intervista-a-marco-ballante-fondatore-di-javajob-it/" class="bwp-read-more">Read more</a>
+      <a href="https://codingjam.it/le-google-guava-libraries-mini-tutorial-da-10-minuti/" class="bwp-read-more">Read more</a>
       <!-- end read more link -->
     </div>
     <!-- end date + read more link -->
@@ -565,14 +487,14 @@ StackOverflow
                   
                                       <!-- title -->
                     <h3 class="bwp-post-title entry-title">
-                      <a href="https://codingjam.it/creating-your-first-pojo/">Creating your First POJO</a>
+                      <a href="https://codingjam.it/optimus-primefaces-jsf-in-leggerezza-e-abbondanza/">Optimus PrimeFaces, JSF in leggerezza (e abbondanza&#8230;)</a>
                     </h3>
                     <!-- end title -->
                     
                   
       <!-- excerpt -->
       <div class="bwp-post-excerpt entry-content">
-        <p>Ed ecco il secondo mini tutorial video della serie VideoNonJavisti: Creating your First POJO. Nel tutorial mostriamo come creare un Pojo (Plain Old Java Object), ovvero un oggetto java con alcune proprietà. Buona visione!</p>
+        <p><a href="http://www.primefaces.org/">PrimeFaces</a> è una suite open source di componenti UI avanzati progettata per integrare funzionalità Ajax all’interno di applicazioni Java Server Faces, esattamente come lo è ad esempio il più noto <a href="http://www.cosenonjaviste.it/4-facce-in-padella-oggi-ancora-pi-ricche-getting-started-with-jboss-richfaces-4-x/">RichFaces</a>. La suite Primefaces offre supporto ad Ajax, grazie ad una integrazione nativa con JQuery (e su questo ci ritorneremo più avanti). Il framework è dotato di più di 100 componenti JSF avanzati (per stuzzicarvi un po’ l’appetito potete vedere il ricco <a href="http://www.primefaces.org/showcase/ui/home.jsf">showcase</a>).</p>
       </div>
       <!-- end excerpt -->
 
@@ -580,12 +502,12 @@ StackOverflow
     <!-- date + read more link -->
     <div class="bwp-post-details-wrap clearfix">
       <!-- date -->
-            <a href="https://codingjam.it/2011/02/28/" class="bwp-post-date">
-        <span class="date updated">28/02/2011</span>
+            <a href="https://codingjam.it/2012/03/28/" class="bwp-post-date">
+        <span class="date updated">28/03/2012</span>
       </a>
       <!-- end date -->
       <!-- read more link -->
-      <a href="https://codingjam.it/creating-your-first-pojo/" class="bwp-read-more">Read more</a>
+      <a href="https://codingjam.it/optimus-primefaces-jsf-in-leggerezza-e-abbondanza/" class="bwp-read-more">Read more</a>
       <!-- end read more link -->
     </div>
     <!-- end date + read more link -->
@@ -694,12 +616,12 @@ StackOverflow
 <script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
-var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"1520cabb4b","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
 </body>
 
-<!-- Mirrored from codingjam.it/introduzione-a-cassandra/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/introduzione-a-cassandra/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:25 GMT -->
 </html>

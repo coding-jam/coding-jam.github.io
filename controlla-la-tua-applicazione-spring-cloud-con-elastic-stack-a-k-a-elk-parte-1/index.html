@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<!-- Mirrored from codingjam.it/controlla-la-tua-applicazione-spring-cloud-con-elastic-stack-a-k-a-elk-parte-1/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/controlla-la-tua-applicazione-spring-cloud-con-elastic-stack-a-k-a-elk-parte-1/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="UTF-8">
@@ -16,7 +16,6 @@
 <link rel='dns-prefetch' href='http://s.w.org/' />
 <link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Feed" href="../feed/index.html" />
 <link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Comments Feed" href="../comments/feed/index.html" />
-<link rel="alternate" type="application/rss+xml" title="CodingJam &raquo; Controlla la tua applicazione Spring Cloud con Elastic Stack (a.k.a ELK) &#8211; Parte 1 Comments Feed" href="https://codingjam.it/controlla-la-tua-applicazione-spring-cloud-con-elastic-stack-a-k-a-elk-parte-1/feed/" />
 <link rel='stylesheet' id='wp-block-library-css'  href='../wp-content/plugins/gutenberg/build/block-library/stylea4fb.css?ver=1591004795' type='text/css' media='all' />
 <link rel='stylesheet' id='cookie-law-info-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public3cf4.css?ver=1.8.8' type='text/css' media='all' />
 <link rel='stylesheet' id='cookie-law-info-gdpr-css'  href='../wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr3cf4.css?ver=1.8.8' type='text/css' media='all' />
@@ -315,13 +314,13 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
 
             <!-- content -->
             <div class="bwp-content entry-content clearfix">
-              <p>Nei post precedenti abbiamo visto come è diventato facile (e di moda) creare microservizi nel <a href="../microservizi-in-java-con-spring-boot-e-spring-cloud/index.html" target="_blank">mondo Java con Spring Cloud</a>. La flessibilità che porta questa architettura non è però esente da una maggior complessità, in primis dal punto di vista del <strong>monitoriaggio</strong> del sistema e la <strong>gestione dei log</strong>. <a href="https://codingjam.it/migliora-i-tuoi-log-con-il-mapped-diagnostic-context/" target="_blank">Abbiamo parlato del Mapping Diagnostic Context</a>, che permette di aggiungere &#8220;metadati&#8221; alle singole righe di log, ricordando però che è necessario un <strong>sistema di aggregazione centralizzato</strong> affinché le informazioni acquistino un senso e possano essere analizzate. Tra i più famosi ed usati, sicuramente c&#8217;è lo stack <strong>ElasticSearch, Logstash e Kibana</strong> (<a href="https://www.elastic.co/elk-stack" rel="noopener" target="_blank">ELK</a> per gli amici) rebrandizzato oggi come &#8220;<em><strong>Elastic Stack</strong></em>&#8220;. Vediamo gli aspetti base di ELK (ci vorrebbero libri altrimenti), ma soprattutto come configurare la nostra applicazione Java per poter usufruire delle potenzialità che offre.</p>
+              <p>Nei post precedenti abbiamo visto come è diventato facile (e di moda) creare microservizi nel <a href="../microservizi-in-java-con-spring-boot-e-spring-cloud/index.html" target="_blank" rel="noopener noreferrer">mondo Java con Spring Cloud</a>. La flessibilità che porta questa architettura non è però esente da una maggior complessità, in primis dal punto di vista del <strong>monitoriaggio</strong> del sistema e la <strong>gestione dei log</strong>. <a href="https://codingjam.it/migliora-i-tuoi-log-con-il-mapped-diagnostic-context/" target="_blank" rel="noopener noreferrer">Abbiamo parlato del Mapping Diagnostic Context</a>, che permette di aggiungere &#8220;metadati&#8221; alle singole righe di log, ricordando però che è necessario un <strong>sistema di aggregazione centralizzato</strong> affinché le informazioni acquistino un senso e possano essere analizzate. Tra i più famosi ed usati, sicuramente c&#8217;è lo stack <strong>ElasticSearch, Logstash e Kibana</strong> (<a href="https://www.elastic.co/elk-stack" rel="noopener noreferrer" target="_blank">ELK</a> per gli amici) rebrandizzato oggi come &#8220;<em><strong>Elastic Stack</strong></em>&#8220;. Vediamo gli aspetti base di ELK (ci vorrebbero libri altrimenti), ma soprattutto come configurare la nostra applicazione Java per poter usufruire delle potenzialità che offre.</p>
 <h2>C&#8217;era una volta ElasticSearch, Logstash e Kibana&#8230; e Beats!</h2>
-<p>La <a href="https://www.elastic.co/elk-stack" rel="noopener" target="_blank">homepage</a> spiega in pochi step come siamo arrivati oggi a parlare di <strong>Elastic Stack</strong>. Si tratta di uno stack perché fondamentalmente sono 4 prodotti, ognuno con un compito specifico, che collaborano l&#8217;uno con l&#8217;altro.</p>
-<p>Tutto è nato da <a href="https://www.elastic.co/products/elasticsearch" rel="noopener" target="_blank"><strong>ElasticSearch</strong></a>, un motore di <strong>analisi e ricerca distribuito</strong>, basato su NoSQL e <a href="https://lucene.apache.org/core/" rel="noopener" target="_blank">Lucene</a>, con interfaccia REST e scambio di documenti JSON. </p>
-<p>Ben presto è stato ritenuto un buono strumento per <strong>raccogliere i log di sistemi distribuiti</strong>: mancava solo un sistema capace di <strong>leggere i log e trasformarli in documenti JSON</strong> da dare in pasto ad ElasticSearch. E&#8217; così che nasce <a href="https://www.elastic.co/products/logstash" rel="noopener" target="_blank"><strong>Logstash</strong></a>. Sostanzialmente si tratta di un <a href="https://it.wikipedia.org/wiki/Extract,_transform,_load" rel="noopener" target="_blank">ETL</a> che è capace di ricevere i log da <a href="https://www.elastic.co/guide/en/logstash/current/input-plugins.html" rel="noopener" target="_blank">fonti diverse</a> (TPC, UDP, file, JMS, JDBC, Redis, Kafka&#8230;), trasformarli ed aggregarli tramite l&#8217;<a href="https://www.elastic.co/guide/en/logstash/current/filter-plugins.html" rel="noopener" target="_blank">applicazione di filtri</a>, ed infine inviare il risultato in uno &#8220;<em>stash</em>&#8220;, in una <a href="https://www.elastic.co/guide/en/logstash/current/output-plugins.html" rel="noopener" target="_blank">destinazione</a>, tra le quali ovviamente c&#8217;è ElasticSearch!</p>
-<p>Che fare però di questi dati se non possono essere estratti, richiesti o aggregati facilmente? Era necessario un <strong>tool di visualizzazione flessibile e potete</strong>: <a href="https://www.elastic.co/products/kibana" rel="noopener" target="_blank"><strong>Kibana</strong></a> vede la luce e diventa l&#8217;interfaccia ideale per ElasticSearch, permettendo di creare grafici e dashboard in modo intuitivo a partire dai dati, sfruttando tutti gli strumenti di aggregazione e ricerca di ElasticSearch per produrre istogrammmi, grafici a torta, geolocalizzare le informazioni e così via.</p>
-<p>Lo stack nel tempo è diventato complesso e certe volte sembra aver perso l&#8217;immediatezza iniziale. Alla fine, il primo grande uso che se ne vuol fare è sempre l&#8217;aggregatore di log: manca quindi un semplice &#8220;<em>trasportatore</em>&#8221; di log che li prelevi dalle nostre applicazioni e li faccia entrare nello stack. Nasce quindi un quarto elemento, o meglio una <strong>famiglia di prodotti specifici nel trasporto di log</strong> (ma non solo) chiamati <a href="https://www.elastic.co/products/beats" rel="noopener" target="_blank"><strong>Beats</strong></a>. Non sono altro che agenti da installare come &#8220;sidecar&#8221; delle nostre applicazioni, solitamente a livello di server, che hanno il compito di raccogliere i dati ed inviarli a Logstash o direttamente a ElasticSearch.</p>
+<p>La <a href="https://www.elastic.co/elk-stack" rel="noopener noreferrer" target="_blank">homepage</a> spiega in pochi step come siamo arrivati oggi a parlare di <strong>Elastic Stack</strong>. Si tratta di uno stack perché fondamentalmente sono 4 prodotti, ognuno con un compito specifico, che collaborano l&#8217;uno con l&#8217;altro.</p>
+<p>Tutto è nato da <a href="https://www.elastic.co/products/elasticsearch" rel="noopener noreferrer" target="_blank"><strong>ElasticSearch</strong></a>, un motore di <strong>analisi e ricerca distribuito</strong>, basato su NoSQL e <a href="https://lucene.apache.org/core/" rel="noopener noreferrer" target="_blank">Lucene</a>, con interfaccia REST e scambio di documenti JSON. </p>
+<p>Ben presto è stato ritenuto un buono strumento per <strong>raccogliere i log di sistemi distribuiti</strong>: mancava solo un sistema capace di <strong>leggere i log e trasformarli in documenti JSON</strong> da dare in pasto ad ElasticSearch. E&#8217; così che nasce <a href="https://www.elastic.co/products/logstash" rel="noopener noreferrer" target="_blank"><strong>Logstash</strong></a>. Sostanzialmente si tratta di un <a href="https://it.wikipedia.org/wiki/Extract,_transform,_load" rel="noopener noreferrer" target="_blank">ETL</a> che è capace di ricevere i log da <a href="https://www.elastic.co/guide/en/logstash/current/input-plugins.html" rel="noopener noreferrer" target="_blank">fonti diverse</a> (TPC, UDP, file, JMS, JDBC, Redis, Kafka&#8230;), trasformarli ed aggregarli tramite l&#8217;<a href="https://www.elastic.co/guide/en/logstash/current/filter-plugins.html" rel="noopener noreferrer" target="_blank">applicazione di filtri</a>, ed infine inviare il risultato in uno &#8220;<em>stash</em>&#8220;, in una <a href="https://www.elastic.co/guide/en/logstash/current/output-plugins.html" rel="noopener noreferrer" target="_blank">destinazione</a>, tra le quali ovviamente c&#8217;è ElasticSearch!</p>
+<p>Che fare però di questi dati se non possono essere estratti, richiesti o aggregati facilmente? Era necessario un <strong>tool di visualizzazione flessibile e potete</strong>: <a href="https://www.elastic.co/products/kibana" rel="noopener noreferrer" target="_blank"><strong>Kibana</strong></a> vede la luce e diventa l&#8217;interfaccia ideale per ElasticSearch, permettendo di creare grafici e dashboard in modo intuitivo a partire dai dati, sfruttando tutti gli strumenti di aggregazione e ricerca di ElasticSearch per produrre istogrammmi, grafici a torta, geolocalizzare le informazioni e così via.</p>
+<p>Lo stack nel tempo è diventato complesso e certe volte sembra aver perso l&#8217;immediatezza iniziale. Alla fine, il primo grande uso che se ne vuol fare è sempre l&#8217;aggregatore di log: manca quindi un semplice &#8220;<em>trasportatore</em>&#8221; di log che li prelevi dalle nostre applicazioni e li faccia entrare nello stack. Nasce quindi un quarto elemento, o meglio una <strong>famiglia di prodotti specifici nel trasporto di log</strong> (ma non solo) chiamati <a href="https://www.elastic.co/products/beats" rel="noopener noreferrer" target="_blank"><strong>Beats</strong></a>. Non sono altro che agenti da installare come &#8220;sidecar&#8221; delle nostre applicazioni, solitamente a livello di server, che hanno il compito di raccogliere i dati ed inviarli a Logstash o direttamente a ElasticSearch.</p>
 <p>Per questo lo stack in realtà oggi dovrebbe chiamarsi BELK, BLEK o ELKB&#8230; per evitare problemi hanno giustamente optato per un brand più generico, cioè <strong>Elastic Stack</strong>!</p>
 <div class="text-center">
 <a href="../wp-content/uploads/2018/04/elastic-stack.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2018/04/elastic-stack-277x300.png" alt="Elastic Stack" width="277" height="300" class="aligncenter size-medium wp-image-15147" srcset="https://codingjam.it/wp-content/uploads/2018/04/elastic-stack-277x300.png 277w, https://codingjam.it/wp-content/uploads/2018/04/elastic-stack-768x833.png 768w, https://codingjam.it/wp-content/uploads/2018/04/elastic-stack-944x1024.png 944w, https://codingjam.it/wp-content/uploads/2018/04/elastic-stack.png 1330w" sizes="(max-width: 277px) 100vw, 277px" /></a>
@@ -334,11 +333,11 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
 <p>Le informazioni <strong>entrano da <em>Beats</em> e/o <em>Logstash</em></strong>, vengono <strong>indicizzate da <em>ElasticSearch</em></strong>, e si <strong>visualizzano con <em>Kibana</em></strong>. Mentre il ruolo degli ultimi due strati dello stack è chiaro, quello dei primi due all&#8217;inizio può sembrare confusionario: i dati possono entrare in entrambi, ma volendo Beats può girarli sia a Logstash che ElasticSearch&#8230; perché? Beats è nato dopo Logstash per <strong>semplificare e alleggerire</strong> il footprint delle operazioni di trasporto dei log nello stack, nonché di raccolta delle metriche dei sistemi distribuiti. Beats infatti è una famiglia di prodotti che non è solo incentrata sui log, ma permette di raccogliere informazioni più a <strong>basso livello per monitorare</strong> lo stato di salute del nostro sistema distribuito.<br />
 Vediamo di seguito qualche esempio su come implementare questa architettura per capirne le differenze e i vantaggi.</p>
 <h3>Come implementare l&#8217;architettura Elastic Stack</h3>
-<p>Partiamo da una delle <a href="https://hub.docker.com/r/sebp/elk/" rel="noopener" target="_blank">immagini Docker</a> più scaricate e <a href="http://elk-docker.readthedocs.io/" rel="noopener" target="_blank">ben documentate</a>: in un unico container abbiamo a disposizione tutto lo stack, valido almeno per un ambiente di test (anche se è già pronto per <a href="http://elk-docker.readthedocs.io/#setting-up-an-elasticsearch-cluster" rel="noopener" target="_blank">architetture più complesse</a>).</p>
+<p>Partiamo da una delle <a href="https://hub.docker.com/r/sebp/elk/" rel="noopener noreferrer" target="_blank">immagini Docker</a> più scaricate e <a href="http://elk-docker.readthedocs.io/" rel="noopener noreferrer" target="_blank">ben documentate</a>: in un unico container abbiamo a disposizione tutto lo stack, valido almeno per un ambiente di test (anche se è già pronto per <a href="http://elk-docker.readthedocs.io/#setting-up-an-elasticsearch-cluster" rel="noopener noreferrer" target="_blank">architetture più complesse</a>).</p>
 <p>Cominceremo quindi da una architettura base, per poi successivamente preoccuparci dello stress del sistema e dell&#8217;alta affidabilità.</p>
-<p>Su GitHub sono disponibili 2 progetti, usati per scrivere questo post: uno con le <em>customizzazioni</em> apportate al container <tt>sebp/elk</tt> (<a href="https://github.com/coding-jam/elk-poc" rel="noopener" target="_blank">elk-poc</a>); un altro è il <a href="https://github.com/coding-jam/spring-cloud-poc" rel="noopener" target="_blank">POC di Spring Cloud</a> già visto in un <a href="../microservizi-in-java-con-spring-boot-e-spring-cloud/index.html" rel="noopener" target="_blank">precedente post</a>, riadattato (in <em>branch separati</em>) per dialogare con ELK in diverse modalità.</p>
+<p>Su GitHub sono disponibili 2 progetti, usati per scrivere questo post: uno con le <em>customizzazioni</em> apportate al container <tt>sebp/elk</tt> (<a href="https://github.com/coding-jam/elk-poc" rel="noopener noreferrer" target="_blank">elk-poc</a>); un altro è il <a href="https://github.com/coding-jam/spring-cloud-poc" rel="noopener noreferrer" target="_blank">POC di Spring Cloud</a> già visto in un <a href="../microservizi-in-java-con-spring-boot-e-spring-cloud/index.html" rel="noopener noreferrer" target="_blank">precedente post</a>, riadattato (in <em>branch separati</em>) per dialogare con ELK in diverse modalità.</p>
 <h3>Lettura diretta dal file di log</h3>
-<p>Logstash è uno strumento estremamente versatile: grazie alla miriade di plugin di <em>input</em>, <em>filtering</em> e <em>output</em>, è possibile realizzare diverse <a href="https://www.elastic.co/guide/en/logstash/current/pipeline.html" rel="noopener" target="_blank">pipeline di processazione</a> per distinguere le sorgenti e le elaborazioni (solitamente l&#8217;output rimane ElasticSearch, ma non è detto&#8230;)</p>
+<p>Logstash è uno strumento estremamente versatile: grazie alla miriade di plugin di <em>input</em>, <em>filtering</em> e <em>output</em>, è possibile realizzare diverse <a href="https://www.elastic.co/guide/en/logstash/current/pipeline.html" rel="noopener noreferrer" target="_blank">pipeline di processazione</a> per distinguere le sorgenti e le elaborazioni (solitamente l&#8217;output rimane ElasticSearch, ma non è detto&#8230;)</p>
 <div class="text-center">
 <a href="https://codingjam.it/wp-content/uploads/2018/04/logstash.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2018/04/logstash-300x164.png" alt="Logstash" width="300" height="164" class="aligncenter size-medium wp-image-15177" srcset="https://codingjam.it/wp-content/uploads/2018/04/logstash-300x164.png 300w, https://codingjam.it/wp-content/uploads/2018/04/logstash-768x420.png 768w, https://codingjam.it/wp-content/uploads/2018/04/logstash.png 782w" sizes="(max-width: 300px) 100vw, 300px" /></a>
 </div>
@@ -348,8 +347,8 @@ Vediamo di seguito qualche esempio su come implementare questa architettura per 
 </div>
 <p>In questa configurazione, Logstash assume il ruolo fondamentale di <strong>collettore</strong>, <strong>elaboratore</strong> e &#8220;<strong>dispatcher</strong>&#8221; di log e <strong>risiede sulla macchina dove girano le applicazioni</strong> (a differenza di ElasticSearch e Kibana).</p>
 <h4>Logstash e le pipeline</h4>
-<p><a href="https://www.elastic.co/blog/logstash-multiple-pipelines" rel="noopener" target="_blank">Poco meno di un anno fa</a> è stato introdotto in Logstash il concetto di <strong>pipeline multiple</strong>: si tratta cioè di poter dichiarare nella stessa istanza di Logstash <em>più flussi &#8220;ETL&#8221; separati</em>. Prima infatti o si istanziava più volte Logstash con configurazioni diverse, oppure si faceva un&#8217;unica configurazione piena di &#8220;<tt>if</tt>&#8220;&#8230; Adesso è tutto molto più semplice e manutenibile.</p>
-<p>Basta compilare il file chiamato <tt><a href="https://github.com/coding-jam/elk-poc/blob/master/conf/pipelines.yml" rel="noopener" target="_blank">pipelines.yml</a></tt> (che nel nostro container risiede in <tt>/opt/logstash/config</tt>) con i riferimenti alla configurazione da usare:</p>
+<p><a href="https://www.elastic.co/blog/logstash-multiple-pipelines" rel="noopener noreferrer" target="_blank">Poco meno di un anno fa</a> è stato introdotto in Logstash il concetto di <strong>pipeline multiple</strong>: si tratta cioè di poter dichiarare nella stessa istanza di Logstash <em>più flussi &#8220;ETL&#8221; separati</em>. Prima infatti o si istanziava più volte Logstash con configurazioni diverse, oppure si faceva un&#8217;unica configurazione piena di &#8220;<tt>if</tt>&#8220;&#8230; Adesso è tutto molto più semplice e manutenibile.</p>
+<p>Basta compilare il file chiamato <tt><a href="https://github.com/coding-jam/elk-poc/blob/master/conf/pipelines.yml" rel="noopener noreferrer" target="_blank">pipelines.yml</a></tt> (che nel nostro container risiede in <tt>/opt/logstash/config</tt>) con i riferimenti alla configurazione da usare:</p>
 <pre>
 - pipeline.id: spring-cloud-poc-file-plain
   pipeline.batch.size: 1
@@ -362,7 +361,7 @@ Vediamo di seguito qualche esempio su come implementare questa architettura per 
 <dt><tt>pipeline.batch.size</tt></dt>
 <dd>quanti elementi accumulare nel plugin di <strong>input</strong> prima di passarli agli &#8220;<em>worker</em>&#8221; del <strong>filtering</strong> e <strong>output</strong></dd>
 <dt><tt>path.config</tt></dt>
-<dd>path assoluto delle configurazioni da usare per la pipeline. Supporta la <a href="https://en.wikipedia.org/wiki/Glob_(programming)" rel="noopener" target="_blank">sintassi glob</a> (in questo caso la configurazione è formata da due file, così da essere condivisa con altre pipeline)</dd>
+<dd>path assoluto delle configurazioni da usare per la pipeline. Supporta la <a href="https://en.wikipedia.org/wiki/Glob_(programming)" rel="noopener noreferrer" target="_blank">sintassi glob</a> (in questo caso la configurazione è formata da due file, così da essere condivisa con altre pipeline)</dd>
 <dt><tt>queue.type</tt></dt>
 <dd>tipo di coda che gestisce i batch di dati. Una <a href="https://www.elastic.co/guide/en/logstash/current/persistent-queues.html">coda persistente</a> permette di salvare i messaggi ricevuti in fase di input (prima di essere elaborati) in modo da fare buffering e non perdere nessuna messaggio in caso di sovraccarico</dd>
 </ol>
@@ -371,7 +370,7 @@ Vediamo di seguito qualche esempio su come implementare questa architettura per 
 <a href="https://codingjam.it/wp-content/uploads/2018/04/logstash-conf.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2018/04/logstash-conf-300x237.png" alt="" width="300" height="237" class="aligncenter size-medium wp-image-15187" srcset="https://codingjam.it/wp-content/uploads/2018/04/logstash-conf-300x237.png 300w, https://codingjam.it/wp-content/uploads/2018/04/logstash-conf-768x608.png 768w, https://codingjam.it/wp-content/uploads/2018/04/logstash-conf.png 950w" sizes="(max-width: 300px) 100vw, 300px" /></a>
 </div>
 <h5>Input</h5>
-<p>Il file <tt><a href="https://github.com/coding-jam/elk-poc/blob/master/conf/input-file-plain.conf" rel="noopener" target="_blank">input-file-plain.conf</a></tt> configura il plugin <strong><a href="https://www.elastic.co/guide/en/logstash/current/plugins-inputs-file.html" rel="noopener" target="_blank">file</a></strong> in modo che <strong>legga direttamente i nostri log</strong></p>
+<p>Il file <tt><a href="https://github.com/coding-jam/elk-poc/blob/master/conf/input-file-plain.conf" rel="noopener noreferrer" target="_blank">input-file-plain.conf</a></tt> configura il plugin <strong><a href="https://www.elastic.co/guide/en/logstash/current/plugins-inputs-file.html" rel="noopener noreferrer" target="_blank">file</a></strong> in modo che <strong>legga direttamente i nostri log</strong></p>
 <p><pre data-enlighter-language="ruby" class="EnlighterJSRAW">
 input {
     file {
@@ -384,9 +383,9 @@ input {
     }
 }
 </pre></p>
-<p>E&#8217; obbligatorio specificare il <tt>path</tt> del file (sempre in sintassi glob). Per supportare <em>anche il multiriga</em> (per gli stacktrace) e necessario aggiungere il <tt>codec multiline</tt> opportunamente configurato: ogni riga comincia con una data (<tt>pattern</tt> di default dei log di Spring Boot, come suggerito da questo <a href="http://knes1.github.io/blog/2015/2015-08-16-manage-spring-boot-logs-with-elasticsearch-kibana-and-logstash.html" rel="noopener" target="_blank">splendido post</a>); se non è così (<tt>negate => "true"</tt>), va raggruppata con la precedente (<tt>what => "previous"</tt>).</p>
+<p>E&#8217; obbligatorio specificare il <tt>path</tt> del file (sempre in sintassi glob). Per supportare <em>anche il multiriga</em> (per gli stacktrace) e necessario aggiungere il <tt>codec multiline</tt> opportunamente configurato: ogni riga comincia con una data (<tt>pattern</tt> di default dei log di Spring Boot, come suggerito da questo <a href="http://knes1.github.io/blog/2015/2015-08-16-manage-spring-boot-logs-with-elasticsearch-kibana-and-logstash.html" rel="noopener noreferrer" target="_blank">splendido post</a>); se non è così (<tt>negate => "true"</tt>), va raggruppata con la precedente (<tt>what => "previous"</tt>).</p>
 <h5>Filter</h5>
-<p>Dal momento che stiamo <em>leggendo del log non strutturati</em> (puro testo), è necessario <strong>dar loro una semantica</strong>. La vera potenza di Logstash sta proprio in questa fase, grazie al plugin <a href="https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html" rel="noopener" target="_blank">grok</a> (che possiamo tradurre come &#8220;buttar giù&#8221;, &#8220;decifrare&#8221;). Il suo scopo è &#8220;tokenizzare&#8221; il log in modo da creare una struttura (json) valorizzata con i token estratti.</p>
+<p>Dal momento che stiamo <em>leggendo del log non strutturati</em> (puro testo), è necessario <strong>dar loro una semantica</strong>. La vera potenza di Logstash sta proprio in questa fase, grazie al plugin <a href="https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html" rel="noopener noreferrer" target="_blank">grok</a> (che possiamo tradurre come &#8220;buttar giù&#8221;, &#8220;decifrare&#8221;). Il suo scopo è &#8220;tokenizzare&#8221; il log in modo da creare una struttura (json) valorizzata con i token estratti.</p>
 <p>Il plugin non fa altro che usare <strong>massicciamente espressioni regolari</strong>, mascherate con una dose di zucchero sintattico del tipo <tt>%{SYNTAX:SEMANTIC}</tt>:</p>
 <ul>
 <li><tt>SYNTAX</tt> fa riferimento ad una espressione regolare</li>
@@ -409,9 +408,9 @@ GET /login 0.241ms
 }
 </pre></p>
 <p>Non è un caso che i valori trovati <strong>siano tutti dichiarati come stringhe</strong>, vedremo dopo come specificarne il tipo.</p>
-<p>Da dove vengono fuori <tt>WORD</tt>, <tt>URIPATHPARAM</tt> e <tt>NUMBER</tt>? Grok dispone di un <a href="https://github.com/logstash-plugins/logstash-patterns-core/tree/master/patterns" rel="noopener" target="_blank">ricco vocabolario già pronto</a> di espressioni regolari, ma che è molto facile estendere.</p>
-<p>Per esempio, i pattern Grok necessari a matchare i log di <strong>Spring Boot + <a href="https://spring.io/blog/2016/02/15/distributed-tracing-with-spring-cloud-sleuth-and-spring-cloud-zipkin" rel="noopener" target="_blank">Sleuth</a></strong>, usati in questo POC, sono definiti <a href="https://github.com/coding-jam/elk-poc/blob/master/conf/patterns/spring-boot" rel="noopener" target="_blank">in un file a parte</a>, <strong>da specificare nella configurazione del plugin</strong>. </p>
-<p>Per imparare ad usare grok è molto utile poter testare i pattern (anche quelli propri) direttamente online grazie all&#8217;applicazione <a href="https://grokdebug.herokuapp.com/" rel="noopener" target="_blank">Grok Debugger</a> o ai DevTools di <a href="https://www.elastic.co/products/x-pack">X-Pack</a> (incluso dalla <a href="https://www.elastic.co/blog/elastic-stack-6-3-0-released">6.3</a>).</p>
+<p>Da dove vengono fuori <tt>WORD</tt>, <tt>URIPATHPARAM</tt> e <tt>NUMBER</tt>? Grok dispone di un <a href="https://github.com/logstash-plugins/logstash-patterns-core/tree/master/patterns" rel="noopener noreferrer" target="_blank">ricco vocabolario già pronto</a> di espressioni regolari, ma che è molto facile estendere.</p>
+<p>Per esempio, i pattern Grok necessari a matchare i log di <strong>Spring Boot + <a href="https://spring.io/blog/2016/02/15/distributed-tracing-with-spring-cloud-sleuth-and-spring-cloud-zipkin" rel="noopener noreferrer" target="_blank">Sleuth</a></strong>, usati in questo POC, sono definiti <a href="https://github.com/coding-jam/elk-poc/blob/master/conf/patterns/spring-boot" rel="noopener noreferrer" target="_blank">in un file a parte</a>, <strong>da specificare nella configurazione del plugin</strong>. </p>
+<p>Per imparare ad usare grok è molto utile poter testare i pattern (anche quelli propri) direttamente online grazie all&#8217;applicazione <a href="https://grokdebug.herokuapp.com/" rel="noopener noreferrer" target="_blank">Grok Debugger</a> o ai DevTools di <a href="https://www.elastic.co/products/x-pack">X-Pack</a> (incluso dalla <a href="https://www.elastic.co/blog/elastic-stack-6-3-0-released">6.3</a>).</p>
 <p>Fatta questa premessa, la dichiarazione del plugin <tt>grok</tt> all&#8217;interno del <tt>filter</tt> non dovrebbe risultare misteriosa:</p>
 <p><pre data-enlighter-language="ruby" class="EnlighterJSRAW">
 filter {
@@ -450,7 +449,7 @@ filter {
 </pre></p>
 <p>il cui campo &#8220;<tt>message</tt>&#8221; è il testo vero e proprio che abbiamo scritto nel nostro codice.</p>
 <p>Di per sé questo sarebbe sufficiente per avere una prima indicizzazione da parte di ElasticSearch. Ma nel momento in cui andiamo ad usare Kibana ci accorgiamo che qualcosa non quadra. Il <tt>timestamp</tt> degli eventi non torna con quello mostrato nel nostro file di log: non sapendo infatti quale variabile del nostro pattern rappresenta il tempo, Logstash <strong>ne genera uno automaticamente</strong>: è ovvio quindi che questo tempo <strong>non è quello del nostro log</strong>, ma quello di <strong>quando viene processata la riga</strong> (che può essere potenzialmente in differita).</p>
-<p>Prima di uscire dal <tt>filter</tt> è necessario quindi indicare quale campo rappresenta la <strong>data dell&#8217;evento</strong>, grazie al plugin <strong><a href="https://www.elastic.co/guide/en/logstash/current/plugins-filters-date.html" rel="noopener" target="_blank">date</a></strong>:</p>
+<p>Prima di uscire dal <tt>filter</tt> è necessario quindi indicare quale campo rappresenta la <strong>data dell&#8217;evento</strong>, grazie al plugin <strong><a href="https://www.elastic.co/guide/en/logstash/current/plugins-filters-date.html" rel="noopener noreferrer" target="_blank">date</a></strong>:</p>
 <p><pre data-enlighter-language="ruby" class="EnlighterJSRAW">
 filter {
   grok {
@@ -464,7 +463,7 @@ filter {
 }
 </pre></p>
 <p>Così diciamo a logstash di generare il campo <tt>@timestamp</tt> (nome di default preso in considerazione per le &#8220;time-series&#8221;) a partire dal campo <tt>timestamp</tt> appena &#8220;grokkato&#8221;, nella timezone &#8220;Europe/Rome&#8221; (perché così è il nostro log).</p>
-<p>Infine, come ultimo step, possiamo aggiungere il plugin <tt><a href="https://www.elastic.co/guide/en/logstash/current/plugins-filters-mutate.html" rel="noopener" target="_blank">mutate</a></tt> per specializzare, per esempio, il tipo di un campo:</p>
+<p>Infine, come ultimo step, possiamo aggiungere il plugin <tt><a href="https://www.elastic.co/guide/en/logstash/current/plugins-filters-mutate.html" rel="noopener noreferrer" target="_blank">mutate</a></tt> per specializzare, per esempio, il tipo di un campo:</p>
 <p><pre data-enlighter-language="ruby" class="EnlighterJSRAW">
 filter {
   grok {
@@ -480,9 +479,9 @@ filter {
   }
 }
 </pre></p>
-<p>Per l&#8217;esempio completo del file, vedere <a href="https://github.com/coding-jam/elk-poc/blob/master/conf/filter-output-plain.conf" rel="noopener" target="_blank">filter-output-plain.conf</a>.</p>
+<p>Per l&#8217;esempio completo del file, vedere <a href="https://github.com/coding-jam/elk-poc/blob/master/conf/filter-output-plain.conf" rel="noopener noreferrer" target="_blank">filter-output-plain.conf</a>.</p>
 <h5>Output</h5>
-<p>Questo file contiene anche la sezione di <strong>output</strong>: usando il plugin <strong><a href="https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html" rel="noopener" target="_blank">elasticsearch</a></strong>, possiamo mandare i log ad ElasticSearch (sul localhost del container):</p>
+<p>Questo file contiene anche la sezione di <strong>output</strong>: usando il plugin <strong><a href="https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html" rel="noopener noreferrer" target="_blank">elasticsearch</a></strong>, possiamo mandare i log ad ElasticSearch (sul localhost del container):</p>
 <p><pre data-enlighter-language="ruby" class="EnlighterJSRAW">
 output {
     elasticsearch {
@@ -495,8 +494,8 @@ output {
 <h3>Visualizzare i log</h3>
 <p>A questo punto non ci resta che <strong>avviare tutto lo stack</strong>, <strong>inviare dei dati</strong> e poi <strong>aprire Kibana</strong> per vedere i risultati.</p>
 <p>Per motivi di test (e di semplicità), applicazione e ElasticStack risiedono sulla stessa macchina: ovviamente, nel mondo reale, Logstash dovrebbe stare con la nostra applicazione, ElasticSearch e Kibana su altre macchine.</p>
-<p>Partiamo quindi dall&#8217;applicazione <a href="https://github.com/coding-jam/spring-cloud-poc" rel="noopener" target="_blank">Spring Cloud POC</a> (branch <tt>elk-logstash-with-grok-via-fs</tt>) e avviamo tutti i servizi (è importante che il <tt>config-server</tt> e <tt>eureka-server</tt> siano i primi). Nel file README sono specificati tutti i branch e a cosa servono.</p>
-<p>Andiamo ora su Elastic Stack: il progetto <a href="https://github.com/coding-jam/elk-poc" rel="noopener" target="_blank">elk-poc su GutHub</a> è dockerizzato e ha un <tt>docker-compose.yml</tt> che semplifica l&#8217;avvio dello stack. Per far finta che Logstash sia sulla stessa macchina dell&#8217;applicazione (per poterne collezionare i log), è necessario mappare la cartella dei nostri log come volume nel container, come specificato nel README quando si parla della pipeline <tt>spring-cloud-poc-file-plain</tt>.</p>
+<p>Partiamo quindi dall&#8217;applicazione <a href="https://github.com/coding-jam/spring-cloud-poc" rel="noopener noreferrer" target="_blank">Spring Cloud POC</a> (branch <tt>elk-logstash-with-grok-via-fs</tt>) e avviamo tutti i servizi (è importante che il <tt>config-server</tt> e <tt>eureka-server</tt> siano i primi). Nel file README sono specificati tutti i branch e a cosa servono.</p>
+<p>Andiamo ora su Elastic Stack: il progetto <a href="https://github.com/coding-jam/elk-poc" rel="noopener noreferrer" target="_blank">elk-poc su GutHub</a> è dockerizzato e ha un <tt>docker-compose.yml</tt> che semplifica l&#8217;avvio dello stack. Per far finta che Logstash sia sulla stessa macchina dell&#8217;applicazione (per poterne collezionare i log), è necessario mappare la cartella dei nostri log come volume nel container, come specificato nel README quando si parla della pipeline <tt>spring-cloud-poc-file-plain</tt>.</p>
 <p>Kibana sarà disponibile all&#8217;indirizzo <tt>http://localhost:5601</tt>, ma sarà ancora vuoto e chiede di inserire dati:</p>
 <div class="align-center">
 <a href="https://codingjam.it/wp-content/uploads/2018/06/kibana-no-data.png" class="lightbox" alt="Kibana add data"><img src="https://codingjam.it/wp-content/uploads/2018/06/kibana-no-data-300x86.png" alt="" width="300" height="86" class="aligncenter size-medium wp-image-15253" srcset="https://codingjam.it/wp-content/uploads/2018/06/kibana-no-data-300x86.png 300w, https://codingjam.it/wp-content/uploads/2018/06/kibana-no-data-768x219.png 768w, https://codingjam.it/wp-content/uploads/2018/06/kibana-no-data-1024x292.png 1024w" sizes="(max-width: 300px) 100vw, 300px" /></a>
@@ -524,69 +523,8 @@ curl http://localhost:8080/api/v1/customers/1/orders
             <!-- end content -->
 
             
-                <!-- social sharing buttons / counters -->
-                <div class="row">
-                  <div class="col-md-7">
-                    
-    <!-- social sharing buttons -->
-    <div class="bwp-single-share-wrap">
-      <span>Share:</span>
-      <ul class="bwp-single-share list-unstyled">
-        <!-- facebook -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/controlla-la-tua-applicazione-spring-cloud-con-elastic-stack-a-k-a-elk-parte-1/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/controlla-la-tua-applicazione-spring-cloud-con-elastic-stack-a-k-a-elk-parte-1/" target="_blank" class="bwp-share-link bwp-facebook-share">
-            <i class="fa fa-facebook"></i>
-          </a>
-        </li>
-        <!-- end facebook -->
-        <!-- twitter -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/controlla-la-tua-applicazione-spring-cloud-con-elastic-stack-a-k-a-elk-parte-1/&amp;text=controlla-la-tua-applicazione-spring-cloud-con-elastic-stack-a-k-a-elk-parte-1', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/controlla-la-tua-applicazione-spring-cloud-con-elastic-stack-a-k-a-elk-parte-1/&amp;text=controlla-la-tua-applicazione-spring-cloud-con-elastic-stack-a-k-a-elk-parte-1" target="_blank" class="bwp-share-link bwp-twitter-share">
-            <i class="fa fa-twitter"></i>
-          </a>
-        </li>
-        <!-- end twitter -->
-        <!-- google+ -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/controlla-la-tua-applicazione-spring-cloud-con-elastic-stack-a-k-a-elk-parte-1/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/controlla-la-tua-applicazione-spring-cloud-con-elastic-stack-a-k-a-elk-parte-1/" target="_blank" class="bwp-share-link bwp-google-plus-share">
-            <i class="fa fa-google-plus"></i>
-          </a>
-        </li>
-        <!-- end google+ -->
-        <!-- vk -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/controlla-la-tua-applicazione-spring-cloud-con-elastic-stack-a-k-a-elk-parte-1/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/controlla-la-tua-applicazione-spring-cloud-con-elastic-stack-a-k-a-elk-parte-1/" target="_blank" class="bwp-share-link bwp-vk-share">
-            <i class="fa fa-vk"></i>
-          </a>
-        </li>
-        <!-- end vk -->
-        <!-- pinterest -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/controlla-la-tua-applicazione-spring-cloud-con-elastic-stack-a-k-a-elk-parte-1/&amp;media=https://codingjam.it/wp-content/uploads/2018/04/elastic-stack.png&amp;description=controlla-la-tua-applicazione-spring-cloud-con-elastic-stack-a-k-a-elk-parte-1', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/controlla-la-tua-applicazione-spring-cloud-con-elastic-stack-a-k-a-elk-parte-1/&amp;media=https://codingjam.it/wp-content/uploads/2018/04/elastic-stack.png&amp;description=controlla-la-tua-applicazione-spring-cloud-con-elastic-stack-a-k-a-elk-parte-1" target="_blank" class="bwp-share-link bwp-pinterest-share">
-            <i class="fa fa-pinterest-p"></i>
-          </a>
-        </li>
-        <!-- end pinterest -->
-      </ul>
-    </div>
-    <!-- end social sharing buttons -->
-
-                      </div>
-                  <div class="col-md-5">
-                    
-    <!-- counters -->
-    <ul class="bwp-single-counters list-unstyled clearfix ">
-                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>0</a></li>
-                </ul>
-    <!-- end counters -->
-
-                      </div>
-                </div>
-                <!-- end social sharing buttons / counters -->
-
-                
       <!-- metadata -->
-      <div class="bwp-single-metadata-wrap ">
+      <div class="bwp-single-metadata-wrap bwp-no-single-share-and-counters">
         <ul class="bwp-single-metadata list-unstyled clearfix">
                       <!-- author -->
             <li>
@@ -659,23 +597,6 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
     <!-- end about the author -->
 
     
-<!-- comments -->
-<div id="comments" class="comments-area">
-
-	
-	
-		<div id="respond" class="comment-respond">
-		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='15144' id='comment_post_ID' />
-<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-</p></form>	</div><!-- #respond -->
-	
-</div>
-<!-- end comments -->
-
                   </div><!-- /bwp-single-content-col-wrap --></div><!-- /col-md-8 --><div class="col-md-4 bwp-sidebar-col bwp-sidebar-right">
         
                   </div><!-- /col --></div><!-- /row -->
@@ -763,12 +684,12 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
 <script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
-var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"1520cabb4b","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
 </body>
 
-<!-- Mirrored from codingjam.it/controlla-la-tua-applicazione-spring-cloud-con-elastic-stack-a-k-a-elk-parte-1/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/controlla-la-tua-applicazione-spring-cloud-con-elastic-stack-a-k-a-elk-parte-1/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 </html>

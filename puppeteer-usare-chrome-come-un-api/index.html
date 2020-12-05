@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<!-- Mirrored from codingjam.it/puppeteer-usare-chrome-come-un-api/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/puppeteer-usare-chrome-come-un-api/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="UTF-8">
@@ -116,7 +116,7 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
 <header id="bwp-header-wrap" class="bwp-header-simple">
 
   <!-- header bg -->
-    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P6261835_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P7101915_2.jpg) 50% 0 no-repeat">
     <div class="bwp-header-bg-overlay"></div>
 
     <!-- header content -->
@@ -306,9 +306,9 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
 
             <!-- content -->
             <div class="bwp-content entry-content clearfix">
-              <p>La versione 59 di Chrome ha portato un&#8217;interessante novità per chi si occupa di sviluppo web. Da questa versione infatti <strong>è possibile lanciare il famoso browser targato Google in modalità <i>headless</i></strong>, senza cioè nessuna interfaccia grafica. Inoltre il team Chrome ha anche rilasciato <a href="https://github.com/GoogleChrome/puppeteer" rel="noopener" target="_blank">Puppeteer</a>, una API Node che permette di pilotare un&#8217;instanza di Chrome. Installando il pacchetto con il comando <code>npm i puppeteer</code>, all&#8217;interno della cartella <em>node_modules</em> verrà aggiunta un&#8217;installazione di Chromium che verrà utilizzata durante l&#8217;esecuzione degli script.</p>
+              <p>La versione 59 di Chrome ha portato un&#8217;interessante novità per chi si occupa di sviluppo web. Da questa versione infatti <strong>è possibile lanciare il famoso browser targato Google in modalità <i>headless</i></strong>, senza cioè nessuna interfaccia grafica. Inoltre il team Chrome ha anche rilasciato <a href="https://github.com/GoogleChrome/puppeteer" rel="noopener noreferrer" target="_blank">Puppeteer</a>, una API Node che permette di pilotare un&#8217;instanza di Chrome. Installando il pacchetto con il comando <code>npm i puppeteer</code>, all&#8217;interno della cartella <em>node_modules</em> verrà aggiunta un&#8217;installazione di Chromium che verrà utilizzata durante l&#8217;esecuzione degli script.</p>
 <h2>Test end-to-end</h2>
-<p>L&#8217;utilizzo più immediato di Puppeteer è quello di <strong>tool per testing <em>end-to-end</em></strong>, simile all&#8217;accoppiata <a href="../test-end-end-con-nightwatch-js/index.html" rel="noopener" target="_blank">Nightwatch</a> + Selenium. Puppeteer ci da infatti una serie di comandi per aprire una pagina, selezionare un elemento del DOM tramite selettore e simulare l&#8217;intervento dell&#8217;utente. In pratica tutto quello che ci serve per creare una suite di test <em>end-to-end</em>. Qui di seguito un esempio di test, fatto con <a href="https://facebook.github.io/jest/" rel="noopener" target="_blank">Jest</a>, per la navigazione di CodingJam.</p>
+<p>L&#8217;utilizzo più immediato di Puppeteer è quello di <strong>tool per testing <em>end-to-end</em></strong>, simile all&#8217;accoppiata <a href="../test-end-end-con-nightwatch-js/index.html" rel="noopener noreferrer" target="_blank">Nightwatch</a> + Selenium. Puppeteer ci da infatti una serie di comandi per aprire una pagina, selezionare un elemento del DOM tramite selettore e simulare l&#8217;intervento dell&#8217;utente. In pratica tutto quello che ci serve per creare una suite di test <em>end-to-end</em>. Qui di seguito un esempio di test, fatto con <a href="https://facebook.github.io/jest/" rel="noopener noreferrer" target="_blank">Jest</a>, per la navigazione di CodingJam.</p>
 <pre class="brush: jscript; title: ; notranslate" title="">
 const URL = 'https://codingjam.it/'
 const POST_LINK_SELECTOR = '.entry-title a'
@@ -372,9 +372,9 @@ describe('performances', () =&gt; {
   })
 })
 </pre>
-<p>Lo scopo di questo test è quello di misurare il <a href="https://gtmetrix.com/blog/first-contentful-paint-explained/" rel="noopener" target="_blank">First Contentful Paint</a> di un&#8217;applicazione web. Questa operazione viene fatta tramite <strong>la nuova API <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance" rel="noopener" target="_blank">Performance</a></strong>. Cosa succede se proviamo a lanciare questo test due volte di fila? Il secondo valore di First Contentful Paint risulterà più <i>basso</i> grazie alla cache del browser. <strong>Questo è una palese violazione del principio di <a href="https://github.com/ghsukumar/SFDC_Best_Practices/wiki/F.I.R.S.T-Principles-of-Unit-Testing" rel="noopener" target="_blank">ripetibilità</a> del testing</strong>.</p>
+<p>Lo scopo di questo test è quello di misurare il <a href="https://gtmetrix.com/blog/first-contentful-paint-explained/" rel="noopener noreferrer" target="_blank">First Contentful Paint</a> di un&#8217;applicazione web. Questa operazione viene fatta tramite <strong>la nuova API <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance" rel="noopener noreferrer" target="_blank">Performance</a></strong>. Cosa succede se proviamo a lanciare questo test due volte di fila? Il secondo valore di First Contentful Paint risulterà più <i>basso</i> grazie alla cache del browser. <strong>Questo è una palese violazione del principio di <a href="https://github.com/ghsukumar/SFDC_Best_Practices/wiki/F.I.R.S.T-Principles-of-Unit-Testing" rel="noopener noreferrer" target="_blank">ripetibilità</a> del testing</strong>.</p>
 <figure id="attachment_15102" aria-describedby="caption-attachment-15102" style="width: 720px" class="wp-caption aligncenter"><a href="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.30.16.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.30.16.png" alt="Test con Cache" width="720" height="168" class="size-full wp-image-15102" srcset="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.30.16.png 720w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.30.16-300x70.png 300w" sizes="(max-width: 720px) 100vw, 720px" /></a><figcaption id="caption-attachment-15102" class="wp-caption-text">Il valore di First Contentful Paint risulta più basso dopo il primo test</figcaption></figure>
-<p><i>Under the hood</i> Puppeteer utilizza il Chrome DevTools Protocol (<code>CDP</code>), <strong>un protocollo che permette di effettuare tutte le operazioni presenti all&#8217;interno dei tool per sviluppatori di Chrome</strong> collegandosi ad un&#8217;istanza attiva del browser. Molti delle operazioni possibili grazie a questo protocollo sono esposte in maniera automatica dall&#8217;oggetto <code><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page" rel="noopener" target="_blank">page</a></code> di Puppeteer. Ma se c&#8217;è bisogno di andare <i>più in profondità</i> è possibile creare una sessione <code>CDP</code> e lanciare i comandi in maniera manuale. Si può riscrivere il test precedente aggiungendo un&#8217;istruzione <code>CDP</code> per la pulizia della cache.</p>
+<p><i>Under the hood</i> Puppeteer utilizza il Chrome DevTools Protocol (<code>CDP</code>), <strong>un protocollo che permette di effettuare tutte le operazioni presenti all&#8217;interno dei tool per sviluppatori di Chrome</strong> collegandosi ad un&#8217;istanza attiva del browser. Molti delle operazioni possibili grazie a questo protocollo sono esposte in maniera automatica dall&#8217;oggetto <code><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page" rel="noopener noreferrer" target="_blank">page</a></code> di Puppeteer. Ma se c&#8217;è bisogno di andare <i>più in profondità</i> è possibile creare una sessione <code>CDP</code> e lanciare i comandi in maniera manuale. Si può riscrivere il test precedente aggiungendo un&#8217;istruzione <code>CDP</code> per la pulizia della cache.</p>
 <pre class="brush: jscript; highlight: [6,7]; title: ; notranslate" title="">
 test('should have the first contentful paint in less than 2 seconds', async () =&gt; {
     const FIRST_PAINT_MAX_VALUE = 2000
@@ -392,7 +392,7 @@ test('should have the first contentful paint in less than 2 seconds', async () =
     expect(firstContentfulPaint).toBeLessThanOrEqual(FIRST_PAINT_MAX_VALUE)
 })
 </pre>
-<p>Il prossimo test rende ancora più chiara la potenza messa a disposizione da Puppeteer. Nel test precedente il First Contentful Paint viene calcolato collengadonsi a CodingJam <strong>sfruttando la rete della macchina che lancia il test</strong>. La quale può essere di sviluppo o di <a href="https://travis-ci.org/coding-jam/no-selenium-e2e-testing" rel="noopener" target="_blank">Continous Integration</a>. <strong>Tramite una sessione <code>CDP</code> possiamo emulare una velocità di connessione a nostra scelta.</strong></p>
+<p>Il prossimo test rende ancora più chiara la potenza messa a disposizione da Puppeteer. Nel test precedente il First Contentful Paint viene calcolato collengadonsi a CodingJam <strong>sfruttando la rete della macchina che lancia il test</strong>. La quale può essere di sviluppo o di <a href="https://travis-ci.org/coding-jam/no-selenium-e2e-testing" rel="noopener noreferrer" target="_blank">Continous Integration</a>. <strong>Tramite una sessione <code>CDP</code> possiamo emulare una velocità di connessione a nostra scelta.</strong></p>
 <pre class="brush: jscript; highlight: [8,9,10,11,12,13,14]; title: ; notranslate" title="">
 test('should have the first contentful paint in less than 10 seconds on a slow network', async () =&gt; {
   const FIRST_PAINT_MAX_VALUE = 10000
@@ -417,10 +417,10 @@ test('should have the first contentful paint in less than 10 seconds on a slow n
   expect(firstContentfulPaint).toBeLessThanOrEqual(FIRST_PAINT_MAX_VALUE)
 })
 </pre>
-<p>Questa operazione <strong>può essere effettuata anche con i Chrome DevTools in maniera manuale</strong>, come per qualsiasi altro metodo del protocollo <code>CDP</code>. Per il <code>CDP</code> non esiste moltissima documentazione, ma Google ha pubblicato il <a href="https://chromedevtools.github.io/devtools-protocol/" rel="noopener" target="_blank">Chrome DevTools Protocol Viewer</a> contenente una lista aggiornata dei metodi esposti e dei parametri necessari per il loro funzionamento.</p>
+<p>Questa operazione <strong>può essere effettuata anche con i Chrome DevTools in maniera manuale</strong>, come per qualsiasi altro metodo del protocollo <code>CDP</code>. Per il <code>CDP</code> non esiste moltissima documentazione, ma Google ha pubblicato il <a href="https://chromedevtools.github.io/devtools-protocol/" rel="noopener noreferrer" target="_blank">Chrome DevTools Protocol Viewer</a> contenente una lista aggiornata dei metodi esposti e dei parametri necessari per il loro funzionamento.</p>
 <figure id="attachment_15106" aria-describedby="caption-attachment-15106" style="width: 740px" class="wp-caption aligncenter"><a href="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.45.43.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.45.43-1024x414.png" alt="Chrome DevTools" width="740" height="299" class="size-large wp-image-15106" srcset="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.45.43-1024x414.png 1024w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.45.43-300x121.png 300w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.45.43-768x310.png 768w" sizes="(max-width: 740px) 100vw, 740px" /></a><figcaption id="caption-attachment-15106" class="wp-caption-text">Ecco l&#8217;operazione equivalente nei Chrome DevTools</figcaption></figure>
 <h2>Device Descriptors</h2>
-<p>Altra caratteristica che rende i Chrome DevTools molto apprezzati da chiunque abbia lavorato con applicazioni <a href="https://codingjam.it/?s=Cordova" rel="noopener" target="_blank">Cordova</a> o in generale con un&#8217;applicazione web mobile first, è <strong>l&#8217;emulazione del viewport dei vari device</strong>.</p>
+<p>Altra caratteristica che rende i Chrome DevTools molto apprezzati da chiunque abbia lavorato con applicazioni <a href="https://codingjam.it/?s=Cordova" rel="noopener noreferrer" target="_blank">Cordova</a> o in generale con un&#8217;applicazione web mobile first, è <strong>l&#8217;emulazione del viewport dei vari device</strong>.</p>
 <figure id="attachment_15108" aria-describedby="caption-attachment-15108" style="width: 617px" class="wp-caption aligncenter"><a href="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.51.57.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.51.57-617x1024.png" alt="Device Emulation" width="617" height="1024" class="size-large wp-image-15108" srcset="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.51.57-617x1024.png 617w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.51.57-181x300.png 181w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.51.57-768x1275.png 768w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-11-at-22.51.57.png 782w" sizes="(max-width: 617px) 100vw, 617px" /></a><figcaption id="caption-attachment-15108" class="wp-caption-text">Emulazione Device in Chrome DevTools</figcaption></figure>
 <p>Quelli presenti nello screenshot sono solo un <i>subset</i> dei device che Chrome è in grado di emulare. In realtà nascosti nei settings avanzati ce ne sono <strong>ben 53</strong>. Questi stessi dispositivi sono presenti anche in Puppeteer e possono essere utilizzati nei nostri test. </p>
 <pre class="brush: jscript; highlight: [2,15,17]; title: ; notranslate" title="">
@@ -455,7 +455,7 @@ module.exports = async () =&gt; {
 <p>Questa tenica apre una serie di possibilità, <strong>la prima è quella dei Visual Regression Test</strong>. In questo tipo di test si fa la comparazione di due screenshot uno considerato valido e l&#8217;altro risultato di un test. Se i due differiscono per più di una determinata percentuale di pixel, il test <strong><i>fallisce</i></strong>. Grazie ai <code>DeviceDescriptors</code> possiamo effettuare facilmente questo tipo di test <strong>su 53 differenti viewport</strong>.</p>
 <p>Altri test che si possono fare sono quelli legati al device emulato. Capita spesso che a seconda della tipologia di device (desktop o mobile) la nostra applicazione si debba comportare in maniera leggermente differente. <strong>In questi casi si posso scrivere suite di test per Desktop e delle suite specifiche per i nostri <i>target devices</i> principali</strong>.</p>
 <h2>Report Engine</h2>
-<p>Altro modo di utilizzare Chrome in modalità <i>headless</i> è quello di utilizzare la sua funzione di <a href="https://www.labnol.org/software/save-web-page-as-pdf/21153/" rel="noopener" target="_blank">salvataggio PDF</a> per <strong>creare un semplice motore di report</strong>.</p>
+<p>Altro modo di utilizzare Chrome in modalità <i>headless</i> è quello di utilizzare la sua funzione di <a href="https://www.labnol.org/software/save-web-page-as-pdf/21153/" rel="noopener noreferrer" target="_blank">salvataggio PDF</a> per <strong>creare un semplice motore di report</strong>.</p>
 <pre class="brush: jscript; title: ; notranslate" title="">
 async () =&gt; {
   const browser = await puppeteer.launch()
@@ -475,77 +475,16 @@ async () =&gt; {
   await browser.close()
 }
 </pre>
-<p>Lo scopo di questo script è quello di creare un PDF per ogni pagina della ricerca di CodingJam per la <i>keyword</i> &#8220;JavaScript&#8221;. Questa opzione non ha la potenza di un tool quale <a href="https://www.jaspersoft.com/" rel="noopener" target="_blank">JasperReports</a>. Ma se il caso d&#8217;uso non prevede qualche milione di righe è possibile utilizzare Puppeteer <strong>risparmiando il tempo di creazione dei layout dei report ma sfruttando delle pagine web già esistenti.</strong>. L&#8217;output di questo script sarà equivalente a quello su carta stampata: infatti di default Puppeteer genera un output basato sul <a href="https://www.w3.org/TR/CSS21/media.html" rel="noopener" target="_blank">media type</a> <code>print</code>. Se volete invece utilizzare il media type <code>screen</code> e ottenere un qualcosa di simile a quello che si vede a schermo basta utilizzare l&#8217;istruzione <code>page.emulateMedia('screen')</code>.</p>
+<p>Lo scopo di questo script è quello di creare un PDF per ogni pagina della ricerca di CodingJam per la <i>keyword</i> &#8220;JavaScript&#8221;. Questa opzione non ha la potenza di un tool quale <a href="https://www.jaspersoft.com/" rel="noopener noreferrer" target="_blank">JasperReports</a>. Ma se il caso d&#8217;uso non prevede qualche milione di righe è possibile utilizzare Puppeteer <strong>risparmiando il tempo di creazione dei layout dei report ma sfruttando delle pagine web già esistenti.</strong>. L&#8217;output di questo script sarà equivalente a quello su carta stampata: infatti di default Puppeteer genera un output basato sul <a href="https://www.w3.org/TR/CSS21/media.html" rel="noopener noreferrer" target="_blank">media type</a> <code>print</code>. Se volete invece utilizzare il media type <code>screen</code> e ottenere un qualcosa di simile a quello che si vede a schermo basta utilizzare l&#8217;istruzione <code>page.emulateMedia('screen')</code>.</p>
 <figure id="attachment_15112" aria-describedby="caption-attachment-15112" style="width: 740px" class="wp-caption aligncenter"><a href="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-12-at-19.28.39.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-12-at-19.28.39-1024x593.png" alt="CodingJam PDF" width="740" height="429" class="size-large wp-image-15112" srcset="https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-12-at-19.28.39-1024x593.png 1024w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-12-at-19.28.39-300x174.png 300w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-12-at-19.28.39-768x445.png 768w, https://codingjam.it/wp-content/uploads/2018/02/Screen-Shot-2018-02-12-at-19.28.39.png 1140w" sizes="(max-width: 740px) 100vw, 740px" /></a><figcaption id="caption-attachment-15112" class="wp-caption-text">Se qualcuno dovessero mai servire, ecco un report delle ricerche di CodingJam 😉</figcaption></figure>
 <h2>Conclusioni</h2>
-<p>Puppeteer è uno strumento molto <i>versatile</i>. Ci permette di controllare in tutto e per tutto (ed in maniera <strong>automatizzata</strong>) Chrome che ormai da tempo non è più solo un browser ma un vero proprio strumento per sviluppatori web, proprio grazie ai sui DevTools. Ci sono molti scenari interessanti da approfondire, ma che occuperebbero troppo spazio per questo post introduttivo. Uno di questi è la possibilità di utilizzare Puppeteer per abilitare il <strong>Server Side Rendering su una Single Page Application basata su un framework che non la supporta nativamente, come il &#8220;vecchio&#8221; AngularJS</strong>. Se siete curiosi trovate il codice completo degli esempi su <a href="https://github.com/coding-jam/puppeteer-examples" rel="noopener" target="_blank">GitHub</a>. Alla prossima!</p>
+<p>Puppeteer è uno strumento molto <i>versatile</i>. Ci permette di controllare in tutto e per tutto (ed in maniera <strong>automatizzata</strong>) Chrome che ormai da tempo non è più solo un browser ma un vero proprio strumento per sviluppatori web, proprio grazie ai sui DevTools. Ci sono molti scenari interessanti da approfondire, ma che occuperebbero troppo spazio per questo post introduttivo. Uno di questi è la possibilità di utilizzare Puppeteer per abilitare il <strong>Server Side Rendering su una Single Page Application basata su un framework che non la supporta nativamente, come il &#8220;vecchio&#8221; AngularJS</strong>. Se siete curiosi trovate il codice completo degli esempi su <a href="https://github.com/coding-jam/puppeteer-examples" rel="noopener noreferrer" target="_blank">GitHub</a>. Alla prossima!</p>
             </div>
             <!-- end content -->
 
             
-                <!-- social sharing buttons / counters -->
-                <div class="row">
-                  <div class="col-md-7">
-                    
-    <!-- social sharing buttons -->
-    <div class="bwp-single-share-wrap">
-      <span>Share:</span>
-      <ul class="bwp-single-share list-unstyled">
-        <!-- facebook -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/puppeteer-usare-chrome-come-un-api/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/puppeteer-usare-chrome-come-un-api/" target="_blank" class="bwp-share-link bwp-facebook-share">
-            <i class="fa fa-facebook"></i>
-          </a>
-        </li>
-        <!-- end facebook -->
-        <!-- twitter -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/puppeteer-usare-chrome-come-un-api/&amp;text=puppeteer-usare-chrome-come-un-api', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/puppeteer-usare-chrome-come-un-api/&amp;text=puppeteer-usare-chrome-come-un-api" target="_blank" class="bwp-share-link bwp-twitter-share">
-            <i class="fa fa-twitter"></i>
-          </a>
-        </li>
-        <!-- end twitter -->
-        <!-- google+ -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/puppeteer-usare-chrome-come-un-api/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/puppeteer-usare-chrome-come-un-api/" target="_blank" class="bwp-share-link bwp-google-plus-share">
-            <i class="fa fa-google-plus"></i>
-          </a>
-        </li>
-        <!-- end google+ -->
-        <!-- vk -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/puppeteer-usare-chrome-come-un-api/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/puppeteer-usare-chrome-come-un-api/" target="_blank" class="bwp-share-link bwp-vk-share">
-            <i class="fa fa-vk"></i>
-          </a>
-        </li>
-        <!-- end vk -->
-        <!-- pinterest -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/puppeteer-usare-chrome-come-un-api/&amp;media=&amp;description=puppeteer-usare-chrome-come-un-api', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/puppeteer-usare-chrome-come-un-api/&amp;media=&amp;description=puppeteer-usare-chrome-come-un-api" target="_blank" class="bwp-share-link bwp-pinterest-share">
-            <i class="fa fa-pinterest-p"></i>
-          </a>
-        </li>
-        <!-- end pinterest -->
-      </ul>
-    </div>
-    <!-- end social sharing buttons -->
-
-                      </div>
-                  <div class="col-md-5">
-                    
-    <!-- counters -->
-    <ul class="bwp-single-counters list-unstyled clearfix ">
-                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>5</a></li>
-                </ul>
-    <!-- end counters -->
-
-                      </div>
-                </div>
-                <!-- end social sharing buttons / counters -->
-
-                
       <!-- metadata -->
-      <div class="bwp-single-metadata-wrap ">
+      <div class="bwp-single-metadata-wrap bwp-no-single-share-and-counters">
         <ul class="bwp-single-metadata list-unstyled clearfix">
                       <!-- author -->
             <li>
@@ -638,7 +577,7 @@ async () =&gt; {
 					<p>l&#8217;abbinamento Nightwatch + Selenium mi era piaciuto molto Puppeteer sembra dare più potenzialità, da quello che ho capito però è limitato a Chrome e questo non permette di fare i test cross browser.</p>
 				</div><!-- .comment-content -->
 
-				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/puppeteer-usare-chrome-come-un-api/?replytocom=801#respond' data-commentid="801" data-postid="15096" data-belowelement="div-comment-801" data-respondelement="respond" aria-label='Reply to Alessandro Bx'>Reply</a></div>			</article><!-- .comment-body -->
+							</article><!-- .comment-body -->
 		</li><!-- #comment-## -->
 		<li id="comment-802" class="comment odd alt thread-odd thread-alt depth-1 parent">
 			<article id="div-comment-802" class="comment-body">
@@ -659,7 +598,7 @@ async () =&gt; {
 					<p>l&#8217;abbinamento Nightwatch + Selenium mi era piaciuto molto Puppeteer sembra avere più potenzialità, da quello che ho capito però è limitato a Chrome e questo non permette di fare i test cross browser.</p>
 				</div><!-- .comment-content -->
 
-				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/puppeteer-usare-chrome-come-un-api/?replytocom=802#respond' data-commentid="802" data-postid="15096" data-belowelement="div-comment-802" data-respondelement="respond" aria-label='Reply to Alessandro Bx'>Reply</a></div>			</article><!-- .comment-body -->
+							</article><!-- .comment-body -->
 		<ol class="children">
 		<li id="comment-803" class="comment even depth-2">
 			<article id="div-comment-803" class="comment-body">
@@ -680,7 +619,7 @@ async () =&gt; {
 					<p>Ciao Alessandro. Hai ragione, Nightwatch permette di testare su qualsiasi browser. Puppeteer infatti non è un tool per testing, ma una vera e propria API su Node per comandare Chrome. Il test è solo uno dei modi di utilizzo. Come un po&#8217; tutto nello sviluppo software è una questione di compromessi. Se la tua base di utenza di permette di non testare su ogni browser ma il test su chrome è già abbastanza allora Puppeteer può esserti utile. Se invece il tuo business ha bisogno di essere certo di funzionare su tutte le versioni di IE allora hai bisogno di qualcosa basato su selenium</p>
 				</div><!-- .comment-content -->
 
-				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/puppeteer-usare-chrome-come-un-api/?replytocom=803#respond' data-commentid="803" data-postid="15096" data-belowelement="div-comment-803" data-respondelement="respond" aria-label='Reply to Francesco Strazzullo'>Reply</a></div>			</article><!-- .comment-body -->
+							</article><!-- .comment-body -->
 		</li><!-- #comment-## -->
 </ol><!-- .children -->
 </li><!-- #comment-## -->
@@ -703,7 +642,7 @@ async () =&gt; {
 					<p>Ottimo articolo Francesco.</p>
 				</div><!-- .comment-content -->
 
-				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/puppeteer-usare-chrome-come-un-api/?replytocom=804#respond' data-commentid="804" data-postid="15096" data-belowelement="div-comment-804" data-respondelement="respond" aria-label='Reply to Fabio Biondi'>Reply</a></div>			</article><!-- .comment-body -->
+							</article><!-- .comment-body -->
 		<ol class="children">
 		<li id="comment-805" class="comment even depth-2">
 			<article id="div-comment-805" class="comment-body">
@@ -724,7 +663,7 @@ async () =&gt; {
 					<p>Grazie!</p>
 				</div><!-- .comment-content -->
 
-				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/puppeteer-usare-chrome-come-un-api/?replytocom=805#respond' data-commentid="805" data-postid="15096" data-belowelement="div-comment-805" data-respondelement="respond" aria-label='Reply to Francesco Strazzullo'>Reply</a></div>			</article><!-- .comment-body -->
+							</article><!-- .comment-body -->
 		</li><!-- #comment-## -->
 </ol><!-- .children -->
 </li><!-- #comment-## -->
@@ -732,15 +671,8 @@ async () =&gt; {
 
 		
 	
+			<p class="no-comments">Comments are closed.</p>
 	
-		<div id="respond" class="comment-respond">
-		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='15096' id='comment_post_ID' />
-<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-</p></form>	</div><!-- #respond -->
 	
 </div>
 <!-- end comments -->
@@ -878,12 +810,12 @@ async () =&gt; {
 <script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
-var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"1520cabb4b","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
 </body>
 
-<!-- Mirrored from codingjam.it/puppeteer-usare-chrome-come-un-api/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/puppeteer-usare-chrome-come-un-api/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 </html>

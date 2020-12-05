@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<!-- Mirrored from codingjam.it/introduzione-ad-angular-cli/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/introduzione-ad-angular-cli/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="UTF-8">
@@ -315,19 +315,19 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
 
             <!-- content -->
             <div class="bwp-content entry-content clearfix">
-              <p>Lo startup di un progetto può essere sempre un problema se non si conoscono le <em>best practices</em> o non si sa esattamente come strutturare l&#8217;applicazione. Fortunatamente è già da diversi anni che, per i progetti frontend web, tool come <a href="http://yeoman.io/" target="_blank">Yeoman</a> ci vengono in soccorso non solo per lo scaffolding dello startup di un  progetto, ma anche per supporto durante la sua evoluzione. Sono nati quindi diversi <strong>strumenti da riga di comando</strong> (<strong>CLI</strong>, <em>Command Line Interface</em> appunto) che velocizzano lo sviluppo e la standardizzazione della struttura dei progetti, spesso legati al framework principale dell&#8217;applicazione (Angular, React, Backbone&#8230;) o agli strumenti di build (come Grunt o Gulp).</p>
-<p>Più un framework è complesso, più uno strumento come la CLI è non solo utile, ma necessario. Anche per Angular quindi non poteva mancare la sua CLI, che ovviamente si chiama <a href="https://cli.angular.io/" target="_blank">Angular CLI</a>!</p>
+              <p>Lo startup di un progetto può essere sempre un problema se non si conoscono le <em>best practices</em> o non si sa esattamente come strutturare l&#8217;applicazione. Fortunatamente è già da diversi anni che, per i progetti frontend web, tool come <a href="http://yeoman.io/" target="_blank" rel="noopener noreferrer">Yeoman</a> ci vengono in soccorso non solo per lo scaffolding dello startup di un  progetto, ma anche per supporto durante la sua evoluzione. Sono nati quindi diversi <strong>strumenti da riga di comando</strong> (<strong>CLI</strong>, <em>Command Line Interface</em> appunto) che velocizzano lo sviluppo e la standardizzazione della struttura dei progetti, spesso legati al framework principale dell&#8217;applicazione (Angular, React, Backbone&#8230;) o agli strumenti di build (come Grunt o Gulp).</p>
+<p>Più un framework è complesso, più uno strumento come la CLI è non solo utile, ma necessario. Anche per Angular quindi non poteva mancare la sua CLI, che ovviamente si chiama <a href="https://cli.angular.io/" target="_blank" rel="noopener noreferrer">Angular CLI</a>!</p>
 <h2>Prime impressioni</h2>
 <p>Visitando la home page, già si capisce subito come installare Angular CLI, creare un progetto e avviare il server di sviluppo!<br />
 <a class="lightbox" href="https://codingjam.it/wp-content/uploads/2017/06/cli-logo.png"><img class="aligncenter size-medium wp-image-14748" src="https://codingjam.it/wp-content/uploads/2017/06/cli-logo-300x191.png" alt="angular cli logo" width="300" height="191" srcset="https://codingjam.it/wp-content/uploads/2017/06/cli-logo-300x191.png 300w, https://codingjam.it/wp-content/uploads/2017/06/cli-logo.png 356w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
-<p>Eh già, con Angular CLI sembra che non abbiamo più bisogno di un task executor come <a href="http://gulpjs.com/" target="_blank">Gulp</a> o <a href="https://gruntjs.com/" target="_blank">Grunt</a>, oppure un <em>module bundler</em> come <a href="https://webpack.github.io/" target="_blank">Webpack</a>&#8230; è tutto autogestito! Ma andiamo per gradi, e vediamo effettivamente quanto ne possiamo fare a meno, quali sono i limiti e forze di questo strumento.</p>
+<p>Eh già, con Angular CLI sembra che non abbiamo più bisogno di un task executor come <a href="http://gulpjs.com/" target="_blank" rel="noopener noreferrer">Gulp</a> o <a href="https://gruntjs.com/" target="_blank" rel="noopener noreferrer">Grunt</a>, oppure un <em>module bundler</em> come <a href="https://webpack.github.io/" target="_blank" rel="noopener noreferrer">Webpack</a>&#8230; è tutto autogestito! Ma andiamo per gradi, e vediamo effettivamente quanto ne possiamo fare a meno, quali sono i limiti e forze di questo strumento.</p>
 <h2>Startup veloce</h2>
 <p>Cominciamo quindi dall&#8217;inizio, ovvero l&#8217;installazione, meglio a livello globale</p>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">
 npm install -g @angular/cli
 </pre>
 <p>Al momento della scrittura del post, verrà installata la versione 1.2.4 e Angular 4 (precisamente la 4.3.1).</p>
-<p>Affinché funzioni, è necessario avere <strong>almeno installato Node 6.9.0 e NPM 3</strong>. Se avete una versione precedente, che magari volete mantenere per altri progetti, la soluzione migliore è affidarsi ad un <em>Node Version Manager</em> come <strong><a href="https://github.com/creationix/nvm" target="_blank">nvm</a></strong>.</p>
+<p>Affinché funzioni, è necessario avere <strong>almeno installato Node 6.9.0 e NPM 3</strong>. Se avete una versione precedente, che magari volete mantenere per altri progetti, la soluzione migliore è affidarsi ad un <em>Node Version Manager</em> come <strong><a href="https://github.com/creationix/nvm" target="_blank" rel="noopener noreferrer">nvm</a></strong>.</p>
 <p>A questo punto è un attimo creare un nuovo progetto</p>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">
 ng new my-new-project
@@ -355,27 +355,27 @@ webpack: Compiled successfully.
 <a href="https://codingjam.it/wp-content/uploads/2017/07/default-home.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2017/07/default-home-300x258.png" alt="angular cli project default home" width="300" height="258" class="aligncenter size-medium wp-image-14781" srcset="https://codingjam.it/wp-content/uploads/2017/07/default-home-300x258.png 300w, https://codingjam.it/wp-content/uploads/2017/07/default-home-768x659.png 768w, https://codingjam.it/wp-content/uploads/2017/07/default-home-1024x879.png 1024w, https://codingjam.it/wp-content/uploads/2017/07/default-home.png 1854w, https://codingjam.it/wp-content/uploads/2017/07/default-home-300x258@2x.png 600w, https://codingjam.it/wp-content/uploads/2017/07/default-home-768x659@2x.png 1536w" sizes="(max-width: 300px) 100vw, 300px" /></a>
 </li>
 <li>sono disponibili 5 file js, con relative mappe, <strong>generati in memoria</strong> dal server: questa separazione, in fase di sviluppo, rende più veloce la rigenerazione, <strong>automatica al salvataggio del sorgente</strong>, del file <tt>main.bundle.js</tt> che contiene il nostro codice.
-<li>infine, scopriamo che tutto il lavoro lo fa <strong><a href="https://webpack.github.io/" target="_blank">WebPack</a> dietro le quinte</strong>, di cui <a href="https://codingjam.it/webpack-ecmascript-6-parte/" target="_blank">Christian ci ha già parlato</a> in un altro post. Di fatto, chi &#8220;serve&#8221; la nostra applicazione in fase di sviluppo è <a href="https://webpack.js.org/guides/development/#webpack-dev-server" target="_blank">webpack-dev-server</a>.</li>
+<li>infine, scopriamo che tutto il lavoro lo fa <strong><a href="https://webpack.github.io/" target="_blank" rel="noopener noreferrer">WebPack</a> dietro le quinte</strong>, di cui <a href="https://codingjam.it/webpack-ecmascript-6-parte/" target="_blank" rel="noopener noreferrer">Christian ci ha già parlato</a> in un altro post. Di fatto, chi &#8220;serve&#8221; la nostra applicazione in fase di sviluppo è <a href="https://webpack.js.org/guides/development/#webpack-dev-server" target="_blank" rel="noopener noreferrer">webpack-dev-server</a>.</li>
 </ul>
 <p>Ma vediamo che cosa contiene la cartella del progetto appena creato (per capire meglio quanto segue è consigliato generare un nuovo progetto&#8230; tanto sapete come fare! 🙂 )</p>
 <p>Al primo livello troviamo:</p>
 <ul>
 <li><tt>.angular-cli.json</tt>: file di configurazione di Angular CLI. Per ogni personalizzazione bisogna passare da qua. Lo vedremo meglio tra poco</li>
-<li><tt>.editorconfig</tt>: file di configurazione che definisce lo stile del codice comune a diversi editor, secondo le direttive del progetto <a href="http://editorconfig.org/" target="_blank">EditorConfig</a>. IntelliJ (e famiglia) lo supportano nativamente;<br />
- esistono poi <a href="http://editorconfig.org/#download" target="_blank">plugin</a> per Atom, Sublime, Eclipse, XCode&#8230;</li>
+<li><tt>.editorconfig</tt>: file di configurazione che definisce lo stile del codice comune a diversi editor, secondo le direttive del progetto <a href="http://editorconfig.org/" target="_blank" rel="noopener noreferrer">EditorConfig</a>. IntelliJ (e famiglia) lo supportano nativamente;<br />
+ esistono poi <a href="http://editorconfig.org/#download" target="_blank" rel="noopener noreferrer">plugin</a> per Atom, Sublime, Eclipse, XCode&#8230;</li>
 <li><tt>.git</tt>: repository Git già inizializzato, con il primo commit fatto da Angular CLI</li>
 <li><tt>.gitignore</tt>: preconfigurato già con diversi elementi da ignorare</li>
 <li><tt>README.md</tt>: contiene un riassunto veloce dei comandi principali di Angular CLI</li>
 <li><tt>dist</tt>: cartella dove risiede il compilato</li>
 <li><tt>e2e</tt>: cartella dei test end-to-end</li>
-<li><tt>karma.conf.js</tt>: file di configurazione di <a href="http://karma-runner.github.io/0.13/index.html" target="_blank">Karma</a>. Un test è già pronto: lanciate <tt>ng test</tt> per vederlo all&#8217;opera! I test sono scritti con <a href="https://jasmine.github.io/" target="_blank">Jasmine</a></li>
+<li><tt>karma.conf.js</tt>: file di configurazione di <a href="http://karma-runner.github.io/0.13/index.html" target="_blank" rel="noopener noreferrer">Karma</a>. Un test è già pronto: lanciate <tt>ng test</tt> per vederlo all&#8217;opera! I test sono scritti con <a href="https://jasmine.github.io/" target="_blank" rel="noopener noreferrer">Jasmine</a></li>
 <li><tt>node_modules</tt>: dipendenze del progetto</li>
 <li><tt>package.json</tt>: classico descrittore del progetto</li>
-<li><tt>protractor.conf.js</tt>: file di configurazione di <a href="http://www.protractortest.org/" target="_blank">Protractor</a> per i test end-to-end. Anche in questo caso è già tutto pronto: basta eseguire <tt>ng e2e</tt><br />
+<li><tt>protractor.conf.js</tt>: file di configurazione di <a href="http://www.protractortest.org/" target="_blank" rel="noopener noreferrer">Protractor</a> per i test end-to-end. Anche in questo caso è già tutto pronto: basta eseguire <tt>ng e2e</tt><br />
  per vedere Chrome aprirsi e poi richiudersi, dandoci i risultati del test in console! Il webdriver viene automaticamente scaricato per noi.</li>
 <li><tt>src</tt>: sorgenti dell&#8217;applicazione</li>
-<li><tt>tsconfig.json</tt> file di configurazione di <a href="http://www.typescriptlang.org/" target="_blank">TypeScript</a></li>
-<li><tt>tslint.json</tt>: file di configurazione di <a href="https://palantir.github.io/tslint/" target="_blank">TSLint</a>,<br />
+<li><tt>tsconfig.json</tt> file di configurazione di <a href="http://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer">TypeScript</a></li>
+<li><tt>tslint.json</tt>: file di configurazione di <a href="https://palantir.github.io/tslint/" target="_blank" rel="noopener noreferrer">TSLint</a>,<br />
  ovvero analizzatore statico di codice per TypeScript</li>
 </ul>
 <p>La cartella <tt>src</tt> è quella che ci interessa approfondire. La maggior parte dei file presenti in questa cartella <strong>assolve uno specifico compito</strong> assegnatogli dal file di configurazione <tt>.angular-cli.json</tt>.</p>
@@ -386,19 +386,19 @@ webpack: Compiled successfully.
 <li><tt>favicon.ico</tt>: icona mostrata sulla barra degli indirizzi</li>
 <li><tt>index.html</tt>: template HTML di partenza</li>
 <li><tt>main.ts</tt>: file di bootstrap dell&#8217;applicazione</li>
-<li><tt>polyfills.ts</tt>: import di tutti i polyfill necessari ad Angular per supportare i browser meno recenti. Se si ha questa necessità, meglio controllare la pagina di <a href="https://angular.io/guide/browser-support" target="_blank">compatibilità dei browser</a></li>
+<li><tt>polyfills.ts</tt>: import di tutti i polyfill necessari ad Angular per supportare i browser meno recenti. Se si ha questa necessità, meglio controllare la pagina di <a href="https://angular.io/guide/browser-support" target="_blank" rel="noopener noreferrer">compatibilità dei browser</a></li>
 <li><tt>styles.css</tt>: foglio di stile principale</li>
 <li><tt>test.ts</tt>: entrypoint dei test</li>
 <li><tt>tsconfig.app.json</tt>: file di configurazione di TypeScript</li>
 <li><tt>tsconfig.spec.json</tt>: file di configurazione per i test unitari in TypeScript</li>
 <li><tt>typings.d.ts</tt>: descrittore delle definizioni in TypeScript delle librerie JavaScript</li>
 </ul>
-<p>Se date quindi un&#8217;occhiata al file <tt>.angular-cli.json</tt>, troverete riferimenti a gran parte di questi file. Una spiegazione completa di ogni elemento di questo file è disponibile nella <a href="https://github.com/angular/angular-cli/wiki/angular-cli" target="_blank">documentazione ufficiale</a>.</p>
+<p>Se date quindi un&#8217;occhiata al file <tt>.angular-cli.json</tt>, troverete riferimenti a gran parte di questi file. Una spiegazione completa di ogni elemento di questo file è disponibile nella <a href="https://github.com/angular/angular-cli/wiki/angular-cli" target="_blank" rel="noopener noreferrer">documentazione ufficiale</a>.</p>
 <h2>I comandi base</h2>
-<p>Ora che abbiamo conosciuto cosa è stato creato automaticamente con un semplice comando, vediamo come Angular CLI ci dà un aiuto nel proseguire lo sviluppo. E&#8217; possibile consultare l&#8217;elenco dei comandi disponibili a partire dal <a href="https://github.com/angular/angular-cli/wiki" target="_blank">Wiki ufficiale</a>.</p>
+<p>Ora che abbiamo conosciuto cosa è stato creato automaticamente con un semplice comando, vediamo come Angular CLI ci dà un aiuto nel proseguire lo sviluppo. E&#8217; possibile consultare l&#8217;elenco dei comandi disponibili a partire dal <a href="https://github.com/angular/angular-cli/wiki" target="_blank" rel="noopener noreferrer">Wiki ufficiale</a>.</p>
 <p>La CLI di Angular è gerarchica: basta digitare <tt>ng --help</tt> per rendersene conto. Abbiamo già conosciuto <tt>ng new</tt> e <tt>ng serve</tt>: vediamo adesso invece come <tt>ng generate</tt> (<tt>ng g</tt> per gli amici) sarà il nostro compagno di tutti i giorni.</p>
 <h3>Moduli e Componenti</h3>
-<p>I tasselli principali di una applicazione Angular sono <strong>Moduli</strong> e <strong>Componenti</strong>. L&#8217;applicazione nasce con un modulo radice (che abbiamo conosciuto nello <a href="../angular-2-diventa-4-per-adesso/index.html" target="_blank">scorso post</a>) chiamato solitamente <code>AppModule</code>, e su questo viene fatto il bootstrap. Ogni nuovo componente creato, <em>se non differentemente specificato</em>, viene associato a questo modulo:</p>
+<p>I tasselli principali di una applicazione Angular sono <strong>Moduli</strong> e <strong>Componenti</strong>. L&#8217;applicazione nasce con un modulo radice (che abbiamo conosciuto nello <a href="../angular-2-diventa-4-per-adesso/index.html" target="_blank" rel="noopener noreferrer">scorso post</a>) chiamato solitamente <code>AppModule</code>, e su questo viene fatto il bootstrap. Ogni nuovo componente creato, <em>se non differentemente specificato</em>, viene associato a questo modulo:</p>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">
 ng g component my-first
 </pre>
@@ -456,13 +456,13 @@ ng g service myService --module=app.module.ts
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">
 ng g --help
 </pre>
-<p>o dal <a href="https://github.com/angular/angular-cli/wiki/generate" target="_blank">wiki</a>.</p>
+<p>o dal <a href="https://github.com/angular/angular-cli/wiki/generate" target="_blank" rel="noopener noreferrer">wiki</a>.</p>
 <h2>La struttura del progetto</h2>
 <p>Già dai pochi comandi visti nel paragrafo precedente, si nota che la struttura del codice sorgente dentro la cartella <tt>src/app</tt> rischia di diventare ben presto caotica perché non c&#8217;è distinzione e gerarchia tra componenti e moduli, gli unici ad essere creati in cartelle.</p>
 <p>La struttura che vorremmo dare al sorgente è la seguente:</p>
 <ul>
 <li>un modulo per ogni pagina dell&#8217;applicazione, definito in una sotto cartella di <tt>src/app</tt></li>
-<li>vogliamo fare distinzione tra <a href="http://blog.angular-university.io/angular-2-smart-components-vs-presentation-components-whats-the-difference-when-to-use-each-and-why/" target="_blank">Smart Components e Presentation Components</a>: i primi, essendo specifici della logica di business del modulo che stiamo creando, risiedono sotto la cartella del modulo stesso; i secondi invece, essendo riusabili tra moduli, risiederanno in un modulo che chiameremo &#8220;view-components&#8221;</li>
+<li>vogliamo fare distinzione tra <a href="http://blog.angular-university.io/angular-2-smart-components-vs-presentation-components-whats-the-difference-when-to-use-each-and-why/" target="_blank" rel="noopener noreferrer">Smart Components e Presentation Components</a>: i primi, essendo specifici della logica di business del modulo che stiamo creando, risiedono sotto la cartella del modulo stesso; i secondi invece, essendo riusabili tra moduli, risiederanno in un modulo che chiameremo &#8220;view-components&#8221;</li>
 <li>i servizi riusabili sono in un modulo comune e definiti in sotto cartelle del modulo stesso</li>
 <li>un modulo di utilità dove definire tutto il resto (direttive, pipes&#8230;)</li>
 <li>tutti i componenti hanno un prefisso specifico che identifica il progetto (per esempio &#8220;my&#8221;)</li>
@@ -532,7 +532,7 @@ https://yuml.me/diagram/scruffy/class/draw
 %2F%2F Cool Class Diagram, [AppModule{bg:skyblue}]<>->[HomePageModule], [AppModule]<>->[ViewComponentsModule], [AppModule]<>->[ServicesModule], [AppModule]<>->[UtilsModule], [HomePageModule{bg:skyblue}]++->[DashBoardComponent{bg:orange}], [ViewComponentsModule{bg:skyblue}]++->[PagedTableComponent{bg:orange}], [ServicesModule{bg:skyblue}]++->[SearchService{bg:seagreen}], [UtilsModule{bg:skyblue}]++->[ToUpperCasePipe{bg:salmon}]
 --></p>
 <h2>Personalizzazioni</h2>
-<p>Ovviamente se Angular CLI non fosse uno strumento flessibile, in pochi continuerebbero ad usarlo. La documentazione ufficiale su GitHub ha una sezione molto interessante chiamata &#8220;<a href="https://github.com/angular/angular-cli/tree/master/docs/documentation/stories" target="_blank">Stories</a>&#8220;, dove sono elencate le personalizzazioni più frequenti. Guardiamone alcune insieme.</p>
+<p>Ovviamente se Angular CLI non fosse uno strumento flessibile, in pochi continuerebbero ad usarlo. La documentazione ufficiale su GitHub ha una sezione molto interessante chiamata &#8220;<a href="https://github.com/angular/angular-cli/tree/master/docs/documentation/stories" target="_blank" rel="noopener noreferrer">Stories</a>&#8220;, dove sono elencate le personalizzazioni più frequenti. Guardiamone alcune insieme.</p>
 <h3>Angular CLI e il Backend Proxy</h3>
 <p>Appena preso confidenza con Angular CLI mi sono chiesto: come faccio a puntare al mio backend? Abbiamo visto che dietro la CLI c&#8217;è WebPack con il suo web server che supporta i proxy. Basta quindi creare un semplice file JSON, normalmente chiamato <tt>proxy.conf.json</tt>, del tipo</p>
 <p><pre data-enlighter-language="js" class="EnlighterJSRAW">
@@ -547,9 +547,9 @@ https://yuml.me/diagram/scruffy/class/draw
 <p><pre data-enlighter-language="js" class="EnlighterJSRAW">
 &quot;start&quot;: &quot;ng serve --proxy-config proxy.conf.json&quot;
 </pre></p>
-<p>Nel caso si abbia necessità di configurazioni più articolate, la <a href="https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/proxy.md" target="_blank">documentazione</a> è semplice ma esauriente.</p>
+<p>Nel caso si abbia necessità di configurazioni più articolate, la <a href="https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/proxy.md" target="_blank" rel="noopener noreferrer">documentazione</a> è semplice ma esauriente.</p>
 <h3>CSS Preprocessors: Angular CLI con SASS, LESS o Stylus</h3>
-<p>Quando si parla di frontend, è bene trattare dignitosamente anche il CSS! Per questo ad oggi è opportuno usare un CSS preprocessor come <a href="http://lesscss.org/" target="_blank">LESS</a>, <a href="http://sass-lang.com/" target="_blank">SASS/SCSS</a> o <a href="http://stylus-lang.com/" target="_blank">Stylus</a>. Quale che <a href="https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/css-preprocessors.md" target="_blank">sia la scelta tra questi tre</a>, Angular CLI non si tira indietro.</p>
+<p>Quando si parla di frontend, è bene trattare dignitosamente anche il CSS! Per questo ad oggi è opportuno usare un CSS preprocessor come <a href="http://lesscss.org/" target="_blank" rel="noopener noreferrer">LESS</a>, <a href="http://sass-lang.com/" target="_blank" rel="noopener noreferrer">SASS/SCSS</a> o <a href="http://stylus-lang.com/" target="_blank" rel="noopener noreferrer">Stylus</a>. Quale che <a href="https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/css-preprocessors.md" target="_blank" rel="noopener noreferrer">sia la scelta tra questi tre</a>, Angular CLI non si tira indietro.</p>
 <p>La tipologia di stile usata nel progetto è definita in fondo al file <tt>.angular-cli.json</tt>:</p>
 <p><pre data-enlighter-language="js" class="EnlighterJSRAW">
 &quot;defaults&quot;: {
@@ -563,7 +563,7 @@ ng set defaults.styleExt scss
 </pre>
 <p>è la seconda volta che incontriamo <tt>ng set</tt>: si intuisce che il valore che segue (<tt>defaults.styleExt</tt> in questo caso) è proprio il <em>JSON path</em> verso la proprietà che vogliamo modificare all&#8217;interno della configurazione di Angular CLI!</p>
 <h3>Angular CLI e Bootstrap</h3>
-<p>Diamo un po&#8217; di stile alla nostra applicazione! Se non usiamo <a href="https://material.angular.io/" target="_blank">Angular Material</a>, una scelta consigliabile potrebbe essere <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a>. Come aggiungerlo quindi, visto che si porta dietro il suo CSS e i suoi font?</p>
+<p>Diamo un po&#8217; di stile alla nostra applicazione! Se non usiamo <a href="https://material.angular.io/" target="_blank" rel="noopener noreferrer">Angular Material</a>, una scelta consigliabile potrebbe essere <a href="http://getbootstrap.com/" target="_blank" rel="noopener noreferrer">Bootstrap</a>. Come aggiungerlo quindi, visto che si porta dietro il suo CSS e i suoi font?</p>
 <p>Per prima cosa ovviamente va installato:</p>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">
 npm install bootstrap --save # installa la versione 3
@@ -580,16 +580,16 @@ npm install bootstrap --save # installa la versione 3
   ]
 }
 </pre></p>
-<p>Riavviando <tt>ng serve</tt>, vediamo subito che senza toccare niente il font di default è cambiato! Per essere sicuri che anche i <em>font</em> siano stati caricati, aggiungiamo alla pagina qualche <a href="http://getbootstrap.com/components/#glyphicons-glyphs" target="_blank"><em>glyphicon</em></a>, il cui effetto (di dubbio gusto estetico) è questo:</p>
+<p>Riavviando <tt>ng serve</tt>, vediamo subito che senza toccare niente il font di default è cambiato! Per essere sicuri che anche i <em>font</em> siano stati caricati, aggiungiamo alla pagina qualche <a href="http://getbootstrap.com/components/#glyphicons-glyphs" target="_blank" rel="noopener noreferrer"><em>glyphicon</em></a>, il cui effetto (di dubbio gusto estetico) è questo:</p>
 <p><a href="https://codingjam.it/wp-content/uploads/2017/07/glyphicons.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2017/07/glyphicons-300x131.png" alt="angular cli page with glyphicons" width="300" height="131" class="aligncenter size-medium wp-image-14856" srcset="https://codingjam.it/wp-content/uploads/2017/07/glyphicons-300x131.png 300w, https://codingjam.it/wp-content/uploads/2017/07/glyphicons-768x335.png 768w, https://codingjam.it/wp-content/uploads/2017/07/glyphicons-1024x447.png 1024w, https://codingjam.it/wp-content/uploads/2017/07/glyphicons.png 1064w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
-<p>Bene, anche i font funzionano! Se invece vogliamo usare Bootstrap + SASS, la &#8220;<a href="https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/include-bootstrap.md" target="_blank">storia</a>&#8221; ufficiale spiega come fare.</p>
+<p>Bene, anche i font funzionano! Se invece vogliamo usare Bootstrap + SASS, la &#8220;<a href="https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/include-bootstrap.md" target="_blank" rel="noopener noreferrer">storia</a>&#8221; ufficiale spiega come fare.</p>
 <h2>Compilazione</h2>
 <p>Ad un certo punto dovremmo abbandonare l&#8217;ambiente di sviluppo e &#8220;compilare&#8221; tutto il progetto in modo che sia gradito ai browser e deployato su un server. Un semplice </p>
 <pre class="EnlighterJSRAW" data-enlighter-language="shell">
 ng build
 </pre>
 <p>e ritroviamo il buon vecchio HTML+CSS+JS&#8230; per noi nella cartella <tt>dist</tt>, tra l&#8217;altro <em>ripulita giusto prima della build</em>. Se però guardiamo quanto spazio occupa questa cartella ci prenderà un colpo! Per un semplice progetto quasi vuoto come questo siamo già a 5Mb! Inaccettabile, se non sappiamo come parametrizzare il comando e capiamo cosa fa esattamente. </p>
-<p>La <a href="https://github.com/angular/angular-cli/blob/master/docs/documentation/build.md" target="_blank">documentazione</a> è piuttosto esauriente: da qui per esempio apprendiamo che possiamo specificare un <strong>environment</strong> e un <strong>target</strong>. </p>
+<p>La <a href="https://github.com/angular/angular-cli/blob/master/docs/documentation/build.md" target="_blank" rel="noopener noreferrer">documentazione</a> è piuttosto esauriente: da qui per esempio apprendiamo che possiamo specificare un <strong>environment</strong> e un <strong>target</strong>. </p>
 <ul>
 <li><strong>environment</strong>: definisce le proprietà differenti per ambiente. I vari ambienti sono definiti (ovviamente)<br />
  nel file <tt>.angular-cli.json</tt>:<br />
@@ -625,7 +625,7 @@ export class AppComponent {
 </li>
 <li><strong>target</strong>: ambiente di destinazione della build. Possiamo scegliere tra <tt>--target=production</tt> o <tt>--target=development</tt>. Il <strong>default è development</strong> (abbreviato con <tt>--dev</tt>), mentre il primo possiamo specificarlo anche con <tt>--prod</tt>. Quest&#8217;ultimo attiva una serie di altri flag:
 <ul>
-<li><tt>--aot</tt>: come abbiamo <a href="../angular-2-diventa-4-per-adesso/index.html#aot-jit" target="_blank">già visto nel post precedente</a>, in produzione è bene attivare la <strong>compilazione AOT</strong> invece della <strong>JIT</strong>, utile solo in sviluppo.</li>
+<li><tt>--aot</tt>: come abbiamo <a href="../angular-2-diventa-4-per-adesso/index.html#aot-jit" target="_blank" rel="noopener noreferrer">già visto nel post precedente</a>, in produzione è bene attivare la <strong>compilazione AOT</strong> invece della <strong>JIT</strong>, utile solo in sviluppo.</li>
 <li><tt>--env=prod</tt>: abilita le configurazioni di produzione</li>
 <li><tt>--extract-css</tt>: estrae il CSS dal DOM (normalmente in sviluppo è nell&#8217;header)</li>
 </ul>
@@ -656,69 +656,8 @@ npm install
             <!-- end content -->
 
             
-                <!-- social sharing buttons / counters -->
-                <div class="row">
-                  <div class="col-md-7">
-                    
-    <!-- social sharing buttons -->
-    <div class="bwp-single-share-wrap">
-      <span>Share:</span>
-      <ul class="bwp-single-share list-unstyled">
-        <!-- facebook -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/introduzione-ad-angular-cli/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/introduzione-ad-angular-cli/" target="_blank" class="bwp-share-link bwp-facebook-share">
-            <i class="fa fa-facebook"></i>
-          </a>
-        </li>
-        <!-- end facebook -->
-        <!-- twitter -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/introduzione-ad-angular-cli/&amp;text=introduzione-ad-angular-cli', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/introduzione-ad-angular-cli/&amp;text=introduzione-ad-angular-cli" target="_blank" class="bwp-share-link bwp-twitter-share">
-            <i class="fa fa-twitter"></i>
-          </a>
-        </li>
-        <!-- end twitter -->
-        <!-- google+ -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/introduzione-ad-angular-cli/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/introduzione-ad-angular-cli/" target="_blank" class="bwp-share-link bwp-google-plus-share">
-            <i class="fa fa-google-plus"></i>
-          </a>
-        </li>
-        <!-- end google+ -->
-        <!-- vk -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/introduzione-ad-angular-cli/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/introduzione-ad-angular-cli/" target="_blank" class="bwp-share-link bwp-vk-share">
-            <i class="fa fa-vk"></i>
-          </a>
-        </li>
-        <!-- end vk -->
-        <!-- pinterest -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/introduzione-ad-angular-cli/&amp;media=https://codingjam.it/wp-content/uploads/2017/07/Angular-CLI-logo.jpg&amp;description=introduzione-ad-angular-cli', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/introduzione-ad-angular-cli/&amp;media=https://codingjam.it/wp-content/uploads/2017/07/Angular-CLI-logo.jpg&amp;description=introduzione-ad-angular-cli" target="_blank" class="bwp-share-link bwp-pinterest-share">
-            <i class="fa fa-pinterest-p"></i>
-          </a>
-        </li>
-        <!-- end pinterest -->
-      </ul>
-    </div>
-    <!-- end social sharing buttons -->
-
-                      </div>
-                  <div class="col-md-5">
-                    
-    <!-- counters -->
-    <ul class="bwp-single-counters list-unstyled clearfix ">
-                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>0</a></li>
-                </ul>
-    <!-- end counters -->
-
-                      </div>
-                </div>
-                <!-- end social sharing buttons / counters -->
-
-                
       <!-- metadata -->
-      <div class="bwp-single-metadata-wrap ">
+      <div class="bwp-single-metadata-wrap bwp-no-single-share-and-counters">
         <ul class="bwp-single-metadata list-unstyled clearfix">
                       <!-- author -->
             <li>
@@ -791,23 +730,6 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
     <!-- end about the author -->
 
     
-<!-- comments -->
-<div id="comments" class="comments-area">
-
-	
-	
-		<div id="respond" class="comment-respond">
-		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='14745' id='comment_post_ID' />
-<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-</p></form>	</div><!-- #respond -->
-	
-</div>
-<!-- end comments -->
-
     <!-- related posts (by tags) -->
     <div class="bwp-related-posts-container bwp-show-2-posts">
       <div class="bwp-o-hidden">
@@ -821,67 +743,6 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
         <div class="bwp-related-posts clearfix">
 
           
-            <!-- related post -->
-            <article class="bwp-related-post ">
-              <div class="bwp-related-post-wrap bwp-transition-3">
-
-                
-                    <!-- media - featured image -->
-                    <figure class="bwp-post-media">
-                                              <a href="https://codingjam.it/introduzione-ad-angular-2-parte-1/" class="bwp-post-media-link">
-                                              <img width="706" height="424" src="https://codingjam.it/wp-content/uploads/2016/04/angular2.png" class="attachment-melissa-img-706-auto size-melissa-img-706-auto wp-post-image" alt="" srcset="https://codingjam.it/wp-content/uploads/2016/04/angular2.png 750w, https://codingjam.it/wp-content/uploads/2016/04/angular2-300x180.png 300w, https://codingjam.it/wp-content/uploads/2016/04/angular2-300x180@2x.png 600w" sizes="(max-width: 706px) 100vw, 706px" />                        <div class="bwp-post-bg-overlay bwp-transition-4"></div>
-                        <div class="bwp-post-hover-icon-wrap">
-                          <div class="bwp-post-hover-icon-alignment">
-                            <div class="bwp-post-hover-icon-center">
-                              <span class="bwp-transition-4"><i class="fa fa-share"></i></span>
-                            </div>
-                          </div>
-                        </div>
-                      </a>
-                    </figure>
-                    <!-- end media -->
-
-                    
-                <!-- content -->
-                <div class="bwp-post-content">
-
-                  
-                                      <!-- title -->
-                    <h3 class="bwp-post-title entry-title">
-                      <a href="https://codingjam.it/introduzione-ad-angular-2-parte-1/">Introduzione ad Angular 2 &#8211; Parte 1</a>
-                    </h3>
-                    <!-- end title -->
-                    
-                  
-      <!-- excerpt -->
-      <div class="bwp-post-excerpt entry-content">
-        <p>E&#8217; tanto che se ne parla e finalmente Angular 2 è arrivato alla versione beta! Possiamo considerare le API ormai stabili dal punto di vista sintattico (visto che dalla alpha qualcosa è cambiato), per cui è il momento di cominciare a studiarlo senza aspettarsi straordinari cambiamenti da qui alla release ufficiale. Quei rumors che dicevano che Angular 2 era del tutto diverso dalla versione 1 erano veri? Ebbene si, Angular 2 fa un grande passo a vanti, si trasforma e diventa&#8230; <a href="https://facebook.github.io/react/docs/tutorial.html" target="_blank">React</a>!!! Apparte gli scherzi, a prima vista sembra che Angular 2 sia più parente del framework di Facebook che del suo predecessore, almeno per quanto riguarda i concetti base. Scavando un po&#8217; però si riconosce il nostro vecchio amico AngularJS&#8230;</p>
-      </div>
-      <!-- end excerpt -->
-
-      
-    <!-- date + read more link -->
-    <div class="bwp-post-details-wrap clearfix">
-      <!-- date -->
-            <a href="https://codingjam.it/2016/04/12/" class="bwp-post-date">
-        <span class="date updated">12/04/2016</span>
-      </a>
-      <!-- end date -->
-      <!-- read more link -->
-      <a href="https://codingjam.it/introduzione-ad-angular-2-parte-1/" class="bwp-read-more">Read more</a>
-      <!-- end read more link -->
-    </div>
-    <!-- end date + read more link -->
-
-    
-                </div>
-                <!-- end content -->
-
-              </div>
-            </article>
-            <!-- end related post -->
-
-            
             <!-- related post -->
             <article class="bwp-related-post ">
               <div class="bwp-related-post-wrap bwp-transition-3">
@@ -914,6 +775,51 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
       <!-- end date -->
       <!-- read more link -->
       <a href="https://codingjam.it/introduzione-ad-angular-2-parte-2/" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="../angular-2-diventa-4-per-adesso/index.html">Angular 2 diventa 4 (per adesso)!</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>Dove sono stato nell&#8217;ultimo anno? Sembra ieri che parlavamo di Angular 2 ancora alla RC1 e, il tempo di distrarsi un attimo, quel 2 è divento un 4!! In realtà, c&#8217;è una spiegazione: con l&#8217;adozione del Semantic Versioning, ogni release che provoca rottura col passato richiede il salto di una major version.. e di rotture ce ne sono state! Già con il rifacimento (o gli n rifacimenti) del componente di routing si parlava &#8220;per scherzo&#8221; di Angular 3 tanto era [&hellip;]</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2017/06/27/" class="bwp-post-date">
+        <span class="date updated">27/06/2017</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="../angular-2-diventa-4-per-adesso/index.html" class="bwp-read-more">Read more</a>
       <!-- end read more link -->
     </div>
     <!-- end date + read more link -->
@@ -1068,12 +974,12 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
 <script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
-var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"1520cabb4b","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
 </body>
 
-<!-- Mirrored from codingjam.it/introduzione-ad-angular-cli/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/introduzione-ad-angular-cli/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 </html>

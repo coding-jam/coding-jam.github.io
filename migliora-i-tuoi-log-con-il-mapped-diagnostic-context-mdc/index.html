@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<!-- Mirrored from codingjam.it/migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="UTF-8">
@@ -116,7 +116,7 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
 <header id="bwp-header-wrap" class="bwp-header-simple">
 
   <!-- header bg -->
-    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P7101915_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P6261835_2.jpg) 50% 0 no-repeat">
     <div class="bwp-header-bg-overlay"></div>
 
     <!-- header content -->
@@ -306,7 +306,7 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
 
             <!-- content -->
             <div class="bwp-content entry-content clearfix">
-              <p>Stai scrivendo dei servizi web in Java e <strong>vorresti sempre loggare l&#8217;utente collegato</strong> e l&#8217;<strong>IP del chiamante</strong> in modo automatico e trasparente per darli in pasto a <a href="https://www.elastic.co/elk-stack" rel="noopener" target="_blank">ELK</a>? O assegnare un <strong>identificativo univoco</strong> ad un batch multithread perché non capisci più cosa sta loggando ogni thread? In realtà è una cosa più semplice di quanto si pensi perché è una <em>feature</em> <strong>supportata da tempo dalla maggior parte dei sistemi di logging in Java</strong> come <a href="https://logging.apache.org/log4j/1.2/" rel="noopener" target="_blank">Log4j</a>, <a href="https://logging.apache.org/log4j/2.x/" rel="noopener" target="_blank">Log4j2</a> o <a href="https://logback.qos.ch/" rel="noopener" target="_blank">Logback</a>, e, ovviamente da loro &#8220;padre&#8221; <a href="https://www.slf4j.org/" rel="noopener" target="_blank">SLF4J</a>!</p>
+              <p>Stai scrivendo dei servizi web in Java e <strong>vorresti sempre loggare l&#8217;utente collegato</strong> e l&#8217;<strong>IP del chiamante</strong> in modo automatico e trasparente per darli in pasto a <a href="https://www.elastic.co/elk-stack" rel="noopener noreferrer" target="_blank">ELK</a>? O assegnare un <strong>identificativo univoco</strong> ad un batch multithread perché non capisci più cosa sta loggando ogni thread? In realtà è una cosa più semplice di quanto si pensi perché è una <em>feature</em> <strong>supportata da tempo dalla maggior parte dei sistemi di logging in Java</strong> come <a href="https://logging.apache.org/log4j/1.2/" rel="noopener noreferrer" target="_blank">Log4j</a>, <a href="https://logging.apache.org/log4j/2.x/" rel="noopener noreferrer" target="_blank">Log4j2</a> o <a href="https://logback.qos.ch/" rel="noopener noreferrer" target="_blank">Logback</a>, e, ovviamente da loro &#8220;padre&#8221; <a href="https://www.slf4j.org/" rel="noopener noreferrer" target="_blank">SLF4J</a>!</p>
 <h2>Mapped Diagnostic Context</h2>
 <p>Questa <em>feature</em> è sempre stata lì, bastava sapere che si chiamava <strong>Mapped Diagnostic Context (MDC)</strong>: come dice il nome, non è altro che una <strong>mappa contestuale al thread corrente</strong> che serve proprio per raccogliere le informazioni che si vuole presentare <strong>ad ogni riga di log</strong>, secondo il <em>layout pattern</em> del framework che stiamo usando. Non c&#8217;è bisogno quindi di ricordarsi di aggiungerle ogni volta che si logga qualcosa: una volta nella mappa,<strong> sarà il framework a stampare le informazioni per noi secondo il pattern specificato</strong>. </p>
 <p>Facciamo un esempio: la riga di codice</p>
@@ -330,10 +330,10 @@ LOGGER.info(&quot;Payment accepted&quot;);
 <p>Quello di cui abbiamo bisogno è:</p>
 <ol>
 <li>un <strong>progetto qualsiasi in Java</strong>, che sia una web application Java EE o una applicazione standalone Java SE</li>
-<li>un <strong>framework di logging che supporti MDC, come SLF4J</strong>: se si una <a href="http://www.vogella.com/tutorials/Logging/article.html" rel="noopener" target="_blank">JUL</a> o <a href="https://commons.apache.org/proper/commons-logging/" rel="noopener" target="_blank">JCL</a>, <a href="http://glauche.de/2009/09/09/java-util-logging-vs-slf4j/" rel="noopener" target="_blank">conviene</a> usare dei <a href="https://www.slf4j.org/legacy.html" rel="noopener" target="_blank"><em>bridge</em> verso SLF4J</a></li>
+<li>un <strong>framework di logging che supporti MDC, come SLF4J</strong>: se si una <a href="http://www.vogella.com/tutorials/Logging/article.html" rel="noopener noreferrer" target="_blank">JUL</a> o <a href="https://commons.apache.org/proper/commons-logging/" rel="noopener noreferrer" target="_blank">JCL</a>, <a href="http://glauche.de/2009/09/09/java-util-logging-vs-slf4j/" rel="noopener noreferrer" target="_blank">conviene</a> usare dei <a href="https://www.slf4j.org/legacy.html" rel="noopener noreferrer" target="_blank"><em>bridge</em> verso SLF4J</a></li>
 </ol>
-<p>Prendiamo un progetto di esempio su <a href="https://github.com/coding-jam/mdc-poc" rel="noopener" target="_blank">GitHub (mdc-poc)</a> basato su Spring Boot (ma non è necessario che lo sia, è solo per la comodità di avere velocemente un web server).</p>
-<p>Il posto migliore per recuperare l&#8217;IP del chiamante è un <a href="https://docs.oracle.com/javaee/6/tutorial/doc/bnagb.html" rel="noopener" target="_blank">Web Filter</a>:</p>
+<p>Prendiamo un progetto di esempio su <a href="https://github.com/coding-jam/mdc-poc" rel="noopener noreferrer" target="_blank">GitHub (mdc-poc)</a> basato su Spring Boot (ma non è necessario che lo sia, è solo per la comodità di avere velocemente un web server).</p>
+<p>Il posto migliore per recuperare l&#8217;IP del chiamante è un <a href="https://docs.oracle.com/javaee/6/tutorial/doc/bnagb.html" rel="noopener noreferrer" target="_blank">Web Filter</a>:</p>
 <p><pre data-enlighter-language="java" class="EnlighterJSRAW" data-enlighter-highlight="13,16">
 import org.slf4j.MDC;
 @WebFilter(urlPatterns = &quot;*&quot;)
@@ -354,14 +354,14 @@ public class LogEnricherFilter implements Filter {
         }
     }
 </pre></p>
-<p>Ogni chiamata HTTP viene quindi filtrata: viene recuperato l&#8217;IP del chiamante e viene generato un <em>request ID</em> univoco per chiamata (tramite un <tt>UUID</tt> casuale). Questi vengono composti nella stringa <code>logData</code> e aggiunti alla mappa <code>MDC</code>, a cui si accede in modo statico (riga 13). Dietro le quinte ovviamente c&#8217;è un <a href="http://www.baeldung.com/java-threadlocal" rel="noopener" target="_blank">ThreadLocal</a>, quindi <strong>meglio svuotarlo</strong> (riga 16) perché probabilmente il thread fa parte di un pool.</p>
+<p>Ogni chiamata HTTP viene quindi filtrata: viene recuperato l&#8217;IP del chiamante e viene generato un <em>request ID</em> univoco per chiamata (tramite un <tt>UUID</tt> casuale). Questi vengono composti nella stringa <code>logData</code> e aggiunti alla mappa <code>MDC</code>, a cui si accede in modo statico (riga 13). Dietro le quinte ovviamente c&#8217;è un <a href="http://www.baeldung.com/java-threadlocal" rel="noopener noreferrer" target="_blank">ThreadLocal</a>, quindi <strong>meglio svuotarlo</strong> (riga 16) perché probabilmente il thread fa parte di un pool.</p>
 <p>A questo punto il framework di log ha una nuova informazione (la chiave <tt><strong>logData</strong></tt>) <strong>pronta per essere stampata</strong>. In Spring Boot è molto semplice, grazie alla property <tt>logging.pattern.level</tt>, definire un nuovo pattern per i log:</p>
 <pre>
 logging.pattern.level=%X{logData}%5p
 </pre>
-<p>Basta quindi usare <tt>%X{...}</tt> per referenziare una chiave della mappa MDC da usare nel layout e il gioco è fatto! Il branch <a href="https://github.com/coding-jam/mdc-poc/tree/plain-mdc" rel="noopener" target="_blank">&#8220;plain-mdc&#8221; del progetto di prova</a> ne è un esempio.</p>
-<p>E ora non rimane che sbizzarrirsi! Da un Web Filter possiamo ricavare un sacco di informazioni, come l&#8217;utente autenticato nel sistema, o una serie di <strong>informazioni dettagliate della richiesta</strong> in corso come fa <a href="https://logback.qos.ch/manual/mdc.html#mis" rel="noopener" target="_blank"><code>MDCInsertingServletFilter</code> di Logback</a>.<br />
-Nel <a href="https://logback.qos.ch/manual/mdc.html#managedThreads" rel="noopener" target="_blank">caso del mondo multithread</a> invece, è necessario <strong>ricopiare la mappa MDC dal thread padre a quello figlio</strong>, come specificato sempre nella documentazione di Logback. Se usiamo gli <tt>Executors</tt> di Java, potremmo scriverci un adapter che fa proprio questo lavoro:</p>
+<p>Basta quindi usare <tt>%X{...}</tt> per referenziare una chiave della mappa MDC da usare nel layout e il gioco è fatto! Il branch <a href="https://github.com/coding-jam/mdc-poc/tree/plain-mdc" rel="noopener noreferrer" target="_blank">&#8220;plain-mdc&#8221; del progetto di prova</a> ne è un esempio.</p>
+<p>E ora non rimane che sbizzarrirsi! Da un Web Filter possiamo ricavare un sacco di informazioni, come l&#8217;utente autenticato nel sistema, o una serie di <strong>informazioni dettagliate della richiesta</strong> in corso come fa <a href="https://logback.qos.ch/manual/mdc.html#mis" rel="noopener noreferrer" target="_blank"><code>MDCInsertingServletFilter</code> di Logback</a>.<br />
+Nel <a href="https://logback.qos.ch/manual/mdc.html#managedThreads" rel="noopener noreferrer" target="_blank">caso del mondo multithread</a> invece, è necessario <strong>ricopiare la mappa MDC dal thread padre a quello figlio</strong>, come specificato sempre nella documentazione di Logback. Se usiamo gli <tt>Executors</tt> di Java, potremmo scriverci un adapter che fa proprio questo lavoro:</p>
 <p><pre data-enlighter-language="java" class="EnlighterJSRAW" data-enlighter-highlight="3,5">
 public class ApplicationExecutorService {
     public void execute(Runnable runnable) {
@@ -373,85 +373,24 @@ public class ApplicationExecutorService {
     }
 }
 </pre></p>
-<p>L&#8217;MDC viene copiata e reimpostata nel nuovo thread prima di eseguire il <tt>Runnable</tt>. In questo caso non occorre svuotarla, tanto il thread pool è gestito da noi e l&#8217;MDC viene sovrascritto ogni volta. Il <a href="https://github.com/coding-jam/mdc-poc/blob/master/src/main/java/it/codingjam/mdcpoc/concurrency/ApplicationExecutorService.java" rel="noopener" target="_blank">codice completo è su GitHub</a></p>
+<p>L&#8217;MDC viene copiata e reimpostata nel nuovo thread prima di eseguire il <tt>Runnable</tt>. In questo caso non occorre svuotarla, tanto il thread pool è gestito da noi e l&#8217;MDC viene sovrascritto ogni volta. Il <a href="https://github.com/coding-jam/mdc-poc/blob/master/src/main/java/it/codingjam/mdcpoc/concurrency/ApplicationExecutorService.java" rel="noopener noreferrer" target="_blank">codice completo è su GitHub</a></p>
 <h2>Spring Boot, Spring Sleuth e MDC</h2>
-<p>Se stiamo usando <a href="https://cloud.spring.io/spring-cloud-sleuth/" rel="noopener" target="_blank">Spring Sleuth</a>, i nostri log sono già arricchiti con qualche informazione in più, come avevamo detto <a href="../microservizi-in-java-con-spring-boot-e-spring-cloud/index.html" rel="noopener" target="_blank">in un post precedente</a> quando parlavamo di <a href="http://cloud.spring.io/" rel="noopener" target="_blank">Spring Cloud</a>.</p>
-<p>Ovviamente anche Spring Sleuth usa dietro le quinte MDC, come si vede da <code><a href="https://github.com/reshmik/Zipkin/blob/master/spring-cloud-sleuth-core/src/main/java/org/springframework/cloud/sleuth/log/Slf4jSpanLogger.java" rel="noopener" target="_blank">Slf4jSpanLogger</a></code>. Il problema a questo punto è che se aggiungiamo Spring Sleuth al classpath di un progetto che già faceva uso della MDC, con molta probabilità <em>non vedremo le informazioni che ci aspetteremmo</em> dal framework, o magari perderemo le nostre, perché <strong>ci stiamo sovrascrivendo i layout pattern a vicenda</strong>!</p>
+<p>Se stiamo usando <a href="https://cloud.spring.io/spring-cloud-sleuth/" rel="noopener noreferrer" target="_blank">Spring Sleuth</a>, i nostri log sono già arricchiti con qualche informazione in più, come avevamo detto <a href="../microservizi-in-java-con-spring-boot-e-spring-cloud/index.html" rel="noopener noreferrer" target="_blank">in un post precedente</a> quando parlavamo di <a href="http://cloud.spring.io/" rel="noopener noreferrer" target="_blank">Spring Cloud</a>.</p>
+<p>Ovviamente anche Spring Sleuth usa dietro le quinte MDC, come si vede da <code><a href="https://github.com/reshmik/Zipkin/blob/master/spring-cloud-sleuth-core/src/main/java/org/springframework/cloud/sleuth/log/Slf4jSpanLogger.java" rel="noopener noreferrer" target="_blank">Slf4jSpanLogger</a></code>. Il problema a questo punto è che se aggiungiamo Spring Sleuth al classpath di un progetto che già faceva uso della MDC, con molta probabilità <em>non vedremo le informazioni che ci aspetteremmo</em> dal framework, o magari perderemo le nostre, perché <strong>ci stiamo sovrascrivendo i layout pattern a vicenda</strong>!</p>
 <p>Questo <em>empasse</em> si risolve facilmente <strong>riscrivendo un pattern che tenga conto delle nostre chiavi nel MDC e di quelle di Sleuth</strong>, come per esempio:</p>
 <pre>
 logging.pattern.level=[%X{X-Ip:-}]::[${spring.application.name:-},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}]%5p
 </pre>
-<p>Dove <tt>X-Ip</tt> è una nostra chiave, generata in un <a href="https://github.com/coding-jam/mdc-poc/blob/spring-sleugth/src/main/java/it/codingjam/mdcpoc/filters/LogEnricherFilter.java" rel="noopener" target="_blank">filtro tipo il precedente</a>, mentre le altre sono quelle di default di Spring Sleuth. E&#8217; disponibile un esempio nel <a href="https://github.com/coding-jam/mdc-poc/tree/spring-sleuth" rel="noopener" target="_blank">branch &#8220;spring-sleuth&#8221; del progetto su GitHub</a>.</p>
+<p>Dove <tt>X-Ip</tt> è una nostra chiave, generata in un <a href="https://github.com/coding-jam/mdc-poc/blob/spring-sleugth/src/main/java/it/codingjam/mdcpoc/filters/LogEnricherFilter.java" rel="noopener noreferrer" target="_blank">filtro tipo il precedente</a>, mentre le altre sono quelle di default di Spring Sleuth. E&#8217; disponibile un esempio nel <a href="https://github.com/coding-jam/mdc-poc/tree/spring-sleuth" rel="noopener noreferrer" target="_blank">branch &#8220;spring-sleuth&#8221; del progetto su GitHub</a>.</p>
 <h2>Conclusioni</h2>
 <p>Abbiamo scoperto quindi che personalizzare le informazioni che possiamo mettere automaticamente in ogni riga di log è estremamente semplice, basta trovare il &#8220;punto di ingresso&#8221; giusto dove collezionare questi dati (come nel caso del Web Filter) o propagarli nei thread figli (come nel caso degli <tt>Executors</tt>).<br />
-A cosa serve fare una cosa del genere? In un sistema distribuito, per esempio, è importante riuscire a <strong>ricollegare il filo di una chiamata</strong> che attraversa diversi sistemi per capire cosa succede, soprattutto quando ci sono problemi: generare un <em>requestID</em> diverso per chiamata diventa quindi fondamentale. Oppure, se vogliamo sapere da dove vengono le chiamate, è importante conoscerne l&#8217;IP. O ancora, se vogliamo tracciare cosa sta facendo un certo utente, possiamo stampare il suo username in ogni riga. Tutte queste informazioni però non servono a niente se non si riesce ad <strong>aggregarle e analizzarle</strong>: per questo, usare l&#8217;MDC è il primo passo necessario per avere dati sufficienti da dare in pasto ad aggregatori come <a href="https://www.elastic.co/elk-stack" rel="noopener" target="_blank">ELK</a>, <a href="https://www.loggly.com/" rel="noopener" target="_blank">Loggly</a>, <a href="https://www.splunk.com/" rel="noopener" target="_blank">Splunk</a> (o altri) che a partire da queste informazioni, riescono a dare un quadro più ad alto livello di quello che succede nella vita di un sistema.</p>
+A cosa serve fare una cosa del genere? In un sistema distribuito, per esempio, è importante riuscire a <strong>ricollegare il filo di una chiamata</strong> che attraversa diversi sistemi per capire cosa succede, soprattutto quando ci sono problemi: generare un <em>requestID</em> diverso per chiamata diventa quindi fondamentale. Oppure, se vogliamo sapere da dove vengono le chiamate, è importante conoscerne l&#8217;IP. O ancora, se vogliamo tracciare cosa sta facendo un certo utente, possiamo stampare il suo username in ogni riga. Tutte queste informazioni però non servono a niente se non si riesce ad <strong>aggregarle e analizzarle</strong>: per questo, usare l&#8217;MDC è il primo passo necessario per avere dati sufficienti da dare in pasto ad aggregatori come <a href="https://www.elastic.co/elk-stack" rel="noopener noreferrer" target="_blank">ELK</a>, <a href="https://www.loggly.com/" rel="noopener noreferrer" target="_blank">Loggly</a>, <a href="https://www.splunk.com/" rel="noopener noreferrer" target="_blank">Splunk</a> (o altri) che a partire da queste informazioni, riescono a dare un quadro più ad alto livello di quello che succede nella vita di un sistema.</p>
             </div>
             <!-- end content -->
 
             
-                <!-- social sharing buttons / counters -->
-                <div class="row">
-                  <div class="col-md-7">
-                    
-    <!-- social sharing buttons -->
-    <div class="bwp-single-share-wrap">
-      <span>Share:</span>
-      <ul class="bwp-single-share list-unstyled">
-        <!-- facebook -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc/" target="_blank" class="bwp-share-link bwp-facebook-share">
-            <i class="fa fa-facebook"></i>
-          </a>
-        </li>
-        <!-- end facebook -->
-        <!-- twitter -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc/&amp;text=migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc/&amp;text=migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc" target="_blank" class="bwp-share-link bwp-twitter-share">
-            <i class="fa fa-twitter"></i>
-          </a>
-        </li>
-        <!-- end twitter -->
-        <!-- google+ -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc/" target="_blank" class="bwp-share-link bwp-google-plus-share">
-            <i class="fa fa-google-plus"></i>
-          </a>
-        </li>
-        <!-- end google+ -->
-        <!-- vk -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc/" target="_blank" class="bwp-share-link bwp-vk-share">
-            <i class="fa fa-vk"></i>
-          </a>
-        </li>
-        <!-- end vk -->
-        <!-- pinterest -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc/&amp;media=&amp;description=migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc/&amp;media=&amp;description=migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc" target="_blank" class="bwp-share-link bwp-pinterest-share">
-            <i class="fa fa-pinterest-p"></i>
-          </a>
-        </li>
-        <!-- end pinterest -->
-      </ul>
-    </div>
-    <!-- end social sharing buttons -->
-
-                      </div>
-                  <div class="col-md-5">
-                    
-    <!-- counters -->
-    <ul class="bwp-single-counters list-unstyled clearfix ">
-                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>1</a></li>
-                </ul>
-    <!-- end counters -->
-
-                      </div>
-                </div>
-                <!-- end social sharing buttons / counters -->
-
-                
       <!-- metadata -->
-      <div class="bwp-single-metadata-wrap ">
+      <div class="bwp-single-metadata-wrap bwp-no-single-share-and-counters">
         <ul class="bwp-single-metadata list-unstyled clearfix">
                       <!-- author -->
             <li>
@@ -551,21 +490,14 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
 					<p>È un componente davvero comodo che ho utilizzato una miriade di volte ma che purtroppo non tutti conoscono.</p>
 				</div><!-- .comment-content -->
 
-				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc/?replytocom=816#respond' data-commentid="816" data-postid="15068" data-belowelement="div-comment-816" data-respondelement="respond" aria-label='Reply to Antonio Musarra'>Reply</a></div>			</article><!-- .comment-body -->
+							</article><!-- .comment-body -->
 		</li><!-- #comment-## -->
 		</ol><!-- .comment-list -->
 
 		
 	
+			<p class="no-comments">Comments are closed.</p>
 	
-		<div id="respond" class="comment-respond">
-		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='15068' id='comment_post_ID' />
-<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-</p></form>	</div><!-- #respond -->
 	
 </div>
 <!-- end comments -->
@@ -583,51 +515,6 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
         <div class="bwp-related-posts clearfix">
 
           
-            <!-- related post -->
-            <article class="bwp-related-post ">
-              <div class="bwp-related-post-wrap bwp-transition-3">
-
-                
-                <!-- content -->
-                <div class="bwp-post-content">
-
-                  
-                                      <!-- title -->
-                    <h3 class="bwp-post-title entry-title">
-                      <a href="https://codingjam.it/logging-in-java-applications-using-log4j/">Logging in Java applications using Log4j</a>
-                    </h3>
-                    <!-- end title -->
-                    
-                  
-      <!-- excerpt -->
-      <div class="bwp-post-excerpt entry-content">
-        <p>Log4J è una libreria Java sviluppata dalla Apache Software Foundation che consente di mettere a punto un ottimo sistema di logging per tenere sotto controllo il comportamento di una applicazione in fase di sviluppo, di test e infine di go-live del proprio software. E&#8217; lo standard de facto per il logging delle applicazioni Java.</p>
-      </div>
-      <!-- end excerpt -->
-
-      
-    <!-- date + read more link -->
-    <div class="bwp-post-details-wrap clearfix">
-      <!-- date -->
-            <a href="https://codingjam.it/2011/02/24/" class="bwp-post-date">
-        <span class="date updated">24/02/2011</span>
-      </a>
-      <!-- end date -->
-      <!-- read more link -->
-      <a href="https://codingjam.it/logging-in-java-applications-using-log4j/" class="bwp-read-more">Read more</a>
-      <!-- end read more link -->
-    </div>
-    <!-- end date + read more link -->
-
-    
-                </div>
-                <!-- end content -->
-
-              </div>
-            </article>
-            <!-- end related post -->
-
-            
             <!-- related post -->
             <article class="bwp-related-post ">
               <div class="bwp-related-post-wrap bwp-transition-3">
@@ -660,6 +547,51 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
       <!-- end date -->
       <!-- read more link -->
       <a href="https://codingjam.it/project-lombok-per-chi-ha-le-mani-pigre/" class="bwp-read-more">Read more</a>
+      <!-- end read more link -->
+    </div>
+    <!-- end date + read more link -->
+
+    
+                </div>
+                <!-- end content -->
+
+              </div>
+            </article>
+            <!-- end related post -->
+
+            
+            <!-- related post -->
+            <article class="bwp-related-post ">
+              <div class="bwp-related-post-wrap bwp-transition-3">
+
+                
+                <!-- content -->
+                <div class="bwp-post-content">
+
+                  
+                                      <!-- title -->
+                    <h3 class="bwp-post-title entry-title">
+                      <a href="https://codingjam.it/logging-in-java-applications-using-log4j/">Logging in Java applications using Log4j</a>
+                    </h3>
+                    <!-- end title -->
+                    
+                  
+      <!-- excerpt -->
+      <div class="bwp-post-excerpt entry-content">
+        <p>Log4J è una libreria Java sviluppata dalla Apache Software Foundation che consente di mettere a punto un ottimo sistema di logging per tenere sotto controllo il comportamento di una applicazione in fase di sviluppo, di test e infine di go-live del proprio software. E&#8217; lo standard de facto per il logging delle applicazioni Java.</p>
+      </div>
+      <!-- end excerpt -->
+
+      
+    <!-- date + read more link -->
+    <div class="bwp-post-details-wrap clearfix">
+      <!-- date -->
+            <a href="https://codingjam.it/2011/02/24/" class="bwp-post-date">
+        <span class="date updated">24/02/2011</span>
+      </a>
+      <!-- end date -->
+      <!-- read more link -->
+      <a href="https://codingjam.it/logging-in-java-applications-using-log4j/" class="bwp-read-more">Read more</a>
       <!-- end read more link -->
     </div>
     <!-- end date + read more link -->
@@ -768,12 +700,12 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
 <script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
-var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"1520cabb4b","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
 </body>
 
-<!-- Mirrored from codingjam.it/migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/migliora-i-tuoi-log-con-il-mapped-diagnostic-context-mdc/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 </html>

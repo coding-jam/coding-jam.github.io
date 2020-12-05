@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<!-- Mirrored from codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="UTF-8">
@@ -307,7 +307,7 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
             <!-- content -->
             <div class="bwp-content entry-content clearfix">
               <p>Negli ultimi anni non si sente altro che parlare di microservizi: se fai microservizi sei <em>cool</em>, altrimenti sei vecchio. Il salto da una applicazione monolitica ad una costellazione di piccole applicazioni però può essere più doloroso di quanto si pensi se non si hanno strumenti in grado di supportare le problematiche introdotte dai sistemi distribuiti.<br />
-Spring è sempre stato una garanzia e non sorprende se oggi come oggi <strong><a href="http://projects.spring.io/spring-cloud/" rel="noopener" target="_blank">Spring Cloud</a></strong> si sia ritagliato nel giro di poco tempo il ruolo di framework leader quando si pensa ai <em>microservizi nel mondo Java</em>.</p>
+Spring è sempre stato una garanzia e non sorprende se oggi come oggi <strong><a href="http://projects.spring.io/spring-cloud/" rel="noopener noreferrer" target="_blank">Spring Cloud</a></strong> si sia ritagliato nel giro di poco tempo il ruolo di framework leader quando si pensa ai <em>microservizi nel mondo Java</em>.</p>
 <h2>Un po&#8217; di teoria</h2>
 <p>In rete si trovano ormai tantissime informazioni che ci spiegano gli elementi fondanti di una architettura a microservizi. Il principio base è <strong>ridurre la complessità di una applicazione</strong> in modo che abbia un <strong>dominio estremamente ridotto</strong> e che sappia svolgere <strong>un solo compito</strong>, o una serie di piccoli compiti inerenti ad esso.<br />
 La collaborazione tra questi microservizi genera il servizio finale che diamo all&#8217;utente.</p>
@@ -315,7 +315,7 @@ La collaborazione tra questi microservizi genera il servizio finale che diamo al
 <ul>
 <li>ogni servizio ha la propria base dati e deve accedere solo ad essa. Se ha bisogno di altre informazioni le chiede via HTTP o via scambio di messaggi ad altri servizi.</li>
 <li>è possibile replicare (su <em>più processi</em>) un certo servizio ritenuto critico o che è maggiormente stressato: la scalabilità è la grande promessa dell&#8217;architettura a microservizi.</li>
-<li>ogni servizio può essere realizzato con una tecnologia diversa dall&#8217;altra visto che possono comunicare solo via HTTP o messaggi. Questo permette di scegliere lo strumento giusto per risolvere un certo problema (avete mai visto &#8220;<a href="https://www.youtube.com/watch?v=3wyd6J3yjcs" rel="noopener" target="_blank">The Silver Bullet Syndrome</a>&#8221; di Hadi Hariri?). Inoltre, è molto più facile rimanere al passo con i tempi dal punto di vista tecnologico: ogni nuovo servizio può essere realizzato con i framework più nuovi e i progetti vecchi, essendo &#8220;piccoli&#8221;, sono più facilmente aggiornabili.</li>
+<li>ogni servizio può essere realizzato con una tecnologia diversa dall&#8217;altra visto che possono comunicare solo via HTTP o messaggi. Questo permette di scegliere lo strumento giusto per risolvere un certo problema (avete mai visto &#8220;<a href="https://www.youtube.com/watch?v=3wyd6J3yjcs" rel="noopener noreferrer" target="_blank">The Silver Bullet Syndrome</a>&#8221; di Hadi Hariri?). Inoltre, è molto più facile rimanere al passo con i tempi dal punto di vista tecnologico: ogni nuovo servizio può essere realizzato con i framework più nuovi e i progetti vecchi, essendo &#8220;piccoli&#8221;, sono più facilmente aggiornabili.</li>
 <li>visto che il sistema è distribuito, il suo aggiornamento può essere parziale: ogni modulo (servizio) infatti ha un proprio ciclo di vita e può essere sostituito senza impattare (quasi) nessuno degli altri servizi correlati.</li>
 </ul>
 <p>Fin qui sembra che sia tutto perfetto, ma ovviamente non è tutto così semplice! Se questo approccio risolve e migliora i problemi che abbiamo appena descritto ne apre di nuovi. Dobbiamo sempre tenere in mente che si passa da una architettura di questo tipo:</p>
@@ -333,7 +333,7 @@ La collaborazione tra questi microservizi genera il servizio finale che diamo al
 <li>un sistema distribuito deve essere <strong>tollerante al fallimento</strong> di una delle sue parti. Se uno o più moduli risultano non disponibili, il sistema deve essere in grado di isolare quella parte e dare una risposta di fallback: questa tecnica viene definita come &#8220;<strong>Circuit Breaker</strong>&#8220;.</li>
 <li>l&#8217;<strong>entrypoint del sistema</strong> è bene che rimanga <strong>sempre uno</strong>, in modo da non percepire l&#8217;atomicità dei sistemi sottostanti, che possono essere liberamente sostituiti o replicati. Questo pattern viene definito &#8220;<strong>API Gateway</strong>&#8220;.</li>
 <li>ogni sistema ha i propri log: dobbiamo quindi preoccuparci di <strong>recuperare e aggregare tutti i log</strong> in un unico sistema per riuscire a capire cosa sta avvenendo.</li>
-<li>in un sistema distribuito con queste caratteristiche, è difficile riuscire a mantenere una transazionalità di tipo ACID a cui siamo abituati. Dobbiamo quindi accettare l'&#8221;<a href="https://martinfowler.com/articles/microservice-trade-offs.html#consistency" rel="noopener" target="_blank">eventually consistent</a>&#8220;.</li>
+<li>in un sistema distribuito con queste caratteristiche, è difficile riuscire a mantenere una transazionalità di tipo ACID a cui siamo abituati. Dobbiamo quindi accettare l'&#8221;<a href="https://martinfowler.com/articles/microservice-trade-offs.html#consistency" rel="noopener noreferrer" target="_blank">eventually consistent</a>&#8220;.</li>
 <li>la gestione di un rilascio di una nuova feature può diventare più complessa perché può coinvolgere diverse applicazioni che vanno aggiornate insieme. E&#8217; necessario quindi <strong>automatizzare il più possibile il processo</strong>.</li>
 <li>le dipendenze tra i moduli (ovvero tra i microservizi) non sono più a compile-time, bensì risiedono in un&#8217;interfaccia comune (tipicamente JSON) con la quale si scambiano i dati. Se non si è fatta una separazione chiara tra le responsabilità di ogni servizio, si può rischiare di creare referenze cicliche (il modulo A chiama B che chiama A) che ovviamente sono un male da evitare. Per <em>mantenere la relazione tra i servizi gerarchica</em> (che poi è quello che facciamo tutti i giorni nel nostro codice anche tra le classi e i package vero? 🙂 ), possiamo immaginare di suddividere i servizi in 3 macrogruppi (o <em>layer</em> se preferiamo):
 <ul>
@@ -348,21 +348,21 @@ La collaborazione tra questi microservizi genera il servizio finale che diamo al
 Bene, avete scelto i microservizi? Allora non reinventatevi la ruota! Dal momento che quelle esposte sono problematiche comuni, esistono anche soluzioni che permettono di semplificarci la vita. Vediamo come possiamo fare nel mondo Java.</p>
 <h2>Microservizi e Java</h2>
 <p>Come può essere fatto un microservizio in Java? Diciamo che in generale, quando si pensa ad un microservizio, l&#8217;idea è quella di produrre una <strong>applicazione stand-alone</strong> che espone una API via HTTP, cioè ha un <strong>server HTTP embedded</strong> per farlo&#8230; tutto l&#8217;opposto di quanto fatto fino oggi in pratica! Nel mondo Java infatti siamo cresciuti a pane e Application Server (come JBoss, WAS, ecc&#8230;) o Servlet Container (come Tomcat). Lo sviluppo era quindi finalizzato ad un artefatto deployabile in unico ambiente dove giravano altre applicazioni.<br />
-Nel mondo dei microservizi invece è necessario un ribaltamento del punto di vista: è l&#8217;<strong>artefatto stesso ad eseguire un server</strong> (Application Server o Servlet Container che sia) che ha il ciclo di vita pari a quello dell&#8217;applicazione. Con l&#8217;imporsi dell&#8217;architettura REST e della necessità di creare servizi <em>stateless</em> che permettano la scalabilità in modo efficace (senza sessioni distribuite e replicate per esempio), l&#8217;architettura a microservizi (che non è certo stata <a href="http://blog.cleancoder.com/uncle-bob/2015/05/28/TheFirstMicroserviceArchitecture.html" rel="noopener" target="_blank">inventata ieri come concetto</a>) ha trovato terreno fertile ed è esplosa come vera e propria <em>buzzword</em>!! Per concretizzare e domare questa <em>buzzword</em>, abbiamo bisogno di strumenti moderni che supportino le problematiche dei sistemi distribuiti.</p>
+Nel mondo dei microservizi invece è necessario un ribaltamento del punto di vista: è l&#8217;<strong>artefatto stesso ad eseguire un server</strong> (Application Server o Servlet Container che sia) che ha il ciclo di vita pari a quello dell&#8217;applicazione. Con l&#8217;imporsi dell&#8217;architettura REST e della necessità di creare servizi <em>stateless</em> che permettano la scalabilità in modo efficace (senza sessioni distribuite e replicate per esempio), l&#8217;architettura a microservizi (che non è certo stata <a href="http://blog.cleancoder.com/uncle-bob/2015/05/28/TheFirstMicroserviceArchitecture.html" rel="noopener noreferrer" target="_blank">inventata ieri come concetto</a>) ha trovato terreno fertile ed è esplosa come vera e propria <em>buzzword</em>!! Per concretizzare e domare questa <em>buzzword</em>, abbiamo bisogno di strumenti moderni che supportino le problematiche dei sistemi distribuiti.</p>
 <p>Niente ci vieta di fare microservizi continuando a lavorare come facevamo ora, ovvero generando piccoli WAR o EAR da deployare (<strong>magari da soli</strong>) in un server: anche in quel caso stiamo facendo microservizi, ma non nel senso classico del termine. Se magari chiudiamo tutto dentro un container Docker già il discorso può cambiare: l&#8217;<em>artefatto finale infatti è il container</em> ed è <em>stand-alone</em>. Qua però si apre un altro filone, perché spostiamo il focus sull&#8217;infrastruttura&#8230;<br />
 Rimanendo invece a livello applicativo, come faccio in java la <em>service discovery</em>? E il <em>balancing</em>? La <em>fault tolerance</em>?<br />
 Un modo (ma non l&#8217;unico) ad oggi per risolvere questi problemi in modo coerente è l&#8217;accoppiata <strong>Spring Boot</strong> + <strong>Spring Cloud</strong>!</p>
 <h2>Spring Boot e Spring Cloud</h2>
-<p>Ormai alla sua terza candelina, <a href="https://projects.spring.io/spring-boot/" rel="noopener" target="_blank">Spring Boot</a> ha letteralmente fatto riesplodere l&#8217;uso di Spring: se infatti il mondo Java EE aveva bene o male <em>quasi</em> (per essere ottimisti) colmato il gap almeno con <a href="https://projects.spring.io/spring-framework/" rel="noopener" target="_blank">Spring Framework</a>, con l&#8217;uscita di Spring Boot c&#8217;è stato un nuovo salto in avanti perché è proprio lo strumento ideale per creare microservizi in Java!! Lo stesso payoff recita (tradotto liberamente 🙂 ):</p>
+<p>Ormai alla sua terza candelina, <a href="https://projects.spring.io/spring-boot/" rel="noopener noreferrer" target="_blank">Spring Boot</a> ha letteralmente fatto riesplodere l&#8217;uso di Spring: se infatti il mondo Java EE aveva bene o male <em>quasi</em> (per essere ottimisti) colmato il gap almeno con <a href="https://projects.spring.io/spring-framework/" rel="noopener noreferrer" target="_blank">Spring Framework</a>, con l&#8217;uscita di Spring Boot c&#8217;è stato un nuovo salto in avanti perché è proprio lo strumento ideale per creare microservizi in Java!! Lo stesso payoff recita (tradotto liberamente 🙂 ):</p>
 <blockquote><p>
 Spring Boot rende facile creare applicazioni stand-alone, pronte per la produzione, basate su Spring che &#8220;semplicemente funzionano&#8221;.
 </p></blockquote>
 <p>Spring Boot infatti toglie tutto il peso della noiosa configurazione di Spring perché predilige le convenzioni alle configurazioni. </p>
-<p>Se però questo è il tassello base che permette di creare applicazioni stand-alone, senza <a href="https://projects.spring.io/spring-cloud/" rel="noopener" target="_blank">Spring Cloud</a> saremmo sostanzialmente a piedi! Ma cos&#8217;è Spring Cloud? E&#8217; un <strong>insieme di soluzioni ai problemi comuni dei sistemi distribuiti</strong> sopra citati (come configuration management, service discovery, circuit breakers&#8230;) organizzati in tanti sotto-progetti.</p>
-<p>Conosciamoli più da vicino, grazie all&#8217;aiuto di un nostro progetto di esempio disponibile su <a href="https://github.com/coding-jam/spring-cloud-poc" rel="noopener" target="_blank">GitHub</a> a cui faremo spesso riferimento. Ogni argomento richiederebbe un post a sé stante di approfondimento, vediamo di seguito gli elementi fondamentali.</p>
-<h3><a href="https://cloud.spring.io/spring-cloud-config" rel="noopener" target="_blank">Spring Cloud Config</a></h3>
-<p>Come si può capire dal nome, grazie a questo componente abbiamo a disposizione un server centralizzato per gestire le configurazioni (e ovviamente il supporto ai client). Di default, esse vengono scaricate da un <strong>repository git</strong> contenente una serie di file che identificano il nome dell&#8217;applicazione (definita da <tt>${spring.application.name}</tt>), il profilo attivo (<tt>${spring.profiles.active}</tt> se specificato, oppure <tt>default</tt>) e una label (che può essere il branch di riferimento). Un esempio è il repository <a href="https://github.com/coding-jam/spring-cloud-poc-config" rel="noopener" target="_blank">creato per questo progetto</a>.<br />
-Gestire le configurazioni da git può essere interessante per il versionamento, ma non è detto che piaccia a tutti. La <a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-config/1.4.0.RELEASE/multi/multi_spring-cloud-config.html" rel="noopener" target="_blank">documentazione ufficiale</a> mostra che è possibile usare un <strong>database</strong>, il <strong>file system</strong> o addirittura <a href="https://www.vaultproject.io/" rel="noopener" target="_blank">HashiCorp Vault</a>.</p>
+<p>Se però questo è il tassello base che permette di creare applicazioni stand-alone, senza <a href="https://projects.spring.io/spring-cloud/" rel="noopener noreferrer" target="_blank">Spring Cloud</a> saremmo sostanzialmente a piedi! Ma cos&#8217;è Spring Cloud? E&#8217; un <strong>insieme di soluzioni ai problemi comuni dei sistemi distribuiti</strong> sopra citati (come configuration management, service discovery, circuit breakers&#8230;) organizzati in tanti sotto-progetti.</p>
+<p>Conosciamoli più da vicino, grazie all&#8217;aiuto di un nostro progetto di esempio disponibile su <a href="https://github.com/coding-jam/spring-cloud-poc" rel="noopener noreferrer" target="_blank">GitHub</a> a cui faremo spesso riferimento. Ogni argomento richiederebbe un post a sé stante di approfondimento, vediamo di seguito gli elementi fondamentali.</p>
+<h3><a href="https://cloud.spring.io/spring-cloud-config" rel="noopener noreferrer" target="_blank">Spring Cloud Config</a></h3>
+<p>Come si può capire dal nome, grazie a questo componente abbiamo a disposizione un server centralizzato per gestire le configurazioni (e ovviamente il supporto ai client). Di default, esse vengono scaricate da un <strong>repository git</strong> contenente una serie di file che identificano il nome dell&#8217;applicazione (definita da <tt>${spring.application.name}</tt>), il profilo attivo (<tt>${spring.profiles.active}</tt> se specificato, oppure <tt>default</tt>) e una label (che può essere il branch di riferimento). Un esempio è il repository <a href="https://github.com/coding-jam/spring-cloud-poc-config" rel="noopener noreferrer" target="_blank">creato per questo progetto</a>.<br />
+Gestire le configurazioni da git può essere interessante per il versionamento, ma non è detto che piaccia a tutti. La <a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-config/1.4.0.RELEASE/multi/multi_spring-cloud-config.html" rel="noopener noreferrer" target="_blank">documentazione ufficiale</a> mostra che è possibile usare un <strong>database</strong>, il <strong>file system</strong> o addirittura <a href="https://www.vaultproject.io/" rel="noopener noreferrer" target="_blank">HashiCorp Vault</a>.</p>
 <p>A prescindere dal &#8220;backend&#8221; usato per gestire le configurazioni, abbiamo a disposizione una serie di caratteristiche interessanti:</p>
 <ul>
 <li>è possibile <strong>richiedere via REST la configurazione di un servizio</strong>. Nel nostro esempio, la configurazione del servizio <tt>customer-services</tt> relativa al profilo di <tt>default</tt> sarà accessibile dalla risorsa
@@ -370,22 +370,22 @@ Gestire le configurazioni da git può essere interessante per il versionamento, 
 http://localhost:8888/customer-services/default
 </pre>
 <p>(<tt>localhost:8888</tt> è il binding di default del server Spring Cloud Config)</li>
-<li>le property di un servizio possono essere <strong>aggiornate dinamicamente</strong> senza che questo sia riavviato! Le proprietà vengono aggiornate chiamando esplicitamente l&#8217;endpoint <tt>/refresh</tt> (magari tramite un <em>webhook</em>?) o <code>RefreshEndpoint.refresh()</code> (anche via JMX). Se vogliamo aggiornare il valore delle property iniettate (per esempio con <code>@Value</code>), è necessario che il bean sia di tipo <code>@RefreshScope</code> (come per esempio la classe <code><a href="https://github.com/coding-jam/spring-cloud-poc/blob/master/order-services/src/main/java/it/codingjam/orderservices/clients/CustomerResource.java" rel="noopener" target="_blank">CustomerResourceFallback</a></code>). E&#8217; possibile propagare automaticamente le modifiche alle configurazioni per esempio con RabbitMQ, come specificato nel <a href="https://github.com/spring-cloud-samples/configserver" rel="noopener" target="_blank">progetto di esempio di Spring Cloud Samples</a>.
+<li>le property di un servizio possono essere <strong>aggiornate dinamicamente</strong> senza che questo sia riavviato! Le proprietà vengono aggiornate chiamando esplicitamente l&#8217;endpoint <tt>/refresh</tt> (magari tramite un <em>webhook</em>?) o <code>RefreshEndpoint.refresh()</code> (anche via JMX). Se vogliamo aggiornare il valore delle property iniettate (per esempio con <code>@Value</code>), è necessario che il bean sia di tipo <code>@RefreshScope</code> (come per esempio la classe <code><a href="https://github.com/coding-jam/spring-cloud-poc/blob/master/order-services/src/main/java/it/codingjam/orderservices/clients/CustomerResource.java" rel="noopener noreferrer" target="_blank">CustomerResourceFallback</a></code>). E&#8217; possibile propagare automaticamente le modifiche alle configurazioni per esempio con RabbitMQ, come specificato nel <a href="https://github.com/spring-cloud-samples/configserver" rel="noopener noreferrer" target="_blank">progetto di esempio di Spring Cloud Samples</a>.
 </ul>
 <h3>Spring Cloud Netflix</h3>
 <p>E&#8217; il cuore della piattaforma Spring Cloud che in pratica integra Spring Boot con Netflix OSS, la piattaforma realizzata da Netflix per indirizzare le sfide dei sistemi distribuiti. I nomi noti che rientrano sotto il cappello di Netflix OSS sono:</p>
 <ul>
-<li><strong>Eureka</strong> fa da <strong><a href="https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-eureka-server.html" rel="noopener" target="_blank">service registry</a></strong>, abilitando la <strong>service discovery</strong> <a href="https://cloud.spring.io/spring-cloud-netflix/multi/multi__service_discovery_eureka_clients.html" rel="noopener" target="_blank">tra i servizi del nostro sistema</a>. Di default, il server dovrebbe essere avviato sulla porta <tt>8761</tt> e i client, se non differentemente configurati, si aspettano di trovarlo su <tt>localhost:8761</tt>. Nel progetto si esempio, la configurazione centralizzata rende esplicito il default nel file <tt><a href="https://github.com/coding-jam/spring-cloud-poc-config/blob/master/application.properties" rel="noopener" target="_blank">application.properties</a></tt>. Un dettaglio approfondito del significato di gran parte dei parametri configurabili di Eureka è disponibile nel post &#8220;<a href="https://blog.asarkar.org/technical/netflix-eureka/" rel="noopener" target="_blank">Eureka &#8211; The Hidden Manual</a>&#8220;</li>
-<li><strong><a href="https://cloud.spring.io/spring-cloud-netflix/single/spring-cloud-netflix.html#_circuit_breaker_hystrix_clients" rel="noopener" target="_blank">Hystrix</a></strong> è un <strong>circuit breaker</strong>. Che significa? Dobbiamo sempre tenere in mente che in un sistema distribuito una delle sue parti può non essere disponibile in un certo momento: come dobbiamo comportarci in questi casi? Hystrix ha la responsabilità di &#8220;<em>aprire il circuito</em>&#8221; delle chiamate fallimentari e fornire un default alternativo. Sarà sua cura ogni tanto controllare se il sistema escluso è nuovamente disponibile, richiudendo il &#8220;circuito delle chiamate&#8221;.</li>
+<li><strong>Eureka</strong> fa da <strong><a href="https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-eureka-server.html" rel="noopener noreferrer" target="_blank">service registry</a></strong>, abilitando la <strong>service discovery</strong> <a href="https://cloud.spring.io/spring-cloud-netflix/multi/multi__service_discovery_eureka_clients.html" rel="noopener noreferrer" target="_blank">tra i servizi del nostro sistema</a>. Di default, il server dovrebbe essere avviato sulla porta <tt>8761</tt> e i client, se non differentemente configurati, si aspettano di trovarlo su <tt>localhost:8761</tt>. Nel progetto si esempio, la configurazione centralizzata rende esplicito il default nel file <tt><a href="https://github.com/coding-jam/spring-cloud-poc-config/blob/master/application.properties" rel="noopener noreferrer" target="_blank">application.properties</a></tt>. Un dettaglio approfondito del significato di gran parte dei parametri configurabili di Eureka è disponibile nel post &#8220;<a href="https://blog.asarkar.org/technical/netflix-eureka/" rel="noopener noreferrer" target="_blank">Eureka &#8211; The Hidden Manual</a>&#8220;</li>
+<li><strong><a href="https://cloud.spring.io/spring-cloud-netflix/single/spring-cloud-netflix.html#_circuit_breaker_hystrix_clients" rel="noopener noreferrer" target="_blank">Hystrix</a></strong> è un <strong>circuit breaker</strong>. Che significa? Dobbiamo sempre tenere in mente che in un sistema distribuito una delle sue parti può non essere disponibile in un certo momento: come dobbiamo comportarci in questi casi? Hystrix ha la responsabilità di &#8220;<em>aprire il circuito</em>&#8221; delle chiamate fallimentari e fornire un default alternativo. Sarà sua cura ogni tanto controllare se il sistema escluso è nuovamente disponibile, richiudendo il &#8220;circuito delle chiamate&#8221;.</li>
 <li><strong>Ribbon</strong>: <strong>client side load balancer</strong>. Il termine è autoesplicativo, ma cerchiamo di capire meglio cosa significa. Generalmente in un sistema a microservizi la comunicazione può essere <strong>diretta</strong> oppure tramite <strong>proxy</strong>: nel primo caso, <strong>ogni servizio conosce dove sono gli altri</strong> (perché presi dal service registry), è quindi <strong>lato client</strong> che si decide chi chiamare; nel secondo invece, <strong>ogni servizio conosce solo il proxy</strong> ed è poi lui a bilanciare (bilanciamento <strong>lato server</strong>) le chiamate alle repliche di un servizio.<br />
 Ribbon quindi è integrato con Eureka, dal quale recupera tutti i riferimenti ai servizi e decide quale replica chiamare, di default in modalità round-robin.
 </li>
-<li><strong><a href="https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-feign.html" rel="noopener" target="_blank">Feign</a></strong> è un <strong>client REST dichiarativo</strong>. Permette di effettuare chiamate tra servizi<br />
-semplicemente <strong>annotando una interfaccia Java</strong> con annotazioni Spring MVC o JAX-RS. Un esempio ne è la classe <code><a href="https://github.com/coding-jam/spring-cloud-poc/blob/master/order-services/src/main/java/it/codingjam/orderservices/clients/CustomerResource.java" rel="noopener" target="_blank">CustomerResource</a></code>. Oltre alla semplicità nel dichiarare un client REST, Feign si appoggia a Ribbon per scegliere lato client quale servizio chiamare e sfrutta Hystrix, se è nel classpath ed è abilitato (<tt>feign.hystrix.enabled=true</tt>). Avendo a disposizione Feign infatti sarà molto difficile dover &#8220;scendere di livello&#8221; ed usare direttamente Ribbon e Hystrix, a meno che non si abbiano esigenze particolari (che onestamente non mi sono ancora capitate&#8230;).
+<li><strong><a href="https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-feign.html" rel="noopener noreferrer" target="_blank">Feign</a></strong> è un <strong>client REST dichiarativo</strong>. Permette di effettuare chiamate tra servizi<br />
+semplicemente <strong>annotando una interfaccia Java</strong> con annotazioni Spring MVC o JAX-RS. Un esempio ne è la classe <code><a href="https://github.com/coding-jam/spring-cloud-poc/blob/master/order-services/src/main/java/it/codingjam/orderservices/clients/CustomerResource.java" rel="noopener noreferrer" target="_blank">CustomerResource</a></code>. Oltre alla semplicità nel dichiarare un client REST, Feign si appoggia a Ribbon per scegliere lato client quale servizio chiamare e sfrutta Hystrix, se è nel classpath ed è abilitato (<tt>feign.hystrix.enabled=true</tt>). Avendo a disposizione Feign infatti sarà molto difficile dover &#8220;scendere di livello&#8221; ed usare direttamente Ribbon e Hystrix, a meno che non si abbiano esigenze particolari (che onestamente non mi sono ancora capitate&#8230;).
 </li>
-<li><strong><a href="https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html" rel="noopener" target="_blank">Zuul</a></strong> è un <strong>API gateway</strong>. Fa da unico punto di ingresso al sistema e dirotta le chiamate ai servizi &#8220;sottostanti&#8221;. E&#8217; basato su Hystrix e Ribbon così da garantire load balancing e circuit breaker.<br />
+<li><strong><a href="https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html" rel="noopener noreferrer" target="_blank">Zuul</a></strong> è un <strong>API gateway</strong>. Fa da unico punto di ingresso al sistema e dirotta le chiamate ai servizi &#8220;sottostanti&#8221;. E&#8217; basato su Hystrix e Ribbon così da garantire load balancing e circuit breaker.<br />
 Se abilitato come proxy (<code>@EnableZuulProxy</code>), è capace quindi di mappare dinamicamente gli endpoint dei servizi &#8220;sottostanti&#8221;.<br />
-Facciamo un esempio pratico facendo riferimento al progetto demo: la risorsa <tt><a href="https://github.com/coding-jam/spring-cloud-poc/blob/master/customer-services/src/main/java/it/codingjam/customerservices/resources/CustomerResource.java" rel="noopener" target="_blank">/api/v1/customers</a></tt> del servizio <tt><a href="https://github.com/coding-jam/spring-cloud-poc/tree/master/customer-services" rel="noopener" target="_blank">customer-services</a></tt> è raggiungibile su <tt>localhost:9090</tt> direttamente </p>
+Facciamo un esempio pratico facendo riferimento al progetto demo: la risorsa <tt><a href="https://github.com/coding-jam/spring-cloud-poc/blob/master/customer-services/src/main/java/it/codingjam/customerservices/resources/CustomerResource.java" rel="noopener noreferrer" target="_blank">/api/v1/customers</a></tt> del servizio <tt><a href="https://github.com/coding-jam/spring-cloud-poc/tree/master/customer-services" rel="noopener noreferrer" target="_blank">customer-services</a></tt> è raggiungibile su <tt>localhost:9090</tt> direttamente </p>
 <pre>
 http://localhost:9090/api/v1/customers
 </pre>
@@ -394,12 +394,12 @@ http://localhost:9090/api/v1/customers
 http://localhost:8080/customer-services/api/v1/customers
 </pre>
 <p>Zuul quindi &#8220;proxa&#8221; sotto &#8220;<tt>/${spring.application.name}/**</tt>&#8221; tutte le risorse di quel servizio. E&#8217; possibile disabilitare del tutto questo comportamento (<tt>zuul.ignoredServices='*'</tt>) e/o impostare manualmente le rotte che vogliamo esporre tramite Zuul: questo approccio lo trovo molto interessante se si vuole rendere &#8220;pubbliche&#8221; alcune API e altre lasciarle interne. Sarà infatti <strong>solo Zuul ad essere mappato sul bilanciatore</strong> della nostra infrastruttura, quindi tutto quello che esporrà Zuul diventerà accessibile pubblicamente.<br />
-Aggiungendo esplicitamente una rotta come nel file <tt><a href="https://github.com/coding-jam/spring-cloud-poc-config/blob/master/zuul-gateway.yml" rel="noopener" target="_blank">zuul-gateway.yml</a></tt>, raggiungeremo la risorsa tramite il proxy come se stessimo chiamando il servizio vero e proprio:</p>
+Aggiungendo esplicitamente una rotta come nel file <tt><a href="https://github.com/coding-jam/spring-cloud-poc-config/blob/master/zuul-gateway.yml" rel="noopener noreferrer" target="_blank">zuul-gateway.yml</a></tt>, raggiungeremo la risorsa tramite il proxy come se stessimo chiamando il servizio vero e proprio:</p>
 <pre>
 http://localhost:8080/api/v1/customers
 </pre>
 <p>Inoltre, rimappare alcune API permette di renderle omogenee all&#8217;esterno senza far vedere come sono internamente organizzate. </p>
-<p>Prendiamo per esempio l&#8217;<a href="https://github.com/coding-jam/spring-cloud-poc/blob/master/order-services/src/main/java/it/codingjam/orderservices/resources/OrderResource.java" rel="noopener" target="_blank">API degli ordini</a> del servizio <tt><a href="https://github.com/coding-jam/spring-cloud-poc/tree/master/order-services" rel="noopener" target="_blank">order-services</a></tt></p>
+<p>Prendiamo per esempio l&#8217;<a href="https://github.com/coding-jam/spring-cloud-poc/blob/master/order-services/src/main/java/it/codingjam/orderservices/resources/OrderResource.java" rel="noopener noreferrer" target="_blank">API degli ordini</a> del servizio <tt><a href="https://github.com/coding-jam/spring-cloud-poc/tree/master/order-services" rel="noopener noreferrer" target="_blank">order-services</a></tt></p>
 <pre>
 // Chiamata diretta:
 http://localhost:9191/api/v1/customers/1/orders
@@ -414,23 +414,23 @@ http://localhost:8080/api/v1/customers/1/orders
 <p>Pubblicamente quindi l&#8217;API apparirà omogenea, come un consumatore se l&#8217;aspetterebbe: internamente però è organizzata secondo le logiche di dominio.
 </li>
 </ul>
-<h3><a href="https://cloud.spring.io/spring-cloud-sleuth/" rel="noopener" target="_blank">Spring Cloud Sleuth</a></h3>
+<h3><a href="https://cloud.spring.io/spring-cloud-sleuth/" rel="noopener noreferrer" target="_blank">Spring Cloud Sleuth</a></h3>
 <p>Dal punto di vista dello sviluppatore o di chi fa assistenza, il primo grande problema che introduce l&#8217;architettura a microservizi è la <strong>frammentazione dei log</strong>. Se c&#8217;è un problema, non è pensabile mettersi ad aprire tutti i file di log: anche se possiamo immaginare quale servizio andare a controllare, indovinare in quale replica è successo non dà la stessa soddisfazione di vincere al superenalotto!</p>
-<p>E&#8217; necessario quindi <strong>aggregare i log in una piattaforma centralizzata</strong>, in modo da poter essere consultati avendo ben chiara la sequenza temporale e l&#8217;origine di ogni log, per poi risalire al sistema interessato: per far questo è necessario un &#8220;<em>correlation id</em>&#8221; che viene passato tra tutti i sistemi coinvolti, diverso per ogni chiamata. Spring Cloud Sleuth fa proprio questo per noi! Basta aggiungere la <em>dipendenza nel classpath</em> e specificare la proprietà <tt>spring.application.name</tt> (occhio a <a href="https://github.com/spring-cloud/spring-cloud-sleuth/commit/e58c67bcf77b3c88178e29b25cc7373e36abd8df" rel="noopener" target="_blank">questo commit</a>) e vi ritroverete i log con una tupla formata da </p>
+<p>E&#8217; necessario quindi <strong>aggregare i log in una piattaforma centralizzata</strong>, in modo da poter essere consultati avendo ben chiara la sequenza temporale e l&#8217;origine di ogni log, per poi risalire al sistema interessato: per far questo è necessario un &#8220;<em>correlation id</em>&#8221; che viene passato tra tutti i sistemi coinvolti, diverso per ogni chiamata. Spring Cloud Sleuth fa proprio questo per noi! Basta aggiungere la <em>dipendenza nel classpath</em> e specificare la proprietà <tt>spring.application.name</tt> (occhio a <a href="https://github.com/spring-cloud/spring-cloud-sleuth/commit/e58c67bcf77b3c88178e29b25cc7373e36abd8df" rel="noopener noreferrer" target="_blank">questo commit</a>) e vi ritroverete i log con una tupla formata da </p>
 <pre>
 [<tt>${spring.application.name}</tt>, <tt>Trace ID</tt>, <tt>Span ID</tt>, <tt>exportable?</tt>]
 </pre>
-<p>Il <strong>Trace ID</strong> è un <em>hash</em> <strong>unico per tutta la durata della richiesta</strong>, mentre lo <strong>Span ID</strong>, hash anche lui, varia in ogni sottosistema chiamato: Sleuth infatti si preoccupa di propagare questi valori via HTTP (e <a href="https://spring.io/blog/2016/02/15/distributed-tracing-with-spring-cloud-sleuth-and-spring-cloud-zipkin" rel="noopener" target="_blank">non solo</a>) durante le chiamate senza che ce ne accorgiamo, in modo da avere una tracciatura completa del giro che effettua la chiamata proveniente dall&#8217;utente.<br />
-Questi valori possono quindi essere usati da un lato per <em>aggregare i log</em> tramite strumenti &#8220;grezzi&#8221; (ma alla portata di tutti) come <a href="https://it.wikipedia.org/wiki/SysLog" rel="noopener" target="_blank">SysLog</a>, oppure più evoluti come ELK (<a href="https://www.elastic.co/" rel="noopener" target="_blank">ElasticSearch</a> &#8211; <a href="https://www.elastic.co/products/logstash" rel="noopener" target="_blank">LogStash</a> &#8211; <a href="https://www.elastic.co/products/kibana" rel="noopener" target="_blank">Kibana</a>); dall&#8217;altro, sono utili per analizzare i tempi di risposta medi di una chiamata e delle sue componenti intermedie, in modo da identificare eventuali colli di bottiglia. <a href="https://zipkin.io/" rel="noopener" target="_blank">Zipkin</a> è lo strumento adatto a questo e il quarto parametro <tt>exportable?</tt> è proprio riferito al lui. <a href="https://dzone.com/articles/monitoring-microservices-with-spring-cloud-sleuth" rel="noopener" target="_blank">ELK e Zipkin usati insieme ci permettono di monitorare</a> in tempo reale l&#8217;andamento della nostra applicazione, identificare punti deboli dell&#8217;architettura ed intervenire tempestivamente in caso di problemi.</p>
+<p>Il <strong>Trace ID</strong> è un <em>hash</em> <strong>unico per tutta la durata della richiesta</strong>, mentre lo <strong>Span ID</strong>, hash anche lui, varia in ogni sottosistema chiamato: Sleuth infatti si preoccupa di propagare questi valori via HTTP (e <a href="https://spring.io/blog/2016/02/15/distributed-tracing-with-spring-cloud-sleuth-and-spring-cloud-zipkin" rel="noopener noreferrer" target="_blank">non solo</a>) durante le chiamate senza che ce ne accorgiamo, in modo da avere una tracciatura completa del giro che effettua la chiamata proveniente dall&#8217;utente.<br />
+Questi valori possono quindi essere usati da un lato per <em>aggregare i log</em> tramite strumenti &#8220;grezzi&#8221; (ma alla portata di tutti) come <a href="https://it.wikipedia.org/wiki/SysLog" rel="noopener noreferrer" target="_blank">SysLog</a>, oppure più evoluti come ELK (<a href="https://www.elastic.co/" rel="noopener noreferrer" target="_blank">ElasticSearch</a> &#8211; <a href="https://www.elastic.co/products/logstash" rel="noopener noreferrer" target="_blank">LogStash</a> &#8211; <a href="https://www.elastic.co/products/kibana" rel="noopener noreferrer" target="_blank">Kibana</a>); dall&#8217;altro, sono utili per analizzare i tempi di risposta medi di una chiamata e delle sue componenti intermedie, in modo da identificare eventuali colli di bottiglia. <a href="https://zipkin.io/" rel="noopener noreferrer" target="_blank">Zipkin</a> è lo strumento adatto a questo e il quarto parametro <tt>exportable?</tt> è proprio riferito al lui. <a href="https://dzone.com/articles/monitoring-microservices-with-spring-cloud-sleuth" rel="noopener noreferrer" target="_blank">ELK e Zipkin usati insieme ci permettono di monitorare</a> in tempo reale l&#8217;andamento della nostra applicazione, identificare punti deboli dell&#8217;architettura ed intervenire tempestivamente in caso di problemi.</p>
 <p>Prendiamo per esempio la chiamata passando da Zuul:</p>
 <pre>
 http://localhost:8080/api/v1/customers/1/orders
 </pre>
 <p>essa investe 3 servizi: </p>
 <ol>
-<li>il proxy (<tt><a href="https://github.com/coding-jam/spring-cloud-poc/tree/master/zuul-gateway" rel="noopener" target="_blank">zuul-gateway</a></tt>): crea il Trace ID e il primo Span ID (uguale al Trace ID)</li>
-<li>il servizio degli ordini (<tt><a href="https://github.com/coding-jam/spring-cloud-poc/tree/master/order-services" rel="noopener" target="_blank">order-services</a></tt>): riceve il Trace ID e un nuovo Span ID (generato dal proxy) da usare per tracciare questa parte della chiamata.</li>
-<li>il servizio dei clienti per validarne l&#8217;id (<tt><a href="https://github.com/coding-jam/spring-cloud-poc/tree/master/customer-services" rel="noopener" target="_blank">customer-services</a></tt>): riceve sempre lo stesso Trace ID e un altro Span ID (questa volta generato dal servizio degli ordini).
+<li>il proxy (<tt><a href="https://github.com/coding-jam/spring-cloud-poc/tree/master/zuul-gateway" rel="noopener noreferrer" target="_blank">zuul-gateway</a></tt>): crea il Trace ID e il primo Span ID (uguale al Trace ID)</li>
+<li>il servizio degli ordini (<tt><a href="https://github.com/coding-jam/spring-cloud-poc/tree/master/order-services" rel="noopener noreferrer" target="_blank">order-services</a></tt>): riceve il Trace ID e un nuovo Span ID (generato dal proxy) da usare per tracciare questa parte della chiamata.</li>
+<li>il servizio dei clienti per validarne l&#8217;id (<tt><a href="https://github.com/coding-jam/spring-cloud-poc/tree/master/customer-services" rel="noopener noreferrer" target="_blank">customer-services</a></tt>): riceve sempre lo stesso Trace ID e un altro Span ID (questa volta generato dal servizio degli ordini).
 </ol>
 <p>Verranno prodotti 3 log di questo tipo:</p>
 <pre>
@@ -439,75 +439,14 @@ http://localhost:8080/api/v1/customers/1/orders
 2017-12-10 15:07:28.505  INFO [customer-services,f9f588c743de146b,40b8f5fc5632bb3e,false] - Searching customer by id 1
 </pre>
 <h2>Conclusioni</h2>
-<p>In questo post abbiamo cercato di affrontare i punti salienti dal punto di vista implementativo di una architettura a microservizi affrontata con Spring Cloud. Ovviamente possiamo fare microservizi in Java in svariati modi: ultimamente anche i vendor Java EE stanno proponendo soluzioni &#8220;embedded&#8221; dei propri application server come <a href="http://wildfly-swarm.io/" rel="noopener" target="_blank">Wildfly Swarm</a> (con un interessante <a href="http://wildfly-swarm.io/generator/" rel="noopener" target="_blank">generatore di progetti</a>), <a href="https://www.payara.fish/" rel="noopener" target="_blank">Payara</a> (derivato da GlassFish) e addirittura IBM che <a href="https://liberty-app-accelerator.wasdev.developer.ibm.com/start/" rel="noopener" target="_blank">sta spingendo WebSphere Liberty</a> in questa direzione. Tutte queste soluzioni supportano il nuovo <a href="https://microprofile.io/" rel="noopener" target="_blank">MicroProfile</a>, che fornisce, tra le altre cose, strumenti per l&#8217;<em>health check</em> e <em>fault tolerance</em>.<br />
+<p>In questo post abbiamo cercato di affrontare i punti salienti dal punto di vista implementativo di una architettura a microservizi affrontata con Spring Cloud. Ovviamente possiamo fare microservizi in Java in svariati modi: ultimamente anche i vendor Java EE stanno proponendo soluzioni &#8220;embedded&#8221; dei propri application server come <a href="http://wildfly-swarm.io/" rel="noopener noreferrer" target="_blank">Wildfly Swarm</a> (con un interessante <a href="http://wildfly-swarm.io/generator/" rel="noopener noreferrer" target="_blank">generatore di progetti</a>), <a href="https://www.payara.fish/" rel="noopener noreferrer" target="_blank">Payara</a> (derivato da GlassFish) e addirittura IBM che <a href="https://liberty-app-accelerator.wasdev.developer.ibm.com/start/" rel="noopener noreferrer" target="_blank">sta spingendo WebSphere Liberty</a> in questa direzione. Tutte queste soluzioni supportano il nuovo <a href="https://microprofile.io/" rel="noopener noreferrer" target="_blank">MicroProfile</a>, che fornisce, tra le altre cose, strumenti per l&#8217;<em>health check</em> e <em>fault tolerance</em>.<br />
 A prescindere dall&#8217;implementazione che decidiamo di adottare, a livello architetturale vi troverete davanti alle stesse sfide, quindi meglio avere gli strumenti più adatti a risolvere i vostri problemi.</p>
             </div>
             <!-- end content -->
 
             
-                <!-- social sharing buttons / counters -->
-                <div class="row">
-                  <div class="col-md-7">
-                    
-    <!-- social sharing buttons -->
-    <div class="bwp-single-share-wrap">
-      <span>Share:</span>
-      <ul class="bwp-single-share list-unstyled">
-        <!-- facebook -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/" target="_blank" class="bwp-share-link bwp-facebook-share">
-            <i class="fa fa-facebook"></i>
-          </a>
-        </li>
-        <!-- end facebook -->
-        <!-- twitter -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/&amp;text=microservizi-in-java-con-spring-boot-e-spring-cloud', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/&amp;text=microservizi-in-java-con-spring-boot-e-spring-cloud" target="_blank" class="bwp-share-link bwp-twitter-share">
-            <i class="fa fa-twitter"></i>
-          </a>
-        </li>
-        <!-- end twitter -->
-        <!-- google+ -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/" target="_blank" class="bwp-share-link bwp-google-plus-share">
-            <i class="fa fa-google-plus"></i>
-          </a>
-        </li>
-        <!-- end google+ -->
-        <!-- vk -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/" target="_blank" class="bwp-share-link bwp-vk-share">
-            <i class="fa fa-vk"></i>
-          </a>
-        </li>
-        <!-- end vk -->
-        <!-- pinterest -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/&amp;media=&amp;description=microservizi-in-java-con-spring-boot-e-spring-cloud', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/&amp;media=&amp;description=microservizi-in-java-con-spring-boot-e-spring-cloud" target="_blank" class="bwp-share-link bwp-pinterest-share">
-            <i class="fa fa-pinterest-p"></i>
-          </a>
-        </li>
-        <!-- end pinterest -->
-      </ul>
-    </div>
-    <!-- end social sharing buttons -->
-
-                      </div>
-                  <div class="col-md-5">
-                    
-    <!-- counters -->
-    <ul class="bwp-single-counters list-unstyled clearfix ">
-                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>3</a></li>
-                </ul>
-    <!-- end counters -->
-
-                      </div>
-                </div>
-                <!-- end social sharing buttons / counters -->
-
-                
       <!-- metadata -->
-      <div class="bwp-single-metadata-wrap ">
+      <div class="bwp-single-metadata-wrap bwp-no-single-share-and-counters">
         <ul class="bwp-single-metadata list-unstyled clearfix">
                       <!-- author -->
             <li>
@@ -607,7 +546,7 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
 					<p>Molto utile.</p>
 				</div><!-- .comment-content -->
 
-				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/?replytocom=797#respond' data-commentid="797" data-postid="15003" data-belowelement="div-comment-797" data-respondelement="respond" aria-label='Reply to griso'>Reply</a></div>			</article><!-- .comment-body -->
+							</article><!-- .comment-body -->
 		</li><!-- #comment-## -->
 		<li id="comment-799" class="comment odd alt thread-odd thread-alt depth-1">
 			<article id="div-comment-799" class="comment-body">
@@ -628,7 +567,7 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
 					<p>Ottimo articolo mi ha chiarito molte cose che non mi erano chiare.</p>
 				</div><!-- .comment-content -->
 
-				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/?replytocom=799#respond' data-commentid="799" data-postid="15003" data-belowelement="div-comment-799" data-respondelement="respond" aria-label='Reply to Alessandro Bx'>Reply</a></div>			</article><!-- .comment-body -->
+							</article><!-- .comment-body -->
 		</li><!-- #comment-## -->
 		<li id="comment-815" class="comment even thread-even depth-1">
 			<article id="div-comment-815" class="comment-body">
@@ -649,21 +588,14 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
 					<p>Andrea, davvero un grande articolo che mette ordine in una gran confusione.</p>
 				</div><!-- .comment-content -->
 
-				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/?replytocom=815#respond' data-commentid="815" data-postid="15003" data-belowelement="div-comment-815" data-respondelement="respond" aria-label='Reply to Antonio Musarra'>Reply</a></div>			</article><!-- .comment-body -->
+							</article><!-- .comment-body -->
 		</li><!-- #comment-## -->
 		</ol><!-- .comment-list -->
 
 		
 	
+			<p class="no-comments">Comments are closed.</p>
 	
-		<div id="respond" class="comment-respond">
-		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='15003' id='comment_post_ID' />
-<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-</p></form>	</div><!-- #respond -->
 	
 </div>
 <!-- end comments -->
@@ -692,14 +624,14 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
                   
                                       <!-- title -->
                     <h3 class="bwp-post-title entry-title">
-                      <a href="https://codingjam.it/primi-passi-con-spring-batch/">Primi passi con Spring Batch</a>
+                      <a href="https://codingjam.it/spring-e-datasource-come-criptare-la-password-del-database/">Spring e datasource: come criptare la password del database</a>
                     </h3>
                     <!-- end title -->
                     
                   
       <!-- excerpt -->
       <div class="bwp-post-excerpt entry-content">
-        <p>Realizzando applicazioni business-to-business non è raro incontrare la necessità di fare movimentazione massiva di dati in modo automatico, schedulato e fail-safe. Un bel batch quindi è quello che ci vuole! 🙂 Ovviamente si può fare in mille modi, usare mille framework differenti se necessario, schedularli tramite Cron per esempio o Quartz e così via. Ultimamente mi è capitato di dover realizzare un batch di migrazione dati da una versione X di un applicativo ad una Y. Viste le combinazioni che [&hellip;]</p>
+        <p>Eccoci al terzo e ultimo episodio della saga sulla sicurezza della vostra password del database. In due post precedenti abbiamo visto come cifrare la password del datasource in JBoss AS 7 e in Tomcat. Se però non lavorate né con JBoss né con Tomcat, usate Spring e preferite far gestire il datasource a lui e rimanere più generici possibili, ecco come criptare la password con il semplice aiuto di un framework esterno, ovvero Jasypt! Encryption for dummies Il problema della [&hellip;]</p>
       </div>
       <!-- end excerpt -->
 
@@ -707,12 +639,12 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
     <!-- date + read more link -->
     <div class="bwp-post-details-wrap clearfix">
       <!-- date -->
-            <a href="https://codingjam.it/2014/03/27/" class="bwp-post-date">
-        <span class="date updated">27/03/2014</span>
+            <a href="https://codingjam.it/2014/07/22/" class="bwp-post-date">
+        <span class="date updated">22/07/2014</span>
       </a>
       <!-- end date -->
       <!-- read more link -->
-      <a href="https://codingjam.it/primi-passi-con-spring-batch/" class="bwp-read-more">Read more</a>
+      <a href="https://codingjam.it/spring-e-datasource-come-criptare-la-password-del-database/" class="bwp-read-more">Read more</a>
       <!-- end read more link -->
     </div>
     <!-- end date + read more link -->
@@ -737,14 +669,14 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
                   
                                       <!-- title -->
                     <h3 class="bwp-post-title entry-title">
-                      <a href="https://codingjam.it/lalternativa-a-java-ee-come-implementare-lo-stack-jsfspringhibernate-con-java-se-e-tomcat-parte-i/">L&#8217;alternativa a Java EE: come implementare lo stack JSF+Spring+Hibernate con Java SE e Tomcat &#8211; Parte I</a>
+                      <a href="https://codingjam.it/finalmente-contexts-and-dependency-injection-cdi-anche-in-java-ee-6/">Finalmente Contexts and Dependency Injection (CDI) anche in Java EE 6!</a>
                     </h3>
                     <!-- end title -->
                     
                   
       <!-- excerpt -->
       <div class="bwp-post-excerpt entry-content">
-        <p style="text-align: justify;">La specifica Java EE 5 ha fatto grandi passi avanti rispetto alla versione precedente: adesso anche per noi comuni mortali è possibile usare gli <em>Enterprise Java Beans</em> (EJB) senza perdersi nella giungla di interfacce da implementare. Per poter usare questi strumenti potenti abbiamo però bisogno di una infrastruttura altrettanto potente, ovvero un Application Server (come JBoss, Glassfish o WebSphere) che implementa la specifica Java Enterprise. A seconda dei progetti, capita a volte di percepire questi strumenti come dei veri e propri &#8220;carrozzoni&#8221;, come se si volesse per forza usare un bazooka per schiacciare una formica. Abbiamo davvero bisogno sempre e comunque di un bazooka? Se il nostro target è la formica forse il gioco non vale la candela. In questo post vedremo come prendere in prestito quel che veramente ci serve del mondo Enterprise e riportarlo in un contesto più agile grazie al buon vecchio Tomcat.</p>
+        <p class="text-justify">Il concetto di <strong>Inversion of Control (IoC)</strong> ormai è noto da anni: si demanda a terzi (un <em>Container</em>) la responsabilità, il controllo, di istanziare i nostri oggetti e le loro interdipendenze. Se ne guadagna in termini di riusabilità e testing del codice</p>
       </div>
       <!-- end excerpt -->
 
@@ -752,12 +684,12 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
     <!-- date + read more link -->
     <div class="bwp-post-details-wrap clearfix">
       <!-- date -->
-            <a href="https://codingjam.it/2011/05/12/" class="bwp-post-date">
-        <span class="date updated">12/05/2011</span>
+            <a href="https://codingjam.it/2012/06/18/" class="bwp-post-date">
+        <span class="date updated">18/06/2012</span>
       </a>
       <!-- end date -->
       <!-- read more link -->
-      <a href="https://codingjam.it/lalternativa-a-java-ee-come-implementare-lo-stack-jsfspringhibernate-con-java-se-e-tomcat-parte-i/" class="bwp-read-more">Read more</a>
+      <a href="https://codingjam.it/finalmente-contexts-and-dependency-injection-cdi-anche-in-java-ee-6/" class="bwp-read-more">Read more</a>
       <!-- end read more link -->
     </div>
     <!-- end date + read more link -->
@@ -866,12 +798,12 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
 <script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
-var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"1520cabb4b","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
 </body>
 
-<!-- Mirrored from codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/microservizi-in-java-con-spring-boot-e-spring-cloud/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 </html>

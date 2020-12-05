@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<!-- Mirrored from codingjam.it/angular-2-diventa-4-per-adesso/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/angular-2-diventa-4-per-adesso/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="UTF-8">
@@ -306,13 +306,13 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
 
             <!-- content -->
             <div class="bwp-content entry-content clearfix">
-              <p>Dove sono stato nell&#8217;ultimo anno? Sembra ieri che parlavamo di Angular 2 ancora alla RC1 e, il tempo di distrarsi un attimo, quel 2 è divento un 4!! In realtà, c&#8217;è una spiegazione: con l&#8217;adozione del <a href="http://angularjs.blogspot.it/2016/10/versioning-and-releasing-angular.html" target="_blank">Semantic Versioning</a>, ogni release che provoca rottura col passato richiede il salto di una major version.. e di <em>rotture ce ne sono state</em>! Già con il rifacimento (o gli n rifacimenti) del componente di routing si parlava &#8220;per scherzo&#8221; di Angular 3 tanto era diverso. Adesso, con questo sistema di versionamento, è ufficiale che seguirà una release major ogni circa 6 mesi: il numero accanto ad Angular quindi comincerà ben presto a perdere senso (ai livelli di quello di Chrome??), e si parlerà semplicemente di <strong>Angular</strong> (il JS era già sparito l&#8217;anno scorso&#8230;).</p>
+              <p>Dove sono stato nell&#8217;ultimo anno? Sembra ieri che parlavamo di Angular 2 ancora alla RC1 e, il tempo di distrarsi un attimo, quel 2 è divento un 4!! In realtà, c&#8217;è una spiegazione: con l&#8217;adozione del <a href="http://angularjs.blogspot.it/2016/10/versioning-and-releasing-angular.html" target="_blank" rel="noopener noreferrer">Semantic Versioning</a>, ogni release che provoca rottura col passato richiede il salto di una major version.. e di <em>rotture ce ne sono state</em>! Già con il rifacimento (o gli n rifacimenti) del componente di routing si parlava &#8220;per scherzo&#8221; di Angular 3 tanto era diverso. Adesso, con questo sistema di versionamento, è ufficiale che seguirà una release major ogni circa 6 mesi: il numero accanto ad Angular quindi comincerà ben presto a perdere senso (ai livelli di quello di Chrome??), e si parlerà semplicemente di <strong>Angular</strong> (il JS era già sparito l&#8217;anno scorso&#8230;).</p>
 <p>Vediamo quindi più da vicino cosa è cambiato rispetto a quello che avevamo visto appena un anno fa con Angular 2 quando ancora era in RC1!</p>
 <h2>Disclaimer</h2>
-<p>Prima di procedere, è consigliabile dare un&#8217;occhiata ai post precedenti (<a href="https://codingjam.it/introduzione-ad-angular-2-parte-1" target="_blank">parte 1</a> e <a href="https://codingjam.it/introduzione-ad-angular-2-parte-2" target="_blank">parte 2</a>) perché ci sono molti riferimenti e confronti che vengono dati per scontati, oltre ai concetti principali che sono rimasti invariati. Questo post è indicato soprattutto per chi ha trascurato (come me) Angular nell&#8217;ultimo anno e si ritrova sintatticamente e concettualmente molte differenze che deve recuperare. Molte delle cose che vedremo non sono nate con la versione 4: faremo infatti una panoramica, anche piuttosto teorica, di cosa offre il framework oggi, per cui si dà per scontato che lo si conosca già un po&#8217;.</p>
-<p>Per fare i confronti, sull&#8217;account GitHub di CNJ trovate la classica applicazione <a href="https://github.com/coding-jam/angular4-todo-list" target="_blank">TODO List aggiornata ad Angular 4</a>, facilmente confrontabile con la versione <a href="https://github.com/coding-jam/angular2-todo-list" target="_blank">scritta in Angular 2</a> (RC1).</p>
+<p>Prima di procedere, è consigliabile dare un&#8217;occhiata ai post precedenti (<a href="https://codingjam.it/introduzione-ad-angular-2-parte-1" target="_blank" rel="noopener noreferrer">parte 1</a> e <a href="https://codingjam.it/introduzione-ad-angular-2-parte-2" target="_blank" rel="noopener noreferrer">parte 2</a>) perché ci sono molti riferimenti e confronti che vengono dati per scontati, oltre ai concetti principali che sono rimasti invariati. Questo post è indicato soprattutto per chi ha trascurato (come me) Angular nell&#8217;ultimo anno e si ritrova sintatticamente e concettualmente molte differenze che deve recuperare. Molte delle cose che vedremo non sono nate con la versione 4: faremo infatti una panoramica, anche piuttosto teorica, di cosa offre il framework oggi, per cui si dà per scontato che lo si conosca già un po&#8217;.</p>
+<p>Per fare i confronti, sull&#8217;account GitHub di CNJ trovate la classica applicazione <a href="https://github.com/coding-jam/angular4-todo-list" target="_blank" rel="noopener noreferrer">TODO List aggiornata ad Angular 4</a>, facilmente confrontabile con la versione <a href="https://github.com/coding-jam/angular2-todo-list" target="_blank" rel="noopener noreferrer">scritta in Angular 2</a> (RC1).</p>
 <h2>Ritornano i moduli</h2>
-<p>Nelle prime versioni di Angular 2 era scomparso il <strong>concetto esplicito di Modulo Angular</strong> (che già conoscevamo in AngularJS). In pratica bastava definire una gerarchia di componenti (come <tt><a href="https://github.com/coding-jam/angular2-todo-list/blob/master/app/app.component.ts" target="_blank">app.component.ts</a></tt>), con le sue dipendenze, ed eseguire il <a href="https://codingjam.it/introduzione-ad-angular-2-parte-2/#bootstrap" target="_blank">&#8220;bootstrap&#8221; del componente radice</a> (come in <tt><a href="https://github.com/coding-jam/angular2-todo-list/blob/master/app/main.ts" target="_blank">main.ts</a></tt>): adesso il modulo <strong>ritorna protagonista</strong>, definito dal decoratore <code>@NgModule</code>, con una serie di attributi importanti, dichiarato sopra una classe TypeScript (aggiornato ad oggi <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-2.html" target="_blank">versione 2.2</a>), come per esempio <tt><a href="https://github.com/coding-jam/angular4-todo-list/blob/ffbe1577697b2c2f23aee3be4abd3791926da399/src/app/app.module.ts" target="_blank">app.module.ts</a></tt>.</p>
+<p>Nelle prime versioni di Angular 2 era scomparso il <strong>concetto esplicito di Modulo Angular</strong> (che già conoscevamo in AngularJS). In pratica bastava definire una gerarchia di componenti (come <tt><a href="https://github.com/coding-jam/angular2-todo-list/blob/master/app/app.component.ts" target="_blank" rel="noopener noreferrer">app.component.ts</a></tt>), con le sue dipendenze, ed eseguire il <a href="https://codingjam.it/introduzione-ad-angular-2-parte-2/#bootstrap" target="_blank" rel="noopener noreferrer">&#8220;bootstrap&#8221; del componente radice</a> (come in <tt><a href="https://github.com/coding-jam/angular2-todo-list/blob/master/app/main.ts" target="_blank" rel="noopener noreferrer">main.ts</a></tt>): adesso il modulo <strong>ritorna protagonista</strong>, definito dal decoratore <code>@NgModule</code>, con una serie di attributi importanti, dichiarato sopra una classe TypeScript (aggiornato ad oggi <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-2.html" target="_blank" rel="noopener noreferrer">versione 2.2</a>), come per esempio <tt><a href="https://github.com/coding-jam/angular4-todo-list/blob/ffbe1577697b2c2f23aee3be4abd3791926da399/src/app/app.module.ts" target="_blank" rel="noopener noreferrer">app.module.ts</a></tt>.</p>
 <p>La nuova versione dell&#8217;applicazione TodoList aggiornata ad Angular 4 ci viene in aiuto: vediamo da vicino gli elementi salienti.</p>
 <p><pre data-enlighter-language="js" class="EnlighterJSRAW">
 @NgModule({
@@ -345,7 +345,7 @@ export class AppModule { }
 <dt>exports</dt>
 <dd> (non presente in questo caso) sono quel sottoinsieme di elementi del modulo &#8220;<strong>pubblici</strong>&#8220;, ovvero riusabili nei template di altri moduli. Solitamente sono i moduli <strong>non di bootstrap</strong> (definiti <strong>Feature Modules</strong>) a dichiarare gli exports.</dd>
 </dl>
-<p>Il fatto quindi di aver definito <tt>bootstrap</tt> e l&#8217;import di <code>BrowserModule</code>, identifica subito questo modulo come <strong><em>radice</em></strong>, candidato ad essere il <strong>modulo di bootstrap</strong> appunto, importato a sua volta in un file solitamente chiamato <tt><a href="https://github.com/coding-jam/angular4-todo-list/blob/ffbe1577697b2c2f23aee3be4abd3791926da399/src/main.ts" target="_blank">main.ts</a></tt> che avvia l&#8217;applicazione.</p>
+<p>Il fatto quindi di aver definito <tt>bootstrap</tt> e l&#8217;import di <code>BrowserModule</code>, identifica subito questo modulo come <strong><em>radice</em></strong>, candidato ad essere il <strong>modulo di bootstrap</strong> appunto, importato a sua volta in un file solitamente chiamato <tt><a href="https://github.com/coding-jam/angular4-todo-list/blob/ffbe1577697b2c2f23aee3be4abd3791926da399/src/main.ts" target="_blank" rel="noopener noreferrer">main.ts</a></tt> che avvia l&#8217;applicazione.</p>
 <p><pre data-enlighter-language="js" class="EnlighterJSRAW" data-enlighter-highlight="4">
 import { platformBrowserDynamic } from &#039;@angular/platform-browser-dynamic&#039;;
 import { AppModule } from &#039;./app/app.module&#039;;
@@ -353,10 +353,10 @@ import { AppModule } from &#039;./app/app.module&#039;;
 platformBrowserDynamic().bootstrapModule(AppModule);
 </pre></p>
 <p>Prima quindi <em>si avviava un componente</em> che implicitamente veniva identificato come radice; <em>adesso invece si avvia un modulo</em> che dichiara chi è il componente principale. Si recupera quindi la visione di insieme di un modulo e delle sue dipendenze. </p>
-<p>Nella versione Angular 2, era tutto più diluito tra i primi due livelli di componenti (<tt><a href="https://github.com/coding-jam/angular2-todo-list/blob/master/app/app.component.ts" target="_blank">app.component.ts</a></tt> e <tt><a href="https://github.com/coding-jam/angular2-todo-list/blob/master/app/todos.components.ts" target="_blank">todos.component.ts</a></tt>). Adesso invece è ben chiaro il confine di un modulo, perché dichiarato tutto in un file (<tt><a href="https://github.com/coding-jam/angular4-todo-list/blob/master/src/app/app.module.ts" target="_blank">app.module.ts</a></tt>): è costituito non solo da <em>componenti</em>, <em>direttive</em>, <em>servizi</em> e <em>pipes</em>, ma anche da <em>altri moduli</em>, chiamati <strong>Feature Modules</strong>.<br />
-Questa distinzione è principalmente a livello logico, anche se si distinguono visivamente per il fatto di <a href="https://angular.io/docs/ts/latest/cookbook/ngmodule-faq.html#!#q-browser-vs-common-module" target="_blank">importare il <code>CommonModule</code> invece del <code>BrowserModule</code></a>, di <em>non dichiarare il <tt>bootstrap</tt></em> e di <em>definire gli <tt>exports</tt></em>. Di fatto un <strong>Root Module esegue una applicazione</strong>, un <strong>Feature Module invece ne estende le funzionalità</strong>.</p>
+<p>Nella versione Angular 2, era tutto più diluito tra i primi due livelli di componenti (<tt><a href="https://github.com/coding-jam/angular2-todo-list/blob/master/app/app.component.ts" target="_blank" rel="noopener noreferrer">app.component.ts</a></tt> e <tt><a href="https://github.com/coding-jam/angular2-todo-list/blob/master/app/todos.components.ts" target="_blank" rel="noopener noreferrer">todos.component.ts</a></tt>). Adesso invece è ben chiaro il confine di un modulo, perché dichiarato tutto in un file (<tt><a href="https://github.com/coding-jam/angular4-todo-list/blob/master/src/app/app.module.ts" target="_blank" rel="noopener noreferrer">app.module.ts</a></tt>): è costituito non solo da <em>componenti</em>, <em>direttive</em>, <em>servizi</em> e <em>pipes</em>, ma anche da <em>altri moduli</em>, chiamati <strong>Feature Modules</strong>.<br />
+Questa distinzione è principalmente a livello logico, anche se si distinguono visivamente per il fatto di <a href="https://angular.io/docs/ts/latest/cookbook/ngmodule-faq.html#!#q-browser-vs-common-module" target="_blank" rel="noopener noreferrer">importare il <code>CommonModule</code> invece del <code>BrowserModule</code></a>, di <em>non dichiarare il <tt>bootstrap</tt></em> e di <em>definire gli <tt>exports</tt></em>. Di fatto un <strong>Root Module esegue una applicazione</strong>, un <strong>Feature Module invece ne estende le funzionalità</strong>.</p>
 <h2 id="aot-jit">AOT vs JIT: bootstrap statico contro bootstrap dinamico</h2>
-<p>Come abbiamo detto, un Root Module è responsabile di avviare l&#8217;applicazione, ma come si fa? Quello che abbiamo appena visto tramite la funzione <code>platformBrowserDynamic</code> viene definito <strong>bootstrap dinamico</strong>, dove l&#8217;applicazione viene <strong>compilata al momento</strong> (<strong>JIT &#8211; Just-In-Time</strong>) nel browser dal <a href="https://angular.io/docs/ts/latest/cookbook/ngmodule-faq.html#!#q-angular-compiler" target="_blank">compilatore Angular</a> e poi viene avviata. Cosa fa il compilatore Angular? In poche parole legge i template e li combina con quanto dichiarato nella classe del componente per generare un <strong>Module Factory</strong> e tanti <strong>Components Factories</strong> in <em>memoria</em>, ovvero una rappresentazione in puro JavaScript dei componenti, incluso l&#8217;HTML, il CSS e i vari binding.</p>
+<p>Come abbiamo detto, un Root Module è responsabile di avviare l&#8217;applicazione, ma come si fa? Quello che abbiamo appena visto tramite la funzione <code>platformBrowserDynamic</code> viene definito <strong>bootstrap dinamico</strong>, dove l&#8217;applicazione viene <strong>compilata al momento</strong> (<strong>JIT &#8211; Just-In-Time</strong>) nel browser dal <a href="https://angular.io/docs/ts/latest/cookbook/ngmodule-faq.html#!#q-angular-compiler" target="_blank" rel="noopener noreferrer">compilatore Angular</a> e poi viene avviata. Cosa fa il compilatore Angular? In poche parole legge i template e li combina con quanto dichiarato nella classe del componente per generare un <strong>Module Factory</strong> e tanti <strong>Components Factories</strong> in <em>memoria</em>, ovvero una rappresentazione in puro JavaScript dei componenti, incluso l&#8217;HTML, il CSS e i vari binding.</p>
 <p>In ambiente di produzione, soprattutto su hardware poco performante (il mobile per esempio) o reti lente, il download anche del compiler e della compilazione dell&#8217;app su browser è un&#8217;inutile perdita di tempo che può essere evitata con una <strong>compilazione preventiva</strong> (<strong>AOT &#8211; Ahead-Of-Time</strong>): eseguita in fase di build del progetto, essa produce una <strong>factory per il modulo root</strong> della nostra applicazione chiamato <code>AppModuleNgFactory</code>, proprio perché il modulo si chiamava <code>AppModule</code>. Il <strong>bootstrap statico</strong> viene eseguito in modo molto simile, grazie alla funzione <code>platformBrowser</code>:</p>
 <p><pre data-enlighter-language="js" class="EnlighterJSRAW" data-enlighter-highlight="4">
 import { platformBrowser } from &#039;@angular/platform-browser&#039;;
@@ -365,19 +365,19 @@ import { AppModuleNgFactory } from &#039;./app/app.module.ngfactory&#039;;
 platformBrowser().bootstrapModuleFactory(AppModuleNgFactory);
 </pre></p>
 <p>Dal momento che non è più necessario compilare l&#8217;applicazione nel browser, il <strong>compiler non è incluso negli artefatti finali</strong>, che di conseguenza saranno <strong>più piccoli</strong> rispetto alla versione dinamica e avranno <strong>tempi di boot più veloci</strong>.</p>
-<p>Per fortuna nel mondo reale non dobbiamo preoccuparci di questi dettagli se lasciamo gestire il nostro progetto ad <a href="https://cli.angular.io/" target="_blank">Angular CLI</a> (che vedremo prossimamente in un post a parte).</p>
+<p>Per fortuna nel mondo reale non dobbiamo preoccuparci di questi dettagli se lasciamo gestire il nostro progetto ad <a href="https://cli.angular.io/" target="_blank" rel="noopener noreferrer">Angular CLI</a> (che vedremo prossimamente in un post a parte).</p>
 <h2>I nuovi moduli principali</h2>
 <p>Nel codice di <tt>AppModule</tt> avevamo importato tre moduli di Angular di fondamentale importanza: <code>BrowserModule</code>, <code>FormsModule</code> e <code>HttpModule</code>, che sostituiscono gli import di &#8220;gruppo&#8221; come FORMS_DIRECTIVES o HTTP_PROVIDERS (che in realtà esistono ancora, ma è meglio importare direttamente il modulo). Ma a cosa servono?</p>
 <ul>
 <li><code>BrowserModule</code> è il componente base per lavorare con i template HTML nel browser. Grazie a questo modulo è possibile compilare direttive come <code>NgIf</code> e <code>NgFor</code> (anche se in realtà fanno parte del modulo <code> CommonModule</code> che è <strong>importato e riesportato</strong> come dipendenza).</li>
-<li><code>FormsModule</code> abilita <code>ngModel</code> e <code>RouterLink</code> e permette di creare form nello stile &#8220;<em><a href="https://angular.io/docs/ts/latest/guide/forms.html#!#template-driven" target="_blank">template-driven</a></em>&#8221; (cioè il modo che abbiamo sempre usato in AngularJS). E&#8217; stato introdotto un nuovo tipo di form chiamato <a href="https://angular.io/docs/ts/latest/cookbook/dynamic-form.html" target="_blank">&#8220;<em>reactive</em>&#8221; o &#8220;<em>model-driven</em>&#8220;</a>, ovvero form create dinamicamente a partire da un <em>modello di metadati che le descrivono</em>. Da tenere sott&#8217;occhio perché evolverà parecchio nelle prossime versioni di Angular.</li>
-<li><code>HttpModule</code>: definisce il provider dei servizi per le chiamate HTTP. Ancora marcato come &#8220;experimental&#8221;, indica che potrebbe cambiare in futuro. Sta di fatto che rispetto alla versione di un anno fa, il servizio <code>Http</code> ha fatto qualche passo avanti: basta vedere come viene usato in <tt>todo-list.service.ts</tt> nella versione <a href="https://github.com/coding-jam/angular2-todo-list/blob/master/app/services/todo-list.service.ts" target="_blank">2</a> rispetto alla <a href="https://github.com/coding-jam/angular4-todo-list/blob/master/src/app/services/todo-list.service.ts" target="_blank">4</a>. Serializzare manualmente il payload in JSON o specificare manualmente il content type mi sembrava esagerato&#8230;</li>
+<li><code>FormsModule</code> abilita <code>ngModel</code> e <code>RouterLink</code> e permette di creare form nello stile &#8220;<em><a href="https://angular.io/docs/ts/latest/guide/forms.html#!#template-driven" target="_blank" rel="noopener noreferrer">template-driven</a></em>&#8221; (cioè il modo che abbiamo sempre usato in AngularJS). E&#8217; stato introdotto un nuovo tipo di form chiamato <a href="https://angular.io/docs/ts/latest/cookbook/dynamic-form.html" target="_blank" rel="noopener noreferrer">&#8220;<em>reactive</em>&#8221; o &#8220;<em>model-driven</em>&#8220;</a>, ovvero form create dinamicamente a partire da un <em>modello di metadati che le descrivono</em>. Da tenere sott&#8217;occhio perché evolverà parecchio nelle prossime versioni di Angular.</li>
+<li><code>HttpModule</code>: definisce il provider dei servizi per le chiamate HTTP. Ancora marcato come &#8220;experimental&#8221;, indica che potrebbe cambiare in futuro. Sta di fatto che rispetto alla versione di un anno fa, il servizio <code>Http</code> ha fatto qualche passo avanti: basta vedere come viene usato in <tt>todo-list.service.ts</tt> nella versione <a href="https://github.com/coding-jam/angular2-todo-list/blob/master/app/services/todo-list.service.ts" target="_blank" rel="noopener noreferrer">2</a> rispetto alla <a href="https://github.com/coding-jam/angular4-todo-list/blob/master/src/app/services/todo-list.service.ts" target="_blank" rel="noopener noreferrer">4</a>. Serializzare manualmente il payload in JSON o specificare manualmente il content type mi sembrava esagerato&#8230;</li>
 </ul>
 <h3>Moduli e providers</h3>
 <p>Il concetto di &#8220;provider&#8221; è rimasto invariato, compreso lo scope dei servizi forniti. Già in Angular 2 avevamo visto una differenza rispetto ad AngularJS: quando si definiva un <em>servizio &#8220;provided&#8221; da un certo componente</em>, l&#8217;istanza era la stessa <strong>da lì in giù nel DOM</strong>, non a livello applicativo come in AngularJS. Con Angular 4 rimane vero in principio, ma non è più un componente a fornire un servizio, bensì un <em>modulo</em>, come abbiamo già visto dal codice poco sopra.<br />
-Il provider del nostro servizio <tt>TodoListService</tt> è stato spostato quindi da <tt><a href="https://github.com/coding-jam/angular2-todo-list/blob/master/app/app.component.ts" target="_blank">app.component.ts</a></tt> a <tt><a href="https://github.com/coding-jam/angular4-todo-list/blob/master/src/app/app.module.ts" target="_blank">app.module.ts</a></tt></p>
+Il provider del nostro servizio <tt>TodoListService</tt> è stato spostato quindi da <tt><a href="https://github.com/coding-jam/angular2-todo-list/blob/master/app/app.component.ts" target="_blank" rel="noopener noreferrer">app.component.ts</a></tt> a <tt><a href="https://github.com/coding-jam/angular4-todo-list/blob/master/src/app/app.module.ts" target="_blank" rel="noopener noreferrer">app.module.ts</a></tt></p>
 <p>Adesso, <em>se il servizio viene fornito a livello di Modulo Radice, è singleton per tutta l&#8217;applicazione</em>. Spesso però si vuole dei provider di servizi configurabili, come fare quindi?</p>
-<p>Una delle best practices è creare un modulo &#8220;core&#8221; che fornisce i servizi condivisi in tutta l&#8217;applicazione, nonché la possibilità di configurarli tramite un metodo chiamato <a href="https://angular.io/docs/ts/latest/guide/ngmodule.html#!#configure-core-services-with-_coremodule-forroot_" target="_blank"><code>forRoot</code> (per convenzione) che restituisca un <code>ModuleWithProviders</code></a>.</p>
+<p>Una delle best practices è creare un modulo &#8220;core&#8221; che fornisce i servizi condivisi in tutta l&#8217;applicazione, nonché la possibilità di configurarli tramite un metodo chiamato <a href="https://angular.io/docs/ts/latest/guide/ngmodule.html#!#configure-core-services-with-_coremodule-forroot_" target="_blank" rel="noopener noreferrer"><code>forRoot</code> (per convenzione) che restituisca un <code>ModuleWithProviders</code></a>.</p>
 <p>L&#8217;esempio riportato nella documentazione ufficiale chiarisce il concetto:</p>
 <p><pre data-enlighter-language="js" class="EnlighterJSRAW">
 @NgModule({
@@ -446,7 +446,7 @@ const routes: Routes = [
 })
 export class AppModule { }
 </pre></p>
-<p>Tutto ha inizio con l&#8217;import del risultato alla chiamata a <tt>RouterModule.forRoot</tt>, a cui viene passato un vettore di configurazione di rotte. Questo metodo accetta come secondo argomento un oggetto che permette di attivare la <tt>HashLocationStrategy</tt>, ovvero la gestione degli url applicativi separati dal cancelletto (<tt>#</tt>, come la conosciamo da AngularJS). Adesso invece lo stile di default (e anche <a href="https://angular.io/guide/router#browser-url-styles" target="_blank">quello consigliato</a>) è <tt>PathLocationStrategy</tt>, ovvero URL in stile HTML5 (modificati lato client tramite <tt><a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API#Adding_and_modifying_history_entries" target="_blank">history.pushState</a></tt>). </p>
+<p>Tutto ha inizio con l&#8217;import del risultato alla chiamata a <tt>RouterModule.forRoot</tt>, a cui viene passato un vettore di configurazione di rotte. Questo metodo accetta come secondo argomento un oggetto che permette di attivare la <tt>HashLocationStrategy</tt>, ovvero la gestione degli url applicativi separati dal cancelletto (<tt>#</tt>, come la conosciamo da AngularJS). Adesso invece lo stile di default (e anche <a href="https://angular.io/guide/router#browser-url-styles" target="_blank" rel="noopener noreferrer">quello consigliato</a>) è <tt>PathLocationStrategy</tt>, ovvero URL in stile HTML5 (modificati lato client tramite <tt><a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API#Adding_and_modifying_history_entries" target="_blank" rel="noopener noreferrer">history.pushState</a></tt>). </p>
 <p>Tornando al codice, la classe <code>Routes</code> è un alias per <code>Route[]</code> (vettore di rotte), dove <code>Route</code> ha diversi attributi, alcuni dei quali si evincono dal frammento di codice sovrastante.</p>
 <ul>
 <li><tt>path</tt>: definisce il percorso (assoluto o relativo) della rotta</li>
@@ -462,7 +462,7 @@ export class AppModule { }
 &lt;li role=&quot;presentation&quot; routerLinkActive=&quot;active&quot;&gt;&lt;a routerLink=&quot;done&quot;&gt;Done&lt;/a&gt;&lt;/li&gt;
 </pre></p>
 <p>La direttiva <code>RouterLink</code> dichiara il <strong>path della rotta</strong>, <code>RouterLinkActive</code> invece aggiunge la classe &#8220;<tt>active</tt>&#8221; quando la rotta è attiva (da notare che può andare sull&#8217;ancora che sui tag padre come in questo caso).</p>
-<p>All&#8217;interno del componente attivato, è possibile ottenere <strong>informazioni sulla rotta corrente</strong> tramite il servizio <code><a href="https://angular.io/guide/router#activatedroute-the-one-stop-shop-for-route-information" target="_blank">ActivatedRoute</a></code>. Per esempio, possiamo estrarre i &#8220;query parameters&#8221; o i &#8220;route parameters&#8221; sottoscrivendo rispettivamente l&#8217;<em>observable</em> <tt>queryParams</tt> o <tt>params</tt> del servizio initettato:</p>
+<p>All&#8217;interno del componente attivato, è possibile ottenere <strong>informazioni sulla rotta corrente</strong> tramite il servizio <code><a href="https://angular.io/guide/router#activatedroute-the-one-stop-shop-for-route-information" target="_blank" rel="noopener noreferrer">ActivatedRoute</a></code>. Per esempio, possiamo estrarre i &#8220;query parameters&#8221; o i &#8220;route parameters&#8221; sottoscrivendo rispettivamente l&#8217;<em>observable</em> <tt>queryParams</tt> o <tt>params</tt> del servizio initettato:</p>
 <p><pre data-enlighter-language="js" class="EnlighterJSRAW">
 export class DoneComponent implements OnInit {
   private id: number;
@@ -475,7 +475,7 @@ export class DoneComponent implements OnInit {
   }
 }
 </pre></p>
-<p>Se devo essere sincero all&#8217;inizio capivo come mai scomodare gli observable per dei valori che sono lì nell&#8217;url: la <a href="https://angular.io/guide/router#observable-params-and-component-reuse" target="_blank">documentazione ufficiale fortunatamente lo spiega</a>. In poche parole, i <strong>componenti non vengono ricreati se si naviga sulla stessa rotta con parametri diversi (l&#8217;<tt>id</tt> in questo caso) senza prima passare da un&#8217;altra</strong> (per ovvii motivi di ottimizzazione), per cui <code>ngOnInit</code> non verrebbe richiamato. E&#8217; qui che l&#8217;observable entra in gioco aggiornando il valore dell&#8217;id nell&#8217;istanza della classe!</p>
+<p>Se devo essere sincero all&#8217;inizio capivo come mai scomodare gli observable per dei valori che sono lì nell&#8217;url: la <a href="https://angular.io/guide/router#observable-params-and-component-reuse" target="_blank" rel="noopener noreferrer">documentazione ufficiale fortunatamente lo spiega</a>. In poche parole, i <strong>componenti non vengono ricreati se si naviga sulla stessa rotta con parametri diversi (l&#8217;<tt>id</tt> in questo caso) senza prima passare da un&#8217;altra</strong> (per ovvii motivi di ottimizzazione), per cui <code>ngOnInit</code> non verrebbe richiamato. E&#8217; qui che l&#8217;observable entra in gioco aggiornando il valore dell&#8217;id nell&#8217;istanza della classe!</p>
 <p>Dal momento che non sempre la logica applicativa di navigazione prevede il caso di ricaricare un componente (con parametri diversi) senza passare da un altro, fortunatamente abbiamo a disposizione una modalità più semplice di recupero dei parametri tramite l&#8217;oggetto <code>Snapshot</code>:</p>
 <p><pre data-enlighter-language="js" class="EnlighterJSRAW" data-enlighter-highlight="5">
 export class DoneComponent implements OnInit {
@@ -533,12 +533,12 @@ const routes:Routes = [
 export class AppModule { }
 </pre></p>
 <p>Nel modulo applicativo rimangono solo le rotte base per la gestione del default e degli errori, mentre sono spariti dalle <tt>declarations</tt> i componenti che adesso sono forniti direttamente dai due nuovi moduli. </p>
-<p>Rimanendo aderenti all&#8217;architettura modulo-pagina, diventa molto facile abilitarne il <strong>lazy loading</strong> dei moduli. Normalmente infatti, all&#8217;avvio dell&#8217;applicazione, vengono scaricati tutti i moduli applicativi, ma spesso può essere un lavoro e un&#8217;attesa superflua. Se riteniamo che certe rotte possano venir visitate poche volte, vale la pena <strong>caricarle solo a richiesta</strong>, cioè quando vengono visitate. Guarda cosa bisogna <a href="https://github.com/coding-jam/angular4-todo-list/compare/f93c03b27f2c0cd1ee28c90bf76c166ebf445c72...39097d80840d018d545167adf1aaf08f399b8b0a?diff=split&amp;name=39097d80840d018d545167adf1aaf08f399b8b0a" target="_blank">aggiungere (in verde) e togliere (in rosso)</a> per far diventare il modulo <tt>DoneListModule</tt> lazy!</p>
-<p>Quando invece un modulo si fa più complesso, è possibile creare una vera e propria &#8220;sotto-navigazione&#8221; del <em>Feature Module</em>, definendo delle <strong><a href="https://angular.io/guide/router#child-route-configuration" target="_blank">Child Routes</a></strong>. Questa può essere fatta aggiungendo un nuovo <tt>router-outlet</tt> anonimo o con nome, detto <strong><a href="https://angular.io/guide/router#displaying-multiple-routes-in-named-outlets" target="_blank">Named Outlet</a></strong>. Ogni <em>named outlet</em> ha il suo set di regole di navigazione e componenti, proprio come per gli <strong>outlet primary</strong> (anonimi).</p>
-<p>Approfondire ulteriormente le rotte non è lo scopo di questo post. E&#8217; possibile ritrovare questo argomento in modo esaustivo, insieme a tutti i dettagli sulla gestione delle rotte, direttamente dalla <a href="https://angular.io/guide/router" target="_blank">documentazione ufficiale</a>.</p>
+<p>Rimanendo aderenti all&#8217;architettura modulo-pagina, diventa molto facile abilitarne il <strong>lazy loading</strong> dei moduli. Normalmente infatti, all&#8217;avvio dell&#8217;applicazione, vengono scaricati tutti i moduli applicativi, ma spesso può essere un lavoro e un&#8217;attesa superflua. Se riteniamo che certe rotte possano venir visitate poche volte, vale la pena <strong>caricarle solo a richiesta</strong>, cioè quando vengono visitate. Guarda cosa bisogna <a href="https://github.com/coding-jam/angular4-todo-list/compare/f93c03b27f2c0cd1ee28c90bf76c166ebf445c72...39097d80840d018d545167adf1aaf08f399b8b0a?diff=split&amp;name=39097d80840d018d545167adf1aaf08f399b8b0a" target="_blank" rel="noopener noreferrer">aggiungere (in verde) e togliere (in rosso)</a> per far diventare il modulo <tt>DoneListModule</tt> lazy!</p>
+<p>Quando invece un modulo si fa più complesso, è possibile creare una vera e propria &#8220;sotto-navigazione&#8221; del <em>Feature Module</em>, definendo delle <strong><a href="https://angular.io/guide/router#child-route-configuration" target="_blank" rel="noopener noreferrer">Child Routes</a></strong>. Questa può essere fatta aggiungendo un nuovo <tt>router-outlet</tt> anonimo o con nome, detto <strong><a href="https://angular.io/guide/router#displaying-multiple-routes-in-named-outlets" target="_blank" rel="noopener noreferrer">Named Outlet</a></strong>. Ogni <em>named outlet</em> ha il suo set di regole di navigazione e componenti, proprio come per gli <strong>outlet primary</strong> (anonimi).</p>
+<p>Approfondire ulteriormente le rotte non è lo scopo di questo post. E&#8217; possibile ritrovare questo argomento in modo esaustivo, insieme a tutti i dettagli sulla gestione delle rotte, direttamente dalla <a href="https://angular.io/guide/router" target="_blank" rel="noopener noreferrer">documentazione ufficiale</a>.</p>
 <h2>Direttive</h2>
-<p>Rispetto ad un anno fa, finalmente la <a href="https://angular.io/guide/attribute-directives" target="_blank">documentazione sulle direttive</a> è degna di questo nome! La distinzione tra <strong>Componenti</strong> (ovvero direttive con template), <strong>Structural directives</strong> (che manipolano il DOM) e <strong>Attribute directives</strong> (attributi che cambiano il comportamento ad un elemento) è rimasta la stessa. Adesso però la documentazione fornisce degli esempi sui quali si può ragionare. </p>
-<p>In un momento in cui vi sentite particolarmente kitsch, decidere di creare una direttiva (<tt><a href="https://github.com/coding-jam/angular4-todo-list/blob/master/src/app/common-directives/colorful.directive.ts" target="_blank">colorful.directive.ts</a></tt>) che fa cambiare colore al titolo dell&#8217;applicazione Todo List con i colori dell&#8217;arcobaleno, quando si passa sopra col mouse:</p>
+<p>Rispetto ad un anno fa, finalmente la <a href="https://angular.io/guide/attribute-directives" target="_blank" rel="noopener noreferrer">documentazione sulle direttive</a> è degna di questo nome! La distinzione tra <strong>Componenti</strong> (ovvero direttive con template), <strong>Structural directives</strong> (che manipolano il DOM) e <strong>Attribute directives</strong> (attributi che cambiano il comportamento ad un elemento) è rimasta la stessa. Adesso però la documentazione fornisce degli esempi sui quali si può ragionare. </p>
+<p>In un momento in cui vi sentite particolarmente kitsch, decidere di creare una direttiva (<tt><a href="https://github.com/coding-jam/angular4-todo-list/blob/master/src/app/common-directives/colorful.directive.ts" target="_blank" rel="noopener noreferrer">colorful.directive.ts</a></tt>) che fa cambiare colore al titolo dell&#8217;applicazione Todo List con i colori dell&#8217;arcobaleno, quando si passa sopra col mouse:</p>
 <p><pre data-enlighter-language="js" class="EnlighterJSRAW" data-enlighter-highlight="2,6,8,11">
 @Directive({
   selector: &#039;[colorful]&#039;
@@ -565,7 +565,7 @@ export class ColorfulDirective {
 <li><code>@HostListener</code> permette di definire dei listener sui normali eventi del DOM. Perché usare questo decoratore invece di lavorare direttamente sull&#8217;elemento del DOM nativo? La motivazione principale è che altrimenti ci dovremmo <em>ricordare di rimuovere il listener manualmente</em> dal DOM per non creare memory leak. In questo modo lo fa Angular per noi.</li>
 <li>è possibile accedere all&#8217;elemento nativo JavaScript richiamando <code>nativeElement</code> sul wrapper.</li>
 </ol>
-<p>Non dimentichiamo di <strong>dichiarare in un modulo l&#8217;esistenza di questa direttiva</strong>. Conviene raggruppare tutte le direttive in un modulo a sé stante (per esempio <tt><a href="https://github.com/coding-jam/angular4-todo-list/blob/master/src/app/common-directives/common-directives.module.ts" target="_blank">common-directives.module.ts</a></tt>), in modo da essere usato in tutte i <em>feature modules</em> della nostra applicazione: se scegliamo questa strada, è necessario anche <strong>esportare</strong> la direttiva per <strong>renderla pubblica</strong>.</p>
+<p>Non dimentichiamo di <strong>dichiarare in un modulo l&#8217;esistenza di questa direttiva</strong>. Conviene raggruppare tutte le direttive in un modulo a sé stante (per esempio <tt><a href="https://github.com/coding-jam/angular4-todo-list/blob/master/src/app/common-directives/common-directives.module.ts" target="_blank" rel="noopener noreferrer">common-directives.module.ts</a></tt>), in modo da essere usato in tutte i <em>feature modules</em> della nostra applicazione: se scegliamo questa strada, è necessario anche <strong>esportare</strong> la direttiva per <strong>renderla pubblica</strong>.</p>
 <p><pre data-enlighter-language="js" class="EnlighterJSRAW" data-enlighter-highlight="6,9">
 @NgModule({
   imports: [
@@ -597,7 +597,7 @@ export class CommonDirectivesModule { }
 <p><pre data-enlighter-language="html" class="EnlighterJSRAW">
 &lt;button (click)=&quot;markDone(todo)&quot; *ngIf=&quot;!todo.done&quot;&gt;Done&lt;/button&gt;
 </pre></p>
-<p>La prima vera differenza è che ad un elemento HTML <strong>si può associare una ed una sola direttiva strutturale</strong> (perché appunti ridisegna il DOM), a differenza delle direttive attributo che ne cambiano solo il comportamento, quindi ne possono essere applicate più d&#8217;una. La ragione è la semplicità: applicare più direttive che modificano il DOM sullo stesso elemento può portare a situazioni inattese. Se si ha però questa necessità (e sicuramente si avrà!), la documentazione ufficiale consiglia di modificare il template HTML aggiungendo una gerarchia di tag &#8220;contenitori&#8221; <code><a href="https://angular.io/guide/structural-directives#ngcontainer" target="_blank">ng-container</a></code> per ogni direttiva strutturale da applicare: questo tag non aggiunge veramente nodi al DOM perché <strong>non viene renderizzato</strong> da Angular, serve solo come <strong>nodo raggruppatore</strong>. Questo tag è molto utile quando aggiungere elementi al DOM per ovviare questo limite può rompere il CSS.</p>
+<p>La prima vera differenza è che ad un elemento HTML <strong>si può associare una ed una sola direttiva strutturale</strong> (perché appunti ridisegna il DOM), a differenza delle direttive attributo che ne cambiano solo il comportamento, quindi ne possono essere applicate più d&#8217;una. La ragione è la semplicità: applicare più direttive che modificano il DOM sullo stesso elemento può portare a situazioni inattese. Se si ha però questa necessità (e sicuramente si avrà!), la documentazione ufficiale consiglia di modificare il template HTML aggiungendo una gerarchia di tag &#8220;contenitori&#8221; <code><a href="https://angular.io/guide/structural-directives#ngcontainer" target="_blank" rel="noopener noreferrer">ng-container</a></code> per ogni direttiva strutturale da applicare: questo tag non aggiunge veramente nodi al DOM perché <strong>non viene renderizzato</strong> da Angular, serve solo come <strong>nodo raggruppatore</strong>. Questo tag è molto utile quando aggiungere elementi al DOM per ovviare questo limite può rompere il CSS.</p>
 <p>Ma perché l&#8217;asterisco? Questo semplice carattere in realtà è &#8220;zucchero sintattico&#8221; che nasconde <strong>due trasformazioni eseguite internamente dal compilatore</strong>. </p>
 <p><pre data-enlighter-language="html" class="EnlighterJSRAW">
 &lt;button (click)=&quot;markDone(todo)&quot; *ngIf=&quot;!todo.done&quot;&gt;Done&lt;/button&gt;
@@ -614,7 +614,7 @@ export class CommonDirectivesModule { }
   &lt;button (click)=&quot;markDone(todo)&quot;&gt;Done&lt;/button&gt;
 &lt;/ng-template&gt;
 </pre></p>
-<p><code>ViewContainerRef</code> punterà all&#8217;elemento <tt>&lt;ng-template&gt;</tt> che fa appunto da contenitore, mentre <code>TemplateRef</code> all&#8217;elemento <tt>&lt;button&gt;</tt>, che è il nostro template originale. Questi due servizi sono disponibili per l&#8217;injection quando si crea una direttiva strutturale, come per esempio <tt><a href="https://github.com/coding-jam/angular4-todo-list/blob/master/src/app/common-directives/with-delay.directive.ts" target="_blank">with-delay.directive.ts</a></tt>, che aggiunge un ritardo nella visualizzazione di ogni elemento della Todo List, in modo da fare l&#8217;effetto &#8220;tendina&#8221;:</p>
+<p><code>ViewContainerRef</code> punterà all&#8217;elemento <tt>&lt;ng-template&gt;</tt> che fa appunto da contenitore, mentre <code>TemplateRef</code> all&#8217;elemento <tt>&lt;button&gt;</tt>, che è il nostro template originale. Questi due servizi sono disponibili per l&#8217;injection quando si crea una direttiva strutturale, come per esempio <tt><a href="https://github.com/coding-jam/angular4-todo-list/blob/master/src/app/common-directives/with-delay.directive.ts" target="_blank" rel="noopener noreferrer">with-delay.directive.ts</a></tt>, che aggiunge un ritardo nella visualizzazione di ogni elemento della Todo List, in modo da fare l&#8217;effetto &#8220;tendina&#8221;:</p>
 <p><pre data-enlighter-language="js" class="EnlighterJSRAW">
 import {Directive, Input, TemplateRef, ViewContainerRef} from &#039;@angular/core&#039;;
 @Directive({
@@ -639,76 +639,15 @@ export class WithDelayDirective {
       &lt;ng-container *withDelay=&quot;50 * i&quot;&gt;
 ...
 </pre></p>
-<p>il codice completo è <tt><a href="https://github.com/coding-jam/angular4-todo-list/blob/master/src/app/todo-list/todo-list.component.html" target="_blank">todo-list.component.html</a></tt>. <strong>Non scordiamoci l&#8217;asterisco</strong>, altrimenti riceveremo un misterioso errore del tipo &#8220;<em>No provider for TemplateRef!</em>&#8220;!</p>
+<p>il codice completo è <tt><a href="https://github.com/coding-jam/angular4-todo-list/blob/master/src/app/todo-list/todo-list.component.html" target="_blank" rel="noopener noreferrer">todo-list.component.html</a></tt>. <strong>Non scordiamoci l&#8217;asterisco</strong>, altrimenti riceveremo un misterioso errore del tipo &#8220;<em>No provider for TemplateRef!</em>&#8220;!</p>
 <h2>Conclusioni</h2>
-<p>Abbiamo quindi visto con qualche esempio e tanti confronti quali sono le differenze nate nell&#8217;ultimo anno e che ha portato Angular da balzare dalla versione 2 alla 4! Nel frattempo si anche stabilizzato un ottimo tool di supporto allo sviluppo, ovvero <a href="https://cli.angular.io/" target="_blank">Angular CLI</a>, senza il quale diventa inutilmente complesso gestire lo startup di un progetto nonché la sua manutenzione. Prossimamente quindi vedremo nel dettaglio <strong>come usarlo</strong> e come aggiungere quelle <strong>piccole personalizzazioni</strong> che lo hanno portato a diventare uno strumento insostituibile nello sviluppo delle applicazioni con Angular.</p>
+<p>Abbiamo quindi visto con qualche esempio e tanti confronti quali sono le differenze nate nell&#8217;ultimo anno e che ha portato Angular da balzare dalla versione 2 alla 4! Nel frattempo si anche stabilizzato un ottimo tool di supporto allo sviluppo, ovvero <a href="https://cli.angular.io/" target="_blank" rel="noopener noreferrer">Angular CLI</a>, senza il quale diventa inutilmente complesso gestire lo startup di un progetto nonché la sua manutenzione. Prossimamente quindi vedremo nel dettaglio <strong>come usarlo</strong> e come aggiungere quelle <strong>piccole personalizzazioni</strong> che lo hanno portato a diventare uno strumento insostituibile nello sviluppo delle applicazioni con Angular.</p>
             </div>
             <!-- end content -->
 
             
-                <!-- social sharing buttons / counters -->
-                <div class="row">
-                  <div class="col-md-7">
-                    
-    <!-- social sharing buttons -->
-    <div class="bwp-single-share-wrap">
-      <span>Share:</span>
-      <ul class="bwp-single-share list-unstyled">
-        <!-- facebook -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/angular-2-diventa-4-per-adesso/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/angular-2-diventa-4-per-adesso/" target="_blank" class="bwp-share-link bwp-facebook-share">
-            <i class="fa fa-facebook"></i>
-          </a>
-        </li>
-        <!-- end facebook -->
-        <!-- twitter -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/angular-2-diventa-4-per-adesso/&amp;text=angular-2-diventa-4-per-adesso', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/angular-2-diventa-4-per-adesso/&amp;text=angular-2-diventa-4-per-adesso" target="_blank" class="bwp-share-link bwp-twitter-share">
-            <i class="fa fa-twitter"></i>
-          </a>
-        </li>
-        <!-- end twitter -->
-        <!-- google+ -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/angular-2-diventa-4-per-adesso/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/angular-2-diventa-4-per-adesso/" target="_blank" class="bwp-share-link bwp-google-plus-share">
-            <i class="fa fa-google-plus"></i>
-          </a>
-        </li>
-        <!-- end google+ -->
-        <!-- vk -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/angular-2-diventa-4-per-adesso/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/angular-2-diventa-4-per-adesso/" target="_blank" class="bwp-share-link bwp-vk-share">
-            <i class="fa fa-vk"></i>
-          </a>
-        </li>
-        <!-- end vk -->
-        <!-- pinterest -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/angular-2-diventa-4-per-adesso/&amp;media=&amp;description=angular-2-diventa-4-per-adesso', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/angular-2-diventa-4-per-adesso/&amp;media=&amp;description=angular-2-diventa-4-per-adesso" target="_blank" class="bwp-share-link bwp-pinterest-share">
-            <i class="fa fa-pinterest-p"></i>
-          </a>
-        </li>
-        <!-- end pinterest -->
-      </ul>
-    </div>
-    <!-- end social sharing buttons -->
-
-                      </div>
-                  <div class="col-md-5">
-                    
-    <!-- counters -->
-    <ul class="bwp-single-counters list-unstyled clearfix ">
-                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>3</a></li>
-                </ul>
-    <!-- end counters -->
-
-                      </div>
-                </div>
-                <!-- end social sharing buttons / counters -->
-
-                
       <!-- metadata -->
-      <div class="bwp-single-metadata-wrap ">
+      <div class="bwp-single-metadata-wrap bwp-no-single-share-and-counters">
         <ul class="bwp-single-metadata list-unstyled clearfix">
                       <!-- author -->
             <li>
@@ -813,7 +752,7 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
 <p>Saluti!</p>
 				</div><!-- .comment-content -->
 
-				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/angular-2-diventa-4-per-adesso/?replytocom=760#respond' data-commentid="760" data-postid="14665" data-belowelement="div-comment-760" data-respondelement="respond" aria-label='Reply to Ray Woodcock'>Reply</a></div>			</article><!-- .comment-body -->
+							</article><!-- .comment-body -->
 		</li><!-- #comment-## -->
 		<li id="comment-761" class="pingback odd alt thread-odd thread-alt depth-1">
 			<div class="comment-body">
@@ -827,15 +766,8 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
 
 		
 	
+			<p class="no-comments">Comments are closed.</p>
 	
-		<div id="respond" class="comment-respond">
-		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='14665' id='comment_post_ID' />
-<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-</p></form>	</div><!-- #respond -->
 	
 </div>
 <!-- end comments -->
@@ -948,7 +880,7 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
                   
       <!-- excerpt -->
       <div class="bwp-post-excerpt entry-content">
-        <p>E&#8217; tanto che se ne parla e finalmente Angular 2 è arrivato alla versione beta! Possiamo considerare le API ormai stabili dal punto di vista sintattico (visto che dalla alpha qualcosa è cambiato), per cui è il momento di cominciare a studiarlo senza aspettarsi straordinari cambiamenti da qui alla release ufficiale. Quei rumors che dicevano che Angular 2 era del tutto diverso dalla versione 1 erano veri? Ebbene si, Angular 2 fa un grande passo a vanti, si trasforma e diventa&#8230; <a href="https://facebook.github.io/react/docs/tutorial.html" target="_blank">React</a>!!! Apparte gli scherzi, a prima vista sembra che Angular 2 sia più parente del framework di Facebook che del suo predecessore, almeno per quanto riguarda i concetti base. Scavando un po&#8217; però si riconosce il nostro vecchio amico AngularJS&#8230;</p>
+        <p>E&#8217; tanto che se ne parla e finalmente Angular 2 è arrivato alla versione beta! Possiamo considerare le API ormai stabili dal punto di vista sintattico (visto che dalla alpha qualcosa è cambiato), per cui è il momento di cominciare a studiarlo senza aspettarsi straordinari cambiamenti da qui alla release ufficiale. Quei rumors che dicevano che Angular 2 era del tutto diverso dalla versione 1 erano veri? Ebbene si, Angular 2 fa un grande passo a vanti, si trasforma e diventa&#8230; <a href="https://facebook.github.io/react/docs/tutorial.html" target="_blank" rel="noopener noreferrer">React</a>!!! Apparte gli scherzi, a prima vista sembra che Angular 2 sia più parente del framework di Facebook che del suo predecessore, almeno per quanto riguarda i concetti base. Scavando un po&#8217; però si riconosce il nostro vecchio amico AngularJS&#8230;</p>
       </div>
       <!-- end excerpt -->
 
@@ -1070,12 +1002,12 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
 <script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
-var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"1520cabb4b","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
 </body>
 
-<!-- Mirrored from codingjam.it/angular-2-diventa-4-per-adesso/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/angular-2-diventa-4-per-adesso/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 </html>

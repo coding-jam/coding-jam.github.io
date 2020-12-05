@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<!-- Mirrored from codingjam.it/test-end-end-con-nightwatch-js/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/test-end-end-con-nightwatch-js/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="UTF-8">
@@ -308,10 +308,10 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
             <div class="bwp-content entry-content clearfix">
               <p>C&#8217;è una categoria di test che spesso sono snobbati dagli sviluppatori: i test end-to-end (E2E). Per test end-to-end si intende <strong>un test che copre l&#8217;intero flow dell&#8217;applicazione integrando tutti gli elementi di cui è composta</strong>. In questo post ci occuperemo in particolare di test E2E di un&#8217;applicazione web, in questo caso questi test sono detti anche UI o funzionali. In pratica simuleremo i click e le altre interazioni dell&#8217;utente con un browser <i>reale</i> che navigherà l&#8217;applicazione <i>reale</i>. <a href="https://www.mountaingoatsoftware.com/">Mike Cohn</a> nella sua famosa piramide del testing li posiziona in cima.</p>
 <figure style="width: 256px" class="wp-caption aligncenter"><a href="https://www.scrumalliance.org/community/spotlight/mike-cohn/december-2014/test-automation-let-service-be-your-middle-man"><img src="https://www.mountaingoatsoftware.com/uploads/blog/Testpyramid.jpg" width="256" height="179" alt="Testing pyramid" class="size-large" /></a><figcaption class="wp-caption-text">Photo by https://www.scrumalliance.org/</figcaption></figure>
-<p>Il fatto che siano in cima alla piramide sta a significare che il loro numero dovrebbe essere inferiore a quello dei test unitari o di <a href="../maven-integration-tests/index.html" target="_blank">integrazione</a>. Questo perché <strong>i test E2E sono molto costosi a livello di architettura da mettere in piedi, come tempi di esecuzione e come tempi di scrittura</strong>. Questo però non significa che non debbano essere presenti all&#8217;interno delle vostre applicazioni. Soprattutto se lavorate in grossi progetti frontend ci sono alcuni tipi di bug che sono difficilmente replicabili se non con questa tipologia di test. Il software che useremo per creare questi test è <a href="http://nightwatchjs.org/" target="_blank">Nightwatch.js</a>. Come altri strumenti simili è un wrapper Node.js di Selenium il famoso tool di browser automation scritto in Java.</p>
+<p>Il fatto che siano in cima alla piramide sta a significare che il loro numero dovrebbe essere inferiore a quello dei test unitari o di <a href="../maven-integration-tests/index.html" target="_blank" rel="noopener noreferrer">integrazione</a>. Questo perché <strong>i test E2E sono molto costosi a livello di architettura da mettere in piedi, come tempi di esecuzione e come tempi di scrittura</strong>. Questo però non significa che non debbano essere presenti all&#8217;interno delle vostre applicazioni. Soprattutto se lavorate in grossi progetti frontend ci sono alcuni tipi di bug che sono difficilmente replicabili se non con questa tipologia di test. Il software che useremo per creare questi test è <a href="http://nightwatchjs.org/" target="_blank" rel="noopener noreferrer">Nightwatch.js</a>. Come altri strumenti simili è un wrapper Node.js di Selenium il famoso tool di browser automation scritto in Java.</p>
 <figure id="attachment_14629" aria-describedby="caption-attachment-14629" style="width: 740px" class="wp-caption aligncenter"><a href="https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-17.18.28.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-17.18.28-1024x384.png" alt="Il logo di Nightwatch.js" width="740" height="278" class="size-large wp-image-14629" srcset="https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-17.18.28-1024x384.png 1024w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-17.18.28-300x113.png 300w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-17.18.28-768x288.png 768w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-17.18.28.png 1280w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-17.18.28-300x113@2x.png 600w" sizes="(max-width: 740px) 100vw, 740px" /></a><figcaption id="caption-attachment-14629" class="wp-caption-text">Il logo di Nightwatch.js</figcaption></figure>
 <h2>Installazione e Configurazione</h2>
-<p>Nightwatch.js è un pacchetto <i>npm</i>, quindi per installarlo va aggiunto al <code>package.json</code>. Altra dipendenza utile è <code>selenium-standalone</code>, pacchetto ci permette di installare agevolmente il <code>jar</code> di selenium ed i <a href="https://www.w3.org/TR/webdriver/" target="_blank">WebDriver</a> per i vari browser. Ecco il <code>package.json</code> completo.</p>
+<p>Nightwatch.js è un pacchetto <i>npm</i>, quindi per installarlo va aggiunto al <code>package.json</code>. Altra dipendenza utile è <code>selenium-standalone</code>, pacchetto ci permette di installare agevolmente il <code>jar</code> di selenium ed i <a href="https://www.w3.org/TR/webdriver/" target="_blank" rel="noopener noreferrer">WebDriver</a> per i vari browser. Ecco il <code>package.json</code> completo.</p>
 <pre class="brush: jscript; highlight: [13]; title: ; notranslate" title="">
 {
   &quot;name&quot;: &quot;nightwatchjs-example&quot;,
@@ -374,7 +374,7 @@ module.exports = {
 </pre>
 <p>Durante l&#8217;esecuzione di questo test nightwatch cerca il primo link all&#8217;interno di un elemento del DOM con la classe <code>entry-title</code> (in pratica i titoli dei post sulla nostra homepage). Una volta individuato l&#8217;elemento questo viene cliccato e infine facciamo un&#8217;asserzione sul fatto che il nuovo URL sia esattamente identico all&#8217;attributo <code>href</code> del link stesso.</p>
 <figure id="attachment_14636" aria-describedby="caption-attachment-14636" style="width: 740px" class="wp-caption aligncenter"><a href="https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2.png" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2-1024x640.png" alt="Testing Coding Jam!" width="740" height="463" class="size-large wp-image-14636" srcset="https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2-1024x640.png 1024w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2-300x188.png 300w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2-768x480.png 768w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2-400x250.png 400w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2-1024x640@2x.png 2048w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2-300x188@2x.png 600w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2-768x480@2x.png 1536w, https://codingjam.it/wp-content/uploads/2017/05/Screen-Shot-2017-05-13-at-18.39.41-2-400x250@2x.png 800w" sizes="(max-width: 740px) 100vw, 740px" /></a><figcaption id="caption-attachment-14636" class="wp-caption-text">Testing Coding Jam!</figcaption></figure>
-<p>Continuiamo con altri test: questa volta testeremo una <a href="https://en.wikipedia.org/wiki/Single-page_application">single page application</a>. In particolare utilizzeremo con <i>target</i> una delle innumerevoli versioni di <a href="http://todomvc.com/" target="_blank">TodoMVC</a>: in particolare quella in <a href="https://www.polymer-project.org/" target="_blank">Polymer</a>. <strong>In pratica TodoMVC è una raccolta di semplici applicazioni <i>todo-list</i> tutte identiche tra loro</strong>, sviluppate con framework differenti per valutarne peculiarità e differenze. Potete vedere il funzionamento di questa applicazione della <i>gif</i> qui sotto.</p>
+<p>Continuiamo con altri test: questa volta testeremo una <a href="https://en.wikipedia.org/wiki/Single-page_application">single page application</a>. In particolare utilizzeremo con <i>target</i> una delle innumerevoli versioni di <a href="http://todomvc.com/" target="_blank" rel="noopener noreferrer">TodoMVC</a>: in particolare quella in <a href="https://www.polymer-project.org/" target="_blank" rel="noopener noreferrer">Polymer</a>. <strong>In pratica TodoMVC è una raccolta di semplici applicazioni <i>todo-list</i> tutte identiche tra loro</strong>, sviluppate con framework differenti per valutarne peculiarità e differenze. Potete vedere il funzionamento di questa applicazione della <i>gif</i> qui sotto.</p>
 <figure id="attachment_14620" aria-describedby="caption-attachment-14620" style="width: 640px" class="wp-caption aligncenter"><a href="https://codingjam.it/wp-content/uploads/2017/05/TodoMVC.gif" class="lightbox" ><img src="https://codingjam.it/wp-content/uploads/2017/05/TodoMVC.gif" alt="TodoMVC" width="640" height="320" class="size-full wp-image-14620" /></a><figcaption id="caption-attachment-14620" class="wp-caption-text">TodoMVC</figcaption></figure>
 <p>Il prossimo test è sull&#8217;aggiunta di un <i>todo</i>. Controlliamo che all&#8217;inizio la lista dei <i>todo</i> sia vuota. Dopodiché, dopo aver inserito del testo nella casella di <i>input</i> e simulato la pressione del tasto invio, verifichiamo che un elemento contenente il testo inserito sia effettivamente nella lista.</p>
 <pre class="brush: jscript; title: ; notranslate" title="">
@@ -395,7 +395,7 @@ module.exports = {
   }
 }
 </pre>
-<p>Questo test è facilmente leggibile, ma immaginate di avere un&#8217;applicazione con <strong>decine di viste differenti dove per ognuna l&#8217;utente può effettuare decine di operazioni differenti</strong>. Se volessimo testare un flusso complesso di un&#8217;applicazione del genere, il codice dei test diventerebbe immediatamente poco chiaro. <strong>Il pattern che di solito utilizzo per risolvere questo problema è quello dei <em><a href="https://www.thoughtworks.com/insights/blog/using-page-objects-overcome-protractors-shortcomings" target="_blank">Page Objects</a></em></strong>. In pratica si crea un oggetto per ognuna delle viste dell&#8217;applicazione. Questi oggetti hanno poi tanti metodi pubblici quante sono le operazioni possibili sulla quella vista da parte dell&#8217;utente. Questa è una versione non completa della nostra TodoMVC, in quanto sono presenti solo le azioni di aggiunta ed eliminazione di un <i>todo</i>.</p>
+<p>Questo test è facilmente leggibile, ma immaginate di avere un&#8217;applicazione con <strong>decine di viste differenti dove per ognuna l&#8217;utente può effettuare decine di operazioni differenti</strong>. Se volessimo testare un flusso complesso di un&#8217;applicazione del genere, il codice dei test diventerebbe immediatamente poco chiaro. <strong>Il pattern che di solito utilizzo per risolvere questo problema è quello dei <em><a href="https://www.thoughtworks.com/insights/blog/using-page-objects-overcome-protractors-shortcomings" target="_blank" rel="noopener noreferrer">Page Objects</a></em></strong>. In pratica si crea un oggetto per ognuna delle viste dell&#8217;applicazione. Questi oggetti hanno poi tanti metodi pubblici quante sono le operazioni possibili sulla quella vista da parte dell&#8217;utente. Questa è una versione non completa della nostra TodoMVC, in quanto sono presenti solo le azioni di aggiunta ed eliminazione di un <i>todo</i>.</p>
 <pre class="brush: jscript; title: ; notranslate" title="">
 class TodoMVC {
   constructor (browser) {
@@ -484,74 +484,13 @@ module.exports = {
 }
 </pre>
 <h2>Conclusioni</h2>
-<p><strong>Scrivere test E2E per applicazioni &#8220;reali&#8221; non è mai semplice</strong>. Un assaggio del tipo di complessità che vi troverete ad affrontare lo potete trovare nel codice della funzione <code>deleteTodo</code>. In questa funzione infatti <strong>bisogna simulare lo spostamento del mouse sopra il testo del <i>todo</i> e attendere la fine dell&#8217;animazione che fa comparire il pulsante per la cancellazione</strong>. Ovviamente questo tipo di codice è davvero fragile e rischia di rompersi con ogni piccola modifica, anche solo di uno stile CSS. Ma come detto in apertura del post alcune funzionalità possono essere testate esclusivamente con questa modalità. Un consiglio è affiancare a questa modalità di test anche del <a href="http://www.francescostrazzullo.info/blog/2016/12/monkey-testing-con-gremlins-js/" target="_blank">monkey testing</a>. Se siete curiosi e volete sporcarvi le mani potete trovare tutto il codice su <a href="https://github.com/coding-jam/nightwatchjs-example" target="_blank">Github</a>. Alla prossima.</p>
+<p><strong>Scrivere test E2E per applicazioni &#8220;reali&#8221; non è mai semplice</strong>. Un assaggio del tipo di complessità che vi troverete ad affrontare lo potete trovare nel codice della funzione <code>deleteTodo</code>. In questa funzione infatti <strong>bisogna simulare lo spostamento del mouse sopra il testo del <i>todo</i> e attendere la fine dell&#8217;animazione che fa comparire il pulsante per la cancellazione</strong>. Ovviamente questo tipo di codice è davvero fragile e rischia di rompersi con ogni piccola modifica, anche solo di uno stile CSS. Ma come detto in apertura del post alcune funzionalità possono essere testate esclusivamente con questa modalità. Un consiglio è affiancare a questa modalità di test anche del <a href="http://www.francescostrazzullo.info/blog/2016/12/monkey-testing-con-gremlins-js/" target="_blank" rel="noopener noreferrer">monkey testing</a>. Se siete curiosi e volete sporcarvi le mani potete trovare tutto il codice su <a href="https://github.com/coding-jam/nightwatchjs-example" target="_blank" rel="noopener noreferrer">Github</a>. Alla prossima.</p>
             </div>
             <!-- end content -->
 
             
-                <!-- social sharing buttons / counters -->
-                <div class="row">
-                  <div class="col-md-7">
-                    
-    <!-- social sharing buttons -->
-    <div class="bwp-single-share-wrap">
-      <span>Share:</span>
-      <ul class="bwp-single-share list-unstyled">
-        <!-- facebook -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/test-end-end-con-nightwatch-js/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/test-end-end-con-nightwatch-js/" target="_blank" class="bwp-share-link bwp-facebook-share">
-            <i class="fa fa-facebook"></i>
-          </a>
-        </li>
-        <!-- end facebook -->
-        <!-- twitter -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/test-end-end-con-nightwatch-js/&amp;text=test-end-to-end-con-nightwatch-js', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/test-end-end-con-nightwatch-js/&amp;text=test-end-to-end-con-nightwatch-js" target="_blank" class="bwp-share-link bwp-twitter-share">
-            <i class="fa fa-twitter"></i>
-          </a>
-        </li>
-        <!-- end twitter -->
-        <!-- google+ -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/test-end-end-con-nightwatch-js/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/test-end-end-con-nightwatch-js/" target="_blank" class="bwp-share-link bwp-google-plus-share">
-            <i class="fa fa-google-plus"></i>
-          </a>
-        </li>
-        <!-- end google+ -->
-        <!-- vk -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/test-end-end-con-nightwatch-js/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/test-end-end-con-nightwatch-js/" target="_blank" class="bwp-share-link bwp-vk-share">
-            <i class="fa fa-vk"></i>
-          </a>
-        </li>
-        <!-- end vk -->
-        <!-- pinterest -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/test-end-end-con-nightwatch-js/&amp;media=&amp;description=test-end-to-end-con-nightwatch-js', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/test-end-end-con-nightwatch-js/&amp;media=&amp;description=test-end-to-end-con-nightwatch-js" target="_blank" class="bwp-share-link bwp-pinterest-share">
-            <i class="fa fa-pinterest-p"></i>
-          </a>
-        </li>
-        <!-- end pinterest -->
-      </ul>
-    </div>
-    <!-- end social sharing buttons -->
-
-                      </div>
-                  <div class="col-md-5">
-                    
-    <!-- counters -->
-    <ul class="bwp-single-counters list-unstyled clearfix ">
-                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>2</a></li>
-                </ul>
-    <!-- end counters -->
-
-                      </div>
-                </div>
-                <!-- end social sharing buttons / counters -->
-
-                
       <!-- metadata -->
-      <div class="bwp-single-metadata-wrap ">
+      <div class="bwp-single-metadata-wrap bwp-no-single-share-and-counters">
         <ul class="bwp-single-metadata list-unstyled clearfix">
                       <!-- author -->
             <li>
@@ -644,7 +583,7 @@ module.exports = {
 					<p>&#8216; Usare nightwatch.js con selenium e comodissimo grazie per avermelo fatto scoprire</p>
 				</div><!-- .comment-content -->
 
-				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/test-end-end-con-nightwatch-js/?replytocom=767#respond' data-commentid="767" data-postid="14617" data-belowelement="div-comment-767" data-respondelement="respond" aria-label='Reply to Alessandro Bx'>Reply</a></div>			</article><!-- .comment-body -->
+							</article><!-- .comment-body -->
 		<ol class="children">
 		<li id="comment-768" class="comment odd alt depth-2">
 			<article id="div-comment-768" class="comment-body">
@@ -665,7 +604,7 @@ module.exports = {
 					<p>Di nulla Alessandro, se ti interessa discutere di questo e di altro sul mondo JS o in generale sullo sviluppo vieni pure a trovarci nel nostro slack <a href="https://slackin-codingjam.herokuapp.com/" rel="nofollow ugc">https://slackin-codingjam.herokuapp.com/</a></p>
 				</div><!-- .comment-content -->
 
-				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://codingjam.it/test-end-end-con-nightwatch-js/?replytocom=768#respond' data-commentid="768" data-postid="14617" data-belowelement="div-comment-768" data-respondelement="respond" aria-label='Reply to Francesco Strazzullo'>Reply</a></div>			</article><!-- .comment-body -->
+							</article><!-- .comment-body -->
 		</li><!-- #comment-## -->
 </ol><!-- .children -->
 </li><!-- #comment-## -->
@@ -673,15 +612,8 @@ module.exports = {
 
 		
 	
+			<p class="no-comments">Comments are closed.</p>
 	
-		<div id="respond" class="comment-respond">
-		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='14617' id='comment_post_ID' />
-<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-</p></form>	</div><!-- #respond -->
 	
 </div>
 <!-- end comments -->
@@ -819,12 +751,12 @@ module.exports = {
 <script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
-var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"1520cabb4b","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
 </body>
 
-<!-- Mirrored from codingjam.it/test-end-end-con-nightwatch-js/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/test-end-end-con-nightwatch-js/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 </html>

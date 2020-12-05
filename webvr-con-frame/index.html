@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<!-- Mirrored from codingjam.it/webvr-con-frame/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/webvr-con-frame/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="UTF-8">
@@ -306,8 +306,8 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
 
             <!-- content -->
             <div class="bwp-content entry-content clearfix">
-              <p><strong>WebVR</strong> è una nuova specifica del World Wide Web Consortium, di cui potete leggere lo stato dei lavori su <a href="https://github.com/w3c/webvr" target="_blank">GitHub</a>. Essendo una specifica ancora in fase di <em>pre-release</em> è supportata ad oggi solo da Edge e Chrome per Android, come potete controllare su <a href="http://caniuse.com/#feat=webvr" target="_blank">caniuse.com</a>. In pratica tramite WebVR è possibile creare delle <strong>scene in VR all&#8217;interno di applicazioni web</strong> compatibili con i vari device dedicati, dall&#8217;<a href="https://www.oculus.com/rift/" target="_blank">Oculus Rift</a> fino a delle semplici <a href="https://vr.google.com/cardboard/" target="_blank">Google Cardboard</a>.</p>
-<p>Anche se la specifica è lontana dall&#8217;implementazione su tutti i browser, in realtà <strong>è già possibile da oggi sviluppare applicazioni VR su Web</strong> grazie ad un <a href="https://github.com/googlevr/webvr-polyfill" target="_blank">polyfill</a> creato dal team di Google. Inoltre Mozilla Labs sta lavorando attivamente a <strong>A-Frame</strong>: un framework di alto livello per la creazione di applicazioni VR sul web. </p>
+              <p><strong>WebVR</strong> è una nuova specifica del World Wide Web Consortium, di cui potete leggere lo stato dei lavori su <a href="https://github.com/w3c/webvr" target="_blank" rel="noopener noreferrer">GitHub</a>. Essendo una specifica ancora in fase di <em>pre-release</em> è supportata ad oggi solo da Edge e Chrome per Android, come potete controllare su <a href="http://caniuse.com/#feat=webvr" target="_blank" rel="noopener noreferrer">caniuse.com</a>. In pratica tramite WebVR è possibile creare delle <strong>scene in VR all&#8217;interno di applicazioni web</strong> compatibili con i vari device dedicati, dall&#8217;<a href="https://www.oculus.com/rift/" target="_blank" rel="noopener noreferrer">Oculus Rift</a> fino a delle semplici <a href="https://vr.google.com/cardboard/" target="_blank" rel="noopener noreferrer">Google Cardboard</a>.</p>
+<p>Anche se la specifica è lontana dall&#8217;implementazione su tutti i browser, in realtà <strong>è già possibile da oggi sviluppare applicazioni VR su Web</strong> grazie ad un <a href="https://github.com/googlevr/webvr-polyfill" target="_blank" rel="noopener noreferrer">polyfill</a> creato dal team di Google. Inoltre Mozilla Labs sta lavorando attivamente a <strong>A-Frame</strong>: un framework di alto livello per la creazione di applicazioni VR sul web. </p>
 <h2>La nostra prima applicazione A-Frame</h2>
 <p>Creiamo la nostra prima applicazione A-Frame. Per semplicità sarà una scena statica, composta da un cubo rosso e una luce direzionale.</p>
 <p><pre data-enlighter-language="html" class="EnlighterJSRAW">
@@ -333,7 +333,7 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
 <p>Il risultato è visibile in questo codepen. Per passare alla modalità VR, una volta aperta la pen sul sito ufficiale cliccando su &#8220;Edit non Codepen&#8221;, basta cliccare sull&#8217;icona a forma di visore in basso sulla destra su un dispositivo mobile. Dopodiché <strong>basta inserire il vostro dispositivo in una Cardboard o un qualsiasi visore VR per smartphone</strong>.</p>
 <p data-height="399" data-theme-id="light" data-slug-hash="gRGedw" data-default-tab="result" data-user="francesco-strazzullo" data-embed-version="2" data-pen-title="Static A-Frame scene" class="codepen">See the Pen <a href="https://codepen.io/francesco-strazzullo/pen/gRGedw/">Static A-Frame scene</a> by Francesco Strazzullo (<a href="https://codepen.io/francesco-strazzullo">@francesco-strazzullo</a>) on <a href="https://codepen.io/">CodePen</a>.</p>
 <p><script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script></p>
-<p>Già grazie a questo semplicissimo esempio possiamo notare una delle <em>feature</em> principali di A-Frame, ossia il fatto di essere <strong>dichiarativo e basato su componenti</strong>. Chi di voi ha già lavorato con <a href="../angular-2-diventa-4-per-adesso/index.html" target="_blank">Angular</a> o <a href="https://codingjam.it/react-tutorial/" target="_blank">React</a> probabilmente si troverà a suo agio. A-Frame possiede <em>out of the box</em> moltissimi componenti (chiamati anche entità) come sfere, cubi e altre forme geometriche.</p>
+<p>Già grazie a questo semplicissimo esempio possiamo notare una delle <em>feature</em> principali di A-Frame, ossia il fatto di essere <strong>dichiarativo e basato su componenti</strong>. Chi di voi ha già lavorato con <a href="../angular-2-diventa-4-per-adesso/index.html" target="_blank" rel="noopener noreferrer">Angular</a> o <a href="https://codingjam.it/react-tutorial/" target="_blank" rel="noopener noreferrer">React</a> probabilmente si troverà a suo agio. A-Frame possiede <em>out of the box</em> moltissimi componenti (chiamati anche entità) come sfere, cubi e altre forme geometriche.</p>
 <h2>Creazione di entità custom</h2>
 <p>Tramite la funzione <code>AFRAME.registerComponent</code> possiamo creare dei nuovi componenti. Quello che stiamo per vedere è il codice di un componente che modifica il comportamento di un&#8217;entità esistente. Il nostro componente si occupa di <strong>spostare un elemento sullo schermo in base a dei valori che riceve in ingresso</strong>.</p>
 <pre class="brush: jscript; highlight: [2,7,11]; title: ; notranslate" title="">
@@ -360,7 +360,7 @@ AFRAME.registerComponent('move-around', {
   }
 })
 </pre>
-<p>Analizziamo insieme gli elementi del componente appena creato. All&#8217;interno della proprietà <code>schema</code> definiamo quali sono gli <strong>attributi che accettiamo in ingresso</strong> quando questo componente viene utilizzato. Possiamo definirne tipo e valore di default, con una gestione che ricorda molto da vicino le <a href="https://facebook.github.io/react/docs/typechecking-with-proptypes.html" target="_blank"><em>PropTypes</em></a> di React. <code>init</code> è una funzione di <strong>inizializzazione</strong> che viene invocata una sola volta durante tutto il <em>lifecycle</em> del componente. Infine <code>tick</code> viene invocata <strong>ogni volta che è possibile fare un nuovo render</strong>, ed è proprio qui che avviene lo spostamento dell&#8217;elemento modificando l&#8217;attributo <code>position</code>.</p>
+<p>Analizziamo insieme gli elementi del componente appena creato. All&#8217;interno della proprietà <code>schema</code> definiamo quali sono gli <strong>attributi che accettiamo in ingresso</strong> quando questo componente viene utilizzato. Possiamo definirne tipo e valore di default, con una gestione che ricorda molto da vicino le <a href="https://facebook.github.io/react/docs/typechecking-with-proptypes.html" target="_blank" rel="noopener noreferrer"><em>PropTypes</em></a> di React. <code>init</code> è una funzione di <strong>inizializzazione</strong> che viene invocata una sola volta durante tutto il <em>lifecycle</em> del componente. Infine <code>tick</code> viene invocata <strong>ogni volta che è possibile fare un nuovo render</strong>, ed è proprio qui che avviene lo spostamento dell&#8217;elemento modificando l&#8217;attributo <code>position</code>.</p>
 <p>Possiamo utilizzare il componente <code>move-around</code> come qualsiasi altro attributo HTML.</p>
 <p><pre data-enlighter-language="html" class="EnlighterJSRAW" data-enlighter-highlight="12,18">
 &lt;html&gt;
@@ -394,7 +394,7 @@ AFRAME.registerComponent('move-around', {
 <p data-height="373" data-theme-id="light" data-slug-hash="vZRgGd" data-default-tab="result" data-user="francesco-strazzullo" data-embed-version="2" data-pen-title="Custom Component A-Frame scene" class="codepen">See the Pen <a href="https://codepen.io/francesco-strazzullo/pen/vZRgGd/">Custom Component A-Frame scene</a> by Francesco Strazzullo (<a href="https://codepen.io/francesco-strazzullo">@francesco-strazzullo</a>) on <a href="https://codepen.io/">CodePen</a>.</p>
 <p><script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script></p>
 <h2>Gestione Assets</h2>
-<p>Come già detto in uno dei miei ultimi post su <a href="../introduzione-a-pixijs/index.html" target="_blank">PixiJS</a> il caricamento degli asset <strong>è una parte fondamentale di ogni libreria che permette di creare applicazioni ad alto contenuto &#8220;grafico&#8221;</strong>. Anche questo aspetto di A-Frame è dichiarativo come possiamo vedere con il prossimo esempio</p>
+<p>Come già detto in uno dei miei ultimi post su <a href="../introduzione-a-pixijs/index.html" target="_blank" rel="noopener noreferrer">PixiJS</a> il caricamento degli asset <strong>è una parte fondamentale di ogni libreria che permette di creare applicazioni ad alto contenuto &#8220;grafico&#8221;</strong>. Anche questo aspetto di A-Frame è dichiarativo come possiamo vedere con il prossimo esempio</p>
 <p><pre data-enlighter-language="html" class="EnlighterJSRAW" data-enlighter-highlight="5,6,7">
 &lt;html&gt;
 &lt;body&gt;
@@ -421,11 +421,11 @@ AFRAME.registerComponent('move-around', {
 &lt;/body&gt;
 &lt;/html&gt;
 </pre></p>
-<p>Gli asset vengono tutti caricati attraverso il componente <code>a-asset-item</code>. Per quanto riguarda le immagini che vogliamo applicare come sfondo delle nostre entità dobbiamo utilizzare l&#8217;attributo <code>material</code>. <strong>Ma le immagini non sono gli unici asset che è possibile gestire</strong>. Notiamo infatti che uno degli asset che carichiamo è un file <em>obj</em> che contiene un modello 3D di una minifigure LEGO (che è possibile scaricare su <a href="https://free3d.com/3d-model/lego-man-8986.html" target="_blank">free3d.com</a>).</p>
+<p>Gli asset vengono tutti caricati attraverso il componente <code>a-asset-item</code>. Per quanto riguarda le immagini che vogliamo applicare come sfondo delle nostre entità dobbiamo utilizzare l&#8217;attributo <code>material</code>. <strong>Ma le immagini non sono gli unici asset che è possibile gestire</strong>. Notiamo infatti che uno degli asset che carichiamo è un file <em>obj</em> che contiene un modello 3D di una minifigure LEGO (che è possibile scaricare su <a href="https://free3d.com/3d-model/lego-man-8986.html" target="_blank" rel="noopener noreferrer">free3d.com</a>).</p>
 <p data-height="401" data-theme-id="light" data-slug-hash="GExrpG" data-default-tab="result" data-user="francesco-strazzullo" data-embed-version="2" data-pen-title="Asset A-Frame scene" class="codepen">See the Pen <a href="https://codepen.io/francesco-strazzullo/pen/GExrpG/">Asset A-Frame scene</a> by Francesco Strazzullo (<a href="https://codepen.io/francesco-strazzullo">@francesco-strazzullo</a>) on <a href="https://codepen.io/">CodePen</a>.</p>
 <p><script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script></p>
 <h2>Interazione con l&#8217;utente</h2>
-<p>A-Frame contiene al suo interno alcuni componenti come <code>hand-controls</code> che possono interagire con i controller dei sistemi VR più &#8220;completi&#8221; come Oculus Rift oppure HTC Vive. <strong>Ma come possiamo interagire con l&#8217;utente quando possiede un device più semplice che non comprende anche un controller?</strong> A-Frame pensa anche a questo: se l&#8217;utente &#8220;guarda&#8221; ad un elemento per più di un paio di secondi, su quell&#8217;elemento <strong>viene emesso un evento &#8220;click&#8221; che possiamo intercettare</strong>. In questo modo possiamo quindi creare delle applicazioni interattive senza dover richiedere all&#8217;utente una spesa eccessiva. Nel prossimo esempio vedremo un <em>photo wall</em> con una mia foto e quelle di tutti in miei colleghi di <a href="http://extrategy.net/" target="_blank">extrategy</a>. <strong>Osservando una delle foto comparirà sullo schermo il motto personale di ognuno</strong>.</p>
+<p>A-Frame contiene al suo interno alcuni componenti come <code>hand-controls</code> che possono interagire con i controller dei sistemi VR più &#8220;completi&#8221; come Oculus Rift oppure HTC Vive. <strong>Ma come possiamo interagire con l&#8217;utente quando possiede un device più semplice che non comprende anche un controller?</strong> A-Frame pensa anche a questo: se l&#8217;utente &#8220;guarda&#8221; ad un elemento per più di un paio di secondi, su quell&#8217;elemento <strong>viene emesso un evento &#8220;click&#8221; che possiamo intercettare</strong>. In questo modo possiamo quindi creare delle applicazioni interattive senza dover richiedere all&#8217;utente una spesa eccessiva. Nel prossimo esempio vedremo un <em>photo wall</em> con una mia foto e quelle di tutti in miei colleghi di <a href="http://extrategy.net/" target="_blank" rel="noopener noreferrer">extrategy</a>. <strong>Osservando una delle foto comparirà sullo schermo il motto personale di ognuno</strong>.</p>
 <p><pre data-enlighter-language="html" class="EnlighterJSRAW" data-enlighter-highlight="9,14">
 &lt;html&gt;
 &lt;body&gt;
@@ -481,74 +481,13 @@ AFRAME.registerComponent('exer', {
 <p data-height="411" data-theme-id="light" data-slug-hash="JJLWBz" data-default-tab="result" data-user="francesco-strazzullo" data-embed-version="2" data-pen-title="Interactive A-Frame scene" class="codepen">See the Pen <a href="https://codepen.io/francesco-strazzullo/pen/JJLWBz/">Interactive A-Frame scene</a> by Francesco Strazzullo (<a href="https://codepen.io/francesco-strazzullo">@francesco-strazzullo</a>) on <a href="https://codepen.io/">CodePen</a>.</p>
 <p><script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script></p>
 <h2>Conclusioni</h2>
-<p><strong>Per tutti i frontend engineer la VR è un qualcosa da tenere d&#8217;occhio</strong>, l&#8217;acquisto da parte di Facebook di Oculus è un chiaro segnale delle intenzioni dell&#8217;azienda di Zuckenberg. Se a questo aggiungiamo l&#8217;uscita del framework <a href="https://facebook.github.io/react-vr/" target="_blank">React VR</a> e l&#8217;annuncio di un <a href="https://uploadvr.com/report-oculus-standalone-headset-release-year-200/" target="_blank">visore stand-alone</a> del prezzo di 200$ da parte di Oculus per il 2018 possiamo supporre un futuro roseo per la VR. E secondo chi vi scrive <strong>A-Frame è un ottimo modo per iniziare a giocarci per capirne le potenzialità</strong>. Il suo essere già basato a componenti e la disarmante semplicità lo rendono davvero una tecnologia da tenere d&#8217;occhio. Se volete sperimentare trovate il progetto funzionante con il codice completo dell&#8217;ultimo esempio su <a href="https://github.com/francesco-strazzullo/a-frame-examples" target="_blank">Github</a>. Alla prossima.</p>
+<p><strong>Per tutti i frontend engineer la VR è un qualcosa da tenere d&#8217;occhio</strong>, l&#8217;acquisto da parte di Facebook di Oculus è un chiaro segnale delle intenzioni dell&#8217;azienda di Zuckenberg. Se a questo aggiungiamo l&#8217;uscita del framework <a href="https://facebook.github.io/react-vr/" target="_blank" rel="noopener noreferrer">React VR</a> e l&#8217;annuncio di un <a href="https://uploadvr.com/report-oculus-standalone-headset-release-year-200/" target="_blank" rel="noopener noreferrer">visore stand-alone</a> del prezzo di 200$ da parte di Oculus per il 2018 possiamo supporre un futuro roseo per la VR. E secondo chi vi scrive <strong>A-Frame è un ottimo modo per iniziare a giocarci per capirne le potenzialità</strong>. Il suo essere già basato a componenti e la disarmante semplicità lo rendono davvero una tecnologia da tenere d&#8217;occhio. Se volete sperimentare trovate il progetto funzionante con il codice completo dell&#8217;ultimo esempio su <a href="https://github.com/francesco-strazzullo/a-frame-examples" target="_blank" rel="noopener noreferrer">Github</a>. Alla prossima.</p>
             </div>
             <!-- end content -->
 
             
-                <!-- social sharing buttons / counters -->
-                <div class="row">
-                  <div class="col-md-7">
-                    
-    <!-- social sharing buttons -->
-    <div class="bwp-single-share-wrap">
-      <span>Share:</span>
-      <ul class="bwp-single-share list-unstyled">
-        <!-- facebook -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/webvr-con-frame/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/webvr-con-frame/" target="_blank" class="bwp-share-link bwp-facebook-share">
-            <i class="fa fa-facebook"></i>
-          </a>
-        </li>
-        <!-- end facebook -->
-        <!-- twitter -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/webvr-con-frame/&amp;text=webvr-con-a-frame', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/webvr-con-frame/&amp;text=webvr-con-a-frame" target="_blank" class="bwp-share-link bwp-twitter-share">
-            <i class="fa fa-twitter"></i>
-          </a>
-        </li>
-        <!-- end twitter -->
-        <!-- google+ -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/webvr-con-frame/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/webvr-con-frame/" target="_blank" class="bwp-share-link bwp-google-plus-share">
-            <i class="fa fa-google-plus"></i>
-          </a>
-        </li>
-        <!-- end google+ -->
-        <!-- vk -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/webvr-con-frame/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/webvr-con-frame/" target="_blank" class="bwp-share-link bwp-vk-share">
-            <i class="fa fa-vk"></i>
-          </a>
-        </li>
-        <!-- end vk -->
-        <!-- pinterest -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/webvr-con-frame/&amp;media=&amp;description=webvr-con-a-frame', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/webvr-con-frame/&amp;media=&amp;description=webvr-con-a-frame" target="_blank" class="bwp-share-link bwp-pinterest-share">
-            <i class="fa fa-pinterest-p"></i>
-          </a>
-        </li>
-        <!-- end pinterest -->
-      </ul>
-    </div>
-    <!-- end social sharing buttons -->
-
-                      </div>
-                  <div class="col-md-5">
-                    
-    <!-- counters -->
-    <ul class="bwp-single-counters list-unstyled clearfix ">
-                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>0</a></li>
-                </ul>
-    <!-- end counters -->
-
-                      </div>
-                </div>
-                <!-- end social sharing buttons / counters -->
-
-                
       <!-- metadata -->
-      <div class="bwp-single-metadata-wrap ">
+      <div class="bwp-single-metadata-wrap bwp-no-single-share-and-counters">
         <ul class="bwp-single-metadata list-unstyled clearfix">
                       <!-- author -->
             <li>
@@ -619,23 +558,6 @@ AFRAME.registerComponent('exer', {
     <!-- end about the author -->
 
     
-<!-- comments -->
-<div id="comments" class="comments-area">
-
-	
-	
-		<div id="respond" class="comment-respond">
-		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='14814' id='comment_post_ID' />
-<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-</p></form>	</div><!-- #respond -->
-	
-</div>
-<!-- end comments -->
-
     <!-- related posts (by tags) -->
     <div class="bwp-related-posts-container bwp-show-2-posts">
       <div class="bwp-o-hidden">
@@ -660,14 +582,14 @@ AFRAME.registerComponent('exer', {
                   
                                       <!-- title -->
                     <h3 class="bwp-post-title entry-title">
-                      <a href="../elm/index.html">Elm, il linguaggio funzionale per il web</a>
+                      <a href="../web-animations-api/index.html">Web Animations API</a>
                     </h3>
                     <!-- end title -->
                     
                   
       <!-- excerpt -->
       <div class="bwp-post-excerpt entry-content">
-        <p>Elm, il linguaggio funzionale per il web Martedì 22 novembre, a Treviso, Marco Perrone terrà un talk su Elm, un linguaggio di programmazione funzionale pensato per il web. Marco sarà ospite dello &#8220;Scala by the Lagoon&#8221;, un gruppo di sviluppatori interessati a Scala, e in generale alla programmazione funzionale, presente ormai da un paio di anni. Creato da Evan Czaplicki, Elm transpila in JavaScript e, promette velocità ed eliminazione degli errori a runtime. Durante la presentazione capiremo i vantaggi sul [&hellip;]</p>
+        <p>L&#8217;avvento del CSS3 ha aggiunto la possibilità creare animazioni tramite foglio di stile. Il tutto avviene tramite le parole chiave animation e keyframes. Per capire il funzionamento delle animazioni CSS vediamo questo semplice esempio. Come vedete tramite la proprietà animation definiamo il nome dell&#8217;animazione e la sua durata. Tramite invece keyframes definiamo quali sono gli stati di cui l&#8217;animazione stessa è composta. In pratica stiamo dicendo che gli elementi marcati con la classe animated e square passeranno dall&#8217;avere un colore [&hellip;]</p>
       </div>
       <!-- end excerpt -->
 
@@ -675,12 +597,12 @@ AFRAME.registerComponent('exer', {
     <!-- date + read more link -->
     <div class="bwp-post-details-wrap clearfix">
       <!-- date -->
-            <a href="https://codingjam.it/2016/11/15/" class="bwp-post-date">
-        <span class="date updated">15/11/2016</span>
+            <a href="https://codingjam.it/2016/09/27/" class="bwp-post-date">
+        <span class="date updated">27/09/2016</span>
       </a>
       <!-- end date -->
       <!-- read more link -->
-      <a href="../elm/index.html" class="bwp-read-more">Read more</a>
+      <a href="../web-animations-api/index.html" class="bwp-read-more">Read more</a>
       <!-- end read more link -->
     </div>
     <!-- end date + read more link -->
@@ -699,20 +621,36 @@ AFRAME.registerComponent('exer', {
               <div class="bwp-related-post-wrap bwp-transition-3">
 
                 
+                    <!-- media - featured image -->
+                    <figure class="bwp-post-media">
+                                              <a href="https://codingjam.it/di-non-sapere-javascript-scope-e-closures/" class="bwp-post-media-link">
+                                              <img width="706" height="530" src="https://codingjam.it/wp-content/uploads/2016/03/you-dont-know-js.png" class="attachment-melissa-img-706-auto size-melissa-img-706-auto wp-post-image" alt="" srcset="https://codingjam.it/wp-content/uploads/2016/03/you-dont-know-js.png 794w, https://codingjam.it/wp-content/uploads/2016/03/you-dont-know-js-300x225.png 300w, https://codingjam.it/wp-content/uploads/2016/03/you-dont-know-js-768x576.png 768w, https://codingjam.it/wp-content/uploads/2016/03/you-dont-know-js-300x225@2x.png 600w" sizes="(max-width: 706px) 100vw, 706px" />                        <div class="bwp-post-bg-overlay bwp-transition-4"></div>
+                        <div class="bwp-post-hover-icon-wrap">
+                          <div class="bwp-post-hover-icon-alignment">
+                            <div class="bwp-post-hover-icon-center">
+                              <span class="bwp-transition-4"><i class="fa fa-share"></i></span>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </figure>
+                    <!-- end media -->
+
+                    
                 <!-- content -->
                 <div class="bwp-post-content">
 
                   
                                       <!-- title -->
                     <h3 class="bwp-post-title entry-title">
-                      <a href="https://codingjam.it/guida-jquery-ui-parte-i/">Guida jQuery UI – Parte I</a>
+                      <a href="https://codingjam.it/di-non-sapere-javascript-scope-e-closures/">So di non sapere JavaScript &#8211; Scope e Closures</a>
                     </h3>
                     <!-- end title -->
                     
                   
       <!-- excerpt -->
       <div class="bwp-post-excerpt entry-content">
-        <p>In questa guida esploreremo il progetto jQuery UI, una libreria open-source di plug-in basata su jQuery e che ne ampia le funzionalità.  jQuery UI fornisce infatti una serie di  caratteristiche (interazioni ed animazioni, effetti avanzati e widgets) che porta in dote alla libreria principale. Infatti lo scopo di questo framework è  di &#8220;estendere&#8221; jQuery, dotandola di ulteriori strumenti, utili soprattutto per la costruzione e la gestione delle interfacce utente.</p>
+        <p>Una delle frasi che hanno reso famoso il filosofo greco Socrate era: &#8220;Io so di non sapere&#8221;. Sicuramente non si riferiva a JavaScript, ma è il giusto approccio da tenere davanti a questo linguaggio che tutti noi crediamo di conoscere senza averlo mai studiato. Ebbene, dopo aver letto alcuni volumi della serie &#8220;<a href="https://github.com/getify/You-Dont-Know-JS" target="_blank" rel="noopener noreferrer"><strong>You don&#8217;t know JavaScript</strong></a>&#8220;, posso dire di aver scoperto molte cose che non sapevo, come per esempio, udite udite, che <strong>JS è compilato e non interpretato</strong>!</p>
       </div>
       <!-- end excerpt -->
 
@@ -720,12 +658,12 @@ AFRAME.registerComponent('exer', {
     <!-- date + read more link -->
     <div class="bwp-post-details-wrap clearfix">
       <!-- date -->
-            <a href="https://codingjam.it/2013/02/21/" class="bwp-post-date">
-        <span class="date updated">21/02/2013</span>
+            <a href="https://codingjam.it/2016/03/30/" class="bwp-post-date">
+        <span class="date updated">30/03/2016</span>
       </a>
       <!-- end date -->
       <!-- read more link -->
-      <a href="https://codingjam.it/guida-jquery-ui-parte-i/" class="bwp-read-more">Read more</a>
+      <a href="https://codingjam.it/di-non-sapere-javascript-scope-e-closures/" class="bwp-read-more">Read more</a>
       <!-- end read more link -->
     </div>
     <!-- end date + read more link -->
@@ -880,12 +818,12 @@ AFRAME.registerComponent('exer', {
 <script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
-var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"1520cabb4b","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
 </body>
 
-<!-- Mirrored from codingjam.it/webvr-con-frame/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:37 GMT -->
+<!-- Mirrored from codingjam.it/webvr-con-frame/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:24 GMT -->
 </html>

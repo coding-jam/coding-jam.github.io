@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<!-- Mirrored from codingjam.it/java-ee-integration-test-con-arquillian/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:38 GMT -->
+<!-- Mirrored from codingjam.it/java-ee-integration-test-con-arquillian/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:25 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="UTF-8">
@@ -116,7 +116,7 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
 <header id="bwp-header-wrap" class="bwp-header-simple">
 
   <!-- header bg -->
-    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P6261835_2.jpg) 50% 0 no-repeat">
+    <div class="bwp-header-bg" style="background: url(../wp-content/uploads/2017/07/cropped-P7101915_2.jpg) 50% 0 no-repeat">
     <div class="bwp-header-bg-overlay"></div>
 
     <!-- header content -->
@@ -307,19 +307,19 @@ var log_object = {"ajax_url":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php"}
             <!-- content -->
             <div class="bwp-content entry-content clearfix">
               <h1>Java Enterprise e test di integrazione con Arquillian</h1>
-<p>Scrivere i test durante lo sviluppo (o prima, se fate <a href="https://it.wikipedia.org/wiki/Test_driven_development" target="_blank">TDD</a>) è molto importante. L&#8217;uso quotidiano di framework di <em>mocking</em> come <a href="http://mockito.org/" target="_blank">Mockito</a> o <a href="http://easymock.org/" target="_blank">EasyMock</a> (magari aiutati dal mitico <a href="https://github.com/jayway/powermock" target="_blank">PowerMock</a>) hanno notevolmente semplificato la scrittura di test di unità permettendo di svincolarsi dai framework e dal resto del mondo che circonda la funzionalità che stiamo sviluppando.<br />
-Ad un certo punto però bisogna comunque fare i conti con il mondo reale ed integrare le parti: ed è qua che, almeno nel contesto Java Enterprise, le cose si complicano. Avviare un contesto Spring, soprattutto in fase di test, è molto semplice. Purtroppo in Java EE puro non è mai stato così, almeno fino a prima di vedere <a href="http://arquillian.org/" target="_blank">Arquillian</a> all&#8217;opera. Arquillian non è certo uscito ieri, ma vista la velocità con cui si avviano alcuni application server di oggi e lo sviluppo molto orientato alle API, adesso è molto più facile scrivere test di integrazione, direttamente sui server veri.</p>
+<p>Scrivere i test durante lo sviluppo (o prima, se fate <a href="https://it.wikipedia.org/wiki/Test_driven_development" target="_blank" rel="noopener noreferrer">TDD</a>) è molto importante. L&#8217;uso quotidiano di framework di <em>mocking</em> come <a href="http://mockito.org/" target="_blank" rel="noopener noreferrer">Mockito</a> o <a href="http://easymock.org/" target="_blank" rel="noopener noreferrer">EasyMock</a> (magari aiutati dal mitico <a href="https://github.com/jayway/powermock" target="_blank" rel="noopener noreferrer">PowerMock</a>) hanno notevolmente semplificato la scrittura di test di unità permettendo di svincolarsi dai framework e dal resto del mondo che circonda la funzionalità che stiamo sviluppando.<br />
+Ad un certo punto però bisogna comunque fare i conti con il mondo reale ed integrare le parti: ed è qua che, almeno nel contesto Java Enterprise, le cose si complicano. Avviare un contesto Spring, soprattutto in fase di test, è molto semplice. Purtroppo in Java EE puro non è mai stato così, almeno fino a prima di vedere <a href="http://arquillian.org/" target="_blank" rel="noopener noreferrer">Arquillian</a> all&#8217;opera. Arquillian non è certo uscito ieri, ma vista la velocità con cui si avviano alcuni application server di oggi e lo sviluppo molto orientato alle API, adesso è molto più facile scrivere test di integrazione, direttamente sui server veri.</p>
 <h2>Fino a ieri</h2>
 <p>Fino a qualche anno fa infatti molti application server erano dei carrozzoni che impiegavano minuti ad avviarsi, per cui era lento e noioso avere un feedback da un test di integrazione: ammesso che si riuscisse a fare un deploy automatico, si riusciva solo a testare tutto lo stack (dal web al db per intendersi), per non parlare dei problemi del tipo: chi avvia il server in automatico? E quando?</p>
-<p>La scorciatoia quindi è sempre stata quella di aggirare il problema cercando di avviare dal test dei &#8220;contesti&#8221; che simulassero al meglio parte dell&#8217;ambiente messo a disposizione dall&#8217;application server: mentre è relativamente facile avviare un vero contesto JPA o CDI, un po&#8217; meno lo è per EJB (a meno di non mettere in mezzo <a href="http://tomee.apache.org/" target="_blank">OpenEJB</a> o gli <a href="http://docs.oracle.com/javaee/6/tutorial/doc/gkcrr.html" target="_blank">Embedded Container</a>, disponibili da EJB 3.1): di fatto però si tratta di contesti esterni che <em>assomigliano molto</em> a quelli forniti dal server in cui girerà l&#8217;applicazione, ma non uguali, quindi la possibilità di avere dei test con falsi positivi è molto alta.</p>
+<p>La scorciatoia quindi è sempre stata quella di aggirare il problema cercando di avviare dal test dei &#8220;contesti&#8221; che simulassero al meglio parte dell&#8217;ambiente messo a disposizione dall&#8217;application server: mentre è relativamente facile avviare un vero contesto JPA o CDI, un po&#8217; meno lo è per EJB (a meno di non mettere in mezzo <a href="http://tomee.apache.org/" target="_blank" rel="noopener noreferrer">OpenEJB</a> o gli <a href="http://docs.oracle.com/javaee/6/tutorial/doc/gkcrr.html" target="_blank" rel="noopener noreferrer">Embedded Container</a>, disponibili da EJB 3.1): di fatto però si tratta di contesti esterni che <em>assomigliano molto</em> a quelli forniti dal server in cui girerà l&#8217;applicazione, ma non uguali, quindi la possibilità di avere dei test con falsi positivi è molto alta.</p>
 <p>Arquillian invece adotta il principio opposto, ovvero &#8220;<em>what you test is what you run</em>&#8220;: permette infatti di fare il <strong>deploy sul server reale</strong> delle <strong>sole funzionalità inerenti al test</strong>, permettendo anche di controllare <strong>l&#8217;avvio e lo stop del server</strong>. Quello che testi quindi viene <strong>eseguito nell&#8217;ambiente reale</strong> in cui girerà a regime.<br />
-Con l&#8217;aiuto poi di <a href="http://arquillian.org/guides/shrinkwrap_introduction/" target="_blank">ShrinkWrap</a>, Arquillian crea dei piccoli <tt>jar</tt>, <tt>war</tt> o <tt>ear</tt> (chiamati &#8220;<em>micro deployments</em>&#8220;) contenenti <strong>solo quello che vogliamo testare</strong> (<em>compresa la classe di test stessa</em>!), rendendo più veloce la fase di deploy. </p>
-<p>Ma di che server target stiamo parlando? Arquillian è capace di dialogare con numerosi server, da JBoss a GlassFish, da Tomcat o Jetty al LibertyProfile di IBM tramite opportuni <a href="http://arquillian.org/modules/" target="_blank">moduli</a>. Non solo, può anche avviare semplici container come CDI (Weld) o EJB (OpenEJB). Tutti i dettagli sulle configurazioni possono essere trovati sulla <a href="https://docs.jboss.org/author/display/ARQ/Container+adapters" target="_blank">documentazione ufficiale</a>.</p>
-<p>Questo post è basato su test JUnit eseguiti su <a href="http://wildfly.org/" target="_blank">WildFly 10</a>. Cerchiamo di capire quindi come si fa a mettere in piedi un test di integrazione.</p>
+Con l&#8217;aiuto poi di <a href="http://arquillian.org/guides/shrinkwrap_introduction/" target="_blank" rel="noopener noreferrer">ShrinkWrap</a>, Arquillian crea dei piccoli <tt>jar</tt>, <tt>war</tt> o <tt>ear</tt> (chiamati &#8220;<em>micro deployments</em>&#8220;) contenenti <strong>solo quello che vogliamo testare</strong> (<em>compresa la classe di test stessa</em>!), rendendo più veloce la fase di deploy. </p>
+<p>Ma di che server target stiamo parlando? Arquillian è capace di dialogare con numerosi server, da JBoss a GlassFish, da Tomcat o Jetty al LibertyProfile di IBM tramite opportuni <a href="http://arquillian.org/modules/" target="_blank" rel="noopener noreferrer">moduli</a>. Non solo, può anche avviare semplici container come CDI (Weld) o EJB (OpenEJB). Tutti i dettagli sulle configurazioni possono essere trovati sulla <a href="https://docs.jboss.org/author/display/ARQ/Container+adapters" target="_blank" rel="noopener noreferrer">documentazione ufficiale</a>.</p>
+<p>Questo post è basato su test JUnit eseguiti su <a href="http://wildfly.org/" target="_blank" rel="noopener noreferrer">WildFly 10</a>. Cerchiamo di capire quindi come si fa a mettere in piedi un test di integrazione.</p>
 <h2>Prerequisiti</h2>
-<p>Visto che gli archetipi Maven dei progetti per JBoss prevedono già Arquillian pronto all&#8217;uso, è più conveniente partire da una situazione funzionante invece che perdersi in eventuali configurazioni. Il progetto di esempio che sta alla base di questo post, ovvero la classica API per creare e consultare &#8220;Todo List&#8221;, si trova su <a href="https://github.com/coding-jam/arquillian-tests" target="_blank">GitHub</a>, e risponde ai seguenti prerequisiti:</p>
+<p>Visto che gli archetipi Maven dei progetti per JBoss prevedono già Arquillian pronto all&#8217;uso, è più conveniente partire da una situazione funzionante invece che perdersi in eventuali configurazioni. Il progetto di esempio che sta alla base di questo post, ovvero la classica API per creare e consultare &#8220;Todo List&#8221;, si trova su <a href="https://github.com/coding-jam/arquillian-tests" target="_blank" rel="noopener noreferrer">GitHub</a>, e risponde ai seguenti prerequisiti:</p>
 <ul>
-<li>E&#8217; necessario aver scaricato un application server JBoss: in questo caso <a href="http://wildfly.org/" target="_blank">WildFly 10</a> (10.0.0.Final).</li>
+<li>E&#8217; necessario aver scaricato un application server JBoss: in questo caso <a href="http://wildfly.org/" target="_blank" rel="noopener noreferrer">WildFly 10</a> (10.0.0.Final).</li>
 <li>La variabile d&#8217;ambiente <tt>JBOSS_HOME</tt> deve puntare alla cartella root di WildFly (dopo vedremo perché)
 </ul>
 <p>Partendo quindi dall&#8217;archetipo Maven per WildFly (per esempio da riga di comando):</p>
@@ -391,11 +391,11 @@ my-project
 </pre></p>
 <p>I nomi sono molto parlanti: <tt>arq-wildfly-managed</tt> esegue i test di integrazione in un <strong>server gestito da Arquillian</strong> stesso, avviato quindi nella stessa JVM del test. Il framework si preoccupa quindi di <strong>avviare</strong> il server, <strong>deployare</strong> l&#8217;artefatto, <strong>eseguire i test</strong>, eseguire l&#8217;<strong>undeploy</strong> e <strong>fermare</strong> il server. Anche se WildFly è estremamente veloce ad avviarsi, i tempi di risposta dell&#8217;intero processo possono essere considerati non accettabili durante lo sviluppo. In fase di sviluppo quindi è più conveniente usare il profilo <tt>arq-wildfly-remote</tt>: Arquillian <strong>deployerà l&#8217;artefatto su un server già avviato</strong> su <tt>localhost</tt> (nella configurazione attuale), <strong>eseguirà i test</strong> ed effettuerà l&#8217;<strong>undeploy</strong>. Per Arquillian &#8220;remote&#8221; significa <em>differente JVM</em> rispetto a quella che esegue il test, ma può voler dire anche <em>macchina differente</em>, come vedremo più avanti.</p>
 <h2>Prima di cominciare</h2>
-<p>A mio avviso la configurazione delle dipendenze Arquillian e i profili mutuati dall&#8217;archetipo non sono proprio adatti ad un progetto &#8220;reale&#8221; perché i test vengono eseguiti da <em><a href="http://maven.apache.org/surefire/maven-surefire-plugin/" target="_blank">surefire</a></em> (nella fase di <tt><strong>test</strong></tt> di <em>Maven</em>, come se fossero considerati di unità) invece che da <em><a href="http://maven.apache.org/surefire/maven-failsafe-plugin/" target="_blank">failsafe</a></em> (in fase di <tt><strong>integration-test</strong></tt>), come abbiamo già avuto modo di <a href="../maven-integration-tests/index.html" target="_blank">scoprire tempo fa</a>.</p>
-<p>Nel <a href="https://github.com/coding-jam/arquillian-tests" target="_blank">progetto di esempio di GitHub</a> sono presenti quindi le seguenti modifiche:</p>
+<p>A mio avviso la configurazione delle dipendenze Arquillian e i profili mutuati dall&#8217;archetipo non sono proprio adatti ad un progetto &#8220;reale&#8221; perché i test vengono eseguiti da <em><a href="http://maven.apache.org/surefire/maven-surefire-plugin/" target="_blank" rel="noopener noreferrer">surefire</a></em> (nella fase di <tt><strong>test</strong></tt> di <em>Maven</em>, come se fossero considerati di unità) invece che da <em><a href="http://maven.apache.org/surefire/maven-failsafe-plugin/" target="_blank" rel="noopener noreferrer">failsafe</a></em> (in fase di <tt><strong>integration-test</strong></tt>), come abbiamo già avuto modo di <a href="../maven-integration-tests/index.html" target="_blank" rel="noopener noreferrer">scoprire tempo fa</a>.</p>
+<p>Nel <a href="https://github.com/coding-jam/arquillian-tests" target="_blank" rel="noopener noreferrer">progetto di esempio di GitHub</a> sono presenti quindi le seguenti modifiche:</p>
 <ul>
-<li>aggiunto il <a href="https://github.com/coding-jam/arquillian-tests/tree/master/arquillian-tests-test-utils" target="_blank">modulo Maven &#8220;<em>test-utils</em>&#8220;</a> che contiene tutte le dipendenze di Arquillian (spostate dal progetto ejb) e le classi di utilità di test (che vedremo tra poco)</li>
-<li>i profili <tt>arq-wildfly-managed</tt> e <tt>arq-wildfly-remote</tt> sono stati invece spostati nel <a href="https://github.com/coding-jam/arquillian-tests/blob/master/pom.xml" target="_blank">parent pom</a> e arricchiti con il plugin <em>failsafe</em>, in modo da eseguire i test nella fase di <tt>integration-test</tt>:<br />
+<li>aggiunto il <a href="https://github.com/coding-jam/arquillian-tests/tree/master/arquillian-tests-test-utils" target="_blank" rel="noopener noreferrer">modulo Maven &#8220;<em>test-utils</em>&#8220;</a> che contiene tutte le dipendenze di Arquillian (spostate dal progetto ejb) e le classi di utilità di test (che vedremo tra poco)</li>
+<li>i profili <tt>arq-wildfly-managed</tt> e <tt>arq-wildfly-remote</tt> sono stati invece spostati nel <a href="https://github.com/coding-jam/arquillian-tests/blob/master/pom.xml" target="_blank" rel="noopener noreferrer">parent pom</a> e arricchiti con il plugin <em>failsafe</em>, in modo da eseguire i test nella fase di <tt>integration-test</tt>:<br />
 <pre data-enlighter-language="xml" class="EnlighterJSRAW">
 &lt;plugin&gt;
     &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
@@ -414,7 +414,7 @@ my-project
 </li>
 </ul>
 <h2>Arquillian all&#8217;opera: setup di un test</h2>
-<p>Cominciamo subito testando il modulo ejb che definisce un <a href="https://codingjam.it/ejb3-stateless-vs-stateful-quale-e-la-differenza/" target="_blank">Session Bean Stateless</a> per il CRUD dei task (<code><a href="https://github.com/coding-jam/arquillian-tests/blob/master/arquillian-tests-ejb/src/main/java/it/codingjam/arquilliantests/logic/services/TaskService.java" target="_blank">TaskService</a></code>). </p>
+<p>Cominciamo subito testando il modulo ejb che definisce un <a href="https://codingjam.it/ejb3-stateless-vs-stateful-quale-e-la-differenza/" target="_blank" rel="noopener noreferrer">Session Bean Stateless</a> per il CRUD dei task (<code><a href="https://github.com/coding-jam/arquillian-tests/blob/master/arquillian-tests-ejb/src/main/java/it/codingjam/arquilliantests/logic/services/TaskService.java" target="_blank" rel="noopener noreferrer">TaskService</a></code>). </p>
 <p>Per prima cosa è necessario preparare il <strong>test</strong> e il <strong>deployment</strong>:</p>
 <p><pre data-enlighter-language="java" class="EnlighterJSRAW" data-enlighter-highlight="1,4,5">
 @RunWith(Arquillian.class)
@@ -494,7 +494,7 @@ public void shouldNotFindTask() {
    assertFalse(user.isPresent());
 }
 </pre></p>
-<p>Per il resto, niente di nuovo! Dal momento che la classe di test risulta un bean deployato a tutti gli effetti, possiamo anche usare l&#8217;<code>EntityManager</code> o la <code>UserTransaction</code> per preparare il database o svuotarlo (come per esempio la classe <a href="https://github.com/coding-jam/arquillian-tests/blob/master/arquillian-tests-test-utils/src/main/java/it/codingjam/arquilliantests/utils/TestDbUtils.java" target="_blank">TestDbUtils</a>).</p>
+<p>Per il resto, niente di nuovo! Dal momento che la classe di test risulta un bean deployato a tutti gli effetti, possiamo anche usare l&#8217;<code>EntityManager</code> o la <code>UserTransaction</code> per preparare il database o svuotarlo (come per esempio la classe <a href="https://github.com/coding-jam/arquillian-tests/blob/master/arquillian-tests-test-utils/src/main/java/it/codingjam/arquilliantests/utils/TestDbUtils.java" target="_blank" rel="noopener noreferrer">TestDbUtils</a>).</p>
 <p>A questo punto siamo pronto a lanciare il test di integrazione (con Maven per esempio), ricordandoci di attivare il profilo desiderato (<tt>arq-wildfly-managed</tt> o <tt>arq-wildfly-remote</tt>). Nel caso in cui si voglia far gestire il server ad Arquillian:</p>
 <pre class="brush: plain; title: ; notranslate" title="">
 mvn verify -Parq-wildfly-managed
@@ -666,69 +666,8 @@ public void shouldGetTaskForUser1() {
             <!-- end content -->
 
             
-                <!-- social sharing buttons / counters -->
-                <div class="row">
-                  <div class="col-md-7">
-                    
-    <!-- social sharing buttons -->
-    <div class="bwp-single-share-wrap">
-      <span>Share:</span>
-      <ul class="bwp-single-share list-unstyled">
-        <!-- facebook -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://www.facebook.com/sharer.php?u=https://codingjam.it/java-ee-integration-test-con-arquillian/', 'Facebook', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=https://codingjam.it/java-ee-integration-test-con-arquillian/" target="_blank" class="bwp-share-link bwp-facebook-share">
-            <i class="fa fa-facebook"></i>
-          </a>
-        </li>
-        <!-- end facebook -->
-        <!-- twitter -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://twitter.com/share?url=https://codingjam.it/java-ee-integration-test-con-arquillian/&amp;text=java-ee-integration-test-con-arquillian', 'Twitter', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="https://twitter.com/share?url=https://codingjam.it/java-ee-integration-test-con-arquillian/&amp;text=java-ee-integration-test-con-arquillian" target="_blank" class="bwp-share-link bwp-twitter-share">
-            <i class="fa fa-twitter"></i>
-          </a>
-        </li>
-        <!-- end twitter -->
-        <!-- google+ -->
-        <li>
-          <a rel="nofollow" onclick="window.open('https://plus.google.com/share?url=https://codingjam.it/java-ee-integration-test-con-arquillian/', 'Google plus', 'width=600, height=460, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-230)+''); return false;" href="https://plus.google.com/share?url=https://codingjam.it/java-ee-integration-test-con-arquillian/" target="_blank" class="bwp-share-link bwp-google-plus-share">
-            <i class="fa fa-google-plus"></i>
-          </a>
-        </li>
-        <!-- end google+ -->
-        <!-- vk -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://vk.com/share.php?url=https://codingjam.it/java-ee-integration-test-con-arquillian/', 'VK', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://vk.com/share.php?url=https://codingjam.it/java-ee-integration-test-con-arquillian/" target="_blank" class="bwp-share-link bwp-vk-share">
-            <i class="fa fa-vk"></i>
-          </a>
-        </li>
-        <!-- end vk -->
-        <!-- pinterest -->
-        <li>
-          <a rel="nofollow" onclick="window.open('http://pinterest.com/pin/create/button/?url=https://codingjam.it/java-ee-integration-test-con-arquillian/&amp;media=&amp;description=java-ee-integration-test-con-arquillian', 'Pinterest', 'width=600, height=300, left='+(screen.availWidth/2-300)+', top='+(screen.availHeight/2-150)+''); return false;" href="http://pinterest.com/pin/create/button/?url=https://codingjam.it/java-ee-integration-test-con-arquillian/&amp;media=&amp;description=java-ee-integration-test-con-arquillian" target="_blank" class="bwp-share-link bwp-pinterest-share">
-            <i class="fa fa-pinterest-p"></i>
-          </a>
-        </li>
-        <!-- end pinterest -->
-      </ul>
-    </div>
-    <!-- end social sharing buttons -->
-
-                      </div>
-                  <div class="col-md-5">
-                    
-    <!-- counters -->
-    <ul class="bwp-single-counters list-unstyled clearfix ">
-                    <li class="bwp-comments-count"><a href="#comments"><i class="fa fa-comment-o"></i>0</a></li>
-                </ul>
-    <!-- end counters -->
-
-                      </div>
-                </div>
-                <!-- end social sharing buttons / counters -->
-
-                
       <!-- metadata -->
-      <div class="bwp-single-metadata-wrap ">
+      <div class="bwp-single-metadata-wrap bwp-no-single-share-and-counters">
         <ul class="bwp-single-metadata list-unstyled clearfix">
                       <!-- author -->
             <li>
@@ -801,23 +740,6 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
     <!-- end about the author -->
 
     
-<!-- comments -->
-<div id="comments" class="comments-area">
-
-	
-	
-		<div id="respond" class="comment-respond">
-		<h2 id="reply-title" class="comment-reply-title"><span>Leave a reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h2><form action="https://codingjam.it/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes">Your email address will not be published. Required fields are marked *</p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' /></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='13934' id='comment_post_ID' />
-<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-</p></form>	</div><!-- #respond -->
-	
-</div>
-<!-- end comments -->
-
     <!-- related posts (by tags) -->
     <div class="bwp-related-posts-container bwp-show-2-posts">
       <div class="bwp-o-hidden">
@@ -842,15 +764,14 @@ In passato ho lavorato con la piattaforma alternativa alla enterprise per lo svi
                   
                                       <!-- title -->
                     <h3 class="bwp-post-title entry-title">
-                      <a href="../organizziamoci-con-maven-parte-ii/index.html">Organizziamoci con Maven &#8211; Parte II</a>
+                      <a href="https://codingjam.it/maven-sveliamo-un-pom-di-segreti/">Maven, sveliamo un POM di segreti</a>
                     </h3>
                     <!-- end title -->
                     
                   
       <!-- excerpt -->
       <div class="bwp-post-excerpt entry-content">
-        <p style="text-align: justify">Nel <a href="http://www.cosenonjaviste.it/organizziamoci-con-maven-parte-i/">precedente articolo</a> abbiamo introdotto <a href="http://maven.apache.org/">Apache Maven</a> e ne abbiamo visto le basi, nonché abbiamo creato alcuni progetti. Il tutto è stato affrontato lavorando con Maven come tool da riga di comando ed effettivamente lo è&#8230;<br />
-Tuttavia abbiamo bisogno di integrare questo tool con un IDE che nel nostro caso è Eclipse. Vediamo come possiamo rendere i nostri progetti compatibili con l&#8217;IDE?</p>
+        <p>Nei precedenti articoli su Maven (Organizziamoci con Maven &#8211; Parte I e Parte II), abbiamo visto le nozioni fondamentali del file POM. In questo articolo vedremo una panoramica di elementi avanzati del POM, fra quelli ritenuti più significativi e rilevanti per la maggior parte dei progetti.</p>
       </div>
       <!-- end excerpt -->
 
@@ -858,12 +779,12 @@ Tuttavia abbiamo bisogno di integrare questo tool con un IDE che nel nostro caso
     <!-- date + read more link -->
     <div class="bwp-post-details-wrap clearfix">
       <!-- date -->
-            <a href="../2012/04/16/index.html" class="bwp-post-date">
-        <span class="date updated">16/04/2012</span>
+            <a href="https://codingjam.it/2012/09/18/" class="bwp-post-date">
+        <span class="date updated">18/09/2012</span>
       </a>
       <!-- end date -->
       <!-- read more link -->
-      <a href="../organizziamoci-con-maven-parte-ii/index.html" class="bwp-read-more">Read more</a>
+      <a href="https://codingjam.it/maven-sveliamo-un-pom-di-segreti/" class="bwp-read-more">Read more</a>
       <!-- end read more link -->
     </div>
     <!-- end date + read more link -->
@@ -888,14 +809,14 @@ Tuttavia abbiamo bisogno di integrare questo tool con un IDE che nel nostro caso
                   
                                       <!-- title -->
                     <h3 class="bwp-post-title entry-title">
-                      <a href="../4-facce-in-padella-oggi-ancora-pi-ricche-getting-started-with-jboss-richfaces-4-x/index.html">4 Facce in padella &#8211; oggi ancora pi&ugrave; Ricche (Getting started with JBoss RichFaces 4.x)</a>
+                      <a href="https://codingjam.it/jboss-7-ed-eclipselink-2-una-coppia-quasi-perfetta-parte-ii-a-k-a-weaving-statico-con-maven/">JBoss 7 ed EclipseLink 2: una coppia quasi perfetta &#8211; Parte II (a.k.a weaving statico con Maven)</a>
                     </h3>
                     <!-- end title -->
                     
                   
       <!-- excerpt -->
       <div class="bwp-post-excerpt entry-content">
-        <p align="justify">Il progetto JBoss RichFaces è un framework di componenti UI evoluti basati sulla specifica JavaServer Faces (JSF) e arricchiti di funzionalità Ajax avanzate. Il 29 Marzo è uscita la attesa nuova versione, JBoss RichFaces 4.0, che introduce il pieno supporto alla specifica 2.0 delle JSF oltre a molte novità interessanti, tra cui la validazione lato client. In questo semplice tutorial vediamo assieme come creare un Hello World con JBoss RichFaces 4.x su JBoss AS 6 ed Eclipse. </p>
+        <p class="text-justify"><a href="http://www.cosenonjaviste.it/jboss-7-ed-eclipselink-2-una-coppia-quasi-perfetta-parte-i-a-k-a-weaving-statico-con-ant/" target="_blank" rel="noopener noreferrer">Recentemente</a> abbiamo visto le difficoltà incontrate nel far andare d&#8217;amore e d&#8217;accordo JBoss 7.0.2 ed EclipseLink 2.3. Probabilmente i problemi incontrati dipendevano dal fatto che la versione 7.0.2 non era completamente Java EE complinant, ma lo era solo per il profilo web. Con la nuova versione di JBoss (al momento 7.1.1) le cose sono leggermente migliorate ma, come anticipato, è meglio aggiornare anche EclipseLink alla versione 2.4. Vediamo perché.</p>
       </div>
       <!-- end excerpt -->
 
@@ -903,12 +824,12 @@ Tuttavia abbiamo bisogno di integrare questo tool con un IDE che nel nostro caso
     <!-- date + read more link -->
     <div class="bwp-post-details-wrap clearfix">
       <!-- date -->
-            <a href="../2011/04/25/index.html" class="bwp-post-date">
-        <span class="date updated">25/04/2011</span>
+            <a href="https://codingjam.it/2012/10/31/" class="bwp-post-date">
+        <span class="date updated">31/10/2012</span>
       </a>
       <!-- end date -->
       <!-- read more link -->
-      <a href="../4-facce-in-padella-oggi-ancora-pi-ricche-getting-started-with-jboss-richfaces-4-x/index.html" class="bwp-read-more">Read more</a>
+      <a href="https://codingjam.it/jboss-7-ed-eclipselink-2-una-coppia-quasi-perfetta-parte-ii-a-k-a-weaving-statico-con-maven/" class="bwp-read-more">Read more</a>
       <!-- end read more link -->
     </div>
     <!-- end date + read more link -->
@@ -1063,12 +984,12 @@ Tuttavia abbiamo bisogno di integrare questo tool con un IDE che nel nostro caso
 <script type='text/javascript' src='../wp-content/themes/melissa/js/ie10-viewport-bug-workaround8a54.js?ver=1.0.0'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
-var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"a920e07833","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
+var melissaData = {"ajaxURL":"https:\/\/codingjam.it\/wp-admin\/admin-ajax.php","ajaxNonce":"1520cabb4b","templateDirectoryUri":"https:\/\/codingjam.it\/wp-content\/themes\/melissa","isMobile":"false","isSingular":"true","adminBar":"false","headerType":"simple-header","stickyNavigation":"true","isMasonry":"false","masonryColumnWidth":"","infiniteScroll":"false","iScrollLoadMoreBtn":"false","linksTarget":"_self","retinaDataAttr":"false","toTopButton":"true","iScrollLoadingMsg":"Loading new posts...","iScrollFinishedMsg":"No more posts to load","loadMoreBtnText":"Load More"};
 /* ]]> */
 </script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/themef488.js?ver=1.1.0'></script>
 <script type='text/javascript' src='../wp-content/themes/melissa/js/retina.min6f3e.js?ver=1.3.0'></script>
 </body>
 
-<!-- Mirrored from codingjam.it/java-ee-integration-test-con-arquillian/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Dec 2020 23:50:38 GMT -->
+<!-- Mirrored from codingjam.it/java-ee-integration-test-con-arquillian/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Dec 2020 10:22:25 GMT -->
 </html>
